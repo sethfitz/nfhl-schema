@@ -6,7 +6,8 @@ Reads only the committed snapshot (`spec/service/observed/`, the domains,
 this command. Prints, per field, every observed value the field's domain does
 not list, with its row count, and `legacy` beside the ones the models accept
 with a warning; then, per rule on two fields' values together (the zone/subtype
-cross-walk, `SFHA_TF` from the zone), the value pairs that break it.
+cross-walk, `SFHA_TF` from the zone), the value pairs that break it; then the
+rows that break each rule on `AR_REVERT` and `AR_SUBTRV`.
 
 The counts come from the service's grouped statistics and inherit its SQL
 Server collation, which compares case-insensitively and pads blanks. So `""`
@@ -18,8 +19,9 @@ blanks cannot be seen at all.
 from __future__ import annotations
 
 import sys
+from typing import Any
 
-from nfhl.spec_source import LAYERS, SpecReader
+from nfhl.spec_source import LAYERS, Layer, SpecReader
 
 
 def main() -> int:
@@ -50,7 +52,54 @@ def main() -> int:
             )
             for p in broken:
                 print(f"{p.count:>10}  {p.when_value!r}  {p.value!r}")
+        report_single_field_rules(reader, layer, observed)
     return 0
+
+
+def accepted(reader: SpecReader, layer: Layer, field: str) -> dict[str, int]:
+    """Rows per value of `field` its enum accepts: reference and legacy values."""
+    domain = reader.reference_table(layer.table).field(field).domain
+    assert domain is not None
+    ok = {v.value for v in reader.domain(domain).values}
+    ok |= {v.value for v in reader.legacy_values(domain)}
+    rows = reader.observed(layer)["fields"][field]
+    return {r["value"]: r["count"] for r in rows if r["value"] in ok}
+
+
+def report_single_field_rules(
+    reader: SpecReader, layer: Layer, observed: dict[str, Any]
+) -> None:
+    """The AR rules, from per-value counts alone (the snapshot has no pairs).
+
+    A value outside the enum is rejected before any rule runs, so only the values
+    the enum accepts are counted. A limit on a field's values is exact. A field
+    populated only for some zones is a range: every accepted value breaks it,
+    less at most the rows of those zones, so it is exact when they have none.
+    """
+    relations = reader.relationships(layer.table)
+    print("\n# values the single-field rules reject")
+    for allowed in relations.allowed:
+        forbidden = set(reader.forbidden_values(layer.table, allowed))
+        held = accepted(reader, layer, allowed.field)
+        broken = {v: n for v, n in held.items() if v in forbidden}
+        print(
+            f"\n## {allowed.field} outside the values for "
+            f"{', '.join(allowed.zones)}: {sum(broken.values())}"
+        )
+        for value, count in broken.items():
+            print(f"{count:>10}  {value!r}")
+    zones = {r["value"]: r["count"] for r in observed["fields"]["FLD_ZONE"]}
+    for only in relations.only_when:
+        held = accepted(reader, layer, only.field)
+        most = sum(held.values())
+        least = max(0, most - sum(zones.get(z, 0) for z in only.any_of))
+        span = str(most) if least == most else f"{least} to {most}"
+        print(
+            f"\n## {only.field} populated when {only.when} is not "
+            f"{', '.join(only.any_of)}: {span}"
+        )
+        for value, count in held.items():
+            print(f"{count:>10}  {value!r}")
 
 
 if __name__ == "__main__":

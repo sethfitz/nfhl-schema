@@ -164,6 +164,19 @@ about each value.
   a test fails if a rejected pair ever clears the bar, since the models have no
   way to accept a pair with a warning.
 
+- **The AR rules reject 79 rows, all for being populated off an AR zone.**
+  The layer holds no AR zone (`FLD_ZONE = 'AR'` counts 0), so every row whose
+  `AR_REVERT` or `AR_SUBTRV` the field's vocabulary accepts breaks the
+  only-in-AR rule: `AR_REVERT` `A` (72) or `AE` (1), and `AR_SUBTRV`
+  `0.2 PCT ANNUAL CHANCE FLOOD HAZARD` (3), `FLOODWAY` (2) or `AREA OF
+  MINIMAL FLOOD HAZARD` (1). The limits on their values reject none. Values
+  the vocabulary already rejects (`-9999` and `<Null>` written as text,
+  `NSPNUL`, `NP`, lone spaces) never reach a rule. On 2026-10-05 the same 79
+  came back from the service by direct query (`FLD_ZONE <> 'AR' AND AR_REVERT
+  IN (<every D_Zone value>)`, 73; the same for `AR_SUBTRV` and every
+  `D_Zone_Subtype` and legacy value, 6), and validating those 79 features
+  showed each valid before these rules and rejected by one of them after.
+
 These were counted with direct queries against layer 28 on 2026-10-04 rather
 than from a committed file; each is a `returnCountOnly` query with the `where`
 clause given:
