@@ -232,3 +232,36 @@ def test_the_sfha_rules_read_a_or_v_and_x_or_d_as_zone_codes(
     assert set(by_flag["F"]) == {"X", "D"}
     unnamed = {z.value for z in zones} - sfha - {"X", "D"}
     assert unnamed == {"AREA NOT INCLUDED", "OPEN WATER"}
+
+
+def test_no_value_pair_a_rule_rejects_is_common(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # The legacy policy, applied to pairs: a combination at least one row in a
+    # thousand holds would be accepted with a warning, and the models have no
+    # way to do that for a pair. If this fails, a rule now rejects a common
+    # combination and the policy needs a pair form before the rule ships.
+    floor = reader.legacy["threshold"] * reader.observed(layer)["total"]
+    for rule, broken in reader.pair_violations(layer):
+        for pair in broken:
+            assert pair.count < floor, (rule.when_values, pair)
+
+
+def test_the_pair_counts_find_known_violations(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # A did-happen control for the test above: the counts reach the rules,
+    # and pairs the rules allow are not counted against them.
+    broken = {
+        (rule.field, pair.when_value, pair.value): pair.count
+        for rule, pairs in reader.pair_violations(layer)
+        for pair in pairs
+    }
+    assert broken[("ZONE_SUBTY", "X", "AREA OF SPECIAL CONSIDERATION")] > 0
+    assert broken[("SFHA_TF", "X", "T")] > 0
+    assert ("ZONE_SUBTY", "AE", "FLOODWAY") not in broken
+    assert ("SFHA_TF", "X", "F") not in broken
+    combos = reader.observed(layer)["combinations"]
+    total = reader.observed(layer)["total"]
+    for rows in combos.values():
+        assert sum(r["count"] for r in rows) == total

@@ -11,7 +11,7 @@ retrieved, the edition, and a SHA-256 of every file.
 | `reference/*.txt` | `pdftotext -layout` of each PDF. Derived, not upstream; for grepping, and the second instrument the extraction is checked against. |
 | `reference/*.json` | Every ruled table in each PDF, extracted by `nfhl.extract` (pdfplumber). Derived, and **the generation source**. A test re-runs the extraction and asserts it reproduces these files. |
 | `service/MapServer.json`, `service/layers/<id>.json` | The [NFHL MapServer](https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer)'s metadata for all 32 layers and its one table: field names, Esri types, lengths. Taken whole so later slices need no new fetch. |
-| `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, from the service's grouped statistics. Observations, not specification. |
+| `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, and per-pair counts for every two fields a rule reads together (`combinations`), from the service's grouped statistics. Observations, not specification. |
 | `repairs.json` | **Not upstream.** Corrections to published domain values, each quoting the reference sentence that licenses it. Not in the manifest. |
 | `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`), each quoting the field description it reads. Not in the manifest. |
 | `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot. Not in the manifest. |
@@ -143,6 +143,16 @@ about each value.
 - **Text fields hold the numeric null as a string**: `-9999` in `V_DATUM`,
   `LEN_UNIT`, `VEL_UNIT`, `AR_REVERT` and `AR_SUBTRV`, and `<Null>` in most of
   them.
+- **The zone rules reject 711 rows**, counted from the snapshot's value pairs.
+  Against Table 14: `AO` with `COASTAL FLOODPLAIN` (236), `X` with `AREA OF
+  SPECIAL CONSIDERATION` (149), `A` with `ADMINISTRATIVE FLOODWAY` (119) or
+  `FLOWAGE EASEMENT AREA` (2), `AE` with `RIVERINE FLOODWAY SHOWN IN COASTAL
+  ZONE` (93), `AH` with `COASTAL FLOODPLAIN` (55) or `FLOODWAY` (16), and no
+  subtype on `A99` (23 of the layer's 24) or `X` (1). Against `SFHA_TF`'s
+  description: `AE` flagged `F` (2), and `X` flagged `T` (14) or `U` (1). The
+  largest, 236, is 4% of the legacy bar of 5,811 rows, so every rule rejects;
+  a test fails if a rejected pair ever clears the bar, since the models have no
+  way to accept a pair with a warning.
 
 These were counted with direct queries against layer 28 on 2026-10-04 rather
 than from a committed file; each is a `returnCountOnly` query with the `where`
@@ -160,9 +170,6 @@ clause given:
   (`(VELOCITY <> -9999 AND VELOCITY IS NOT NULL) AND (VEL_UNIT IS NULL OR VEL_UNIT = '')`).
   Of the 9,679 non-null velocities, 7,708 are `0`, which section 7.3 forbids as
   a stand-in for "does not apply", so most of those are nulls written as zero.
-- **`SFHA_TF` against the zone**: 2 A/V-zone rows not `T`, and 15 X/D-zone
-  rows not `F`. The rule is stated in `SFHA_TF`'s description and not yet
-  modelled.
 
 **Read every count above as an upper bound.** The service is SQL Server, and
 its comparisons and grouping ignore case and trailing blanks: `LEN_UNIT =

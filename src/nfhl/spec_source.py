@@ -176,6 +176,15 @@ class Relationships:
 
 
 @dataclass(frozen=True, slots=True)
+class PairCount:
+    """How many rows of a layer hold `when_value` and `value` together."""
+
+    when_value: str | None
+    value: str | None
+    count: int
+
+
+@dataclass(frozen=True, slots=True)
 class PairRule:
     """What `field` may hold while `when` holds one of `when_values`.
 
@@ -531,6 +540,24 @@ class SpecReader:
     def observed(self, layer: Layer) -> dict[str, Any]:
         payload: dict[str, Any] = self._json(f"service/observed/{layer.layer_id}.json")
         return payload
+
+    def pair_violations(self, layer: Layer) -> list[tuple[PairRule, list[PairCount]]]:
+        """Each pair rule, with the observed value pairs that break it.
+
+        Read from the snapshot's two-field counts, which `snapshot-spec` takes
+        for every pair a rule reads (`observed["combinations"]`).
+        """
+        combinations = self.observed(layer)["combinations"]
+        found = []
+        for rule in self.pair_rules(layer.table):
+            rows = combinations[f"{rule.when},{rule.field}"]
+            broken = [
+                PairCount(r[rule.when], r[rule.field], r["count"])
+                for r in rows
+                if rule.broken_by(r[rule.when], r[rule.field])
+            ]
+            found.append((rule, broken))
+        return found
 
     # -- local readings ----------------------------------------------------------
 

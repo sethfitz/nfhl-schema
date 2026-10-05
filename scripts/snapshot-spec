@@ -11,8 +11,9 @@ Three sources, each pinned by what it is:
 * The NFHL ArcGIS MapServer's own metadata: every layer and table, with its
   fields, Esri types and lengths. The service declares no coded-value domains.
 * What the service holds: per-value row counts for every field of a modelled
-  layer that the reference ties to a domain, and the layer's total, from the
-  `query` endpoint's grouped statistics. These are observations, not
+  layer that the reference ties to a domain, per-pair counts for every two
+  fields a rule reads together, and the layer's total, from the `query`
+  endpoint's grouped statistics. These are observations, not
   specification -- the reference is what the models enforce, and a value seen
   here but absent from the reference is a finding, recorded in spec/README.md.
 
@@ -126,6 +127,30 @@ def snapshot_service(spec: Path) -> list[dict[str, str]]:
     return sources
 
 
+def grouped(url: str, group_by: str) -> list[dict[str, Any]]:
+    """Row counts per distinct value (or value pair) of `group_by`, as `n`."""
+    stats = fetch_json(
+        url,
+        {
+            "where": "1=1",
+            "outStatistics": json.dumps(
+                [
+                    {
+                        "statisticType": "count",
+                        "onStatisticField": "OBJECTID",
+                        "outStatisticFieldName": "n",
+                    }
+                ]
+            ),
+            "groupByFieldsForStatistics": group_by,
+            "f": "json",
+        },
+    )
+    if stats.get("exceededTransferLimit"):
+        raise RuntimeError(f"{url}: grouping by {group_by} was truncated")
+    return [f["attributes"] for f in stats["features"]]
+
+
 def snapshot_observed(spec: Path) -> list[dict[str, str]]:
     reader = SpecReader(spec)
     sources = []
@@ -140,31 +165,34 @@ def snapshot_observed(spec: Path) -> list[dict[str, str]]:
             if field.domain is None or field.name not in reader.service_fields(layer):
                 continue
             print(f"    {field.name}")
-            stats = fetch_json(
-                url,
-                {
-                    "where": "1=1",
-                    "outStatistics": json.dumps(
-                        [
-                            {
-                                "statisticType": "count",
-                                "onStatisticField": "OBJECTID",
-                                "outStatisticFieldName": "n",
-                            }
-                        ]
-                    ),
-                    "groupByFieldsForStatistics": field.name,
-                    "f": "json",
-                },
-            )
-            rows = [f["attributes"] for f in stats["features"]]
+            rows = grouped(url, field.name)
             fields[field.name] = sorted(
                 ({"value": r[field.name], "count": r["n"]} for r in rows),
                 key=lambda r: (-r["count"], str(r["value"])),
             )
+        # Every pair of fields a rule reads together, counted per value pair,
+        # so a rule's violations can be counted from the snapshot.
+        combinations: dict[str, list[dict[str, Any]]] = {}
+        for when, field_name in sorted(
+            {(r.when, r.field) for r in reader.pair_rules(layer.table)}
+        ):
+            print(f"    {when} x {field_name}")
+            rows = grouped(url, f"{when},{field_name}")
+            combinations[f"{when},{field_name}"] = sorted(
+                (
+                    {when: r[when], field_name: r[field_name], "count": r["n"]}
+                    for r in rows
+                ),
+                key=lambda r: (-r["count"], str(r[when]), str(r[field_name])),
+            )
         dump(
             spec / "service" / "observed" / f"{layer.layer_id}.json",
-            {"layer": layer.layer_id, "total": total["count"], "fields": fields},
+            {
+                "layer": layer.layer_id,
+                "total": total["count"],
+                "fields": fields,
+                "combinations": combinations,
+            },
         )
         sources.append(
             {
@@ -176,7 +204,14 @@ def snapshot_observed(spec: Path) -> list[dict[str, str]]:
 
 
 def checksums(spec: Path) -> list[dict[str, Any]]:
-    skip = {"MANIFEST.json", "README.md", "repairs.json", "relationships.json"}
+    # Local readings, not upstream: they change without a fetch.
+    skip = {
+        "MANIFEST.json",
+        "README.md",
+        "repairs.json",
+        "relationships.json",
+        "legacy.json",
+    }
     files = sorted(p for p in spec.rglob("*") if p.is_file() and p.name not in skip)
     return [
         {

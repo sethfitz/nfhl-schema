@@ -5,7 +5,8 @@ Reads only the committed snapshot (`spec/service/observed/`, the domains,
 `spec/legacy.json`), so the figures in spec/README.md can be re-derived from
 this command. Prints, per field, every observed value the field's domain does
 not list, with its row count, and `legacy` beside the ones the models accept
-with a warning.
+with a warning; then, per rule on two fields' values together (the zone/subtype
+cross-walk, `SFHA_TF` from the zone), the value pairs that break it.
 
 The counts come from the service's grouped statistics and inherit its SQL
 Server collation, which compares case-insensitively and pads blanks. So `""`
@@ -39,6 +40,16 @@ def main() -> int:
                 if r["value"] not in (None, ""):
                     mark = "legacy" if r["value"] in legacy else ""
                     print(f"{r['count']:>10}  {mark:6}  {r['value']!r}")
+        print("\n# value pairs the rules reject")
+        for rule, broken in reader.pair_violations(layer):
+            what = "no value" if rule.requires_value else "a forbidden value"
+            total = sum(p.count for p in broken)
+            print(
+                f"\n## {rule.field} {what} when {rule.when} is "
+                f"{', '.join(rule.when_values)}: {total}"
+            )
+            for p in broken:
+                print(f"{p.count:>10}  {p.when_value!r}  {p.value!r}")
     return 0
 
 

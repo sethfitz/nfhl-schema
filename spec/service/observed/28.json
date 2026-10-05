@@ -542,5 +542,446 @@
         "count": 4
       }
     ]
+  },
+  "combinations": {
+    "FLD_ZONE,SFHA_TF": [
+      {
+        "FLD_ZONE": "X",
+        "SFHA_TF": "F",
+        "count": 4434810
+      },
+      {
+        "FLD_ZONE": "AE",
+        "SFHA_TF": "T",
+        "count": 902807
+      },
+      {
+        "FLD_ZONE": "A",
+        "SFHA_TF": "T",
+        "count": 418366
+      },
+      {
+        "FLD_ZONE": "VE",
+        "SFHA_TF": "T",
+        "count": 28347
+      },
+      {
+        "FLD_ZONE": "AH",
+        "SFHA_TF": "T",
+        "count": 12271
+      },
+      {
+        "FLD_ZONE": "AO",
+        "SFHA_TF": "T",
+        "count": 9740
+      },
+      {
+        "FLD_ZONE": "D",
+        "SFHA_TF": "F",
+        "count": 3582
+      },
+      {
+        "FLD_ZONE": "OPEN WATER",
+        "SFHA_TF": "F",
+        "count": 741
+      },
+      {
+        "FLD_ZONE": "V",
+        "SFHA_TF": "T",
+        "count": 109
+      },
+      {
+        "FLD_ZONE": "A99",
+        "SFHA_TF": "T",
+        "count": 24
+      },
+      {
+        "FLD_ZONE": "X",
+        "SFHA_TF": "T",
+        "count": 14
+      },
+      {
+        "FLD_ZONE": "OPEN WATER",
+        "SFHA_TF": "T",
+        "count": 13
+      },
+      {
+        "FLD_ZONE": "OPEN WATER",
+        "SFHA_TF": "U",
+        "count": 5
+      },
+      {
+        "FLD_ZONE": "AE",
+        "SFHA_TF": "F",
+        "count": 2
+      },
+      {
+        "FLD_ZONE": "X",
+        "SFHA_TF": "U",
+        "count": 1
+      }
+    ],
+    "FLD_ZONE,ZONE_SUBTY": [
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD",
+        "count": 3373046
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD",
+        "count": 840380
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": null,
+        "count": 833641
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": null,
+        "count": 417847
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT FUTURE CONDITIONS",
+        "count": 68943
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD IN COASTAL ZONE",
+        "count": 51955
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "FLOODWAY",
+        "count": 49775
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT DEPTH LESS THAN 1 FOOT",
+        "count": 30980
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE",
+        "count": 24849
+      },
+      {
+        "FLD_ZONE": "VE",
+        "ZONE_SUBTY": null,
+        "count": 24414
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT DRAINAGE AREA LESS THAN 1 SQUARE MILE",
+        "count": 23157
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD IN COMBINED RIVERINE AND COASTAL ZONE",
+        "count": 18869
+      },
+      {
+        "FLD_ZONE": "AH",
+        "ZONE_SUBTY": null,
+        "count": 12200
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "COASTAL FLOODPLAIN",
+        "count": 12195
+      },
+      {
+        "FLD_ZONE": "AO",
+        "ZONE_SUBTY": null,
+        "count": 9487
+      },
+      {
+        "FLD_ZONE": "VE",
+        "ZONE_SUBTY": "COASTAL FLOODPLAIN",
+        "count": 3740
+      },
+      {
+        "FLD_ZONE": "D",
+        "ZONE_SUBTY": null,
+        "count": 3475
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "COMBINED RIVERINE AND COASTAL FLOODPLAIN",
+        "count": 2077
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "ADMINISTRATIVE FLOODWAY",
+        "count": 1759
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "COMMUNITY ENCROACHMENT AREA",
+        "count": 1628
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN CHANNEL",
+        "count": 1055
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "STATE ENCROACHMENT AREA",
+        "count": 990
+      },
+      {
+        "FLD_ZONE": "OPEN WATER",
+        "ZONE_SUBTY": null,
+        "count": 759
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "AREA WITH REDUCED FLOOD HAZARD DUE TO ACCREDITED LEVEE SYSTEM",
+        "count": 432
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "0.2PCT ANNUAL CHANCE FLOOD HAZARD IN COASTAL ZONE",
+        "count": 338
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT FUTURE CONDITIONS, COMMUNITY ENCROACHMENT",
+        "count": 275
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "RIVERINE FLOODWAY IN COMBINED RIVERINE AND COASTAL ZONE",
+        "count": 260
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": "<Null>",
+        "count": 256
+      },
+      {
+        "FLD_ZONE": "AO",
+        "ZONE_SUBTY": "COASTAL FLOODPLAIN",
+        "count": 236
+      },
+      {
+        "FLD_ZONE": "VE",
+        "ZONE_SUBTY": "RIVERINE FLOODWAY SHOWN IN COASTAL ZONE",
+        "count": 191
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "AREA OF SPECIAL CONSIDERATION",
+        "count": 149
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": "1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN CHANNEL",
+        "count": 131
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": "ADMINISTRATIVE FLOODWAY",
+        "count": 119
+      },
+      {
+        "FLD_ZONE": "V",
+        "ZONE_SUBTY": null,
+        "count": 108
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT FUTURE CONDITIONS, FLOODWAY",
+        "count": 106
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT CONTAINED IN STRUCTURE, COMMUNITY ENCROACHMENT",
+        "count": 102
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "<Null>",
+        "count": 95
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "RIVERINE FLOODWAY SHOWN IN COASTAL ZONE",
+        "count": 93
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT CONTAINED IN STRUCTURE, FLOODWAY",
+        "count": 92
+      },
+      {
+        "FLD_ZONE": "D",
+        "ZONE_SUBTY": "AREA WITH FLOOD RISK DUE TO LEVEE",
+        "count": 88
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "COLORADO RIVER FLOODWAY",
+        "count": 73
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": " ",
+        "count": 63
+      },
+      {
+        "FLD_ZONE": "AH",
+        "ZONE_SUBTY": "COASTAL FLOODPLAIN",
+        "count": 55
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT FUTURE IN STRUCTURE, FLOODWAY",
+        "count": 53
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN CHANNEL",
+        "count": 38
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "FLOODWAY CONTAINED IN STRUCTURE",
+        "count": 36
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "FLOWAGE EASEMENT AREA",
+        "count": 29
+      },
+      {
+        "FLD_ZONE": "A99",
+        "ZONE_SUBTY": null,
+        "count": 23
+      },
+      {
+        "FLD_ZONE": "D",
+        "ZONE_SUBTY": "AREA WITH UNDETERMINED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
+        "count": 19
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT FUTURE IN STRUCTURE, COMMUNITY ENCROACHMENT",
+        "count": 19
+      },
+      {
+        "FLD_ZONE": "AH",
+        "ZONE_SUBTY": "FLOODWAY",
+        "count": 16
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "DENSITY FRINGE AREA",
+        "count": 15
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "1 PCT FUTURE CONDITIONS CONTAINED IN STRUCTURE",
+        "count": 13
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "FLOODWAY CONTAINED IN CHANNEL",
+        "count": 10
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE",
+        "count": 9
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "AREA OF SPECIAL CONSIDERATION",
+        "count": 9
+      },
+      {
+        "FLD_ZONE": "AO",
+        "ZONE_SUBTY": " ",
+        "count": 9
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE",
+        "count": 9
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "COMMUNITY ENCROACHMENT",
+        "count": 8
+      },
+      {
+        "FLD_ZONE": "AO",
+        "ZONE_SUBTY": "FLOODWAY",
+        "count": 8
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": "COASTAL FLOODPLAIN",
+        "count": 4
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "1 PCT CONTAINED IN STRUCTURE, COMMUNITY ENCROACHMENT",
+        "count": 4
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": " ",
+        "count": 3
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": "1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE",
+        "count": 2
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": "COMBINED RIVERINE AND COASTAL FLOODPLAIN",
+        "count": 2
+      },
+      {
+        "FLD_ZONE": "A",
+        "ZONE_SUBTY": "FLOWAGE EASEMENT AREA",
+        "count": 2
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "1 PCT CONTAINED IN STRUCTURE, FLOODWAY",
+        "count": 2
+      },
+      {
+        "FLD_ZONE": "VE",
+        "ZONE_SUBTY": "<Null>",
+        "count": 2
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": "AREA WITH REDUCED FLOOD HAZARD DUE TO PROVISIONALLY ACCREDITED LEVEE SYSTEM",
+        "count": 2
+      },
+      {
+        "FLD_ZONE": "A99",
+        "ZONE_SUBTY": "AREA WITH REDUCED FLOOD HAZARD DUE TO LEVEE SYSTEM",
+        "count": 1
+      },
+      {
+        "FLD_ZONE": "V",
+        "ZONE_SUBTY": "COASTAL FLOODPLAIN",
+        "count": 1
+      },
+      {
+        "FLD_ZONE": "X",
+        "ZONE_SUBTY": null,
+        "count": 1
+      }
+    ]
   }
 }
