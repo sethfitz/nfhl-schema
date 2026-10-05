@@ -1,18 +1,25 @@
 {
   "repairs": [
     {
-      "domain": "D_Zone_Subtype",
+      "applies_to": "D_Zone_Subtype",
       "find": "-PCT-ANNUAL-CHANCE ",
       "replace": " PCT ANNUAL CHANCE ",
       "quote": "Note that the dashes will stay in the Domain Tables Technical Reference, however the FIRM DB template will not have dashes, and neither will DVT accept them/require them.",
       "reason": "The reference prints `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD` and says the database will not have the dashes. The service agrees: it publishes `0.2 PCT ANNUAL CHANCE FLOOD HAZARD` and never the dashed form. The repair is scoped to the PCT phrases rather than every dash, because the service publishes `AREA WITH UNDETERMINED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM` with its dash and never without one."
     },
     {
-      "domain": "D_Zone_Subtype",
+      "applies_to": "D_Zone_Subtype",
       "find": "-PCT ",
       "replace": " PCT ",
       "quote": "Note that the dashes will stay in the Domain Tables Technical Reference, however the FIRM DB template will not have dashes, and neither will DVT accept them/require them.",
       "reason": "The same note, for the subtypes without ANNUAL CHANCE: `1-PCT FUTURE CONDITIONS` is published as `1 PCT FUTURE CONDITIONS`."
+    },
+    {
+      "applies_to": "Flood Zone and Zone Subtype Cross-Walk",
+      "find": "NON_ACCREDITED",
+      "replace": "NON-ACCREDITED",
+      "quote": "Acceptable values for this field are listed in the D_Zone_Subtype table.",
+      "reason": "Table 14's AE row prints `AREA WITH FLOOD HAZARD DUE TO NON_ACCREDITED LEVEE SYSTEM` with an underscore. ZONE_SUBTY takes its values from D_Zone_Subtype, which has no underscore in any value and prints this one, in every other cross-walk row, as `NON-ACCREDITED`."
     }
   ]
 }

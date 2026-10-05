@@ -165,7 +165,7 @@ class Relationships:
 
 @dataclass(frozen=True, slots=True)
 class Repair:
-    domain: str
+    applies_to: str  # a domain (`D_Zone_Subtype`) or a FIRM table's caption
     find: str
     replace: str
     quote: str
@@ -173,6 +173,47 @@ class Repair:
 
     def apply(self, value: str) -> str:
         return value.replace(self.find, self.replace)
+
+
+@dataclass(frozen=True, slots=True)
+class ZoneSubtypes:
+    """One row of the zone/subtype cross-walk: the subtypes a flood zone allows.
+
+    `subtypes` are stored values, after the same repairs as `D_Zone_Subtype`.
+    `allows_none` is the row's `<NULL>`: the zone may have no subtype at all.
+    """
+
+    zone: str
+    subtypes: tuple[str, ...]
+    allows_none: bool
+
+
+CROSSWALK = "Flood Zone and Zone Subtype Cross-Walk"
+_CROSSWALK_HEADER = ["Flood Zones", "Applicable Zone Subtypes"]
+_NO_SUBTYPE = "<NULL>"
+
+
+def split_cell(cell: str, terms: list[str]) -> list[str]:
+    """`cell` as the sequence of `terms` it is made of, longest match first.
+
+    The extraction joins a cell's lines with spaces, so one subtype's end and the
+    next one's start are not marked. Each term may carry a footnote marker set
+    against its last word (`COASTAL FLOODPLAIN2`). Text that begins no term
+    raises, so a value the vocabulary lacks stops generation.
+    """
+    by_length = sorted(terms, key=len, reverse=True)
+    found = []
+    rest = cell.strip()
+    while rest:
+        for term in by_length:
+            match = re.match(rf"{re.escape(term)}\d?(?: |$)", rest)
+            if match:
+                found.append(term)
+                rest = rest[match.end() :]
+                break
+        else:
+            raise ValueError(f"{CROSSWALK}: no subtype begins {rest[:50]!r}")
+    return found
 
 
 # Private Use Area code points. The PDFs set list bullets in a symbol font, which
@@ -310,7 +351,7 @@ class SpecReader:
         # The rotated header extracts reversed in `D_Zone_Subtype`.
         cites = column(lambda h: "Footnote" in (h, h[::-1]))
         notes = self.domain_footnotes(name) if cites is not None else {}
-        repairs = [r for r in self.repairs if r.domain == name]
+        repairs = [r for r in self.repairs if r.applies_to == name]
         values = []
         for row in table["rows"]:
             if "FIRM" not in re.split(r",\s*", row[applies]):
@@ -331,6 +372,42 @@ class SpecReader:
                 )
             )
         return Domain(name, tuple(values))
+
+    def subtype_crosswalk(self) -> tuple[ZoneSubtypes, ...]:
+        """Table 14 of the FIRM Database reference: which `ZONE_SUBTY` values
+        each `FLD_ZONE` allows.
+
+        Its cells name `D_Zone_Subtype` values as the PDF prints them, dashes and
+        all, so each is matched against the domain's printed form and mapped to
+        the stored one. A row whose zone is blank continues the row above across
+        a page break. Corrections to the table's own text are repairs that apply
+        to `CROSSWALK`.
+        """
+        table = next(t for t in self._firm_tables if t["header"] == _CROSSWALK_HEADER)
+        rows: list[list[str]] = []
+        for zone, cell in table["rows"]:
+            if zone:
+                rows.append([zone, cell])
+            else:
+                rows[-1][1] += f" {cell}"
+        stored = {v.published: v.value for v in self.domain("D_Zone_Subtype").values}
+        zones = {v.value for v in self.domain("D_Zone").values}
+        repairs = [r for r in self.repairs if r.applies_to == CROSSWALK]
+        found = []
+        for zone, cell in rows:
+            if zone not in zones:
+                raise ValueError(f"{CROSSWALK}: {zone!r} is not a D_Zone value")
+            for repair in repairs:
+                cell = repair.apply(cell)
+            terms = split_cell(cell, [*stored, _NO_SUBTYPE])
+            found.append(
+                ZoneSubtypes(
+                    zone=zone,
+                    subtypes=tuple(stored[t] for t in terms if t != _NO_SUBTYPE),
+                    allows_none=_NO_SUBTYPE in terms,
+                )
+            )
+        return tuple(found)
 
     def domain_footnotes(self, name: str) -> dict[str, str]:
         """The numbered footnotes printed under a domain table, by number.

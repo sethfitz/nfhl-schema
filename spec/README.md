@@ -96,8 +96,12 @@ Each is pinned by a test, so an upstream change shows up as a failure.
   field draws on.
 - **The zone/subtype cross-walk (Table 14) does not match the domain.** It writes
   `NON_ACCREDITED` with an underscore in the AE row, and its footnote markers
-  are set inline, so `COASTAL FLOODPLAIN2` extracts as one word. Not yet read by
-  the generator.
+  are set inline, so `COASTAL FLOODPLAIN2` extracts as one word. `repairs.json`
+  restores the dash, and `SpecReader.subtype_crosswalk` reads each cell by
+  matching the domain's printed values, longest first, past a trailing marker.
+  The two footnotes are not modelled: 1 cites the CFR, and 2, "These zone
+  subtypes should only be used in coastal areas", names a condition no field
+  records.
 - **`D_Study_Typ` 1070 ends in a typographic apostrophe**, `less than 1’`.
   Most published rows use the ASCII one (below). Not repaired: nothing in the
   reference says which is meant.
