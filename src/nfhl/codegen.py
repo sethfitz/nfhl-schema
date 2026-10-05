@@ -69,6 +69,19 @@ ESRI_TYPES = {
 }
 PYTHON_TYPES = {"Text": "str", "Double": "float64"}
 
+# Fields the service publishes and the reference does not define, by their Esri type.
+SERVICE_ONLY_TYPES = {
+    "esriFieldTypeOID": "int64",
+    "esriFieldTypeGlobalID": "str",
+    "esriFieldTypeString": "str",
+    "esriFieldTypeDouble": "float64",
+}
+
+SERVICE_ONLY_DESCRIPTION = (
+    "Published by the NFHL map service as housekeeping for its own copy of the "
+    "data; the FIRM Database reference does not define it."
+)
+
 WIDTH = 70  # string chunk width before ruff format lays the code out
 
 
@@ -287,6 +300,23 @@ def render_field(
     return lines
 
 
+def render_service_only_field(svc: ServiceField) -> list[str]:
+    """An optional field for a column the service adds and the reference lacks."""
+    if svc.esri_type not in SERVICE_ONLY_TYPES:
+        raise ValueError(f"{svc.name}: no Python type for {svc.esri_type}")
+    base = SERVICE_ONLY_TYPES[svc.esri_type]
+    if base == "str" and svc.length is not None:
+        base = f"Annotated[{base}, MaxLen({svc.length})]"
+    attr = re.sub(r"[^A-Za-z0-9]+", "_", svc.name).strip("_").lower()
+    return [
+        f"    {attr}: Omitable[{base}] = Field(\n"
+        f"        alias={literal(svc.name)},\n"
+        f"        description={literal(SERVICE_ONLY_DESCRIPTION)},\n"
+        "    )",
+        "",
+    ]
+
+
 def members(domain: Domain, values: Iterable[str]) -> str:
     """A tuple expression of `domain`'s enum members for `values`."""
     names = [f"{domain.class_name}.{member_name(v)}" for v in values]
@@ -422,6 +452,10 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             )
         )
         fields.append("")
+    if unmodelled:
+        fields.append("    # Housekeeping columns only the service has.")
+    for name in unmodelled:
+        fields.extend(render_service_only_field(service[name]))
 
     enums = sorted(
         {reader.domain(f.domain).class_name for f in table.fields if f.domain}
@@ -430,7 +464,7 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
         f"{reader.reference_intro(layer.table)} Published as layer "
         f"{layer.layer_id} of the NFHL MapServer, which also carries "
         f"{', '.join(f'`{n}`' for n in unmodelled)}; the reference does not "
-        "define them, so they arrive as extra properties."
+        "define them, so they are optional and validated only by type."
     )
     return "\n".join(
         [
@@ -477,7 +511,7 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             docstring(class_doc, "    "),
             "",
             "    model_config = ConfigDict(",
-            "        # Service-only fields (OBJECTID, GlobalID, ...) stay as extras.",
+            "        # Properties neither source defines stay extras.",
             '        extra="allow",',
             "        populate_by_name=True,",
             "        serialize_by_alias=True,",

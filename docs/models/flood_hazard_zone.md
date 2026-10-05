@@ -16,7 +16,7 @@ jurisdiction(s) mapped by the FIRM should have a corresponding flood zone
 polygon. There is one polygon for each contiguous flood zone designated.
 Published as layer 28 of the NFHL MapServer, which also carries `GFID`,
 `GlobalID`, `OBJECTID`, `SHAPE.STArea()`, `SHAPE.STLength()`; the reference does
-not define them, so they arrive as extra properties.
+not define them, so they are optional and validated only by type.
 
 ## Fields
 
@@ -44,6 +44,11 @@ not define them, so they arrive as extra properties.
 | `DEP_REVERT` | [`float64`](../system/numeric.md) (optional) | Flood Control Restoration Zones – Depth Revert. If zone is Zone AR in FLD_Zone field, this field would hold the flood depth for the reverted zone. This field is populated when Zone equals AR and the reverted zone has a depth assigned. |
 | `DUAL_ZONE` | [`TrueFalse`](types/true_false.md) (optional) | Flood Control Restoration Zones – Dual Zone Classification. If the flood hazard areas shown on the effective FIRM shall be designated as “dual” SFHAs (i.e., Zone AR/AE, Zone AR/AH, Zone AR/AO, Zone AR/A), this field will be coded as true. It should be false for any for AR Zones that revert to Shaded X. Acceptable values for this field are listed in the D_TrueFalse table. |
 | `SOURCE_CIT` | `string` | Source Citation. Abbreviation used in the metadata file when describing the source information for the feature. The abbreviation must match a value in L_Source_Cit.<br/><br/>*Maximum length: 21* |
+| `GFID` | `string` (optional) | Published by the NFHL map service as housekeeping for its own copy of the data; the FIRM Database reference does not define it.<br/><br/>*Maximum length: 36* |
+| `GlobalID` | `string` (optional) | Published by the NFHL map service as housekeeping for its own copy of the data; the FIRM Database reference does not define it.<br/><br/>*Maximum length: 38* |
+| `OBJECTID` | [`int64`](../system/numeric.md) (optional) | Published by the NFHL map service as housekeeping for its own copy of the data; the FIRM Database reference does not define it. |
+| `SHAPE.STArea()` | [`float64`](../system/numeric.md) (optional) | Published by the NFHL map service as housekeeping for its own copy of the data; the FIRM Database reference does not define it. |
+| `SHAPE.STLength()` | [`float64`](../system/numeric.md) (optional) | Published by the NFHL map service as housekeeping for its own copy of the data; the FIRM Database reference does not define it. |
 
 ## Constraints
 

@@ -610,11 +610,11 @@ class FloodHazardZone(Feature):
     polygon. There is one polygon for each contiguous flood zone designated.
     Published as layer 28 of the NFHL MapServer, which also carries `GFID`,
     `GlobalID`, `OBJECTID`, `SHAPE.STArea()`, `SHAPE.STLength()`; the reference does
-    not define them, so they arrive as extra properties.
+    not define them, so they are optional and validated only by type.
     """
 
     model_config = ConfigDict(
-        # Service-only fields (OBJECTID, GlobalID, ...) stay as extras.
+        # Properties neither source defines stay extras.
         extra="allow",
         populate_by_name=True,
         serialize_by_alias=True,
@@ -858,5 +858,46 @@ class FloodHazardZone(Feature):
             "Source Citation. Abbreviation used in the metadata file when "
             "describing the source information for the feature. The abbreviation "
             "must match a value in L_Source_Cit."
+        ),
+    )
+
+    # Housekeeping columns only the service has.
+    gfid: Omitable[Annotated[str, MaxLen(36)]] = Field(
+        alias="GFID",
+        description=(
+            "Published by the NFHL map service as housekeeping for its own copy of "
+            "the data; the FIRM Database reference does not define it."
+        ),
+    )
+
+    globalid: Omitable[Annotated[str, MaxLen(38)]] = Field(
+        alias="GlobalID",
+        description=(
+            "Published by the NFHL map service as housekeeping for its own copy of "
+            "the data; the FIRM Database reference does not define it."
+        ),
+    )
+
+    objectid: Omitable[int64] = Field(
+        alias="OBJECTID",
+        description=(
+            "Published by the NFHL map service as housekeeping for its own copy of "
+            "the data; the FIRM Database reference does not define it."
+        ),
+    )
+
+    shape_starea: Omitable[float64] = Field(
+        alias="SHAPE.STArea()",
+        description=(
+            "Published by the NFHL map service as housekeeping for its own copy of "
+            "the data; the FIRM Database reference does not define it."
+        ),
+    )
+
+    shape_stlength: Omitable[float64] = Field(
+        alias="SHAPE.STLength()",
+        description=(
+            "Published by the NFHL map service as housekeeping for its own copy of "
+            "the data; the FIRM Database reference does not define it."
         ),
     )

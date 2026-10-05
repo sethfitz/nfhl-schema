@@ -141,9 +141,10 @@ as the feature id, which Overture's `Feature` types as a string. It numbers rows
 in one copy of the service; the reference's key is `FLD_AR_ID` within one
 `DFIRM_ID`.
 
-**Fields only the service has are extras.** `GFID`, `GlobalID`, `OBJECTID` and
-the geodatabase's `SHAPE.STArea()` / `SHAPE.STLength()` validate as extra
-properties; the reference does not define them.
+**Fields only the service has are `Omitable`.** `GFID`, `GlobalID`, `OBJECTID`
+and the geodatabase's `SHAPE.STArea()` / `SHAPE.STLength()` are declared as
+optional fields typed from the service's own field list, since the reference does
+not define them. Any other property still validates as an extra.
 
 **Validate from JSON text.** The Overture `Feature` unwraps the GeoJSON envelope
 only in JSON mode, so use `FloodHazardZone.model_validate_json(...)`; a parsed

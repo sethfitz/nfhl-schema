@@ -151,10 +151,20 @@ def test_values_parse_to_their_enums(valid_feature: dict[str, Any]) -> None:
     assert len_unit is LengthUnits.FEET
 
 
-def test_service_only_fields_are_kept_as_extras(valid_feature: dict[str, Any]) -> None:
+def test_service_only_fields_are_optional_fields(valid_feature: dict[str, Any]) -> None:
     zone = validate(valid_feature)
-    assert zone.model_extra is not None
-    assert "GlobalID" in zone.model_extra
+    assert zone.globalid == valid_feature["properties"]["GlobalID"]
+    assert "GlobalID" not in (zone.model_extra or {})
+    del valid_feature["properties"]["GlobalID"]
+    assert "GlobalID" not in validate(valid_feature).model_dump(exclude_unset=True)
+
+
+def test_service_only_fields_are_validated_by_type(
+    valid_feature: dict[str, Any],
+) -> None:
+    valid_feature["properties"]["OBJECTID"] = "not a number"
+    with pytest.raises(ValidationError, match="OBJECTID"):
+        validate(valid_feature)
 
 
 def test_units_and_datum_are_declared_on_the_measured_fields() -> None:
