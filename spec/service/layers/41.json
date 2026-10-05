@@ -1,0 +1,295 @@
+{
+  "currentVersion": 11.1,
+  "cimVersion": "3.1.0",
+  "id": 41,
+  "name": "Study_Info",
+  "type": "Table",
+  "description": null,
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeNone",
+  "displayField": "DFIRM_ID",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "DFIRM_ID",
+      "type": "esriFieldTypeString",
+      "alias": "DFIRM_ID",
+      "length": 6,
+      "domain": null
+    },
+    {
+      "name": "VERSION_ID",
+      "type": "esriFieldTypeString",
+      "alias": "VERSION_ID",
+      "length": 11,
+      "domain": null
+    },
+    {
+      "name": "STD_NFO_ID",
+      "type": "esriFieldTypeString",
+      "alias": "STD_NFO_ID",
+      "length": 32,
+      "domain": null
+    },
+    {
+      "name": "STUDY_PRE",
+      "type": "esriFieldTypeString",
+      "alias": "STUDY_PRE",
+      "length": 19,
+      "domain": null
+    },
+    {
+      "name": "STUDY_NM",
+      "type": "esriFieldTypeString",
+      "alias": "STUDY_NM",
+      "length": 128,
+      "domain": null
+    },
+    {
+      "name": "STATE_NM",
+      "type": "esriFieldTypeString",
+      "alias": "STATE_NM",
+      "length": 24,
+      "domain": null
+    },
+    {
+      "name": "CNTY_NM",
+      "type": "esriFieldTypeString",
+      "alias": "CNTY_NM",
+      "length": 128,
+      "domain": null
+    },
+    {
+      "name": "JURIS_TYP",
+      "type": "esriFieldTypeString",
+      "alias": "JURIS_TYP",
+      "length": 22,
+      "domain": null
+    },
+    {
+      "name": "LG_PAN_NO",
+      "type": "esriFieldTypeString",
+      "alias": "LG_PAN_NO",
+      "length": 4,
+      "domain": null
+    },
+    {
+      "name": "OPP_TF",
+      "type": "esriFieldTypeString",
+      "alias": "OPP_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "H_DATUM",
+      "type": "esriFieldTypeString",
+      "alias": "H_DATUM",
+      "length": 30,
+      "domain": null
+    },
+    {
+      "name": "V_DATUM",
+      "type": "esriFieldTypeString",
+      "alias": "V_DATUM",
+      "length": 17,
+      "domain": null
+    },
+    {
+      "name": "PROJECTION",
+      "type": "esriFieldTypeString",
+      "alias": "PROJECTION",
+      "length": 75,
+      "domain": null
+    },
+    {
+      "name": "PROJ_ZONE",
+      "type": "esriFieldTypeString",
+      "alias": "PROJ_ZONE",
+      "length": 5,
+      "domain": null
+    },
+    {
+      "name": "PROJ_UNIT",
+      "type": "esriFieldTypeString",
+      "alias": "PROJ_UNIT",
+      "length": 18,
+      "domain": null
+    },
+    {
+      "name": "PROJ_SECND",
+      "type": "esriFieldTypeString",
+      "alias": "PROJ_SECND",
+      "length": 75,
+      "domain": null
+    },
+    {
+      "name": "PROJ_SUNIT",
+      "type": "esriFieldTypeString",
+      "alias": "PROJ_SUNIT",
+      "length": 18,
+      "domain": null
+    },
+    {
+      "name": "PROJ_SZONE",
+      "type": "esriFieldTypeString",
+      "alias": "PROJ_SZONE",
+      "length": 5,
+      "domain": null
+    },
+    {
+      "name": "LANDWD_VAL",
+      "type": "esriFieldTypeDouble",
+      "alias": "LANDWD_VAL",
+      "domain": null
+    },
+    {
+      "name": "CW_TF",
+      "type": "esriFieldTypeString",
+      "alias": "CW_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "RTROFT_TF",
+      "type": "esriFieldTypeString",
+      "alias": "RTROFT_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "META_NM",
+      "type": "esriFieldTypeString",
+      "alias": "META_NM",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "FIS_NM",
+      "type": "esriFieldTypeString",
+      "alias": "FIS_NM",
+      "length": 15,
+      "domain": null
+    },
+    {
+      "name": "LOGO_NM",
+      "type": "esriFieldTypeString",
+      "alias": "LOGO_NM",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "INDX_EFFDT",
+      "type": "esriFieldTypeDate",
+      "alias": "INDX_EFFDT",
+      "length": 8,
+      "domain": null
+    },
+    {
+      "name": "DBREV_DT",
+      "type": "esriFieldTypeDate",
+      "alias": "DBREV_DT",
+      "length": 8,
+      "domain": null
+    },
+    {
+      "name": "AVG_CFACTR",
+      "type": "esriFieldTypeDouble",
+      "alias": "AVG_CFACTR",
+      "domain": null
+    },
+    {
+      "name": "GFID",
+      "type": "esriFieldTypeString",
+      "alias": "GFID",
+      "length": 36,
+      "domain": null
+    },
+    {
+      "name": "INDX_SUFFX",
+      "type": "esriFieldTypeString",
+      "alias": "INDX_SUFFX",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "GlobalID",
+      "type": "esriFieldTypeGlobalID",
+      "alias": "GlobalID",
+      "length": 38,
+      "domain": null
+    }
+  ],
+  "indexes": [
+    {
+      "name": "R46_SDE_ROWID_UK",
+      "fields": "OBJECTID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "DFIRM_ID",
+      "fields": "DFIRM_ID",
+      "isAscending": true,
+      "isUnique": false,
+      "description": ""
+    },
+    {
+      "name": "UUID_46",
+      "fields": "GlobalID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, PBF",
+  "isDataVersioned": false,
+  "useStandardizedQueries": true,
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsPagination": true,
+    "supportsTrueCurve": false,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true
+  },
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": true
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  }
+}

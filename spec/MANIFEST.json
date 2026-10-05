@@ -1,0 +1,398 @@
+{
+  "edition": "November 2024",
+  "index": "https://www.fema.gov/flood-maps/guidance-reports/guidelines-standards/technical-references-flood-risk-analysis-and-mapping",
+  "sources": [
+    {
+      "path": "reference/firm-database-technical-reference.pdf",
+      "url": "https://www.fema.gov/sites/default/files/documents/fema_rm-firm-database-technical-reference-nov-2024.pdf",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "reference/domain-tables-technical-reference.pdf",
+      "url": "https://www.fema.gov/sites/default/files/documents/fema_rm-domain-tables-technical-reference-nov-2024.pdf",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/MapServer.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/0.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/0?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/3.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/3?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/1.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/1?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/34.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/34?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/22.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/22?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/17.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/17?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/20.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/20?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/14.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/14?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/16.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/16?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/23.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/23?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/29.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/29?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/15.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/15?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/18.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/18?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/24.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/24?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/7.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/7?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/32.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/32?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/5.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/5?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/19.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/19?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/27.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/27?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/28.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/25.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/25?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/4.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/4?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/6.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/6?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/8.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/8?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/9.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/9?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/10.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/10?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/11.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/11?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/12.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/12?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/13.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/13?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/26.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/26?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/30.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/30?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/31.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/31?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/layers/41.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/41?f=json",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    },
+    {
+      "path": "service/observed/28.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28/query?groupByFieldsForStatistics=<field>&outStatistics=count",
+      "retrieved_at": "2026-10-05T03:18:13Z"
+    }
+  ],
+  "files": [
+    {
+      "path": "reference/domain-tables-technical-reference.json",
+      "sha256": "30906f493945d73acda3430e845160c48e8e16f5e9ebfbebc43e13ac56d067c2",
+      "bytes": 160541
+    },
+    {
+      "path": "reference/domain-tables-technical-reference.pdf",
+      "sha256": "0f83155f421d9d2c36bbf53b4d3cc52158d30516cc2c35228e3a2e3236ccf555",
+      "bytes": 3415159
+    },
+    {
+      "path": "reference/domain-tables-technical-reference.txt",
+      "sha256": "2564914f0d575cc7a7b816cfc031fe2bfe715fce314cf81248f4e7330d51fcac",
+      "bytes": 207391
+    },
+    {
+      "path": "reference/firm-database-technical-reference.json",
+      "sha256": "1a5ec5fec570dc73b98ec18f3ad226391a42ad1ee860a838521808e4c6918a06",
+      "bytes": 378604
+    },
+    {
+      "path": "reference/firm-database-technical-reference.pdf",
+      "sha256": "35f996f77bc4035a9f276d721896cf03669b16194d9729746d9b40a3c29a548e",
+      "bytes": 2081162
+    },
+    {
+      "path": "reference/firm-database-technical-reference.txt",
+      "sha256": "d42752544983280be6a6829d6b1970b7041371bb7a508d5f5bdea1cc306bc017",
+      "bytes": 550745
+    },
+    {
+      "path": "service/MapServer.json",
+      "sha256": "19f2f50be298f387ccf3ed26f0606e1e205ef0981708ffc521763027e96604cb",
+      "bytes": 13186
+    },
+    {
+      "path": "service/layers/0.json",
+      "sha256": "f7cacf361498e289d03f15f4618c21ab8c40defe0f772ee44dfc9da09173f34e",
+      "bytes": 5646
+    },
+    {
+      "path": "service/layers/1.json",
+      "sha256": "51def96504fba9c46a867665a151abc8edc3aa6fd2b11b9d4c86be12a235f8ea",
+      "bytes": 13712
+    },
+    {
+      "path": "service/layers/10.json",
+      "sha256": "544f0bd99f003af6a2348a3cfb6fa0dc8703aba71ac6e13aae11e7e0bd2cf27e",
+      "bytes": 8775
+    },
+    {
+      "path": "service/layers/11.json",
+      "sha256": "6763438c3db565955093ce040b8ccac5616909e37ce707aa423d8693a796a311",
+      "bytes": 6665
+    },
+    {
+      "path": "service/layers/12.json",
+      "sha256": "612952aa67f4cb60597c27be5553058aefa9954063e770e200a818baafe9bc9b",
+      "bytes": 7058
+    },
+    {
+      "path": "service/layers/13.json",
+      "sha256": "751179422c9260e537b968ea7fe9dc55e16747fb64a3aa881ab557daeb36099d",
+      "bytes": 6378
+    },
+    {
+      "path": "service/layers/14.json",
+      "sha256": "cba12eb61cf0d1d354024eba8939d4fcc72c31689c37eefa0a91acb5e82711f4",
+      "bytes": 10476
+    },
+    {
+      "path": "service/layers/15.json",
+      "sha256": "d6c2824a5955a41c13d9e74c26a33b3e460ad7e36d1f6c3b7828dc1396fcd2a9",
+      "bytes": 13345
+    },
+    {
+      "path": "service/layers/16.json",
+      "sha256": "53b39d43f06f522ffe20992a71a7df4e34d9630c7b52e04ae8806018109c3fc8",
+      "bytes": 7649
+    },
+    {
+      "path": "service/layers/17.json",
+      "sha256": "139450057d729c3ce489f5ed26b7bdc4db0fa99798800a59ba744dfbf8d01aa7",
+      "bytes": 9850
+    },
+    {
+      "path": "service/layers/18.json",
+      "sha256": "e472928c238dc2d652f2dcf57b2100e93f5420dc6f712b471d0d3bcc78c4058a",
+      "bytes": 6741
+    },
+    {
+      "path": "service/layers/19.json",
+      "sha256": "2363bfbdc5ea27c14d296b1e23bb3624cb4fe4d8620388d4c632277661ceea0b",
+      "bytes": 6172
+    },
+    {
+      "path": "service/layers/20.json",
+      "sha256": "0936a68c3abe59153e867f33041559f83c8e9910e982ca8500ae1904f2417150",
+      "bytes": 7835
+    },
+    {
+      "path": "service/layers/22.json",
+      "sha256": "b416857512017a791e788438ee4739a7a8550eacc5fa3ca21ef48cee616568f5",
+      "bytes": 20575
+    },
+    {
+      "path": "service/layers/23.json",
+      "sha256": "89a3619548c04ea1f176f320d348fc61a4ef5fd7894c188166775f8bd9115e43",
+      "bytes": 8268
+    },
+    {
+      "path": "service/layers/24.json",
+      "sha256": "4f07ab6d4b3437731e1d9f4ab822dbffd2d6de8b8f37bbbcfd5df200cb3b8d5c",
+      "bytes": 28106
+    },
+    {
+      "path": "service/layers/25.json",
+      "sha256": "f80d8a0cdab2053757d01d8ed048dc52e42938ab428a3bb60e6667561d1533f5",
+      "bytes": 5996
+    },
+    {
+      "path": "service/layers/26.json",
+      "sha256": "70ab35948447a184a3cf6641f0f4b797624d60dc21cf208dcdbe6ba73848bcbd",
+      "bytes": 6297
+    },
+    {
+      "path": "service/layers/27.json",
+      "sha256": "ac716a925473f3a9d0e3d31512418ba9eeaae85bcf5d6cb4f922d880947198d2",
+      "bytes": 15390
+    },
+    {
+      "path": "service/layers/28.json",
+      "sha256": "9855e4f547279b99dc906f8f71a2895725bef633de8947ad76fded8c2963e4a8",
+      "bytes": 85081
+    },
+    {
+      "path": "service/layers/29.json",
+      "sha256": "4e157be97c45983eeeb5dbd611a44af4f8ba12f7521ab337840b7e864d868155",
+      "bytes": 10121
+    },
+    {
+      "path": "service/layers/3.json",
+      "sha256": "1b821b4475aeb1c05b0695fcb7fee7a26f8c1d272c17314546f397641ca22afb",
+      "bytes": 9383
+    },
+    {
+      "path": "service/layers/30.json",
+      "sha256": "0307ef84a03e6590af096291dbe055287b7a775663d0d34c2bea903903819f47",
+      "bytes": 8044
+    },
+    {
+      "path": "service/layers/31.json",
+      "sha256": "3b0502d7842b333a910af95ddd68b9042d74a291051c1fedeebf822791ef9bc3",
+      "bytes": 7676
+    },
+    {
+      "path": "service/layers/32.json",
+      "sha256": "091417bb74f27288ce945a964e807a1cd092aa912fa5ab1c5f3e6ba4ed343352",
+      "bytes": 7973
+    },
+    {
+      "path": "service/layers/34.json",
+      "sha256": "e1544c7211f3e2912dd44e75f0d89fedd26c6a77ecbb9cf5196387c2bc9fc398",
+      "bytes": 17744
+    },
+    {
+      "path": "service/layers/4.json",
+      "sha256": "a88139de4fa1ff4f4748f198f9a90a906f46e2bac57945570d5e7d3bb82c26cc",
+      "bytes": 6512
+    },
+    {
+      "path": "service/layers/41.json",
+      "sha256": "d667027ca9e594d54c695bbd97a1cd9dbff0c8014b497dd1fb02a289c60b6ef0",
+      "bytes": 6502
+    },
+    {
+      "path": "service/layers/5.json",
+      "sha256": "37d21d0c60f0c33514f285e1f8a0e23eba1e788e2d5ae65171ddab02041278d4",
+      "bytes": 8938
+    },
+    {
+      "path": "service/layers/6.json",
+      "sha256": "81eae3275fe3e5d94e52b8c7cfa7d28d5bee958e66799cf1e1bbc7501ace42e5",
+      "bytes": 6404
+    },
+    {
+      "path": "service/layers/7.json",
+      "sha256": "96791ef52c7d0ca045b9a554b3a1f5568db2cb8143d1cfa59b5f51c153fbf84a",
+      "bytes": 7645
+    },
+    {
+      "path": "service/layers/8.json",
+      "sha256": "6e73738b3f963ebade7538372f5ae17264e71262a012b3952229acdf1833e494",
+      "bytes": 7040
+    },
+    {
+      "path": "service/layers/9.json",
+      "sha256": "9f6c4c5b47237a6552a60d6513d2bc82b6f3cc5aaf8efdb7459f6688f0618407",
+      "bytes": 8778
+    },
+    {
+      "path": "service/observed/28.json",
+      "sha256": "10a127742962c40dc6b1c3749f02a428994408e5460c2ce1e85160bd3a34e4bb",
+      "bytes": 10572
+    }
+  ]
+}

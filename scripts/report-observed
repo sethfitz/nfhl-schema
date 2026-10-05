@@ -1,0 +1,43 @@
+#!/usr/bin/env -S uv run python
+"""Compare the values the NFHL service holds with the values the reference allows.
+
+Reads only the committed snapshot (`spec/service/observed/`, the domains), so the
+figures in spec/README.md can be re-derived from this command. Prints, per
+field, every observed value the field's domain does not list, with its row
+count.
+
+The counts come from the service's grouped statistics and inherit its SQL
+Server collation, which compares case-insensitively and pads blanks. So `""`
+also counts lone spaces and `Feet` also counts `FEET`: a count here is an upper
+bound for its exact string, and a variant that differs only in case or trailing
+blanks cannot be seen at all.
+"""
+
+from __future__ import annotations
+
+import sys
+
+from nfhl.spec_source import LAYERS, SpecReader
+
+
+def main() -> int:
+    reader = SpecReader()
+    for layer in LAYERS:
+        observed = reader.observed(layer)
+        print(f"# layer {layer.layer_id} ({layer.table}): {observed['total']} rows")
+        for field in reader.reference_table(layer.table).fields:
+            rows = observed["fields"].get(field.name)
+            if field.domain is None or rows is None:
+                continue
+            allowed = {v.value for v in reader.domain(field.domain).values}
+            outside = [r for r in rows if r["value"] not in allowed]
+            null = sum(r["count"] for r in rows if r["value"] in (None, ""))
+            print(f"\n## {field.name} ({field.domain}); null or blank: {null}")
+            for r in outside:
+                if r["value"] not in (None, ""):
+                    print(f"{r['count']:>10}  {r['value']!r}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

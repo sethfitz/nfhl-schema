@@ -1,0 +1,245 @@
+{
+  "currentVersion": 11.1,
+  "cimVersion": "3.1.0",
+  "id": 13,
+  "name": "Station Start Points",
+  "type": "Feature Layer",
+  "description": "",
+  "geometryType": "esriGeometryPoint",
+  "sourceSpatialReference": {
+    "wkid": 4269,
+    "latestWkid": 4269,
+    "xyTolerance": 8.98315284119521e-09,
+    "zTolerance": 2e-05,
+    "mTolerance": 2,
+    "falseX": -400,
+    "falseY": -400,
+    "xyUnits": 763549374.53853,
+    "falseZ": 0,
+    "zUnits": 1,
+    "falseM": 0,
+    "mUnits": 1
+  },
+  "copyrightText": "",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 36111.909643,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "simple",
+      "symbol": {
+        "type": "esriPMS",
+        "url": "e4934c2629c2f0283cde3d346f20cbe3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABI0lEQVQokbXTsUuFcBAH8LtwaQhaa3LIqTc2iPAgaK1ASP+AtqbgOdWmIQgN8kgJSqrRQSFcnSInHR+Eu4PhWDiI0YVDkb18WY++8Bvu4D7cDT8G5gzzrwARDQDgFREf/gT4vn/NsuwTAGz9GijLcpvn+Q2O45pNhoh43xsgIsY0zYvJZALNC8PwHAAGvYEsyw4Nw1h5rzVNWyeiPUT0fgSIaFlRlJOiKD56URSB67pjIrpFxJeZQJIkp7ZtL37tq6q6KoriAQCcdQJEtCZJ0n5VVVNnpWkKjuPoRHSDiM/fAkEQXHmetwAd0XV9SZblYwA4mgLqut4UBGHYNdwkz3OwLGtERGNEfGwBDMPsxnF8Nwv4lB0AuGwBiDjqOdzK3J/pDbombngEqJTEAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "width": 12,
+        "height": 11,
+        "angle": 0,
+        "xoffset": 0,
+        "yoffset": 0
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": false,
+  "extent": {
+    "xmin": -170.8292763401772,
+    "ymin": -14.33191409268818,
+    "xmax": 145.1430221884042,
+    "ymax": 64.85226210225812,
+    "spatialReference": {
+      "wkid": 4269,
+      "latestWkid": 4269,
+      "xyTolerance": 8.983152841195215e-09,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -400,
+      "falseY": -400,
+      "xyUnits": 999999999.9999999,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "DFIRM_ID",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "DFIRM_ID",
+      "type": "esriFieldTypeString",
+      "alias": "DFIRM_ID",
+      "length": 6,
+      "domain": null
+    },
+    {
+      "name": "VERSION_ID",
+      "type": "esriFieldTypeString",
+      "alias": "VERSION_ID",
+      "length": 11,
+      "domain": null
+    },
+    {
+      "name": "START_ID",
+      "type": "esriFieldTypeString",
+      "alias": "START_ID",
+      "length": 32,
+      "domain": null
+    },
+    {
+      "name": "START_DESC",
+      "type": "esriFieldTypeString",
+      "alias": "START_DESC",
+      "length": 254,
+      "domain": null
+    },
+    {
+      "name": "LOC_ACC",
+      "type": "esriFieldTypeString",
+      "alias": "LOC_ACC",
+      "length": 6,
+      "domain": null
+    },
+    {
+      "name": "SOURCE_CIT",
+      "type": "esriFieldTypeString",
+      "alias": "SOURCE_CIT",
+      "length": 21,
+      "domain": null
+    },
+    {
+      "name": "SHAPE",
+      "type": "esriFieldTypeGeometry",
+      "alias": "SHAPE",
+      "domain": null
+    },
+    {
+      "name": "GFID",
+      "type": "esriFieldTypeString",
+      "alias": "GFID",
+      "length": 36,
+      "domain": null
+    },
+    {
+      "name": "GlobalID",
+      "type": "esriFieldTypeGlobalID",
+      "alias": "GlobalID",
+      "length": 38,
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "SHAPE",
+    "type": "esriFieldTypeGeometry",
+    "alias": "SHAPE"
+  },
+  "indexes": [
+    {
+      "name": "R116_pk",
+      "fields": "OBJECTID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "UUID_116",
+      "fields": "GlobalID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "DFIRM_ID",
+      "fields": "DFIRM_ID",
+      "isAscending": true,
+      "isUnique": false,
+      "description": ""
+    },
+    {
+      "name": "S65_idx",
+      "fields": "SHAPE",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": true
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true
+}

@@ -1,0 +1,18 @@
+{
+  "repairs": [
+    {
+      "domain": "D_Zone_Subtype",
+      "find": "-PCT-ANNUAL-CHANCE ",
+      "replace": " PCT ANNUAL CHANCE ",
+      "quote": "Note that the dashes will stay in the Domain Tables Technical Reference, however the FIRM DB template will not have dashes, and neither will DVT accept them/require them.",
+      "reason": "The reference prints `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD` and says the database will not have the dashes. The service agrees: it publishes `0.2 PCT ANNUAL CHANCE FLOOD HAZARD` and never the dashed form. The repair is scoped to the PCT phrases rather than every dash, because the service publishes `AREA WITH UNDETERMINED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM` with its dash and never without one."
+    },
+    {
+      "domain": "D_Zone_Subtype",
+      "find": "-PCT ",
+      "replace": " PCT ",
+      "quote": "Note that the dashes will stay in the Domain Tables Technical Reference, however the FIRM DB template will not have dashes, and neither will DVT accept them/require them.",
+      "reason": "The same note, for the subtypes without ANNUAL CHANCE: `1-PCT FUTURE CONDITIONS` is published as `1 PCT FUTURE CONDITIONS`."
+    }
+  ]
+}

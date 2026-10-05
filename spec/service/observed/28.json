@@ -1,0 +1,546 @@
+{
+  "layer": 28,
+  "total": 5810832,
+  "fields": {
+    "STUDY_TYP": [
+      {
+        "value": "NP",
+        "count": 2774615
+      },
+      {
+        "value": "SFHAs WITH LOW FLOOD RISK",
+        "count": 979594
+      },
+      {
+        "value": "SFHA with unpublished BFE",
+        "count": 622498
+      },
+      {
+        "value": "SFHAs WITH HIGH FLOOD RISK",
+        "count": 557235
+      },
+      {
+        "value": "SFHA with BFE and floodway",
+        "count": 211278
+      },
+      {
+        "value": "SFHAs WITH MEDIUM FLOOD RISK",
+        "count": 193351
+      },
+      {
+        "value": "SFHA with BFE no floodway",
+        "count": 144854
+      },
+      {
+        "value": "SFHA without BFE",
+        "count": 103452
+      },
+      {
+        "value": "REDELINEATION",
+        "count": 72844
+      },
+      {
+        "value": "BLE available but unpublished",
+        "count": 66732
+      },
+      {
+        "value": "Shaded Zone X with depths less than 1'",
+        "count": 33992
+      },
+      {
+        "value": "DIGITAL CONVERSION",
+        "count": 12946
+      },
+      {
+        "value": "Shaded Zone X with depths less than 1’",
+        "count": 10645
+      },
+      {
+        "value": null,
+        "count": 10034
+      },
+      {
+        "value": "",
+        "count": 8039
+      },
+      {
+        "value": "Special Flood Hazard Area (SFHA) witho",
+        "count": 6493
+      },
+      {
+        "value": "OTHER",
+        "count": 1485
+      },
+      {
+        "value": "Shaded Zone X w/depths less1",
+        "count": 387
+      },
+      {
+        "value": "SFHA with BFE published only in FIS",
+        "count": 238
+      },
+      {
+        "value": "SFHA w/BFE published onlyFIS",
+        "count": 85
+      },
+      {
+        "value": "Shaded Zone X with depths less than 1",
+        "count": 23
+      },
+      {
+        "value": "SFHAs with BFE and floodway",
+        "count": 5
+      },
+      {
+        "value": "SFHA with BLE and floodway",
+        "count": 3
+      },
+      {
+        "value": "SFHA with BFE and \r\nfloodway",
+        "count": 2
+      },
+      {
+        "value": "1050",
+        "count": 1
+      },
+      {
+        "value": "SFHA with BFE and no floodway",
+        "count": 1
+      }
+    ],
+    "FLD_ZONE": [
+      {
+        "value": "X",
+        "count": 4434825
+      },
+      {
+        "value": "AE",
+        "count": 902809
+      },
+      {
+        "value": "A",
+        "count": 418366
+      },
+      {
+        "value": "VE",
+        "count": 28347
+      },
+      {
+        "value": "AH",
+        "count": 12271
+      },
+      {
+        "value": "AO",
+        "count": 9740
+      },
+      {
+        "value": "D",
+        "count": 3582
+      },
+      {
+        "value": "OPEN WATER",
+        "count": 759
+      },
+      {
+        "value": "V",
+        "count": 109
+      },
+      {
+        "value": "A99",
+        "count": 24
+      }
+    ],
+    "ZONE_SUBTY": [
+      {
+        "value": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD",
+        "count": 3373046
+      },
+      {
+        "value": null,
+        "count": 1301955
+      },
+      {
+        "value": "AREA OF MINIMAL FLOOD HAZARD",
+        "count": 840380
+      },
+      {
+        "value": "1 PCT FUTURE CONDITIONS",
+        "count": 68943
+      },
+      {
+        "value": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD IN COASTAL ZONE",
+        "count": 51955
+      },
+      {
+        "value": "FLOODWAY",
+        "count": 49799
+      },
+      {
+        "value": "1 PCT DEPTH LESS THAN 1 FOOT",
+        "count": 30980
+      },
+      {
+        "value": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE",
+        "count": 24849
+      },
+      {
+        "value": "1 PCT DRAINAGE AREA LESS THAN 1 SQUARE MILE",
+        "count": 23157
+      },
+      {
+        "value": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD IN COMBINED RIVERINE AND COASTAL ZONE",
+        "count": 18869
+      },
+      {
+        "value": "COASTAL FLOODPLAIN",
+        "count": 16231
+      },
+      {
+        "value": "COMBINED RIVERINE AND COASTAL FLOODPLAIN",
+        "count": 2079
+      },
+      {
+        "value": "ADMINISTRATIVE FLOODWAY",
+        "count": 1878
+      },
+      {
+        "value": "COMMUNITY ENCROACHMENT AREA",
+        "count": 1628
+      },
+      {
+        "value": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN CHANNEL",
+        "count": 1055
+      },
+      {
+        "value": "STATE ENCROACHMENT AREA",
+        "count": 990
+      },
+      {
+        "value": "AREA WITH REDUCED FLOOD HAZARD DUE TO ACCREDITED LEVEE SYSTEM",
+        "count": 432
+      },
+      {
+        "value": "<Null>",
+        "count": 353
+      },
+      {
+        "value": "0.2PCT ANNUAL CHANCE FLOOD HAZARD IN COASTAL ZONE",
+        "count": 338
+      },
+      {
+        "value": "RIVERINE FLOODWAY SHOWN IN COASTAL ZONE",
+        "count": 284
+      },
+      {
+        "value": "1 PCT FUTURE CONDITIONS, COMMUNITY ENCROACHMENT",
+        "count": 275
+      },
+      {
+        "value": "RIVERINE FLOODWAY IN COMBINED RIVERINE AND COASTAL ZONE",
+        "count": 260
+      },
+      {
+        "value": "1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN CHANNEL",
+        "count": 169
+      },
+      {
+        "value": "AREA OF SPECIAL CONSIDERATION",
+        "count": 158
+      },
+      {
+        "value": "1 PCT CONTAINED IN STRUCTURE, COMMUNITY ENCROACHMENT",
+        "count": 106
+      },
+      {
+        "value": "1 PCT FUTURE CONDITIONS, FLOODWAY",
+        "count": 106
+      },
+      {
+        "value": "1 PCT CONTAINED IN STRUCTURE, FLOODWAY",
+        "count": 94
+      },
+      {
+        "value": "AREA WITH FLOOD RISK DUE TO LEVEE",
+        "count": 88
+      },
+      {
+        "value": " ",
+        "count": 75
+      },
+      {
+        "value": "COLORADO RIVER FLOODWAY",
+        "count": 73
+      },
+      {
+        "value": "1 PCT FUTURE IN STRUCTURE, FLOODWAY",
+        "count": 53
+      },
+      {
+        "value": "FLOODWAY CONTAINED IN STRUCTURE",
+        "count": 36
+      },
+      {
+        "value": "FLOWAGE EASEMENT AREA",
+        "count": 31
+      },
+      {
+        "value": "1 PCT FUTURE IN STRUCTURE, COMMUNITY ENCROACHMENT",
+        "count": 19
+      },
+      {
+        "value": "AREA WITH UNDETERMINED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
+        "count": 19
+      },
+      {
+        "value": "DENSITY FRINGE AREA",
+        "count": 15
+      },
+      {
+        "value": "1 PCT FUTURE CONDITIONS CONTAINED IN STRUCTURE",
+        "count": 13
+      },
+      {
+        "value": "1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE",
+        "count": 11
+      },
+      {
+        "value": "FLOODWAY CONTAINED IN CHANNEL",
+        "count": 10
+      },
+      {
+        "value": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE",
+        "count": 9
+      },
+      {
+        "value": "COMMUNITY ENCROACHMENT",
+        "count": 8
+      },
+      {
+        "value": "AREA WITH REDUCED FLOOD HAZARD DUE TO PROVISIONALLY ACCREDITED LEVEE SYSTEM",
+        "count": 2
+      },
+      {
+        "value": "AREA WITH REDUCED FLOOD HAZARD DUE TO LEVEE SYSTEM",
+        "count": 1
+      }
+    ],
+    "SFHA_TF": [
+      {
+        "value": "F",
+        "count": 4439135
+      },
+      {
+        "value": "T",
+        "count": 1371691
+      },
+      {
+        "value": "U",
+        "count": 6
+      }
+    ],
+    "V_DATUM": [
+      {
+        "value": "",
+        "count": 3482882
+      },
+      {
+        "value": null,
+        "count": 2123032
+      },
+      {
+        "value": "NAVD88",
+        "count": 188031
+      },
+      {
+        "value": "NGVD29",
+        "count": 9754
+      },
+      {
+        "value": "LOCAL TIDAL DATUM",
+        "count": 2768
+      },
+      {
+        "value": "MSL",
+        "count": 2040
+      },
+      {
+        "value": "NP",
+        "count": 960
+      },
+      {
+        "value": "ASVD02",
+        "count": 562
+      },
+      {
+        "value": "-9999",
+        "count": 302
+      },
+      {
+        "value": "MLLW",
+        "count": 240
+      },
+      {
+        "value": "GUVD03",
+        "count": 199
+      },
+      {
+        "value": "<Null>",
+        "count": 38
+      },
+      {
+        "value": "NAVD 88",
+        "count": 21
+      },
+      {
+        "value": "NGVD 29",
+        "count": 3
+      }
+    ],
+    "LEN_UNIT": [
+      {
+        "value": "",
+        "count": 3487433
+      },
+      {
+        "value": null,
+        "count": 2123976
+      },
+      {
+        "value": "Feet",
+        "count": 197732
+      },
+      {
+        "value": "Meters",
+        "count": 1350
+      },
+      {
+        "value": "-9999",
+        "count": 302
+      },
+      {
+        "value": "<Null>",
+        "count": 37
+      },
+      {
+        "value": "Centimeters",
+        "count": 2
+      }
+    ],
+    "VEL_UNIT": [
+      {
+        "value": "",
+        "count": 3694145
+      },
+      {
+        "value": null,
+        "count": 2104702
+      },
+      {
+        "value": "NP",
+        "count": 6398
+      },
+      {
+        "value": "-9999",
+        "count": 2885
+      },
+      {
+        "value": "Feet / Second",
+        "count": 2663
+      },
+      {
+        "value": "<Null>",
+        "count": 37
+      },
+      {
+        "value": "Centimeters / Day",
+        "count": 1
+      },
+      {
+        "value": "Centimeters / Hour",
+        "count": 1
+      }
+    ],
+    "AR_REVERT": [
+      {
+        "value": "",
+        "count": 3678829
+      },
+      {
+        "value": null,
+        "count": 2127185
+      },
+      {
+        "value": "-9999",
+        "count": 4681
+      },
+      {
+        "value": "A",
+        "count": 72
+      },
+      {
+        "value": "<Null>",
+        "count": 50
+      },
+      {
+        "value": "NSPNUL",
+        "count": 14
+      },
+      {
+        "value": "AE",
+        "count": 1
+      }
+    ],
+    "AR_SUBTRV": [
+      {
+        "value": "",
+        "count": 3429876
+      },
+      {
+        "value": null,
+        "count": 2379554
+      },
+      {
+        "value": "-9999",
+        "count": 1381
+      },
+      {
+        "value": "NP",
+        "count": 15
+      },
+      {
+        "value": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD",
+        "count": 3
+      },
+      {
+        "value": "FLOODWAY",
+        "count": 2
+      },
+      {
+        "value": "AREA OF MINIMAL FLOOD HAZARD",
+        "count": 1
+      }
+    ],
+    "DUAL_ZONE": [
+      {
+        "value": "",
+        "count": 3360388
+      },
+      {
+        "value": null,
+        "count": 2156565
+      },
+      {
+        "value": "F",
+        "count": 220946
+      },
+      {
+        "value": "U",
+        "count": 72929
+      },
+      {
+        "value": "T",
+        "count": 4
+      }
+    ]
+  }
+}

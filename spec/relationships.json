@@ -1,0 +1,49 @@
+{
+  "tables": {
+    "S_Fld_Haz_Ar": {
+      "units": [
+        {
+          "field": "STATIC_BFE",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for the BFEs and/or depths."
+        },
+        {
+          "field": "DEPTH",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for the BFEs and/or depths."
+        },
+        {
+          "field": "VELOCITY",
+          "unit_field": "VEL_UNIT",
+          "quote": "This is the unit of measurement for the velocity."
+        }
+      ],
+      "datums": [
+        {
+          "field": "STATIC_BFE",
+          "datum_field": "V_DATUM",
+          "quote": "The vertical datum indicates the reference surface from which the flood elevations are measured."
+        }
+      ],
+      "only_if": [
+        {
+          "field": "V_DATUM",
+          "any_of": ["STATIC_BFE"],
+          "quote": "This field is only populated if the STATIC_BFE field is populated."
+        },
+        {
+          "field": "LEN_UNIT",
+          "any_of": ["STATIC_BFE", "DEPTH"],
+          "quote": "This field is only populated if the STATIC_BFE or DEPTH field is populated."
+        }
+      ],
+      "required_when": [
+        {
+          "field": "VEL_UNIT",
+          "when": "VELOCITY",
+          "quote": "This field is populated when the VELOCITY field is populated."
+        }
+      ]
+    }
+  }
+}

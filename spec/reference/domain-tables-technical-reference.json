@@ -1,0 +1,8607 @@
+{
+  "source": "domain-tables-technical-reference.pdf",
+  "tables": [
+    {
+      "section": null,
+      "pages": [
+        1
+      ],
+      "header": [
+        "Domain Tables Technical"
+      ],
+      "rows": [
+        [
+          "Reference"
+        ],
+        [
+          "FEMA Spatial Databases"
+        ],
+        [
+          "November 2024"
+        ],
+        [
+          ""
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": null,
+      "pages": [
+        4
+      ],
+      "header": [
+        "Revision Date",
+        "Implementation"
+      ],
+      "rows": [
+        [
+          "November 2024",
+          "Implemented for all studies not entering QR5 before December 1, 2024."
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": null,
+      "pages": [
+        4
+      ],
+      "header": [
+        "Affected Section or Subsection",
+        "Date",
+        "Description"
+      ],
+      "rows": [
+        [
+          "D_Horiz_Datum",
+          "November 2024",
+          "Added national adjustment of 2011."
+        ],
+        [
+          "D_Mtg_Typ",
+          "November 2024",
+          "Updated Consultation Coordination Officer (CCO) to CCO and added footnote for abbreviation. Added Open House meeting type."
+        ],
+        [
+          "Entire document",
+          "May 2025",
+          "Reviewed and incorporated applicable language changes to align with administration directives as of January 31, 2025."
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_AOMI_Class",
+      "pages": [
+        8
+      ],
+      "header": [
+        "Coded Value",
+        "Area of Mitigation Interest Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "RIV",
+          "Riverine",
+          "FRD"
+        ],
+        [
+          "COAS",
+          "Coastal",
+          "FRD"
+        ],
+        [
+          "OTH",
+          "Other",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_AOMI_Typ",
+      "pages": [
+        8,
+        9
+      ],
+      "header": [
+        "Coded Value",
+        "Area of Mitigation Interest Type Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "0200",
+          "Non-Accredited Levees",
+          "FRD"
+        ],
+        [
+          "0300",
+          "Coastal Structures",
+          "FRD"
+        ],
+        [
+          "0400",
+          "Streamflow Constrictions",
+          "FRD"
+        ],
+        [
+          "0500",
+          "Key Emergency Routes Overtopped",
+          "FRD"
+        ],
+        [
+          "0600",
+          "Past Claims Hot Spot",
+          "FRD"
+        ],
+        [
+          "0800",
+          "Significant Land Use Change",
+          "FRD"
+        ],
+        [
+          "1000",
+          "Non-Levee Embankments",
+          "FRD"
+        ],
+        [
+          "1100",
+          "At Risk Essential Facilities",
+          "FRD"
+        ],
+        [
+          "9000",
+          "Other",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Area_Units",
+      "pages": [
+        9
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Area Unit",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Acres",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Hectares",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Square Feet",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Square Meters",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Square Yards",
+          "FIRM"
+        ],
+        [
+          "1050",
+          "Square Miles",
+          "FIRM"
+        ],
+        [
+          "1060",
+          "Square Kilometers",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Basemap_Typ",
+      "pages": [
+        9,
+        10
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Base Map",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Orthophoto",
+          "FIRM, Discovery"
+        ],
+        [
+          "2000",
+          "Vector",
+          "FIRM, Discovery"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_BeachSet",
+      "pages": [
+        10
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Beach Setting",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1050",
+          "Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Erodible Coastal Bluffs",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Non-Erodible Coastal Cliffs and Bluffs",
+          "FIRM"
+        ],
+        [
+          "1000",
+          "Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Sandy Beach Backed by Shore Protection Structures",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Tidal Flats and Wetlands",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Breach_Pt_Typ",
+      "pages": [
+        10
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Breach",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "H",
+          "Community-supplied, historical",
+          "FRD"
+        ],
+        [
+          "O",
+          "Community-supplied, overtopping",
+          "FRD"
+        ],
+        [
+          "P",
+          "Community-supplied, potential engineered breach location",
+          "FRD"
+        ],
+        [
+          "A",
+          "Armored overtopping",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Carto_Trans_Code",
+      "pages": [
+        11
+      ],
+      "header": [
+        "Coded Value",
+        "Cartographic Code Used for Symbolization Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "0100",
+          "Interstates",
+          "FIRM, FRD"
+        ],
+        [
+          "0200",
+          "US Highways",
+          "FIRM, FRD"
+        ],
+        [
+          "0300",
+          "State Highways",
+          "FIRM, FRD"
+        ],
+        [
+          "0400",
+          "County Roads",
+          "FIRM, FRD"
+        ],
+        [
+          "0500",
+          "Local Roads",
+          "FIRM, FRD"
+        ],
+        [
+          "0700",
+          "Railroads",
+          "FIRM, FRD"
+        ],
+        [
+          "0800",
+          "Airports",
+          "FIRM, FRD"
+        ],
+        [
+          "0900",
+          "User-Defined",
+          "FRD"
+        ],
+        [
+          "9000",
+          "Other",
+          "FRD"
+        ],
+        [
+          "-8888",
+          "-8888",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Cert_Status",
+      "pages": [
+        11
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Certification Status Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Meets Existing FEMA Accreditation Policy",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Certified Prior to Existing FEMA Policy",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Certified by Another Federal Agency",
+          "FIRM"
+        ],
+        [
+          "2000",
+          "Not Certified: Failure of Vertical Structure",
+          "FIRM"
+        ],
+        [
+          "2010",
+          "Not Certified: Failure of Revetment",
+          "FIRM"
+        ],
+        [
+          "2030",
+          "Not Certified: Failure of Levee",
+          "FIRM"
+        ],
+        [
+          "3000",
+          "Not Applicable",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Change",
+      "pages": [
+        12
+      ],
+      "header": [
+        "Coded Value",
+        "Changes Since Last FIRM Subtypes Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "I",
+          "Increase",
+          "FRD"
+        ],
+        [
+          "D",
+          "Decrease",
+          "FRD"
+        ],
+        [
+          "N",
+          "Negligible",
+          "FRD"
+        ],
+        [
+          "Z",
+          "None (Zero)",
+          "FRD"
+        ],
+        [
+          "U",
+          "Unknown",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Const_Typ",
+      "pages": [
+        12
+      ],
+      "header": [
+        "Coded Value",
+        "Construction Type Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "ARCH",
+          "Arch",
+          "FRD"
+        ],
+        [
+          "ARGV",
+          "Arch-Gravity",
+          "FRD"
+        ],
+        [
+          "ASCN",
+          "Asphalt-Concrete",
+          "FRD"
+        ],
+        [
+          "BARR",
+          "Barrage",
+          "FRD"
+        ],
+        [
+          "CLAY",
+          "Clay",
+          "FRD"
+        ],
+        [
+          "CONC",
+          "Concrete of Masonry",
+          "FRD"
+        ],
+        [
+          "ERFL",
+          "Earth-Fill",
+          "FRD"
+        ],
+        [
+          "FMIX",
+          "Fill Mix (clay/silt/sand)",
+          "FRD"
+        ],
+        [
+          "GRAV",
+          "Gravity",
+          "FRD"
+        ],
+        [
+          "RKFL",
+          "Rock-Fill",
+          "FRD"
+        ],
+        [
+          "OTH",
+          "Other",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Cst_Struct",
+      "pages": [
+        13
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Coastal Structure Classification",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Beach Stabilization Structure",
+          "FIRM"
+        ],
+        [
+          "2000",
+          "Coastal Armoring Structure",
+          "FIRM"
+        ],
+        [
+          "3000",
+          "Miscellaneous Structure",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Cst_Typ",
+      "pages": [
+        13
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Coastline",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Open Coast",
+          "FIRM"
+        ],
+        [
+          "2000",
+          "Sheltered Waters",
+          "FIRM"
+        ],
+        [
+          "3000",
+          "Combined Open Coast and Sheltered Waters",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Discharge_Units",
+      "pages": [
+        13
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Discharge Unit",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "CFS",
+          "CFS",
+          "FIRM"
+        ],
+        [
+          "CMS",
+          "CMS",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Erosion",
+      "pages": [
+        13,
+        14
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Erosion Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1010",
+          "Not Applied",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Dune Removal",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Dune Retreat",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "K-D",
+          "FIRM"
+        ],
+        [
+          "1050",
+          "MK-A",
+          "FIRM"
+        ],
+        [
+          "1060",
+          "SBEACH",
+          "FIRM"
+        ],
+        [
+          "9000",
+          "Other",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Esmt_Typ",
+      "pages": [
+        14
+      ],
+      "header": [
+        "Coded Value",
+        "Easement Type",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "CONS",
+          "CONSERVATION",
+          "FRD"
+        ],
+        [
+          "DRAN",
+          "DRAINAGE",
+          "FRD"
+        ],
+        [
+          "FLOW",
+          "FLOWAGE",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Event",
+      "pages": [
+        14,
+        15
+      ],
+      "header": [
+        "Coded Value",
+        "FIRM Event Type Description",
+        "FRD Event Type Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "AvgAnn",
+          "-",
+          "Average Annual",
+          "FRD"
+        ],
+        [
+          "50pct",
+          "50-Percent-Chance",
+          "50-Percent-Chance (2-yr)",
+          "FIRM, FRD"
+        ],
+        [
+          "20pct",
+          "20-Percent-Chance",
+          "20-Percent-Chance (5-yr)",
+          "FRD"
+        ],
+        [
+          "10pct",
+          "10-Percent-Chance",
+          "10-Percent-Chance (10-yr)",
+          "FIRM, FRD"
+        ],
+        [
+          "04pct",
+          "4-Percent-Chance",
+          "4-Percent-Chance (25-yr)",
+          "FIRM, FRD"
+        ],
+        [
+          "02pct",
+          "2-Percent-Chance",
+          "2-Percent-Chance (50-yr)",
+          "FIRM, FRD"
+        ],
+        [
+          "01plus",
+          "1-Percent-Plus-Chance",
+          "1-Percent-Plus-Chance",
+          "FIRM, FRD"
+        ],
+        [
+          "01minus",
+          "1-Percent-Minus-Chance",
+          "1-Percent-Minus-Chance",
+          "FIRM, FRD"
+        ],
+        [
+          "01pct",
+          "1-Percent-Chance",
+          "1-Percent-Chance (100-yr)",
+          "FIRM, FRD"
+        ],
+        [
+          "0_2pct",
+          "0.2-Percent-Chance",
+          "0.2-Percent-Chance (500-yr)",
+          "FIRM, FRD"
+        ],
+        [
+          "0_5pct",
+          "-",
+          "0.5-Percent-Chance (200-yr)",
+          "FRD"
+        ],
+        [
+          "01pctfut",
+          "1-Percent-Chance Future Conditions",
+          "-",
+          "FIRM"
+        ],
+        [
+          "PMF",
+          "-",
+          "Probable Maximum Flood",
+          "FRD"
+        ],
+        [
+          "PMF14",
+          "-",
+          "1/4 of Probable Maximum Flood",
+          "FRD"
+        ],
+        [
+          "PMF13",
+          "-",
+          "1/3 of Probable Maximum Flood",
+          "FRD"
+        ],
+        [
+          "PMF12",
+          "-",
+          "1/2 of Probable Maximum Flood",
+          "FRD"
+        ],
+        [
+          "PMF34",
+          "-",
+          "3/4 of Probable Maximum Flood",
+          "FRD"
+        ],
+        [
+          "PMP",
+          "-",
+          "Probable Maximum Precipitation",
+          "FRD"
+        ],
+        [
+          "PMP14",
+          "-",
+          "1/4 of Probable Maximum Precipitation",
+          "FRD"
+        ],
+        [
+          "PMP13",
+          "-",
+          "1/3 of Probable Maximum Precipitation",
+          "FRD"
+        ],
+        [
+          "PMP12",
+          "-",
+          "1/2 of Probable Maximum Precipitation",
+          "FRD"
+        ],
+        [
+          "PMP34",
+          "-",
+          "3/4 of Probable Maximum Precipitation",
+          "FRD"
+        ],
+        [
+          "SUN",
+          "-",
+          "Sunny Day",
+          "FRD"
+        ],
+        [
+          "FOR",
+          "-",
+          "Flood of Record",
+          "FRD"
+        ],
+        [
+          "OTH",
+          "-",
+          "Other",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": [
+        [
+          [
+            "FIRM Event Type"
+          ],
+          [
+            "Description"
+          ]
+        ],
+        [
+          [
+            "FIRM Event Type"
+          ],
+          [
+            "Description"
+          ]
+        ]
+      ]
+    },
+    {
+      "section": "D_Flooding_Source",
+      "pages": [
+        16
+      ],
+      "header": [
+        "Coded Value",
+        "Flooding Source Type",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "R",
+          "Riverine",
+          "FRD"
+        ],
+        [
+          "C",
+          "Coastal",
+          "FRD"
+        ],
+        [
+          "D",
+          "Dam",
+          "FRD"
+        ],
+        [
+          "O",
+          "Other",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Flood_Typ",
+      "pages": [
+        16
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Flooding",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Riverine",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1010",
+          "Coastal",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1020",
+          "Alluvial",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1030",
+          "Lacustrine",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1040",
+          "Ponding",
+          "FIRM, FRD, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Font",
+      "pages": [
+        16,
+        17
+      ],
+      "header": [
+        "Coded Value",
+        "Font Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Arial",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Arial Narrow",
+          "FIRM"
+        ],
+        [
+          "2000",
+          "Franklin Gothic Book",
+          "FIRM"
+        ],
+        [
+          "2010",
+          "Franklin Gothic Medium",
+          "FIRM"
+        ],
+        [
+          "2020",
+          "Franklin Gothic Medium Cond",
+          "FIRM"
+        ],
+        [
+          "3000",
+          "Times New Roman",
+          "FIRM"
+        ],
+        [
+          "4000",
+          "Verdana",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Font_Style",
+      "pages": [
+        17
+      ],
+      "header": [
+        "Coded Value",
+        "Font Style",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Regular",
+          "FIRM"
+        ],
+        [
+          "2000",
+          "Bold",
+          "FIRM"
+        ],
+        [
+          "3000",
+          "Italic",
+          "FIRM"
+        ],
+        [
+          "4000",
+          "Bold Italic",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Gage_Typ",
+      "pages": [
+        17
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Gage",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Flow",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Flow / Stage",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Stage",
+          "FIRM"
+        ],
+        [
+          "1100",
+          "Fixed Interval",
+          "FIRM"
+        ],
+        [
+          "1110",
+          "Instantaneous",
+          "FIRM"
+        ],
+        [
+          "1200",
+          "Wave Height",
+          "FIRM"
+        ],
+        [
+          "1210",
+          "Wind Direction",
+          "FIRM"
+        ],
+        [
+          "1220",
+          "Wind Speed",
+          "FIRM"
+        ],
+        [
+          "1230",
+          "Wind Speed and Direction",
+          "FIRM"
+        ],
+        [
+          "1240",
+          "Tide",
+          "FIRM"
+        ],
+        [
+          "1120",
+          "Tipping",
+          "FIRM"
+        ],
+        [
+          "1250",
+          "Wave Height and Direction",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_HAZ_Class",
+      "pages": [
+        18
+      ],
+      "header": [
+        "Coded Value",
+        "Hazard Class Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "HIGH",
+          "High",
+          "FRD"
+        ],
+        [
+          "SIG",
+          "Significant",
+          "FRD"
+        ],
+        [
+          "LOW",
+          "Low",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Horiz_Datum",
+      "pages": [
+        18
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Horizontal Datum",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "NAD27",
+          "North American Datum 1927",
+          "FIRM, FRD"
+        ],
+        [
+          "NAD83",
+          "North American Datum 1983",
+          "FIRM, FRD"
+        ],
+        [
+          "83HARN",
+          "North American Datum 1983 HARN",
+          "FIRM, FRD"
+        ],
+        [
+          "WGS84",
+          "World Geodetic System 1984",
+          "FRD, NFHL"
+        ],
+        [
+          "NSRS07",
+          "NAD83 (NSRS2007)",
+          "FIRM, FRD"
+        ],
+        [
+          "NA2011",
+          "NAD83 (2011)",
+          "FIRM, FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Hydra_Mdl",
+      "pages": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "header": [
+        "Coded Value",
+        "Hydraulic Model Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "0110",
+          "CHAN for Windows v. 2.03 (1997)",
+          "FIRM, FRD"
+        ],
+        [
+          "0120",
+          "Culvert Master v. 2.0 (September 2000) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "1001",
+          "DHM 21 and 34 (Aug. 1987)",
+          "FIRM, FRD"
+        ],
+        [
+          "0140",
+          "FAN",
+          "FIRM, FRD"
+        ],
+        [
+          "1002",
+          "FEQ 8.92 (1999) and FEQ 9.98 (2005)",
+          "FIRM, FRD"
+        ],
+        [
+          "1003",
+          "FEQUTL 4.68 (1999) and FEQUTL 5.46 (2005)",
+          "FIRM, FRD"
+        ],
+        [
+          "1004",
+          "FESWMS 2DH 1.1 and up (Jun. 1995)",
+          "FIRM, FRD"
+        ],
+        [
+          "1005",
+          "FLDWAV (Nov. 1998)",
+          "FIRM, FRD"
+        ],
+        [
+          "1006",
+          "FLO-2D v. 2007.06 and 2009.06",
+          "FIRM, FRD"
+        ],
+        [
+          "1007",
+          "FLO-2D V.2003.6, 2004.10 and 2006.1",
+          "FIRM, FRD"
+        ],
+        [
+          "1008",
+          "Gage Analysis",
+          "FIRM, FRD"
+        ],
+        [
+          "1009",
+          "HCSWMM 4.31B (August 2000)",
+          "FIRM, FRD"
+        ],
+        [
+          "1010",
+          "HEC-2 4.6.2 (May 1991)",
+          "FIRM, FRD"
+        ],
+        [
+          "1012",
+          "HEC-RAS 3.1.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "1014",
+          "HEC-RAS 5.0 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "1013",
+          "HY8 4.1 and up (Nov. 1992)",
+          "FIRM, FRD"
+        ],
+        [
+          "1000",
+          "ICPR 2.20 (Oct. 2000), 3.02 (Nov. 2002), and 3.10 (April 2008) with PercPack Option",
+          "FIRM, FRD"
+        ],
+        [
+          "1015",
+          "MIKE 11 HD (2002 D, 2004)",
+          "FIRM, FRD"
+        ],
+        [
+          "1030",
+          "MIKE 11 HD v.2009 SP4",
+          "FIRM, FRD"
+        ],
+        [
+          "0260",
+          "MIKE Flood HD (2002 D and 2004)",
+          "FIRM, FRD"
+        ],
+        [
+          "1028",
+          "MIKE URBAN Collection Systems (MOUSE) Release 2009, date June 2010",
+          "FIRM, FRD"
+        ],
+        [
+          "0262",
+          "MIKE Flood HD v.2009 SP4",
+          "FIRM, FRD"
+        ],
+        [
+          "0270",
+          "NETWORK (June 2002)",
+          "FIRM, FRD"
+        ],
+        [
+          "0280",
+          "PondPack v. 8 (May 2002) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "1017",
+          "QUICK-2 1.0 and up (Jan. 1995)",
+          "FIRM, FRD"
+        ],
+        [
+          "0300",
+          "S2DMM (Feb 2008)",
+          "FIRM, FRD"
+        ],
+        [
+          "0401",
+          "SMS ADH v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0402",
+          "SMS ADCIRC v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0403",
+          "SMS BOUSS-2D v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0404",
+          "SMS CGWAVE v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0405",
+          "SMS CMS Flow v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0406",
+          "SMS CMS Wave v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0407",
+          "SMS FESWMS v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0408",
+          "SMS HYDRO_AS-2D",
+          "FIRM, FRD"
+        ],
+        [
+          "0409",
+          "SMS GENCADE v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0410",
+          "SMS PTM v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0411",
+          "SMS RiverFlow2D v11.2 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0412",
+          "SMS RMA2 v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0413",
+          "SMS RMA4 v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0414",
+          "SMS SRH-2D v11.2 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0415",
+          "SMS STWAVE v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0416",
+          "SMS TUFLOW v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0417",
+          "SMS TUFLOW AD v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0418",
+          "SMS TUFLOW Multiple Domains v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0419",
+          "SMS TUFLOW FV v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0420",
+          "SMS WAM v11.1 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0310",
+          "StormCAD v.4 (June 2002) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "1021",
+          "SWMM 4.30 (MAY 1994)",
+          "FIRM, FRD"
+        ],
+        [
+          "1022",
+          "SWMM 4.31 (JANUARY 1997)",
+          "FIRM, FRD"
+        ],
+        [
+          "0322",
+          "SWMM 5 Version 5.0.005 (May 2005) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "1023",
+          "TABS RMA2 v. 4.3 and up (Oct. 1996)",
+          "FIRM, FRD"
+        ],
+        [
+          "1024",
+          "TABS RMA4 v. 4.5 and up (July 2000)",
+          "FIRM, FRD"
+        ],
+        [
+          "1029",
+          "TUFLOW Release Version 2010-10 (October 2010)",
+          "FIRM, FRD"
+        ],
+        [
+          "1025",
+          "UNET 4.0 (April 2001)",
+          "FIRM, FRD"
+        ],
+        [
+          "1026",
+          "WSPGW 12.96 (OCTOBER 2000)",
+          "FIRM, FRD"
+        ],
+        [
+          "1027",
+          "WSPRO (Jun. 1988 and up)",
+          "FIRM, FRD"
+        ],
+        [
+          "0370",
+          "Xpstorm 10.0 (May 2006)",
+          "FIRM, FRD"
+        ],
+        [
+          "0362",
+          "XPSWMM 2D/XPStorm 2D v. 12.00 (May 2010)",
+          "FIRM, FRD"
+        ],
+        [
+          "0360",
+          "XP-SWMM 8.52 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "9000",
+          "Other",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Hydro_Mdl",
+      "pages": [
+        21,
+        22
+      ],
+      "header": [
+        "Coded Value",
+        "Hydrologic Model Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "2000",
+          "AHYMO 97 (Aug. 1997)",
+          "FIRM, FRD"
+        ],
+        [
+          "2001",
+          "CUHPF/PC (May 1996 and May 2002)",
+          "FIRM, FRD"
+        ],
+        [
+          "2006",
+          "HEC-1 4.0.1 and up (May 1991)",
+          "FIRM, FRD"
+        ],
+        [
+          "2005",
+          "HEC-FFA 3.1 (February 1995)",
+          "FIRM, FRD"
+        ],
+        [
+          "2008",
+          "HEC-HMS 3.0 and up (Dec 2005)",
+          "FIRM, FRD"
+        ],
+        [
+          "2040",
+          "HEC-SSP 1.1 (April 2009) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "2018",
+          "HSPF 10.10 (Dec 1993) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "2042",
+          "MIKE 11 (2009 SP4)",
+          "FIRM, FRD"
+        ],
+        [
+          "2022",
+          "MIKE 11 RR (2009 SP4)",
+          "FIRM, FRD"
+        ],
+        [
+          "2023",
+          "MIKE 11 UHM (2002 D and 2004)",
+          "FIRM, FRD"
+        ],
+        [
+          "2024",
+          "PEAKFQ 2.4 (April 1998) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0190",
+          "PondPack v.8 (May 2002) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "0200",
+          "PRMS Version 2.1 (Jan 1996)",
+          "FIRM, FRD"
+        ],
+        [
+          "2029",
+          "Regression Equations",
+          "FIRM, FRD"
+        ],
+        [
+          "2031",
+          "SWMM (RUNOFF) 4.30 (May1994)",
+          "FIRM, FRD"
+        ],
+        [
+          "2032",
+          "SWMM (RUNOFF) 4.31 (Jan 1997)",
+          "FIRM, FRD"
+        ],
+        [
+          "0222",
+          "SWMM 5 Version 5.0.005 (May 2005) and up",
+          "FIRM, FRD"
+        ],
+        [
+          "2033",
+          "TR-20 Win (Feb 1992)",
+          "FIRM, FRD"
+        ],
+        [
+          "0231",
+          "TR-20 Win 1.00 (Jan 2005)",
+          "FIRM, FRD"
+        ],
+        [
+          "0240",
+          "TR-55 (JUNE 1986)",
+          "FIRM, FRD"
+        ],
+        [
+          "2041",
+          "VCRat 2.6 (Dec. 2008)",
+          "FIRM, FRD"
+        ],
+        [
+          "2034",
+          "WinTR-55 1.0.08 (Jan 2005)",
+          "FIRM, FRD"
+        ],
+        [
+          "0260",
+          "Xpstorm 10.0 (May 2006)",
+          "FIRM, FRD"
+        ],
+        [
+          "0250",
+          "XP-SWMM 8.52 and up",
+          "FIRM, FRD"
+        ],
+        [
+          "9000",
+          "OTHER",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Jurisdiction_Typ",
+      "pages": [
+        22
+      ],
+      "header": [
+        "Coded Value",
+        "Jurisdiction Type",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "0100",
+          "All Jurisdictions",
+          "FIRM, FRD"
+        ],
+        [
+          "0200",
+          "And Incorporated Areas",
+          "FIRM, FRD"
+        ],
+        [
+          "0300",
+          "Independent City",
+          "FIRM, FRD"
+        ],
+        [
+          "0900",
+          "Unincorporated Areas",
+          "FIRM, FRD"
+        ],
+        [
+          "0400",
+          "Tribal Nation",
+          "FIRM, FRD"
+        ],
+        [
+          "9000",
+          "Other",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Label_Typ",
+      "pages": [
+        23
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Feature to Which the Labels and Leaders Apply",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Ortho-Transportation",
+          "FIRM"
+        ],
+        [
+          "1001",
+          "Ortho-Water",
+          "FIRM"
+        ],
+        [
+          "1002",
+          "S_Trnsport_Ln",
+          "FIRM"
+        ],
+        [
+          "1003",
+          "S_Wtr_Ar",
+          "FIRM"
+        ],
+        [
+          "1004",
+          "S_Wtr_Ln",
+          "FIRM"
+        ],
+        [
+          "1005",
+          "Notes and Map Collar",
+          "FIRM"
+        ],
+        [
+          "1006",
+          "S_BFE",
+          "FIRM"
+        ],
+        [
+          "1008",
+          "S_Cst_Tsct_Ln",
+          "FIRM"
+        ],
+        [
+          "1009",
+          "S_FIRM_Pan",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "S_Fld_Haz_Ar",
+          "FIRM"
+        ],
+        [
+          "1011",
+          "S_Fld_Haz_Ln",
+          "FIRM"
+        ],
+        [
+          "1012",
+          "S_Gage",
+          "FIRM"
+        ],
+        [
+          "1013",
+          "S_Gen_Struct",
+          "FIRM"
+        ],
+        [
+          "1014",
+          "S_Levee",
+          "FIRM"
+        ],
+        [
+          "1015",
+          "S_LiMWA",
+          "FIRM"
+        ],
+        [
+          "1016",
+          "S_PFD_Ln",
+          "FIRM"
+        ],
+        [
+          "1017",
+          "S_PLSS_Ar",
+          "FIRM"
+        ],
+        [
+          "1018",
+          "S_Pol_Ar",
+          "FIRM"
+        ],
+        [
+          "1019",
+          "S_Profil_Basln",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "S_Riv_Mrk",
+          "FIRM"
+        ],
+        [
+          "1021",
+          "S_Tsct_Basln",
+          "FIRM"
+        ],
+        [
+          "1022",
+          "S_XS",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": [
+        [
+          [
+            "Type of Feature to Which the Labels and Leaders"
+          ],
+          [
+            "Apply"
+          ]
+        ]
+      ]
+    },
+    {
+      "section": "D_Length_Units",
+      "pages": [
+        23
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Length Unit",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "CM",
+          "Centimeters",
+          "FIRM, FRD"
+        ],
+        [
+          "FT",
+          "Feet",
+          "FIRM, FRD"
+        ],
+        [
+          "IN",
+          "Inches",
+          "FIRM"
+        ],
+        [
+          "KM",
+          "Kilometers",
+          "FIRM"
+        ],
+        [
+          "M",
+          "Meters",
+          "FIRM"
+        ],
+        [
+          "MI",
+          "Miles",
+          "FIRM"
+        ],
+        [
+          "MM",
+          "Millimeters",
+          "FIRM"
+        ],
+        [
+          "USFT",
+          "U.S. Survey Feet",
+          "FIRM, FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Levee_Accreditation",
+      "pages": [
+        25
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Accreditation",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "A",
+          "Accredited",
+          "FRD"
+        ],
+        [
+          "P",
+          "Provisionally Accredited",
+          "FRD"
+        ],
+        [
+          "N",
+          "Non-Accredited",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Levee_Analysis_Type",
+      "pages": [
+        25
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Levee Analysis",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "NV",
+          "Natural Valley",
+          "FIRM, FRD"
+        ],
+        [
+          "SBI",
+          "Structural-Based Inundation",
+          "FIRM, FRD"
+        ],
+        [
+          "OVR",
+          "Overtopping",
+          "FIRM, FRD"
+        ],
+        [
+          "FD",
+          "Freeboard Deficient",
+          "FIRM, FRD"
+        ],
+        [
+          "SR",
+          "Sound Reach",
+          "FIRM, FRD"
+        ],
+        [
+          "BBT",
+          "BFE Below Toe",
+          "FIRM, FRD"
+        ],
+        [
+          "NHS",
+          "Not Hydraulically Significant",
+          "FIRM, FRD"
+        ],
+        [
+          "OTH",
+          "Other",
+          "FIRM, FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Levee_Event",
+      "pages": [
+        25,
+        26
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Event",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "0_2",
+          "0.2-Percent Annual Chance Event",
+          "FRD"
+        ],
+        [
+          "01",
+          "1-Percent Annual Chance Event",
+          "FRD"
+        ],
+        [
+          "01P",
+          "1-Percent Plus Annual Chance Event",
+          "FRD"
+        ],
+        [
+          "02",
+          "2-Percent Annual Chance Event",
+          "FRD"
+        ],
+        [
+          "04",
+          "4-Percent Annual Chance Event",
+          "FRD"
+        ],
+        [
+          "10",
+          "10-Percent Annual Chance Event",
+          "FRD"
+        ],
+        [
+          "HIS",
+          "Historical Flood Event",
+          "FRD"
+        ],
+        [
+          "LS",
+          "Levee Shadow",
+          "FRD"
+        ],
+        [
+          "OVT",
+          "Overtop",
+          "FRD"
+        ],
+        [
+          "TOE",
+          "Levee Toe (wet side of levee)",
+          "FRD"
+        ],
+        [
+          "LC",
+          "Levee Crest",
+          "FRD"
+        ],
+        [
+          "LT",
+          "Landward Toe",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Levee_Pt_Typ",
+      "pages": [
+        26
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Levee Point",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "BOIL",
+          "Sand Boil Point",
+          "FRD"
+        ],
+        [
+          "BORE",
+          "Borehole Point",
+          "FRD"
+        ],
+        [
+          "CROSS",
+          "Levee Crossing Point",
+          "FRD"
+        ],
+        [
+          "ENCR",
+          "Encroachment Point",
+          "FRD"
+        ],
+        [
+          "FAIL",
+          "Levee Failure Point",
+          "FRD"
+        ],
+        [
+          "FIGHT",
+          "Flood Fight Point",
+          "FRD"
+        ],
+        [
+          "PIEZ",
+          "Piezometer Point",
+          "FRD"
+        ],
+        [
+          "PUMP",
+          "Pump Station Point",
+          "FRD"
+        ],
+        [
+          "RWP",
+          "Levee Relief Well Point",
+          "FRD"
+        ],
+        [
+          "STA",
+          "Levee Station Point",
+          "FRD"
+        ],
+        [
+          "CLOS",
+          "Closure Structure",
+          "FRD"
+        ],
+        [
+          "GRAV",
+          "Gravity Drain",
+          "FRD"
+        ],
+        [
+          "LEVST",
+          "Levee Station Point",
+          "FRD"
+        ],
+        [
+          "TOE",
+          "Toe Drain",
+          "FRD"
+        ],
+        [
+          "REHAB",
+          "Rehabilitation Line",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Levee_Scenario",
+      "pages": [
+        27
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Levee Scenario",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "R",
+          "With Right Levee",
+          "FIRM"
+        ],
+        [
+          "L",
+          "With Left Levee",
+          "FIRM"
+        ],
+        [
+          "B",
+          "With Both Levees",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Levee_Status",
+      "pages": [
+        27
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Levee Status",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "A",
+          "Accredited",
+          "FIRM"
+        ],
+        [
+          "N",
+          "Non-Accredited",
+          "FIRM"
+        ],
+        [
+          "P",
+          "Provisionally Accredited",
+          "FIRM"
+        ],
+        [
+          "AR",
+          "AR",
+          "FIRM"
+        ],
+        [
+          "A99",
+          "A99",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Levee_Typ",
+      "pages": [
+        27
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Levee Structure",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "CLC",
+          "Coastal Levee Centerline",
+          "FIRM"
+        ],
+        [
+          "LC",
+          "Levee Centerline",
+          "FIRM"
+        ],
+        [
+          "FW",
+          "Floodwall",
+          "FIRM"
+        ],
+        [
+          "CS",
+          "Closure Structure",
+          "FIRM"
+        ],
+        [
+          "D",
+          "Dike",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Ln_Typ",
+      "pages": [
+        28
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Line",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "2034",
+          "SFHA / Flood Zone Boundary",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Limit Lines",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Other Boundary",
+          "FIRM"
+        ],
+        [
+          "2050",
+          "Flowage Easement Boundary",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Loc_Accuracy",
+      "pages": [
+        28
+      ],
+      "header": [
+        "Coded Value",
+        "Locational Accuracy",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "H",
+          "High",
+          "FIRM"
+        ],
+        [
+          "M",
+          "Medium",
+          "FIRM"
+        ],
+        [
+          "L",
+          "Low",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_LOMC_Status",
+      "pages": [
+        29
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Status Values for LOMCs",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Superseded",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Revalidated",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Incorporated",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Redetermined",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Effective",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Method",
+      "pages": [
+        29
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Elevation Source Method",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Combo of Topo and Survey",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Cut from Topo",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Digitized from FIRM",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Field Survey",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_MTFCC",
+      "pages": [
+        29,
+        30
+      ],
+      "header": [
+        "Coded Value",
+        "Type of US Census TIGER-Line Transportation Feature",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "R1011",
+          "Railroad Feature (Main, Spur, or Yard)",
+          "FIRM, Discovery"
+        ],
+        [
+          "R1051",
+          "Carline, Streetcar Track, Monorail, Other Mass Transit Rail",
+          "FIRM, Discovery"
+        ],
+        [
+          "R1052",
+          "Cog Rail Line, Incline Rail Line, Tram",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1100",
+          "Primary Road",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1200",
+          "Secondary Road",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1400",
+          "Local Neighborhood Road, Rural Road, City Street",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1500",
+          "Vehicular Trail (4WD)",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1630",
+          "Ramp",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1640",
+          "Service Drive Usually Along a Limited Access Highway",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1710",
+          "Walkway/Pedestrian Trail",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1720",
+          "Stairway",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1730",
+          "Alley",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1740",
+          "Private Road for Service Vehicles (Logging, Oil Fields, Ranches, Etc.)",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1750",
+          "Internal U.S. Census Bureau Use",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1780",
+          "Parking Lot Road",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1820",
+          "Bike Path or Trail",
+          "FIRM, Discovery"
+        ],
+        [
+          "S1830",
+          "Bridle Path",
+          "FIRM, Discovery"
+        ],
+        [
+          "S2000",
+          "Road Median",
+          "FIRM, Discovery"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Mtg_Typ",
+      "pages": [
+        30,
+        31
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Meeting",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "CCO1",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Flood Risk Review",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Project Discovery",
+          "FIRM"
+        ],
+        [
+          "1050",
+          "Resilience",
+          "FIRM"
+        ],
+        [
+          "1060",
+          "Scoping",
+          "FIRM"
+        ],
+        [
+          "1070",
+          "Open House",
+          "FIRM"
+        ],
+        [
+          "9000",
+          "Other",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Node_Typ",
+      "pages": [
+        31
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Node",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Diversion",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Junction",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Reservoir",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Structure",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Sub-Basin Outlet",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Obscured",
+      "pages": [
+        31
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Topographic Confidence Area",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1",
+          "Low Confidence Area",
+          "FIRM"
+        ],
+        [
+          "2",
+          "Acceptable Confidence Area",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Occupancy_Typ",
+      "pages": [
+        31,
+        32,
+        33
+      ],
+      "header": [
+        "Coded Value",
+        "Hazard Type Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "AGR1",
+          "Agriculture",
+          "FRD"
+        ],
+        [
+          "COM1",
+          "Retail Trade",
+          "FRD"
+        ],
+        [
+          "COM2",
+          "Wholesale Trade",
+          "FRD"
+        ],
+        [
+          "COM3",
+          "Personal and Repair Services",
+          "FRD"
+        ],
+        [
+          "COM4",
+          "Business/Professional/Technical Services",
+          "FRD"
+        ],
+        [
+          "COM5",
+          "Banks",
+          "FRD"
+        ],
+        [
+          "COM6",
+          "Hospital",
+          "FRD"
+        ],
+        [
+          "COM7",
+          "Medical Office/Clinic",
+          "FRD"
+        ],
+        [
+          "COM8",
+          "Entertainment & Recreation",
+          "FRD"
+        ],
+        [
+          "COM9",
+          "Theaters",
+          "FRD"
+        ],
+        [
+          "COM10",
+          "Parking",
+          "FRD"
+        ],
+        [
+          "EDU1",
+          "Schools/Libraries",
+          "FRD"
+        ],
+        [
+          "EDU2",
+          "Colleges/Universities",
+          "FRD"
+        ],
+        [
+          "GOV1",
+          "General Services",
+          "FRD"
+        ],
+        [
+          "GOV2",
+          "Emergency Services",
+          "FRD"
+        ],
+        [
+          "IND1",
+          "Heavy Industrial",
+          "FRD"
+        ],
+        [
+          "IND2",
+          "Light Industrial",
+          "FRD"
+        ],
+        [
+          "IND3",
+          "Food/Drugs/Chemicals",
+          "FRD"
+        ],
+        [
+          "IND4",
+          "Metals/Minerals Processing",
+          "FRD"
+        ],
+        [
+          "IND5",
+          "High Technology",
+          "FRD"
+        ],
+        [
+          "IND6",
+          "Construction",
+          "FRD"
+        ],
+        [
+          "REL1",
+          "Church/Membership Organization",
+          "FRD"
+        ],
+        [
+          "RES1",
+          "Single Family Dwelling",
+          "FRD"
+        ],
+        [
+          "RES2",
+          "Mobile Home",
+          "FRD"
+        ],
+        [
+          "RES3A",
+          "Multi Family Dwelling – Duplex",
+          "FRD"
+        ],
+        [
+          "RES3B",
+          "Multi Family Dwelling – 3-4 Units",
+          "FRD"
+        ],
+        [
+          "RES3C",
+          "Multi Family Dwelling – 5-9 Units",
+          "FRD"
+        ],
+        [
+          "RES3D",
+          "Multi Family Dwelling – 10-19 Units",
+          "FRD"
+        ],
+        [
+          "RES3E",
+          "Multi Family Dwelling – 20-49 Units",
+          "FRD"
+        ],
+        [
+          "RES3F",
+          "Multi Family Dwelling – 50+ Units",
+          "FRD"
+        ],
+        [
+          "RES4",
+          "Temporary Lodging",
+          "FRD"
+        ],
+        [
+          "RES5",
+          "Institutional Dormitory",
+          "FRD"
+        ],
+        [
+          "RES6",
+          "Nursing Home",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP - Not Populated",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Panel_Typ",
+      "pages": [
+        33
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Panel",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Countywide, Panel Printed",
+          "FIRM, Discovery"
+        ],
+        [
+          "1010",
+          "Countywide, Not Printed",
+          "FIRM, Discovery"
+        ],
+        [
+          "1020",
+          "Community Based, Panel Printed",
+          "FIRM, Discovery"
+        ],
+        [
+          "1030",
+          "Community Based, Not Printed",
+          "FIRM, Discovery"
+        ],
+        [
+          "1040",
+          "Unmapped Community",
+          "FIRM, Discovery"
+        ],
+        [
+          "1050",
+          "Statewide, Panel Printed",
+          "FIRM, Discovery"
+        ],
+        [
+          "1060",
+          "Statewide, Not Printed",
+          "FIRM, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_PFD_Size",
+      "pages": [
+        33
+      ],
+      "header": [
+        "Coded Value",
+        "Dune Size Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "SML",
+          "SMALL",
+          "FRD"
+        ],
+        [
+          "LRG",
+          "LARGE",
+          "FRD"
+        ],
+        [
+          "UNK",
+          "UNKNOWN",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Prof_Basln_Typ",
+      "pages": [
+        33,
+        34
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Profile Baseline",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Profile Baseline",
+          "FIRM"
+        ],
+        [
+          "2000",
+          "Profile Baseline and Stream Centerline",
+          "FIRM"
+        ],
+        [
+          "3000",
+          "Hydraulic Link",
+          "FIRM"
+        ],
+        [
+          "UNK",
+          "Unknown",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Prof_Lbl_Adjust",
+      "pages": [
+        34
+      ],
+      "header": [
+        "Coded Value",
+        "Adjustment of Text on Profile",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "L",
+          "Left",
+          "FIRM"
+        ],
+        [
+          "R",
+          "Right",
+          "FIRM"
+        ],
+        [
+          "C",
+          "Center",
+          "FIRM"
+        ],
+        [
+          "T",
+          "Top",
+          "FIRM"
+        ],
+        [
+          "M",
+          "Middle",
+          "FIRM"
+        ],
+        [
+          "B",
+          "Bottom",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Prof_Lbl_Orient",
+      "pages": [
+        34
+      ],
+      "header": [
+        "Coded Value",
+        "Orientation of Text on Profile",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "H",
+          "Horizontal",
+          "FIRM"
+        ],
+        [
+          "V",
+          "Vertical",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Proj_Unit",
+      "pages": [
+        34,
+        35
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Units for Projection System",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "FT",
+          "Feet",
+          "FIRM, FRD"
+        ],
+        [
+          "USFT",
+          "US Survey Feet",
+          "FIRM, FRD"
+        ],
+        [
+          "INTLFT",
+          "International Feet",
+          "FIRM, FRD"
+        ],
+        [
+          "METER",
+          "Meters",
+          "FIRM, FRD"
+        ],
+        [
+          "DECDEG",
+          "Decimal Degrees",
+          "NFHL, FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Projection",
+      "pages": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Projection",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "0101",
+          "STATE PLANE TRANSVERSE MERCATOR ALABAMA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0101H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, ALABAMA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0102",
+          "STATE PLANE TRANSVERSE MERCATOR, ALABAMA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0102H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, ALABAMA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0201",
+          "STATE PLANE TRANSVERSE MERCATOR, ARIZONA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0201H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, ARIZONA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0202",
+          "STATE PLANE TRANSVERSE MERCATOR, ARIZONA CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0202H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, ARIZONA CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0203",
+          "STATE PLANE TRANSVERSE MERCATOR, ARIZONA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0203H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, ARIZONA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0301",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, ARKANSAS NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0302",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, ARKANSAS SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0401",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA I ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0401H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA I ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0402",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA II ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0402H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA II ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0403",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA III ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0403H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA III ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0404",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA IV ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0404H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA IV ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0405",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA V ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0405H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA V ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0406",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA VI ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0406H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, CALIFORNIA VI ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0501",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, COLORADO CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0501H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, COLORADO CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0502",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, COLORADO NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0502H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, COLORADO NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0503",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, COLORADO SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0503H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, COLORADO SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0600",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, CONNECTICUT ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0600H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, CONNECTICUT ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0700",
+          "STATE PLANE TRANSVERSE MERCATOR, DELAWARE ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0700H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, DELAWARE ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0901",
+          "STATE PLANE TRANSVERSE MERCATOR, FLORIDA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0901H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, FLORIDA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0902",
+          "STATE PLANE TRANSVERSE MERCATOR, FLORIDA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0902H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, FLORIDA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0903",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, FLORIDA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "0903H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, FLORIDA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1001",
+          "STATE PLANE TRANSVERSE MERCATOR, GEORGIA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1001H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, GEORGIA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1002",
+          "STATE PLANE TRANSVERSE MERCATOR, GEORGIA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1002H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, GEORGIA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1101",
+          "STATE PLANE TRANSVERSE MERCATOR, IDAHO EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1101H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, IDAHO EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1102",
+          "STATE PLANE TRANSVERSE MERCATOR, IDAHO CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1102H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, IDAHO CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1103",
+          "STATE PLANE TRANSVERSE MERCATOR, IDAHO WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1103H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, IDAHO WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1201",
+          "STATE PLANE TRANSVERSE MERCATOR, ILLINOIS EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1201H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, ILLINOIS EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1202",
+          "STATE PLANE TRANSVERSE MERCATOR, ILLINOIS WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1202H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, ILLINOIS WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1301",
+          "STATE PLANE TRANSVERSE MERCATOR, INDIANA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1301H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, INDIANA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1302",
+          "STATE PLANE TRANSVERSE MERCATOR, INDIANA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1302H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, INDIANA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1401",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, IOWA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1402",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, IOWA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1501",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, KANSAS NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1501H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, KANSAS NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1502",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, KANSAS SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1502H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, KANSAS SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1600",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, KENTUCKY ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1601",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, KENTUCKY NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1601H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, KENTUCKY NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1602",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, KENTUCKY SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1602H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, KENTUCKY SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1701",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, LOUISIANA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1701H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, LOUISIANA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1702",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, LOUISIANA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1702H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, LOUISIANA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1801",
+          "STATE PLANE TRANSVERSE MERCATOR, MAINE EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1801H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, MAINE EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1802",
+          "STATE PLANE TRANSVERSE MERCATOR, MAINE WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1802H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, MAINE WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1900",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MARYLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "1900H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, MARYLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2001",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MASSACHUSETTS ISLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2001H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, MASSACHUSETTS ISLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2002",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MASSACHUSETTS MLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2002H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, MASSACHUSETTS MLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2111",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MICHIGAN NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2111H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, MICHIGAN NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2112",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MICHIGAN CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2112H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, MICHIGAN CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2113",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MICHIGAN SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2113H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, MICHIGAN SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2201",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MINNESOTA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2202",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MINNESOTA CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2203",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MINNESOTA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2301",
+          "STATE PLANE TRANSVERSE MERCATOR, MISSISSIPPI EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2301H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, MISSISSIPPI EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2302",
+          "STATE PLANE TRANSVERSE MERCATOR, MISSISSIPPI WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2302H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, MISSISSIPPI WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2401",
+          "STATE PLANE TRANSVERSE MERCATOR, MISSOURI EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2402",
+          "STATE PLANE TRANSVERSE MERCATOR, MISSOURI CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2403",
+          "STATE PLANE TRANSVERSE MERCATOR, MISSOURI WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2500",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, MONTANA ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2500H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, MONTANA ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2600",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, NEBRASKA ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2600H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, NEBRASKA ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2701",
+          "STATE PLANE TRANSVERSE MERCATOR, NEVADA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2701H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEVADA EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2702",
+          "STATE PLANE TRANSVERSE MERCATOR, NEVADA CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2702H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEVADA CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2703",
+          "STATE PLANE TRANSVERSE MERCATOR, NEVADA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2703H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEVADA WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2800",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, NEW HAMPSHIRE ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2800H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, NEW HAMPSHIRE ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2900",
+          "STATE PLANE TRANSVERSE MERCATOR, NEW JERSEY ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "2900H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEW JERSEY ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3001",
+          "STATE PLANE TRANSVERSE MERCATOR, NEW MEXICO EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3001H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEW MEXICO EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3002",
+          "STATE PLANE TRANSVERSE MERCATOR, NEW MEXICO CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3002H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEW MEXICO CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3003",
+          "STATE PLANE TRANSVERSE MERCATOR, NEW MEXICO WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3003H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEW MEXICO WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3101",
+          "STATE PLANE TRANSVERSE MERCATOR, NEW YORK EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3101H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEW YORK EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3102",
+          "STATE PLANE TRANSVERSE MERCATOR, NEW YORK CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3102H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEW YORK CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3103",
+          "STATE PLANE TRANSVERSE MERCATOR, NEW YORK WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3103H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, NEW YORK WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3104",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, NEW YORK LONG ISLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3104H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, NEW YORK LONG ISLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3200",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, NORTH CAROLINA ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3301",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, NORTH DAKOTA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3301H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, NORTH DAKOTA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3302",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, NORTH DAKOTA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3302H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, NORTH DAKOTA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3401",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, OHIO NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3401H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, OHIO NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3402",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, OHIO SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3402H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, OHIO SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3501",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, OKLAHOMA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3501H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, OKLAHOMA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3502",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, OKLAHOMA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3502H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, OKLAHOMA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3601",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, OREGON NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3601H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, OREGON NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3602",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, OREGON SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3602H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, OREGON SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3701",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, PENNSYLVANIA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3702",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, PENNSYLVANIA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3800",
+          "STATE PLANE TRANSVERSE MERCATOR, RHODE ISLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3800H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, RHODE ISLAND ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "3900",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, SOUTH CAROLINA ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4001",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, SOUTH DAKOTA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4001H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, SOUTH DAKOTA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4002",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, SOUTH DAKOTA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4002H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, SOUTH DAKOTA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4100",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, TENNESSEE ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4100H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, TENNESSEE ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4201",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4201H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4202",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS NORTH CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4202H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS NORTH CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4203",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4203H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4204",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS SOUTH CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4204H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS SOUTH CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4205",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4205H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, TEXAS SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4301",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, UTAH NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4301H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, UTAH NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4302",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, UTAH CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4302H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, UTAH CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4303",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, UTAH SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4303H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, UTAH SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4400",
+          "STATE PLANE TRANSVERSE MERCATOR, VERMONT ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4400H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, VERMONT ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4501",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, VIRGINIA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4501H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, VIRGINIA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4502",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, VIRGINIA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4502H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, VIRGINIA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4601",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, WASHINGTON NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4601H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, WASHINGTON NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4602",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, WASHINGTON SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4602H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, WASHINGTON SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4701",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, WEST VIRGINIA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4701H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, WEST VIRGINIA NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4702",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, WEST VIRGINIA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4702H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, WEST VIRGINIA SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4801",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, WISCONSIN NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4801H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, WISCONSIN NORTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4802",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, WISCONSIN CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4802H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, WISCONSIN CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4803",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, WISCONSIN SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4803H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, WISCONSIN SOUTH ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4901",
+          "STATE PLANE TRANSVERSE MERCATOR, WYOMING EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4901H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, WYOMING EAST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4902",
+          "STATE PLANE TRANSVERSE MERCATOR, WYOMING EAST CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4902H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, WYOMING EAST CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4903",
+          "STATE PLANE TRANSVERSE MERCATOR, WYOMING WEST CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4903H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, WYOMING WEST CENTRAL ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4904",
+          "STATE PLANE TRANSVERSE MERCATOR, WYOMING WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "4904H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, WYOMING WEST ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5001",
+          "STATE PLANE HOTINE OBLIQUE MERCATOR, ALASKA 1 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5002",
+          "STATE PLANE TRANSVERSE MERCATOR, ALASKA 2 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5003",
+          "STATE PLANE TRANSVERSE MERCATOR, ALASKA 3 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5004",
+          "STATE PLANE TRANSVERSE MERCATOR, ALASKA 4 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5005",
+          "STATE PLANE TRANSVERSE MERCATOR, ALASKA 5 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5006",
+          "STATE PLANE TRANSVERSE MERCATOR, ALASKA 6 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5007",
+          "STATE PLANE TRANSVERSE MERCATOR, ALASKA 7 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5008",
+          "STATE PLANE TRANSVERSE MERCATOR, ALASKA 8 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5009",
+          "STATE PLANE TRANSVERSE MERCATOR, ALASKA 9 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5010",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, ALASKA 10 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5101",
+          "STATE PLANE TRANSVERSE MERCATOR, HAWAII 1 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5101H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, HAWAII 1 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5102",
+          "STATE PLANE TRANSVERSE MERCATOR, HAWAII 2 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5102H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, HAWAII 2 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5103",
+          "STATE PLANE TRANSVERSE MERCATOR, HAWAII 3 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5103H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, HAWAII 3 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5104",
+          "STATE PLANE TRANSVERSE MERCATOR, HAWAII 4 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5104H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, HAWAII 4 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5105",
+          "STATE PLANE TRANSVERSE MERCATOR, HAWAII 5 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5105H",
+          "HARN STATE PLANE TRANSVERSE MERCATOR, HAWAII 5 ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5200",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, PR VIRGIN ISLANDS ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5200H",
+          "HARN STATE PLANE LAMBERT CONFORMAL CONIC, PR VIRGIN ISLANDS ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5201",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, PUERTO RICO ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5202",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, PR VIRGIN I ST CROIX ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5300",
+          "STATE PLANE LAMBERT CONFORMAL CONIC, AMERICAN SAMOA ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "5400",
+          "STATE PLANE POLYCONIC, GUAM ZONE",
+          "FIRM, FRD"
+        ],
+        [
+          "9000",
+          "OTHER",
+          "FIRM, FRD"
+        ],
+        [
+          "GCS",
+          "GEOGRAPHIC COORDINATE SYSTEM",
+          "FIRM, NFHL, FRD"
+        ],
+        [
+          "UTM",
+          "UNIVERSAL TRANSVERSE MERCATOR",
+          "FIRM, FRD"
+        ],
+        [
+          "WGS",
+          "WGS 1984 WEB MERCATOR (AUXILIARY SPHERE)",
+          "NFHL"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": [
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Type of Projection"
+          ],
+          [
+            ""
+          ]
+        ]
+      ]
+    },
+    {
+      "section": "D_Projzone",
+      "pages": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "header": [
+        "Coded Value",
+        "Projection Zone",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1",
+          "1",
+          "FIRM"
+        ],
+        [
+          "2",
+          "2",
+          "FIRM"
+        ],
+        [
+          "3",
+          "3",
+          "FIRM"
+        ],
+        [
+          "4",
+          "4",
+          "FIRM"
+        ],
+        [
+          "5",
+          "5",
+          "FIRM"
+        ],
+        [
+          "6",
+          "6",
+          "FIRM"
+        ],
+        [
+          "7",
+          "7",
+          "FIRM"
+        ],
+        [
+          "8",
+          "8",
+          "FIRM"
+        ],
+        [
+          "9",
+          "9",
+          "FIRM"
+        ],
+        [
+          "10",
+          "10",
+          "FIRM"
+        ],
+        [
+          "11",
+          "11",
+          "FIRM"
+        ],
+        [
+          "12",
+          "12",
+          "FIRM"
+        ],
+        [
+          "13",
+          "13",
+          "FIRM"
+        ],
+        [
+          "14",
+          "14",
+          "FIRM"
+        ],
+        [
+          "15",
+          "15",
+          "FIRM"
+        ],
+        [
+          "16",
+          "16",
+          "FIRM"
+        ],
+        [
+          "17",
+          "17",
+          "FIRM"
+        ],
+        [
+          "18",
+          "18",
+          "FIRM"
+        ],
+        [
+          "19",
+          "19",
+          "FIRM"
+        ],
+        [
+          "0101H",
+          "0101H",
+          "FIRM"
+        ],
+        [
+          "0102H",
+          "0102H",
+          "FIRM"
+        ],
+        [
+          "0201H",
+          "0201H",
+          "FIRM"
+        ],
+        [
+          "0202H",
+          "0202H",
+          "FIRM"
+        ],
+        [
+          "0203H",
+          "0203H",
+          "FIRM"
+        ],
+        [
+          "0401H",
+          "0401H",
+          "FIRM"
+        ],
+        [
+          "0402H",
+          "0402H",
+          "FIRM"
+        ],
+        [
+          "0403H",
+          "0403H",
+          "FIRM"
+        ],
+        [
+          "0404H",
+          "0404H",
+          "FIRM"
+        ],
+        [
+          "0405H",
+          "0405H",
+          "FIRM"
+        ],
+        [
+          "0406H",
+          "0406H",
+          "FIRM"
+        ],
+        [
+          "0501H",
+          "0501H",
+          "FIRM"
+        ],
+        [
+          "0502H",
+          "0502H",
+          "FIRM"
+        ],
+        [
+          "0503H",
+          "0503H",
+          "FIRM"
+        ],
+        [
+          "0600H",
+          "0600H",
+          "FIRM"
+        ],
+        [
+          "0700H",
+          "0700H",
+          "FIRM"
+        ],
+        [
+          "0901H",
+          "0901H",
+          "FIRM"
+        ],
+        [
+          "0902H",
+          "0902H",
+          "FIRM"
+        ],
+        [
+          "0903H",
+          "0903H",
+          "FIRM"
+        ],
+        [
+          "1001H",
+          "1001H",
+          "FIRM"
+        ],
+        [
+          "1002H",
+          "1002H",
+          "FIRM"
+        ],
+        [
+          "1101H",
+          "1101H",
+          "FIRM"
+        ],
+        [
+          "1102H",
+          "1102H",
+          "FIRM"
+        ],
+        [
+          "1103H",
+          "1103H",
+          "FIRM"
+        ],
+        [
+          "1201H",
+          "1201H",
+          "FIRM"
+        ],
+        [
+          "1202H",
+          "1202H",
+          "FIRM"
+        ],
+        [
+          "1301H",
+          "1301H",
+          "FIRM"
+        ],
+        [
+          "1302H",
+          "1302H",
+          "FIRM"
+        ],
+        [
+          "1501H",
+          "1501H",
+          "FIRM"
+        ],
+        [
+          "1502H",
+          "1502H",
+          "FIRM"
+        ],
+        [
+          "1601H",
+          "1601H",
+          "FIRM"
+        ],
+        [
+          "1602H",
+          "1602H",
+          "FIRM"
+        ],
+        [
+          "1701H",
+          "1701H",
+          "FIRM"
+        ],
+        [
+          "1702H",
+          "1702H",
+          "FIRM"
+        ],
+        [
+          "1801H",
+          "1801H",
+          "FIRM"
+        ],
+        [
+          "1802H",
+          "1802H",
+          "FIRM"
+        ],
+        [
+          "1900H",
+          "1900H",
+          "FIRM"
+        ],
+        [
+          "2001H",
+          "2001H",
+          "FIRM"
+        ],
+        [
+          "2002H",
+          "2002H",
+          "FIRM"
+        ],
+        [
+          "2111H",
+          "2111H",
+          "FIRM"
+        ],
+        [
+          "2112H",
+          "2112H",
+          "FIRM"
+        ],
+        [
+          "2113H",
+          "2113H",
+          "FIRM"
+        ],
+        [
+          "2301H",
+          "2301H",
+          "FIRM"
+        ],
+        [
+          "2302H",
+          "2302H",
+          "FIRM"
+        ],
+        [
+          "2500H",
+          "2500H",
+          "FIRM"
+        ],
+        [
+          "2600H",
+          "2600H",
+          "FIRM"
+        ],
+        [
+          "2701H",
+          "2701H",
+          "FIRM"
+        ],
+        [
+          "2702H",
+          "2702H",
+          "FIRM"
+        ],
+        [
+          "2703H",
+          "2703H",
+          "FIRM"
+        ],
+        [
+          "2800H",
+          "2800H",
+          "FIRM"
+        ],
+        [
+          "2900H",
+          "2900H",
+          "FIRM"
+        ],
+        [
+          "3001H",
+          "3001H",
+          "FIRM"
+        ],
+        [
+          "3002H",
+          "3002H",
+          "FIRM"
+        ],
+        [
+          "3003H",
+          "3003H",
+          "FIRM"
+        ],
+        [
+          "3101H",
+          "3101H",
+          "FIRM"
+        ],
+        [
+          "3102H",
+          "3102H",
+          "FIRM"
+        ],
+        [
+          "3103H",
+          "3103H",
+          "FIRM"
+        ],
+        [
+          "3104H",
+          "3104H",
+          "FIRM"
+        ],
+        [
+          "3301H",
+          "3301H",
+          "FIRM"
+        ],
+        [
+          "3302H",
+          "3302H",
+          "FIRM"
+        ],
+        [
+          "3401H",
+          "3401H",
+          "FIRM"
+        ],
+        [
+          "3402H",
+          "3402H",
+          "FIRM"
+        ],
+        [
+          "3501H",
+          "3501H",
+          "FIRM"
+        ],
+        [
+          "3502H",
+          "3502H",
+          "FIRM"
+        ],
+        [
+          "3601H",
+          "3601H",
+          "FIRM"
+        ],
+        [
+          "3602H",
+          "3602H",
+          "FIRM"
+        ],
+        [
+          "3800H",
+          "3800H",
+          "FIRM"
+        ],
+        [
+          "4001H",
+          "4001H",
+          "FIRM"
+        ],
+        [
+          "4002H",
+          "4002H",
+          "FIRM"
+        ],
+        [
+          "4100H",
+          "4100H",
+          "FIRM"
+        ],
+        [
+          "4201H",
+          "4201H",
+          "FIRM"
+        ],
+        [
+          "4202H",
+          "4202H",
+          "FIRM"
+        ],
+        [
+          "4203H",
+          "4203H",
+          "FIRM"
+        ],
+        [
+          "4204H",
+          "4204H",
+          "FIRM"
+        ],
+        [
+          "4205H",
+          "4205H",
+          "FIRM"
+        ],
+        [
+          "4301H",
+          "4301H",
+          "FIRM"
+        ],
+        [
+          "4302H",
+          "4302H",
+          "FIRM"
+        ],
+        [
+          "4303H",
+          "4303H",
+          "FIRM"
+        ],
+        [
+          "4400H",
+          "4400H",
+          "FIRM"
+        ],
+        [
+          "4501H",
+          "4501H",
+          "FIRM"
+        ],
+        [
+          "4502H",
+          "4502H",
+          "FIRM"
+        ],
+        [
+          "4601H",
+          "4601H",
+          "FIRM"
+        ],
+        [
+          "4602H",
+          "4602H",
+          "FIRM"
+        ],
+        [
+          "4701H",
+          "4701H",
+          "FIRM"
+        ],
+        [
+          "4702H",
+          "4702H",
+          "FIRM"
+        ],
+        [
+          "4801H",
+          "4801H",
+          "FIRM"
+        ],
+        [
+          "4802H",
+          "4802H",
+          "FIRM"
+        ],
+        [
+          "4803H",
+          "4803H",
+          "FIRM"
+        ],
+        [
+          "4901H",
+          "4901H",
+          "FIRM"
+        ],
+        [
+          "4902H",
+          "4902H",
+          "FIRM"
+        ],
+        [
+          "4903H",
+          "4903H",
+          "FIRM"
+        ],
+        [
+          "4904H",
+          "4904H",
+          "FIRM"
+        ],
+        [
+          "5101H",
+          "5101H",
+          "FIRM"
+        ],
+        [
+          "5102H",
+          "5102H",
+          "FIRM"
+        ],
+        [
+          "5103H",
+          "5103H",
+          "FIRM"
+        ],
+        [
+          "5104H",
+          "5104H",
+          "FIRM"
+        ],
+        [
+          "5105H",
+          "5105H",
+          "FIRM"
+        ],
+        [
+          "5200H",
+          "5200H",
+          "FIRM"
+        ],
+        [
+          "0101",
+          "0101",
+          "FIRM"
+        ],
+        [
+          "0102",
+          "0102",
+          "FIRM"
+        ],
+        [
+          "0201",
+          "0201",
+          "FIRM"
+        ],
+        [
+          "0202",
+          "0202",
+          "FIRM"
+        ],
+        [
+          "0203",
+          "0203",
+          "FIRM"
+        ],
+        [
+          "0301",
+          "0301",
+          "FIRM"
+        ],
+        [
+          "0302",
+          "0302",
+          "FIRM"
+        ],
+        [
+          "0401",
+          "0401",
+          "FIRM"
+        ],
+        [
+          "0402",
+          "0402",
+          "FIRM"
+        ],
+        [
+          "0403",
+          "0403",
+          "FIRM"
+        ],
+        [
+          "0404",
+          "0404",
+          "FIRM"
+        ],
+        [
+          "0405",
+          "0405",
+          "FIRM"
+        ],
+        [
+          "0406",
+          "0406",
+          "FIRM"
+        ],
+        [
+          "0501",
+          "0501",
+          "FIRM"
+        ],
+        [
+          "0502",
+          "0502",
+          "FIRM"
+        ],
+        [
+          "0503",
+          "0503",
+          "FIRM"
+        ],
+        [
+          "0600",
+          "0600",
+          "FIRM"
+        ],
+        [
+          "0700",
+          "0700",
+          "FIRM"
+        ],
+        [
+          "0901",
+          "0901",
+          "FIRM"
+        ],
+        [
+          "0902",
+          "0902",
+          "FIRM"
+        ],
+        [
+          "0903",
+          "0903",
+          "FIRM"
+        ],
+        [
+          "1001",
+          "1001",
+          "FIRM"
+        ],
+        [
+          "1002",
+          "1002",
+          "FIRM"
+        ],
+        [
+          "1101",
+          "1101",
+          "FIRM"
+        ],
+        [
+          "1102",
+          "1102",
+          "FIRM"
+        ],
+        [
+          "1103",
+          "1103",
+          "FIRM"
+        ],
+        [
+          "1201",
+          "1201",
+          "FIRM"
+        ],
+        [
+          "1202",
+          "1202",
+          "FIRM"
+        ],
+        [
+          "1301",
+          "1301",
+          "FIRM"
+        ],
+        [
+          "1302",
+          "1302",
+          "FIRM"
+        ],
+        [
+          "1401",
+          "1401",
+          "FIRM"
+        ],
+        [
+          "1402",
+          "1402",
+          "FIRM"
+        ],
+        [
+          "1501",
+          "1501",
+          "FIRM"
+        ],
+        [
+          "1502",
+          "1502",
+          "FIRM"
+        ],
+        [
+          "1600",
+          "1600",
+          "FIRM"
+        ],
+        [
+          "1601",
+          "1601",
+          "FIRM"
+        ],
+        [
+          "1602",
+          "1602",
+          "FIRM"
+        ],
+        [
+          "1701",
+          "1701",
+          "FIRM"
+        ],
+        [
+          "1702",
+          "1702",
+          "FIRM"
+        ],
+        [
+          "1801",
+          "1801",
+          "FIRM"
+        ],
+        [
+          "1802",
+          "1802",
+          "FIRM"
+        ],
+        [
+          "1900",
+          "1900",
+          "FIRM"
+        ],
+        [
+          "2001",
+          "2001",
+          "FIRM"
+        ],
+        [
+          "2002",
+          "2002",
+          "FIRM"
+        ],
+        [
+          "2111",
+          "2111",
+          "FIRM"
+        ],
+        [
+          "2112",
+          "2112",
+          "FIRM"
+        ],
+        [
+          "2113",
+          "2113",
+          "FIRM"
+        ],
+        [
+          "2201",
+          "2201",
+          "FIRM"
+        ],
+        [
+          "2202",
+          "2202",
+          "FIRM"
+        ],
+        [
+          "2203",
+          "2203",
+          "FIRM"
+        ],
+        [
+          "2301",
+          "2301",
+          "FIRM"
+        ],
+        [
+          "2302",
+          "2302",
+          "FIRM"
+        ],
+        [
+          "2401",
+          "2401",
+          "FIRM"
+        ],
+        [
+          "2402",
+          "2402",
+          "FIRM"
+        ],
+        [
+          "2403",
+          "2403",
+          "FIRM"
+        ],
+        [
+          "2500",
+          "2500",
+          "FIRM"
+        ],
+        [
+          "2600",
+          "2600",
+          "FIRM"
+        ],
+        [
+          "2701",
+          "2701",
+          "FIRM"
+        ],
+        [
+          "2702",
+          "2702",
+          "FIRM"
+        ],
+        [
+          "2703",
+          "2703",
+          "FIRM"
+        ],
+        [
+          "2800",
+          "2800",
+          "FIRM"
+        ],
+        [
+          "2900",
+          "2900",
+          "FIRM"
+        ],
+        [
+          "3001",
+          "3001",
+          "FIRM"
+        ],
+        [
+          "3002",
+          "3002",
+          "FIRM"
+        ],
+        [
+          "3003",
+          "3003",
+          "FIRM"
+        ],
+        [
+          "3101",
+          "3101",
+          "FIRM"
+        ],
+        [
+          "3102",
+          "3102",
+          "FIRM"
+        ],
+        [
+          "3103",
+          "3103",
+          "FIRM"
+        ],
+        [
+          "3104",
+          "3104",
+          "FIRM"
+        ],
+        [
+          "3200",
+          "3200",
+          "FIRM"
+        ],
+        [
+          "3301",
+          "3301",
+          "FIRM"
+        ],
+        [
+          "3302",
+          "3302",
+          "FIRM"
+        ],
+        [
+          "3401",
+          "3401",
+          "FIRM"
+        ],
+        [
+          "3402",
+          "3402",
+          "FIRM"
+        ],
+        [
+          "3501",
+          "3501",
+          "FIRM"
+        ],
+        [
+          "3502",
+          "3502",
+          "FIRM"
+        ],
+        [
+          "3601",
+          "3601",
+          "FIRM"
+        ],
+        [
+          "3602",
+          "3602",
+          "FIRM"
+        ],
+        [
+          "3701",
+          "3701",
+          "FIRM"
+        ],
+        [
+          "3702",
+          "3702",
+          "FIRM"
+        ],
+        [
+          "3800",
+          "3800",
+          "FIRM"
+        ],
+        [
+          "3900",
+          "3900",
+          "FIRM"
+        ],
+        [
+          "4001",
+          "4001",
+          "FIRM"
+        ],
+        [
+          "4002",
+          "4002",
+          "FIRM"
+        ],
+        [
+          "4100",
+          "4100",
+          "FIRM"
+        ],
+        [
+          "4201",
+          "4201",
+          "FIRM"
+        ],
+        [
+          "4202",
+          "4202",
+          "FIRM"
+        ],
+        [
+          "4203",
+          "4203",
+          "FIRM"
+        ],
+        [
+          "4204",
+          "4204",
+          "FIRM"
+        ],
+        [
+          "4205",
+          "4205",
+          "FIRM"
+        ],
+        [
+          "4301",
+          "4301",
+          "FIRM"
+        ],
+        [
+          "4302",
+          "4302",
+          "FIRM"
+        ],
+        [
+          "4303",
+          "4303",
+          "FIRM"
+        ],
+        [
+          "4400",
+          "4400",
+          "FIRM"
+        ],
+        [
+          "4501",
+          "4501",
+          "FIRM"
+        ],
+        [
+          "4502",
+          "4502",
+          "FIRM"
+        ],
+        [
+          "4601",
+          "4601",
+          "FIRM"
+        ],
+        [
+          "4602",
+          "4602",
+          "FIRM"
+        ],
+        [
+          "4701",
+          "4701",
+          "FIRM"
+        ],
+        [
+          "4702",
+          "4702",
+          "FIRM"
+        ],
+        [
+          "4801",
+          "4801",
+          "FIRM"
+        ],
+        [
+          "4802",
+          "4802",
+          "FIRM"
+        ],
+        [
+          "4803",
+          "4803",
+          "FIRM"
+        ],
+        [
+          "4901",
+          "4901",
+          "FIRM"
+        ],
+        [
+          "4902",
+          "4902",
+          "FIRM"
+        ],
+        [
+          "4903",
+          "4903",
+          "FIRM"
+        ],
+        [
+          "4904",
+          "4904",
+          "FIRM"
+        ],
+        [
+          "5001",
+          "5001",
+          "FIRM"
+        ],
+        [
+          "5002",
+          "5002",
+          "FIRM"
+        ],
+        [
+          "5003",
+          "5003",
+          "FIRM"
+        ],
+        [
+          "5004",
+          "5004",
+          "FIRM"
+        ],
+        [
+          "5005",
+          "5005",
+          "FIRM"
+        ],
+        [
+          "5006",
+          "5006",
+          "FIRM"
+        ],
+        [
+          "5007",
+          "5007",
+          "FIRM"
+        ],
+        [
+          "5008",
+          "5008",
+          "FIRM"
+        ],
+        [
+          "5009",
+          "5009",
+          "FIRM"
+        ],
+        [
+          "5010",
+          "5010",
+          "FIRM"
+        ],
+        [
+          "5101",
+          "5101",
+          "FIRM"
+        ],
+        [
+          "5102",
+          "5102",
+          "FIRM"
+        ],
+        [
+          "5103",
+          "5103",
+          "FIRM"
+        ],
+        [
+          "5104",
+          "5104",
+          "FIRM"
+        ],
+        [
+          "5105",
+          "5105",
+          "FIRM"
+        ],
+        [
+          "5200",
+          "5200",
+          "FIRM"
+        ],
+        [
+          "5201",
+          "5201",
+          "FIRM"
+        ],
+        [
+          "5202",
+          "5202",
+          "FIRM"
+        ],
+        [
+          "5300",
+          "5300",
+          "FIRM"
+        ],
+        [
+          "5400",
+          "5400",
+          "FIRM"
+        ],
+        [
+          "9000",
+          "9000",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Quad_Corner",
+      "pages": [
+        56
+      ],
+      "header": [
+        "Coded Value",
+        "Quad Corner",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "NE",
+          "NE",
+          "FIRM"
+        ],
+        [
+          "NW",
+          "NW",
+          "FIRM"
+        ],
+        [
+          "SE",
+          "SE",
+          "FIRM"
+        ],
+        [
+          "SW",
+          "SW",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Release_Typ",
+      "pages": [
+        56
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Release",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "P",
+          "Piping",
+          "FRD"
+        ],
+        [
+          "O",
+          "Overtop",
+          "FRD"
+        ],
+        [
+          "G",
+          "Gate Failure",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Reservoir_Cond",
+      "pages": [
+        56
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Reservoir Conditions",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "F",
+          "Full",
+          "FRD"
+        ],
+        [
+          "N",
+          "Normal Pool",
+          "FRD"
+        ],
+        [
+          "A",
+          "Auxiliary Spillway",
+          "FRD"
+        ],
+        [
+          "P",
+          "Primary Spillway",
+          "FRD"
+        ],
+        [
+          "W",
+          "Without Dam",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Runup_Mdl",
+      "pages": [
+        57
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Runup Model",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1010",
+          "ACES 1.07 (1992)",
+          "FIRM, FRD"
+        ],
+        [
+          "1015",
+          "CEM – OTHER (2003)",
+          "FIRM, FRD"
+        ],
+        [
+          "1020",
+          "CHAMP / RUNUP 2.0 (2007)",
+          "FIRM, FRD"
+        ],
+        [
+          "1080",
+          "DIM",
+          "FIRM, FRD"
+        ],
+        [
+          "1030",
+          "EROSION (1998)",
+          "FRD"
+        ],
+        [
+          "1040",
+          "GLWRM (1992)",
+          "FRD"
+        ],
+        [
+          "9000",
+          "OTHER",
+          "FIRM, FRD"
+        ],
+        [
+          "1050",
+          "RUNUP 2.0 (1990)",
+          "FIRM, FRD"
+        ],
+        [
+          "1070",
+          "SPM (USACE 1984)",
+          "FIRM, FRD"
+        ],
+        [
+          "1060",
+          "TAW Method",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Scale",
+      "pages": [
+        57
+      ],
+      "header": [
+        "Coded Value",
+        "FIRM Panel Scale",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "6000",
+          "FIRM, Discovery"
+        ],
+        [
+          "1010",
+          "12000",
+          "FIRM, Discovery"
+        ],
+        [
+          "1020",
+          "24000",
+          "FIRM, Discovery"
+        ],
+        [
+          "2000",
+          "10000",
+          "FIRM, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_SFHA_FLDWY",
+      "pages": [
+        57,
+        58
+      ],
+      "header": [
+        "Coded Value",
+        "Type of FRD Floodway",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [
+        [
+          "SFHA",
+          null,
+          null,
+          "Special Flood Hazard Area",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "FLDWY",
+          null,
+          null,
+          "Floodway",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "NONSFHA",
+          null,
+          null,
+          "Non-Special Flood Hazard Area",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "CHHA",
+          null,
+          null,
+          "Coastal High Hazard Area",
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "fragments": []
+    },
+    {
+      "section": "D_Shr_Typ",
+      "pages": [
+        58
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Shoreline",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Sandy Beach-Small Dune",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Sandy Beach-Large Dune",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Erodible Bluff",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Non-Erodible Bluff",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Shore Protection Structure",
+          "FIRM"
+        ],
+        [
+          "1050",
+          "Wetland",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_State_FIPS",
+      "pages": [
+        58,
+        59,
+        60
+      ],
+      "header": [
+        "Coded Value",
+        "FIRM Description",
+        "FRD Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "01",
+          "01",
+          "01 - Alabama",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "02",
+          "02",
+          "02 - Alaska",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "04",
+          "04",
+          "04 - Arizona",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "05",
+          "05",
+          "05 - Arkansas",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "06",
+          "06",
+          "06 - California",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "08",
+          "08",
+          "08 - Colorado",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "09",
+          "09",
+          "09 - Connecticut",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "10",
+          "10",
+          "10 - Delaware",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "11",
+          "11",
+          "11 - District of Columbia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "12",
+          "12",
+          "12 - Florida",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "13",
+          "13",
+          "13 - Georgia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "15",
+          "15",
+          "15 - Hawaii",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "16",
+          "16",
+          "16 - Idaho",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "17",
+          "17",
+          "17 - Illinois",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "18",
+          "18",
+          "18 - Indiana",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "19",
+          "19",
+          "19 - Iowa",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "20",
+          "20",
+          "20 - Kansas",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "21",
+          "21",
+          "21 - Kentucky",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "22",
+          "22",
+          "22 - Louisiana",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "23",
+          "23",
+          "23 - Maine",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "24",
+          "24",
+          "24 - Maryland",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "25",
+          "25",
+          "25 - Massachusetts",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "26",
+          "26",
+          "26 - Michigan",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "27",
+          "27",
+          "27 - Minnesota",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "28",
+          "28",
+          "28 - Mississippi",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "29",
+          "29",
+          "29 - Missouri",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "30",
+          "30",
+          "30 - Montana",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "31",
+          "31",
+          "31 - Nebraska",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "32",
+          "32",
+          "32 - Nevada",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "33",
+          "33",
+          "33 - New Hampshire",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "34",
+          "34",
+          "34 - New Jersey",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "35",
+          "35",
+          "35 - New Mexico",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "36",
+          "36",
+          "36 - New York",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "37",
+          "37",
+          "37 - North Carolina",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "38",
+          "38",
+          "38 - North Dakota",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "39",
+          "39",
+          "39 - Ohio",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "40",
+          "40",
+          "40 - Oklahoma",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "41",
+          "41",
+          "41 - Oregon",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "42",
+          "42",
+          "42 - Pennsylvania",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "44",
+          "44",
+          "44 - Rhode Island",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "45",
+          "45",
+          "45 - South Carolina",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "46",
+          "46",
+          "46 - South Dakota",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "47",
+          "47",
+          "47 - Tennessee",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "48",
+          "48",
+          "48 - Texas",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "49",
+          "49",
+          "49 - Utah",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "50",
+          "50",
+          "50 - Vermont",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "51",
+          "51",
+          "51 - Virginia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "53",
+          "53",
+          "53 - Washington",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "54",
+          "54",
+          "54 - West Virginia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "55",
+          "55",
+          "55 - Wisconsin",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "56",
+          "56",
+          "56 - Wyoming",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "60",
+          "60",
+          "60 - American Samoa",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "64",
+          "64",
+          "64 - Micronesia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "66",
+          "66",
+          "66 - Guam",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "68",
+          "68",
+          "68 - Marshall Islands",
+          "FIRM, FRD"
+        ],
+        [
+          "69",
+          "69",
+          "69 - Northern Mariana Islands",
+          "FIRM, FRD"
+        ],
+        [
+          "70",
+          "70",
+          "70 - Palau",
+          "FIRM, FRD"
+        ],
+        [
+          "72",
+          "72",
+          "72 - Puerto Rico",
+          "FIRM, FRD"
+        ],
+        [
+          "74",
+          "74",
+          "74 – U.S. Minor Islands",
+          "FIRM, FRD"
+        ],
+        [
+          "78",
+          "78",
+          "78 - Virgin Islands",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_State_Name",
+      "pages": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "header": [
+        "Coded Value",
+        "State Name",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "AL",
+          "Alabama",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "AK",
+          "Alaska",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "AS",
+          "American Samoa",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "AR",
+          "Arkansas",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "AZ",
+          "Arizona",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "CA",
+          "California",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "CO",
+          "Colorado",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "CT",
+          "Connecticut",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "DE",
+          "Delaware",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "DC",
+          "District of Columbia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "FL",
+          "Florida",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "GA",
+          "Georgia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "GU",
+          "Guam",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "HI",
+          "Hawaii",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "ID",
+          "Idaho",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "IL",
+          "Illinois",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "IN",
+          "Indiana",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "IA",
+          "Iowa",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "KS",
+          "Kansas",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "KY",
+          "Kentucky",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "LA",
+          "Louisiana",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "ME",
+          "Maine",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MH",
+          "Marshall Islands",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MD",
+          "Maryland",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MA",
+          "Massachusetts",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MI",
+          "Michigan",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "FM",
+          "Micronesia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MN",
+          "Minnesota",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MS",
+          "Mississippi",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MO",
+          "Missouri",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MT",
+          "Montana",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NE",
+          "Nebraska",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NV",
+          "Nevada",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NH",
+          "New Hampshire",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NJ",
+          "New Jersey",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NM",
+          "New Mexico",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NY",
+          "New York",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NC",
+          "North Carolina",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "ND",
+          "North Dakota",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "MP",
+          "Northern Mariana Islands",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "OH",
+          "Ohio",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "OK",
+          "Oklahoma",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "OR",
+          "Oregon",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "PW",
+          "Palau",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "PA",
+          "Pennsylvania",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "PR",
+          "Puerto Rico",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "RI",
+          "Rhode Island",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "SC",
+          "South Carolina",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "SD",
+          "South Dakota",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "TN",
+          "Tennessee",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "TX",
+          "Texas",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "UM",
+          "U.S. Minor Islands",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "UT",
+          "Utah",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "VT",
+          "Vermont",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "VA",
+          "Virginia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "VI",
+          "Virgin Islands",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "WA",
+          "Washington",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "WV",
+          "West Virginia",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "WI",
+          "Wisconsin",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "WY",
+          "Wyoming",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM, FRD, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Struct_Face",
+      "pages": [
+        63
+      ],
+      "header": [
+        "Coded Value",
+        "Face of Structure",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "UP",
+          "Upstream",
+          "FIRM"
+        ],
+        [
+          "DN",
+          "Downstream",
+          "FIRM"
+        ],
+        [
+          "UNK",
+          "Unknown",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Struct_Mtl",
+      "pages": [
+        63
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Structure Material",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Stone",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Asphalt",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Concrete",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Earthen",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Timber",
+          "FIRM"
+        ],
+        [
+          "1050",
+          "Steel",
+          "FIRM"
+        ],
+        [
+          "1060",
+          "Sand",
+          "FIRM"
+        ],
+        [
+          "1070",
+          "Other",
+          "FIRM"
+        ],
+        [
+          "1080",
+          "Unknown",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Struct_Typ",
+      "pages": [
+        64,
+        65
+      ],
+      "header": [
+        "Coded Value",
+        "Structure Type Definition",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Aqueduct",
+          "FIRM"
+        ],
+        [
+          "1001",
+          "Bridge",
+          "FIRM"
+        ],
+        [
+          "1002",
+          "Canal",
+          "FIRM"
+        ],
+        [
+          "1003",
+          "Channel",
+          "FIRM"
+        ],
+        [
+          "1006",
+          "Control Structure",
+          "FIRM"
+        ],
+        [
+          "1007",
+          "Culvert",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Dam",
+          "FIRM"
+        ],
+        [
+          "1012",
+          "Dock",
+          "FIRM"
+        ],
+        [
+          "1013",
+          "Drop Structure",
+          "FIRM"
+        ],
+        [
+          "1014",
+          "Energy Dissipater",
+          "FIRM"
+        ],
+        [
+          "1015",
+          "Fish Ladder",
+          "FIRM"
+        ],
+        [
+          "1017",
+          "Flume",
+          "FIRM"
+        ],
+        [
+          "1018",
+          "Footbridge",
+          "FIRM"
+        ],
+        [
+          "1019",
+          "Gate",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Jetty",
+          "FIRM"
+        ],
+        [
+          "1021",
+          "Levee",
+          "FIRM"
+        ],
+        [
+          "1022",
+          "Lock",
+          "FIRM"
+        ],
+        [
+          "1023",
+          "Penstock",
+          "FIRM"
+        ],
+        [
+          "1024",
+          "Pier",
+          "FIRM"
+        ],
+        [
+          "1025",
+          "Pump Station",
+          "FIRM"
+        ],
+        [
+          "1026",
+          "Seawall",
+          "FIRM"
+        ],
+        [
+          "1027",
+          "Side Weir Structure",
+          "FIRM"
+        ],
+        [
+          "1028",
+          "Storm Sewer",
+          "FIRM"
+        ],
+        [
+          "1029",
+          "Utility Crossing",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Weir",
+          "FIRM"
+        ],
+        [
+          "1031",
+          "Wing Wall",
+          "FIRM"
+        ],
+        [
+          "1033",
+          "0.2-Percent-Annual-Chance Flood Discharge Contained in Structure",
+          "FIRM"
+        ],
+        [
+          "1032",
+          "1-Percent-Annual-Chance Flood Discharge Contained in Structure",
+          "FIRM"
+        ],
+        [
+          "1036",
+          "Floodway Contained in Structure",
+          "FIRM"
+        ],
+        [
+          "1037",
+          "Pipeline",
+          "FIRM"
+        ],
+        [
+          "1038",
+          "Retaining Wall",
+          "FIRM"
+        ],
+        [
+          "1039",
+          "Revetment",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Siphon",
+          "FIRM"
+        ],
+        [
+          "9000",
+          "Other / Misc. Structure",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Study_Mth",
+      "pages": [
+        65,
+        66
+      ],
+      "header": [
+        "Coded Value",
+        "Study Method",
+        "When Used",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "New H&H",
+          "New fully detailed modeling",
+          "FIRM, FRD"
+        ],
+        [
+          "1010",
+          "BLE TIER A",
+          "Auto placed cross sections, structures not included",
+          "FIRM, FRD"
+        ],
+        [
+          "1020",
+          "BLE TIER B",
+          "Intelligently placed cross sections, structures not included",
+          "FIRM, FRD"
+        ],
+        [
+          "1030",
+          "BLE TIER C",
+          "Cross sections reviewed by engineer; structures included",
+          "FIRM, FRD"
+        ],
+        [
+          "1040",
+          "BLE TIER D",
+          "Cross sections reviewed by engineer, structures with opening information",
+          "FIRM, FRD"
+        ],
+        [
+          "1050",
+          "BLE TIER E",
+          "Cross sections reviewed by engineer and with channel bathymetry, structures from field survey, as-builts, or measured in field",
+          "FIRM, FRD"
+        ],
+        [
+          "1060",
+          "LSAE",
+          "Large Scale Automated Engineering",
+          "FIRM, FRD"
+        ],
+        [
+          "1100",
+          "REDELINEATION",
+          "Existing studies remapped on new topographic data",
+          "FIRM, FRD"
+        ],
+        [
+          "1200",
+          "DIGITAL CONVERSION",
+          "Existing studies digitized from existing scanned panels",
+          "FIRM, FRD"
+        ],
+        [
+          "1300",
+          "SECLUSION",
+          "Existing studies digitized from scanned panels or maintain existing NFHL data due to levee system that has not been shown to comply with Section 65.10.",
+          "FIRM, FRD"
+        ],
+        [
+          "9000",
+          "OTHER",
+          "OTHER",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "NP; unshaded-X zones",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Study_Prefix",
+      "pages": [
+        66,
+        67
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Prefix Value",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "0100",
+          "Borough of",
+          "FIRM, FRD"
+        ],
+        [
+          "0200",
+          "City and County of",
+          "FIRM, FRD"
+        ],
+        [
+          "0300",
+          "City of",
+          "FIRM, FRD"
+        ],
+        [
+          "0400",
+          "Municipality of",
+          "FIRM, FRD"
+        ],
+        [
+          "0500",
+          "Town of",
+          "FIRM, FRD"
+        ],
+        [
+          "0600",
+          "Township of",
+          "FIRM, FRD"
+        ],
+        [
+          "0700",
+          "Village of",
+          "FIRM, FRD"
+        ],
+        [
+          "0800",
+          "Town and Village of",
+          "FIRM, FRD"
+        ],
+        [
+          "0900",
+          "Tribal Nation",
+          "FIRM, FRD"
+        ],
+        [
+          "9000",
+          "Other",
+          "FIRM, FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Study_Typ",
+      "pages": [
+        67,
+        68
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Study",
+        "When Used",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1030",
+          "BLE available but unpublished",
+          "Base Level Engineering data are available, but zones and Baseflood Elevations (BFEs) are not published on FIRM",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1000",
+          "SFHA without BFE",
+          "Such as A zones without BFEs or water surface elevations",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1040",
+          "SFHA with unpublished BFE",
+          "Such as A zones with BFEs or water surface elevations calculated but not published in FIS Report",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1010",
+          "SFHA with BFE published only in FIS",
+          "Such as A zones with BFEs or water surface elevations published only in FIS Report",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1050",
+          "SFHA with BFE no floodway",
+          "Such as AE or VE zones with regulatory water surface elevations or depths but no floodway; or shaded-X zones that are associated with this type of study",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1060",
+          "SFHA with BFE and floodway",
+          "Such as AE or VE zones with regulatory water surface elevations and a regulatory floodway; or shaded-X zones that are associated with this type of study",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "1070",
+          "Shaded Zone X with depths less than 1’",
+          "Such as Zone X with depths less than 1’",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "9000",
+          "OTHER",
+          "OTHER",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "NP; unshaded-X zones",
+          "FIRM, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Subbasin_Typ",
+      "pages": [
+        68
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Subbasin Model",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "HYD",
+          "Hydrologic Analyses",
+          "FIRM"
+        ],
+        [
+          "HUC8",
+          "USGS HUC-8",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Surge_Mdl",
+      "pages": [
+        68
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Surge Model",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1010",
+          "DYNLET",
+          "FIRM, FRD"
+        ],
+        [
+          "1020",
+          "FEMA Surge (1988)",
+          "FIRM, FRD"
+        ],
+        [
+          "1040",
+          "MIKE 21 HD/NHD",
+          "FIRM, FRD"
+        ],
+        [
+          "1050",
+          "New England Tide Profile",
+          "FIRM, FRD"
+        ],
+        [
+          "1080",
+          "TABS RMA V.4.3 (Oct 1996)",
+          "FIRM, FRD"
+        ],
+        [
+          "1090",
+          "USACE Great Lakes Tide Profile (1988)",
+          "FIRM, FRD"
+        ],
+        [
+          "0100",
+          "ADCIRC (2003)",
+          "FIRM, FRD"
+        ],
+        [
+          "0110",
+          "DELFT 3D",
+          "FIRM, FRD"
+        ],
+        [
+          "9000",
+          "OTHER",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Task_Typ",
+      "pages": [
+        69
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Data Development or Non-Regulatory Flood Risk Task",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "ALLUVIAL FAN",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "BASE MAP",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "COASTAL",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "FIRM DATABASE",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "FLOODPLAIN MAPPING",
+          "FIRM"
+        ],
+        [
+          "1050",
+          "HYDRAULIC",
+          "FIRM"
+        ],
+        [
+          "1060",
+          "HYDROLOGIC",
+          "FIRM"
+        ],
+        [
+          "1070",
+          "SURVEY",
+          "FIRM"
+        ],
+        [
+          "1080",
+          "NEW TOPO CAPTURE",
+          "FIRM"
+        ],
+        [
+          "1081",
+          "EXISTING TOPO CAPTURE",
+          "FIRM"
+        ],
+        [
+          "1082",
+          "TERRAIN CAPTURE",
+          "FIRM"
+        ],
+        [
+          "1090",
+          "DISCOVERY",
+          "FIRM"
+        ],
+        [
+          "1100",
+          "FLOOD RISK ASSESSMENT",
+          "FIRM"
+        ],
+        [
+          "1200",
+          "LOMR",
+          "FIRM"
+        ],
+        [
+          "1300",
+          "Levee Seclusion",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Time_Units",
+      "pages": [
+        69
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Time Unit",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "DAYS",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "HOURS",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "MINUTES",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "MONTHS",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Time_Units",
+      "pages": [
+        70
+      ],
+      "header": [
+        "Coded Value",
+        "T",
+        "ype of Time Unit",
+        "Applies to Database Schema"
+      ],
+      "rows": [],
+      "irregular": [
+        [
+          "1040",
+          null,
+          null,
+          "SECONDS",
+          null,
+          null,
+          "FIRM",
+          null,
+          null
+        ],
+        [
+          "1050",
+          null,
+          null,
+          "WEEKS",
+          null,
+          null,
+          "FIRM",
+          null,
+          null
+        ],
+        [
+          "1060",
+          null,
+          null,
+          "YEARS",
+          null,
+          null,
+          "FIRM",
+          null,
+          null
+        ]
+      ],
+      "fragments": []
+    },
+    {
+      "section": "D_TrueFalse",
+      "pages": [
+        70
+      ],
+      "header": [
+        "Coded Value",
+        "FRD Description",
+        "FIRM Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "T",
+          "True (Yes)",
+          "T",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "F",
+          "False (No)",
+          "F",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "U",
+          "Unknown",
+          "U",
+          "FIRM, FRD, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_TsctBasln_Typ",
+      "pages": [
+        70
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Transect Baseline Source",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Zero Foot Contour Field Survey",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Zero Foot Contour LiDAR / Shoals",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Zero Foot Contour Referenced to Tidal Datum",
+          "FIRM"
+        ],
+        [
+          "9000",
+          "Other Source",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_USACE_District",
+      "pages": [
+        70,
+        71,
+        72
+      ],
+      "header": [
+        "Coded Value",
+        "United States Army Corps of Engineers (USACE) District",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1001",
+          "Alaska",
+          "FIRM"
+        ],
+        [
+          "1002",
+          "Albuquerque",
+          "FIRM"
+        ],
+        [
+          "1003",
+          "Baltimore",
+          "FIRM"
+        ],
+        [
+          "1004",
+          "Buffalo",
+          "FIRM"
+        ],
+        [
+          "1005",
+          "Charleston",
+          "FIRM"
+        ],
+        [
+          "1006",
+          "Chicago",
+          "FIRM"
+        ],
+        [
+          "1007",
+          "Detroit",
+          "FIRM"
+        ],
+        [
+          "1008",
+          "Fort Worth",
+          "FIRM"
+        ],
+        [
+          "1009",
+          "Galveston",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Gulf Region",
+          "FIRM"
+        ],
+        [
+          "1011",
+          "Honolulu",
+          "FIRM"
+        ],
+        [
+          "1012",
+          "Huntington",
+          "FIRM"
+        ],
+        [
+          "1013",
+          "Jacksonville",
+          "FIRM"
+        ],
+        [
+          "1014",
+          "Kansas City",
+          "FIRM"
+        ],
+        [
+          "1015",
+          "Little Rock",
+          "FIRM"
+        ],
+        [
+          "1016",
+          "Louisville",
+          "FIRM"
+        ],
+        [
+          "1017",
+          "Los Angeles",
+          "FIRM"
+        ],
+        [
+          "1018",
+          "Memphis",
+          "FIRM"
+        ],
+        [
+          "1019",
+          "Mobile",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Nashville",
+          "FIRM"
+        ],
+        [
+          "1021",
+          "New England",
+          "FIRM"
+        ],
+        [
+          "1022",
+          "New Orleans",
+          "FIRM"
+        ],
+        [
+          "1023",
+          "New York",
+          "FIRM"
+        ],
+        [
+          "1024",
+          "Norfolk",
+          "FIRM"
+        ],
+        [
+          "1025",
+          "Omaha",
+          "FIRM"
+        ],
+        [
+          "1026",
+          "Philadelphia",
+          "FIRM"
+        ],
+        [
+          "1027",
+          "Pittsburgh",
+          "FIRM"
+        ],
+        [
+          "1028",
+          "Portland",
+          "FIRM"
+        ],
+        [
+          "1029",
+          "Rock Island",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Sacramento",
+          "FIRM"
+        ],
+        [
+          "1031",
+          "San Francisco",
+          "FIRM"
+        ],
+        [
+          "1032",
+          "Savannah",
+          "FIRM"
+        ],
+        [
+          "1033",
+          "Seattle",
+          "FIRM"
+        ],
+        [
+          "1034",
+          "St. Louis",
+          "FIRM"
+        ],
+        [
+          "1035",
+          "St. Paul",
+          "FIRM"
+        ],
+        [
+          "1036",
+          "Tulsa",
+          "FIRM"
+        ],
+        [
+          "1037",
+          "Vicksburg",
+          "FIRM"
+        ],
+        [
+          "1038",
+          "Walla Walla",
+          "FIRM"
+        ],
+        [
+          "1039",
+          "Wilmington",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_V_Datum",
+      "pages": [
+        72,
+        73
+      ],
+      "header": [
+        "Coded Value",
+        "FRD Description",
+        "Type of Vertical Datum FIRM Description",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "MSL",
+          "Mean Sea Level",
+          "MSL",
+          "FIRM, FRD"
+        ],
+        [
+          "NAVD88",
+          "North American Vertical Datum 1988",
+          "NAVD88",
+          "FIRM, FRD"
+        ],
+        [
+          "NGVD29",
+          "North American Geodetic Vertical Datum 1929",
+          "NGVD29",
+          "FIRM, FRD"
+        ],
+        [
+          "TIDAL",
+          "Local Tidal Datum",
+          "LOCAL TIDAL DATUM",
+          "FIRM, FRD"
+        ],
+        [
+          "MLLW",
+          "Mean Lower Low Water Datum",
+          "MLLW",
+          "FIRM, FRD"
+        ],
+        [
+          "MLW",
+          "Mean Low Water Datum",
+          "MLW",
+          "FIRM, FRD"
+        ],
+        [
+          "GUVD04",
+          "Guam Vertical Datum of 2004",
+          "GUVD04",
+          "FIRM, FRD"
+        ],
+        [
+          "NMVD03",
+          "Northern Marianas Vertical Datum of 2003",
+          "NMVD03",
+          "FIRM, FRD"
+        ],
+        [
+          "PRVD02",
+          "Puerto Rico Vertical Datum of 2002",
+          "PRVD02",
+          "FIRM, FRD"
+        ],
+        [
+          "VIVD09",
+          "Virgin Islands Vertical Datum of 2009",
+          "VIVD09",
+          "FIRM, FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Velocity_Units",
+      "pages": [
+        73
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Velocity Unit",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1000",
+          "Centimeters / Day",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Centimeters / Hour",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "Feet / Second",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Inches / Day",
+          "FIRM"
+        ],
+        [
+          "1040",
+          "Inches / Hour",
+          "FIRM"
+        ],
+        [
+          "1050",
+          "Meters / Second",
+          "FIRM"
+        ],
+        [
+          "1060",
+          "Micrometers / Second",
+          "FIRM"
+        ],
+        [
+          "1070",
+          "Millimeters / Day",
+          "FIRM"
+        ],
+        [
+          "1080",
+          "Millimeters / Hour",
+          "FIRM"
+        ],
+        [
+          "NP",
+          "NP",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_VZone",
+      "pages": [
+        73,
+        74
+      ],
+      "header": [
+        "Coded Value",
+        "Type of V Zone",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1060",
+          "Breaking Wave Ht",
+          "FIRM"
+        ],
+        [
+          "1050",
+          "High Velocity Flow",
+          "FIRM"
+        ],
+        [
+          "1030",
+          "Runup",
+          "FIRM"
+        ],
+        [
+          "1010",
+          "Wave Overtopping Splash Zone",
+          "FIRM"
+        ],
+        [
+          "1020",
+          "PFD",
+          "FIRM"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Wave_Haz",
+      "pages": [
+        74
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Wave Hazard",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "HIGH",
+          "High",
+          "FRD"
+        ],
+        [
+          "MOD",
+          "Moderate",
+          "FRD"
+        ],
+        [
+          "MIN",
+          "Minimal",
+          "FRD"
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Wave_Mdl",
+      "pages": [
+        74
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Wave Model",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "1020",
+          "MIKE 21 (OSW)",
+          "FIRM, FRD"
+        ],
+        [
+          "1030",
+          "MIKE 21 (NSW)",
+          "FIRM, FRD"
+        ],
+        [
+          "1040",
+          "RCPWAVE (1986)",
+          "FIRM, FRD"
+        ],
+        [
+          "1050",
+          "WHAFIS 3.0 (1988)",
+          "FIRM, FRD"
+        ],
+        [
+          "1060",
+          "WHAFIS 3.0 GL (1983)",
+          "FIRM, FRD"
+        ],
+        [
+          "1010",
+          "DELFT 3D",
+          "FIRM, FRD"
+        ],
+        [
+          "1070",
+          "STWAVE (Latest Version)",
+          "FIRM, FRD"
+        ],
+        [
+          "1080",
+          "SWAN (2008)",
+          "FIRM, FRD"
+        ],
+        [
+          "1065",
+          "WHAFIS 4.0 (2007)",
+          "FIRM, FRD"
+        ],
+        [
+          "9000",
+          "OTHER",
+          "FRD"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_XS_Ln_Typ",
+      "pages": [
+        75
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Cross Section Description",
+        "Applies to Database Schema",
+        "When Used?"
+      ],
+      "rows": [
+        [
+          "1010",
+          "LETTERED, MAPPED",
+          "FIRM",
+          "Traditional Lettered XS, FDTs, Profiles"
+        ],
+        [
+          "1020",
+          "NOT LETTERED, MAPPED",
+          "FIRM",
+          "Modeled XSs used for Base Flood Elevation (BFE) values on FIRM panels, not shown on FDTs or Profiles, shown but not lettered on panels"
+        ],
+        [
+          "1030",
+          "NOT LETTERED, NOT MAPPED",
+          "FIRM",
+          "Model Backup in the FIRM Database, including unused XSs adjacent to bridges, too densely spaced, or modeled Zone A."
+        ]
+      ],
+      "irregular": [],
+      "fragments": [
+        [
+          [
+            "Type of Cross Section"
+          ],
+          [
+            "Description"
+          ]
+        ]
+      ]
+    },
+    {
+      "section": "D_Zone",
+      "pages": [
+        75
+      ],
+      "header": [
+        "Coded Value",
+        "Type of Flood Zone",
+        "Applies to Database Schema"
+      ],
+      "rows": [
+        [
+          "A",
+          "A",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "A99",
+          "A99",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "AE",
+          "AE",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "AH",
+          "AH",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "AO",
+          "AO",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "AR",
+          "AR",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "ANI",
+          "AREA NOT INCLUDED",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "D",
+          "D",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "NP",
+          "NP – NOT POPULATED",
+          "FRD"
+        ],
+        [
+          "OW",
+          "OPEN WATER",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "V",
+          "V",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "VE",
+          "VE",
+          "FIRM, FRD, Discovery"
+        ],
+        [
+          "X",
+          "X",
+          "FIRM, FRD, Discovery"
+        ]
+      ],
+      "irregular": [],
+      "fragments": []
+    },
+    {
+      "section": "D_Zone_Subtype",
+      "pages": [
+        76,
+        77
+      ],
+      "header": [
+        "Coded Value",
+        "Sub-Types of Flood Zones",
+        "Applies to Database Schema",
+        "etontooF"
+      ],
+      "rows": [
+        [
+          "0500",
+          "0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD",
+          "FIRM, FRD",
+          "6"
+        ],
+        [
+          "0520",
+          "0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD CONTAINED IN CHANNEL",
+          "FIRM, FRD",
+          "1, 6"
+        ],
+        [
+          "0510",
+          "0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE",
+          "FIRM, FRD",
+          "1, 6"
+        ],
+        [
+          "0210",
+          "1-PCT-ANNUAL-CHANCE FLOOD HAZARD CONTAINED IN CHANNEL",
+          "FIRM, FRD",
+          "1"
+        ],
+        [
+          "0200",
+          "1-PCT-ANNUAL-CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE",
+          "FIRM, FRD",
+          "1"
+        ],
+        [
+          "0400",
+          "1-PCT DEPTH LESS THAN 1 FOOT",
+          "FIRM, FRD",
+          "6"
+        ],
+        [
+          "0410",
+          "1-PCT DRAINAGE AREA LESS THAN 1 SQUARE MILE",
+          "FIRM, FRD",
+          "6"
+        ],
+        [
+          "0300",
+          "1-PCT FUTURE CONDITIONS",
+          "FIRM, FRD",
+          "6"
+        ],
+        [
+          "0310",
+          "1-PCT FUTURE CONDITIONS CONTAINED IN STRUCTURE",
+          "FIRM, FRD",
+          "1, 6"
+        ],
+        [
+          "1010",
+          "ADMINISTRATIVE FLOODWAY",
+          "FIRM, FRD",
+          "4"
+        ],
+        [
+          "1020",
+          "AREA OF SPECIAL CONSIDERATION",
+          "FIRM, FRD",
+          "4"
+        ],
+        [
+          "1000",
+          "AREA WITH REDUCED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
+          "FIRM, FRD",
+          "2"
+        ],
+        [
+          "2000",
+          "AREA OF MINIMAL FLOOD HAZARD",
+          "FIRM, FRD",
+          "3"
+        ],
+        [
+          "1040",
+          "COLORADO RIVER FLOODWAY",
+          "FIRM, FRD",
+          "4"
+        ],
+        [
+          "1030",
+          "COMMUNITY ENCROACHMENT AREA",
+          "FIRM, FRD",
+          "4"
+        ],
+        [
+          "1050",
+          "DENSITY FRINGE AREA",
+          "FIRM, FRD",
+          "4,5"
+        ],
+        [
+          "1100",
+          "FLOODWAY",
+          "FIRM, FRD",
+          "4"
+        ],
+        [
+          "1110",
+          "FLOODWAY CONTAINED IN STRUCTURE",
+          "FIRM, FRD",
+          "1"
+        ],
+        [
+          "1120",
+          "FLOODWAY CONTAINED IN CHANNEL",
+          "FIRM, FRD",
+          "1"
+        ],
+        [
+          "1200",
+          "FLOWAGE EASEMENT AREA",
+          "FIRM, FRD",
+          "4"
+        ],
+        [
+          "1230",
+          "NARROW FLOODWAY",
+          "FIRM, FRD",
+          "4"
+        ],
+        [
+          "1220",
+          "RIVERINE FLOODWAY SHOWN IN COASTAL ZONE",
+          "FIRM, FRD",
+          "4, 7"
+        ],
+        [
+          "1210",
+          "STATE ENCROACHMENT AREA",
+          "FIRM, FRD",
+          "4"
+        ],
+        [
+          "0100",
+          "COASTAL FLOODPLAIN",
+          "FIRM, FRD",
+          "7"
+        ],
+        [
+          "0120",
+          "COMBINED RIVERINE AND COASTAL FLOODPLAIN",
+          "FIRM, FRD",
+          "7"
+        ],
+        [
+          "0110",
+          "RIVERINE FLOODPLAIN IN COASTAL ZONE",
+          "FIRM, FRD",
+          "7"
+        ],
+        [
+          "1240",
+          "RIVERINE FLOODWAY IN COMBINED RIVERINE AND COASTAL ZONE",
+          "FIRM, FRD",
+          "7"
+        ],
+        [
+          "0530",
+          "0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD IN COASTAL ZONE",
+          "FIRM, FRD",
+          "7"
+        ],
+        [
+          "0540",
+          "0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD IN COMBINED RIVERINE AND COASTAL ZONE",
+          "FIRM, FRD",
+          "7"
+        ],
+        [
+          "3000",
+          "AREA WITH FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
+          "FIRM, FRD",
+          ""
+        ],
+        [
+          "3010",
+          "AREA WITH REDUCED FLOOD HAZARD DUE TO PROVISIONALLY ACCREDITED LEVEE SYSTEM",
+          "FIRM, FRD",
+          ""
+        ],
+        [
+          "3020",
+          "AREA WITH UNDETERMINED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
+          "FIRM, FRD",
+          "8"
+        ],
+        [
+          "3030",
+          "AREA WITH REDUCED FLOOD HAZARD DUE TO ACCREDITED LEVEE SYSTEM",
+          "FIRM, FRD",
+          ""
+        ],
+        [
+          "9000",
+          "Other",
+          "FRD",
+          ""
+        ],
+        [
+          "NP",
+          "NP",
+          "FRD",
+          ""
+        ]
+      ],
+      "irregular": [],
+      "fragments": [
+        [
+          [
+            "Applies to"
+          ],
+          [
+            "Database"
+          ],
+          [
+            "Schema"
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ],
+        [
+          [
+            "Applies to"
+          ],
+          [
+            "Database"
+          ],
+          [
+            "Schema"
+          ]
+        ],
+        [
+          [
+            "Coded"
+          ],
+          [
+            "Value"
+          ]
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "currentVersion": 11.1,
+  "cimVersion": "3.1.0",
+  "id": 8,
+  "name": "Datum Conversion Points",
+  "type": "Feature Layer",
+  "description": "",
+  "geometryType": "esriGeometryPoint",
+  "sourceSpatialReference": {
+    "wkid": 4269,
+    "latestWkid": 4269,
+    "xyTolerance": 8.98315284119521e-09,
+    "zTolerance": 2e-05,
+    "mTolerance": 2,
+    "falseX": -400,
+    "falseY": -400,
+    "xyUnits": 763549374.53853,
+    "falseZ": 0,
+    "zUnits": 1,
+    "falseM": 0,
+    "mUnits": 1
+  },
+  "copyrightText": "",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 36111.909643,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "simple",
+      "symbol": {
+        "type": "esriPMS",
+        "url": "5f9fca273d2add66c8660f528a62023f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAUlEQVQ4jWNhoCJgoZth////12ZgYFBFEvrGyMi4iyzDXrx4kf7gwYNcGF9aWvoJAwODLFmGbd++XTwpKQnOr6+v5xkcYUaRYf///3/Q0NDAD+MfPnyYC1n+xIkT/PX19e9h/NTU1C/S0tLxjIyM+zAMY2BgkG9sbMRp886dOxl37twpAOP7+PgISEtLcw2xMGNgYOidN28ePB09fvzYsr6+Hs5PTEz8ZWtruwHGl5WVfcnAwHAXq2GMjIwlyPx58+atRE6kcnJy35KSksKJdRlFgAWfJCMj439mZmY4n4mJ6T/ZhiUkJDxMSEj4iyT0rr6+nmyXlTMwMIAwUWDwpjMAk6JFQ+W2JvEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "width": 14,
+        "height": 14,
+        "angle": 0,
+        "xoffset": 0,
+        "yoffset": 0
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": false,
+  "extent": {
+    "xmin": -151.19473104955895,
+    "ymin": 26.749999960293735,
+    "xmax": -66.999998691865,
+    "ymax": 60.53693374252839,
+    "spatialReference": {
+      "wkid": 4269,
+      "latestWkid": 4269,
+      "xyTolerance": 8.983152841195215e-09,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -400,
+      "falseY": -400,
+      "xyUnits": 999999999.9999999,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "DFIRM_ID",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "DFIRM_ID",
+      "type": "esriFieldTypeString",
+      "alias": "DFIRM_ID",
+      "length": 6,
+      "domain": null
+    },
+    {
+      "name": "VERSION_ID",
+      "type": "esriFieldTypeString",
+      "alias": "VERSION_ID",
+      "length": 11,
+      "domain": null
+    },
+    {
+      "name": "DATCONPTID",
+      "type": "esriFieldTypeString",
+      "alias": "DATCONPTID",
+      "length": 32,
+      "domain": null
+    },
+    {
+      "name": "QUAD_NM",
+      "type": "esriFieldTypeString",
+      "alias": "QUAD_NM",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "QUAD_COR",
+      "type": "esriFieldTypeString",
+      "alias": "QUAD_COR",
+      "length": 2,
+      "domain": null
+    },
+    {
+      "name": "FROM_DATUM",
+      "type": "esriFieldTypeString",
+      "alias": "FROM_DATUM",
+      "length": 17,
+      "domain": null
+    },
+    {
+      "name": "TO_DATUM",
+      "type": "esriFieldTypeString",
+      "alias": "TO_DATUM",
+      "length": 17,
+      "domain": null
+    },
+    {
+      "name": "WTR_NM",
+      "type": "esriFieldTypeString",
+      "alias": "WTR_NM",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "CONVFACTOR",
+      "type": "esriFieldTypeDouble",
+      "alias": "CONVFACTOR",
+      "domain": null
+    },
+    {
+      "name": "LEN_UNIT",
+      "type": "esriFieldTypeString",
+      "alias": "LEN_UNIT",
+      "length": 16,
+      "domain": null
+    },
+    {
+      "name": "SOURCE_CIT",
+      "type": "esriFieldTypeString",
+      "alias": "SOURCE_CIT",
+      "length": 21,
+      "domain": null
+    },
+    {
+      "name": "SHAPE",
+      "type": "esriFieldTypeGeometry",
+      "alias": "SHAPE",
+      "domain": null
+    },
+    {
+      "name": "GFID",
+      "type": "esriFieldTypeString",
+      "alias": "GFID",
+      "length": 36,
+      "domain": null
+    },
+    {
+      "name": "GlobalID",
+      "type": "esriFieldTypeGlobalID",
+      "alias": "GlobalID",
+      "length": 38,
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "SHAPE",
+    "type": "esriFieldTypeGeometry",
+    "alias": "SHAPE"
+  },
+  "indexes": [
+    {
+      "name": "R115_pk",
+      "fields": "OBJECTID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "UUID_115",
+      "fields": "GlobalID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "DFIRM_ID",
+      "fields": "DFIRM_ID",
+      "isAscending": true,
+      "isUnique": false,
+      "description": ""
+    },
+    {
+      "name": "S64_idx",
+      "fields": "SHAPE",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": true
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true
+}

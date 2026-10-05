@@ -1,0 +1,362 @@
+{
+  "currentVersion": 11.1,
+  "cimVersion": "3.1.0",
+  "id": 9,
+  "name": "Coastal Gages",
+  "type": "Feature Layer",
+  "description": "",
+  "geometryType": "esriGeometryPoint",
+  "sourceSpatialReference": {
+    "wkid": 4269,
+    "latestWkid": 4269,
+    "xyTolerance": 8.98315284119521e-09,
+    "zTolerance": 2e-05,
+    "mTolerance": 2,
+    "falseX": -400,
+    "falseY": -400,
+    "xyUnits": 763549374.53853,
+    "falseZ": 0,
+    "zUnits": 1,
+    "falseM": 0,
+    "mUnits": 1
+  },
+  "copyrightText": "",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 36111.909643,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "simple",
+      "symbol": {
+        "type": "esriPMS",
+        "url": "bb5f9bb36b621c5b7d2b8758c6554cd3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABHklEQVQokZXRzysEYRgH8O/3tb+m3bWNJFcJOZDipGz8B0q5kja54i+QHJz2qKyLE3uSclTkRHtzcBM1kYPL2mhmGvPVxmIylG+9vW9vz+eppyeBfyYR9ympE0AWgEMy/BVI6pO0HfqNSbSlQJN6kLRMcv8HkNQVNJyLp7OS7d0dgyYJa2ChOz9e3pOUJrkbAWEYrtVP52z//uS9wauHl6stmEwHcmPrZUlVku4X8B6nWsXf415Xm8AGMALg/BMYk/QBNntHhUm1Xn506GThKNMzPeTeHETqrf755uUAuIwAY8xGoViZNWm71709BBNZWIOLyA6vBCRLJIMIIPksaTQ/UdlsL+7MAMgBqJFcJVmL3QPJOoCljxOb2E3/lTdH019QMc+QoAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "width": 9,
+        "height": 9,
+        "angle": 0,
+        "xoffset": 0,
+        "yoffset": 0
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": false,
+  "extent": {
+    "xmin": -146.36167678737675,
+    "ymin": 24.550829989111662,
+    "xmax": -66.98286549880623,
+    "ymax": 61.13199762857323,
+    "spatialReference": {
+      "wkid": 4269,
+      "latestWkid": 4269,
+      "xyTolerance": 8.983152841195215e-09,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -400,
+      "falseY": -400,
+      "xyUnits": 999999999.9999999,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "DFIRM_ID",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "DFIRM_ID",
+      "type": "esriFieldTypeString",
+      "alias": "DFIRM_ID",
+      "length": 6,
+      "domain": null
+    },
+    {
+      "name": "VERSION_ID",
+      "type": "esriFieldTypeString",
+      "alias": "VERSION_ID",
+      "length": 11,
+      "domain": null
+    },
+    {
+      "name": "CSTGAGE_ID",
+      "type": "esriFieldTypeString",
+      "alias": "CSTGAGE_ID",
+      "length": 32,
+      "domain": null
+    },
+    {
+      "name": "CST_MDL_ID",
+      "type": "esriFieldTypeString",
+      "alias": "CST_MDL_ID",
+      "length": 32,
+      "domain": null
+    },
+    {
+      "name": "GAGE_NM",
+      "type": "esriFieldTypeString",
+      "alias": "GAGE_NM",
+      "length": 150,
+      "domain": null
+    },
+    {
+      "name": "AGENCY",
+      "type": "esriFieldTypeString",
+      "alias": "AGENCY",
+      "length": 150,
+      "domain": null
+    },
+    {
+      "name": "REC_INTVL",
+      "type": "esriFieldTypeString",
+      "alias": "REC_INTVL",
+      "length": 11,
+      "domain": null
+    },
+    {
+      "name": "TIME_UNIT",
+      "type": "esriFieldTypeString",
+      "alias": "TIME_UNIT",
+      "length": 7,
+      "domain": null
+    },
+    {
+      "name": "START_PD",
+      "type": "esriFieldTypeDate",
+      "alias": "START_PD",
+      "length": 8,
+      "domain": null
+    },
+    {
+      "name": "START_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "START_TIME",
+      "length": 10,
+      "domain": null
+    },
+    {
+      "name": "END_PD",
+      "type": "esriFieldTypeDate",
+      "alias": "END_PD",
+      "length": 8,
+      "domain": null
+    },
+    {
+      "name": "END_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "END_TIME",
+      "length": 10,
+      "domain": null
+    },
+    {
+      "name": "GAGE_TYPE",
+      "type": "esriFieldTypeString",
+      "alias": "GAGE_TYPE",
+      "length": 25,
+      "domain": null
+    },
+    {
+      "name": "V_DATUM",
+      "type": "esriFieldTypeString",
+      "alias": "V_DATUM",
+      "length": 17,
+      "domain": null
+    },
+    {
+      "name": "DATUM_CONV",
+      "type": "esriFieldTypeDouble",
+      "alias": "DATUM_CONV",
+      "domain": null
+    },
+    {
+      "name": "TIDE_TF",
+      "type": "esriFieldTypeString",
+      "alias": "TIDE_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "TIDE_EPOCH",
+      "type": "esriFieldTypeString",
+      "alias": "TIDE_EPOCH",
+      "length": 11,
+      "domain": null
+    },
+    {
+      "name": "TIDE_VBM",
+      "type": "esriFieldTypeString",
+      "alias": "TIDE_VBM",
+      "length": 11,
+      "domain": null
+    },
+    {
+      "name": "WVDIR_TF",
+      "type": "esriFieldTypeString",
+      "alias": "WVDIR_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "WVSPEC_TF",
+      "type": "esriFieldTypeString",
+      "alias": "WVSPEC_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "WDSPD_TF",
+      "type": "esriFieldTypeString",
+      "alias": "WDSPD_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "WDDIR_TF",
+      "type": "esriFieldTypeString",
+      "alias": "WDDIR_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "WDSTN_HT",
+      "type": "esriFieldTypeInteger",
+      "alias": "WDSTN_HT",
+      "domain": null
+    },
+    {
+      "name": "SOURCE_CIT",
+      "type": "esriFieldTypeString",
+      "alias": "SOURCE_CIT",
+      "length": 21,
+      "domain": null
+    },
+    {
+      "name": "SHAPE",
+      "type": "esriFieldTypeGeometry",
+      "alias": "SHAPE",
+      "domain": null
+    },
+    {
+      "name": "GFID",
+      "type": "esriFieldTypeString",
+      "alias": "GFID",
+      "length": 36,
+      "domain": null
+    },
+    {
+      "name": "GlobalID",
+      "type": "esriFieldTypeGlobalID",
+      "alias": "GlobalID",
+      "length": 38,
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "SHAPE",
+    "type": "esriFieldTypeGeometry",
+    "alias": "SHAPE"
+  },
+  "indexes": [
+    {
+      "name": "R131_pk",
+      "fields": "OBJECTID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "UUID_131",
+      "fields": "GlobalID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "S80_idx",
+      "fields": "SHAPE",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": true
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true
+}

@@ -1,0 +1,609 @@
+{
+  "currentVersion": 11.1,
+  "cimVersion": "3.1.0",
+  "id": 22,
+  "name": "Political Jurisdictions",
+  "type": "Feature Layer",
+  "description": "",
+  "geometryType": "esriGeometryPolygon",
+  "sourceSpatialReference": {
+    "wkid": 4269,
+    "latestWkid": 4269,
+    "xyTolerance": 8.98315284119521e-09,
+    "zTolerance": 2e-05,
+    "mTolerance": 2,
+    "falseX": -400,
+    "falseY": -400,
+    "xyUnits": 763549374.53853,
+    "falseZ": 0,
+    "zUnits": 1,
+    "falseM": 0,
+    "mUnits": 1
+  },
+  "copyrightText": "",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 72223.819286,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "simple",
+      "symbol": {
+        "type": "esriSFS",
+        "style": "esriSFSSolid",
+        "color": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outline": {
+          "type": "esriSLS",
+          "style": "esriSLSSolid",
+          "color": [
+            255,
+            255,
+            0,
+            255
+          ],
+          "width": 2.2
+        }
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": [
+      {
+        "labelExpressionInfo": {
+          "expression": "var n = ''\nvar myArray = [$feature.POL_NAME1, $feature.POL_NAME2, $feature.POL_NAME3, $feature.CID]\nfor(var k in myArray) {\n   if (Count(Text(myArray[k])) != 0 && Text(myArray[k]) != 'NP') {\nn += myArray[k] + TextFormatting.NewLine;\n}\n}\nreturn n"
+        },
+        "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
+        "multiPart": "labelPerPart",
+        "allowOverrun": false,
+        "deconflictionStrategy": "dynamic",
+        "repeatLabel": false,
+        "stackLabel": true,
+        "stackAlignment": "dynamic",
+        "removeDuplicates": "all",
+        "removeDuplicatesDistance": 150,
+        "stackRowLength": 24,
+        "where": "(ANI_TF LIKE     '%F%' Or ANI_TF LIKE '%U%') And CID NOT LIKE '%a%' And CID NOT LIKE '%b%' And CID NOT LIKE '%c%' And CID NOT LIKE '%d%' And CID NOT LIKE '%e%' And CID NOT LIKE '%f%' And CID NOT LIKE '%g%' And CID NOT LIKE '%h%' And CID NOT LIKE '%i%' And CID NOT LIKE '%j%' And CID NOT LIKE '%k%' And CID NOT LIKE '%l%' And CID NOT LIKE '%m%' And CID NOT LIKE '%n%' And CID NOT LIKE '%o%' And CID NOT LIKE '%p%' And CID NOT LIKE '%q%' And CID NOT LIKE '%r%' And CID NOT LIKE '%s%' And CID NOT LIKE '%t%' And CID NOT LIKE '%u%' And CID NOT LIKE '%v%' And CID NOT LIKE '%w%' And CID NOT LIKE '%x%' And CID NOT LIKE '%y%' And CID NOT LIKE '%z%' And CID NOT LIKE '%A%' And CID NOT LIKE '%B%' And CID NOT LIKE '%C%' And CID NOT LIKE '%D%' And CID NOT LIKE '%E%' And CID NOT LIKE '%F%' And CID NOT LIKE '%G%' And CID NOT LIKE '%H%' And CID NOT LIKE '%I%' And CID NOT LIKE '%J%' And CID NOT LIKE '%K%' And CID NOT LIKE '%L%' And CID NOT LIKE '%M%' And CID NOT LIKE '%N%' And CID NOT LIKE '%O%' And CID NOT LIKE '%P%' And CID NOT LIKE '%Q%' And CID NOT LIKE '%R%' And CID NOT LIKE '%S%' And CID NOT LIKE '%T%' And CID NOT LIKE '%U%' And CID NOT LIKE '%V%' And CID NOT LIKE '%W%' And CID NOT LIKE '%X%' And CID NOT LIKE '%Y%' And CID NOT LIKE '%Z%'",
+        "useCodedValues": true,
+        "maxScale": 0,
+        "minScale": 18055.954822,
+        "name": "Default < 18,056",
+        "priority": 20,
+        "symbol": {
+          "type": "esriTS",
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundColor": null,
+          "borderLineColor": null,
+          "borderLineSize": null,
+          "verticalAlignment": "bottom",
+          "horizontalAlignment": "center",
+          "rightToLeft": false,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "kerning": true,
+          "haloColor": [
+            254,
+            254,
+            254,
+            255
+          ],
+          "haloSize": 1,
+          "font": {
+            "family": "Times New Roman",
+            "size": 12,
+            "style": "normal",
+            "weight": "normal",
+            "decoration": "none"
+          }
+        }
+      },
+      {
+        "labelExpressionInfo": {
+          "expression": "var n = ''\nvar myArray = [$feature.POL_NAME1, $feature.POL_NAME2, $feature.POL_NAME3, $feature.CID]\nfor(var k in myArray) {\n  if (Count(Text(myArray[k])) != 0) {\nn += myArray[k] + TextFormatting.NewLine;\n}\n}\nreturn n + \"(AREA NOT INCLUDED)\""
+        },
+        "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
+        "multiPart": "labelLargest",
+        "allowOverrun": false,
+        "deconflictionStrategy": "dynamic",
+        "repeatLabel": false,
+        "stackLabel": true,
+        "stackAlignment": "dynamic",
+        "removeDuplicates": "all",
+        "removeDuplicatesDistance": 150,
+        "stackRowLength": 24,
+        "where": "ANI_TF LIKE     '%T%' And CID NOT LIKE '%a%' And CID NOT LIKE '%b%' And CID NOT LIKE '%c%' And CID NOT LIKE '%d%' And CID NOT LIKE '%e%' And CID NOT LIKE '%f%' And CID NOT LIKE '%g%' And CID NOT LIKE '%h%' And CID NOT LIKE '%i%' And CID NOT LIKE '%j%' And CID NOT LIKE '%k%' And CID NOT LIKE '%l%' And CID NOT LIKE '%m%' And CID NOT LIKE '%n%' And CID NOT LIKE '%o%' And CID NOT LIKE '%p%' And CID NOT LIKE '%q%' And CID NOT LIKE '%r%' And CID NOT LIKE '%s%' And CID NOT LIKE '%t%' And CID NOT LIKE '%u%' And CID NOT LIKE '%v%' And CID NOT LIKE '%w%' And CID NOT LIKE '%x%' And CID NOT LIKE '%y%' And CID NOT LIKE '%z%' And CID NOT LIKE '%A%' And CID NOT LIKE '%B%' And CID NOT LIKE '%C%' And CID NOT LIKE '%D%' And CID NOT LIKE '%E%' And CID NOT LIKE '%F%' And CID NOT LIKE '%G%' And CID NOT LIKE '%H%' And CID NOT LIKE '%I%' And CID NOT LIKE '%J%' And CID NOT LIKE '%K%' And CID NOT LIKE '%L%' And CID NOT LIKE '%M%' And CID NOT LIKE '%N%' And CID NOT LIKE '%O%' And CID NOT LIKE '%P%' And CID NOT LIKE '%Q%' And CID NOT LIKE '%R%' And CID NOT LIKE '%S%' And CID NOT LIKE '%T%' And CID NOT LIKE '%U%' And CID NOT LIKE '%V%' And CID NOT LIKE '%W%' And CID NOT LIKE '%X%' And CID NOT LIKE '%Y%' And CID NOT LIKE '%Z%'",
+        "useCodedValues": true,
+        "maxScale": 0,
+        "minScale": 18055.954822,
+        "name": "ANI",
+        "priority": 21,
+        "symbol": {
+          "type": "esriTS",
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundColor": null,
+          "borderLineColor": null,
+          "borderLineSize": null,
+          "verticalAlignment": "bottom",
+          "horizontalAlignment": "center",
+          "rightToLeft": false,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "kerning": true,
+          "haloColor": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "haloSize": 1,
+          "font": {
+            "family": "Times New Roman",
+            "size": 12,
+            "style": "normal",
+            "weight": "normal",
+            "decoration": "none"
+          }
+        }
+      },
+      {
+        "labelExpressionInfo": {
+          "expression": "var n = ''\nvar myArray = [$feature.POL_NAME1, $feature.POL_NAME2, $feature.POL_NAME3]\nfor(var k in myArray) {\n   if (Count(Text(myArray[k])) != 0 && Text(myArray[k]) != 'NP') {\nn += myArray[k] + TextFormatting.NewLine;\n}\n}\nreturn n"
+        },
+        "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
+        "multiPart": "labelLargest",
+        "allowOverrun": true,
+        "deconflictionStrategy": "dynamic",
+        "repeatLabel": false,
+        "stackLabel": true,
+        "stackAlignment": "dynamic",
+        "removeDuplicates": "all",
+        "removeDuplicatesDistance": 150,
+        "stackRowLength": 24,
+        "where": "(ANI_TF LIKE      '%F%' Or ANI_TF LIKE '%U%') And (CID LIKE '%a%' or CID LIKE '%b%' or CID LIKE '%c%' or CID LIKE '%d%' or CID LIKE '%e%' or CID LIKE '%f%' or CID LIKE '%g%' or CID LIKE '%h%' or CID LIKE '%i%' or CID LIKE '%j%' or CID LIKE '%k%' or CID  LIKE '%l%' or CID LIKE '%m%' or CID LIKE '%n%' or CID LIKE '%o%' or CID LIKE '%p%' or CID LIKE '%q%' or CID LIKE '%r%' or CID LIKE '%s%' or CID LIKE '%t%' or CID LIKE '%u%' or CID LIKE '%v%' or CID LIKE '%w%' or CID LIKE '%x%' or CID LIKE '%y%' or CID LIKE '%z%' or CID LIKE '%A%' or CID LIKE '%B%' or CID LIKE '%C%' or CID LIKE '%D%' or CID LIKE '%E%' or CID LIKE '%F%' or CID LIKE '%G%' or CID LIKE '%H%' or CID LIKE '%I%' or CID LIKE '%J%' or CID LIKE '%K%' or CID LIKE '%L%' or CID LIKE '%M%' or CID LIKE '%N%' or CID LIKE '%O%' or CID LIKE '%P%' or CID LIKE '%Q%' or CID LIKE '%R%' or CID LIKE '%S%' or CID LIKE '%T%' or CID LIKE '%U%' or CID LIKE '%V%' or CID LIKE '%W%' or CID LIKE '%X%' or CID LIKE '%Y%' or CID LIKE '%Z%')",
+        "useCodedValues": true,
+        "maxScale": 0,
+        "minScale": 18055.954822,
+        "name": "No CID",
+        "priority": -1,
+        "symbol": {
+          "type": "esriTS",
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundColor": null,
+          "borderLineColor": null,
+          "borderLineSize": null,
+          "verticalAlignment": "bottom",
+          "horizontalAlignment": "left",
+          "rightToLeft": false,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "kerning": true,
+          "haloColor": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "haloSize": 1,
+          "font": {
+            "family": "Times New Roman",
+            "size": 12,
+            "style": "normal",
+            "weight": "normal",
+            "decoration": "none"
+          }
+        }
+      },
+      {
+        "labelExpressionInfo": {
+          "expression": "var n = ''\nvar myArray = [$feature.POL_NAME1, $feature.POL_NAME2, $feature.POL_NAME3]\nfor(var k in myArray) {\n  if (Count(Text(myArray[k])) != 0) {\nn += myArray[k] + TextFormatting.NewLine;\n}\n}\nreturn n + \"(AREA NOT INCLUDED)\""
+        },
+        "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
+        "multiPart": "labelLargest",
+        "allowOverrun": true,
+        "deconflictionStrategy": "dynamic",
+        "repeatLabel": false,
+        "stackLabel": true,
+        "stackAlignment": "dynamic",
+        "removeDuplicates": "all",
+        "removeDuplicatesDistance": 150,
+        "stackRowLength": 24,
+        "where": "(ANI_TF LIKE      '%T%') And (CID LIKE '%a%' or CID LIKE '%b%' or CID LIKE '%c%' or CID LIKE '%d%' or CID LIKE '%e%' or CID LIKE '%f%' or CID LIKE '%g%' or CID LIKE '%h%' or CID LIKE '%i%' or CID LIKE '%j%' or CID LIKE '%k%' or CID  LIKE '%l%' or CID LIKE '%m%' or CID LIKE '%n%' or CID LIKE '%o%' or CID LIKE '%p%' or CID LIKE '%q%' or CID LIKE '%r%' or CID LIKE '%s%' or CID LIKE '%t%' or CID LIKE '%u%' or CID LIKE '%v%' or CID LIKE '%w%' or CID LIKE '%x%' or CID LIKE '%y%' or CID LIKE '%z%' or CID LIKE '%A%' or CID LIKE '%B%' or CID LIKE '%C%' or CID LIKE '%D%' or CID LIKE '%E%' or CID LIKE '%F%' or CID LIKE '%G%' or CID LIKE '%H%' or CID LIKE '%I%' or CID LIKE '%J%' or CID LIKE '%K%' or CID LIKE '%L%' or CID LIKE '%M%' or CID LIKE '%N%' or CID LIKE '%O%' or CID LIKE '%P%' or CID LIKE '%Q%' or CID LIKE '%R%' or CID LIKE '%S%' or CID LIKE '%T%' or CID LIKE '%U%' or CID LIKE '%V%' or CID LIKE '%W%' or CID LIKE '%X%' or CID LIKE '%Y%' or CID LIKE '%Z%')",
+        "useCodedValues": true,
+        "maxScale": 0,
+        "minScale": 18055.954822,
+        "name": "ANI No CID",
+        "priority": -1,
+        "symbol": {
+          "type": "esriTS",
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundColor": null,
+          "borderLineColor": null,
+          "borderLineSize": null,
+          "verticalAlignment": "bottom",
+          "horizontalAlignment": "left",
+          "rightToLeft": false,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "kerning": true,
+          "haloColor": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "haloSize": 1,
+          "font": {
+            "family": "Times New Roman",
+            "size": 12,
+            "style": "normal",
+            "weight": "normal",
+            "decoration": "none"
+          }
+        }
+      },
+      {
+        "labelExpressionInfo": {
+          "expression": "var n = $feature.POL_NAME1 + TextFormatting.NewLine\nvar myArray = [$feature.POL_NAME2, $feature.POL_NAME3, $feature.CID]\nfor(var k in myArray) {\n   if (!IsEmpty(myArray[k]) && myArray[k] != 'NP') {\nn += myArray[k] + TextFormatting.NewLine;\n}\n}\nreturn n"
+        },
+        "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
+        "multiPart": "labelLargest",
+        "allowOverrun": true,
+        "deconflictionStrategy": "dynamic",
+        "repeatLabel": false,
+        "stackLabel": true,
+        "stackAlignment": "dynamic",
+        "removeDuplicates": "all",
+        "removeDuplicatesDistance": 150,
+        "stackRowLength": 24,
+        "useCodedValues": true,
+        "maxScale": 18057,
+        "minScale": 72223.819286,
+        "name": "Default > 18,057",
+        "priority": -1,
+        "symbol": {
+          "type": "esriTS",
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundColor": null,
+          "borderLineColor": null,
+          "borderLineSize": null,
+          "verticalAlignment": "bottom",
+          "horizontalAlignment": "left",
+          "rightToLeft": false,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "kerning": true,
+          "haloColor": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "haloSize": 1,
+          "font": {
+            "family": "Times New Roman",
+            "size": 12,
+            "style": "normal",
+            "weight": "normal",
+            "decoration": "none"
+          }
+        }
+      }
+    ]
+  },
+  "defaultVisibility": false,
+  "extent": {
+    "xmin": -170.84698891836925,
+    "ymin": -14.373782300647008,
+    "xmax": 145.83077660155834,
+    "ymax": 66.61058213599716,
+    "spatialReference": {
+      "wkid": 4269,
+      "latestWkid": 4269,
+      "xyTolerance": 8.983152841195215e-09,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -400,
+      "falseY": -400,
+      "xyUnits": 999999999.9999999,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "POL_NAME1",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "DFIRM_ID",
+      "type": "esriFieldTypeString",
+      "alias": "DFIRM_ID",
+      "length": 6,
+      "domain": null
+    },
+    {
+      "name": "VERSION_ID",
+      "type": "esriFieldTypeString",
+      "alias": "VERSION_ID",
+      "length": 11,
+      "domain": null
+    },
+    {
+      "name": "POL_AR_ID",
+      "type": "esriFieldTypeString",
+      "alias": "POL_AR_ID",
+      "length": 32,
+      "domain": null
+    },
+    {
+      "name": "POL_NAME1",
+      "type": "esriFieldTypeString",
+      "alias": "POL_NAME1",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "POL_NAME2",
+      "type": "esriFieldTypeString",
+      "alias": "POL_NAME2",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "POL_NAME3",
+      "type": "esriFieldTypeString",
+      "alias": "POL_NAME3",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "CO_FIPS",
+      "type": "esriFieldTypeString",
+      "alias": "CO_FIPS",
+      "length": 3,
+      "domain": null
+    },
+    {
+      "name": "ST_FIPS",
+      "type": "esriFieldTypeString",
+      "alias": "ST_FIPS",
+      "length": 2,
+      "domain": null
+    },
+    {
+      "name": "COMM_NO",
+      "type": "esriFieldTypeString",
+      "alias": "COMM_NO",
+      "length": 4,
+      "domain": null
+    },
+    {
+      "name": "CID",
+      "type": "esriFieldTypeString",
+      "alias": "CID",
+      "length": 6,
+      "domain": null
+    },
+    {
+      "name": "ANI_TF",
+      "type": "esriFieldTypeString",
+      "alias": "ANI_TF",
+      "length": 1,
+      "domain": null
+    },
+    {
+      "name": "ANI_FIRM",
+      "type": "esriFieldTypeString",
+      "alias": "ANI_FIRM",
+      "length": 6,
+      "domain": null
+    },
+    {
+      "name": "COM_NFO_ID",
+      "type": "esriFieldTypeString",
+      "alias": "COM_NFO_ID",
+      "length": 32,
+      "domain": null
+    },
+    {
+      "name": "SOURCE_CIT",
+      "type": "esriFieldTypeString",
+      "alias": "SOURCE_CIT",
+      "length": 21,
+      "domain": null
+    },
+    {
+      "name": "SHAPE",
+      "type": "esriFieldTypeGeometry",
+      "alias": "SHAPE",
+      "domain": null
+    },
+    {
+      "name": "SHAPE.STArea()",
+      "type": "esriFieldTypeDouble",
+      "alias": "SHAPE.STArea()",
+      "domain": null
+    },
+    {
+      "name": "SHAPE.STLength()",
+      "type": "esriFieldTypeDouble",
+      "alias": "SHAPE.STLength()",
+      "domain": null
+    },
+    {
+      "name": "GFID",
+      "type": "esriFieldTypeString",
+      "alias": "GFID",
+      "length": 36,
+      "domain": null
+    },
+    {
+      "name": "GlobalID",
+      "type": "esriFieldTypeGlobalID",
+      "alias": "GlobalID",
+      "length": 38,
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "SHAPE",
+    "type": "esriFieldTypeGeometry",
+    "alias": "SHAPE"
+  },
+  "indexes": [
+    {
+      "name": "R121_pk",
+      "fields": "OBJECTID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "UUID_121",
+      "fields": "GlobalID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "CID",
+      "fields": "CID",
+      "isAscending": true,
+      "isUnique": false,
+      "description": ""
+    },
+    {
+      "name": "ANI_TF_DFIRM_ID_CID",
+      "fields": "ANI_TF,DFIRM_ID,CID",
+      "isAscending": true,
+      "isUnique": false,
+      "description": ""
+    },
+    {
+      "name": "S70_idx",
+      "fields": "SHAPE",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": true,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": true
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasGeometryProperties": true,
+  "geometryProperties": {
+    "shapeAreaFieldName": "SHAPE.STArea()",
+    "shapeLengthFieldName": "SHAPE.STLength()",
+    "units": "esriDecimalDegrees",
+    "mapUnits": {
+      "uwkid": 9102
+    }
+  },
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true
+}

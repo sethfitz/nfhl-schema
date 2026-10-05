@@ -1,0 +1,228 @@
+#!/usr/bin/env -S uv run python
+"""Refresh spec/ from FEMA: the two technical references and the NFHL service.
+
+Three sources, each pinned by what it is:
+
+* The FIRM Database Technical Reference and the Domain Tables Technical Reference
+  (FEMA Guidelines & Standards, November 2024 edition). The field tables and the
+  coded-value vocabularies are published nowhere else. Each PDF is vendored with
+  a `pdftotext -layout` rendering beside it, for grepping, and the ruled tables
+  are extracted to JSON by `nfhl.extract` -- the generation source.
+* The NFHL ArcGIS MapServer's own metadata: every layer and table, with its
+  fields, Esri types and lengths. The service declares no coded-value domains.
+* What the service holds: per-value row counts for every field of a modelled
+  layer that the reference ties to a domain, and the layer's total, from the
+  `query` endpoint's grouped statistics. These are observations, not
+  specification -- the reference is what the models enforce, and a value seen
+  here but absent from the reference is a finding, recorded in spec/README.md.
+
+`MANIFEST.json` records each source URL, when it was retrieved, and a SHA-256 of
+every file written.
+
+Pass `--skip-observed` to leave the observation files alone: the grouped
+statistics take minutes over the full national layer.
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import hashlib
+import json
+import shutil
+import subprocess
+import sys
+import urllib.parse
+from pathlib import Path
+from typing import Any
+
+from nfhl.extract import DOMAIN_HEADING, FIRM_HEADING, extract, write
+from nfhl.spec_source import DOMAIN_TABLES, FIRM_DATABASE, LAYERS, SPEC_DIR, SpecReader
+
+SERVICE = "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer"
+# The FEMA Guidelines & Standards index this edition was found on; it links both.
+INDEX = (
+    "https://www.fema.gov/flood-maps/guidance-reports/guidelines-standards/"
+    "technical-references-flood-risk-analysis-and-mapping"
+)
+REFERENCES = {
+    FIRM_DATABASE: (
+        "https://www.fema.gov/sites/default/files/documents/"
+        "fema_rm-firm-database-technical-reference-nov-2024.pdf",
+        FIRM_HEADING,
+    ),
+    DOMAIN_TABLES: (
+        "https://www.fema.gov/sites/default/files/documents/"
+        "fema_rm-domain-tables-technical-reference-nov-2024.pdf",
+        DOMAIN_HEADING,
+    ),
+}
+TIMEOUT = 600
+
+
+def fetch(url: str, params: dict[str, str] | None = None) -> bytes:
+    """GET with curl.
+
+    curl rather than urllib because fema.gov's CDN answers 403 to urllib's
+    User-Agent, and to a spoofed browser one, while serving curl's own. Checked
+    2026-10-04; do not "fix" a 403 here by impersonating a browser.
+    """
+    if params:
+        url = f"{url}?{urllib.parse.urlencode(params)}"
+    result = subprocess.run(
+        ["curl", "-fsSL", "--max-time", str(TIMEOUT), url],
+        check=True,
+        capture_output=True,
+    )
+    return result.stdout
+
+
+def fetch_json(url: str, params: dict[str, str]) -> Any:
+    payload = json.loads(fetch(url, params))
+    if isinstance(payload, dict) and "error" in payload:
+        raise RuntimeError(f"{url}: {payload['error']}")
+    return payload
+
+
+def dump(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+
+
+def snapshot_references(spec: Path) -> list[dict[str, str]]:
+    sources = []
+    for stem, (url, heading) in REFERENCES.items():
+        pdf = spec / "reference" / f"{stem}.pdf"
+        pdf.parent.mkdir(parents=True, exist_ok=True)
+        print(f"==> {url}")
+        pdf.write_bytes(fetch(url))
+        if shutil.which("pdftotext"):
+            subprocess.run(
+                ["pdftotext", "-layout", str(pdf), str(pdf.with_suffix(".txt"))],
+                check=True,
+            )
+        else:
+            print("pdftotext not on PATH; .txt not refreshed", file=sys.stderr)
+        print(f"    extracting tables from {pdf.name}")
+        write(extract(pdf, heading), pdf.name, pdf.with_suffix(".json"))
+        sources.append({"path": f"reference/{stem}.pdf", "url": url})
+    return sources
+
+
+def snapshot_service(spec: Path) -> list[dict[str, str]]:
+    print(f"==> {SERVICE}")
+    root = fetch_json(SERVICE, {"f": "json"})
+    dump(spec / "service" / "MapServer.json", root)
+    sources = [{"path": "service/MapServer.json", "url": f"{SERVICE}?f=json"}]
+    for layer in [*root["layers"], *root.get("tables", [])]:
+        url = f"{SERVICE}/{layer['id']}"
+        dump(
+            spec / "service" / "layers" / f"{layer['id']}.json",
+            fetch_json(url, {"f": "json"}),
+        )
+        sources.append(
+            {"path": f"service/layers/{layer['id']}.json", "url": f"{url}?f=json"}
+        )
+    return sources
+
+
+def snapshot_observed(spec: Path) -> list[dict[str, str]]:
+    reader = SpecReader(spec)
+    sources = []
+    for layer in LAYERS:
+        url = f"{SERVICE}/{layer.layer_id}/query"
+        print(f"==> observed values, layer {layer.layer_id}")
+        total = fetch_json(
+            url, {"where": "1=1", "returnCountOnly": "true", "f": "json"}
+        )
+        fields: dict[str, list[dict[str, Any]]] = {}
+        for field in reader.reference_table(layer.table).fields:
+            if field.domain is None or field.name not in reader.service_fields(layer):
+                continue
+            print(f"    {field.name}")
+            stats = fetch_json(
+                url,
+                {
+                    "where": "1=1",
+                    "outStatistics": json.dumps(
+                        [
+                            {
+                                "statisticType": "count",
+                                "onStatisticField": "OBJECTID",
+                                "outStatisticFieldName": "n",
+                            }
+                        ]
+                    ),
+                    "groupByFieldsForStatistics": field.name,
+                    "f": "json",
+                },
+            )
+            rows = [f["attributes"] for f in stats["features"]]
+            fields[field.name] = sorted(
+                ({"value": r[field.name], "count": r["n"]} for r in rows),
+                key=lambda r: (-r["count"], str(r["value"])),
+            )
+        dump(
+            spec / "service" / "observed" / f"{layer.layer_id}.json",
+            {"layer": layer.layer_id, "total": total["count"], "fields": fields},
+        )
+        sources.append(
+            {
+                "path": f"service/observed/{layer.layer_id}.json",
+                "url": f"{url}?groupByFieldsForStatistics=<field>&outStatistics=count",
+            }
+        )
+    return sources
+
+
+def checksums(spec: Path) -> list[dict[str, Any]]:
+    skip = {"MANIFEST.json", "README.md", "repairs.json", "relationships.json"}
+    files = sorted(p for p in spec.rglob("*") if p.is_file() and p.name not in skip)
+    return [
+        {
+            "path": str(p.relative_to(spec)),
+            "sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
+            "bytes": p.stat().st_size,
+        }
+        for p in files
+    ]
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--skip-observed", action="store_true")
+    args = parser.parse_args()
+
+    spec = SPEC_DIR
+    manifest_path = spec / "MANIFEST.json"
+    previous = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    now = dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    sources = [*snapshot_references(spec), *snapshot_service(spec)]
+    retrieved = {s["path"]: now for s in sources}
+    if args.skip_observed:
+        kept = [
+            s
+            for s in previous.get("sources", [])
+            if s["path"].startswith("service/observed/")
+        ]
+        sources += kept
+        retrieved |= {s["path"]: s["retrieved_at"] for s in kept}
+    else:
+        observed = snapshot_observed(spec)
+        sources += observed
+        retrieved |= {s["path"]: now for s in observed}
+
+    manifest = {
+        "edition": "November 2024",
+        "index": INDEX,
+        "sources": [{**s, "retrieved_at": retrieved[s["path"]]} for s in sources],
+        "files": checksums(spec),
+    }
+    dump(manifest_path, manifest)
+    print(f"done: {len(manifest['files'])} files in {spec}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
