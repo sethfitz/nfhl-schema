@@ -1,0 +1,173 @@
+#!/usr/bin/env -S uv run python
+"""Fetch real Flood Hazard Zones from the NFHL service into tests/fixtures/.
+
+Each case is one feature chosen by a `where` clause, recorded beside the feature
+with what the model should say about it: `null` when it should validate, or the
+wire name of the field (or rule) that should reject it. The rejected cases are
+real published features that disagree with the technical reference -- findings,
+kept as fixtures so the disagreement stays visible and tested.
+
+Small polygons only (`SHAPE.STArea()` and `SHAPE.STLength()`, in degrees), so
+the fixture stays reviewable. Re-running picks whatever the service returns
+first today, which may be a different feature; the test reads the expectations,
+not the ids.
+"""
+
+from __future__ import annotations
+
+import datetime as dt
+import json
+import subprocess
+import sys
+import urllib.parse
+from pathlib import Path
+from typing import Any
+
+LAYER = 28
+QUERY = (
+    f"https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/{LAYER}/query"
+)
+OUT = (
+    Path(__file__).resolve().parents[1]
+    / "tests"
+    / "fixtures"
+    / "flood_hazard_zones.json"
+)
+
+# Bounding perimeter as well as area keeps the vertex count, and the diff, small.
+SMALL = "SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01"
+# Nothing else on the feature disagrees with the reference, so the case tests
+# only what it names. `IS NULL` rather than `= ''`: the service is SQL Server,
+# where `' ' = ''` is true, so an empty-string test also matches a lone space --
+# which the reference does not allow.
+CLEAN = (
+    "VELOCITY = -9999 AND VEL_UNIT IS NULL "
+    "AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL "
+    "AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 "
+    "AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U'))"
+)
+NO_BFE = "STATIC_BFE = -9999 AND V_DATUM IS NULL"
+NO_DEPTH = "DEPTH = -9999 AND LEN_UNIT IS NULL"
+
+CASES: list[tuple[str, str, str | None]] = [
+    (
+        "ae_static_bfe",
+        "FLD_ZONE = 'AE' AND ZONE_SUBTY IS NULL "
+        "AND STUDY_TYP = 'SFHA with BFE and floodway' AND STATIC_BFE > 0 "
+        "AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND DEPTH = -9999 "
+        # The service compares case-insensitively, so `= 'Feet'` also matches
+        # this study's `FEET`; that feature is the uppercase_len_unit case.
+        "AND DFIRM_ID <> '39057C'",
+        None,
+    ),
+    (
+        "ae_floodway",
+        f"FLD_ZONE = 'AE' AND ZONE_SUBTY = 'FLOODWAY' "
+        f"AND STUDY_TYP = 'SFHA with BFE and floodway' AND {NO_BFE} AND {NO_DEPTH}",
+        None,
+    ),
+    (
+        "ao_depth",
+        f"FLD_ZONE = 'AO' AND DEPTH > 0 AND LEN_UNIT = 'Feet' AND {NO_BFE} "
+        "AND STUDY_TYP = 'NP'",
+        None,
+    ),
+    (
+        "ve_static_bfe",
+        "FLD_ZONE = 'VE' AND STATIC_BFE > 0 AND V_DATUM = 'NAVD88' "
+        "AND LEN_UNIT = 'Feet' AND DEPTH = -9999 "
+        "AND STUDY_TYP = 'SFHA with BFE no floodway'",
+        None,
+    ),
+    (
+        "x_shaded",
+        f"FLD_ZONE = 'X' AND ZONE_SUBTY = '0.2 PCT ANNUAL CHANCE FLOOD HAZARD' "
+        f"AND STUDY_TYP = 'NP' AND {NO_BFE} AND {NO_DEPTH}",
+        None,
+    ),
+    (
+        "x_minimal",
+        f"FLD_ZONE = 'X' AND ZONE_SUBTY = 'AREA OF MINIMAL FLOOD HAZARD' "
+        f"AND STUDY_TYP = 'NP' AND {NO_BFE} AND {NO_DEPTH}",
+        None,
+    ),
+    (
+        "open_water",
+        f"FLD_ZONE = 'OPEN WATER' AND STUDY_TYP = 'NP' AND {NO_BFE} AND {NO_DEPTH}",
+        None,
+    ),
+    # Findings: published features the reference does not allow.
+    (
+        "legacy_study_type",
+        f"STUDY_TYP = 'SFHAs WITH LOW FLOOD RISK' AND {NO_BFE} AND {NO_DEPTH}",
+        "STUDY_TYP",
+    ),
+    (
+        "ascii_apostrophe_study_type",
+        f"STUDY_TYP = 'Shaded Zone X with depths less than 1''' "
+        f"AND {NO_BFE} AND {NO_DEPTH}",
+        "STUDY_TYP",
+    ),
+    (
+        "legacy_levee_subtype",
+        "ZONE_SUBTY = 'AREA WITH REDUCED FLOOD RISK DUE TO LEVEE' "
+        f"AND STUDY_TYP = 'NP' AND {NO_BFE} AND {NO_DEPTH}",
+        "ZONE_SUBTY",
+    ),
+    (
+        "uppercase_len_unit",
+        "DFIRM_ID = '39057C' AND FLD_ZONE = 'AE' AND STATIC_BFE > 0 "
+        "AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND DEPTH = -9999",
+        "LEN_UNIT",
+    ),
+    (
+        "datum_without_bfe",
+        f"V_DATUM = 'NAVD88' AND STATIC_BFE = -9999 AND {NO_DEPTH} "
+        "AND STUDY_TYP = 'NP'",
+        "@forbid_if(v_datum)",
+    ),
+]
+
+
+def query(where: str) -> dict[str, Any]:
+    params = {
+        "where": where,
+        "outFields": "*",
+        "resultRecordCount": "1",
+        "f": "geojson",
+    }
+    url = f"{QUERY}?{urllib.parse.urlencode(params)}"
+    out = subprocess.run(
+        ["curl", "-fsSL", "--max-time", "600", url], check=True, capture_output=True
+    ).stdout
+    payload: dict[str, Any] = json.loads(out)
+    if "error" in payload:
+        raise RuntimeError(f"{where}: {payload['error']}")
+    return payload
+
+
+def main() -> int:
+    cases = []
+    for name, where, expect in CASES:
+        full = f"({where}) AND {CLEAN} AND {SMALL}"
+        print(f"==> {name}")
+        features = query(full)["features"]
+        if not features:
+            print(f"    no feature matches; skipped: {full}", file=sys.stderr)
+            continue
+        cases.append(
+            {"name": name, "where": full, "expect": expect, "feature": features[0]}
+        )
+    payload = {
+        "source": QUERY,
+        "retrieved_at": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "cases": cases,
+    }
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+    print(f"wrote {len(cases)} of {len(CASES)} cases to {OUT}")
+    return 0 if len(cases) == len(CASES) else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
