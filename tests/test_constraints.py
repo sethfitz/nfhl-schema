@@ -11,7 +11,7 @@ from overture.schema.system.model_constraint import forbid_if
 from overture.schema.system.optionality import Omitable
 from pydantic import BaseModel
 
-from nfhl.constraints import Absent
+from nfhl.constraints import Absent, AllOf, OneOf
 from nfhl.constraints import forbid_if as named_forbid_if
 from nfhl.models import FloodHazardZone
 
@@ -96,3 +96,50 @@ def test_stacked_system_decorators_drop_the_inner_rule_in_python() -> None:
     with pytest.raises(ValueError):
         model.model_validate({"b": 1})  # outer rule fires
     model.model_validate({"c": 1})  # inner rule silently does not
+
+
+class Pair(BaseModel):
+    zone: str
+    sub: Omitable[str]
+
+
+# `sub` may not be "b" or "c" while `zone` is "x".
+PairRule = named_forbid_if(
+    ["sub"], AllOf(OneOf("zone", ("x",)), OneOf("sub", ("b", "c"))), "x"
+)(Pair)
+
+
+@pytest.mark.parametrize(
+    ("data", "valid"),
+    [
+        ({"zone": "x", "sub": "b"}, False),
+        ({"zone": "x", "sub": "a"}, True),
+        ({"zone": "x"}, True),  # an absent field is in no set of values
+        ({"zone": "y", "sub": "b"}, True),
+    ],
+)
+def test_one_of_agrees_in_python_and_json_schema(
+    data: dict[str, Any], valid: bool
+) -> None:
+    schema = PairRule.model_json_schema()
+    assert check(schema, data) is valid
+    if valid:
+        PairRule.model_validate(data)
+    else:
+        with pytest.raises(ValueError, match=r"`@forbid_if\(sub\) \[x\]`"):
+            PairRule.model_validate(data)
+
+
+def test_a_qualifier_keeps_two_rules_on_one_field_apart() -> None:
+    model = named_forbid_if(["sub"], OneOf("zone", ("x",)), "x")(
+        named_forbid_if(["sub"], OneOf("zone", ("y",)), "y")(Pair)
+    )
+    for zone in ("x", "y"):
+        with pytest.raises(ValueError):
+            model.model_validate({"zone": zone, "sub": "a"})
+    model.model_validate({"zone": "z", "sub": "a"})
+
+
+def test_one_of_reads_as_a_sentence() -> None:
+    assert str(OneOf("zone", ("x",))) == "zone is x"
+    assert str(OneOf("zone", ("x", "y"))) == "zone is one of x, y"

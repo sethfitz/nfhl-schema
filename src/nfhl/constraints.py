@@ -23,6 +23,7 @@ from overture.schema.system.model_constraint import (
 )
 from pydantic import BaseModel
 from pydantic.config import JsonDict
+from pydantic_core import to_jsonable_python
 
 
 @dataclass(frozen=True, slots=True)
@@ -112,10 +113,58 @@ class AllOf(Condition):
         return {"allOf": [c.json_schema(model_class) for c in self.conditions]}
 
 
+@dataclass(frozen=True, slots=True)
+class OneOf(Condition):
+    """True when `field_name` holds one of `values`; false when it holds none.
+
+    The system's `FieldEqCondition` takes one value, and its JSON Schema does
+    not require the property, so an absent field would satisfy it there while
+    failing it in Python. This one requires the property in both.
+    """
+
+    field_name: str
+    values: tuple[Any, ...]
+
+    def __str__(self) -> str:
+        shown = [getattr(v, "value", v) for v in self.values]
+        if len(shown) == 1:
+            return f"{self.field_name} is {shown[0]}"
+        return f"{self.field_name} is one of {', '.join(map(str, shown))}"
+
+    @override
+    def validate_class(self, model_class: type[BaseModel]) -> None:
+        Absent(self.field_name).validate_class(model_class)
+        if not self.values:
+            raise ValueError(f"OneOf({self.field_name!r}) lists no values")
+
+    @override
+    def eval(self, model_instance: BaseModel) -> bool:
+        if Absent(self.field_name).eval(model_instance):
+            return False
+        return getattr(model_instance, self.field_name) in self.values
+
+    @override
+    def json_schema(self, model_class: type[BaseModel]) -> JsonDict:
+        alias = apply_alias(model_class, self.field_name)
+        return {
+            "required": [alias],
+            "properties": {
+                alias: {"enum": [to_jsonable_python(v) for v in self.values]}
+            },
+        }
+
+
 Decorator = Callable[[type[BaseModel]], type[BaseModel]]
 
 
-def forbid_if(field_names: list[str], condition: Condition) -> Decorator:
+def _rule_name(kind: str, field_names: list[str], qualifier: str | None) -> str:
+    name = f"@{kind}({', '.join(field_names)})"
+    return f"{name} [{qualifier}]" if qualifier else name
+
+
+def forbid_if(
+    field_names: list[str], condition: Condition, qualifier: str | None = None
+) -> Decorator:
     """The system's `forbid_if`, under a name unique to its fields.
 
     Each system decorator subclasses the model and registers its check as a
@@ -126,14 +175,19 @@ def forbid_if(field_names: list[str], condition: Condition) -> Decorator:
     its fields keeps both. `_create_internal` is the factory the system's own
     decorators use; `tests/test_constraints.py` asserts every stacked rule
     fires, so a change there fails loudly.
+
+    Two rules on the same fields need a `qualifier` to tell them apart; it is
+    appended to the name, which is what a validation error reports.
     """
-    name = f"@forbid_if({', '.join(field_names)})"
+    name = _rule_name("forbid_if", field_names, qualifier)
     return ForbidIfConstraint._create_internal(name, field_names, condition).decorate
 
 
-def require_if(field_names: list[str], condition: Condition) -> Decorator:
+def require_if(
+    field_names: list[str], condition: Condition, qualifier: str | None = None
+) -> Decorator:
     """The system's `require_if`, uniquely named for the reason `forbid_if` is."""
-    name = f"@require_if({', '.join(field_names)})"
+    name = _rule_name("require_if", field_names, qualifier)
     return RequireIfConstraint._create_internal(name, field_names, condition).decorate
 
 
