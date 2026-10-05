@@ -34,10 +34,11 @@ references whole, so the next tables need no new fetch.
   example of the output, and as the easiest way to read every field and value
   with what the reference says it means.
 - `nfhl.models` -- generated, never hand-edited.
-- `tests/fixtures/flood_hazard_zones.json` -- twelve real features from the
+- `tests/fixtures/flood_hazard_zones.json` -- seventeen real features from the
   service: seven that validate, three that validate with a legacy-value warning,
-  and two that do not, each recorded with the field or rule that should warn or
-  reject. Fetched by `scripts/fetch-fixtures`.
+  and seven that do not, five of them against the zone rules, each recorded with
+  the field or rule that should warn or reject. Fetched by
+  `scripts/fetch-fixtures`.
 
 ## Why generate rather than hand-write
 

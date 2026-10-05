@@ -48,6 +48,19 @@ CLEAN = (
     "AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 "
     "AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U'))"
 )
+# Most zone-rule findings are a few dozen rows nationally, none of them both
+# small and NULL where the service could write `""`. Those take a looser bound
+# and accept `= ''`, which also matches a lone space; a space would be rejected
+# by its field's vocabulary, and the test asserts each case's whole rejection,
+# so one would fail the case rather than pass unseen.
+RARE = (
+    "VELOCITY = -9999 AND (VEL_UNIT IS NULL OR VEL_UNIT = '') "
+    "AND (AR_REVERT IS NULL OR AR_REVERT = '') "
+    "AND (AR_SUBTRV IS NULL OR AR_SUBTRV = '') "
+    "AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 "
+    "AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('', 'T', 'F', 'U')) "
+    "AND SHAPE.STArea() < 0.00005 AND SHAPE.STLength() < 0.05"
+)
 NO_BFE = "STATIC_BFE = -9999 AND V_DATUM IS NULL"
 NO_DEPTH = "DEPTH = -9999 AND LEN_UNIT IS NULL"
 
@@ -142,7 +155,46 @@ CASES: list[tuple[str, str, str | None, str | None]] = [
         "@forbid_if(v_datum)",
         None,
     ),
+    # Findings against the zone rules: Table 14 and SFHA_TF's description.
+    (
+        "ah_coastal_floodplain",
+        "FLD_ZONE = 'AH' AND ZONE_SUBTY = 'COASTAL FLOODPLAIN'",
+        "@forbid_if(zone_subty) [AH]",
+        None,
+    ),
+    (
+        "x_special_consideration",
+        "FLD_ZONE = 'X' AND ZONE_SUBTY = 'AREA OF SPECIAL CONSIDERATION'",
+        "@forbid_if(zone_subty) [X]",
+        None,
+    ),
+    (
+        "a99_without_subtype",
+        "FLD_ZONE = 'A99' AND ZONE_SUBTY IS NULL AND STUDY_TYP = 'NP'",
+        "@require_if(zone_subty) [A99, AR, X]",
+        None,
+    ),
+    (
+        "ae_outside_sfha",
+        "FLD_ZONE = 'AE' AND SFHA_TF = 'F'",
+        "@require_any_true(sfha_tf) [A, A99, AE, AH, AO, AR, V, VE]",
+        None,
+    ),
+    (
+        "x_inside_sfha",
+        "FLD_ZONE = 'X' AND SFHA_TF = 'T'",
+        "@require_any_true(sfha_tf) [D, X]",
+        None,
+    ),
 ]
+
+# The cases with too few rows to be both small and NULL-clean.
+SPARSE = {
+    "x_special_consideration",
+    "a99_without_subtype",
+    "ae_outside_sfha",
+    "x_inside_sfha",
+}
 
 
 def query(where: str) -> dict[str, Any]:
@@ -165,7 +217,8 @@ def query(where: str) -> dict[str, Any]:
 def main() -> int:
     cases = []
     for name, where, expect, warns in CASES:
-        full = f"({where}) AND {CLEAN} AND {SMALL}"
+        filters = RARE if name in SPARSE else f"{CLEAN} AND {SMALL}"
+        full = f"({where}) AND {filters}"
         print(f"==> {name}")
         features = query(full)["features"]
         if not features:
