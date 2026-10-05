@@ -54,8 +54,8 @@ path = "src/nfhl/__init__.py"
 
 [tool.mypy]
 mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
-# Extensionless scripts/ files are skipped if listed here as a directory; check
-# them by path: `for f in scripts/*; do uv run mypy --strict "$f"; done`.
+# Extensionless scripts/ files are skipped if listed here as a directory; `make lint`
+# checks the Python ones by path.
 files = ["src", "tests"]
 python_version = "3.12"
 strict = true
@@ -75,6 +75,8 @@ ignore_missing_imports = true
 line-length = 88
 src = ["src", "tests"]
 extend-include = ["scripts/*"]
+# The one shell script.
+extend-exclude = ["scripts/generate-docs"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]

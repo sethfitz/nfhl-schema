@@ -152,21 +152,20 @@ dict reports every required field missing.
 ## Development
 
 ```
-uv sync --dev
-uv run pytest
-uv run mypy .
-uv run ruff check . && uv run ruff format --check .
-for f in scripts/*; do uv run mypy --strict "$f"; done
+make sync        # install the dev environment
+make check       # tests, mypy (package and scripts), ruff lint and formatting
+make test-fast   # tests without the ~30-second PDF extraction
 
-./scripts/snapshot-spec          # refresh spec/ from FEMA (--skip-observed is fast)
-./scripts/generate-models        # rewrite src/nfhl/models/ from spec/
-./scripts/generate-docs          # rewrite docs/ from the models
-./scripts/report-observed        # published values the reference does not allow
-./scripts/fetch-fixtures         # refetch the real-feature fixture
+make snapshot    # refresh spec/ from FEMA (SNAPSHOT_ARGS=--skip-observed is fast)
+make models      # rewrite src/nfhl/models/ from spec/
+make docs        # rewrite docs/ from the models (runs `models` first)
+make report      # published values the reference does not allow
+make fixtures    # refetch the real-feature fixture
 uv run overture-schema list-types --tag nfhl   # the models, found by tag
 ```
 
-`pytest` re-runs the PDF extraction, about 30 seconds; `-m "not slow"` skips it.
+`make help` lists every task. Each one wraps a script in `scripts/` or a `uv run`
+command, so either can be run directly.
 
 ## Licence
 

@@ -1,45 +1,27 @@
-#!/usr/bin/env -S uv run python
-"""Regenerate docs/ -- Markdown reference pages for the models -- with Overture's
-own generator, `overture-codegen generate --format markdown`.
+#!/usr/bin/env bash
+# Regenerate docs/ -- Markdown reference pages for the models -- with Overture's own
+# generator, `overture-codegen generate --format markdown`.
+#
+#   scripts/generate-docs [--into DIR]
+#
+# Every file in docs/ is rewritten, so docs/ is a build artifact like src/nfhl/models/;
+# `tests/test_docs.py` fails if the committed pages differ from a fresh generation.
+# `--into DIR` writes elsewhere. The pages are committed as an example of what the
+# models produce, and to read the references' values in a human-readable form.
+set -euo pipefail
 
-Every file in docs/ is rewritten, so docs/ is a build artifact like
-src/nfhl/models/; `tests/test_docs.py` fails if the committed pages differ from a
-fresh generation. `--into DIR` writes elsewhere. The pages are committed as an
-example of what the models produce, and to read the references' values in a
-human-readable form.
-"""
+main() {
+  local root out
+  root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+  out="$root/docs"
+  case "${1:-}" in
+    "") ;;
+    --into) [ $# -eq 2 ] || { echo "usage: $0 [--into DIR]" >&2; exit 2; }; out="$2" ;;
+    *) echo "usage: $0 [--into DIR]" >&2; exit 2 ;;
+  esac
+  rm -rf "$out"
+  uv run --project "$root" overture-codegen generate --format markdown --tag nfhl --output-dir "$out"
+  find "$out" -type f | sort | sed 's/^/wrote /'
+}
 
-from __future__ import annotations
-
-import argparse
-import shutil
-import subprocess
-import sys
-from pathlib import Path
-
-DOCS_DIR = Path(__file__).resolve().parents[1] / "docs"
-
-
-def generate(out_dir: Path) -> None:
-    codegen = shutil.which("overture-codegen")
-    if codegen is None:
-        raise RuntimeError("overture-codegen not on PATH; run through `uv run`")
-    if out_dir.exists():
-        shutil.rmtree(out_dir)
-    command = [codegen, "generate", "--format", "markdown", "--tag", "nfhl"]
-    subprocess.run([*command, "--output-dir", str(out_dir)], check=True)
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--into", type=Path, default=DOCS_DIR)
-    args = parser.parse_args()
-    generate(args.into)
-    for path in sorted(args.into.rglob("*")):
-        if path.is_file():
-            print(f"wrote {path}")
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
+main "$@"; exit $?
