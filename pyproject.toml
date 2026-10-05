@@ -1,0 +1,102 @@
+[project]
+name = "nfhl"
+dynamic = ["version"]
+description = "Pydantic models for FEMA's National Flood Hazard Layer (NFHL), generated from the FIRM Database technical references and the NFHL service"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Seth Fitzsimmons", email = "seth@mojodna.net" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "annotated-types>=0.6",
+    "overture-schema-system>=2.0.0",
+    "pydantic>=2.9",
+]
+
+# Registers the models for Overture's discovery system, which is how
+# `overture-codegen` finds them. They derive from `Feature`, so the system's own
+# tag provider tags them `feature`; no provider of ours is needed yet.
+[project.entry-points."overture.models"]
+nfhl_flood_hazard_zone = "nfhl.models:FloodHazardZone"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "jsonschema>=4",
+    "mypy>=1.11",
+    "overture-schema-codegen>=2.0.0",
+    "pdfplumber>=0.11",
+    "pytest>=8",
+    "ruff>=0.14",
+    "types-jsonschema>=4.26.0.20260518",
+]
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nfhl"]
+
+[tool.hatch.build]
+include = [
+    "src/nfhl/py.typed",
+]
+
+[tool.hatch.version]
+path = "src/nfhl/__init__.py"
+
+
+[tool.mypy]
+mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
+# Extensionless scripts/ files are skipped if listed here as a directory; check
+# them by path: `for f in scripts/*; do uv run mypy --strict "$f"; done`.
+files = ["src", "tests"]
+python_version = "3.12"
+strict = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+warn_return_any = false
+
+[[tool.mypy.overrides]]
+# pdfplumber ships no type information.
+module = ["pdfplumber", "pdfplumber.*"]
+ignore_missing_imports = true
+
+
+[tool.ruff]
+line-length = 88
+src = ["src", "tests"]
+extend-include = ["scripts/*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+# The references' own prose carries curly quotes and en dashes, and descriptions
+# are copied verbatim rather than sanitised.
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+# `(str, DocumentedEnum)` is the Overture system's own idiom, and StrEnum is not
+# a drop-in for it.
+"src/nfhl/models/enums.py" = ["UP042"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "-q",
+    "-ra",
+]
+markers = [
+    "slow: re-runs the PDF extraction (about 30 seconds)",
+]
