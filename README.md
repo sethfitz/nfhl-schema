@@ -47,12 +47,20 @@ quoting the sentence it relies on, rather than in edits scattered through code.
 **The reference defines the model; the service is what is published.** Field
 set, meaning, requirement and domain come from the reference. Type and length
 come from the service, and a field whose two types disagree stops generation.
-`VERSION_ID` is required by the reference and the service does not publish it,
-so it is optional here.
+`VERSION_ID` is required by the reference and populated in the downloads, but
+the map service does not publish it, so it is optional here.
 
-**A vocabulary is the published string, not the coded value.** `FLD_ZONE` holds
-`OPEN WATER`, not `OW`; `LEN_UNIT` holds `Feet`, not `FT`. Each enum member's
-docstring gives the coded value.
+**The models describe the data as FEMA stores it; nothing is transformed.**
+The NFHL stores each coded field as text: the reference's description of the
+value, not its coded value. `FLD_ZONE` holds `OPEN WATER`, never `OW`;
+`STUDY_TYP` holds `SFHA with BFE and floodway`, never `1060`; `LEN_UNIT` holds
+`Feet`, never `FT`. All three distributions agree: the map service's fields
+declare no coded-value domains, the state file geodatabase declares none, and
+the county shapefiles are plain dBASE text ([`spec/README.md`](spec/README.md)
+records the samples). So an enum member's value is the stored string, and its
+description unpacks it from the reference: the long name (`NAVD88` is the North
+American Vertical Datum 1988), when the value is used, the footnotes the
+reference attaches to it, and its coded value.
 
 **Vocabularies are closed, and that rejects a third of the data.** 32% of the
 service's flood zones have a `STUDY_TYP` the November 2024 reference does not

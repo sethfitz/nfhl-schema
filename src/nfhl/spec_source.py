@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from functools import cached_property
 from pathlib import Path
@@ -79,9 +80,11 @@ class ReferenceTable:
 @dataclass(frozen=True, slots=True)
 class DomainValue:
     code: str
-    value: str  # the string that appears in published data
+    value: str  # the string the data stores
     published: str  # `value` as the PDF prints it, before any repair
     when_used: str | None
+    meaning: str | None  # the FRD description, where it says more than `value`
+    footnotes: tuple[str, ...]  # the text of each footnote the row cites
 
 
 @dataclass(frozen=True, slots=True)
@@ -163,6 +166,10 @@ _PRIVATE_USE = re.compile("[\ue000-\uf8ff]")
 _RUNNING_HEAD = re.compile(
     r" ?FIRM Database Technical Reference \w+ \d{4} \d+ Guidance for Flood Risk "
     r"Analysis and Mapping, FIRM Database Technical Reference ?"
+)
+_DOMAIN_RUNNING_HEAD = re.compile(
+    r" ?Domain Tables Technical Reference \w+ \d{4} \d+( Guidance for Flood Risk "
+    r"Analysis and Mapping, Domain Tables Technical Reference)? ?"
 )
 
 
@@ -255,24 +262,30 @@ class SpecReader:
     def domain(self, name: str) -> Domain:
         """The values of one domain that apply to the FIRM Database.
 
-        Published data carries the *description* column, not the coded value:
+        The data stores the *description* column as text, not the coded value:
         `FLD_ZONE` holds `OPEN WATER` and never `OW`, `LEN_UNIT` holds `Feet`,
         `STUDY_TYP` holds `SFHA with BFE and floodway`
-        (`test_published_values_are_descriptions_not_codes`). Where a domain
-        prints separate FRD and FIRM descriptions (`D_V_Datum`, `D_TrueFalse`),
-        the FIRM one is the published form. Rows
+        (`test_stored_values_are_descriptions_not_codes`). Where a domain prints
+        separate FRD and FIRM descriptions (`D_V_Datum`, `D_TrueFalse`), the
+        FIRM one is what is stored, and the FRD one, which spells the value out
+        (`North American Vertical Datum 1988`), is kept as its meaning. Rows
         whose "Applies to" column omits FIRM belong to other FEMA databases and
         are excluded.
         """
         table = self._domain_tables[name]
         header: list[str] = table["header"]
-        wire = next(
-            (i for i, h in enumerate(header) if h.endswith("FIRM Description")), 1
-        )
-        applies = next(i for i, h in enumerate(header) if h.startswith("Applies to"))
-        when = next(
-            (i for i, h in enumerate(header) if h.startswith("When Used")), None
-        )
+
+        def column(test: Callable[[str], bool]) -> int | None:
+            return next((i for i, h in enumerate(header) if test(h)), None)
+
+        wire = column(lambda h: h.endswith("FIRM Description")) or 1
+        applies = column(lambda h: h.startswith("Applies to"))
+        assert applies is not None, f"{name}: no Applies to column"
+        when = column(lambda h: h.startswith("When Used"))
+        frd = column(lambda h: h == "FRD Description")
+        # The rotated header extracts reversed in `D_Zone_Subtype`.
+        cites = column(lambda h: "Footnote" in (h, h[::-1]))
+        notes = self.domain_footnotes(name) if cites is not None else {}
         repairs = [r for r in self.repairs if r.domain == name]
         values = []
         for row in table["rows"]:
@@ -282,15 +295,48 @@ class SpecReader:
             value = published
             for repair in repairs:
                 value = repair.apply(value)
+            cited = re.findall(r"\d+", row[cites]) if cites is not None else []
             values.append(
                 DomainValue(
                     code=row[0],
                     value=value,
                     published=published,
                     when_used=row[when] if when is not None else None,
+                    meaning=row[frd] if frd is not None and row[frd] != value else None,
+                    footnotes=tuple(notes[n] for n in cited),
                 )
             )
         return Domain(name, tuple(values))
+
+    def domain_footnotes(self, name: str) -> dict[str, str]:
+        """The numbered footnotes printed under a domain table, by number.
+
+        They are running text below the table, not cells of it, so they are read
+        from the `pdftotext` rendering: from the domain's section introduction,
+        each number in turn, the last ending where the note after them begins.
+        """
+        text = self.reference_text(DOMAIN_TABLES)
+        intro = re.search(rf"{name} This domain table is referenced", text)
+        if intro is None:
+            raise ValueError(f"{name}: section introduction not found")
+        starts: list[tuple[str, int, int]] = []
+        position = intro.end()
+        number = 1
+        while found := re.compile(rf"(?<!\S){number}\. ").search(text, position):
+            # A later section's first footnote is not this table's next one.
+            if starts and found.start() - starts[-1][2] > 2000:
+                break
+            starts.append((str(number), found.start(), found.end()))
+            position = found.end()
+            number += 1
+        if not starts:
+            raise ValueError(f"{name}: no footnotes found")
+        tail = re.compile(r" Note |(?<!\S)D_[A-Z]").search(text, starts[-1][2])
+        ends = [s[1] for s in starts[1:]] + [tail.start() if tail else len(text)]
+        return {
+            number: _DOMAIN_RUNNING_HEAD.sub(" ", text[body:end]).strip()
+            for (number, _, body), end in zip(starts, ends, strict=True)
+        }
 
     # -- the NFHL service ------------------------------------------------------
 

@@ -32,12 +32,39 @@ with its header rather than guessing.
 
 ## How the published values relate to the reference
 
-**Data holds the description, not the coded value.** `D_Zone` lists `OW` /
-`OPEN WATER`; the service publishes `OPEN WATER` and never `OW`. The same holds
-for every domain this slice reads (`Feet` not `FT`, `SFHA with BFE and floodway`
-not `1060`). The reference never says so. Two domains print separate *FRD* and
-*FIRM* descriptions (`D_V_Datum`, `D_TrueFalse`), and there the FIRM one is
-what is published (`LOCAL TIDAL DATUM`, `T`).
+**The data stores the description, not the coded value, in every
+distribution.** `D_Zone` lists `OW` / `OPEN WATER`; the data holds `OPEN WATER`
+and never `OW`. The same holds for every domain this slice reads (`Feet` not
+`FT`, `SFHA with BFE and floodway` not `1060`). The reference never says so.
+Two domains print separate *FRD* and *FIRM* descriptions (`D_V_Datum`,
+`D_TrueFalse`); the FIRM one is what is stored (`LOCAL TIDAL DATUM`, `T`), and
+the FRD one, which spells the value out (`Local Tidal Datum`, `True (Yes)`), is
+what each enum member's description gives as its meaning.
+
+Checked on 2026-10-05 against all three ways FEMA distributes the NFHL, from
+the [Map Service Center](https://msc.fema.gov/portal/advanceSearch) product
+search (`POST /portal/advanceSearch`, then
+`GET /portal/downloadProduct?productTypeID=NFHL&productSubTypeID=...&productID=...`):
+
+- **The map service** declares no domain on any layer 28 field
+  (`jq '.fields[].domain' service/layers/28.json` prints only `null`), so what
+  a query returns is what is stored; there is no coded value to translate from.
+- **The state file geodatabase**, `NFHL_11_20241031.gdb` (District of Columbia,
+  `NFHL_STATE_DATA`), has no coded-value domains:
+  `ogrinfo -ro -json -so NFHL_11_20241031.gdb S_FLD_HAZ_AR | jq .domains` prints
+  `{}`. Its `S_FLD_HAZ_AR` holds `AE`, `FLOODWAY`, `0.2 PCT ANNUAL CHANCE FLOOD
+  HAZARD`, `NAVD88`, `Feet`, and `VERSION_ID` on every row, as text.
+- **The county shapefiles**, `51179C_20230621.zip` (Stafford County, Virginia)
+  and `39105C_20140519.zip` (Meigs County, Ohio), `NFHL_COUNTY_DATA`, hold the
+  same text: `OPEN WATER`, `SFHA with BFE and floodway`, `NAVD88`, `Feet`, and,
+  in Meigs, `REDELINEATION` and `SFHAs WITH LOW FLOOD RISK`.
+
+Converted to GeoJSON with `ogr2ogr -f GeoJSONSeq`, all 1,748 Stafford features
+validate against the model. Of the 652 District of Columbia features, the 51
+that fail all hold `ZONE_SUBTY` `AREA WITH REDUCED FLOOD RISK DUE TO LEVEE`, a
+value the reference does not list. The downloads write a missing text value as
+a true null where the service sometimes writes `""`, and keep `-9999` for
+numbers; the models read both. The archives are not vendored.
 
 **Rows for other FEMA databases are excluded.** Each domain row has an
 "Applies to Database Schema" column; only rows naming FIRM are kept. `D_Zone`'s

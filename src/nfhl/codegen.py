@@ -101,12 +101,16 @@ def member_name(value: str) -> str:
 
 
 def member_doc(value: DomainValue) -> str:
-    doc = f"Coded value `{value.code}`."
-    if value.when_used:
-        doc += f" {value.when_used}."
+    """What a stored value means, in the reference's own words, then its code."""
+    parts = [
+        f"{text.rstrip('.')}."
+        for text in (value.meaning, value.when_used, *value.footnotes)
+        if text
+    ]
+    parts.append(f"Coded value `{value.code}`.")
     if value.published != value.value:
-        doc += f" Printed in the reference as `{value.published}`."
-    return doc
+        parts.append(f"Printed in the reference as `{value.published}`.")
+    return " ".join(parts)
 
 
 def render_enum(domain: Domain, used_by: list[str]) -> str:
@@ -117,8 +121,8 @@ def render_enum(domain: Domain, used_by: list[str]) -> str:
     lines = [
         f"class {domain.class_name}(str, DocumentedEnum):",
         docstring(
-            f"Values of `{domain.name}` that apply to the FIRM Database, as "
-            f"published. Used by {fields}.",
+            f"Values of `{domain.name}` that apply to the FIRM Database, each as "
+            f"the data stores it. Used by {fields}.",
             "    ",
         ),
         "",
@@ -144,9 +148,12 @@ def render_enums(reader: SpecReader) -> str:
             "",
             HEADER,
             "",
-            "Each member's value is the string published data carries -- the",
-            "reference's FIRM description column, not its coded value -- and its",
-            'docstring gives the coded value.\n"""',
+            "Each member's value is the text the NFHL stores, unchanged: the",
+            "reference's FIRM description, not its coded value. The service, the",
+            "state file geodatabases and the county shapefiles all hold that text",
+            "and declare no coded-value domains. Each member's description says",
+            "what the value means, from the reference, and gives its coded value.",
+            '"""',
             "",
             "from __future__ import annotations",
             "",
@@ -194,11 +201,12 @@ def render_field(
     required = ref.required and svc is not None
     if ref.required and svc is None:
         comments.append(
-            "Required by the reference, but the NFHL service does not publish it."
+            "Required by the reference, and populated in the state and county "
+            "downloads, but the NFHL map service does not publish it."
         )
     if not required:
         annotation = f"Omitable[{annotation}]"
-    lines = [f"    # {c}" for c in comments]
+    lines = [f"    # {line}" for c in comments for line in textwrap.wrap(c, 82)]
     lines.append(
         f"    {ref.name.lower()}: {annotation} = Field(\n"
         f"        alias={literal(ref.name)},\n"

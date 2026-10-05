@@ -66,7 +66,7 @@ def test_the_dash_repair_matches_what_the_service_publishes(
     assert any("NON-ACCREDITED" in v for v in observed)
 
 
-def test_published_values_are_descriptions_not_codes(
+def test_stored_values_are_descriptions_not_codes(
     reader: SpecReader, layer: Layer
 ) -> None:
     zone = reader.domain("D_Zone")

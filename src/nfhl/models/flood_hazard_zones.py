@@ -100,7 +100,8 @@ class FloodHazardZone(Feature):
         ),
     )
 
-    # Required by the reference, but the NFHL service does not publish it.
+    # Required by the reference, and populated in the state and county downloads, but
+    # the NFHL map service does not publish it.
     version_id: Omitable[Annotated[str, MaxLen(11)]] = Field(
         alias="VERSION_ID",
         description=(
