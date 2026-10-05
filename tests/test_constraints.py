@@ -11,7 +11,7 @@ from overture.schema.system.model_constraint import forbid_if
 from overture.schema.system.optionality import Omitable
 from pydantic import BaseModel
 
-from nfhl.constraints import Absent, AllOf, OneOf
+from nfhl.constraints import Absent, AllOf, NoneOf, OneOf, require_any_true
 from nfhl.constraints import forbid_if as named_forbid_if
 from nfhl.models import FloodHazardZone
 
@@ -142,4 +142,45 @@ def test_a_qualifier_keeps_two_rules_on_one_field_apart() -> None:
 
 def test_one_of_reads_as_a_sentence() -> None:
     assert str(OneOf("zone", ("x",))) == "zone is x"
-    assert str(OneOf("zone", ("x", "y"))) == "zone is one of x, y"
+    assert str(OneOf("zone", ("x", "y", "z"))) == "zone is x, y or z"
+    assert str(NoneOf("zone", ("x", "y"))) == "zone is neither x nor y"
+    assert str(NoneOf("zone", ("x", "y", "z"))) == "zone is not x, y or z"
+    assert str(OneOf("zone", ("x",), label="zone is odd")) == "zone is odd"
+
+
+class Flags(BaseModel):
+    zone: str
+    flag: str
+
+
+# When zone is x, flag is not F; when zone is y, flag is not T. Two rules of
+# one kind on one required field: the shape forbid_if refuses.
+FlagRules = require_any_true(
+    ["flag"], NoneOf("zone", ("x",)), NoneOf("flag", ("F",)), qualifier="x"
+)(
+    require_any_true(
+        ["flag"], NoneOf("zone", ("y",)), NoneOf("flag", ("T",)), qualifier="y"
+    )(Flags)
+)
+
+
+@pytest.mark.parametrize(
+    ("data", "broken"),
+    [
+        ({"zone": "x", "flag": "T"}, None),
+        ({"zone": "x", "flag": "F"}, "x"),
+        ({"zone": "y", "flag": "F"}, None),
+        ({"zone": "y", "flag": "T"}, "y"),
+    ],
+)
+def test_require_any_true_says_when_then_for_required_fields(
+    data: dict[str, Any], broken: str | None
+) -> None:
+    assert check(FlagRules.model_json_schema(), data) is (broken is None)
+    if broken is None:
+        FlagRules.model_validate(data)
+    else:
+        with pytest.raises(
+            ValueError, match=rf"`@require_any_true\(flag\) \[{broken}\]`"
+        ):
+            FlagRules.model_validate(data)

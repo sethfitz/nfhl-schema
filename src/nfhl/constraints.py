@@ -12,12 +12,13 @@ own group constraints use for "has a value": set explicitly, and not `None`.
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, override
 
 from overture.schema.system.model_constraint import (
     Condition,
     ForbidIfConstraint,
+    RequireAnyTrueConstraint,
     RequireIfConstraint,
     apply_alias,
 )
@@ -113,6 +114,14 @@ class AllOf(Condition):
         return {"allOf": [c.json_schema(model_class) for c in self.conditions]}
 
 
+def spoken(values: tuple[Any, ...], conjunction: str) -> str:
+    """`A`, `A or B`, `A, B or C`: values as the reference docs read them."""
+    shown = [str(getattr(v, "value", v)) for v in values]
+    if len(shown) == 1:
+        return shown[0]
+    return f"{', '.join(shown[:-1])} {conjunction} {shown[-1]}"
+
+
 @dataclass(frozen=True, slots=True)
 class OneOf(Condition):
     """True when `field_name` holds one of `values`; false when it holds none.
@@ -124,12 +133,14 @@ class OneOf(Condition):
 
     field_name: str
     values: tuple[Any, ...]
+    # How the reference docs read the condition, when listing `values` would
+    # say less than naming the rule they come from.
+    label: str | None = field(default=None, compare=False)
 
     def __str__(self) -> str:
-        shown = [getattr(v, "value", v) for v in self.values]
-        if len(shown) == 1:
-            return f"{self.field_name} is {shown[0]}"
-        return f"{self.field_name} is one of {', '.join(map(str, shown))}"
+        if self.label is not None:
+            return self.label
+        return f"{self.field_name} is {spoken(self.values, 'or')}"
 
     @override
     def validate_class(self, model_class: type[BaseModel]) -> None:
@@ -152,6 +163,39 @@ class OneOf(Condition):
                 alias: {"enum": [to_jsonable_python(v) for v in self.values]}
             },
         }
+
+
+@dataclass(frozen=True, slots=True)
+class NoneOf(Condition):
+    """True when `field_name` holds none of `values`, or nothing. Negates `OneOf`.
+
+    Its own class rather than `~OneOf(...)` so the rule reads as a sentence in
+    the generated reference.
+    """
+
+    field_name: str
+    values: tuple[Any, ...]
+
+    def __str__(self) -> str:
+        if len(self.values) == 2:
+            return f"{self.field_name} is neither {spoken(self.values, 'nor')}"
+        return f"{self.field_name} is not {spoken(self.values, 'or')}"
+
+    @override
+    def validate_class(self, model_class: type[BaseModel]) -> None:
+        OneOf(self.field_name, self.values).validate_class(model_class)
+
+    @override
+    def eval(self, model_instance: BaseModel) -> bool:
+        return not OneOf(self.field_name, self.values).eval(model_instance)
+
+    @override
+    def negate(self) -> Condition:
+        return OneOf(self.field_name, self.values)
+
+    @override
+    def json_schema(self, model_class: type[BaseModel]) -> JsonDict:
+        return {"not": OneOf(self.field_name, self.values).json_schema(model_class)}
 
 
 Decorator = Callable[[type[BaseModel]], type[BaseModel]]
@@ -189,6 +233,19 @@ def require_if(
     """The system's `require_if`, uniquely named for the reason `forbid_if` is."""
     name = _rule_name("require_if", field_names, qualifier)
     return RequireIfConstraint._create_internal(name, field_names, condition).decorate
+
+
+def require_any_true(
+    field_names: list[str], *conditions: Condition, qualifier: str | None = None
+) -> Decorator:
+    """The system's `require_any_true`, uniquely named for the reason `forbid_if`
+    is. `field_names` only names the rule.
+
+    The rule for a required field: `forbid_if` and `require_if` accept only
+    optional ones. "When A, then B" is "not A, or B".
+    """
+    name = _rule_name("require_any_true", field_names, qualifier)
+    return RequireAnyTrueConstraint._create_internal(name, *conditions).decorate
 
 
 # FIRM Database Technical Reference, section 7.3 "Acceptable Null Values". A
