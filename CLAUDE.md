@@ -56,3 +56,9 @@ who import this package; a constraint also reaches the JSON Schema.
 
 `FloodHazardZone.model_validate_json(...)`. The `Feature` envelope unwraps only
 in JSON mode; a dict reports every required field missing.
+
+## Keep `notes/retrospective.md` as you go
+
+It is the raw material for a write-up on building this package. When a slice
+lands, add what surprised you, what the data or the reference did, and anything
+in `overture-schema-system` that got in the way.
