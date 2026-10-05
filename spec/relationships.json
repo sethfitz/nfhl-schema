@@ -37,6 +37,32 @@
           "quote": "This field is only populated if the STATIC_BFE or DEPTH field is populated."
         }
       ],
+      "only_when": [
+        {
+          "field": "AR_REVERT",
+          "when": "FLD_ZONE",
+          "any_of": ["AR"],
+          "quote": "This field is only populated if the corresponding area is Zone AR."
+        },
+        {
+          "field": "AR_SUBTRV",
+          "when": "FLD_ZONE",
+          "any_of": ["AR"],
+          "quote": "This field is only populated if the corresponding area is Zone AR."
+        }
+      ],
+      "allowed": [
+        {
+          "field": "AR_REVERT",
+          "any_of": ["A", "AE", "AH", "AO", "X"],
+          "quote": "Acceptable values for this field are listed in the D_Zone table, but should only include one of AE, AO, AH, A, and X domain values."
+        },
+        {
+          "field": "AR_SUBTRV",
+          "subtypes_of": ["A", "AE", "AH", "AO", "X"],
+          "quote": "Acceptable values for this field are listed in the D_Zone_Subtype_ table and must be one of the allowable subtypes for Zones AE, AO, AH, A or X."
+        }
+      ],
       "required_when": [
         {
           "field": "VEL_UNIT",

@@ -12,8 +12,9 @@ Three upstream sources meet here, and each answers a different question:
 
 Two local files record readings of the references that the PDFs do not make
 machine-readable: `spec/repairs.json` (wire-value corrections) and
-`spec/relationships.json` (which field carries another's unit or datum, and
-which fields are populated only alongside another). Every entry quotes the
+`spec/relationships.json` (which field carries another's unit or datum, which
+fields are populated only alongside another or only for some zones, and which
+values a field is limited to). Every entry quotes the
 reference sentence that licenses it, and a test asserts the quote is still there.
 """
 
@@ -147,6 +148,37 @@ class OnlyIf:
 
 
 @dataclass(frozen=True, slots=True)
+class OnlyWhen:
+    """`field` may be populated only when `when` holds one of `any_of`."""
+
+    field: str
+    when: str
+    any_of: tuple[str, ...]
+    quote: str
+
+
+@dataclass(frozen=True, slots=True)
+class Allowed:
+    """`field` may hold only some of its domain's values.
+
+    Either `any_of` lists them, or `subtypes_of` names flood zones, and the
+    values are every subtype the zone/subtype cross-walk allows for any of
+    them. `zones` is whichever list the quote names.
+    """
+
+    field: str
+    any_of: tuple[str, ...] | None
+    subtypes_of: tuple[str, ...] | None
+    quote: str
+
+    @property
+    def zones(self) -> tuple[str, ...]:
+        zones = self.any_of if self.any_of is not None else self.subtypes_of
+        assert zones is not None, f"{self.field}: allowed lists nothing"
+        return zones
+
+
+@dataclass(frozen=True, slots=True)
 class RequiredWhen:
     """`field` must be populated whenever `when` is."""
 
@@ -171,6 +203,8 @@ class Relationships:
     units: tuple[UnitOf, ...]
     datums: tuple[DatumOf, ...]
     only_if: tuple[OnlyIf, ...]
+    only_when: tuple[OnlyWhen, ...]
+    allowed: tuple[Allowed, ...]
     required_when: tuple[RequiredWhen, ...]
     value_when: tuple[ValueWhen, ...]
 
@@ -570,6 +604,19 @@ class SpecReader:
                 OnlyIf(r["field"], tuple(r["any_of"]), r["quote"])
                 for r in raw.get("only_if", [])
             ),
+            only_when=tuple(
+                OnlyWhen(r["field"], r["when"], tuple(r["any_of"]), r["quote"])
+                for r in raw.get("only_when", [])
+            ),
+            allowed=tuple(
+                Allowed(
+                    r["field"],
+                    tuple(r["any_of"]) if "any_of" in r else None,
+                    tuple(r["subtypes_of"]) if "subtypes_of" in r else None,
+                    r["quote"],
+                )
+                for r in raw.get("allowed", [])
+            ),
             required_when=tuple(
                 RequiredWhen(**r) for r in raw.get("required_when", [])
             ),
@@ -580,6 +627,25 @@ class SpecReader:
                 for r in raw.get("value_when", [])
             ),
         )
+
+    def forbidden_values(self, table: str, allowed: Allowed) -> tuple[str, ...]:
+        """The reference values of `allowed.field`'s domain it may not hold.
+
+        Reference values only, like a pair rule's: a legacy value is judged by
+        its own warning. `subtypes_of` reads the zones' rows of the cross-walk.
+        """
+        domain = self.reference_table(table).field(allowed.field).domain
+        assert domain is not None, f"{table}.{allowed.field} has no domain"
+        if allowed.subtypes_of is not None:
+            rows = {row.zone: row for row in self.subtype_crosswalk()}
+            ok = {s for zone in allowed.subtypes_of for s in rows[zone].subtypes}
+        else:
+            ok = set(allowed.zones)
+        values = [v.value for v in self.domain(domain).values]
+        unknown = ok - set(values)
+        if unknown:
+            raise ValueError(f"{table}.{allowed.field}: not in {domain}: {unknown}")
+        return tuple(v for v in values if v not in ok)
 
     def pair_rules(self, table: str) -> tuple[PairRule, ...]:
         """Every rule on which values two fields of `table` may hold together.

@@ -48,6 +48,47 @@ from nfhl.models.enums import (
 
 @forbid_if(["v_datum"], Absent("static_bfe"))
 @forbid_if(["len_unit"], AllOf(Absent("static_bfe"), Absent("depth")))
+# “This field is only populated if the corresponding area is Zone AR.”
+@forbid_if(["ar_revert"], NoneOf("fld_zone", (Zone.AR,)))
+# “This field is only populated if the corresponding area is Zone AR.”
+@forbid_if(["ar_subtrv"], NoneOf("fld_zone", (Zone.AR,)))
+# “Acceptable values for this field are listed in the D_Zone table, but should only
+# include one of AE, AO, AH, A, and X domain values.”
+@forbid_if(
+    ["ar_revert"],
+    OneOf(
+        "ar_revert",
+        (
+            Zone.A99,
+            Zone.AR,
+            Zone.AREA_NOT_INCLUDED,
+            Zone.D,
+            Zone.OPEN_WATER,
+            Zone.V,
+            Zone.VE,
+        ),
+        label="ar_revert is a D_Zone value other than A, AE, AH, AO, X",
+    ),
+    "A, AE, AH, AO, X",
+)
+# “Acceptable values for this field are listed in the D_Zone_Subtype_ table and must
+# be one of the allowable subtypes for Zones AE, AO, AH, A or X.”
+@forbid_if(
+    ["ar_subtrv"],
+    OneOf(
+        "ar_subtrv",
+        (
+            ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+            ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+            ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+        ),
+        label=(
+            "ar_subtrv is a D_Zone_Subtype value Table 14 does not list for any of "
+            "A, AE, AH, AO, X"
+        ),
+    ),
+    "A, AE, AH, AO, X",
+)
 @require_if(["vel_unit"], Populated("velocity"))
 # Table 14: Flood Zone and Zone Subtype Cross-Walk
 @forbid_if(

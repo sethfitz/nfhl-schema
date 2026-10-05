@@ -15,8 +15,9 @@ What comes from where:
 * Esri type and text length -- the NFHL service, which is what is published;
   the reference's own type is cross-checked and a disagreement raises;
 * allowed values -- the Domain Tables Technical Reference, after repairs;
-* unit, datum and populated-only-if relationships, and values one field takes
-  from another -- `spec/relationships.json`;
+* unit, datum and populated-only-if relationships, the values a field is
+  limited to, and values one field takes from another --
+  `spec/relationships.json`;
 * which subtypes each flood zone allows -- Table 14 of the FIRM Database
   reference, the zone/subtype cross-walk.
 """
@@ -36,6 +37,7 @@ from pathlib import Path
 from nfhl.spec_source import (
     CROSSWALK_LICENCE,
     LAYERS,
+    Allowed,
     Domain,
     DomainValue,
     Layer,
@@ -333,6 +335,36 @@ def render_pair_rule(
     return lines
 
 
+def quote_comment(quote: str) -> list[str]:
+    """The licensing sentence as `#` comment lines that fit the line length."""
+    return [f"# {line}" for line in textwrap.wrap(f"“{quote}”", 84)]
+
+
+def render_allowed(
+    allowed: Allowed, table: ReferenceTable, reader: SpecReader
+) -> list[str]:
+    """A limit on one field's values, as a commented constraint decorator.
+
+    It forbids the reference values outside the limit, so a legacy value is
+    left to its own warning, and is qualified by the zones its quote names: the
+    field's other rule (`only_when`) is a `forbid_if` on the same field.
+    """
+    domain = reader.domain(require_domain(table, allowed.field))
+    field = literal(allowed.field.lower())
+    forbidden = reader.forbidden_values(table.name, allowed)
+    zones = ", ".join(allowed.zones)
+    if allowed.subtypes_of is not None:
+        text = f"{allowed.field.lower()} is a {domain.name} value Table 14 does not "
+        text += f"list for any of {zones}"
+    else:
+        text = f"{allowed.field.lower()} is a {domain.name} value other than {zones}"
+    return [
+        *quote_comment(allowed.quote),
+        f"@forbid_if([{field}], OneOf({field}, {members(domain, forbidden)}, "
+        f"label={literal(text)}), {literal(zones)})",
+    ]
+
+
 def require_domain(table: ReferenceTable, name: str) -> str:
     domain = table.field(name).domain
     if domain is None:
@@ -358,6 +390,15 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
         absent = [f"Absent({literal(f.lower())})" for f in only.any_of]
         condition = absent[0] if len(absent) == 1 else f"AllOf({', '.join(absent)})"
         decorators.append(f"@forbid_if([{literal(only.field.lower())}], {condition})")
+    for zoned in relations.only_when:
+        domain = reader.domain(require_domain(table, zoned.when))
+        decorators.extend(quote_comment(zoned.quote))
+        decorators.append(
+            f"@forbid_if([{literal(zoned.field.lower())}], "
+            f"NoneOf({literal(zoned.when.lower())}, {members(domain, zoned.any_of)}))"
+        )
+    for allowed in relations.allowed:
+        decorators.extend(render_allowed(allowed, table, reader))
     for needed in relations.required_when:
         decorators.append(
             f"@require_if([{literal(needed.field.lower())}], "

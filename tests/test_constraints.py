@@ -15,6 +15,12 @@ from nfhl.constraints import Absent, AllOf, NoneOf, OneOf, require_any_true
 from nfhl.constraints import forbid_if as named_forbid_if
 from nfhl.models import FloodHazardZone
 
+AR_ZONE = {
+    "FLD_ZONE": "AR",
+    "ZONE_SUBTY": "AREA WITH REDUCED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
+    "SFHA_TF": "T",
+}
+
 
 @pytest.fixture(scope="module")
 def schema() -> dict[str, Any]:
@@ -46,6 +52,9 @@ def test_the_schema_accepts_a_valid_feature(
         ([], {"SFHA_TF": "F"}),  # an AE zone outside the SFHA
         ([], {"FLD_ZONE": "AH", "ZONE_SUBTY": "FLOODWAY"}),  # not in Table 14
         ([], {"FLD_ZONE": "X", "SFHA_TF": "F"}),  # an X zone with no subtype
+        ([], {"AR_REVERT": "AE"}),  # a reverted zone on a zone that is not AR
+        ([], {**AR_ZONE, "AR_REVERT": "VE"}),  # not one of the five zones
+        ([], {**AR_ZONE, "AR_SUBTRV": AR_ZONE["ZONE_SUBTY"]}),  # A99 and AR only
     ],
 )
 def test_the_schema_enforces_the_relationship_rules(
@@ -59,6 +68,15 @@ def test_the_schema_enforces_the_relationship_rules(
         del feature["properties"][key]
     feature["properties"].update(add)
     assert not check(schema, feature)
+
+
+def test_the_schema_accepts_an_ar_zone_and_what_it_reverts_to(
+    schema: dict[str, Any], valid_feature: dict[str, Any]
+) -> None:
+    # The control for the AR cases above: each breaks one rule, not the zone.
+    feature = dumped(valid_feature)
+    feature["properties"].update(AR_ZONE, AR_REVERT="AE", AR_SUBTRV="FLOODWAY")
+    assert check(schema, feature)
 
 
 def test_only_v_datum_breaks_the_schema_when_len_unit_has_a_depth(

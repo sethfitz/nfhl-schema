@@ -13,7 +13,7 @@ retrieved, the edition, and a SHA-256 of every file.
 | `service/MapServer.json`, `service/layers/<id>.json` | The [NFHL MapServer](https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer)'s metadata for all 32 layers and its one table: field names, Esri types, lengths. Taken whole so later slices need no new fetch. |
 | `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, and per-pair counts for every two fields a rule reads together (`combinations`), from the service's grouped statistics. Observations, not specification. |
 | `repairs.json` | **Not upstream.** Corrections to published domain values, each quoting the reference sentence that licenses it. Not in the manifest. |
-| `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`), each quoting the field description it reads. Not in the manifest. |
+| `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another or only for some zones (`AR_REVERT`, `AR_SUBTRV`), which values a field is limited to, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`), each quoting the field description it reads. Not in the manifest. |
 | `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot. Not in the manifest. |
 
 ## Why PDFs
@@ -107,6 +107,16 @@ Each is pinned by a test, so an upstream change shows up as a failure.
   reference says which is meant.
 - **`AR_SUBTRV` cites "the D_Zone_Subtype_ table"**, with a stray underscore;
   its type table names `D_Zone_Subtype` correctly.
+- **The AR fields' descriptions leave two things open**, and the models take
+  the narrower reading of each. `AR_SUBTRV` "must be one of the allowable
+  subtypes for Zones AE, AO, AH, A or X", which names the five zones together:
+  read as the union of their Table 14 rows, not as a pair with the zone in
+  `AR_REVERT`, though the field is "the zone subtype that area would revert
+  to". So `AH` with `FLOODWAY`, a subtype Table 14 lists for `AE` only,
+  validates; and an AR zone reverting to `X`, whose row has no `<NULL>`, need
+  not name a subtype. Nor does either description say an AR zone must populate
+  them, so nothing requires them. `AR_REVERT` "should only include" the five
+  zones, the same "should" as `SFHA_TF`'s rule, and is enforced like it.
 
 Nine of the reference's 53 tables do not yet join their description table to
 their type table, so `SpecReader.reference_table` raises on them: `L_Mtg_POC`

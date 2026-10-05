@@ -41,6 +41,8 @@ def test_every_relationship_quotes_its_own_field_description(
         *((u.unit_field, u.quote) for u in rel.units),
         *((d.datum_field, d.quote) for d in rel.datums),
         *((o.field, o.quote) for o in rel.only_if),
+        *((o.field, o.quote) for o in rel.only_when),
+        *((a.field, a.quote) for a in rel.allowed),
         *((r.field, r.quote) for r in rel.required_when),
         *((v.field, v.quote) for v in rel.value_when),
     ]
@@ -232,6 +234,39 @@ def test_the_sfha_rules_read_a_or_v_and_x_or_d_as_zone_codes(
     assert set(by_flag["F"]) == {"X", "D"}
     unnamed = {z.value for z in zones} - sfha - {"X", "D"}
     assert unnamed == {"AREA NOT INCLUDED", "OPEN WATER"}
+
+
+def test_each_allowed_list_is_the_zones_its_quote_names(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # Both AR descriptions name AE, AO, AH, A and X; the entry lists them, in
+    # D_Zone's order, and nothing else.
+    allowed = reader.relationships(layer.table).allowed
+    assert {a.field for a in allowed} == {"AR_REVERT", "AR_SUBTRV"}
+    zones = {z.value for z in reader.domain("D_Zone").values}
+    for entry in allowed:
+        named = set(re.findall(r"\b[A-Z][A-Z0-9]*\b", entry.quote)) & zones
+        assert set(entry.zones) == named, entry.field
+
+
+def test_ar_subtrv_is_limited_to_what_the_crosswalk_lists(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # Read from Table 14, not restated: the subtypes no row of A, AE, AH, AO or
+    # X lists. A99's and AR's levee subtype is one; VE's coastal floodway one.
+    (entry,) = [
+        a for a in reader.relationships(layer.table).allowed if a.field == "AR_SUBTRV"
+    ]
+    forbidden = set(reader.forbidden_values(layer.table, entry))
+    rows = {r.zone: r for r in reader.subtype_crosswalk()}
+    listed = {s for z in ("A", "AE", "AH", "AO", "X") for s in rows[z].subtypes}
+    every = {v.value for v in reader.domain("D_Zone_Subtype").values}
+    assert forbidden == every - listed
+    assert "AREA WITH REDUCED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM" in (
+        forbidden
+    )
+    assert "FLOODWAY" not in forbidden
+    assert "AREA OF MINIMAL FLOOD HAZARD" not in forbidden
 
 
 def test_no_value_pair_a_rule_rejects_is_common(

@@ -60,5 +60,9 @@ not define them, so they arrive as extra properties.
 - `zone_subty` is forbidden when fld_zone is A99 or AR and zone_subty is a D_Zone_Subtype value Table 14 does not list for A99, AR, which allows only AREA WITH REDUCED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM
 - `zone_subty` is forbidden when fld_zone is A and zone_subty is a D_Zone_Subtype value Table 14 does not list for A, which allows only 1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN CHANNEL; 1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE; COASTAL FLOODPLAIN; COMBINED RIVERINE AND COASTAL FLOODPLAIN; RIVERINE FLOODPLAIN IN COASTAL ZONE; AREA WITH FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM
 - `vel_unit` is required when velocity is populated
+- `ar_subtrv` is forbidden when ar_subtrv is a D_Zone_Subtype value Table 14 does not list for any of A, AE, AH, AO, X
+- `ar_revert` is forbidden when ar_revert is a D_Zone value other than A, AE, AH, AO, X
+- `ar_subtrv` is forbidden when fld_zone is not AR
+- `ar_revert` is forbidden when fld_zone is not AR
 - `len_unit` is forbidden when static_bfe is not populated and depth is not populated
 - `v_datum` is forbidden when static_bfe is not populated

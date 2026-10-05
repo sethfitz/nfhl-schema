@@ -118,6 +118,15 @@ take any flag. `SFHA_TF` is required, which `forbid_if` does not accept, so each
 sentence is a `require_any_true`: the zone is not one of these, or the flag is
 not one of the others.
 
+**`AR_REVERT` and `AR_SUBTRV` belong to AR zones.** Each description says the
+field "is only populated if the corresponding area is Zone AR", and limits its
+values: `AR_REVERT` to `AE`, `AO`, `AH`, `A` and `X`, and `AR_SUBTRV` to "the
+allowable subtypes for Zones AE, AO, AH, A or X", which the generator reads from
+those five rows of Table 14. Neither description ties the subtype to the zone in
+`AR_REVERT`, so a subtype is checked against the five rows together, not the one
+the area reverts to; and neither says an AR zone must have them, so nothing
+requires them. A legacy subtype is left to its warning, as in `ZONE_SUBTY`.
+
 **Stacking two system constraints of one kind loses one in Python.** Each
 `forbid_if` registers its check under the name `@forbid_if`, so a second on the
 same class replaces the first's validator while both reach the JSON Schema. The

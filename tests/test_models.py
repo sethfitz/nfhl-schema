@@ -242,6 +242,63 @@ def test_open_water_takes_no_sfha_rule(valid_feature: dict[str, Any]) -> None:
         assert rejected_by(valid_feature) == set(), flag
 
 
+# A real AR feature would hold these; the live layer has none (spec/README.md).
+AR_ZONE = {
+    "FLD_ZONE": "AR",
+    "ZONE_SUBTY": "AREA WITH REDUCED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
+    "SFHA_TF": "T",
+}
+
+
+def test_an_ar_zone_takes_what_it_reverts_to(valid_feature: dict[str, Any]) -> None:
+    # The did-happen control for the AR rules below: an AR zone that reverts to
+    # AE with a subtype Table 14 lists for one of the five zones validates.
+    valid_feature["properties"].update(AR_ZONE, AR_REVERT="AE", AR_SUBTRV="FLOODWAY")
+    assert rejected_by(valid_feature) == set()
+
+
+@pytest.mark.parametrize(
+    ("change", "rule"),
+    [
+        # "This field is only populated if the corresponding area is Zone AR."
+        ({"AR_REVERT": "AE"}, "@forbid_if(ar_revert)"),
+        ({"AR_SUBTRV": "FLOODWAY"}, "@forbid_if(ar_subtrv)"),
+        # The five zones the descriptions name; VE is not one.
+        ({**AR_ZONE, "AR_REVERT": "VE"}, "@forbid_if(ar_revert) [A, AE, AH, AO, X]"),
+        # Only A99 and AR list this subtype in Table 14.
+        (
+            {**AR_ZONE, "AR_SUBTRV": AR_ZONE["ZONE_SUBTY"]},
+            "@forbid_if(ar_subtrv) [A, AE, AH, AO, X]",
+        ),
+    ],
+)
+def test_each_ar_rule_fires(
+    valid_feature: dict[str, Any], change: dict[str, Any], rule: str
+) -> None:
+    valid_feature["properties"].update(change)
+    assert rejected_by(valid_feature) == {rule}
+
+
+def test_ar_subtrv_is_not_paired_with_ar_revert(
+    valid_feature: dict[str, Any],
+) -> None:
+    # The description lists the subtypes of all five zones together, and says
+    # nothing tying the subtype to the zone in AR_REVERT: AH with FLOODWAY,
+    # which Table 14 lists for AE and not AH, validates (spec/README.md).
+    valid_feature["properties"].update(AR_ZONE, AR_REVERT="AH", AR_SUBTRV="FLOODWAY")
+    assert rejected_by(valid_feature) == set()
+
+
+def test_the_ar_subtype_limit_does_not_judge_a_legacy_subtype(
+    valid_feature: dict[str, Any],
+) -> None:
+    valid_feature["properties"].update(
+        AR_ZONE, AR_SUBTRV="AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
+    )
+    assert rejected_by(valid_feature) == set()
+    assert len(legacy_warnings(valid_feature)) == 1
+
+
 def test_every_pair_rule_is_a_constraint_on_the_model(
     reader: SpecReader, layer: Layer
 ) -> None:
