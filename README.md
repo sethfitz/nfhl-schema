@@ -42,12 +42,6 @@ edition becomes a diff, and the questions the sources leave open are answered in
 two small files (`spec/repairs.json`, `spec/relationships.json`), each entry
 quoting the sentence it relies on, rather than in edits scattered through code.
 
-Unlike gatis, whose bootstrap writes models once and then hands them over,
-these are rewritten on every run, and a test asserts regenerating changes
-nothing. What gatis refines by hand -- relationships the source states only in
-prose -- lives in those two files instead, so it is regenerated with everything
-else.
-
 ## Design notes
 
 **The reference defines the model; the service is what is published.** Field
