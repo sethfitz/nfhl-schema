@@ -128,7 +128,7 @@ for f in scripts/*; do uv run mypy --strict "$f"; done
 ./scripts/generate-models        # rewrite src/nfhl/models/ from spec/
 ./scripts/report-observed        # published values the reference does not allow
 ./scripts/fetch-fixtures         # refetch the real-feature fixture
-uv run overture-codegen list     # the model, found through the entry point
+uv run overture-schema list-types --tag nfhl   # the models, found by tag
 ```
 
 `pytest` re-runs the PDF extraction, about 30 seconds; `-m "not slow"` skips it.

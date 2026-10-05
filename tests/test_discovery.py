@@ -5,9 +5,10 @@ from __future__ import annotations
 import shutil
 import subprocess
 
-from overture.schema.system.discovery import discover_models
+from overture.schema.system.discovery import ModelKey, discover_models
 
 from nfhl.models import FloodHazardZone
+from nfhl.tags import nfhl_provider
 
 
 def test_discovery_finds_the_model_through_the_entry_point() -> None:
@@ -22,3 +23,14 @@ def test_overture_codegen_lists_the_model() -> None:
         [codegen, "list"], check=True, capture_output=True, text=True
     ).stdout.split()
     assert "FloodHazardZone" in listed
+
+
+def test_the_tag_provider_tags_the_model_nfhl() -> None:
+    tagged = {k.name: k.tags for k in discover_models()}
+    assert "nfhl" in tagged["nfhl_flood_hazard_zone"]
+
+
+def test_the_tag_provider_leaves_other_packages_alone() -> None:
+    # Only this package's models are installed here, so discovery cannot show it.
+    other = ModelKey("place", "my_schema:Place", frozenset())
+    assert nfhl_provider([], other, set()) == set()

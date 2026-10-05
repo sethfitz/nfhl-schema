@@ -16,10 +16,13 @@ dependencies = [
 ]
 
 # Registers the models for Overture's discovery system, which is how
-# `overture-codegen` finds them. They derive from `Feature`, so the system's own
-# tag provider tags them `feature`; no provider of ours is needed yet.
+# `overture-schema` and `overture-codegen` find them.
 [project.entry-points."overture.models"]
 nfhl_flood_hazard_zone = "nfhl.models:FloodHazardZone"
+
+# Tags the models above with `nfhl`, so `--tag nfhl` selects them.
+[project.entry-points."overture.tag_providers"]
+nfhl = "nfhl.tags:nfhl_provider"
 
 [build-system]
 requires = ["hatchling"]
