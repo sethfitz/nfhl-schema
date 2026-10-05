@@ -12,8 +12,10 @@ generation. A change belongs in one of four places:
 - `nfhl.codegen` -- how a source becomes code;
 - `spec/repairs.json` -- a published domain value the database writes
   differently from the PDF;
-- `spec/relationships.json` -- a unit, datum or populated-only-if relationship
-  a field description states in prose;
+- `spec/relationships.json` -- a unit, datum, populated-only-if or
+  value-follows-value relationship a field description states in prose (a
+  relationship the reference states as a table, like the zone/subtype
+  cross-walk, is read from the extraction instead);
 - `spec/legacy.json` -- a value outside the reference that the data commonly
   holds, accepted with a warning. Its entries are licensed by a count, not a
   quote: a test asserts the file lists exactly what its threshold selects from

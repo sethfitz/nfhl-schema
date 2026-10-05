@@ -100,12 +100,31 @@ whenever `VELOCITY` are the system's `forbid_if` and `require_if`, so they reach
 the JSON Schema as well as Python. Only the direction each description states is
 enforced: nothing says a `STATIC_BFE` needs a `V_DATUM`.
 
+**Which subtypes a zone takes is read from Table 14.** The FIRM Database
+reference's zone/subtype cross-walk lists, per `FLD_ZONE`, the `ZONE_SUBTY`
+values it allows, and whether it allows none (`<NULL>`). The generator reads the
+table from the extraction and emits a `forbid_if` per group of zones for the
+reference subtypes their row omits, and a `require_if` for the zones whose row
+has no `<NULL>` (`A99`, `AR`, `X`). The rules name reference subtypes only: a
+legacy subtype is judged by its own warning, not by a table that predates or
+postdates it.
+
+**`SFHA_TF` follows the zone.** Its description says it "will be true for any
+area coded as an A or V flood zone area" and "should be false for any X or D
+flood areas", read as every `D_Zone` code beginning A or V except `ANI`, and `X`
+and `D`. `OPEN WATER` and `AREA NOT INCLUDED` are named by neither sentence and
+take any flag. `SFHA_TF` is required, which `forbid_if` does not accept, so each
+sentence is a `require_any_true`: the zone is not one of these, or the flag is
+not one of the others.
+
 **Stacking two system constraints of one kind loses one in Python.** Each
 `forbid_if` registers its check under the name `@forbid_if`, so a second on the
 same class replaces the first's validator while both reach the JSON Schema. The
-generated models use `nfhl.constraints.forbid_if` and `require_if`, which name
-each rule for its fields. `tests/test_constraints.py` pins the upstream
-behaviour, so the wrapper can go when it is fixed.
+generated models use `nfhl.constraints.forbid_if`, `require_if` and
+`require_any_true`, which name each rule for its fields and, where several rules
+share a field, for the zones it covers (`@forbid_if(zone_subty) [AH]`).
+`tests/test_constraints.py` pins the upstream behaviour, so the wrapper can go
+when it is fixed.
 
 **`id` is an integer.** ArcGIS's GeoJSON output writes the service's `OBJECTID`
 as the feature id, which Overture's `Feature` types as a string. It numbers rows

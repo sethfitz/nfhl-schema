@@ -24,9 +24,12 @@ from nfhl.annotations import DatumIn, UnitIn
 from nfhl.constraints import (
     Absent,
     AllOf,
+    NoneOf,
+    OneOf,
     Populated,
     drop_null_encodings,
     forbid_if,
+    require_any_true,
     require_if,
 )
 from nfhl.legacy import warn_on_legacy_values
@@ -46,6 +49,513 @@ from nfhl.models.enums import (
 @forbid_if(["v_datum"], Absent("static_bfe"))
 @forbid_if(["len_unit"], AllOf(Absent("static_bfe"), Absent("depth")))
 @require_if(["vel_unit"], Populated("velocity"))
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf("fld_zone", (Zone.A,)),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_DEPTH_LESS_THAN_1_FOOT,
+                ZoneSubtype.V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.ADMINISTRATIVE_FLOODWAY,
+                ZoneSubtype.AREA_OF_SPECIAL_CONSIDERATION,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_OF_MINIMAL_FLOOD_HAZARD,
+                ZoneSubtype.COLORADO_RIVER_FLOODWAY,
+                ZoneSubtype.COMMUNITY_ENCROACHMENT_AREA,
+                ZoneSubtype.DENSITY_FRINGE_AREA,
+                ZoneSubtype.FLOODWAY,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.FLOWAGE_EASEMENT_AREA,
+                ZoneSubtype.NARROW_FLOODWAY,
+                ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+                ZoneSubtype.STATE_ENCROACHMENT_AREA,
+                ZoneSubtype.RIVERINE_FLOODWAY_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for A, "
+                "which allows only 1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN "
+                "CHANNEL; 1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE; "
+                "COASTAL FLOODPLAIN; COMBINED RIVERINE AND COASTAL FLOODPLAIN; RIVERINE"
+                " FLOODPLAIN IN COASTAL ZONE; AREA WITH FLOOD HAZARD DUE TO "
+                "NON-ACCREDITED LEVEE SYSTEM"
+            ),
+        ),
+    ),
+    "A",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf(
+            "fld_zone",
+            (
+                Zone.A99,
+                Zone.AR,
+            ),
+        ),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_DEPTH_LESS_THAN_1_FOOT,
+                ZoneSubtype.V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.ADMINISTRATIVE_FLOODWAY,
+                ZoneSubtype.AREA_OF_SPECIAL_CONSIDERATION,
+                ZoneSubtype.AREA_OF_MINIMAL_FLOOD_HAZARD,
+                ZoneSubtype.COLORADO_RIVER_FLOODWAY,
+                ZoneSubtype.COMMUNITY_ENCROACHMENT_AREA,
+                ZoneSubtype.DENSITY_FRINGE_AREA,
+                ZoneSubtype.FLOODWAY,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.FLOWAGE_EASEMENT_AREA,
+                ZoneSubtype.NARROW_FLOODWAY,
+                ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+                ZoneSubtype.STATE_ENCROACHMENT_AREA,
+                ZoneSubtype.COASTAL_FLOODPLAIN,
+                ZoneSubtype.COMBINED_RIVERINE_AND_COASTAL_FLOODPLAIN,
+                ZoneSubtype.RIVERINE_FLOODPLAIN_IN_COASTAL_ZONE,
+                ZoneSubtype.RIVERINE_FLOODWAY_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for A99, "
+                "AR, which allows only AREA WITH REDUCED FLOOD HAZARD DUE TO "
+                "NON-ACCREDITED LEVEE SYSTEM"
+            ),
+        ),
+    ),
+    "A99, AR",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf("fld_zone", (Zone.AE,)),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_DEPTH_LESS_THAN_1_FOOT,
+                ZoneSubtype.V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_OF_MINIMAL_FLOOD_HAZARD,
+                ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for AE, "
+                "which allows only 1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN "
+                "CHANNEL; 1 PCT ANNUAL CHANCE FLOOD HAZARD CONTAINED IN STRUCTURE; "
+                "ADMINISTRATIVE FLOODWAY; AREA OF SPECIAL CONSIDERATION; COLORADO RIVER"
+                " FLOODWAY; COMMUNITY ENCROACHMENT AREA; DENSITY FRINGE AREA; FLOODWAY;"
+                " FLOODWAY CONTAINED IN STRUCTURE; FLOODWAY CONTAINED IN CHANNEL; "
+                "FLOWAGE EASEMENT AREA; NARROW FLOODWAY; STATE ENCROACHMENT AREA; "
+                "COASTAL FLOODPLAIN; COMBINED RIVERINE AND COASTAL FLOODPLAIN; RIVERINE"
+                " FLOODPLAIN IN COASTAL ZONE; RIVERINE FLOODWAY IN COMBINED RIVERINE "
+                "AND COASTAL ZONE; AREA WITH FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE "
+                "SYSTEM"
+            ),
+        ),
+    ),
+    "AE",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf("fld_zone", (Zone.AH,)),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_DEPTH_LESS_THAN_1_FOOT,
+                ZoneSubtype.V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.ADMINISTRATIVE_FLOODWAY,
+                ZoneSubtype.AREA_OF_SPECIAL_CONSIDERATION,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_OF_MINIMAL_FLOOD_HAZARD,
+                ZoneSubtype.COLORADO_RIVER_FLOODWAY,
+                ZoneSubtype.COMMUNITY_ENCROACHMENT_AREA,
+                ZoneSubtype.DENSITY_FRINGE_AREA,
+                ZoneSubtype.FLOODWAY,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.FLOWAGE_EASEMENT_AREA,
+                ZoneSubtype.NARROW_FLOODWAY,
+                ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+                ZoneSubtype.STATE_ENCROACHMENT_AREA,
+                ZoneSubtype.COASTAL_FLOODPLAIN,
+                ZoneSubtype.COMBINED_RIVERINE_AND_COASTAL_FLOODPLAIN,
+                ZoneSubtype.RIVERINE_FLOODPLAIN_IN_COASTAL_ZONE,
+                ZoneSubtype.RIVERINE_FLOODWAY_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for AH, "
+                "which allows only AREA WITH FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE "
+                "SYSTEM"
+            ),
+        ),
+    ),
+    "AH",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf("fld_zone", (Zone.AO,)),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_DEPTH_LESS_THAN_1_FOOT,
+                ZoneSubtype.V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.ADMINISTRATIVE_FLOODWAY,
+                ZoneSubtype.AREA_OF_SPECIAL_CONSIDERATION,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_OF_MINIMAL_FLOOD_HAZARD,
+                ZoneSubtype.COLORADO_RIVER_FLOODWAY,
+                ZoneSubtype.COMMUNITY_ENCROACHMENT_AREA,
+                ZoneSubtype.DENSITY_FRINGE_AREA,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.FLOWAGE_EASEMENT_AREA,
+                ZoneSubtype.NARROW_FLOODWAY,
+                ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+                ZoneSubtype.STATE_ENCROACHMENT_AREA,
+                ZoneSubtype.COASTAL_FLOODPLAIN,
+                ZoneSubtype.COMBINED_RIVERINE_AND_COASTAL_FLOODPLAIN,
+                ZoneSubtype.RIVERINE_FLOODPLAIN_IN_COASTAL_ZONE,
+                ZoneSubtype.RIVERINE_FLOODWAY_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for AO, "
+                "which allows only FLOODWAY; AREA WITH FLOOD HAZARD DUE TO "
+                "NON-ACCREDITED LEVEE SYSTEM"
+            ),
+        ),
+    ),
+    "AO",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf(
+            "fld_zone",
+            (
+                Zone.AREA_NOT_INCLUDED,
+                Zone.OPEN_WATER,
+            ),
+        ),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_DEPTH_LESS_THAN_1_FOOT,
+                ZoneSubtype.V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.ADMINISTRATIVE_FLOODWAY,
+                ZoneSubtype.AREA_OF_SPECIAL_CONSIDERATION,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_OF_MINIMAL_FLOOD_HAZARD,
+                ZoneSubtype.COLORADO_RIVER_FLOODWAY,
+                ZoneSubtype.COMMUNITY_ENCROACHMENT_AREA,
+                ZoneSubtype.DENSITY_FRINGE_AREA,
+                ZoneSubtype.FLOODWAY,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.FLOWAGE_EASEMENT_AREA,
+                ZoneSubtype.NARROW_FLOODWAY,
+                ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+                ZoneSubtype.STATE_ENCROACHMENT_AREA,
+                ZoneSubtype.COASTAL_FLOODPLAIN,
+                ZoneSubtype.COMBINED_RIVERINE_AND_COASTAL_FLOODPLAIN,
+                ZoneSubtype.RIVERINE_FLOODPLAIN_IN_COASTAL_ZONE,
+                ZoneSubtype.RIVERINE_FLOODWAY_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for AREA "
+                "NOT INCLUDED, OPEN WATER, which allows only none"
+            ),
+        ),
+    ),
+    "AREA NOT INCLUDED, OPEN WATER",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf("fld_zone", (Zone.D,)),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_DEPTH_LESS_THAN_1_FOOT,
+                ZoneSubtype.V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.ADMINISTRATIVE_FLOODWAY,
+                ZoneSubtype.AREA_OF_SPECIAL_CONSIDERATION,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_OF_MINIMAL_FLOOD_HAZARD,
+                ZoneSubtype.COLORADO_RIVER_FLOODWAY,
+                ZoneSubtype.COMMUNITY_ENCROACHMENT_AREA,
+                ZoneSubtype.DENSITY_FRINGE_AREA,
+                ZoneSubtype.FLOODWAY,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.FLOWAGE_EASEMENT_AREA,
+                ZoneSubtype.NARROW_FLOODWAY,
+                ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+                ZoneSubtype.STATE_ENCROACHMENT_AREA,
+                ZoneSubtype.COASTAL_FLOODPLAIN,
+                ZoneSubtype.COMBINED_RIVERINE_AND_COASTAL_FLOODPLAIN,
+                ZoneSubtype.RIVERINE_FLOODPLAIN_IN_COASTAL_ZONE,
+                ZoneSubtype.RIVERINE_FLOODWAY_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for D, "
+                "which allows only AREA WITH UNDETERMINED FLOOD HAZARD DUE TO "
+                "NON-ACCREDITED LEVEE SYSTEM"
+            ),
+        ),
+    ),
+    "D",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf(
+            "fld_zone",
+            (
+                Zone.V,
+                Zone.VE,
+            ),
+        ),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.V_1_PCT_DEPTH_LESS_THAN_1_FOOT,
+                ZoneSubtype.V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS,
+                ZoneSubtype.V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.ADMINISTRATIVE_FLOODWAY,
+                ZoneSubtype.AREA_OF_SPECIAL_CONSIDERATION,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_OF_MINIMAL_FLOOD_HAZARD,
+                ZoneSubtype.COLORADO_RIVER_FLOODWAY,
+                ZoneSubtype.COMMUNITY_ENCROACHMENT_AREA,
+                ZoneSubtype.DENSITY_FRINGE_AREA,
+                ZoneSubtype.FLOODWAY,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.FLOWAGE_EASEMENT_AREA,
+                ZoneSubtype.NARROW_FLOODWAY,
+                ZoneSubtype.STATE_ENCROACHMENT_AREA,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE,
+                ZoneSubtype.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for V, VE,"
+                " which allows only RIVERINE FLOODWAY SHOWN IN COASTAL ZONE; COASTAL "
+                "FLOODPLAIN; COMBINED RIVERINE AND COASTAL FLOODPLAIN; RIVERINE "
+                "FLOODPLAIN IN COASTAL ZONE; RIVERINE FLOODWAY IN COMBINED RIVERINE AND"
+                " COASTAL ZONE"
+            ),
+        ),
+    ),
+    "V, VE",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@forbid_if(
+    ["zone_subty"],
+    AllOf(
+        OneOf("fld_zone", (Zone.X,)),
+        OneOf(
+            "zone_subty",
+            (
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.ADMINISTRATIVE_FLOODWAY,
+                ZoneSubtype.AREA_OF_SPECIAL_CONSIDERATION,
+                ZoneSubtype.AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.COLORADO_RIVER_FLOODWAY,
+                ZoneSubtype.COMMUNITY_ENCROACHMENT_AREA,
+                ZoneSubtype.DENSITY_FRINGE_AREA,
+                ZoneSubtype.FLOODWAY,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_STRUCTURE,
+                ZoneSubtype.FLOODWAY_CONTAINED_IN_CHANNEL,
+                ZoneSubtype.FLOWAGE_EASEMENT_AREA,
+                ZoneSubtype.NARROW_FLOODWAY,
+                ZoneSubtype.RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE,
+                ZoneSubtype.STATE_ENCROACHMENT_AREA,
+                ZoneSubtype.COASTAL_FLOODPLAIN,
+                ZoneSubtype.COMBINED_RIVERINE_AND_COASTAL_FLOODPLAIN,
+                ZoneSubtype.RIVERINE_FLOODPLAIN_IN_COASTAL_ZONE,
+                ZoneSubtype.RIVERINE_FLOODWAY_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE,
+                ZoneSubtype.AREA_WITH_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+                ZoneSubtype.AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM,
+            ),
+            label=(
+                "zone_subty is a D_Zone_Subtype value Table 14 does not list for X, "
+                "which allows only 0.2 PCT ANNUAL CHANCE FLOOD HAZARD; 0.2 PCT ANNUAL "
+                "CHANCE FLOOD HAZARD CONTAINED IN CHANNEL; 0.2 PCT ANNUAL CHANCE FLOOD "
+                "HAZARD CONTAINED IN STRUCTURE; 1 PCT DEPTH LESS THAN 1 FOOT; 1 PCT "
+                "DRAINAGE AREA LESS THAN 1 SQUARE MILE; 1 PCT FUTURE CONDITIONS; 1 PCT "
+                "FUTURE CONDITIONS CONTAINED IN STRUCTURE; AREA OF MINIMAL FLOOD "
+                "HAZARD; 0.2 PCT ANNUAL CHANCE FLOOD HAZARD IN COASTAL ZONE; 0.2 PCT "
+                "ANNUAL CHANCE FLOOD HAZARD IN COMBINED RIVERINE AND COASTAL ZONE; AREA"
+                " WITH REDUCED FLOOD HAZARD DUE TO PROVISIONALLY ACCREDITED LEVEE "
+                "SYSTEM; AREA WITH REDUCED FLOOD HAZARD DUE TO ACCREDITED LEVEE SYSTEM"
+            ),
+        ),
+    ),
+    "X",
+)
+# Table 14: Flood Zone and Zone Subtype Cross-Walk
+@require_if(
+    ["zone_subty"],
+    OneOf(
+        "fld_zone",
+        (
+            Zone.A99,
+            Zone.AR,
+            Zone.X,
+        ),
+    ),
+    "A99, AR, X",
+)
+# “This field will be true for any area coded as an A or V flood zone area.”
+@require_any_true(
+    ["sfha_tf"],
+    NoneOf(
+        "fld_zone",
+        (
+            Zone.A,
+            Zone.A99,
+            Zone.AE,
+            Zone.AH,
+            Zone.AO,
+            Zone.AR,
+            Zone.V,
+            Zone.VE,
+        ),
+    ),
+    NoneOf(
+        "sfha_tf",
+        (
+            TrueFalse.F,
+            TrueFalse.U,
+        ),
+    ),
+    qualifier="A, A99, AE, AH, AO, AR, V, VE",
+)
+# “It should be false for any X or D flood areas.”
+@require_any_true(
+    ["sfha_tf"],
+    NoneOf(
+        "fld_zone",
+        (
+            Zone.D,
+            Zone.X,
+        ),
+    ),
+    NoneOf(
+        "sfha_tf",
+        (
+            TrueFalse.T,
+            TrueFalse.U,
+        ),
+    ),
+    qualifier="D, X",
+)
 class FloodHazardZone(Feature):
     """This table is required for all FIRM Databases. The S_Fld_Haz_Ar table contains
     information about the flood hazards within the Flood Risk Project area. A

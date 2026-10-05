@@ -156,11 +156,48 @@ class RequiredWhen:
 
 
 @dataclass(frozen=True, slots=True)
+class ValueWhen:
+    """`field` holds `value` whenever `when` holds one of `any_of`."""
+
+    field: str
+    value: str
+    when: str
+    any_of: tuple[str, ...]
+    quote: str
+
+
+@dataclass(frozen=True, slots=True)
 class Relationships:
     units: tuple[UnitOf, ...]
     datums: tuple[DatumOf, ...]
     only_if: tuple[OnlyIf, ...]
     required_when: tuple[RequiredWhen, ...]
+    value_when: tuple[ValueWhen, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class PairRule:
+    """What `field` may hold while `when` holds one of `when_values`.
+
+    Either it may not hold any of `forbidden`, or, when `requires_value`, it
+    must hold something. `forbidden` lists reference values only: a rule from
+    the reference says nothing about a legacy value, which is judged by its own
+    warning. `licence` cites the table or quotes the sentence it comes from.
+    """
+
+    field: str
+    when: str
+    when_values: tuple[str, ...]
+    forbidden: tuple[str, ...]
+    requires_value: bool
+    licence: str
+
+    def broken_by(self, when_value: str | None, value: str | None) -> bool:
+        if when_value not in self.when_values:
+            return False
+        if self.requires_value:
+            return value is None or value == ""
+        return value in self.forbidden
 
 
 @dataclass(frozen=True, slots=True)
@@ -189,6 +226,8 @@ class ZoneSubtypes:
 
 
 CROSSWALK = "Flood Zone and Zone Subtype Cross-Walk"
+CROSSWALK_TABLE = "S_Fld_Haz_Ar"  # the section Table 14 is printed in
+CROSSWALK_LICENCE = f"Table 14: {CROSSWALK}"
 _CROSSWALK_HEADER = ["Flood Zones", "Applicable Zone Subtypes"]
 _NO_SUBTYPE = "<NULL>"
 
@@ -507,4 +546,55 @@ class SpecReader:
             required_when=tuple(
                 RequiredWhen(**r) for r in raw.get("required_when", [])
             ),
+            value_when=tuple(
+                ValueWhen(
+                    r["field"], r["value"], r["when"], tuple(r["any_of"]), r["quote"]
+                )
+                for r in raw.get("value_when", [])
+            ),
         )
+
+    def pair_rules(self, table: str) -> tuple[PairRule, ...]:
+        """Every rule on which values two fields of `table` may hold together.
+
+        The cross-walk gives one rule per set of zones that forbid the same
+        subtypes, and one requiring a subtype of the zones whose row has no
+        `<NULL>`. Each `value_when` relationship forbids the field's other
+        domain values.
+        """
+        rules = []
+        if table == CROSSWALK_TABLE:
+            reference = [v.value for v in self.domain("D_Zone_Subtype").values]
+            zones_by_forbidden: dict[tuple[str, ...], list[str]] = {}
+            required = []
+            for row in self.subtype_crosswalk():
+                forbidden = tuple(s for s in reference if s not in row.subtypes)
+                zones_by_forbidden.setdefault(forbidden, []).append(row.zone)
+                if not row.allows_none:
+                    required.append(row.zone)
+            licence = CROSSWALK_LICENCE
+            for forbidden, zones in zones_by_forbidden.items():
+                rules.append(
+                    PairRule(
+                        "ZONE_SUBTY",
+                        "FLD_ZONE",
+                        tuple(zones),
+                        forbidden,
+                        False,
+                        licence,
+                    )
+                )
+            rules.append(
+                PairRule("ZONE_SUBTY", "FLD_ZONE", tuple(required), (), True, licence)
+            )
+        reference_table = self.reference_table(table)
+        for rel in self.relationships(table).value_when:
+            domain = reference_table.field(rel.field).domain
+            assert domain is not None, f"{table}.{rel.field} has no domain"
+            others = tuple(
+                v.value for v in self.domain(domain).values if v.value != rel.value
+            )
+            rules.append(
+                PairRule(rel.field, rel.when, rel.any_of, others, False, rel.quote)
+            )
+        return tuple(rules)

@@ -7,12 +7,14 @@ import warnings
 from typing import Any
 
 import pytest
+from overture.schema.system.model_constraint import ModelConstraint
 from pydantic import ValidationError
 
 from nfhl.annotations import DatumIn, UnitIn, field_datums, field_units
 from nfhl.legacy import LegacyValueWarning
 from nfhl.models import FloodHazardZone
 from nfhl.models.enums import LEGACY_MEMBERS, LengthUnits, StudyTyp, Zone
+from nfhl.spec_source import Layer, SpecReader
 
 
 def validate(feature: dict[str, Any]) -> FloodHazardZone:
@@ -178,6 +180,76 @@ def test_each_relationship_rule_fires(
 ) -> None:
     valid_feature["properties"].update(change)
     assert rejected_by(valid_feature) == {rule}
+
+
+SFHA_ZONES = "A, A99, AE, AH, AO, AR, V, VE"
+
+
+@pytest.mark.parametrize(
+    ("change", "rule"),
+    [
+        # Table 14 lists COASTAL FLOODPLAIN for A, AE, V and VE, not for AH.
+        ({"FLD_ZONE": "AH", "ZONE_SUBTY": "COASTAL FLOODPLAIN"}, "[AH]"),
+        # Table 14 has no <NULL> in the X row: an X zone names its subtype.
+        ({"FLD_ZONE": "X", "SFHA_TF": "F"}, "@require_if(zone_subty) [A99, AR, X]"),
+        ({"SFHA_TF": "F"}, f"@require_any_true(sfha_tf) [{SFHA_ZONES}]"),
+        (
+            {
+                "FLD_ZONE": "X",
+                "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD",
+                "SFHA_TF": "U",
+            },
+            "@require_any_true(sfha_tf) [D, X]",
+        ),
+    ],
+)
+def test_each_zone_rule_fires(
+    valid_feature: dict[str, Any], change: dict[str, Any], rule: str
+) -> None:
+    valid_feature["properties"].update(change)
+    (reported,) = rejected_by(valid_feature)
+    assert reported.endswith(rule)
+
+
+def test_a_zone_rule_allows_what_the_crosswalk_lists(
+    valid_feature: dict[str, Any],
+) -> None:
+    valid_feature["properties"].update(FLD_ZONE="AH", ZONE_SUBTY=None)
+    assert rejected_by(valid_feature) == set()
+    valid_feature["properties"].update(
+        FLD_ZONE="AO", ZONE_SUBTY="FLOODWAY", STATIC_BFE=-9999, V_DATUM=None
+    )
+    valid_feature["properties"].update(DEPTH=1.0)
+    assert rejected_by(valid_feature) == set()
+
+
+def test_the_crosswalk_does_not_judge_a_legacy_subtype(
+    valid_feature: dict[str, Any],
+) -> None:
+    # Table 14 lists reference subtypes only; the legacy value's own warning
+    # is all it gets, whatever the zone.
+    valid_feature["properties"]["ZONE_SUBTY"] = (
+        "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
+    )
+    assert rejected_by(valid_feature) == set()
+    assert len(legacy_warnings(valid_feature)) == 1
+
+
+def test_open_water_takes_no_sfha_rule(valid_feature: dict[str, Any]) -> None:
+    # Neither sentence of SFHA_TF's description names OPEN WATER.
+    for flag in ("T", "F", "U"):
+        valid_feature["properties"].update(FLD_ZONE="OPEN WATER", SFHA_TF=flag)
+        assert rejected_by(valid_feature) == set(), flag
+
+
+def test_every_pair_rule_is_a_constraint_on_the_model(
+    reader: SpecReader, layer: Layer
+) -> None:
+    names = {c.name for c in ModelConstraint.get_model_constraints(FloodHazardZone)}
+    rules = reader.pair_rules(layer.table)
+    assert rules
+    for rule in rules:
+        assert any(n.endswith(f"[{', '.join(rule.when_values)}]") for n in names)
 
 
 def test_a_unit_with_a_depth_but_no_bfe_is_allowed(

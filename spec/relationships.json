@@ -43,6 +43,22 @@
           "when": "VELOCITY",
           "quote": "This field is populated when the VELOCITY field is populated."
         }
+      ],
+      "value_when": [
+        {
+          "field": "SFHA_TF",
+          "value": "T",
+          "when": "FLD_ZONE",
+          "any_of": ["A", "A99", "AE", "AH", "AO", "AR", "V", "VE"],
+          "quote": "This field will be true for any area coded as an A or V flood zone area."
+        },
+        {
+          "field": "SFHA_TF",
+          "value": "F",
+          "when": "FLD_ZONE",
+          "any_of": ["D", "X"],
+          "quote": "It should be false for any X or D flood areas."
+        }
       ]
     }
   }

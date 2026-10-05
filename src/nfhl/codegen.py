@@ -15,7 +15,10 @@ What comes from where:
 * Esri type and text length -- the NFHL service, which is what is published;
   the reference's own type is cross-checked and a disagreement raises;
 * allowed values -- the Domain Tables Technical Reference, after repairs;
-* unit, datum and populated-only-if relationships -- `spec/relationships.json`.
+* unit, datum and populated-only-if relationships, and values one field takes
+  from another -- `spec/relationships.json`;
+* which subtypes each flood zone allows -- Table 14 of the FIRM Database
+  reference, the zone/subtype cross-walk.
 """
 
 from __future__ import annotations
@@ -31,12 +34,15 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from nfhl.spec_source import (
+    CROSSWALK_LICENCE,
     LAYERS,
     Domain,
     DomainValue,
     Layer,
     LegacyValue,
+    PairRule,
     ReferenceField,
+    ReferenceTable,
     ServiceField,
     SpecReader,
 )
@@ -279,6 +285,61 @@ def render_field(
     return lines
 
 
+def members(domain: Domain, values: Iterable[str]) -> str:
+    """A tuple expression of `domain`'s enum members for `values`."""
+    names = [f"{domain.class_name}.{member_name(v)}" for v in values]
+    return f"({', '.join(names)},)"
+
+
+def render_pair_rule(
+    rule: PairRule, table: ReferenceTable, required: bool, reader: SpecReader
+) -> list[str]:
+    """A rule on two fields' values together, as a commented constraint decorator.
+
+    A cross-walk rule forbids the reference subtypes its zones do not list, but
+    reads in the docs as the list it allows: the shorter one, and the one the
+    reference prints. A rule on a `required` field is "not when, or not
+    forbidden", since `forbid_if` takes only optional fields.
+    """
+    when_domain = reader.domain(require_domain(table, rule.when))
+    domain = reader.domain(require_domain(table, rule.field))
+    field, when = literal(rule.field.lower()), literal(rule.when.lower())
+    qualifier = literal(", ".join(rule.when_values))
+    zones = members(when_domain, rule.when_values)
+    values = members(domain, rule.forbidden)
+    crosswalk = rule.licence == CROSSWALK_LICENCE
+    lines = [f"# {rule.licence}" if crosswalk else f"# “{rule.licence}”"]
+    if rule.requires_value:
+        lines.append(f"@require_if([{field}], OneOf({when}, {zones}), {qualifier})")
+    elif required:
+        lines.append(
+            f"@require_any_true([{field}], NoneOf({when}, {zones}), "
+            f"NoneOf({field}, {values}), qualifier={qualifier})"
+        )
+    else:
+        label = ""
+        if crosswalk:
+            allowed = [v.value for v in domain.values if v.value not in rule.forbidden]
+            text = (
+                f"{rule.field.lower()} is a {domain.name} value Table 14 does not "
+                f"list for {', '.join(rule.when_values)}"
+            )
+            text += f", which allows only {'; '.join(allowed) or 'none'}"
+            label = f", label={literal(text)}"
+        lines.append(
+            f"@forbid_if([{field}], AllOf(OneOf({when}, {zones}), "
+            f"OneOf({field}, {values}{label})), {qualifier})"
+        )
+    return lines
+
+
+def require_domain(table: ReferenceTable, name: str) -> str:
+    domain = table.field(name).domain
+    if domain is None:
+        raise ValueError(f"{table.name}.{name}: a pair rule needs a domain")
+    return domain
+
+
 def render_model(layer: Layer, reader: SpecReader) -> str:
     table = reader.reference_table(layer.table)
     service = reader.service_fields(layer)
@@ -302,6 +363,9 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             f"@require_if([{literal(needed.field.lower())}], "
             f"Populated({literal(needed.when.lower())}))"
         )
+    for rule in reader.pair_rules(layer.table):
+        required = table.field(rule.field).required and rule.field in service
+        decorators.extend(render_pair_rule(rule, table, required, reader))
 
     modelled = {f.name for f in table.fields}
     unmodelled = sorted(
@@ -353,9 +417,12 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             "from nfhl.constraints import (",
             "    Absent,",
             "    AllOf,",
+            "    NoneOf,",
+            "    OneOf,",
             "    Populated,",
             "    drop_null_encodings,",
             "    forbid_if,",
+            "    require_any_true,",
             "    require_if,",
             ")",
             "from nfhl.legacy import warn_on_legacy_values",

@@ -13,7 +13,7 @@ retrieved, the edition, and a SHA-256 of every file.
 | `service/MapServer.json`, `service/layers/<id>.json` | The [NFHL MapServer](https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer)'s metadata for all 32 layers and its one table: field names, Esri types, lengths. Taken whole so later slices need no new fetch. |
 | `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, from the service's grouped statistics. Observations, not specification. |
 | `repairs.json` | **Not upstream.** Corrections to published domain values, each quoting the reference sentence that licenses it. Not in the manifest. |
-| `relationships.json` | **Not upstream.** Which field holds another's unit or datum, and which fields may be populated only alongside another, each quoting the field description it reads. Not in the manifest. |
+| `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`), each quoting the field description it reads. Not in the manifest. |
 | `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot. Not in the manifest. |
 
 ## Why PDFs

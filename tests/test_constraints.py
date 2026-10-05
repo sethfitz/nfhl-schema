@@ -43,6 +43,9 @@ def test_the_schema_accepts_a_valid_feature(
     [
         (["STATIC_BFE"], {}),  # V_DATUM and LEN_UNIT left without a BFE
         ([], {"VELOCITY": 2.5}),  # a velocity without VEL_UNIT
+        ([], {"SFHA_TF": "F"}),  # an AE zone outside the SFHA
+        ([], {"FLD_ZONE": "AH", "ZONE_SUBTY": "FLOODWAY"}),  # not in Table 14
+        ([], {"FLD_ZONE": "X", "SFHA_TF": "F"}),  # an X zone with no subtype
     ],
 )
 def test_the_schema_enforces_the_relationship_rules(

@@ -42,6 +42,7 @@ def test_every_relationship_quotes_its_own_field_description(
         *((d.datum_field, d.quote) for d in rel.datums),
         *((o.field, o.quote) for o in rel.only_if),
         *((r.field, r.quote) for r in rel.required_when),
+        *((v.field, v.quote) for v in rel.value_when),
     ]
     assert quoted
     for field, quote in quoted:
@@ -215,3 +216,19 @@ def test_a_cell_splits_on_the_longest_term_and_drops_footnote_markers() -> None:
     assert split_cell(cell, terms) == [terms[1], terms[0], terms[2]]
     with pytest.raises(ValueError, match="no subtype begins 'RIVER"):
         split_cell("FLOODWAY RIVER", terms)
+
+
+def test_the_sfha_rules_read_a_or_v_and_x_or_d_as_zone_codes(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # The description says "an A or V flood zone" and "X or D flood areas";
+    # the reading is every D_Zone code that begins A or V (not ANI, AREA NOT
+    # INCLUDED, whose code begins A but names no flood zone), and X and D.
+    # OPEN WATER and AREA NOT INCLUDED are named by neither sentence.
+    zones = reader.domain("D_Zone").values
+    by_flag = {v.value: v.any_of for v in reader.relationships(layer.table).value_when}
+    sfha = {z.value for z in zones if z.code[0] in "AV" and z.code != "ANI"}
+    assert set(by_flag["T"]) == sfha
+    assert set(by_flag["F"]) == {"X", "D"}
+    unnamed = {z.value for z in zones} - sfha - {"X", "D"}
+    assert unnamed == {"AREA NOT INCLUDED", "OPEN WATER"}
