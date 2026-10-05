@@ -101,10 +101,15 @@ def member_name(value: str) -> str:
     return f"{name}_" if keyword.iskeyword(name.lower()) else name
 
 
+def sentence(text: str) -> str:
+    """`text` ending in exactly one full stop, inside a closing quote or not."""
+    return text if re.search(r"\.[”\"’]?$", text) else f"{text}."
+
+
 def member_doc(value: DomainValue) -> str:
     """What a stored value means, in the reference's own words, then its code."""
     parts = [
-        f"{text.rstrip('.')}."
+        sentence(text)
         for text in (value.meaning, value.when_used, *value.footnotes)
         if text
     ]
@@ -121,7 +126,7 @@ def legacy_doc(legacy: LegacyValue, reader: SpecReader) -> str:
     return (
         f"Legacy: not in the {reader.edition} Domain Tables Technical Reference; "
         "validates with a LegacyValueWarning. "
-        f"{legacy.note.rstrip('.')}. Held by {legacy.count:,} of "
+        f"{sentence(legacy.note)} Held by {legacy.count:,} of "
         f"{total['total']:,} rows of `{legacy.field}` on NFHL service layer "
         f"{legacy.layer}, counted {day}."
     )
@@ -149,7 +154,11 @@ def render_enum(domain: Domain, used_by: list[str], reader: SpecReader) -> Rende
         f"Values of `{domain.name}` that apply to the FIRM Database, each as the "
         f"data stores it. Used by {fields}."
     )
-    if legacy:
+    if len(legacy) == 1:
+        summary += (
+            " The last is a legacy value: common in the data, not in the reference."
+        )
+    elif legacy:
         summary += (
             f" The last {len(legacy)} are legacy values: common in the data, not in "
             "the reference."

@@ -242,7 +242,7 @@ class Zone(str, DocumentedEnum):
 class ZoneSubtype(str, DocumentedEnum):
     """Values of `D_Zone_Subtype` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Fld_Haz_Ar.ZONE_SUBTY`, `S_Fld_Haz_Ar.AR_SUBTRV`. The last
-    1 are legacy values: common in the data, not in the reference.
+    is a legacy value: common in the data, not in the reference.
     """
 
     V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD = (
@@ -366,7 +366,7 @@ class ZoneSubtype(str, DocumentedEnum):
     )
     AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM = (
         "AREA WITH REDUCED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
-        "Formerly “PROTECTED BY LEVEE.”. Coded value `1000`.",
+        "Formerly “PROTECTED BY LEVEE.” Coded value `1000`.",
     )
     AREA_OF_MINIMAL_FLOOD_HAZARD = (
         "AREA OF MINIMAL FLOOD HAZARD",

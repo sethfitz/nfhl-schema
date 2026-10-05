@@ -24,6 +24,12 @@ Every entry in the first two JSON files quotes the reference sentence that licen
 it, and a test asserts the quote is still in the reference. A judgement without
 a quote does not go in them; record it in `spec/README.md` instead.
 
+## Never edit `docs/` either
+
+`scripts/generate-docs` rewrites it from the models with `overture-codegen`, and
+`tests/test_docs.py` fails if it is stale. Regenerate it after
+`generate-models`.
+
 ## `spec/MANIFEST.json` says which edition the models track
 
 Prose anywhere, including here, restates it and can go stale. The edition, the
