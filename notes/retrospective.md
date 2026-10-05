@@ -11,7 +11,7 @@ happened and what it cost, not verdicts.
 Nothing in `src/nfhl/models/` is written by hand. The models are generated from a
 pinned snapshot of two FEMA PDFs (the FIRM Database and Domain Tables technical
 references, November 2024) and the NFHL map service's own field metadata, and
-every rule that comes from prose carries the sentence that licenses it, checked
+every rule that comes from prose quotes the sentence that licenses it, checked
 against the PDF by a test. That made each slice a change to a generator or a JSON
 file plus a regeneration, and it kept the question "where did this rule come
 from?" answerable for every constraint.
@@ -22,7 +22,7 @@ rejects. Those counts were what made each judgement call visible.
 
 ## The data does not match its own spec
 
-- 32% of published flood zones carried a study type outside the reference's list,
+- 32% of published flood zones had a study type outside the reference's list,
   mostly "SFHAs WITH LOW/HIGH/MEDIUM FLOOD RISK", which looks like an older
   vocabulary. Accepting values held by at least 1 row in 1,000 with a warning
   (8 values) brought rows outside the reference down to 0.03%. The same bar admits
@@ -55,7 +55,7 @@ These are inputs for the overture-schema backlog.
   `Populated` conditions.
 - **Feature ids are strings.** ArcGIS's GeoJSON writes the integer `OBJECTID` as
   the feature id, so `id` is redeclared.
-- **Housekeeping fields.** The service and the geodatabase carry different
+- **Housekeeping fields.** The service and the geodatabase have different
   bookkeeping columns (`OBJECTID`, `GlobalID`, `GFID` vs `SHAPE_Length`,
   `SHAPE_Area`), so forbidding extra fields means choosing one distribution. They
   started as extras and are now declared `Omitable` (2026-10-05), which was built
