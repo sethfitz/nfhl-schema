@@ -84,6 +84,12 @@ class FloodHazardZone(Feature):
     geometry: Annotated[
         Geometry,
         GeometryTypeConstraint(GeometryType.POLYGON, GeometryType.MULTI_POLYGON),
+        Field(
+            description=(
+                "Extent of the flood zone: in the reference's words, one polygon for "
+                "each contiguous flood zone designated."
+            )
+        ),
     ]
 
     # Redeclared from `Feature`, where it is a string: ArcGIS's GeoJSON

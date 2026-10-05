@@ -392,6 +392,7 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             "        GeometryTypeConstraint(",
             "            GeometryType.POLYGON, GeometryType.MULTI_POLYGON",
             "        ),",
+            f"        Field(description={literal(GEOMETRY_DESCRIPTION)}),",
             "    ]",
             "",
             "    # Redeclared from `Feature`, where it is a string: ArcGIS's GeoJSON",
@@ -404,6 +405,12 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
         ]
     )
 
+
+# The reference describes the geometry only in the table's introduction.
+GEOMETRY_DESCRIPTION = (
+    "Extent of the flood zone: in the reference's words, one polygon for each "
+    "contiguous flood zone designated."
+)
 
 ID_DESCRIPTION = (
     "The service's OBJECTID, which ArcGIS's GeoJSON output writes as the feature "

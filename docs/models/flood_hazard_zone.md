@@ -24,7 +24,7 @@ not define them, so they arrive as extra properties.
 | -----: | :----: | ------------- |
 | `id` | [`int64`](../system/numeric.md) (optional) | The service's OBJECTID, which ArcGIS's GeoJSON output writes as the feature id. It numbers rows in one copy of the service and identifies nothing beyond it; the reference's key is FLD_AR_ID, assigned within one FIRM Database (one DFIRM_ID). |
 | `bbox` | [`bbox`](../system/geometric.md) (optional) | An optional bounding box for the feature |
-| `geometry` | [`geometry`](../system/geometric.md) | *Allowed geometry types: MultiPolygon, Polygon* |
+| `geometry` | [`geometry`](../system/geometric.md) | Extent of the flood zone: in the reference's words, one polygon for each contiguous flood zone designated.<br/><br/>*Allowed geometry types: MultiPolygon, Polygon* |
 | `DFIRM_ID` | `string` | Study Identifier. For a single jurisdiction Flood Risk Project, the value is composed of the two-digit State FIPS code and the four-digit FEMA CID code (e.g., 480001). For a countywide Flood Risk Project, the value is composed of the two-digit State FIPS code, the three-digit county FIPS code and the letter “C” (e.g., 48107C). Within each FIRM Database, the DFIRM_ID value will be identical.<br/><br/>*Maximum length: 6* |
 | `VERSION_ID` | `string` (optional) | Version Identifier. Identifies the product version and relates the feature to standards according to how it was created.<br/><br/>*Maximum length: 11* |
 | `FLD_AR_ID` | `string` | Primary key for table lookup. Assigned by table creator.<br/><br/>*Maximum length: 32* |
