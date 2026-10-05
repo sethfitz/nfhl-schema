@@ -5,10 +5,10 @@ edit: change spec/repairs.json, spec/relationships.json or `nfhl.codegen`,
 then regenerate.
 
 Each member's value is the text the NFHL stores, unchanged: the
-reference's FIRM description, not its coded value. The service, the
+reference's FIRM description, not its code. The service, the
 state file geodatabases and the county shapefiles all hold that text
 and declare no coded-value domains. Each member's description says
-what the value means, from the reference, and gives its coded value.
+what the value means, from the reference, and the code it assigns.
 
 Members whose description begins `Legacy:` are values the reference
 does not list but the data commonly holds (spec/legacy.json). They
@@ -29,15 +29,15 @@ class LengthUnits(str, DocumentedEnum):
     stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`.
     """
 
-    CENTIMETERS = "Centimeters", "Coded value `CM`."
-    FEET = "Feet", "Coded value `FT`."
-    INCHES = "Inches", "Coded value `IN`."
-    KILOMETERS = "Kilometers", "Coded value `KM`."
-    METERS = "Meters", "Coded value `M`."
-    MILES = "Miles", "Coded value `MI`."
-    MILLIMETERS = "Millimeters", "Coded value `MM`."
-    U_S_SURVEY_FEET = "U.S. Survey Feet", "Coded value `USFT`."
-    NP = "NP", "Coded value `NP`."
+    CENTIMETERS = "Centimeters", "The reference codes it `CM`."
+    FEET = "Feet", "The reference codes it `FT`."
+    INCHES = "Inches", "The reference codes it `IN`."
+    KILOMETERS = "Kilometers", "The reference codes it `KM`."
+    METERS = "Meters", "The reference codes it `M`."
+    MILES = "Miles", "The reference codes it `MI`."
+    MILLIMETERS = "Millimeters", "The reference codes it `MM`."
+    U_S_SURVEY_FEET = "U.S. Survey Feet", "The reference codes it `USFT`."
+    NP = "NP", "The reference codes it `NP`."
 
 
 class StudyTyp(str, DocumentedEnum):
@@ -50,28 +50,29 @@ class StudyTyp(str, DocumentedEnum):
         "BLE available but unpublished",
         (
             "Base Level Engineering data are available, but zones and Baseflood "
-            "Elevations (BFEs) are not published on FIRM. Coded value `1030`."
+            "Elevations (BFEs) are not published on FIRM. The reference codes it "
+            "`1030`."
         ),
     )
     SFHA_WITHOUT_BFE = (
         "SFHA without BFE",
         (
-            "Such as A zones without BFEs or water surface elevations. Coded value "
-            "`1000`."
+            "Such as A zones without BFEs or water surface elevations. The "
+            "reference codes it `1000`."
         ),
     )
     SFHA_WITH_UNPUBLISHED_BFE = (
         "SFHA with unpublished BFE",
         (
             "Such as A zones with BFEs or water surface elevations calculated but "
-            "not published in FIS Report. Coded value `1040`."
+            "not published in FIS Report. The reference codes it `1040`."
         ),
     )
     SFHA_WITH_BFE_PUBLISHED_ONLY_IN_FIS = (
         "SFHA with BFE published only in FIS",
         (
             "Such as A zones with BFEs or water surface elevations published only "
-            "in FIS Report. Coded value `1010`."
+            "in FIS Report. The reference codes it `1010`."
         ),
     )
     SFHA_WITH_BFE_NO_FLOODWAY = (
@@ -79,7 +80,7 @@ class StudyTyp(str, DocumentedEnum):
         (
             "Such as AE or VE zones with regulatory water surface elevations or "
             "depths but no floodway; or shaded-X zones that are associated with "
-            "this type of study. Coded value `1050`."
+            "this type of study. The reference codes it `1050`."
         ),
     )
     SFHA_WITH_BFE_AND_FLOODWAY = (
@@ -87,14 +88,14 @@ class StudyTyp(str, DocumentedEnum):
         (
             "Such as AE or VE zones with regulatory water surface elevations and a "
             "regulatory floodway; or shaded-X zones that are associated with this "
-            "type of study. Coded value `1060`."
+            "type of study. The reference codes it `1060`."
         ),
     )
     SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1 = (
         "Shaded Zone X with depths less than 1’",
-        "Such as Zone X with depths less than 1’. Coded value `1070`.",
+        ("Such as Zone X with depths less than 1’. The reference codes it `1070`."),
     )
-    NP = "NP", "NP; unshaded-X zones. Coded value `NP`."
+    NP = "NP", "NP; unshaded-X zones. The reference codes it `NP`."
     SFHAS_WITH_LOW_FLOOD_RISK = (
         "SFHAs WITH LOW FLOOD RISK",
         (
@@ -142,11 +143,12 @@ class StudyTyp(str, DocumentedEnum):
         "Shaded Zone X with depths less than 1'",
         (
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
-            "validates with a LegacyValueWarning. Coded value 1070, `Shaded Zone X "
-            "with depths less than 1’`, written with an ASCII apostrophe where the "
-            "reference prints a typographic one. More rows hold this form (33,992) "
-            "than the reference's (10,645). Held by 33,992 of 5,810,832 rows of "
-            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-05."
+            "validates with a LegacyValueWarning. The reference's code 1070, "
+            "`Shaded Zone X with depths less than 1’`, written with an ASCII "
+            "apostrophe where the reference prints a typographic one. More rows "
+            "hold this form (33,992) than the reference's (10,645). Held by 33,992 "
+            "of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-05."
         ),
     )
     DIGITAL_CONVERSION = (
@@ -177,9 +179,9 @@ class TrueFalse(str, DocumentedEnum):
     it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`.
     """
 
-    T = "T", "True (Yes). Coded value `T`."
-    F = "F", "False (No). Coded value `F`."
-    U = "U", "Unknown. Coded value `U`."
+    T = "T", "True (Yes). The reference codes it `T`."
+    F = "F", "False (No). The reference codes it `F`."
+    U = "U", "Unknown. The reference codes it `U`."
 
 
 class VDatum(str, DocumentedEnum):
@@ -187,20 +189,38 @@ class VDatum(str, DocumentedEnum):
     it. Used by `S_Fld_Haz_Ar.V_DATUM`.
     """
 
-    MSL = "MSL", "Mean Sea Level. Coded value `MSL`."
-    NAVD88 = "NAVD88", "North American Vertical Datum 1988. Coded value `NAVD88`."
+    MSL = "MSL", "Mean Sea Level. The reference codes it `MSL`."
+    NAVD88 = (
+        "NAVD88",
+        "North American Vertical Datum 1988. The reference codes it `NAVD88`.",
+    )
     NGVD29 = (
         "NGVD29",
-        "North American Geodetic Vertical Datum 1929. Coded value `NGVD29`.",
+        (
+            "North American Geodetic Vertical Datum 1929. The reference codes it "
+            "`NGVD29`."
+        ),
     )
-    LOCAL_TIDAL_DATUM = "LOCAL TIDAL DATUM", "Local Tidal Datum. Coded value `TIDAL`."
-    MLLW = "MLLW", "Mean Lower Low Water Datum. Coded value `MLLW`."
-    MLW = "MLW", "Mean Low Water Datum. Coded value `MLW`."
-    GUVD04 = "GUVD04", "Guam Vertical Datum of 2004. Coded value `GUVD04`."
-    NMVD03 = "NMVD03", "Northern Marianas Vertical Datum of 2003. Coded value `NMVD03`."
-    PRVD02 = "PRVD02", "Puerto Rico Vertical Datum of 2002. Coded value `PRVD02`."
-    VIVD09 = "VIVD09", "Virgin Islands Vertical Datum of 2009. Coded value `VIVD09`."
-    NP = "NP", "Coded value `NP`."
+    LOCAL_TIDAL_DATUM = (
+        "LOCAL TIDAL DATUM",
+        "Local Tidal Datum. The reference codes it `TIDAL`.",
+    )
+    MLLW = "MLLW", "Mean Lower Low Water Datum. The reference codes it `MLLW`."
+    MLW = "MLW", "Mean Low Water Datum. The reference codes it `MLW`."
+    GUVD04 = "GUVD04", "Guam Vertical Datum of 2004. The reference codes it `GUVD04`."
+    NMVD03 = (
+        "NMVD03",
+        ("Northern Marianas Vertical Datum of 2003. The reference codes it `NMVD03`."),
+    )
+    PRVD02 = (
+        "PRVD02",
+        "Puerto Rico Vertical Datum of 2002. The reference codes it `PRVD02`.",
+    )
+    VIVD09 = (
+        "VIVD09",
+        ("Virgin Islands Vertical Datum of 2009. The reference codes it `VIVD09`."),
+    )
+    NP = "NP", "The reference codes it `NP`."
 
 
 class VelocityUnits(str, DocumentedEnum):
@@ -208,16 +228,16 @@ class VelocityUnits(str, DocumentedEnum):
     stores it. Used by `S_Fld_Haz_Ar.VEL_UNIT`.
     """
 
-    CENTIMETERS_DAY = "Centimeters / Day", "Coded value `1000`."
-    CENTIMETERS_HOUR = "Centimeters / Hour", "Coded value `1010`."
-    FEET_SECOND = "Feet / Second", "Coded value `1020`."
-    INCHES_DAY = "Inches / Day", "Coded value `1030`."
-    INCHES_HOUR = "Inches / Hour", "Coded value `1040`."
-    METERS_SECOND = "Meters / Second", "Coded value `1050`."
-    MICROMETERS_SECOND = "Micrometers / Second", "Coded value `1060`."
-    MILLIMETERS_DAY = "Millimeters / Day", "Coded value `1070`."
-    MILLIMETERS_HOUR = "Millimeters / Hour", "Coded value `1080`."
-    NP = "NP", "Coded value `NP`."
+    CENTIMETERS_DAY = "Centimeters / Day", "The reference codes it `1000`."
+    CENTIMETERS_HOUR = "Centimeters / Hour", "The reference codes it `1010`."
+    FEET_SECOND = "Feet / Second", "The reference codes it `1020`."
+    INCHES_DAY = "Inches / Day", "The reference codes it `1030`."
+    INCHES_HOUR = "Inches / Hour", "The reference codes it `1040`."
+    METERS_SECOND = "Meters / Second", "The reference codes it `1050`."
+    MICROMETERS_SECOND = "Micrometers / Second", "The reference codes it `1060`."
+    MILLIMETERS_DAY = "Millimeters / Day", "The reference codes it `1070`."
+    MILLIMETERS_HOUR = "Millimeters / Hour", "The reference codes it `1080`."
+    NP = "NP", "The reference codes it `NP`."
 
 
 class Zone(str, DocumentedEnum):
@@ -225,18 +245,18 @@ class Zone(str, DocumentedEnum):
     Used by `S_Fld_Haz_Ar.FLD_ZONE`, `S_Fld_Haz_Ar.AR_REVERT`.
     """
 
-    A = "A", "Coded value `A`."
-    A99 = "A99", "Coded value `A99`."
-    AE = "AE", "Coded value `AE`."
-    AH = "AH", "Coded value `AH`."
-    AO = "AO", "Coded value `AO`."
-    AR = "AR", "Coded value `AR`."
-    AREA_NOT_INCLUDED = "AREA NOT INCLUDED", "Coded value `ANI`."
-    D = "D", "Coded value `D`."
-    OPEN_WATER = "OPEN WATER", "Coded value `OW`."
-    V = "V", "Coded value `V`."
-    VE = "VE", "Coded value `VE`."
-    X = "X", "Coded value `X`."
+    A = "A", "The reference codes it `A`."
+    A99 = "A99", "The reference codes it `A99`."
+    AE = "AE", "The reference codes it `AE`."
+    AH = "AH", "The reference codes it `AH`."
+    AO = "AO", "The reference codes it `AO`."
+    AR = "AR", "The reference codes it `AR`."
+    AREA_NOT_INCLUDED = "AREA NOT INCLUDED", "The reference codes it `ANI`."
+    D = "D", "The reference codes it `D`."
+    OPEN_WATER = "OPEN WATER", "The reference codes it `OW`."
+    V = "V", "The reference codes it `V`."
+    VE = "VE", "The reference codes it `VE`."
+    X = "X", "The reference codes it `X`."
 
 
 class ZoneSubtype(str, DocumentedEnum):
@@ -250,8 +270,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are typically symbolized as shaded Zone X. “1-PCT "
             "FUTURE CONDITIONS” is a subtype of Zone X and are labeled ZONE X "
-            "FUTURE on the FIRM panel. Coded value `0500`. Printed in the reference"
-            " as `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD`."
+            "FUTURE on the FIRM panel. The reference codes it `0500`. Printed in "
+            "the reference as `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD`."
         ),
     )
     V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL = (
@@ -263,9 +283,9 @@ class ZoneSubtype(str, DocumentedEnum):
             "These features should also be drawn as structures in S_GEN_STRUCT and "
             "coded appropriately there. These subtypes are typically symbolized as "
             "shaded Zone X. “1-PCT FUTURE CONDITIONS” is a subtype of Zone X and "
-            "are labeled ZONE X FUTURE on the FIRM panel. Coded value `0520`. "
-            "Printed in the reference as `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD "
-            "CONTAINED IN CHANNEL`."
+            "are labeled ZONE X FUTURE on the FIRM panel. The reference codes it "
+            "`0520`. Printed in the reference as `0.2-PCT-ANNUAL-CHANCE FLOOD "
+            "HAZARD CONTAINED IN CHANNEL`."
         ),
     )
     V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE = (
@@ -277,9 +297,9 @@ class ZoneSubtype(str, DocumentedEnum):
             "These features should also be drawn as structures in S_GEN_STRUCT and "
             "coded appropriately there. These subtypes are typically symbolized as "
             "shaded Zone X. “1-PCT FUTURE CONDITIONS” is a subtype of Zone X and "
-            "are labeled ZONE X FUTURE on the FIRM panel. Coded value `0510`. "
-            "Printed in the reference as `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD "
-            "CONTAINED IN STRUCTURE`."
+            "are labeled ZONE X FUTURE on the FIRM panel. The reference codes it "
+            "`0510`. Printed in the reference as `0.2-PCT-ANNUAL-CHANCE FLOOD "
+            "HAZARD CONTAINED IN STRUCTURE`."
         ),
     )
     V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_CHANNEL = (
@@ -289,8 +309,9 @@ class ZoneSubtype(str, DocumentedEnum):
             "should only be used if the flooding associated with these channelized "
             "structures or other structures is large enough to show as an area. "
             "These features should also be drawn as structures in S_GEN_STRUCT and "
-            "coded appropriately there. Coded value `0210`. Printed in the "
-            "reference as `1-PCT-ANNUAL-CHANCE FLOOD HAZARD CONTAINED IN CHANNEL`."
+            "coded appropriately there. The reference codes it `0210`. Printed in "
+            "the reference as `1-PCT-ANNUAL-CHANCE FLOOD HAZARD CONTAINED IN "
+            "CHANNEL`."
         ),
     )
     V_1_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_CONTAINED_IN_STRUCTURE = (
@@ -300,8 +321,8 @@ class ZoneSubtype(str, DocumentedEnum):
             "should only be used if the flooding associated with these channelized "
             "structures or other structures is large enough to show as an area. "
             "These features should also be drawn as structures in S_GEN_STRUCT and "
-            "coded appropriately there. Coded value `0200`. Printed in the "
-            "reference as `1-PCT-ANNUAL-CHANCE FLOOD HAZARD CONTAINED IN "
+            "coded appropriately there. The reference codes it `0200`. Printed in "
+            "the reference as `1-PCT-ANNUAL-CHANCE FLOOD HAZARD CONTAINED IN "
             "STRUCTURE`."
         ),
     )
@@ -310,8 +331,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are typically symbolized as shaded Zone X. “1-PCT "
             "FUTURE CONDITIONS” is a subtype of Zone X and are labeled ZONE X "
-            "FUTURE on the FIRM panel. Coded value `0400`. Printed in the reference"
-            " as `1-PCT DEPTH LESS THAN 1 FOOT`."
+            "FUTURE on the FIRM panel. The reference codes it `0400`. Printed in "
+            "the reference as `1-PCT DEPTH LESS THAN 1 FOOT`."
         ),
     )
     V_1_PCT_DRAINAGE_AREA_LESS_THAN_1_SQUARE_MILE = (
@@ -319,8 +340,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are typically symbolized as shaded Zone X. “1-PCT "
             "FUTURE CONDITIONS” is a subtype of Zone X and are labeled ZONE X "
-            "FUTURE on the FIRM panel. Coded value `0410`. Printed in the reference"
-            " as `1-PCT DRAINAGE AREA LESS THAN 1 SQUARE MILE`."
+            "FUTURE on the FIRM panel. The reference codes it `0410`. Printed in "
+            "the reference as `1-PCT DRAINAGE AREA LESS THAN 1 SQUARE MILE`."
         ),
     )
     V_1_PCT_FUTURE_CONDITIONS = (
@@ -328,8 +349,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are typically symbolized as shaded Zone X. “1-PCT "
             "FUTURE CONDITIONS” is a subtype of Zone X and are labeled ZONE X "
-            "FUTURE on the FIRM panel. Coded value `0300`. Printed in the reference"
-            " as `1-PCT FUTURE CONDITIONS`."
+            "FUTURE on the FIRM panel. The reference codes it `0300`. Printed in "
+            "the reference as `1-PCT FUTURE CONDITIONS`."
         ),
     )
     V_1_PCT_FUTURE_CONDITIONS_CONTAINED_IN_STRUCTURE = (
@@ -341,9 +362,9 @@ class ZoneSubtype(str, DocumentedEnum):
             "These features should also be drawn as structures in S_GEN_STRUCT and "
             "coded appropriately there. These subtypes are typically symbolized as "
             "shaded Zone X. “1-PCT FUTURE CONDITIONS” is a subtype of Zone X and "
-            "are labeled ZONE X FUTURE on the FIRM panel. Coded value `0310`. "
-            "Printed in the reference as `1-PCT FUTURE CONDITIONS CONTAINED IN "
-            "STRUCTURE`."
+            "are labeled ZONE X FUTURE on the FIRM panel. The reference codes it "
+            "`0310`. Printed in the reference as `1-PCT FUTURE CONDITIONS CONTAINED"
+            " IN STRUCTURE`."
         ),
     )
     ADMINISTRATIVE_FLOODWAY = (
@@ -351,8 +372,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "Types of FLOODWAY. Other than the generic “FLOODWAY” subtype, these "
             "are areas in which a community enforces more restrictive criteria for "
-            "floodplain management than the minimum requirements of the NFIP. Coded"
-            " value `1010`."
+            "floodplain management than the minimum requirements of the NFIP. The "
+            "reference codes it `1010`."
         ),
     )
     AREA_OF_SPECIAL_CONSIDERATION = (
@@ -360,20 +381,20 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "Types of FLOODWAY. Other than the generic “FLOODWAY” subtype, these "
             "are areas in which a community enforces more restrictive criteria for "
-            "floodplain management than the minimum requirements of the NFIP. Coded"
-            " value `1020`."
+            "floodplain management than the minimum requirements of the NFIP. The "
+            "reference codes it `1020`."
         ),
     )
     AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM = (
         "AREA WITH REDUCED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
-        "Formerly “PROTECTED BY LEVEE.” Coded value `1000`.",
+        "Formerly “PROTECTED BY LEVEE.” The reference codes it `1000`.",
     )
     AREA_OF_MINIMAL_FLOOD_HAZARD = (
         "AREA OF MINIMAL FLOOD HAZARD",
         (
             "“AREA OF MINIMAL FLOOD HAZARD” terminology is used by Title 44 Code of"
-            " Federal Regulations Section 64.3 to define an unshaded Zone X. Coded "
-            "value `2000`."
+            " Federal Regulations Section 64.3 to define an unshaded Zone X. The "
+            "reference codes it `2000`."
         ),
     )
     COLORADO_RIVER_FLOODWAY = (
@@ -381,8 +402,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "Types of FLOODWAY. Other than the generic “FLOODWAY” subtype, these "
             "are areas in which a community enforces more restrictive criteria for "
-            "floodplain management than the minimum requirements of the NFIP. Coded"
-            " value `1040`."
+            "floodplain management than the minimum requirements of the NFIP. The "
+            "reference codes it `1040`."
         ),
     )
     COMMUNITY_ENCROACHMENT_AREA = (
@@ -390,8 +411,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "Types of FLOODWAY. Other than the generic “FLOODWAY” subtype, these "
             "are areas in which a community enforces more restrictive criteria for "
-            "floodplain management than the minimum requirements of the NFIP. Coded"
-            " value `1030`."
+            "floodplain management than the minimum requirements of the NFIP. The "
+            "reference codes it `1030`."
         ),
     )
     DENSITY_FRINGE_AREA = (
@@ -403,8 +424,8 @@ class ZoneSubtype(str, DocumentedEnum):
             "“DENSITY FRINGE AREAS” are a floodway type specific to the State of "
             "Washington used in communities where encroachment and storage-volume "
             "reduction are specified in locations of zoned development, as opposed "
-            "to the traditional equal conveyance reduction floodway. Coded value "
-            "`1050`."
+            "to the traditional equal conveyance reduction floodway. The reference "
+            "codes it `1050`."
         ),
     )
     FLOODWAY = (
@@ -412,8 +433,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "Types of FLOODWAY. Other than the generic “FLOODWAY” subtype, these "
             "are areas in which a community enforces more restrictive criteria for "
-            "floodplain management than the minimum requirements of the NFIP. Coded"
-            " value `1100`."
+            "floodplain management than the minimum requirements of the NFIP. The "
+            "reference codes it `1100`."
         ),
     )
     FLOODWAY_CONTAINED_IN_STRUCTURE = (
@@ -423,7 +444,7 @@ class ZoneSubtype(str, DocumentedEnum):
             "should only be used if the flooding associated with these channelized "
             "structures or other structures is large enough to show as an area. "
             "These features should also be drawn as structures in S_GEN_STRUCT and "
-            "coded appropriately there. Coded value `1110`."
+            "coded appropriately there. The reference codes it `1110`."
         ),
     )
     FLOODWAY_CONTAINED_IN_CHANNEL = (
@@ -433,7 +454,7 @@ class ZoneSubtype(str, DocumentedEnum):
             "should only be used if the flooding associated with these channelized "
             "structures or other structures is large enough to show as an area. "
             "These features should also be drawn as structures in S_GEN_STRUCT and "
-            "coded appropriately there. Coded value `1120`."
+            "coded appropriately there. The reference codes it `1120`."
         ),
     )
     FLOWAGE_EASEMENT_AREA = (
@@ -441,8 +462,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "Types of FLOODWAY. Other than the generic “FLOODWAY” subtype, these "
             "are areas in which a community enforces more restrictive criteria for "
-            "floodplain management than the minimum requirements of the NFIP. Coded"
-            " value `1200`."
+            "floodplain management than the minimum requirements of the NFIP. The "
+            "reference codes it `1200`."
         ),
     )
     NARROW_FLOODWAY = (
@@ -450,8 +471,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "Types of FLOODWAY. Other than the generic “FLOODWAY” subtype, these "
             "are areas in which a community enforces more restrictive criteria for "
-            "floodplain management than the minimum requirements of the NFIP. Coded"
-            " value `1230`."
+            "floodplain management than the minimum requirements of the NFIP. The "
+            "reference codes it `1230`."
         ),
     )
     RIVERINE_FLOODWAY_SHOWN_IN_COASTAL_ZONE = (
@@ -462,7 +483,7 @@ class ZoneSubtype(str, DocumentedEnum):
             "floodplain management than the minimum requirements of the NFIP. These"
             " subtypes are only used in coastal areas to specify riverine or "
             "coastal flooding. More information on these zones can be found in the "
-            "FIRM Database Guidance document. Coded value `1220`."
+            "FIRM Database Guidance document. The reference codes it `1220`."
         ),
     )
     STATE_ENCROACHMENT_AREA = (
@@ -470,8 +491,8 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "Types of FLOODWAY. Other than the generic “FLOODWAY” subtype, these "
             "are areas in which a community enforces more restrictive criteria for "
-            "floodplain management than the minimum requirements of the NFIP. Coded"
-            " value `1210`."
+            "floodplain management than the minimum requirements of the NFIP. The "
+            "reference codes it `1210`."
         ),
     )
     COASTAL_FLOODPLAIN = (
@@ -479,7 +500,7 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are only used in coastal areas to specify riverine or "
             "coastal flooding. More information on these zones can be found in the "
-            "FIRM Database Guidance document. Coded value `0100`."
+            "FIRM Database Guidance document. The reference codes it `0100`."
         ),
     )
     COMBINED_RIVERINE_AND_COASTAL_FLOODPLAIN = (
@@ -487,7 +508,7 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are only used in coastal areas to specify riverine or "
             "coastal flooding. More information on these zones can be found in the "
-            "FIRM Database Guidance document. Coded value `0120`."
+            "FIRM Database Guidance document. The reference codes it `0120`."
         ),
     )
     RIVERINE_FLOODPLAIN_IN_COASTAL_ZONE = (
@@ -495,7 +516,7 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are only used in coastal areas to specify riverine or "
             "coastal flooding. More information on these zones can be found in the "
-            "FIRM Database Guidance document. Coded value `0110`."
+            "FIRM Database Guidance document. The reference codes it `0110`."
         ),
     )
     RIVERINE_FLOODWAY_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE = (
@@ -503,7 +524,7 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are only used in coastal areas to specify riverine or "
             "coastal flooding. More information on these zones can be found in the "
-            "FIRM Database Guidance document. Coded value `1240`."
+            "FIRM Database Guidance document. The reference codes it `1240`."
         ),
     )
     V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COASTAL_ZONE = (
@@ -511,8 +532,9 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are only used in coastal areas to specify riverine or "
             "coastal flooding. More information on these zones can be found in the "
-            "FIRM Database Guidance document. Coded value `0530`. Printed in the "
-            "reference as `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD IN COASTAL ZONE`."
+            "FIRM Database Guidance document. The reference codes it `0530`. "
+            "Printed in the reference as `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD IN "
+            "COASTAL ZONE`."
         ),
     )
     V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD_IN_COMBINED_RIVERINE_AND_COASTAL_ZONE = (
@@ -520,18 +542,18 @@ class ZoneSubtype(str, DocumentedEnum):
         (
             "These subtypes are only used in coastal areas to specify riverine or "
             "coastal flooding. More information on these zones can be found in the "
-            "FIRM Database Guidance document. Coded value `0540`. Printed in the "
-            "reference as `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD IN COMBINED RIVERINE "
-            "AND COASTAL ZONE`."
+            "FIRM Database Guidance document. The reference codes it `0540`. "
+            "Printed in the reference as `0.2-PCT-ANNUAL-CHANCE FLOOD HAZARD IN "
+            "COMBINED RIVERINE AND COASTAL ZONE`."
         ),
     )
     AREA_WITH_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM = (
         "AREA WITH FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
-        "Coded value `3000`.",
+        "The reference codes it `3000`.",
     )
     AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_PROVISIONALLY_ACCREDITED_LEVEE_SYSTEM = (
         ("AREA WITH REDUCED FLOOD HAZARD DUE TO PROVISIONALLY ACCREDITED LEVEE SYSTEM"),
-        "Coded value `3010`.",
+        "The reference codes it `3010`.",
     )
     AREA_WITH_UNDETERMINED_FLOOD_HAZARD_DUE_TO_NON_ACCREDITED_LEVEE_SYSTEM = (
         "AREA WITH UNDETERMINED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM",
@@ -539,12 +561,12 @@ class ZoneSubtype(str, DocumentedEnum):
             "This subtype is only used in levee impacted areas with a Zone D from "
             "implementing the Analysis and Mapping Procedures for Non-Accredited "
             "Levee Systems. More information on these procedures can be found in "
-            "the Levee Guidance document. Coded value `3020`."
+            "the Levee Guidance document. The reference codes it `3020`."
         ),
     )
     AREA_WITH_REDUCED_FLOOD_HAZARD_DUE_TO_ACCREDITED_LEVEE_SYSTEM = (
         "AREA WITH REDUCED FLOOD HAZARD DUE TO ACCREDITED LEVEE SYSTEM",
-        "Coded value `3030`.",
+        "The reference codes it `3030`.",
     )
     AREA_WITH_REDUCED_FLOOD_RISK_DUE_TO_LEVEE = (
         "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE",

@@ -5,9 +5,9 @@ it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`.
 
 ## Values
 
-- `T` - True (Yes). Coded value `T`.
-- `F` - False (No). Coded value `F`.
-- `U` - Unknown. Coded value `U`.
+- `T` - True (Yes). The reference codes it `T`.
+- `F` - False (No). The reference codes it `F`.
+- `U` - Unknown. The reference codes it `U`.
 
 ## Used By
 

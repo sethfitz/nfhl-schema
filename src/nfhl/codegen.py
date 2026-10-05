@@ -121,7 +121,7 @@ def member_doc(value: DomainValue) -> str:
         for text in (value.meaning, value.when_used, *value.footnotes)
         if text
     ]
-    parts.append(f"Coded value `{value.code}`.")
+    parts.append(f"The reference codes it `{value.code}`.")
     if value.published != value.value:
         parts.append(f"Printed in the reference as `{value.published}`.")
     return " ".join(parts)
@@ -204,10 +204,10 @@ def render_enums(reader: SpecReader) -> str:
             HEADER,
             "",
             "Each member's value is the text the NFHL stores, unchanged: the",
-            "reference's FIRM description, not its coded value. The service, the",
+            "reference's FIRM description, not its code. The service, the",
             "state file geodatabases and the county shapefiles all hold that text",
             "and declare no coded-value domains. Each member's description says",
-            "what the value means, from the reference, and gives its coded value.",
+            "what the value means, from the reference, and the code it assigns.",
             "",
             "Members whose description begins `Legacy:` are values the reference",
             "does not list but the data commonly holds (spec/legacy.json). They",

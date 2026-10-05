@@ -43,7 +43,7 @@
       "layer": 28,
       "value": "Shaded Zone X with depths less than 1'",
       "count": 33992,
-      "note": "Coded value 1070, `Shaded Zone X with depths less than 1’`, written with an ASCII apostrophe where the reference prints a typographic one. More rows hold this form (33,992) than the reference's (10,645)."
+      "note": "The reference's code 1070, `Shaded Zone X with depths less than 1’`, written with an ASCII apostrophe where the reference prints a typographic one. More rows hold this form (33,992) than the reference's (10,645)."
     },
     {
       "domain": "D_Study_Typ",
