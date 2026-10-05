@@ -2,10 +2,12 @@
 """Fetch real Flood Hazard Zones from the NFHL service into tests/fixtures/.
 
 Each case is one feature chosen by a `where` clause, recorded beside the feature
-with what the model should say about it: `null` when it should validate, or the
-wire name of the field (or rule) that should reject it. The rejected cases are
-real published features that disagree with the technical reference -- findings,
-kept as fixtures so the disagreement stays visible and tested.
+with what the model should say about it: `expect` is `null` when it should
+validate, or the wire name of the field (or rule) that should reject it; `warns`
+is the wire name of a field holding a legacy value, which validates with a
+`LegacyValueWarning`. The rejected and warned cases are real published features
+that disagree with the technical reference -- findings, kept as fixtures so the
+disagreement stays visible and tested.
 
 Small polygons only (`SHAPE.STArea()` and `SHAPE.STLength()`, in degrees), so
 the fixture stays reviewable. Re-running picks whatever the service returns
@@ -49,7 +51,8 @@ CLEAN = (
 NO_BFE = "STATIC_BFE = -9999 AND V_DATUM IS NULL"
 NO_DEPTH = "DEPTH = -9999 AND LEN_UNIT IS NULL"
 
-CASES: list[tuple[str, str, str | None]] = [
+# (name, where, expect, warns)
+CASES: list[tuple[str, str, str | None, str | None]] = [
     (
         "ae_static_bfe",
         "FLD_ZONE = 'AE' AND ZONE_SUBTY IS NULL "
@@ -59,17 +62,20 @@ CASES: list[tuple[str, str, str | None]] = [
         # this study's `FEET`; that feature is the uppercase_len_unit case.
         "AND DFIRM_ID <> '39057C'",
         None,
+        None,
     ),
     (
         "ae_floodway",
         f"FLD_ZONE = 'AE' AND ZONE_SUBTY = 'FLOODWAY' "
         f"AND STUDY_TYP = 'SFHA with BFE and floodway' AND {NO_BFE} AND {NO_DEPTH}",
         None,
+        None,
     ),
     (
         "ao_depth",
         f"FLD_ZONE = 'AO' AND DEPTH > 0 AND LEN_UNIT = 'Feet' AND {NO_BFE} "
         "AND STUDY_TYP = 'NP'",
+        None,
         None,
     ),
     (
@@ -78,11 +84,13 @@ CASES: list[tuple[str, str, str | None]] = [
         "AND LEN_UNIT = 'Feet' AND DEPTH = -9999 "
         "AND STUDY_TYP = 'SFHA with BFE no floodway'",
         None,
+        None,
     ),
     (
         "x_shaded",
         f"FLD_ZONE = 'X' AND ZONE_SUBTY = '0.2 PCT ANNUAL CHANCE FLOOD HAZARD' "
         f"AND STUDY_TYP = 'NP' AND {NO_BFE} AND {NO_DEPTH}",
+        None,
         None,
     ),
     (
@@ -90,28 +98,34 @@ CASES: list[tuple[str, str, str | None]] = [
         f"FLD_ZONE = 'X' AND ZONE_SUBTY = 'AREA OF MINIMAL FLOOD HAZARD' "
         f"AND STUDY_TYP = 'NP' AND {NO_BFE} AND {NO_DEPTH}",
         None,
+        None,
     ),
     (
         "open_water",
         f"FLD_ZONE = 'OPEN WATER' AND STUDY_TYP = 'NP' AND {NO_BFE} AND {NO_DEPTH}",
         None,
+        None,
     ),
-    # Findings: published features the reference does not allow.
+    # Findings: published features the reference does not allow. The first three
+    # hold legacy values (spec/legacy.json), so they validate with a warning.
     (
         "legacy_study_type",
         f"STUDY_TYP = 'SFHAs WITH LOW FLOOD RISK' AND {NO_BFE} AND {NO_DEPTH}",
+        None,
         "STUDY_TYP",
     ),
     (
         "ascii_apostrophe_study_type",
         f"STUDY_TYP = 'Shaded Zone X with depths less than 1''' "
         f"AND {NO_BFE} AND {NO_DEPTH}",
+        None,
         "STUDY_TYP",
     ),
     (
         "legacy_levee_subtype",
         "ZONE_SUBTY = 'AREA WITH REDUCED FLOOD RISK DUE TO LEVEE' "
         f"AND STUDY_TYP = 'NP' AND {NO_BFE} AND {NO_DEPTH}",
+        None,
         "ZONE_SUBTY",
     ),
     (
@@ -119,12 +133,14 @@ CASES: list[tuple[str, str, str | None]] = [
         "DFIRM_ID = '39057C' AND FLD_ZONE = 'AE' AND STATIC_BFE > 0 "
         "AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND DEPTH = -9999",
         "LEN_UNIT",
+        None,
     ),
     (
         "datum_without_bfe",
         f"V_DATUM = 'NAVD88' AND STATIC_BFE = -9999 AND {NO_DEPTH} "
         "AND STUDY_TYP = 'NP'",
         "@forbid_if(v_datum)",
+        None,
     ),
 ]
 
@@ -148,7 +164,7 @@ def query(where: str) -> dict[str, Any]:
 
 def main() -> int:
     cases = []
-    for name, where, expect in CASES:
+    for name, where, expect, warns in CASES:
         full = f"({where}) AND {CLEAN} AND {SMALL}"
         print(f"==> {name}")
         features = query(full)["features"]
@@ -156,7 +172,13 @@ def main() -> int:
             print(f"    no feature matches; skipped: {full}", file=sys.stderr)
             continue
         cases.append(
-            {"name": name, "where": full, "expect": expect, "feature": features[0]}
+            {
+                "name": name,
+                "where": full,
+                "expect": expect,
+                "warns": warns,
+                "feature": features[0],
+            }
         )
     payload = {
         "source": QUERY,

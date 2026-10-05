@@ -3,14 +3,16 @@
 from __future__ import annotations
 
 import json
+import warnings
 from typing import Any
 
 import pytest
 from pydantic import ValidationError
 
 from nfhl.annotations import DatumIn, UnitIn, field_datums, field_units
+from nfhl.legacy import LegacyValueWarning
 from nfhl.models import FloodHazardZone
-from nfhl.models.enums import LengthUnits, Zone
+from nfhl.models.enums import LEGACY_MEMBERS, LengthUnits, StudyTyp, Zone
 
 
 def validate(feature: dict[str, Any]) -> FloodHazardZone:
@@ -18,10 +20,22 @@ def validate(feature: dict[str, Any]) -> FloodHazardZone:
     return FloodHazardZone.model_validate_json(json.dumps(feature))
 
 
+def legacy_warnings(feature: dict[str, Any]) -> list[str]:
+    """The LegacyValueWarning messages validating `feature` raises."""
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        validate(feature)
+    return [
+        str(w.message) for w in caught if issubclass(w.category, LegacyValueWarning)
+    ]
+
+
 def rejected_by(feature: dict[str, Any]) -> set[str]:
     """Wire field names (or rule names) that reject `feature`; empty if it is valid."""
     try:
-        validate(feature)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", LegacyValueWarning)
+            validate(feature)
     except ValidationError as e:
         return {
             str(err["loc"][0]) if err["loc"] else err["msg"].split("`")[-2]
@@ -40,6 +54,50 @@ def test_each_real_feature_is_judged_as_recorded(cases: list[dict[str, Any]]) ->
     for case in cases:
         expected = {case["expect"]} if case["expect"] else set()
         assert rejected_by(case["feature"]) == expected, case["name"]
+        if case["expect"] is None:
+            warned = [m.split("=")[0] for m in legacy_warnings(case["feature"])]
+            assert warned == ([case["warns"]] if case["warns"] else []), case["name"]
+
+
+def test_the_fixture_has_warned_cases(cases: list[dict[str, Any]]) -> None:
+    assert any(c["warns"] for c in cases)
+
+
+def test_a_legacy_value_validates_with_a_warning(
+    valid_feature: dict[str, Any],
+) -> None:
+    valid_feature["properties"]["STUDY_TYP"] = "SFHAs WITH HIGH FLOOD RISK"
+    with pytest.warns(LegacyValueWarning, match="STUDY_TYP='SFHAs WITH HIGH"):
+        zone = validate(valid_feature)
+    assert zone.study_typ is StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK
+    assert zone.study_typ in LEGACY_MEMBERS
+
+
+def test_a_reference_value_validates_without_a_warning(
+    valid_feature: dict[str, Any],
+) -> None:
+    assert valid_feature["properties"]["STUDY_TYP"] == "SFHA with BFE and floodway"
+    assert legacy_warnings(valid_feature) == []
+
+
+def test_a_value_neither_listed_nor_legacy_is_still_rejected(
+    valid_feature: dict[str, Any],
+) -> None:
+    # Observed 1,485 times, under the threshold, and FRD-only in the reference.
+    valid_feature["properties"]["STUDY_TYP"] = "OTHER"
+    assert rejected_by(valid_feature) == {"STUDY_TYP"}
+    valid_feature["properties"]["STUDY_TYP"] = "SFHAs WITH NO FLOOD RISK"
+    assert rejected_by(valid_feature) == {"STUDY_TYP"}
+
+
+def test_legacy_warnings_can_be_made_errors(valid_feature: dict[str, Any]) -> None:
+    valid_feature["properties"]["ZONE_SUBTY"] = (
+        "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
+    )
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", LegacyValueWarning)
+        with pytest.raises(LegacyValueWarning):
+            validate(valid_feature)
 
 
 def test_an_unknown_flood_zone_is_rejected(valid_feature: dict[str, Any]) -> None:

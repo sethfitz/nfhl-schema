@@ -6,6 +6,7 @@
       "name": "ae_static_bfe",
       "where": "(FLD_ZONE = 'AE' AND ZONE_SUBTY IS NULL AND STUDY_TYP = 'SFHA with BFE and floodway' AND STATIC_BFE > 0 AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND DEPTH = -9999 AND DFIRM_ID <> '39057C') AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": null,
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 6430184,
@@ -439,6 +440,7 @@
       "name": "ae_floodway",
       "where": "(FLD_ZONE = 'AE' AND ZONE_SUBTY = 'FLOODWAY' AND STUDY_TYP = 'SFHA with BFE and floodway' AND STATIC_BFE = -9999 AND V_DATUM IS NULL AND DEPTH = -9999 AND LEN_UNIT IS NULL) AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": null,
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 6007273,
@@ -716,6 +718,7 @@
       "name": "ao_depth",
       "where": "(FLD_ZONE = 'AO' AND DEPTH > 0 AND LEN_UNIT = 'Feet' AND STATIC_BFE = -9999 AND V_DATUM IS NULL AND STUDY_TYP = 'NP') AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": null,
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 4046,
@@ -861,6 +864,7 @@
       "name": "ve_static_bfe",
       "where": "(FLD_ZONE = 'VE' AND STATIC_BFE > 0 AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND DEPTH = -9999 AND STUDY_TYP = 'SFHA with BFE no floodway') AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": null,
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 15950850,
@@ -1074,6 +1078,7 @@
       "name": "x_shaded",
       "where": "(FLD_ZONE = 'X' AND ZONE_SUBTY = '0.2 PCT ANNUAL CHANCE FLOOD HAZARD' AND STUDY_TYP = 'NP' AND STATIC_BFE = -9999 AND V_DATUM IS NULL AND DEPTH = -9999 AND LEN_UNIT IS NULL) AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": null,
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 12,
@@ -1615,6 +1620,7 @@
       "name": "x_minimal",
       "where": "(FLD_ZONE = 'X' AND ZONE_SUBTY = 'AREA OF MINIMAL FLOOD HAZARD' AND STUDY_TYP = 'NP' AND STATIC_BFE = -9999 AND V_DATUM IS NULL AND DEPTH = -9999 AND LEN_UNIT IS NULL) AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": null,
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 1,
@@ -1856,6 +1862,7 @@
       "name": "open_water",
       "where": "(FLD_ZONE = 'OPEN WATER' AND STUDY_TYP = 'NP' AND STATIC_BFE = -9999 AND V_DATUM IS NULL AND DEPTH = -9999 AND LEN_UNIT IS NULL) AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": null,
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 7065141,
@@ -1916,7 +1923,8 @@
     {
       "name": "legacy_study_type",
       "where": "(STUDY_TYP = 'SFHAs WITH LOW FLOOD RISK' AND STATIC_BFE = -9999 AND V_DATUM IS NULL AND DEPTH = -9999 AND LEN_UNIT IS NULL) AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
-      "expect": "STUDY_TYP",
+      "expect": null,
+      "warns": "STUDY_TYP",
       "feature": {
         "type": "Feature",
         "id": 122488,
@@ -4037,7 +4045,8 @@
     {
       "name": "ascii_apostrophe_study_type",
       "where": "(STUDY_TYP = 'Shaded Zone X with depths less than 1''' AND STATIC_BFE = -9999 AND V_DATUM IS NULL AND DEPTH = -9999 AND LEN_UNIT IS NULL) AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
-      "expect": "STUDY_TYP",
+      "expect": null,
+      "warns": "STUDY_TYP",
       "feature": {
         "type": "Feature",
         "id": 12478773,
@@ -4278,7 +4287,8 @@
     {
       "name": "legacy_levee_subtype",
       "where": "(ZONE_SUBTY = 'AREA WITH REDUCED FLOOD RISK DUE TO LEVEE' AND STUDY_TYP = 'NP' AND STATIC_BFE = -9999 AND V_DATUM IS NULL AND DEPTH = -9999 AND LEN_UNIT IS NULL) AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
-      "expect": "ZONE_SUBTY",
+      "expect": null,
+      "warns": "ZONE_SUBTY",
       "feature": {
         "type": "Feature",
         "id": 78111,
@@ -4384,6 +4394,7 @@
       "name": "uppercase_len_unit",
       "where": "(DFIRM_ID = '39057C' AND FLD_ZONE = 'AE' AND STATIC_BFE > 0 AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND DEPTH = -9999) AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": "LEN_UNIT",
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 6007431,
@@ -4517,6 +4528,7 @@
       "name": "datum_without_bfe",
       "where": "(V_DATUM = 'NAVD88' AND STATIC_BFE = -9999 AND DEPTH = -9999 AND LEN_UNIT IS NULL AND STUDY_TYP = 'NP') AND VELOCITY = -9999 AND VEL_UNIT IS NULL AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U')) AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
       "expect": "@forbid_if(v_datum)",
+      "warns": null,
       "feature": {
         "type": "Feature",
         "id": 158,

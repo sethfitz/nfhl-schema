@@ -88,6 +88,24 @@ class DomainValue:
 
 
 @dataclass(frozen=True, slots=True)
+class LegacyValue:
+    """A value the data holds that the reference does not list, accepted with a
+    warning because it is common (`spec/legacy.json`)."""
+
+    domain: str
+    field: str
+    layer: int
+    value: str
+    count: int
+    note: str
+
+
+# Null encodings written into a text field. Never vocabulary, whatever their
+# count; `spec/legacy.json` says why.
+TEXT_NULLS = frozenset({"", " ", "-9999", "<Null>"})
+
+
+@dataclass(frozen=True, slots=True)
 class Domain:
     name: str
     values: tuple[DomainValue, ...]
@@ -187,6 +205,12 @@ class SpecReader:
 
     def _json(self, relative: str) -> Any:
         return json.loads((self.spec_dir / relative).read_text())
+
+    @cached_property
+    def edition(self) -> str:
+        """The references' edition, from `MANIFEST.json`."""
+        edition: str = self._json("MANIFEST.json")["edition"]
+        return edition
 
     # -- the FIRM Database Technical Reference --------------------------------
 
@@ -337,6 +361,44 @@ class SpecReader:
             number: _DOMAIN_RUNNING_HEAD.sub(" ", text[body:end]).strip()
             for (number, _, body), end in zip(starts, ends, strict=True)
         }
+
+    # -- what the data holds beyond the reference -------------------------------
+
+    @cached_property
+    def legacy(self) -> dict[str, Any]:
+        """`spec/legacy.json`: the threshold, its source, and the values."""
+        payload: dict[str, Any] = self._json("legacy.json")
+        return payload
+
+    def legacy_values(self, domain: str) -> tuple[LegacyValue, ...]:
+        return tuple(
+            LegacyValue(**v) for v in self.legacy["values"] if v["domain"] == domain
+        )
+
+    def legacy_candidates(self, layer: Layer) -> list[LegacyValue]:
+        """What the threshold selects from the observed counts, notes left blank.
+
+        `spec/legacy.json` must list exactly these; it adds only the notes.
+        """
+        observed = self.observed(layer)
+        floor = self.legacy["threshold"] * observed["total"]
+        found = []
+        for field in self.reference_table(layer.table).fields:
+            rows = observed["fields"].get(field.name)
+            if field.domain is None or rows is None:
+                continue
+            allowed = {v.value for v in self.domain(field.domain).values}
+            for row in rows:
+                value, count = row["value"], row["count"]
+                if value is None or value in TEXT_NULLS or value in allowed:
+                    continue
+                if count >= floor:
+                    found.append(
+                        LegacyValue(
+                            field.domain, field.name, layer.layer_id, value, count, ""
+                        )
+                    )
+        return found
 
     # -- the NFHL service ------------------------------------------------------
 

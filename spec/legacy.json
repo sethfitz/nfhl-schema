@@ -1,0 +1,73 @@
+{
+  "about": "Values the NFHL holds that the November 2024 Domain Tables Technical Reference does not list, common enough that the models accept them with a LegacyValueWarning. Not upstream: an observation, not a specification. Each entry is a value of one domain-bound field of one service layer, with its row count from the observed snapshot; a test asserts the list is exactly what the threshold selects from that snapshot.",
+  "observed": "service/observed/28.json",
+  "retrieved_at": "2026-10-05T03:18:13Z",
+  "threshold": 0.001,
+  "rule": "A value is common when at least one row in a thousand of its layer holds it (count / layer total >= threshold). Measured against the layer rather than the field, because most of these fields are empty on most rows, so a share of the populated rows would admit the text-encoded nulls (-9999 is 97% of populated AR_REVERT). The null encodings written as text ('-9999', '<Null>', lone spaces) are not vocabulary values and are never admitted here, whatever their count.",
+  "values": [
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 28,
+      "value": "SFHAs WITH LOW FLOOD RISK",
+      "count": 979594,
+      "note": "One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 28,
+      "value": "SFHAs WITH HIGH FLOOD RISK",
+      "count": 557235,
+      "note": "One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 28,
+      "value": "SFHAs WITH MEDIUM FLOOD RISK",
+      "count": 193351,
+      "note": "One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 28,
+      "value": "REDELINEATION",
+      "count": 72844,
+      "note": "A study type naming how the map was made, which the 2024 reference does not list. Which edition defined it is unverified."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 28,
+      "value": "Shaded Zone X with depths less than 1'",
+      "count": 33992,
+      "note": "Coded value 1070, `Shaded Zone X with depths less than 1’`, written with an ASCII apostrophe where the reference prints a typographic one. More rows hold this form (33,992) than the reference's (10,645)."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 28,
+      "value": "DIGITAL CONVERSION",
+      "count": 12946,
+      "note": "A study type naming how the map was made, which the 2024 reference does not list. Which edition defined it is unverified."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 28,
+      "value": "Special Flood Hazard Area (SFHA) witho",
+      "count": 6493,
+      "note": "Cut off at the field's 38 characters. The full value is not recoverable from the data, and the 2024 reference has no study type that begins this way."
+    },
+    {
+      "domain": "D_Zone_Subtype",
+      "field": "ZONE_SUBTY",
+      "layer": 28,
+      "value": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE",
+      "count": 24849,
+      "note": "An older wording of a levee subtype: the 2024 subtypes say FLOOD HAZARD and LEVEE SYSTEM, and the reference does not say which of them this one became."
+    }
+  ]
+}

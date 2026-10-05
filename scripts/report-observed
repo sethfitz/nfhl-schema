@@ -1,10 +1,11 @@
 #!/usr/bin/env -S uv run python
 """Compare the values the NFHL service holds with the values the reference allows.
 
-Reads only the committed snapshot (`spec/service/observed/`, the domains), so the
-figures in spec/README.md can be re-derived from this command. Prints, per
-field, every observed value the field's domain does not list, with its row
-count.
+Reads only the committed snapshot (`spec/service/observed/`, the domains,
+`spec/legacy.json`), so the figures in spec/README.md can be re-derived from
+this command. Prints, per field, every observed value the field's domain does
+not list, with its row count, and `legacy` beside the ones the models accept
+with a warning.
 
 The counts come from the service's grouped statistics and inherit its SQL
 Server collation, which compares case-insensitively and pads blanks. So `""`
@@ -30,12 +31,14 @@ def main() -> int:
             if field.domain is None or rows is None:
                 continue
             allowed = {v.value for v in reader.domain(field.domain).values}
+            legacy = {v.value for v in reader.legacy_values(field.domain)}
             outside = [r for r in rows if r["value"] not in allowed]
             null = sum(r["count"] for r in rows if r["value"] in (None, ""))
             print(f"\n## {field.name} ({field.domain}); null or blank: {null}")
             for r in outside:
                 if r["value"] not in (None, ""):
-                    print(f"{r['count']:>10}  {r['value']!r}")
+                    mark = "legacy" if r["value"] in legacy else ""
+                    print(f"{r['count']:>10}  {mark:6}  {r['value']!r}")
     return 0
 
 

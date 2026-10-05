@@ -29,7 +29,10 @@ from nfhl.constraints import (
     forbid_if,
     require_if,
 )
+from nfhl.legacy import warn_on_legacy_values
 from nfhl.models.enums import (
+    LEGACY_MEMBERS,
+    REFERENCE_EDITION,
     LengthUnits,
     StudyTyp,
     TrueFalse,
@@ -69,6 +72,12 @@ class FloodHazardZone(Feature):
     # The reference's null encodings ("" and -9999) mean not populated.
     _drop_null_encodings = model_validator(mode="before")(
         staticmethod(drop_null_encodings)
+    )
+
+    # A value the reference does not list but the data commonly holds
+    # validates, with a LegacyValueWarning.
+    _warn_on_legacy_values = model_validator(mode="after")(
+        warn_on_legacy_values(LEGACY_MEMBERS, REFERENCE_EDITION)
     )
 
     # A multipart zone is one feature: MultiPolygon as well as Polygon.

@@ -7,15 +7,20 @@ Pydantic models for FEMA's NFHL, built on `overture-schema-system`. Read
 
 Every file there is rewritten by `scripts/generate-models`, and
 `tests/test_codegen.py` fails if a committed file differs from a fresh
-generation. A change belongs in one of three places:
+generation. A change belongs in one of four places:
 
 - `nfhl.codegen` -- how a source becomes code;
 - `spec/repairs.json` -- a published domain value the database writes
   differently from the PDF;
 - `spec/relationships.json` -- a unit, datum or populated-only-if relationship
-  a field description states in prose.
+  a field description states in prose;
+- `spec/legacy.json` -- a value outside the reference that the data commonly
+  holds, accepted with a warning. Its entries are licensed by a count, not a
+  quote: a test asserts the file lists exactly what its threshold selects from
+  `spec/service/observed/`, so after `snapshot-spec` refreshes the counts,
+  update the counts and run `scripts/report-observed`.
 
-Every entry in the two JSON files quotes the reference sentence that licenses
+Every entry in the first two JSON files quotes the reference sentence that licenses
 it, and a test asserts the quote is still in the reference. A judgement without
 a quote does not go in them; record it in `spec/README.md` instead.
 

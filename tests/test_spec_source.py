@@ -10,7 +10,9 @@ from nfhl.spec_source import (
     DOMAIN_TABLES,
     FIRM_DATABASE,
     SPEC_DIR,
+    TEXT_NULLS,
     Layer,
+    LegacyValue,
     SpecReader,
     squash,
 )
@@ -88,3 +90,40 @@ def test_every_reference_field_is_published_except_version_id(
     published = set(reader.service_fields(layer))
     missing = {f.name for f in reader.reference_table(layer.table).fields} - published
     assert missing == {"VERSION_ID"}
+
+
+def test_legacy_json_lists_exactly_what_its_threshold_selects(
+    reader: SpecReader, layer: Layer
+) -> None:
+    def key(v: LegacyValue) -> tuple[str, str, int, str, int]:
+        return (v.domain, v.field, v.layer, v.value, v.count)
+
+    listed = [
+        key(v)
+        for d in {"D_Study_Typ", "D_Zone_Subtype"}
+        for v in reader.legacy_values(d)
+    ]
+    selected = [key(v) for v in reader.legacy_candidates(layer)]
+    assert listed and sorted(listed) == sorted(selected)
+    assert all(v["note"] for v in reader.legacy["values"])
+
+
+def test_legacy_json_cites_the_snapshot_it_counted(reader: SpecReader) -> None:
+    manifest = json.loads((SPEC_DIR / "MANIFEST.json").read_text())
+    source = next(
+        s for s in manifest["sources"] if s["path"] == reader.legacy["observed"]
+    )
+    assert reader.legacy["retrieved_at"] == source["retrieved_at"]
+
+
+def test_a_lower_threshold_admits_more_but_never_a_text_null(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # A did-happen control: the selection reaches past the committed list when
+    # the bar drops, and the null exclusion is what keeps `-9999` out (4,681
+    # rows of AR_REVERT, above this bar).
+    reader = SpecReader()
+    reader.legacy["threshold"] = 0.0001
+    values = {v.value for v in reader.legacy_candidates(layer)}
+    assert "OTHER" in values
+    assert not values & TEXT_NULLS

@@ -35,6 +35,7 @@ from nfhl.spec_source import (
     Domain,
     DomainValue,
     Layer,
+    LegacyValue,
     ReferenceField,
     ServiceField,
     SpecReader,
@@ -113,25 +114,61 @@ def member_doc(value: DomainValue) -> str:
     return " ".join(parts)
 
 
-def render_enum(domain: Domain, used_by: list[str]) -> str:
+def legacy_doc(legacy: LegacyValue, reader: SpecReader) -> str:
+    """Marks the member legacy, says how common it is and where that was counted."""
+    total = reader.observed(next(lyr for lyr in LAYERS if lyr.layer_id == legacy.layer))
+    day = reader.legacy["retrieved_at"][:10]
+    return (
+        f"Legacy: not in the {reader.edition} Domain Tables Technical Reference; "
+        "validates with a LegacyValueWarning. "
+        f"{legacy.note.rstrip('.')}. Held by {legacy.count:,} of "
+        f"{total['total']:,} rows of `{legacy.field}` on NFHL service layer "
+        f"{legacy.layer}, counted {day}."
+    )
+
+
+@dataclass(frozen=True, slots=True)
+class RenderedEnum:
+    source: str
+    legacy_members: list[str]  # `Class.MEMBER`, for the module's LEGACY_MEMBERS
+
+
+def render_enum(domain: Domain, used_by: list[str], reader: SpecReader) -> RenderedEnum:
+    legacy = reader.legacy_values(domain.name)
     names = [member_name(v.value) for v in domain.values]
-    if len(set(names)) != len(names):
-        raise ValueError(f"{domain.name}: member names collide: {names}")
+    legacy_names = []
+    for lv in legacy:
+        name = member_name(lv.value)
+        # `... less than 1'` differs from the reference's `1’` only in punctuation.
+        legacy_names.append(f"{name}_LEGACY" if name in names else name)
+    every = names + legacy_names
+    if len(set(every)) != len(every):
+        raise ValueError(f"{domain.name}: member names collide: {every}")
     fields = ", ".join(f"`{f}`" for f in used_by)
+    summary = (
+        f"Values of `{domain.name}` that apply to the FIRM Database, each as the "
+        f"data stores it. Used by {fields}."
+    )
+    if legacy:
+        summary += (
+            f" The last {len(legacy)} are legacy values: common in the data, not in "
+            "the reference."
+        )
     lines = [
         f"class {domain.class_name}(str, DocumentedEnum):",
-        docstring(
-            f"Values of `{domain.name}` that apply to the FIRM Database, each as "
-            f"the data stores it. Used by {fields}.",
-            "    ",
-        ),
+        docstring(summary, "    "),
         "",
     ]
     for name, value in zip(names, domain.values, strict=True):
         lines.append(
             f"    {name} = {literal(value.value)}, {literal(member_doc(value))}"
         )
-    return "\n".join(lines)
+    for name, legacy_value in zip(legacy_names, legacy, strict=True):
+        doc = legacy_doc(legacy_value, reader)
+        lines.append(f"    {name} = {literal(legacy_value.value)}, {literal(doc)}")
+    return RenderedEnum(
+        "\n".join(lines), [f"{domain.class_name}.{n}" for n in legacy_names]
+    )
 
 
 def render_enums(reader: SpecReader) -> str:
@@ -141,7 +178,8 @@ def render_enums(reader: SpecReader) -> str:
             if field.domain:
                 used.setdefault(field.domain, []).append(f"{layer.table}.{field.name}")
     domains = sorted((reader.domain(d) for d in used), key=lambda d: d.class_name)
-    blocks = [render_enum(d, used[d.name]) for d in domains]
+    rendered = [render_enum(d, used[d.name], reader) for d in domains]
+    legacy = [m for r in rendered for m in r.legacy_members]
     return "\n".join(
         [
             '"""Coded-value domains from the Domain Tables Technical Reference.',
@@ -153,14 +191,30 @@ def render_enums(reader: SpecReader) -> str:
             "state file geodatabases and the county shapefiles all hold that text",
             "and declare no coded-value domains. Each member's description says",
             "what the value means, from the reference, and gives its coded value.",
+            "",
+            "Members whose description begins `Legacy:` are values the reference",
+            "does not list but the data commonly holds (spec/legacy.json). They",
+            "validate, and the models raise a `nfhl.legacy.LegacyValueWarning`.",
             '"""',
             "",
             "from __future__ import annotations",
             "",
+            "from enum import Enum",
+            "",
             "from overture.schema.system.doc import DocumentedEnum",
             "",
+            f"REFERENCE_EDITION = {literal(reader.edition)}",
             "",
-            "\n\n\n".join(blocks),
+            "",
+            "\n\n\n".join(r.source for r in rendered),
+            "",
+            "",
+            "# Members the reference does not list; each use raises a warning.",
+            "LEGACY_MEMBERS: frozenset[Enum] = frozenset(",
+            "    {",
+            *(f"        {m}," for m in legacy),
+            "    }",
+            ")",
             "",
         ]
     )
@@ -295,7 +349,10 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             "    forbid_if,",
             "    require_if,",
             ")",
-            f"from nfhl.models.enums import {', '.join(enums)}",
+            "from nfhl.legacy import warn_on_legacy_values",
+            "from nfhl.models.enums import (",
+            *(f"    {e}," for e in ["LEGACY_MEMBERS", "REFERENCE_EDITION", *enums]),
+            ")",
             "",
             "",
             *decorators,
@@ -312,6 +369,12 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             '    # The reference\'s null encodings ("" and -9999) mean not populated.',
             '    _drop_null_encodings = model_validator(mode="before")(',
             "        staticmethod(drop_null_encodings)",
+            "    )",
+            "",
+            "    # A value the reference does not list but the data commonly holds",
+            "    # validates, with a LegacyValueWarning.",
+            '    _warn_on_legacy_values = model_validator(mode="after")(',
+            "        warn_on_legacy_values(LEGACY_MEMBERS, REFERENCE_EDITION)",
             "    )",
             "",
             "    # A multipart zone is one feature: MultiPolygon as well as Polygon.",

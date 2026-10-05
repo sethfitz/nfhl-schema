@@ -27,10 +27,12 @@ references whole, so the next tables need no new fetch.
 - `nfhl.spec_source` -- reads the snapshot into typed records: reference
   fields, domains, service fields, observed values.
 - `nfhl.codegen` -- generates `nfhl.models`; `scripts/generate-models` drives it.
+- `nfhl.legacy` -- the warning a legacy value raises.
 - `nfhl.models` -- generated, never hand-edited.
 - `tests/fixtures/flood_hazard_zones.json` -- twelve real features from the
-  service, seven that validate and five that do not, each recorded with the
-  field or rule that should reject it. Fetched by `scripts/fetch-fixtures`.
+  service: seven that validate, three that validate with a legacy-value warning,
+  and two that do not, each recorded with the field or rule that should warn or
+  reject. Fetched by `scripts/fetch-fixtures`.
 
 ## Why generate rather than hand-write
 
@@ -62,12 +64,19 @@ description unpacks it from the reference: the long name (`NAVD88` is the North
 American Vertical Datum 1988), when the value is used, the footnotes the
 reference attaches to it, and its coded value.
 
-**Vocabularies are closed, and that rejects a third of the data.** 32% of the
-service's flood zones have a `STUDY_TYP` the November 2024 reference does not
-list, most of them what look like an earlier edition's study types. The models
-reject them rather than widen the enum, because the gap between the standard and
-the data is the thing worth seeing; `scripts/report-observed` prints it.
-Accepting a legacy vocabulary is a later, per-value decision.
+**Common legacy values validate, with a warning.** 32% of the service's flood
+zones have a `STUDY_TYP` the November 2024 reference does not list, most of them
+study types such as `SFHAs WITH LOW FLOOD RISK` that no current domain defines.
+A value outside the reference that at least one row in a thousand of the layer
+holds is a legacy value: [`spec/legacy.json`](spec/legacy.json) lists the eight
+that clear that bar, with their counts and what is known of each, and the
+generator adds each as an enum member whose description begins `Legacy:`. A
+feature holding one validates and raises `nfhl.legacy.LegacyValueWarning`;
+`warnings.simplefilter("error", LegacyValueWarning)` makes them rejections
+again. Everything else outside the reference is still rejected: 1,992 rows of
+`STUDY_TYP` (0.03%) and 1,516 of `ZONE_SUBTY`, which `scripts/report-observed`
+prints beside the legacy ones. The text-encoded nulls (`-9999`, `<Null>`) are
+not vocabulary and are never legacy values, whatever their count.
 
 **`""` and `-9999` mean not populated.** Section 7.3 of the reference makes them
 the null encodings, since the GIS formats cannot hold a true null; read as a

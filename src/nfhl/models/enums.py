@@ -9,11 +9,19 @@ reference's FIRM description, not its coded value. The service, the
 state file geodatabases and the county shapefiles all hold that text
 and declare no coded-value domains. Each member's description says
 what the value means, from the reference, and gives its coded value.
+
+Members whose description begins `Legacy:` are values the reference
+does not list but the data commonly holds (spec/legacy.json). They
+validate, and the models raise a `nfhl.legacy.LegacyValueWarning`.
 """
 
 from __future__ import annotations
 
+from enum import Enum
+
 from overture.schema.system.doc import DocumentedEnum
+
+REFERENCE_EDITION = "November 2024"
 
 
 class LengthUnits(str, DocumentedEnum):
@@ -34,7 +42,8 @@ class LengthUnits(str, DocumentedEnum):
 
 class StudyTyp(str, DocumentedEnum):
     """Values of `D_Study_Typ` that apply to the FIRM Database, each as the data stores
-    it. Used by `S_Fld_Haz_Ar.STUDY_TYP`.
+    it. Used by `S_Fld_Haz_Ar.STUDY_TYP`. The last 7 are legacy values: common in
+    the data, not in the reference.
     """
 
     BLE_AVAILABLE_BUT_UNPUBLISHED = (
@@ -86,6 +95,81 @@ class StudyTyp(str, DocumentedEnum):
         "Such as Zone X with depths less than 1’. Coded value `1070`.",
     )
     NP = "NP", "NP; unshaded-X zones. Coded value `NP`."
+    SFHAS_WITH_LOW_FLOOD_RISK = (
+        "SFHAs WITH LOW FLOOD RISK",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. One of three study types graded "
+            "by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not "
+            "list. Which edition defined them is unverified. Held by 979,594 of "
+            "5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-05."
+        ),
+    )
+    SFHAS_WITH_HIGH_FLOOD_RISK = (
+        "SFHAs WITH HIGH FLOOD RISK",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. One of three study types graded "
+            "by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not "
+            "list. Which edition defined them is unverified. Held by 557,235 of "
+            "5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-05."
+        ),
+    )
+    SFHAS_WITH_MEDIUM_FLOOD_RISK = (
+        "SFHAs WITH MEDIUM FLOOD RISK",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. One of three study types graded "
+            "by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not "
+            "list. Which edition defined them is unverified. Held by 193,351 of "
+            "5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-05."
+        ),
+    )
+    REDELINEATION = (
+        "REDELINEATION",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. A study type naming how the map "
+            "was made, which the 2024 reference does not list. Which edition "
+            "defined it is unverified. Held by 72,844 of 5,810,832 rows of "
+            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-05."
+        ),
+    )
+    SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1_LEGACY = (
+        "Shaded Zone X with depths less than 1'",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Coded value 1070, `Shaded Zone X "
+            "with depths less than 1’`, written with an ASCII apostrophe where the "
+            "reference prints a typographic one. More rows hold this form (33,992) "
+            "than the reference's (10,645). Held by 33,992 of 5,810,832 rows of "
+            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-05."
+        ),
+    )
+    DIGITAL_CONVERSION = (
+        "DIGITAL CONVERSION",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. A study type naming how the map "
+            "was made, which the 2024 reference does not list. Which edition "
+            "defined it is unverified. Held by 12,946 of 5,810,832 rows of "
+            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-05."
+        ),
+    )
+    SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO = (
+        "Special Flood Hazard Area (SFHA) witho",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Cut off at the field's 38 "
+            "characters. The full value is not recoverable from the data, and the "
+            "2024 reference has no study type that begins this way. Held by 6,493 "
+            "of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-05."
+        ),
+    )
 
 
 class TrueFalse(str, DocumentedEnum):
@@ -157,7 +241,8 @@ class Zone(str, DocumentedEnum):
 
 class ZoneSubtype(str, DocumentedEnum):
     """Values of `D_Zone_Subtype` that apply to the FIRM Database, each as the data
-    stores it. Used by `S_Fld_Haz_Ar.ZONE_SUBTY`, `S_Fld_Haz_Ar.AR_SUBTRV`.
+    stores it. Used by `S_Fld_Haz_Ar.ZONE_SUBTY`, `S_Fld_Haz_Ar.AR_SUBTRV`. The last
+    1 are legacy values: common in the data, not in the reference.
     """
 
     V_0_2_PCT_ANNUAL_CHANCE_FLOOD_HAZARD = (
@@ -461,3 +546,29 @@ class ZoneSubtype(str, DocumentedEnum):
         "AREA WITH REDUCED FLOOD HAZARD DUE TO ACCREDITED LEVEE SYSTEM",
         "Coded value `3030`.",
     )
+    AREA_WITH_REDUCED_FLOOD_RISK_DUE_TO_LEVEE = (
+        "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. An older wording of a levee "
+            "subtype: the 2024 subtypes say FLOOD HAZARD and LEVEE SYSTEM, and the "
+            "reference does not say which of them this one became. Held by 24,849 "
+            "of 5,810,832 rows of `ZONE_SUBTY` on NFHL service layer 28, counted "
+            "2026-10-05."
+        ),
+    )
+
+
+# Members the reference does not list; each use raises a warning.
+LEGACY_MEMBERS: frozenset[Enum] = frozenset(
+    {
+        StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
+        StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,
+        StudyTyp.SFHAS_WITH_MEDIUM_FLOOD_RISK,
+        StudyTyp.REDELINEATION,
+        StudyTyp.SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1_LEGACY,
+        StudyTyp.DIGITAL_CONVERSION,
+        StudyTyp.SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO,
+        ZoneSubtype.AREA_WITH_REDUCED_FLOOD_RISK_DUE_TO_LEVEE,
+    }
+)

@@ -14,6 +14,7 @@ retrieved, the edition, and a SHA-256 of every file.
 | `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, from the service's grouped statistics. Observations, not specification. |
 | `repairs.json` | **Not upstream.** Corrections to published domain values, each quoting the reference sentence that licenses it. Not in the manifest. |
 | `relationships.json` | **Not upstream.** Which field holds another's unit or datum, and which fields may be populated only alongside another, each quoting the field description it reads. Not in the manifest. |
+| `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot. Not in the manifest. |
 
 ## Why PDFs
 
@@ -117,8 +118,9 @@ header extracts reversed. None of these is in this slice.
 
 `scripts/report-observed` prints these from `service/observed/28.json`; the
 counts below are its output for the snapshot pinned in `MANIFEST.json`. The
-models reject every one. Widening a vocabulary to fit is a decision to take per
-value, not a default.
+models reject every one except the eight it marks `legacy`, which
+`legacy.json` admits with a warning by a count threshold, not by a judgement
+about each value.
 
 - **`STUDY_TYP`: 1,858,447 of 5,810,832 rows (32.0%) are outside `D_Study_Typ`.**
   Most are a different vocabulary entirely: `SFHAs WITH LOW FLOOD RISK`
