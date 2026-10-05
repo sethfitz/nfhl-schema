@@ -1,0 +1,27 @@
+#!/usr/bin/env -S uv run python
+"""Regenerate src/nfhl/models/ from the pinned spec/ snapshot.
+
+Every file in that directory is rewritten. `--into DIR` writes elsewhere, so a
+change to the generator or the snapshot can be diffed before it lands.
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+from nfhl.codegen import MODELS_DIR, generate
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--into", type=Path, default=MODELS_DIR)
+    args = parser.parse_args()
+    for path in generate(args.into):
+        print(f"wrote {path}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
