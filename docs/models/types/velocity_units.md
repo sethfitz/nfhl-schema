@@ -5,16 +5,16 @@ stores it. Used by `S_Fld_Haz_Ar.VEL_UNIT`.
 
 ## Values
 
-- `Centimeters / Day` - The reference codes it `1000`.
-- `Centimeters / Hour` - The reference codes it `1010`.
-- `Feet / Second` - The reference codes it `1020`.
-- `Inches / Day` - The reference codes it `1030`.
-- `Inches / Hour` - The reference codes it `1040`.
-- `Meters / Second` - The reference codes it `1050`.
-- `Micrometers / Second` - The reference codes it `1060`.
-- `Millimeters / Day` - The reference codes it `1070`.
-- `Millimeters / Hour` - The reference codes it `1080`.
-- `NP` - The reference codes it `NP`.
+- `Centimeters / Day` - Code `1000`.
+- `Centimeters / Hour` - Code `1010`.
+- `Feet / Second` - Code `1020`.
+- `Inches / Day` - Code `1030`.
+- `Inches / Hour` - Code `1040`.
+- `Meters / Second` - Code `1050`.
+- `Micrometers / Second` - Code `1060`.
+- `Millimeters / Day` - Code `1070`.
+- `Millimeters / Hour` - Code `1080`.
+- `NP` - Code `NP`.
 
 ## Used By
 

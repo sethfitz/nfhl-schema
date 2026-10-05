@@ -134,7 +134,7 @@ def member_doc(value: DomainValue) -> str:
         for text in (value.meaning, value.when_used, *value.footnotes)
         if text
     ]
-    parts.append(f"The reference codes it `{value.code}`.")
+    parts.append(f"Code `{value.code}`.")
     if value.published != value.value:
         parts.append(f"Printed in the reference as `{value.published}`.")
     return " ".join(parts)
@@ -220,7 +220,7 @@ def render_enums(reader: SpecReader) -> str:
             "reference's FIRM description, not its code. The service, the",
             "state file geodatabases and the county shapefiles all hold that text",
             "and declare no coded-value domains. Each member's description says",
-            "what the value means, from the reference, and the code it assigns.",
+            "what the value means, from the reference, and its code.",
             "",
             "Members whose description begins `Legacy:` are values the reference",
             "does not list but the data commonly holds (spec/legacy.json). They",

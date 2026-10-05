@@ -5,18 +5,18 @@ Used by `S_Fld_Haz_Ar.FLD_ZONE`, `S_Fld_Haz_Ar.AR_REVERT`.
 
 ## Values
 
-- `A` - The reference codes it `A`.
-- `A99` - The reference codes it `A99`.
-- `AE` - The reference codes it `AE`.
-- `AH` - The reference codes it `AH`.
-- `AO` - The reference codes it `AO`.
-- `AR` - The reference codes it `AR`.
-- `AREA NOT INCLUDED` - The reference codes it `ANI`.
-- `D` - The reference codes it `D`.
-- `OPEN WATER` - The reference codes it `OW`.
-- `V` - The reference codes it `V`.
-- `VE` - The reference codes it `VE`.
-- `X` - The reference codes it `X`.
+- `A` - Code `A`.
+- `A99` - Code `A99`.
+- `AE` - Code `AE`.
+- `AH` - Code `AH`.
+- `AO` - Code `AO`.
+- `AR` - Code `AR`.
+- `AREA NOT INCLUDED` - Code `ANI`.
+- `D` - Code `D`.
+- `OPEN WATER` - Code `OW`.
+- `V` - Code `V`.
+- `VE` - Code `VE`.
+- `X` - Code `X`.
 
 ## Used By
 

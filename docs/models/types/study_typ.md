@@ -6,14 +6,14 @@ the data, not in the reference.
 
 ## Values
 
-- `BLE available but unpublished` - Base Level Engineering data are available, but zones and Baseflood Elevations (BFEs) are not published on FIRM. The reference codes it `1030`.
-- `SFHA without BFE` - Such as A zones without BFEs or water surface elevations. The reference codes it `1000`.
-- `SFHA with unpublished BFE` - Such as A zones with BFEs or water surface elevations calculated but not published in FIS Report. The reference codes it `1040`.
-- `SFHA with BFE published only in FIS` - Such as A zones with BFEs or water surface elevations published only in FIS Report. The reference codes it `1010`.
-- `SFHA with BFE no floodway` - Such as AE or VE zones with regulatory water surface elevations or depths but no floodway; or shaded-X zones that are associated with this type of study. The reference codes it `1050`.
-- `SFHA with BFE and floodway` - Such as AE or VE zones with regulatory water surface elevations and a regulatory floodway; or shaded-X zones that are associated with this type of study. The reference codes it `1060`.
-- `Shaded Zone X with depths less than 1’` - Such as Zone X with depths less than 1’. The reference codes it `1070`.
-- `NP` - NP; unshaded-X zones. The reference codes it `NP`.
+- `BLE available but unpublished` - Base Level Engineering data are available, but zones and Baseflood Elevations (BFEs) are not published on FIRM. Code `1030`.
+- `SFHA without BFE` - Such as A zones without BFEs or water surface elevations. Code `1000`.
+- `SFHA with unpublished BFE` - Such as A zones with BFEs or water surface elevations calculated but not published in FIS Report. Code `1040`.
+- `SFHA with BFE published only in FIS` - Such as A zones with BFEs or water surface elevations published only in FIS Report. Code `1010`.
+- `SFHA with BFE no floodway` - Such as AE or VE zones with regulatory water surface elevations or depths but no floodway; or shaded-X zones that are associated with this type of study. Code `1050`.
+- `SFHA with BFE and floodway` - Such as AE or VE zones with regulatory water surface elevations and a regulatory floodway; or shaded-X zones that are associated with this type of study. Code `1060`.
+- `Shaded Zone X with depths less than 1’` - Such as Zone X with depths less than 1’. Code `1070`.
+- `NP` - NP; unshaded-X zones. Code `NP`.
 - `SFHAs WITH LOW FLOOD RISK` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified. Held by 979,594 of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted 2026-10-05.
 - `SFHAs WITH HIGH FLOOD RISK` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified. Held by 557,235 of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted 2026-10-05.
 - `SFHAs WITH MEDIUM FLOOD RISK` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified. Held by 193,351 of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted 2026-10-05.

@@ -5,15 +5,15 @@ stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`.
 
 ## Values
 
-- `Centimeters` - The reference codes it `CM`.
-- `Feet` - The reference codes it `FT`.
-- `Inches` - The reference codes it `IN`.
-- `Kilometers` - The reference codes it `KM`.
-- `Meters` - The reference codes it `M`.
-- `Miles` - The reference codes it `MI`.
-- `Millimeters` - The reference codes it `MM`.
-- `U.S. Survey Feet` - The reference codes it `USFT`.
-- `NP` - The reference codes it `NP`.
+- `Centimeters` - Code `CM`.
+- `Feet` - Code `FT`.
+- `Inches` - Code `IN`.
+- `Kilometers` - Code `KM`.
+- `Meters` - Code `M`.
+- `Miles` - Code `MI`.
+- `Millimeters` - Code `MM`.
+- `U.S. Survey Feet` - Code `USFT`.
+- `NP` - Code `NP`.
 
 ## Used By
 
