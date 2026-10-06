@@ -96,10 +96,11 @@ class StudyTyp(str, DocumentedEnum):
         "SFHAs WITH LOW FLOOD RISK",
         (
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
-            "validates with a LegacyValueWarning. One of three study types graded "
-            "by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not "
-            "list. Which edition defined them is unverified. Held by 979,594 of "
-            "5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "validates with a LegacyValueWarning. The November 2016 Domain Tables "
+            "reference's study type 1000, one of three graded by flood risk (LOW, "
+            "MEDIUM, HIGH) that the February 2019 edition replaced with the "
+            "SFHA-with-BFE types the 2024 reference still lists. Held by 979,594 of"
+            " 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
             "2026-10-05."
         ),
     )
@@ -107,10 +108,11 @@ class StudyTyp(str, DocumentedEnum):
         "SFHAs WITH HIGH FLOOD RISK",
         (
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
-            "validates with a LegacyValueWarning. One of three study types graded "
-            "by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not "
-            "list. Which edition defined them is unverified. Held by 557,235 of "
-            "5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "validates with a LegacyValueWarning. The November 2016 Domain Tables "
+            "reference's study type 1020, one of three graded by flood risk (LOW, "
+            "MEDIUM, HIGH) that the February 2019 edition replaced with the "
+            "SFHA-with-BFE types the 2024 reference still lists. Held by 557,235 of"
+            " 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
             "2026-10-05."
         ),
     )
@@ -118,10 +120,11 @@ class StudyTyp(str, DocumentedEnum):
         "SFHAs WITH MEDIUM FLOOD RISK",
         (
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
-            "validates with a LegacyValueWarning. One of three study types graded "
-            "by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not "
-            "list. Which edition defined them is unverified. Held by 193,351 of "
-            "5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "validates with a LegacyValueWarning. The November 2016 Domain Tables "
+            "reference's study type 1010, one of three graded by flood risk (LOW, "
+            "MEDIUM, HIGH) that the February 2019 edition replaced with the "
+            "SFHA-with-BFE types the 2024 reference still lists. Held by 193,351 of"
+            " 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
             "2026-10-05."
         ),
     )
@@ -129,10 +132,11 @@ class StudyTyp(str, DocumentedEnum):
         "REDELINEATION",
         (
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
-            "validates with a LegacyValueWarning. A study type naming how the map "
-            "was made, which the 2024 reference does not list. Which edition "
-            "defined it is unverified. Held by 72,844 of 5,810,832 rows of "
-            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-05."
+            "validates with a LegacyValueWarning. The November 2016 Domain Tables "
+            "reference's study type 1100. The 2019 and 2024 editions list it as a "
+            "study method (D_Study_Mth, the same code), not a study type. Held by "
+            "72,844 of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, "
+            "counted 2026-10-05."
         ),
     )
     SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1_LEGACY = (
@@ -151,21 +155,22 @@ class StudyTyp(str, DocumentedEnum):
         "DIGITAL CONVERSION",
         (
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
-            "validates with a LegacyValueWarning. A study type naming how the map "
-            "was made, which the 2024 reference does not list. Which edition "
-            "defined it is unverified. Held by 12,946 of 5,810,832 rows of "
-            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-05."
+            "validates with a LegacyValueWarning. The November 2016 Domain Tables "
+            "reference's study type 1200. The 2019 and 2024 editions list it as a "
+            "study method (D_Study_Mth, the same code), not a study type. Held by "
+            "12,946 of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, "
+            "counted 2026-10-05."
         ),
     )
     SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO = (
         "Special Flood Hazard Area (SFHA) witho",
         (
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
-            "validates with a LegacyValueWarning. Cut off at the field's 38 "
-            "characters. The full value is not recoverable from the data, and the "
-            "2024 reference has no study type that begins this way. Held by 6,493 "
-            "of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
-            "2026-10-05."
+            "validates with a LegacyValueWarning. The February 2019 Domain Tables "
+            "reference's study type 1000, `Special Flood Hazard Area (SFHA) without"
+            " BFE`, cut off at the field's 38 characters; the 2024 reference writes"
+            " code 1000 `SFHA without BFE`. Held by 6,493 of 5,810,832 rows of "
+            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-05."
         ),
     )
 

@@ -136,17 +136,22 @@ models reject every one except the eight it marks `legacy`, which
 `legacy.json` admits with a warning by a count threshold, not by a judgement
 about each value.
 
-- **`STUDY_TYP`: 1,858,447 of 5,810,832 rows (32.0%) are outside `D_Study_Typ`.**
-  Most are a different vocabulary entirely: `SFHAs WITH LOW FLOOD RISK`
-  (979,594), `... HIGH ...` (557,235), `... MEDIUM ...` (193,351),
-  `REDELINEATION` (72,844), `DIGITAL CONVERSION` (12,946). These look like an
-  earlier edition's study types; that is unverified. Then the ASCII apostrophe,
-  `Shaded Zone X with depths less than 1'` (33,992); truncations to the 38
-  characters of the field (`Special Flood Hazard Area (SFHA) witho`, 6,493);
-  FRD-only `OTHER` (1,485); and a bare coded value, `1050`, once.
-- **`ZONE_SUBTY`: 26,365 rows outside `D_Zone_Subtype`**, chiefly the older
-  `AREA WITH REDUCED FLOOD RISK DUE TO LEVEE` (24,849), compound subtypes such
-  as `1 PCT FUTURE CONDITIONS, FLOODWAY`, and the literal string `<Null>` (353).
+- **`STUDY_TYP`: 1,858,447 of 5,810,832 rows (32.0%) hold a value outside
+  `D_Study_Typ`**, not counting the 1,607 lone spaces below. Most are the study
+  types of the [November 2016 Domain Tables reference](https://www.fema.gov/sites/default/files/nepa/Domain_Tables_Technical_Reference_Nov_2016_SUPERSEDED.pdf),
+  which the [February 2019 edition](https://www.fema.gov/sites/default/files/2020-02/Domain_Tables_Technical_Reference_Feb_2019.pdf)
+  replaced: `SFHAs WITH LOW FLOOD RISK` (979,594), `... HIGH ...` (557,235),
+  `... MEDIUM ...` (193,351), `REDELINEATION` (72,844) and `DIGITAL
+  CONVERSION` (12,946). The 2019 and 2024 editions list the last two under
+  `D_Study_Mth`, the study method. Then the ASCII apostrophe, `Shaded Zone X
+  with depths less than 1'` (33,992); the 2019 edition's code 1000, `Special
+  Flood Hazard Area (SFHA) without BFE`, cut to the field's 38 characters
+  (`Special Flood Hazard Area (SFHA) witho`, 6,493); FRD-only `OTHER` (1,485);
+  and a bare coded value, `1050`, once.
+- **`ZONE_SUBTY`: 26,365 rows outside `D_Zone_Subtype`**, 75 of them the lone
+  spaces below. Chiefly the 2019 edition's `AREA WITH REDUCED FLOOD RISK DUE TO
+  LEVEE` (24,849), compound subtypes such as `1 PCT FUTURE CONDITIONS,
+  FLOODWAY`, and the literal string `<Null>` (353).
 - **`V_DATUM`**: `ASVD02` (562, American Samoa, absent from `D_V_Datum`),
   `GUVD03` (199, where the reference lists `GUVD04`), `NAVD 88` and `NGVD 29`
   with spaces, and `-9999` written as text (302).
@@ -175,29 +180,44 @@ about each value.
   came back from the service by direct query (`FLD_ZONE <> 'AR' AND AR_REVERT
   IN (<every D_Zone value>)`, 73; the same for `AR_SUBTRV` and every
   `D_Zone_Subtype` and legacy value, 6), and validating those 79 features
-  showed each valid before these rules and rejected by one of them after.
+  rejected each by the only-in-AR rule and nothing else.
 
-These were counted with direct queries against layer 28 on 2026-10-04 rather
+These were counted with direct queries against layer 28 on 2026-10-05 rather
 than from a committed file; each is a `returnCountOnly` query with the `where`
 clause given:
 
 - **Lone spaces**, which the reference's null encodings do not include:
   `V_DATUM LIKE ' '` 60,619; `LEN_UNIT` 78,373; `AR_REVERT` 74,471; `VEL_UNIT`
   59,804; `DUAL_ZONE` 43,768; `AR_SUBTRV` 37,342; `STUDY_TYP` 1,607;
-  `ZONE_SUBTY` 75.
+  `ZONE_SUBTY` 75. These are exact: `LIKE ' '` matches one space and not the
+  empty string, and `LIKE '  %'` matches nothing in any of these fields, so no
+  value holds two. Fetching the rows agrees: `STUDY_TYP = ''` returns 8,039,
+  of which 6,432 hold `''` and 1,607 hold `' '`.
 - **The populated-only-if rules** (`relationships.json`):
   `V_DATUM` set without a static BFE, 16,933
-  (`(V_DATUM IS NOT NULL AND V_DATUM <> '') AND (STATIC_BFE = -9999 OR STATIC_BFE IS NULL)`);
-  `LEN_UNIT` set with neither BFE nor depth, 1,807; a velocity without a
-  `VEL_UNIT`, 8,638
-  (`(VELOCITY <> -9999 AND VELOCITY IS NOT NULL) AND (VEL_UNIT IS NULL OR VEL_UNIT = '')`).
-  Of the 9,679 non-null velocities, 7,708 are `0`, which section 7.3 forbids as
-  a stand-in for "does not apply", so most of those are nulls written as zero.
+  (`(V_DATUM IS NOT NULL AND V_DATUM <> '') AND (STATIC_BFE = -9999 OR STATIC_BFE IS NULL)`),
+  of which 16,571 hold a `D_V_Datum` value and reach the rule, the rest failing
+  the vocabulary first; `LEN_UNIT` set with neither BFE nor depth, 1,807
+  (the same, with `(DEPTH = -9999 OR DEPTH IS NULL)` added), 1,468 of them a
+  `D_Length_Units` value; a velocity without a `VEL_UNIT`, 8,638
+  (`(VELOCITY <> -9999 AND VELOCITY IS NOT NULL) AND (VEL_UNIT IS NULL OR VEL_UNIT = '')`),
+  1,257 of them a lone space the vocabulary rejects first. The same velocity
+  predicate selects 9,679 rows, 7,708 of them `0`, which section 7.3 forbids
+  as a stand-in for "does not apply"; 7,681 of the 8,638 without a unit are
+  `0`, so most of those are nulls written as zero.
 
-**Read every count above as an upper bound.** The service is SQL Server, and
-its comparisons and grouping ignore case and trailing blanks: `LEN_UNIT =
-'Feet'` also matches `FEET`, and `= ''` matches a lone space. So a grouped count
-for `Feet` includes any `FEET`, and a variant differing only in case cannot be
-counted from the service at all. The fixture holds one real `FEET`
-(`uppercase_len_unit`, DFIRM `39057C`), found because it failed validation, not
-because any statistic showed it.
+**Read a count as the service's, not the models'.** The service is SQL Server
+(it accepts `SHAPE.STArea()` in a `where`), and its `=`, `<>`, `IN` and
+grouping ignore case and trailing blanks: `LEN_UNIT = 'feet'` and `LEN_UNIT =
+'Feet '` count the same 197,726 rows as `LEN_UNIT = 'Feet'`, and `= ''` matches
+a lone space. `LIKE` ignores case but not a trailing blank in its pattern,
+which is why the lone-space counts use it. Folding errs in both directions. A
+count for one value is an upper bound on that exact string: it includes every
+variant differing only in case or trailing blanks. A total of values outside a
+vocabulary is a lower bound: a variant of an allowed value folds into that
+value's group and drops out of the report. The 1,607 lone spaces in
+`STUDY_TYP` came back inside its 8,039 blanks and are missing from its
+1,858,447, while `ZONE_SUBTY`'s 75 came back as `' '`, because no empty string
+shared their group, and are counted in its 26,365. The fixture holds one real
+`FEET` (`uppercase_len_unit`, DFIRM `39057C`), found because it failed
+validation, not because any statistic showed it.

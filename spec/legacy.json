@@ -11,7 +11,7 @@
       "layer": 28,
       "value": "SFHAs WITH LOW FLOOD RISK",
       "count": 979594,
-      "note": "One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified."
+      "note": "The November 2016 Domain Tables reference's study type 1000, one of three graded by flood risk (LOW, MEDIUM, HIGH) that the February 2019 edition replaced with the SFHA-with-BFE types the 2024 reference still lists."
     },
     {
       "domain": "D_Study_Typ",
@@ -19,7 +19,7 @@
       "layer": 28,
       "value": "SFHAs WITH HIGH FLOOD RISK",
       "count": 557235,
-      "note": "One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified."
+      "note": "The November 2016 Domain Tables reference's study type 1020, one of three graded by flood risk (LOW, MEDIUM, HIGH) that the February 2019 edition replaced with the SFHA-with-BFE types the 2024 reference still lists."
     },
     {
       "domain": "D_Study_Typ",
@@ -27,7 +27,7 @@
       "layer": 28,
       "value": "SFHAs WITH MEDIUM FLOOD RISK",
       "count": 193351,
-      "note": "One of three study types graded by flood risk (LOW, MEDIUM, HIGH) that the 2024 reference does not list. Which edition defined them is unverified."
+      "note": "The November 2016 Domain Tables reference's study type 1010, one of three graded by flood risk (LOW, MEDIUM, HIGH) that the February 2019 edition replaced with the SFHA-with-BFE types the 2024 reference still lists."
     },
     {
       "domain": "D_Study_Typ",
@@ -35,7 +35,7 @@
       "layer": 28,
       "value": "REDELINEATION",
       "count": 72844,
-      "note": "A study type naming how the map was made, which the 2024 reference does not list. Which edition defined it is unverified."
+      "note": "The November 2016 Domain Tables reference's study type 1100. The 2019 and 2024 editions list it as a study method (D_Study_Mth, the same code), not a study type."
     },
     {
       "domain": "D_Study_Typ",
@@ -51,7 +51,7 @@
       "layer": 28,
       "value": "DIGITAL CONVERSION",
       "count": 12946,
-      "note": "A study type naming how the map was made, which the 2024 reference does not list. Which edition defined it is unverified."
+      "note": "The November 2016 Domain Tables reference's study type 1200. The 2019 and 2024 editions list it as a study method (D_Study_Mth, the same code), not a study type."
     },
     {
       "domain": "D_Study_Typ",
@@ -59,7 +59,7 @@
       "layer": 28,
       "value": "Special Flood Hazard Area (SFHA) witho",
       "count": 6493,
-      "note": "Cut off at the field's 38 characters. The full value is not recoverable from the data, and the 2024 reference has no study type that begins this way."
+      "note": "The February 2019 Domain Tables reference's study type 1000, `Special Flood Hazard Area (SFHA) without BFE`, cut off at the field's 38 characters; the 2024 reference writes code 1000 `SFHA without BFE`."
     },
     {
       "domain": "D_Zone_Subtype",

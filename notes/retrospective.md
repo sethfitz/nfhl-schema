@@ -23,10 +23,13 @@ rejects. Those counts were what made each judgement call visible.
 ## The data does not match its own spec
 
 - 32% of published flood zones had a study type outside the reference's list,
-  mostly "SFHAs WITH LOW/HIGH/MEDIUM FLOOD RISK", which looks like an older
-  vocabulary. Accepting values held by at least 1 row in 1,000 with a warning
-  (8 values) brought rows outside the reference down to 0.03%. The same bar admits
-  a 38-character truncation of a real value (6,493 rows).
+  mostly "SFHAs WITH LOW/HIGH/MEDIUM FLOOD RISK". These and `REDELINEATION` and
+  `DIGITAL CONVERSION` are the November 2016 edition's study types; the 2019
+  edition replaced the first three and moved the other two to the study-method
+  domain, where the 2024 reference still lists them. Accepting values held by at
+  least 1 row in 1,000 with a warning (8 values) brought rows outside the
+  reference down to 0.03%. The same bar admits the 2019 wording of study type
+  1000 cut to 38 characters (6,493 rows).
 - The reference describes coded-value domains, but none of the distributions use
   them: the service, the state geodatabases and the county shapefiles all store
   the description text, and the geodatabase declares no domains. The first README
@@ -37,8 +40,11 @@ rejects. Those counts were what made each judgement call visible.
 - The AR revert fields are populated on 79 rows that are not AR zones, and the
   layer has no AR zones at all, so the value limits on those fields have nothing to
   check today.
-- The service's own statistics compare text ignoring case and trailing blanks, so
-  every observed-vocabulary count is an upper bound.
+- The service's own statistics compare text ignoring case and trailing blanks.
+  That makes a count for one value an upper bound, but a total of values outside
+  a vocabulary a lower bound: a variant of an allowed value folds into its group
+  and vanishes. The 1,607 lone spaces in `STUDY_TYP` are hidden that way. `LIKE`
+  keeps a trailing blank in its pattern, so it counts lone spaces exactly.
 
 ## Where overture-schema-system got in the way
 
@@ -71,3 +77,12 @@ These are inputs for the overture-schema backlog.
   (2026-10-05). Push each slice as it lands.
 - Re-snapshotting refreshes every count, which breaks `spec/legacy.json` and the
   README figures until they are updated; a test catches the first.
+- A pass re-checking every claim in the README's "what the service holds"
+  section (2026-10-05) reproduced every count, and found the claims around the
+  counts wrong instead. "Every count is an upper bound" held for single values
+  and was backwards for totals. "An earlier edition's study types; unverified"
+  stayed unverified because the search covered only the vendored 2024 PDFs.
+  FEMA's superseded 2016 and 2019 references settled it, and showed two of the
+  five were not missing from 2024 but filed under another domain. Counting
+  `V_DATUM` "set" rows also counted values the vocabulary rejects before the
+  rule runs (16,933 rows, 16,571 reaching the rule).
