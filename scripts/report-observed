@@ -7,7 +7,9 @@ this command. Prints, per field, every observed value the field's domain does
 not list, with its row count, and `legacy` beside the ones the models accept
 with a warning; then, per rule on two fields' values together (the zone/subtype
 cross-walk, `SFHA_TF` from the zone), the value pairs that break it; then the
-rows that break each rule on `AR_REVERT` and `AR_SUBTRV`.
+rows that break each rule on `AR_REVERT` and `AR_SUBTRV`. The snapshot has no
+counts for the numeric revert fields, `BFE_REVERT` and `DEP_REVERT`; their rule
+is counted by direct query in spec/README.md.
 
 The counts come from the service's grouped statistics and inherit its SQL
 Server collation, which compares case-insensitively and pads blanks. So `""`
@@ -89,15 +91,21 @@ def report_single_field_rules(
         for value, count in broken.items():
             print(f"{count:>10}  {value!r}")
     zones = {r["value"]: r["count"] for r in observed["fields"]["FLD_ZONE"]}
+    table = reader.reference_table(layer.table)
     for only in relations.only_when:
+        header = (
+            f"\n## {only.field} populated when {only.when} is not "
+            f"{', '.join(only.any_of)}"
+        )
+        if table.field(only.field).domain is None:
+            # A number: the snapshot counts the values of domain-bound fields only.
+            print(f"{header}: not in the snapshot; see spec/README.md")
+            continue
         held = accepted(reader, layer, only.field)
         most = sum(held.values())
         least = max(0, most - sum(zones.get(z, 0) for z in only.any_of))
         span = str(most) if least == most else f"{least} to {most}"
-        print(
-            f"\n## {only.field} populated when {only.when} is not "
-            f"{', '.join(only.any_of)}: {span}"
-        )
+        print(f"{header}: {span}")
         for value, count in held.items():
             print(f"{count:>10}  {value!r}")
 

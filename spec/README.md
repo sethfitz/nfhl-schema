@@ -13,7 +13,7 @@ retrieved, the edition, and a SHA-256 of every file.
 | `service/MapServer.json`, `service/layers/<id>.json` | The [NFHL MapServer](https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer)'s metadata for all 32 layers and its one table: field names, Esri types, lengths. Taken whole so later slices need no new fetch. |
 | `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, and per-pair counts for every two fields a rule reads together (`combinations`), from the service's grouped statistics. Observations, not specification. |
 | `repairs.json` | **Not upstream.** Corrections to published domain values, each quoting the reference sentence that licenses it. Not in the manifest. |
-| `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another or only for some zones (`AR_REVERT`, `AR_SUBTRV`), which values a field is limited to, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`), each quoting the field description it reads. Not in the manifest. |
+| `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another or only for some zones (the AR revert fields), which values a field is limited to, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`), each quoting the field description it reads. Not in the manifest. |
 | `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot. Not in the manifest. |
 
 ## Why PDFs
@@ -117,6 +117,21 @@ Each is pinned by a test, so an upstream change shows up as a failure.
   not name a subtype. Nor does either description say an AR zone must populate
   them, so nothing requires them. `AR_REVERT` "should only include" the five
   zones, the same "should" as `SFHA_TF`'s rule, and is enforced like it.
+- **`BFE_REVERT` and `DEP_REVERT` say "populated when", not "only populated
+  if"**, and the models read the sentence as a limit to AR zones only. "This
+  field is populated when Zone equals AR and the reverted zone has a static BFE"
+  (or "a depth assigned") opens with "If zone is Zone AR in FLD_Zone field, this
+  field would hold" the reverted zone's BFE or depth, which gives the number no
+  meaning on any other zone. The other half, a BFE or depth required on an AR
+  zone whose reverted zone has one, is not checked: whether the reverted zone
+  has a static BFE is recorded nowhere but these fields. Nor are they tied to
+  the zone in `AR_REVERT`. Neither description names the zones, and `DEPTH`,
+  "the depth for Zone AO areas", is not limited to `AO` either.
+- **The revert numbers have no unit or datum.** `LEN_UNIT` is "the
+  measurement system used for the BFEs and/or depths", which could cover them,
+  but "is only populated if the STATIC_BFE or DEPTH field is populated", so an
+  AR zone with only a `BFE_REVERT` could not state one. `V_DATUM` is limited to
+  `STATIC_BFE` the same way. The models link neither field to them.
 
 Nine of the reference's 53 tables do not yet join their description table to
 their type table, so `SpecReader.reference_table` raises on them: `L_Mtg_POC`

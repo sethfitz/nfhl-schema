@@ -268,11 +268,35 @@ def test_an_ar_zone_takes_what_it_reverts_to(valid_feature: dict[str, Any]) -> N
 
 
 @pytest.mark.parametrize(
+    "revert",
+    [
+        {"AR_REVERT": "AE", "BFE_REVERT": 512.0},
+        {"AR_REVERT": "AO", "DEP_REVERT": 2.0},
+        {"AR_REVERT": "AE", "BFE_REVERT": 512.0, "DEP_REVERT": 2.0},
+    ],
+)
+def test_an_ar_zone_takes_the_bfe_or_depth_it_reverts_to(
+    valid_feature: dict[str, Any], revert: dict[str, Any]
+) -> None:
+    # The did-happen control for the revert BFE and depth rules below.
+    valid_feature["properties"].update(AR_ZONE, **revert)
+    assert rejected_by(valid_feature) == set()
+
+
+@pytest.mark.parametrize(
     ("change", "rule"),
     [
         # "This field is only populated if the corresponding area is Zone AR."
         ({"AR_REVERT": "AE"}, "@forbid_if(ar_revert)"),
         ({"AR_SUBTRV": "FLOODWAY"}, "@forbid_if(ar_subtrv)"),
+        # "This field is populated when Zone equals AR and the reverted zone has
+        # a static BFE." / "... has a depth assigned."
+        ({"BFE_REVERT": 512.0}, "@forbid_if(bfe_revert)"),
+        ({"DEP_REVERT": 2.0}, "@forbid_if(dep_revert)"),
+        # Zero is a depth, and -8888 a value a Project Officer approved: both
+        # are populated (section 7.3), unlike -9999.
+        ({"DEP_REVERT": 0}, "@forbid_if(dep_revert)"),
+        ({"BFE_REVERT": -8888}, "@forbid_if(bfe_revert)"),
         # The five zones the descriptions name; VE is not one.
         ({**AR_ZONE, "AR_REVERT": "VE"}, "@forbid_if(ar_revert) [A, AE, AH, AO, X]"),
         # Only A99 and AR list this subtype in Table 14.
@@ -287,6 +311,33 @@ def test_each_ar_rule_fires(
 ) -> None:
     valid_feature["properties"].update(change)
     assert rejected_by(valid_feature) == {rule}
+
+
+@pytest.mark.parametrize(
+    "nulls",
+    [
+        {"BFE_REVERT": -9999},
+        {"DEP_REVERT": -9999},
+        {"BFE_REVERT": -9999, "DEP_REVERT": -9999},
+    ],
+)
+def test_a_null_encoded_revert_bfe_or_depth_is_not_populated(
+    valid_feature: dict[str, Any], nulls: dict[str, Any]
+) -> None:
+    # The did-not-fire control for the revert rules: -9999 is the reference's
+    # numeric null, and most live rows hold it in both fields off an AR zone.
+    valid_feature["properties"].update(nulls)
+    assert rejected_by(valid_feature) == set()
+
+
+def test_the_73_live_ar_revert_rows_break_only_the_ar_revert_rule(
+    valid_feature: dict[str, Any],
+) -> None:
+    # Their shape: AR_REVERT set off an AR zone, both revert numbers -9999.
+    valid_feature["properties"].update(
+        AR_REVERT="A", BFE_REVERT=-9999, DEP_REVERT=-9999
+    )
+    assert rejected_by(valid_feature) == {"@forbid_if(ar_revert)"}
 
 
 def test_ar_subtrv_is_not_paired_with_ar_revert(

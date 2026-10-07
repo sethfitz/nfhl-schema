@@ -55,6 +55,8 @@ def test_the_schema_accepts_a_valid_feature(
         ([], {"AR_REVERT": "AE"}),  # a reverted zone on a zone that is not AR
         ([], {**AR_ZONE, "AR_REVERT": "VE"}),  # not one of the five zones
         ([], {**AR_ZONE, "AR_SUBTRV": AR_ZONE["ZONE_SUBTY"]}),  # A99 and AR only
+        ([], {"BFE_REVERT": 512.0}),  # a reverted BFE on a zone that is not AR
+        ([], {"DEP_REVERT": 2.0}),  # a reverted depth on a zone that is not AR
     ],
 )
 def test_the_schema_enforces_the_relationship_rules(
@@ -75,7 +77,9 @@ def test_the_schema_accepts_an_ar_zone_and_what_it_reverts_to(
 ) -> None:
     # The control for the AR cases above: each breaks one rule, not the zone.
     feature = dumped(valid_feature)
-    feature["properties"].update(AR_ZONE, AR_REVERT="AE", AR_SUBTRV="FLOODWAY")
+    feature["properties"].update(
+        AR_ZONE, AR_REVERT="AE", AR_SUBTRV="FLOODWAY", BFE_REVERT=512.0, DEP_REVERT=2.0
+    )
     assert check(schema, feature)
 
 

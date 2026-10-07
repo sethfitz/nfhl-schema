@@ -67,6 +67,8 @@ not define them, so they are optional and validated only by type.
 - `vel_unit` is required when velocity is populated
 - `ar_subtrv` is forbidden when ar_subtrv is a D_Zone_Subtype value Table 14 does not list for any of A, AE, AH, AO, X
 - `ar_revert` is forbidden when ar_revert is a D_Zone value other than A, AE, AH, AO, X
+- `dep_revert` is forbidden when fld_zone is not AR
+- `bfe_revert` is forbidden when fld_zone is not AR
 - `ar_subtrv` is forbidden when fld_zone is not AR
 - `ar_revert` is forbidden when fld_zone is not AR
 - `len_unit` is forbidden when static_bfe is not populated and depth is not populated

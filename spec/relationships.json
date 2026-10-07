@@ -49,6 +49,18 @@
           "when": "FLD_ZONE",
           "any_of": ["AR"],
           "quote": "This field is only populated if the corresponding area is Zone AR."
+        },
+        {
+          "field": "BFE_REVERT",
+          "when": "FLD_ZONE",
+          "any_of": ["AR"],
+          "quote": "This field is populated when Zone equals AR and the reverted zone has a static BFE."
+        },
+        {
+          "field": "DEP_REVERT",
+          "when": "FLD_ZONE",
+          "any_of": ["AR"],
+          "quote": "This field is populated when Zone equals AR and the reverted zone has a depth assigned."
         }
       ],
       "allowed": [

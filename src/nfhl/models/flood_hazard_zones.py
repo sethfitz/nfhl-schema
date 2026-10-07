@@ -52,6 +52,12 @@ from nfhl.models.enums import (
 @forbid_if(["ar_revert"], NoneOf("fld_zone", (Zone.AR,)))
 # “This field is only populated if the corresponding area is Zone AR.”
 @forbid_if(["ar_subtrv"], NoneOf("fld_zone", (Zone.AR,)))
+# “This field is populated when Zone equals AR and the reverted zone has a static
+# BFE.”
+@forbid_if(["bfe_revert"], NoneOf("fld_zone", (Zone.AR,)))
+# “This field is populated when Zone equals AR and the reverted zone has a depth
+# assigned.”
+@forbid_if(["dep_revert"], NoneOf("fld_zone", (Zone.AR,)))
 # “Acceptable values for this field are listed in the D_Zone table, but should only
 # include one of AE, AO, AH, A, and X domain values.”
 @forbid_if(

@@ -126,6 +126,10 @@ those five rows of Table 14. Neither description ties the subtype to the zone in
 `AR_REVERT`, so a subtype is checked against the five rows together, not the one
 the area reverts to; and neither says an AR zone must have them, so nothing
 requires them. A legacy subtype is left to its warning, as in `ZONE_SUBTY`.
+`BFE_REVERT` and `DEP_REVERT`, the static BFE and the depth of the zone an AR
+area reverts to, are "populated when Zone equals AR and the reverted zone has" a
+static BFE or a depth, and are forbidden off AR zones the same way. A `0` or a
+`-8888` is a value and breaks the rule; `-9999` is a null.
 
 **Stacking two system constraints of one kind loses one in Python.** Each
 `forbid_if` registers its check under the name `@forbid_if`, so a second on the
