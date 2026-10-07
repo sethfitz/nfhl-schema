@@ -40,6 +40,13 @@ rejects. Those counts were what made each judgement call visible.
 - The AR revert fields are populated on 79 rows that are not AR zones, and the
   layer has no AR zones at all, so the value limits on those fields have nothing to
   check today.
+- The revert BFE and depth, the numeric AR fields, are populated on 18,177 rows,
+  none of them AR zones and none setting `AR_REVERT`. Most are `0` or `-8888`
+  written for "does not apply". One county (DFIRM `31099C`, 3,311 rows) holds
+  each polygon's area in square feet in `DEP_REVERT`, found by dividing it by
+  `SHAPE.STArea()` and getting the same number every time. The rule licensing
+  these is weaker than the AR fields' "only populated if": it says "populated
+  when Zone equals AR", and reading it as a limit is a judgement.
 - The service's own statistics compare text ignoring case and trailing blanks.
   That makes a count for one value an upper bound, but a total of values outside
   a vocabulary a lower bound: a variant of an allowed value folds into its group
@@ -68,6 +75,15 @@ These are inputs for the overture-schema backlog.
   for JSON and may not yet behave in PySpark's column structure check.
 - **The GeoJSON envelope unwraps only in JSON mode**: validating a parsed dict
   reports every required field missing.
+- **Validation reports one broken constraint per feature.** Each constraint is
+  its own `model_validator`, and pydantic stops at the first that raises, so a
+  feature breaking three rules names one. A count of rejections per rule taken
+  from validation errors undercounts every rule but the first to run. Measuring
+  the revert rules needed each constraint run on its own, through
+  `ModelConstraint.get_model_constraints` and `validate_instance` on a
+  `model_construct`ed instance. The AR slice had read "rejected by this rule
+  and nothing else" from validation errors; it held, but that instrument could
+  not have shown otherwise.
 
 ## Process
 

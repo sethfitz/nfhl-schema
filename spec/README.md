@@ -194,8 +194,25 @@ about each value.
   `NSPNUL`, `NP`, lone spaces) never reach a rule. On 2026-10-05 the same 79
   came back from the service by direct query (`FLD_ZONE <> 'AR' AND AR_REVERT
   IN (<every D_Zone value>)`, 73; the same for `AR_SUBTRV` and every
-  `D_Zone_Subtype` and legacy value, 6), and validating those 79 features
-  rejected each by the only-in-AR rule and nothing else.
+  `D_Zone_Subtype` and legacy value, 6). Each of those 79 features breaks its
+  only-in-AR rule and no other, found on 2026-10-06 by running every
+  constraint on its own. Validating them cannot show that: validation stops at
+  the first rule that fails, so a feature breaking three reports one.
+- **The revert BFE and depth rules reject 18,177 rows**, all off AR zones:
+  `BFE_REVERT` is populated on 12,732 and `DEP_REVERT` on 17,914
+  (`BFE_REVERT IS NOT NULL AND BFE_REVERT <> -9999`, and the same for
+  `DEP_REVERT`; 18,177 with `OR`), on 2026-10-06. None of them holds a zone
+  in `AR_REVERT`: the 73 rows that do hold `-9999` in both. Most are stand-ins
+  for "does not apply": `0` (9,830 and 11,679), which section 7.3 forbids for
+  that, and `-8888` (2,850 and 2,906), its "intentionally not populated". Of
+  the 52 other `BFE_REVERT` values, 17 are `9999`. Of the 3,329 other
+  `DEP_REVERT` values, 3,311 are in DFIRM `31099C`, where each is the
+  polygon's area in square feet: across 2,000 of them, `DEP_REVERT /
+  SHAPE.STArea()` is 1.011e11 to 1.015e11, the square feet in a square degree
+  at that latitude. Running each constraint on its own over samples (all 52
+  other `BFE_REVERT` rows; the first 2,000 of the other `DEP_REVERT` rows and of
+  the `BFE_REVERT = -8888` rows; the first 500 of each `0`) finds every row
+  breaking the rule for each revert field it populates.
 
 These were counted with direct queries against layer 28 on 2026-10-05 rather
 than from a committed file; each is a `returnCountOnly` query with the `where`
