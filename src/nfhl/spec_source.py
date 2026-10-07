@@ -72,7 +72,10 @@ class ReferenceField:
     """One row of a FIRM Database table, joined from its two tables in the PDF."""
 
     name: str
-    requirement: str  # "R" required for all records, "A" required if applicable
+    # "R" required for all records, "A" required if applicable; a digit after
+    # either is a footnote marker (`S_XS`'s "R1": "Field is applicable for BLE
+    # database"), which does not change what a FIRM Database must hold.
+    requirement: str
     type: str  # "Text", "Double", "Date", ...
     length: int | None  # declared text length; None for "Default"
     domain: str | None  # a D_* domain table; L_/S_ joins are not vocabularies
@@ -80,7 +83,7 @@ class ReferenceField:
 
     @property
     def required(self) -> bool:
-        return self.requirement == "R"
+        return self.requirement.rstrip("0123456789") == "R"
 
 
 @dataclass(frozen=True, slots=True)
