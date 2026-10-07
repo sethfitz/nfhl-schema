@@ -47,6 +47,17 @@ rejects. Those counts were what made each judgement call visible.
   `SHAPE.STArea()` and getting the same number every time. The rule licensing
   these is weaker than the AR fields' "only populated if": it says "populated
   when Zone equals AR", and reading it as a limit is a judgement.
+- `DUAL_ZONE`, the last AR field, is `T` on 4 rows, all in one county (DFIRM
+  `51107C`) and none an AR zone: two `AE` and two `X`. `U`, which no sentence
+  about the field names, is on 72,929. The 73 rows that set `AR_REVERT` to an A
+  zone leave `DUAL_ZONE` empty, so the new rule rejects all of them, rows the
+  only-in-AR rule already rejected. Validation now names the `DUAL_ZONE` rule
+  for all 73, not the only-in-AR rule, which is the actual defect: the order
+  rules run in decides what a user is told. With no AR zone in the layer,
+  nothing tests the rule on data it was written for.
+- The reference defines `DUAL_ZONE` by example ("Zone AR/AE, Zone AR/AH, ...")
+  and by a category no field records ("Shaded X"). Reading the examples as the
+  zone in `AR_REVERT` turns it into the same two-field rule as `SFHA_TF`'s.
 - The service's own statistics compare text ignoring case and trailing blanks.
   That makes a count for one value an upper bound, but a total of values outside
   a vocabulary a lower bound: a variant of an allowed value folds into its group
@@ -83,7 +94,14 @@ These are inputs for the overture-schema backlog.
   `ModelConstraint.get_model_constraints` and `validate_instance` on a
   `model_construct`ed instance. The AR slice had read "rejected by this rule
   and nothing else" from validation errors; it held, but that instrument could
-  not have shown otherwise.
+  not have shown otherwise. The tests now include that instrument
+  (`broken_rules` in `tests/test_models.py`).
+- **"Holds this value" takes two constraints on an optional field.** `SFHA_TF`
+  is required, so "will be true" was one `require_any_true`: not the zone, or
+  not another flag. `DUAL_ZONE` is optional, and the same sentence needs a
+  `forbid_if` for the other flags and a `require_if` for an empty field. The
+  generator had only met the required case, so `pair_rules` now adds the second
+  half for any field the reference does not require.
 
 ## Process
 
@@ -93,6 +111,10 @@ These are inputs for the overture-schema backlog.
   (2026-10-05). Push each slice as it lands.
 - Re-snapshotting refreshes every count, which breaks `spec/legacy.json` and the
   README figures until they are updated; a test catches the first.
+- A new two-field rule forces a full re-snapshot: its pair counts must sum to
+  the layer total, so they cannot be taken alone and added to an older file. The
+  layer lost 424 rows between 2026-10-05 and 2026-10-07, so the `DUAL_ZONE`
+  slice opened with a refresh commit that moved counts unrelated to it.
 - A pass re-checking every claim in the README's "what the service holds"
   section (2026-10-05) reproduced every count, and found the claims around the
   counts wrong instead. "Every count is an upper bound" held for single values

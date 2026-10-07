@@ -203,10 +203,20 @@ about each value.
   `NSPNUL`, `NP`, lone spaces) never reach a rule. On 2026-10-05 the same 79
   came back from the service by direct query (`FLD_ZONE <> 'AR' AND AR_REVERT
   IN (<every D_Zone value>)`, 73; the same for `AR_SUBTRV` and every
-  `D_Zone_Subtype` and legacy value, 6). Each of those 79 features breaks its
-  only-in-AR rule and no other, found on 2026-10-06 by running every
-  constraint on its own. Validating them cannot show that: validation stops at
-  the first rule that fails, so a feature breaking three reports one.
+  `D_Zone_Subtype` and legacy value, 6). Running every constraint on its own
+  finds each of the 6 breaking its only-in-AR rule and no other (2026-10-06),
+  and each of the 73 breaking that rule and the `DUAL_ZONE` rule below
+  (2026-10-07). Validating them cannot show that: validation stops at the
+  first rule that fails, so a feature breaking two reports one, and since the
+  `DUAL_ZONE` rule the 73 report that one.
+- **The `DUAL_ZONE` rules reject the same 73 rows**, for leaving it empty:
+  each sets `AR_REVERT` to `A` (72) or `AE` (1), which requires `T`, and holds
+  null (72) or `""` (1, DFIRM `48277C`); `DUAL_ZONE LIKE ' '` counts none of
+  them. All 73 are in Texas (DFIRMs `48485C`, 64; `48303C`, 7; `48027C` and
+  `48277C`, 1 each). No row sets `AR_REVERT` to `AH`, `AO` or `X`, and no row
+  holds a flag the rules forbid. `T` is on 4 rows, all in DFIRM `51107C` and
+  none an AR zone (two `AE`, two `X`); they validate. `U`, which neither
+  sentence names, is on 72,929.
 - **The revert BFE and depth rules reject 18,177 rows**, all off AR zones:
   `BFE_REVERT` is populated on 12,732 and `DEP_REVERT` on 17,914
   (`BFE_REVERT IS NOT NULL AND BFE_REVERT <> -9999`, and the same for
