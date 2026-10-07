@@ -613,7 +613,10 @@ class SpecReader:
         fields those are (`observed["rules"]`)."""
         recorded = self.observed(layer)["rules"]
         fields = RuleFields(
-            tuple(recorded["by_value"]), tuple(recorded["by_populated"])
+            tuple(recorded["by_value"]),
+            tuple(recorded["by_populated"]),
+            # Snapshots taken before free-text rule fields leave it out.
+            tuple(recorded.get("by_text_populated", ())),
         )
         return fields, recorded["groups"]
 

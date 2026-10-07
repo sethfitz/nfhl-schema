@@ -14,8 +14,10 @@ against those rules as `blocked`, not `broken`.
 
 The rows come grouped, not one by one: a row of the census is a distinct
 combination of the values the rules read, with the number of rows that hold it,
-taken from the service's grouped statistics (`fetch_groups`). A numeric field is
-grouped by whether it is populated, since that is all any rule asks of one.
+taken from the service's grouped statistics (`fetch_groups`). A numeric field,
+and a text field with no vocabulary (`S_XS`'s `XS_LTR`, a letter per cross
+section), is grouped by whether it is populated, since that is all any rule asks
+of one.
 `snapshot-spec` records the groups in `spec/service/observed/`; `--live` on
 `scripts/count-broken-rules` asks the service again.
 
@@ -46,21 +48,34 @@ from pydantic import BaseModel, TypeAdapter, ValidationError
 from . import service
 from .constraints import NULL_NUMBER, Absent, Populated, drop_null_encodings
 
-# Stands in for any populated number: no rule reads a number's value.
+# Stand in for any populated value of a field grouped by whether it is set: no
+# rule reads the value of a number or of free text.
 POPULATED_NUMBER = 1
+POPULATED_TEXT = "x"
 
 
 @dataclass(frozen=True, slots=True)
 class RuleFields:
     """The wire names of the fields a model's rules read, by how they are grouped."""
 
-    by_value: tuple[str, ...]  # text fields: the rules compare their values
+    by_value: tuple[str, ...]  # vocabulary fields: the rules compare their values
     by_populated: tuple[str, ...]  # numeric fields: the rules ask only if set
+    # Text fields without a vocabulary: the rules ask only if set.
+    by_text_populated: tuple[str, ...] = ()
 
 
 def populated_sql(field: str) -> str:
     """SQL that is 1 where numeric `field` is populated, 0 where it is a null."""
     return f"CASE WHEN {field} IS NULL OR {field} = {NULL_NUMBER} THEN 0 ELSE 1 END"
+
+
+def text_populated_sql(field: str) -> str:
+    """SQL that is 1 where text `field` is populated, 0 where it is a null.
+
+    `= ''` also matches a lone space, which is a value; `fetch_groups` splits
+    the lone spaces off first.
+    """
+    return f"CASE WHEN {field} IS NULL OR {field} = '' THEN 0 ELSE 1 END"
 
 
 def lone_space_sql(field: str) -> str:
@@ -72,9 +87,13 @@ def no_lone_space_sql(field: str) -> str:
 
 
 def group_columns(fields: RuleFields) -> list[str]:
-    """What `fetch_groups` groups by: each text field, each numeric field's
-    populated SQL."""
-    return [*fields.by_value, *(populated_sql(f) for f in fields.by_populated)]
+    """What `fetch_groups` groups by: each vocabulary field, and the populated
+    SQL of each other field."""
+    return [
+        *fields.by_value,
+        *(populated_sql(f) for f in fields.by_populated),
+        *(text_populated_sql(f) for f in fields.by_text_populated),
+    ]
 
 
 def lone_space_parts(
@@ -112,13 +131,18 @@ def fetch_groups(layer_id: int, fields: RuleFields) -> list[dict[str, Any]]:
     if not group_columns(fields):
         return [{"count": service.row_count(layer_id)}]
     groups = []
-    for spaced, where in lone_space_parts(layer_id, fields.by_value):
+    texts = (*fields.by_value, *fields.by_text_populated)
+    for spaced, where in lone_space_parts(layer_id, texts):
         for row in service.grouped(layer_id, group_columns(fields), where):
             group = {f: row[f] for f in fields.by_value}
-            # The group may show either blank; the part says it is a lone space.
-            for f in spaced:
-                group[f] = " "
             group |= {f: bool(row[populated_sql(f)]) for f in fields.by_populated}
+            group |= {
+                f: bool(row[text_populated_sql(f)]) for f in fields.by_text_populated
+            }
+            # The group may show either blank; the part says it is a lone space,
+            # which is a value.
+            for f in spaced:
+                group[f] = " " if f in fields.by_value else True
             groups.append({**group, "count": row["n"]})
     return sorted(groups, key=lambda g: (-g["count"], json.dumps(g)))
 
@@ -153,27 +177,29 @@ def constraint_fields(constraint: ModelConstraint) -> frozenset[str]:
     return frozenset(names)
 
 
-def _is_text(annotation: Any) -> bool:
-    """Whether a field typed `annotation` holds text, through `Annotated` and unions."""
+def _holds(annotation: Any, kind: type) -> bool:
+    """Whether a field typed `annotation` holds a `kind`, through `Annotated` and
+    unions."""
     if get_origin(annotation) in (Union, types.UnionType):
-        return any(_is_text(a) for a in get_args(annotation))
+        return any(_holds(a, kind) for a in get_args(annotation))
     if get_origin(annotation) is Annotated:
-        return _is_text(get_args(annotation)[0])
-    return isinstance(annotation, type) and issubclass(annotation, Enum | str)
+        return _holds(get_args(annotation)[0], kind)
+    return isinstance(annotation, type) and issubclass(annotation, kind)
 
 
-def check_numbers_are_only_asked_if_set(
-    model: type[BaseModel], numbers: set[str]
+def check_set_fields_are_only_asked_if_set(
+    model: type[BaseModel], set_fields: set[str]
 ) -> None:
-    """Raise if a rule asks a numeric field for more than whether it is set,
-    which `judge` cannot answer: it substitutes `POPULATED_NUMBER` for any value."""
+    """Raise if a rule asks a field grouped by whether it is set for more than
+    that, which `judge` cannot answer: it substitutes `POPULATED_NUMBER` or
+    `POPULATED_TEXT` for any value."""
     for constraint in ModelConstraint.get_model_constraints(model):
         for condition in constraint_conditions(constraint):
             for leaf in leaf_conditions(condition):
                 name = leaf.field_name  # type: ignore[attr-defined]
-                if name in numbers and not isinstance(leaf, Absent | Populated):
+                if name in set_fields and not isinstance(leaf, Absent | Populated):
                     raise ValueError(
-                        f"{constraint.name} reads the number {name} with "
+                        f"{constraint.name} reads {name} with "
                         f"{type(leaf).__name__}, not only whether it is set"
                     )
 
@@ -184,18 +210,24 @@ def rule_fields(model: type[BaseModel]) -> RuleFields:
     )
     by_value: list[str] = []
     by_populated: list[str] = []
-    numbers: set[str] = set()
+    by_text_populated: list[str] = []
     for name, info in model.model_fields.items():
         if name not in names:
             continue
         wire = info.alias or name
-        if _is_text(info.annotation):
+        if _holds(info.annotation, Enum):
             by_value.append(wire)
+        elif _holds(info.annotation, str):
+            by_text_populated.append(wire)
         else:
             by_populated.append(wire)
-            numbers.add(name)
-    check_numbers_are_only_asked_if_set(model, numbers)
-    return RuleFields(tuple(by_value), tuple(by_populated))
+    set_fields = {
+        name
+        for name, info in model.model_fields.items()
+        if (info.alias or name) in {*by_populated, *by_text_populated}
+    }
+    check_set_fields_are_only_asked_if_set(model, set_fields)
+    return RuleFields(tuple(by_value), tuple(by_populated), tuple(by_text_populated))
 
 
 @functools.cache
@@ -270,6 +302,7 @@ def properties_of(group: dict[str, Any], fields: RuleFields) -> dict[str, Any]:
     """A group as the properties of one row that holds it."""
     properties = {f: group[f] for f in fields.by_value}
     properties |= {f: POPULATED_NUMBER for f in fields.by_populated if group[f]}
+    properties |= {f: POPULATED_TEXT for f in fields.by_text_populated if group[f]}
     return properties
 
 

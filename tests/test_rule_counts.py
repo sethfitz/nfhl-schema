@@ -3,14 +3,19 @@
 from __future__ import annotations
 
 from collections import Counter
+from enum import StrEnum
 from typing import Any
 
 import pytest
 from overture.schema.system.model_constraint import ModelConstraint
+from overture.schema.system.optionality import Omitable
+from pydantic import BaseModel, Field
 
 from nfhl import service
+from nfhl.constraints import NoneOf, forbid_if
 from nfhl.models import FloodHazardZone
 from nfhl.rule_counts import (
+    RuleFields,
     constraint_fields,
     fetch_groups,
     group_columns,
@@ -20,12 +25,29 @@ from nfhl.rule_counts import (
     populated_sql,
     rule_fields,
     take_census,
+    text_populated_sql,
 )
 from nfhl.spec_source import Layer, SpecReader
 
 from .helpers import DUAL_MISSING, rejected_by
 
 FIELDS = rule_fields(FloodHazardZone)
+
+
+class LineType(StrEnum):
+    LETTERED = "LETTERED, MAPPED"
+    UNLETTERED = "NOT LETTERED, MAPPED"
+
+
+@forbid_if(["xs_ltr"], NoneOf("xs_ln_typ", (LineType.LETTERED,)))
+class Section(BaseModel):
+    """A rule reading free text: a letter only on a lettered cross section."""
+
+    xs_ln_typ: LineType = Field(alias="XS_LN_TYP")
+    xs_ltr: Omitable[str] = Field(alias="XS_LTR")
+
+
+SECTION_FIELDS = rule_fields(Section)
 
 
 def rule(name: str) -> ModelConstraint:
@@ -74,6 +96,13 @@ def test_text_fields_are_grouped_by_value_and_numbers_by_being_set() -> None:
         "BFE_REVERT",
         "DEP_REVERT",
     }
+    assert FIELDS.by_text_populated == ()
+
+
+def test_free_text_is_grouped_by_being_set() -> None:
+    # XS_LTR has no vocabulary; the rule asks only whether it holds a letter.
+    assert SECTION_FIELDS.by_value == ("XS_LN_TYP",)
+    assert SECTION_FIELDS.by_text_populated == ("XS_LTR",)
 
 
 def test_a_value_its_field_limits_is_rejected_by_the_limit(
@@ -180,12 +209,14 @@ class FoldingService:
     """A layer behind the service's collation: grouping folds case and trailing
     blanks, and `where` sees lone spaces, as `LIKE ' '` does."""
 
-    def __init__(self, rows: list[dict[str, Any]]) -> None:
+    def __init__(self, rows: list[dict[str, Any]], fields: RuleFields = FIELDS) -> None:
         self.rows = rows
+        self.fields = fields
 
     def selected(self, where: str) -> list[dict[str, Any]]:
-        tests = {lone_space_sql(f): f for f in FIELDS.by_value}
-        negated = {no_lone_space_sql(f): f for f in FIELDS.by_value}
+        texts = (*self.fields.by_value, *self.fields.by_text_populated)
+        tests = {lone_space_sql(f): f for f in texts}
+        negated = {no_lone_space_sql(f): f for f in texts}
         rows = self.rows
         for clause in where.split(" AND "):
             if clause in tests:
@@ -203,9 +234,13 @@ class FoldingService:
         self, layer_id: int, group_by: list[str], where: str = "1=1"
     ) -> list[dict[str, Any]]:
         def column(row: dict[str, Any], entry: str) -> Any:
-            for f in FIELDS.by_populated:
+            for f in self.fields.by_populated:
                 if entry == populated_sql(f):
                     return int(row[f] is not None and row[f] != -9999)
+            for f in self.fields.by_text_populated:
+                if entry == text_populated_sql(f):
+                    # `= ''` folds a lone space into the empty string.
+                    return int(fold(row[f]) not in (None, ""))
             return row[entry]
 
         shown: dict[tuple[Any, ...], dict[str, Any]] = {}
@@ -251,6 +286,36 @@ def test_fetching_groups_keeps_a_lone_space_apart_from_an_empty_string(
     }
     census = take_census(FloodHazardZone, groups, lambda r: "vel_unit" in r)
     assert (census.any_broken, census.any_blocked) == (3, 2)
+
+
+def test_a_lone_space_in_free_text_is_a_letter(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def xs(kind: str, letter: str | None) -> dict[str, Any]:
+        return {"XS_LN_TYP": kind, "XS_LTR": letter}
+
+    unlettered = "NOT LETTERED, MAPPED"
+    rows = [
+        xs(unlettered, ""),  # met first, so the folded group would show it
+        xs(unlettered, " "),
+        xs(unlettered, None),
+        xs(unlettered, "12"),
+        xs("LETTERED, MAPPED", "A"),
+    ]
+    fake = FoldingService(rows, SECTION_FIELDS)
+    monkeypatch.setattr(service, "row_count", fake.row_count)
+    monkeypatch.setattr(service, "grouped", fake.grouped)
+    groups = fetch_groups(14, SECTION_FIELDS)
+    lettered: Counter[tuple[str, bool]] = Counter()
+    for g in groups:  # the lone space is a part of its own, and a group of it
+        lettered[g["XS_LN_TYP"], g["XS_LTR"]] += g["count"]
+    assert lettered == {
+        (unlettered, False): 2,
+        (unlettered, True): 2,
+        ("LETTERED, MAPPED", True): 1,
+    }
+    census = take_census(Section, groups)
+    assert (census.any_broken, census.any_blocked) == (2, 0)
 
 
 def test_a_folded_grouping_would_misjudge_the_blanks(

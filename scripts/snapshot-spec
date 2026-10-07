@@ -158,6 +158,7 @@ def snapshot_observed(spec: Path, layers: list[Layer]) -> list[dict[str, str]]:
                 "rules": {
                     "by_value": read_by_rules.by_value,
                     "by_populated": read_by_rules.by_populated,
+                    "by_text_populated": read_by_rules.by_text_populated,
                     "groups": groups,
                 },
             },
