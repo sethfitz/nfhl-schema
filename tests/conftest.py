@@ -39,6 +39,11 @@ def bfe_layer() -> Layer:
 
 
 @pytest.fixture(scope="session")
+def xs_layer() -> Layer:
+    return modelled("S_XS")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 
@@ -46,6 +51,11 @@ def cases() -> list[dict[str, Any]]:
 @pytest.fixture(scope="session")
 def bfe_cases() -> list[dict[str, Any]]:
     return fixture_cases("base_flood_elevations.json")
+
+
+@pytest.fixture(scope="session")
+def xs_cases() -> list[dict[str, Any]]:
+    return fixture_cases("cross_sections.json")
 
 
 @pytest.fixture

@@ -293,6 +293,46 @@ lacustrine areas, and 3,587 lines are in `Meters`. 23,628 rows hold a fraction
 nothing in the reference bounds an elevation, and a `0` may stand in for "does
 not apply" as it does in the zones' revert fields, which section 7.3 forbids.
 
+## What the cross sections hold that the reference does not allow
+
+Layer 14 has 952,002 rows (`service/observed/14.json`). No value outside the
+reference clears the legacy bar of 953, so `legacy.json` lists none for it. Its
+rejections, 113,140 rows (11.9%) by direct query on 2026-10-07, are these; a
+"missing" text field is `F IS NULL OR (F = '' AND F NOT LIKE ' ')`, since a
+lone space in free text is a value, and a missing number `F IS NULL OR F =
+-9999`:
+
+- **`STRMBED_EL`, required, is missing on 76,365 rows.** Another 575,580, 60%
+  of the layer, hold `-8888` (`STRMBED_EL = -8888`), "intentionally not
+  populated" (section 7.3), and validate as an elevation. `WSEL_REG`'s
+  description says to code a coastal or confluence section `-8888` (3,400
+  rows); `STRMBED_EL`'s says nothing of it.
+- **Required text missing**: `START_ID` 16,669, `SOURCE_CIT` 5,114 (none
+  `''`), `WTR_NM` 2,179, `MODEL_ID` 1,090, `LEN_UNIT` 13, and `XS_LN_ID` and
+  `VERSION_ID` 9 each. Required numbers: `STREAM_STN` 404, `WSEL_REG` 101.
+  `START_ID`, `STREAM_STN` and `XS_LN_TYP` are `R1`, required with a footnote
+  for BLE databases.
+- **The letter rule rejects 14,801 rows**, from `count-broken-rules`: a
+  `NOT LETTERED, MAPPED` section with an `XS_LTR`. 2,914 hold a letter or
+  number (`XS_LTR <> ''`), and 11,887 a lone space (`XS_LTR LIKE ' '`), which
+  the model reads as a value. 207 lettered sections have no `XS_LTR`; the model
+  does not require one. No row is `NOT LETTERED, NOT MAPPED`.
+- **`V_DATUM`: 281 rows outside `D_V_Datum`**, from `report-observed`:
+  `ASVD02` (127) and `GUVD03` (73), as in the zones and BFEs, and `NGVD88`
+  (81, all in DFIRM `01071C`, whose BFE lines hold the one `NAVD29`).
+  `LEN_UNIT` has one lone space.
+
+The union joins every clause above with `OR`, the rule's as `(XS_LN_TYP <>
+'LETTERED, MAPPED' AND XS_LTR IS NOT NULL AND (XS_LTR <> '' OR XS_LTR LIKE
+' '))` and the datums' as `V_DATUM IN ('ASVD02', 'NGVD88', 'GUVD03') OR
+LEN_UNIT LIKE ' '`. On four pages of 2,000 live features, validating each
+rejected exactly as many as the union selects over the same `OBJECTID` range:
+263, 413, 1 and 0.
+
+`LEN_UNIT` is `Miles` on 1,778 sections in 36 DFIRMs (`LEN_UNIT = 'Miles'`).
+`D_Length_Units` lists it, so they validate, but their `WSEL_REG` runs from
+66.2 to 1,494.7, elevations in feet. The reference gives `STREAM_STN` no unit.
+
 **Read a count as the service's, not the models'.** The service is SQL Server
 (it accepts `SHAPE.STArea()` in a `where`), and its `=`, `<>`, `IN` and
 grouping ignore case and trailing blanks: `LEN_UNIT = 'feet'` and `LEN_UNIT =

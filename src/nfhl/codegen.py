@@ -69,7 +69,7 @@ ESRI_TYPES = {
     "esriFieldTypeSmallInteger": "Short Integer",
     "esriFieldTypeDate": "Date",
 }
-PYTHON_TYPES = {"Text": "str", "Double": "float64"}
+PYTHON_TYPES = {"Text": "str", "Double": "float64", "Short Integer": "int16"}
 
 # Fields the service publishes and the reference does not define, by their Esri type.
 SERVICE_ONLY_TYPES = {
@@ -478,6 +478,11 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
     used = "\n".join([*decorators, *fields])
     constraint_names = [n for n in CONSTRAINT_NAMES if re.search(rf"\b{n}\(", used)]
     annotation_names = [n for n in ("DatumIn", "UnitIn") if f"{n}(" in used]
+    # `int64` types the feature id, which every model has.
+    numeric_names = [
+        "int64",
+        *(n for n in ("float64", "int16") if re.search(rf"\b{n}\b", used)),
+    ]
     geometry = layer_geometry(layer, reader)
     class_doc = (
         f"{reader.reference_intro(layer.table)} Published as layer "
@@ -503,7 +508,7 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             "    GeometryType,",
             "    GeometryTypeConstraint,",
             ")",
-            "from overture.schema.system.numeric import float64, int64",
+            *import_lines("overture.schema.system.numeric", numeric_names),
             "from overture.schema.system.optionality import Omitable",
             "from pydantic import ConfigDict, Field, model_validator",
             "",
@@ -588,6 +593,14 @@ GEOMETRIES = {
         "LineString, though the service's polyline type admits several parts.",
         "The BFE line: in the reference's words, a single line extending from "
         "Special Flood Hazard Area (SFHA) boundary to SFHA boundary.",
+    ),
+    "S_XS": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "“The spatial entities representing cross sections are lines”, one to a "
+        "feature: Table 4 holds S_XS to “Must Be Single Part”, so a LineString.",
+        "The cross section line: in the reference's words, the spatial entities "
+        "representing cross sections are lines.",
     ),
 }
 

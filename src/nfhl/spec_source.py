@@ -64,6 +64,7 @@ def layer_model(layer: Layer) -> type[BaseModel]:
 LAYERS: tuple[Layer, ...] = (
     Layer(28, "S_Fld_Haz_Ar", "FloodHazardZone", "flood_hazard_zones"),
     Layer(16, "S_BFE", "BaseFloodElevation", "base_flood_elevations"),
+    Layer(14, "S_XS", "CrossSection", "cross_sections"),
 )
 
 
@@ -404,7 +405,7 @@ class SpecReader:
         text = self.reference_text(FIRM_DATABASE)
         match = re.search(
             rf"(The {name}(?: table)? contains information .*?) "
-            rf"The {name} (?:table|layer) contains the following elements:",
+            rf"The {name} (?:table|layer) contains the following elements\b",
             text,
         )
         if match is None:

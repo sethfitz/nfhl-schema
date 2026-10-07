@@ -128,6 +128,40 @@
           "quote": "The vertical datum indicates the reference surface from which the flood elevations are measured."
         }
       ]
+    },
+    "S_XS": {
+      "units": [
+        {
+          "field": "WSEL_REG",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for the water-surface and streambed elevations."
+        },
+        {
+          "field": "STRMBED_EL",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for the water-surface and streambed elevations."
+        }
+      ],
+      "datums": [
+        {
+          "field": "WSEL_REG",
+          "datum_field": "V_DATUM",
+          "quote": "The vertical datum indicates the reference surface from which the flood and streambed elevations are measured."
+        },
+        {
+          "field": "STRMBED_EL",
+          "datum_field": "V_DATUM",
+          "quote": "The vertical datum indicates the reference surface from which the flood and streambed elevations are measured."
+        }
+      ],
+      "only_when": [
+        {
+          "field": "XS_LTR",
+          "when": "XS_LN_TYP",
+          "any_of": ["LETTERED, MAPPED"],
+          "quote": "This field is populated when the cross section is lettered."
+        }
+      ]
     }
   }
 }

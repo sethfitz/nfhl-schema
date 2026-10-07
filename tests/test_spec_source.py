@@ -115,12 +115,14 @@ def test_every_reference_field_is_published_except_version_id(
     assert missing == {"VERSION_ID"}
 
 
-def test_the_base_flood_elevations_layer_publishes_every_reference_field(
-    reader: SpecReader, bfe_layer: Layer
+@pytest.mark.parametrize("table", ["S_BFE", "S_XS"])
+def test_the_line_layers_publish_every_reference_field(
+    reader: SpecReader, table: str
 ) -> None:
     # Including VERSION_ID, which the zones layer leaves out.
-    published = set(reader.service_fields(bfe_layer))
-    assert {f.name for f in reader.reference_table("S_BFE").fields} <= published
+    layer = next(lyr for lyr in LAYERS if lyr.table == table)
+    published = set(reader.service_fields(layer))
+    assert {f.name for f in reader.reference_table(table).fields} <= published
 
 
 def test_a_field_name_wrapped_mid_word_joins_its_description(
@@ -170,6 +172,15 @@ def test_no_base_flood_elevation_value_is_common_enough_to_be_legacy(
     # the bar; a did-happen control that the counts were read at all.
     assert reader.legacy_candidates(bfe_layer) == []
     assert "ASVD02" in observed_values(reader, bfe_layer, "V_DATUM")
+
+
+def test_no_cross_section_value_is_common_enough_to_be_legacy(
+    reader: SpecReader, xs_layer: Layer
+) -> None:
+    # The largest value outside the reference, ASVD02 in V_DATUM, is an eighth
+    # of the bar; a did-happen control that the counts were read at all.
+    assert reader.legacy_candidates(xs_layer) == []
+    assert "ASVD02" in observed_values(reader, xs_layer, "V_DATUM")
 
 
 def test_a_lower_threshold_admits_more_but_never_a_text_null(

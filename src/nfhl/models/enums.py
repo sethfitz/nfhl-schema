@@ -26,7 +26,7 @@ REFERENCE_EDITION = "November 2024"
 
 class LengthUnits(str, DocumentedEnum):
     """Values of `D_Length_Units` that apply to the FIRM Database, each as the data
-    stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`.
+    stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`, `S_XS.LEN_UNIT`.
     """
 
     CENTIMETERS = "Centimeters", "Code `CM`."
@@ -187,7 +187,7 @@ class TrueFalse(str, DocumentedEnum):
 
 class VDatum(str, DocumentedEnum):
     """Values of `D_V_Datum` that apply to the FIRM Database, each as the data stores
-    it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`.
+    it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`.
     """
 
     MSL = "MSL", "Mean Sea Level. Code `MSL`."
@@ -218,6 +218,32 @@ class VelocityUnits(str, DocumentedEnum):
     MILLIMETERS_DAY = "Millimeters / Day", "Code `1070`."
     MILLIMETERS_HOUR = "Millimeters / Hour", "Code `1080`."
     NP = "NP", "Code `NP`."
+
+
+class XSLnTyp(str, DocumentedEnum):
+    """Values of `D_XS_Ln_Typ` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_XS.XS_LN_TYP`.
+    """
+
+    LETTERED_MAPPED = (
+        "LETTERED, MAPPED",
+        "Traditional Lettered XS, FDTs, Profiles. Code `1010`.",
+    )
+    NOT_LETTERED_MAPPED = (
+        "NOT LETTERED, MAPPED",
+        (
+            "Modeled XSs used for Base Flood Elevation (BFE) values on FIRM panels,"
+            " not shown on FDTs or Profiles, shown but not lettered on panels. Code"
+            " `1020`."
+        ),
+    )
+    NOT_LETTERED_NOT_MAPPED = (
+        "NOT LETTERED, NOT MAPPED",
+        (
+            "Model Backup in the FIRM Database, including unused XSs adjacent to "
+            "bridges, too densely spaced, or modeled Zone A. Code `1030`."
+        ),
+    )
 
 
 class Zone(str, DocumentedEnum):

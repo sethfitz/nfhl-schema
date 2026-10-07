@@ -15,10 +15,12 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Two models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28) and
+Three models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
-elevation across a stream. The snapshot holds every layer's service metadata and
-both references whole, so the next tables need no new fetch.
+elevation across a stream, and **`CrossSection`** (`S_XS`, layer 14), the
+modelled cross sections with their water-surface and streambed elevations. The
+snapshot holds every layer's service metadata and both references whole, so the
+next tables need no new fetch.
 
 - `spec/` -- the pinned snapshot, refreshed by `scripts/snapshot-spec`. See
   [`spec/README.md`](spec/README.md) for provenance, the defects in the
@@ -42,6 +44,8 @@ both references whole, so the next tables need no new fetch.
   `scripts/fetch-fixtures`.
 - `tests/fixtures/base_flood_elevations.json` -- eleven real BFE lines, five
   that validate and six that do not, the same way.
+- `tests/fixtures/cross_sections.json` -- eighteen real cross sections, seven
+  that validate and eleven that do not, two of them against the letter rule.
 
 ## Why generate rather than hand-write
 
@@ -93,8 +97,8 @@ number, `STATIC_BFE: -9999` is an elevation. `drop_null_encodings` treats them,
 and JSON `null`, as absent. "Not populated" (`NP`, `-8888`, `U`) is a value and
 stays one; `"-9999"` in a text field is rejected.
 
-**Units and datums live in sibling fields.** `STATIC_BFE`, and a BFE line's
-`ELEV`, are in whatever `LEN_UNIT` says and measured from whatever `V_DATUM`
+**Units and datums live in sibling fields.** `STATIC_BFE`, a BFE line's `ELEV`,
+and a cross section's `WSEL_REG` and `STRMBED_EL` are in whatever `LEN_UNIT` says and measured from whatever `V_DATUM`
 says. `UnitIn("LEN_UNIT")` and `DatumIn("V_DATUM")` declare that on the measured
 field; `field_units(FloodHazardZone)` and `field_datums(...)` read it back.
 
@@ -102,8 +106,11 @@ field; `field_units(FloodHazardZone)` and `field_datums(...)` read it back.
 A flood zone is a Polygon or MultiPolygon. A BFE is a LineString only: "Each BFE
 is represented by a single line with no pseudo-nodes", though the service's
 polyline type admits several parts. A sample of 8,000 lines across the layer
-held no MultiLineString. `nfhl.codegen.GEOMETRIES` records both, and generation
-stops if the service's geometry type disagrees.
+held no MultiLineString. A cross section is a LineString too: "The spatial
+entities representing cross sections are lines", and Table 4's topology rules
+hold `S_XS` to "Must Be Single Part"; a sample of 9,000 held no MultiLineString.
+`nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
+geometry type disagrees.
 
 **Populated-only-if rules are constraints, not validators.** `V_DATUM` only with
 a `STATIC_BFE`, `LEN_UNIT` only with a `STATIC_BFE` or `DEPTH`, and `VEL_UNIT`

@@ -1,0 +1,134 @@
+{
+  "layer": 14,
+  "total": 952002,
+  "fields": {
+    "XS_LN_TYP": [
+      {
+        "value": "LETTERED, MAPPED",
+        "count": 775860
+      },
+      {
+        "value": "NOT LETTERED, MAPPED",
+        "count": 176142
+      }
+    ],
+    "LEN_UNIT": [
+      {
+        "value": "Feet",
+        "count": 945631
+      },
+      {
+        "value": "NP",
+        "count": 2544
+      },
+      {
+        "value": "Miles",
+        "count": 1778
+      },
+      {
+        "value": "Meters",
+        "count": 1678
+      },
+      {
+        "value": "U.S. Survey Feet",
+        "count": 340
+      },
+      {
+        "value": "Inches",
+        "count": 16
+      },
+      {
+        "value": null,
+        "count": 13
+      },
+      {
+        "value": " ",
+        "count": 1
+      },
+      {
+        "value": "Centimeters",
+        "count": 1
+      }
+    ],
+    "V_DATUM": [
+      {
+        "value": "NAVD88",
+        "count": 927819
+      },
+      {
+        "value": "NGVD29",
+        "count": 17212
+      },
+      {
+        "value": "MSL",
+        "count": 3762
+      },
+      {
+        "value": "LOCAL TIDAL DATUM",
+        "count": 1841
+      },
+      {
+        "value": "NP",
+        "count": 677
+      },
+      {
+        "value": "MLLW",
+        "count": 410
+      },
+      {
+        "value": "ASVD02",
+        "count": 127
+      },
+      {
+        "value": "NGVD88",
+        "count": 81
+      },
+      {
+        "value": "GUVD03",
+        "count": 73
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [
+      "XS_LN_TYP"
+    ],
+    "by_populated": [],
+    "by_text_populated": [
+      "XS_LTR"
+    ],
+    "groups": [
+      {
+        "XS_LN_TYP": "LETTERED, MAPPED",
+        "XS_LTR": true,
+        "count": 775637
+      },
+      {
+        "XS_LN_TYP": "NOT LETTERED, MAPPED",
+        "XS_LTR": false,
+        "count": 161341
+      },
+      {
+        "XS_LN_TYP": "NOT LETTERED, MAPPED",
+        "XS_LTR": true,
+        "count": 11887
+      },
+      {
+        "XS_LN_TYP": "NOT LETTERED, MAPPED",
+        "XS_LTR": true,
+        "count": 2914
+      },
+      {
+        "XS_LN_TYP": "LETTERED, MAPPED",
+        "XS_LTR": false,
+        "count": 207
+      },
+      {
+        "XS_LN_TYP": "LETTERED, MAPPED",
+        "XS_LTR": true,
+        "count": 16
+      }
+    ]
+  }
+}

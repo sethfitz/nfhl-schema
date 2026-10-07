@@ -92,6 +92,38 @@ the README; it now takes `--layer`.
   would validate with a warning on every layer sharing its domain. Not hit
   here, since BFE adds no legacy value.
 
+## The third layer
+
+Cross-Sections (`S_XS`, 2026-10-07) was the first layer from the list of tables
+that did not join. Its type grid wraps `STREAM_STN` and `STRMBED_EL` over two
+lines, and the extraction joins a cell's lines with a space; no field name holds
+one, so `reference_table` drops it. `L_Profil_Label`, listed beside it as
+wrapped, is a misspelling: the reference prints `ORIENT` as `RIENT`. Three more
+assumptions came from the first two layers. The requirement column says `R1` on
+three fields, a footnote marker ("Field is applicable for BLE database"), and
+`required` compared the cell to `"R"`, so they generated as optional with no
+error; nothing checks that a requirement code is one the generator knows. `SEQ`
+is the first `Short Integer`. And the section introduction ends "contains the
+following elements, BLE database requirements may vary, see footnote:", not at
+the colon.
+
+- The census grouped every text field a rule reads by its value. `XS_LTR` is
+  free text, a letter or number per section, and the service truncated a
+  grouping by it. Its rule asks only whether it holds anything, so it is now
+  grouped by populated, like a number. The lone spaces still had to be split off
+  first: `= ''` matches one, and in free text a lone space is a value. 11,887 of
+  them sit on unlettered sections, most of the rule's 14,801 rejections.
+- `STRMBED_EL` is required, and 575,580 of 952,002 rows (60%) hold `-8888`,
+  "intentionally not populated", which validates as an elevation with a unit and
+  a datum; 76,365 more hold the null. `WSEL_REG`'s description licenses `-8888`;
+  `STRMBED_EL`'s does not.
+- `LEN_UNIT` is `Miles` on 1,778 sections in 36 DFIRMs. The vocabulary lists
+  it, so they validate, but their `WSEL_REG` runs from 66.2 to 1,494.7, which
+  is feet. `Miles` looks like the unit of `STREAM_STN`, for which the reference
+  names none.
+- Section 10 of the reference says "Multi-part features are not allowed" for
+  every vector file. The zones accept MultiPolygon.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.

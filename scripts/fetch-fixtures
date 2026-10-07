@@ -244,17 +244,99 @@ BFE_CASES: list[Case] = [
 BFE_SPARSE = {"navd29_datum", "no_datum", "empty_line_id"}
 
 
-def bfe_filters(name: str) -> str:
-    expect = next(c[2] for c in BFE_CASES if c[0] == name)
-    clauses = [w for f, w in BFE_FIELDS.items() if f != expect]
-    if name not in BFE_SPARSE:
-        clauses.append("SHAPE.STLength() < 0.01")
-    return " AND ".join(clauses)
+def clean_except_expected(
+    fields: dict[str, str], cases: list[Case], sparse: set[str]
+) -> Callable[[str], str]:
+    """Filters holding every field of `fields` clean but the one a case expects
+    to reject, and the features short unless the case is sparse."""
+
+    def filters(name: str) -> str:
+        expect = next(c[2] for c in cases if c[0] == name)
+        clauses = [w for f, w in fields.items() if f != expect]
+        if name not in sparse:
+            clauses.append("SHAPE.STLength() < 0.01")
+        return " AND ".join(clauses)
+
+    return filters
+
+
+# Every required field populated, every vocabulary value listed, and no letter
+# on an unlettered section, unless the case is about that; a lone space in free
+# text is a value, so `<> ''`, which also rejects one, is the strict side.
+LETTER_RULE = "@forbid_if(xs_ltr)"
+XS_FIELDS = {
+    **{
+        f: f"{f} IS NOT NULL AND {f} <> ''"
+        for f in ("XS_LN_ID", "WTR_NM", "START_ID", "MODEL_ID", "LEN_UNIT")
+    },
+    "SOURCE_CIT": "SOURCE_CIT IS NOT NULL",
+    "V_DATUM": "V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88')",
+    **{
+        f: f"{f} <> -9999 AND {f} IS NOT NULL"
+        for f in ("STREAM_STN", "WSEL_REG", "STRMBED_EL")
+    },
+    LETTER_RULE: "(XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL "
+    "OR (XS_LTR = '' AND XS_LTR NOT LIKE ' '))",
+}
+UNLETTERED = "XS_LN_TYP = 'NOT LETTERED, MAPPED'"
+XS_CASES: list[Case] = [
+    (
+        "lettered_navd88_feet",
+        "XS_LN_TYP = 'LETTERED, MAPPED' AND XS_LTR <> '' "
+        "AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND STRMBED_EL > 0",
+        None,
+        None,
+    ),
+    ("unlettered", f"{UNLETTERED} AND XS_LTR IS NULL", None, None),
+    ("ngvd29", "V_DATUM = 'NGVD29' AND LEN_UNIT = 'Feet'", None, None),
+    ("meters", "LEN_UNIT = 'Meters'", None, None),
+    # "For cross sections in the coastal floodplain, this value should be coded
+    # '-8888'": "not populated", a value.
+    ("coded_water_surface", "WSEL_REG = -8888", None, None),
+    # 575,580 rows, 60% of the layer; the description names no such coding.
+    ("coded_streambed", "STRMBED_EL = -8888", None, None),
+    # 1,778 rows; the elevations' unit, and D_Length_Units lists it.
+    ("miles", "LEN_UNIT = 'Miles'", None, None),
+    # Findings: published cross sections the reference does not allow.
+    (
+        "letter_on_unlettered",
+        f"{UNLETTERED} AND XS_LTR <> ''",
+        LETTER_RULE,
+        None,
+    ),
+    (
+        "lone_space_letter_on_unlettered",
+        f"{UNLETTERED} AND XS_LTR LIKE ' '",
+        LETTER_RULE,
+        None,
+    ),
+    ("american_samoa_datum", "V_DATUM = 'ASVD02'", "V_DATUM", None),
+    ("ngvd88_datum", "V_DATUM = 'NGVD88'", "V_DATUM", None),
+    ("no_source_citation", "SOURCE_CIT IS NULL", "SOURCE_CIT", None),
+    ("no_station_start", "START_ID IS NULL", "START_ID", None),
+    ("no_stream_station", "STREAM_STN = -9999", "STREAM_STN", None),
+    ("no_water_surface", "WSEL_REG = -9999", "WSEL_REG", None),
+    ("no_streambed", "STRMBED_EL = -9999", "STRMBED_EL", None),
+    ("no_model_id", "MODEL_ID IS NULL", "MODEL_ID", None),
+    ("no_water_name", "WTR_NM IS NULL", "WTR_NM", None),
+]
+XS_SPARSE = {"ngvd88_datum", "no_stream_station", "no_water_surface"}
 
 
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
-    Fixture(16, "base_flood_elevations.json", BFE_CASES, bfe_filters),
+    Fixture(
+        16,
+        "base_flood_elevations.json",
+        BFE_CASES,
+        clean_except_expected(BFE_FIELDS, BFE_CASES, BFE_SPARSE),
+    ),
+    Fixture(
+        14,
+        "cross_sections.json",
+        XS_CASES,
+        clean_except_expected(XS_FIELDS, XS_CASES, XS_SPARSE),
+    ),
 ]
 
 

@@ -8,6 +8,7 @@ then regenerate.
 from __future__ import annotations
 
 from nfhl.models.base_flood_elevations import BaseFloodElevation
+from nfhl.models.cross_sections import CrossSection
 from nfhl.models.flood_hazard_zones import FloodHazardZone
 
-__all__ = ["BaseFloodElevation", "FloodHazardZone"]
+__all__ = ["BaseFloodElevation", "CrossSection", "FloodHazardZone"]

@@ -5,182 +5,187 @@
     {
       "path": "reference/firm-database-technical-reference.pdf",
       "url": "https://www.fema.gov/sites/default/files/documents/fema_rm-firm-database-technical-reference-nov-2024.pdf",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "reference/domain-tables-technical-reference.pdf",
       "url": "https://www.fema.gov/sites/default/files/documents/fema_rm-domain-tables-technical-reference-nov-2024.pdf",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/MapServer.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/0.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/0?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/3.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/3?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/1.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/1?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/34.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/34?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/22.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/22?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/17.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/17?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/20.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/20?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/14.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/14?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/16.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/16?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/23.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/23?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/29.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/29?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/15.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/15?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/18.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/18?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/24.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/24?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/7.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/7?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/32.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/32?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/5.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/5?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/19.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/19?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/27.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/27?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/28.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/25.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/25?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/4.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/4?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/6.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/6?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/8.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/8?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/9.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/9?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/10.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/10?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/11.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/11?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/12.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/12?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/13.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/13?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/26.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/26?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/30.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/30?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/31.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/31?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/layers/41.json",
       "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/41?f=json",
-      "retrieved_at": "2026-10-07T08:09:39Z"
+      "retrieved_at": "2026-10-07T12:09:44Z"
+    },
+    {
+      "path": "service/observed/14.json",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/14/query?groupByFieldsForStatistics=<field>&outStatistics=count",
+      "retrieved_at": "2026-10-07T12:09:44Z"
     },
     {
       "path": "service/observed/16.json",
@@ -236,7 +241,7 @@
     },
     {
       "path": "service/layers/1.json",
-      "sha256": "0ab6a7e3c562b086416b114aea5aa2dc86667113b6c6630af299a5c210140be7",
+      "sha256": "f92043ac0603897965f11d3d74bd37c28916c8eff1b54f33e1ece0a845689605",
       "bytes": 13712
     },
     {
@@ -306,7 +311,7 @@
     },
     {
       "path": "service/layers/24.json",
-      "sha256": "b05b863079236bc8bf845658b958cba6eda5f6b5712d97666120ac2d3fdc20d1",
+      "sha256": "3397ecee99f563bfae7fc4f90adca943152c07b6a9d710f4270cb6118af0500a",
       "bytes": 28106
     },
     {
@@ -326,7 +331,7 @@
     },
     {
       "path": "service/layers/28.json",
-      "sha256": "c6ff76a2b3f2a0bff72c05d9f084dd4a525e41f5a6f4409ce85a6edd2d54d137",
+      "sha256": "0504696d041135899cda675deb4dc36353813fad12cf603f60cee23bec92c7f0",
       "bytes": 85081
     },
     {
@@ -356,7 +361,7 @@
     },
     {
       "path": "service/layers/34.json",
-      "sha256": "1a06e0d094534124161619742f5f0ab60e9ffcf224507be28886847e141dea06",
+      "sha256": "03060b28aa26ae328e3f3486326e605a36ed5452f3fcf88156ed4e9a184b3e3c",
       "bytes": 17744
     },
     {
@@ -393,6 +398,11 @@
       "path": "service/layers/9.json",
       "sha256": "9f6c4c5b47237a6552a60d6513d2bc82b6f3cc5aaf8efdb7459f6688f0618407",
       "bytes": 8778
+    },
+    {
+      "path": "service/observed/14.json",
+      "sha256": "df1f93835332b81a2a978302213ceecae23b64cb825f21d850b778a348cee0f6",
+      "bytes": 2280
     },
     {
       "path": "service/observed/16.json",
