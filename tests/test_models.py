@@ -11,16 +11,20 @@ from overture.schema.system.model_constraint import ModelConstraint
 from pydantic import ValidationError
 
 from nfhl.annotations import DatumIn, UnitIn, field_datums, field_units
-from nfhl.constraints import drop_null_encodings
 from nfhl.legacy import LegacyValueWarning
 from nfhl.models import FloodHazardZone
 from nfhl.models.enums import LEGACY_MEMBERS, LengthUnits, StudyTyp, Zone
+from nfhl.rule_counts import judge
 from nfhl.spec_source import Layer, SpecReader
 
-
-def validate(feature: dict[str, Any]) -> FloodHazardZone:
-    # From JSON text, never a dict: the Feature envelope unwraps only in JSON mode.
-    return FloodHazardZone.model_validate_json(json.dumps(feature))
+from .helpers import (
+    DUAL_MISSING,
+    DUAL_MISSING_X,
+    DUAL_NOT_F,
+    DUAL_NOT_T,
+    rejected_by,
+    validate,
+)
 
 
 def legacy_warnings(feature: dict[str, Any]) -> list[str]:
@@ -33,20 +37,6 @@ def legacy_warnings(feature: dict[str, Any]) -> list[str]:
     ]
 
 
-def rejected_by(feature: dict[str, Any]) -> set[str]:
-    """Wire field names (or rule names) that reject `feature`; empty if it is valid."""
-    try:
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore", LegacyValueWarning)
-            validate(feature)
-    except ValidationError as e:
-        return {
-            str(err["loc"][0]) if err["loc"] else err["msg"].split("`")[-2]
-            for err in e.errors()
-        }
-    return set()
-
-
 def broken_rules(feature: dict[str, Any]) -> set[str]:
     """Every rule `feature` breaks, each run on its own.
 
@@ -54,15 +44,7 @@ def broken_rules(feature: dict[str, Any]) -> set[str]:
     rule however many a feature breaks. This judges the rules only: a value its
     field rejects, such as `DUAL_ZONE` `"t"`, breaks no rule here.
     """
-    properties = drop_null_encodings(feature["properties"])
-    instance = FloodHazardZone.model_construct(**properties)
-    broken = set()
-    for constraint in ModelConstraint.get_model_constraints(FloodHazardZone):
-        try:
-            constraint.validate_instance(instance)
-        except ValueError:
-            broken.add(constraint.name)
-    return broken
+    return set(judge(FloodHazardZone, feature["properties"]).broken)
 
 
 def test_the_fixture_has_both_kinds_of_case(cases: list[dict[str, Any]]) -> None:
@@ -278,13 +260,8 @@ AR_ZONE = {
     "SFHA_TF": "T",
 }
 
+
 # The dual zone rules, for an AR zone that reverts to an A zone or to X.
-DUAL_NOT_T = "@forbid_if(dual_zone) [A, AE, AH, AO]"
-DUAL_MISSING = "@require_if(dual_zone) [A, AE, AH, AO]"
-DUAL_NOT_F = "@forbid_if(dual_zone) [X]"
-DUAL_MISSING_X = "@require_if(dual_zone) [X]"
-
-
 def test_an_ar_zone_takes_what_it_reverts_to(valid_feature: dict[str, Any]) -> None:
     # The did-happen control for the AR rules below: an AR zone that reverts to
     # AE with a subtype Table 14 lists for one of the five zones validates.

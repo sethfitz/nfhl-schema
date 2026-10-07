@@ -1,0 +1,69 @@
+#!/usr/bin/env -S uv run python
+"""Count, for each rule of each modelled layer, the rows that break it.
+
+Validating a feature names one broken rule, the first to fail, however many it
+breaks; this runs every rule on every row, each on its own (`nfhl.rule_counts`).
+Per rule it prints the rows that break it and the rows it never reaches because
+a field it reads is rejected first, then the same for any of the rules.
+
+Reads the rows, grouped by the values the rules read, from the snapshot
+(`spec/service/observed/`, taken by `scripts/snapshot-spec`), so the figures in
+spec/README.md can be re-derived from this command. `--live` groups the service's
+rows afresh instead, which takes about ten minutes. `--rule TEXT`, repeatable,
+counts only the rules whose names contain one of the TEXTs, and `any rule`
+only those.
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from typing import Any
+
+from nfhl.rule_counts import Census, fetch_groups, rule_fields, take_census
+from nfhl.spec_source import LAYERS, Layer, SpecReader, layer_model
+
+
+def load_groups(layer: Layer, live: bool) -> tuple[str, list[dict[str, Any]]]:
+    fields = rule_fields(layer_model(layer))
+    if live:
+        return "live", fetch_groups(layer.layer_id, fields)
+    recorded_fields, groups = SpecReader().rule_groups(layer)
+    if recorded_fields != fields:
+        sys.exit(
+            f"layer {layer.layer_id}: the snapshot groups by other fields than the "
+            "rules read; run `make snapshot` or pass --live"
+        )
+    return "snapshot", groups
+
+
+def report(layer: Layer, source: str, census: Census) -> None:
+    print(f"# layer {layer.layer_id} ({layer.table}), {source}: {census.total} rows")
+    print(f"{'broken':>10}  {'blocked':>10}  rule")
+    for rule in census.rules:
+        print(f"{rule.broken:>10}  {rule.blocked:>10}  {rule.rule}")
+    print(f"{census.any_broken:>10}  {census.any_blocked:>10}  any rule")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument("--live", action="store_true", help="query the service")
+    parser.add_argument(
+        "--rule", action="append", default=[], metavar="TEXT", help="rules to count"
+    )
+    args = parser.parse_args()
+    for layer in LAYERS:
+        source, rows = load_groups(layer, args.live)
+        census = take_census(
+            layer_model(layer),
+            rows,
+            lambda name: not args.rule or any(t in name for t in args.rule),
+        )
+        report(layer, source, census)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

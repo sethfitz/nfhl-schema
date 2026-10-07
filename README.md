@@ -174,6 +174,7 @@ make snapshot    # refresh spec/ from FEMA (SNAPSHOT_ARGS=--skip-observed is fas
 make models      # rewrite src/nfhl/models/ from spec/
 make docs        # rewrite docs/ from the models (runs `models` first)
 make report      # published values the reference does not allow
+make rules       # rows breaking each rule, every rule run on its own
 make fixtures    # refetch the real-feature fixture
 uv run overture-schema list-types --tag nfhl   # the models, found by tag
 ```

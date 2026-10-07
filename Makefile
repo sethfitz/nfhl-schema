@@ -4,7 +4,7 @@
 PY_SCRIPTS := $(shell grep -l '^\#!/usr/bin/env -S uv run python' scripts/*)
 
 .DEFAULT_GOAL := help
-.PHONY: help sync check test test-fast lint format models docs snapshot report fixtures
+.PHONY: help sync check test test-fast lint format models docs snapshot report rules fixtures
 
 help: ## List the tasks
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | sed 's/:.*## /\t/' | expand -t 12
@@ -41,6 +41,9 @@ snapshot: ## Refresh spec/ from FEMA (SNAPSHOT_ARGS=--skip-observed is fast)
 
 report: ## Print published values the reference does not allow
 	./scripts/report-observed
+
+rules: ## Count the rows breaking each rule, each on its own (RULES_ARGS=--live)
+	./scripts/count-broken-rules $(RULES_ARGS)
 
 fixtures: ## Refetch the real-feature test fixture
 	./scripts/fetch-fixtures

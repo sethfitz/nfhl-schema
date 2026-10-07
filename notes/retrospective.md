@@ -89,13 +89,14 @@ These are inputs for the overture-schema backlog.
 - **Validation reports one broken constraint per feature.** Each constraint is
   its own `model_validator`, and pydantic stops at the first that raises, so a
   feature breaking three rules names one. A count of rejections per rule taken
-  from validation errors undercounts every rule but the first to run. Measuring
-  the revert rules needed each constraint run on its own, through
-  `ModelConstraint.get_model_constraints` and `validate_instance` on a
-  `model_construct`ed instance. The AR slice had read "rejected by this rule
-  and nothing else" from validation errors; it held, but that instrument could
-  not have shown otherwise. The tests now include that instrument
-  (`broken_rules` in `tests/test_models.py`).
+  from validation errors undercounts every rule but the first to run. The
+  revert slices measured each rule ad hoc, running constraints one at a time
+  through `ModelConstraint.get_model_constraints` and `validate_instance` on a
+  `model_construct`ed instance. `scripts/count-broken-rules` (`make rules`) now
+  does that for every rule over the whole layer (`nfhl.rule_counts`), skipping
+  a rule where a field it reads fails its own type, as validation would. The AR
+  slice had read "rejected by this rule and nothing else" from validation
+  errors; it held, but that instrument could not have shown otherwise.
 - **"Holds this value" takes two constraints on an optional field.** `SFHA_TF`
   is required, so "will be true" was one `require_any_true`: not the zone, or
   not another flag. `DUAL_ZONE` is optional, and the same sentence needs a
@@ -115,6 +116,19 @@ These are inputs for the overture-schema backlog.
   the layer total, so they cannot be taken alone and added to an older file. The
   layer lost 424 rows between 2026-10-05 and 2026-10-07, so the `DUAL_ZONE`
   slice opened with a refresh commit that moved counts unrelated to it.
+- The rule checker judges the whole layer without fetching a feature. The
+  service accepts SQL expressions in `groupByFieldsForStatistics`, so the nine
+  text fields the rules read, plus a populated-or-null `CASE` for each of the
+  five numeric ones, group all 5.8 million rows into 884 combinations in one
+  query of about 12 seconds; judging a combination judges every row holding it.
+  The service's collation got in the way: it folds a lone space into `""`, a
+  rejected value into a null, which counted 768 velocities with a lone-space
+  unit as breaking the unit rule. Grouping expressions refuse string literals
+  and `CHAR_LENGTH` trims blanks, so nothing inside the grouping can tell them
+  apart; a `where` with `LIKE ' '` can. The snapshot splits the rows by lone
+  space per field first (25 non-empty parts) and groups each, 1,022 groups in
+  all. Every per-rule figure in spec/README.md reproduced, including the
+  2026-10-06 direct queries for the revert fields; case folding remains.
 - A pass re-checking every claim in the README's "what the service holds"
   section (2026-10-05) reproduced every count, and found the claims around the
   counts wrong instead. "Every count is an upper bound" held for single values

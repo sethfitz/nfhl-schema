@@ -158,7 +158,10 @@ header extracts reversed. None of these is in this slice.
 counts below are its output for the snapshot pinned in `MANIFEST.json`. The
 models reject every one except the eight it marks `legacy`, which
 `legacy.json` admits with a warning by a count threshold, not by a judgement
-about each value.
+about each value. `scripts/count-broken-rules` counts, from the same snapshot,
+the rows that break each rule, every rule run on every row on its own;
+validation cannot, since it names only the first rule a feature breaks. Every
+per-rule figure below is also its output.
 
 - **`STUDY_TYP`: 1,858,473 of 5,810,408 rows (32.0%) hold a value outside
   `D_Study_Typ`**, not counting the 1,607 lone spaces below. Most are the study
@@ -220,18 +223,17 @@ about each value.
 - **The revert BFE and depth rules reject 18,177 rows**, all off AR zones:
   `BFE_REVERT` is populated on 12,732 and `DEP_REVERT` on 17,914
   (`BFE_REVERT IS NOT NULL AND BFE_REVERT <> -9999`, and the same for
-  `DEP_REVERT`; 18,177 with `OR`), on 2026-10-06. None of them holds a zone
-  in `AR_REVERT`: the 73 rows that do hold `-9999` in both. Most are stand-ins
-  for "does not apply": `0` (9,830 and 11,679), which section 7.3 forbids for
-  that, and `-8888` (2,850 and 2,906), its "intentionally not populated". Of
-  the 52 other `BFE_REVERT` values, 17 are `9999`. Of the 3,329 other
+  `DEP_REVERT`; 18,177 with `OR`), on 2026-10-06, and the same from the
+  snapshot (`count-broken-rules --rule bfe_revert --rule dep_revert`). None of
+  them holds a zone in `AR_REVERT`: the 73 rows that do hold `-9999` in both.
+  Most are stand-ins for "does not apply": `0` (9,830 and 11,679), which
+  section 7.3 forbids for that, and `-8888` (2,850 and 2,906), its
+  "intentionally not populated". Of the 52 other `BFE_REVERT` values, 17 are
+  `9999`. Of the 3,329 other
   `DEP_REVERT` values, 3,311 are in DFIRM `31099C`, where each is the
   polygon's area in square feet: across 2,000 of them, `DEP_REVERT /
   SHAPE.STArea()` is 1.011e11 to 1.015e11, the square feet in a square degree
-  at that latitude. Running each constraint on its own over samples (all 52
-  other `BFE_REVERT` rows; the first 2,000 of the other `DEP_REVERT` rows and of
-  the `BFE_REVERT = -8888` rows; the first 500 of each `0`) finds every row
-  breaking the rule for each revert field it populates.
+  at that latitude.
 
 These were counted with direct queries against layer 28 on 2026-10-05 rather
 than from a committed file; each is a `returnCountOnly` query with the `where`
@@ -252,7 +254,8 @@ clause given:
   (the same, with `(DEPTH = -9999 OR DEPTH IS NULL)` added), 1,468 of them a
   `D_Length_Units` value; a velocity without a `VEL_UNIT`, 8,638
   (`(VELOCITY <> -9999 AND VELOCITY IS NOT NULL) AND (VEL_UNIT IS NULL OR VEL_UNIT = '')`),
-  1,257 of them a lone space the vocabulary rejects first. The same velocity
+  1,257 of them a lone space the vocabulary rejects first, so 7,381 break the
+  rule, as `count-broken-rules` finds. The same velocity
   predicate selects 9,679 rows, 7,708 of them `0`, which section 7.3 forbids
   as a stand-in for "does not apply"; 7,681 of the 8,638 without a unit are
   `0`, so most of those are nulls written as zero.
@@ -271,4 +274,7 @@ value's group and drops out of the report. The 1,607 lone spaces in
 1,858,473, while `ZONE_SUBTY`'s 75 came back as `' '`, because no empty string
 shared their group, and are counted in its 26,355. The fixture holds one real
 `FEET` (`uppercase_len_unit`, DFIRM `39057C`), found because it failed
-validation, not because any statistic showed it.
+validation, not because any statistic showed it. `count-broken-rules` inherits
+the case folding, judging a `FEET` as the `Feet` it is grouped with, but not
+the blank folding: the snapshot splits the rows by `LIKE ' '` on each field
+before grouping them, so a lone space and `""` are judged apart.
