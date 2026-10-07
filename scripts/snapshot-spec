@@ -12,10 +12,12 @@ Three sources, each pinned by what it is:
   fields, Esri types and lengths. The service declares no coded-value domains.
 * What the service holds: per-value row counts for every field of a modelled
   layer that the reference ties to a domain, per-pair counts for every two
-  fields a rule reads together, and the layer's total, from the `query`
-  endpoint's grouped statistics. These are observations, not
-  specification -- the reference is what the models enforce, and a value seen
-  here but absent from the reference is a finding, recorded in spec/README.md.
+  fields a rule reads together, per-combination counts for every field the
+  model's rules read (what `scripts/count-broken-rules` judges), and the
+  layer's total, from the `query` endpoint's grouped statistics. These are
+  observations, not specification -- the reference is what the models
+  enforce, and a value seen here but absent from the reference is a finding,
+  recorded in spec/README.md.
 
 `MANIFEST.json` records each source URL, when it was retrieved, and a SHA-256 of
 every file written.
@@ -33,14 +35,21 @@ import json
 import shutil
 import subprocess
 import sys
-import urllib.parse
 from pathlib import Path
 from typing import Any
 
 from nfhl.extract import DOMAIN_HEADING, FIRM_HEADING, extract, write
-from nfhl.spec_source import DOMAIN_TABLES, FIRM_DATABASE, LAYERS, SPEC_DIR, SpecReader
+from nfhl.rule_counts import fetch_groups, rule_fields
+from nfhl.service import SERVICE, fetch, fetch_json, grouped, query_url, row_count
+from nfhl.spec_source import (
+    DOMAIN_TABLES,
+    FIRM_DATABASE,
+    LAYERS,
+    SPEC_DIR,
+    SpecReader,
+    layer_model,
+)
 
-SERVICE = "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer"
 # The FEMA Guidelines & Standards index this edition was found on; it links both.
 INDEX = (
     "https://www.fema.gov/flood-maps/guidance-reports/guidelines-standards/"
@@ -58,31 +67,6 @@ REFERENCES = {
         DOMAIN_HEADING,
     ),
 }
-TIMEOUT = 600
-
-
-def fetch(url: str, params: dict[str, str] | None = None) -> bytes:
-    """GET with curl.
-
-    curl rather than urllib because fema.gov's CDN answers 403 to urllib's
-    User-Agent, and to a spoofed browser one, while serving curl's own. Checked
-    2026-10-04; do not "fix" a 403 here by impersonating a browser.
-    """
-    if params:
-        url = f"{url}?{urllib.parse.urlencode(params)}"
-    result = subprocess.run(
-        ["curl", "-fsSL", "--max-time", str(TIMEOUT), url],
-        check=True,
-        capture_output=True,
-    )
-    return result.stdout
-
-
-def fetch_json(url: str, params: dict[str, str]) -> Any:
-    payload = json.loads(fetch(url, params))
-    if isinstance(payload, dict) and "error" in payload:
-        raise RuntimeError(f"{url}: {payload['error']}")
-    return payload
 
 
 def dump(path: Path, payload: Any) -> None:
@@ -127,45 +111,19 @@ def snapshot_service(spec: Path) -> list[dict[str, str]]:
     return sources
 
 
-def grouped(url: str, group_by: str) -> list[dict[str, Any]]:
-    """Row counts per distinct value (or value pair) of `group_by`, as `n`."""
-    stats = fetch_json(
-        url,
-        {
-            "where": "1=1",
-            "outStatistics": json.dumps(
-                [
-                    {
-                        "statisticType": "count",
-                        "onStatisticField": "OBJECTID",
-                        "outStatisticFieldName": "n",
-                    }
-                ]
-            ),
-            "groupByFieldsForStatistics": group_by,
-            "f": "json",
-        },
-    )
-    if stats.get("exceededTransferLimit"):
-        raise RuntimeError(f"{url}: grouping by {group_by} was truncated")
-    return [f["attributes"] for f in stats["features"]]
-
-
 def snapshot_observed(spec: Path) -> list[dict[str, str]]:
     reader = SpecReader(spec)
     sources = []
     for layer in LAYERS:
-        url = f"{SERVICE}/{layer.layer_id}/query"
+        url = query_url(layer.layer_id)
         print(f"==> observed values, layer {layer.layer_id}")
-        total = fetch_json(
-            url, {"where": "1=1", "returnCountOnly": "true", "f": "json"}
-        )
+        total = row_count(layer.layer_id)
         fields: dict[str, list[dict[str, Any]]] = {}
         for field in reader.reference_table(layer.table).fields:
             if field.domain is None or field.name not in reader.service_fields(layer):
                 continue
             print(f"    {field.name}")
-            rows = grouped(url, field.name)
+            rows = grouped(layer.layer_id, [field.name])
             fields[field.name] = sorted(
                 ({"value": r[field.name], "count": r["n"]} for r in rows),
                 key=lambda r: (-r["count"], str(r["value"])),
@@ -177,7 +135,7 @@ def snapshot_observed(spec: Path) -> list[dict[str, str]]:
             {(r.when, r.field) for r in reader.pair_rules(layer.table)}
         ):
             print(f"    {when} x {field_name}")
-            rows = grouped(url, f"{when},{field_name}")
+            rows = grouped(layer.layer_id, [when, field_name])
             combinations[f"{when},{field_name}"] = sorted(
                 (
                     {when: r[when], field_name: r[field_name], "count": r["n"]}
@@ -185,13 +143,21 @@ def snapshot_observed(spec: Path) -> list[dict[str, str]]:
                 ),
                 key=lambda r: (-r["count"], str(r[when]), str(r[field_name])),
             )
+        print("    every field the rules read")
+        read_by_rules = rule_fields(layer_model(layer))
+        groups = fetch_groups(layer.layer_id, read_by_rules)
         dump(
             spec / "service" / "observed" / f"{layer.layer_id}.json",
             {
                 "layer": layer.layer_id,
-                "total": total["count"],
+                "total": total,
                 "fields": fields,
                 "combinations": combinations,
+                "rules": {
+                    "by_value": read_by_rules.by_value,
+                    "by_populated": read_by_rules.by_populated,
+                    "groups": groups,
+                },
             },
         )
         sources.append(

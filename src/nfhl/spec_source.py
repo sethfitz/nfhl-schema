@@ -20,13 +20,19 @@ reference sentence that licenses it, and a test asserts the quote is still there
 
 from __future__ import annotations
 
+import importlib
 import json
 import re
 from collections.abc import Callable
 from dataclasses import dataclass
 from functools import cached_property
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+from .rule_counts import RuleFields
+
+if TYPE_CHECKING:
+    from pydantic import BaseModel
 
 SPEC_DIR = Path(__file__).resolve().parents[2] / "spec"
 
@@ -46,6 +52,13 @@ class Layer:
     table: str
     class_name: str
     module: str
+
+
+def layer_model(layer: Layer) -> type[BaseModel]:
+    """The generated model of `layer`."""
+    module = importlib.import_module(f"nfhl.models.{layer.module}")
+    model: type[BaseModel] = getattr(module, layer.class_name)
+    return model
 
 
 LAYERS: tuple[Layer, ...] = (
@@ -574,6 +587,15 @@ class SpecReader:
     def observed(self, layer: Layer) -> dict[str, Any]:
         payload: dict[str, Any] = self._json(f"service/observed/{layer.layer_id}.json")
         return payload
+
+    def rule_groups(self, layer: Layer) -> tuple[RuleFields, list[dict[str, Any]]]:
+        """The snapshot's rows grouped by the fields the rules read, and which
+        fields those are (`observed["rules"]`)."""
+        recorded = self.observed(layer)["rules"]
+        fields = RuleFields(
+            tuple(recorded["by_value"]), tuple(recorded["by_populated"])
+        )
+        return fields, recorded["groups"]
 
     def pair_violations(self, layer: Layer) -> list[tuple[PairRule, list[PairCount]]]:
         """Each pair rule, with the observed value pairs that break it.
