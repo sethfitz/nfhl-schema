@@ -112,6 +112,22 @@
           "quote": "It should be false for any for AR Zones that revert to Shaded X."
         }
       ]
+    },
+    "S_BFE": {
+      "units": [
+        {
+          "field": "ELEV",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for the BFEs."
+        }
+      ],
+      "datums": [
+        {
+          "field": "ELEV",
+          "datum_field": "V_DATUM",
+          "quote": "The vertical datum indicates the reference surface from which the flood elevations are measured."
+        }
+      ]
     }
   }
 }

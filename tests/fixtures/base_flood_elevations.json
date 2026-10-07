@@ -1,0 +1,422 @@
+{
+  "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/16/query",
+  "retrieved_at": "2026-10-07T08:12:21Z",
+  "cases": [
+    {
+      "name": "navd88_feet",
+      "where": "(V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND ELEV > 0) AND ELEV <> -9999 AND ELEV IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NAVD29') AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 872,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -87.81140093518903,
+              30.84774800291652
+            ],
+            [
+              -87.8107043683577,
+              30.84715034008358
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 872,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "01003C_1",
+          "ELEV": 154,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NAVD88",
+          "SOURCE_CIT": "01003C_STUDY1",
+          "SHAPE.STLength()": 0.0009178266592094424,
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "GlobalID": "{A9DFCB6F-7E47-4597-BC2A-9D4106408266}"
+        }
+      }
+    },
+    {
+      "name": "ngvd29",
+      "where": "(V_DATUM = 'NGVD29' AND LEN_UNIT = 'Feet') AND ELEV <> -9999 AND ELEV IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NAVD29') AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12605,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -86.0327330434988,
+              34.65716275267061
+            ],
+            [
+              -86.03222325575447,
+              34.65711799329736
+            ],
+            [
+              -86.03214027353935,
+              34.657110784859
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12605,
+          "DFIRM_ID": "01071C",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "01071C_540",
+          "ELEV": 612,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NGVD29",
+          "SOURCE_CIT": "01071C_BASE8",
+          "SHAPE.STLength()": 0.0005950434534843033,
+          "GFID": "66c2b122-c101-4a0e-ac4f-d44af23a1f95",
+          "GlobalID": "{1807CA1A-963B-49E7-90D5-A0B26D8DF903}"
+        }
+      }
+    },
+    {
+      "name": "local_tidal_datum",
+      "where": "(V_DATUM = 'LOCAL TIDAL DATUM') AND ELEV <> -9999 AND ELEV IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NAVD29') AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 334711,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -159.55405838557934,
+              22.203402888661596
+            ],
+            [
+              -159.55241922119637,
+              22.202926294749314
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 334711,
+          "DFIRM_ID": "150002",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "150002_1",
+          "ELEV": 53,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "LOCAL TIDAL DATUM",
+          "SOURCE_CIT": "150002_FIS1",
+          "SHAPE.STLength()": 0.0017070447891951808,
+          "GFID": "c43a82ce-f0d8-4895-87d3-72b2996c6951",
+          "GlobalID": "{349F33B9-6C19-4D94-9B41-1E2D6EC170E7}"
+        }
+      }
+    },
+    {
+      "name": "meters",
+      "where": "(LEN_UNIT = 'Meters') AND ELEV <> -9999 AND ELEV IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NAVD29') AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1563525,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -66.84267852479444,
+              18.0353244172397
+            ],
+            [
+              -66.84237456400346,
+              18.035324459153983
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1563525,
+          "DFIRM_ID": "72000C",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "72000C_1",
+          "ELEV": 32,
+          "LEN_UNIT": "Meters",
+          "V_DATUM": "MSL",
+          "SOURCE_CIT": "72000C_FIS1",
+          "SHAPE.STLength()": 0.0003039606997862044,
+          "GFID": "af0c2d6d-75eb-4d59-b488-d2cba27eb35b",
+          "GlobalID": "{D4F3EFAA-D721-44A5-BB6A-7B948F9BBF02}"
+        }
+      }
+    },
+    {
+      "name": "below_datum",
+      "where": "(ELEV < 0 AND LEN_UNIT = 'Feet') AND ELEV <> -9999 AND ELEV IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NAVD29') AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 466802,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -90.10179734246746,
+              29.846913906113027
+            ],
+            [
+              -90.10166153981841,
+              29.846927554222678
+            ],
+            [
+              -90.10165144878526,
+              29.846928569219823
+            ],
+            [
+              -90.10161051887373,
+              29.846932681595266
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 466802,
+          "DFIRM_ID": "22051C",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "22051C_6",
+          "ELEV": -1,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NAVD88",
+          "SOURCE_CIT": "22051C_STUDY1",
+          "SHAPE.STLength()": 0.00018776462627825854,
+          "GFID": "343af746-01e4-46f7-b6c2-5e365cdb3b6c",
+          "GlobalID": "{C043E27A-1DCC-4D27-B773-E2D1C950FC41}"
+        }
+      }
+    },
+    {
+      "name": "american_samoa_datum",
+      "where": "(V_DATUM = 'ASVD02') AND ELEV <> -9999 AND ELEV IS NOT NULL AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
+      "expect": "V_DATUM",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1563002,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -170.70610060555697,
+              -14.277458483417757
+            ],
+            [
+              -170.70593196163978,
+              -14.277621429025656
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1563002,
+          "DFIRM_ID": "600001",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "600001_328",
+          "ELEV": 55,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "ASVD02",
+          "SOURCE_CIT": "600001_FIS1",
+          "SHAPE.STLength()": 0.00023450384530587554,
+          "GFID": null,
+          "GlobalID": "{0A59899C-F8B8-4B53-A390-89F73CBE293E}"
+        }
+      }
+    },
+    {
+      "name": "guam_2003_datum",
+      "where": "(V_DATUM = 'GUVD03') AND ELEV <> -9999 AND ELEV IS NOT NULL AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
+      "expect": "V_DATUM",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1563286,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              144.7396253696366,
+              13.279165248682967
+            ],
+            [
+              144.73961229386418,
+              13.279144293922073
+            ],
+            [
+              144.7394446557564,
+              13.278887137096598
+            ],
+            [
+              144.73936653639376,
+              13.27866501793815
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1563286,
+          "DFIRM_ID": "660001",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "660001_286",
+          "ELEV": 19,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "GUVD03",
+          "SOURCE_CIT": "660001_FIS1",
+          "SHAPE.STLength()": 0.0005671285703025381,
+          "GFID": null,
+          "GlobalID": "{F512CBE0-3BD5-4C27-B764-35DB88660C77}"
+        }
+      }
+    },
+    {
+      "name": "navd29_datum",
+      "where": "(V_DATUM = 'NAVD29') AND ELEV <> -9999 AND ELEV IS NOT NULL AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> ''",
+      "expect": "V_DATUM",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12704,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -85.7066728048878,
+              34.96901449033131
+            ],
+            [
+              -85.69287132147703,
+              34.96902622556182
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12704,
+          "DFIRM_ID": "01071C",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "01071C_2580",
+          "ELEV": 613,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NAVD29",
+          "SOURCE_CIT": "01071C_BASE8",
+          "SHAPE.STLength()": 0.013801484436387635,
+          "GFID": "66c2b122-c101-4a0e-ac4f-d44af23a1f95",
+          "GlobalID": "{3FF38E44-E672-4E10-8B24-62400F5DBDD0}"
+        }
+      }
+    },
+    {
+      "name": "no_datum",
+      "where": "(V_DATUM IS NULL) AND ELEV <> -9999 AND ELEV IS NOT NULL AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> ''",
+      "expect": "V_DATUM",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1492723,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -81.09549908317601,
+              38.739157160338834
+            ],
+            [
+              -81.09454187040753,
+              38.73936972558757
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1492723,
+          "DFIRM_ID": "54013C",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "54013C_1664",
+          "ELEV": 0,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": null,
+          "SOURCE_CIT": "54013C_01229R1",
+          "SHAPE.STLength()": 0.0009805303187431856,
+          "GFID": null,
+          "GlobalID": "{DB3E3BDA-61B4-4BE7-ADE5-0281A66CABA2}"
+        }
+      }
+    },
+    {
+      "name": "no_source_citation",
+      "where": "(SOURCE_CIT IS NULL) AND ELEV <> -9999 AND ELEV IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NAVD29') AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
+      "expect": "SOURCE_CIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 824616,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -80.516664829659,
+              36.038767567629876
+            ],
+            [
+              -80.51619799526837,
+              36.03876633393515
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 824616,
+          "DFIRM_ID": "37059C",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "37059C_1693",
+          "ELEV": 712,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NAVD88",
+          "SOURCE_CIT": null,
+          "SHAPE.STLength()": 0.0004668358806974739,
+          "GFID": "5ed709bb-15c6-4899-bb3b-59235d4b32fc",
+          "GlobalID": "{D85737D5-01D0-4BA2-86AB-EFE666584859}"
+        }
+      }
+    },
+    {
+      "name": "empty_line_id",
+      "where": "(BFE_LN_ID = '') AND ELEV <> -9999 AND ELEV IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NAVD29') AND SOURCE_CIT IS NOT NULL",
+      "expect": "BFE_LN_ID",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 471780,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -92.08772148166396,
+              32.48057807110739
+            ],
+            [
+              -92.08384587665854,
+              32.480920823231685
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 471780,
+          "DFIRM_ID": "22073C",
+          "VERSION_ID": "1.1.1.0",
+          "BFE_LN_ID": "",
+          "ELEV": 68,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NAVD88",
+          "SOURCE_CIT": "22073C_LOMC1",
+          "SHAPE.STLength()": 0.0038907306675812284,
+          "GFID": "762049da-7ddd-4b6b-90b3-e0ec3f0e829c",
+          "GlobalID": "{F6E4C35B-A0F1-42D1-9B8D-0DBA44A013ED}"
+        }
+      }
+    }
+  ]
+}

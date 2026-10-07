@@ -1,7 +1,7 @@
 # VDatum
 
 Values of `D_V_Datum` that apply to the FIRM Database, each as the data stores
-it. Used by `S_Fld_Haz_Ar.V_DATUM`.
+it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`.
 
 ## Values
 
@@ -19,4 +19,5 @@ it. Used by `S_Fld_Haz_Ar.V_DATUM`.
 
 ## Used By
 
+- [`BaseFloodElevation`](../base_flood_elevation.md)
 - [`FloodHazardZone`](../flood_hazard_zone.md)

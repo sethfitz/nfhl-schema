@@ -19,7 +19,9 @@ What comes from where:
   limited to, and values one field takes from another --
   `spec/relationships.json`;
 * which subtypes each flood zone allows -- Table 14 of the FIRM Database
-  reference, the zone/subtype cross-walk.
+  reference, the zone/subtype cross-walk;
+* what a feature's geometry may be -- each table's introduction (`GEOMETRIES`),
+  checked against the service's geometry type.
 """
 
 from __future__ import annotations
@@ -80,6 +82,19 @@ SERVICE_ONLY_TYPES = {
 SERVICE_ONLY_DESCRIPTION = (
     "Published by the NFHL map service as housekeeping for its own copy of the "
     "data; the FIRM Database reference does not define it."
+)
+
+# What a generated model may import from `nfhl.constraints`, besides
+# `drop_null_encodings`; each model imports the ones its rules use.
+CONSTRAINT_NAMES = (
+    "Absent",
+    "AllOf",
+    "NoneOf",
+    "OneOf",
+    "Populated",
+    "forbid_if",
+    "require_any_true",
+    "require_if",
 )
 
 WIDTH = 70  # string chunk width before ruff format lays the code out
@@ -143,7 +158,7 @@ def member_doc(value: DomainValue) -> str:
 def legacy_doc(legacy: LegacyValue, reader: SpecReader) -> str:
     """Marks the member legacy, says how common it is and where that was counted."""
     total = reader.observed(next(lyr for lyr in LAYERS if lyr.layer_id == legacy.layer))
-    day = reader.legacy["retrieved_at"][:10]
+    day = reader.legacy_counted_at(legacy.layer)[:10]
     return (
         f"Legacy: not in the {reader.edition} Domain Tables Technical Reference; "
         "validates with a LegacyValueWarning. "
@@ -460,6 +475,10 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
     enums = sorted(
         {reader.domain(f.domain).class_name for f in table.fields if f.domain}
     )
+    used = "\n".join([*decorators, *fields])
+    constraint_names = [n for n in CONSTRAINT_NAMES if re.search(rf"\b{n}\(", used)]
+    annotation_names = [n for n in ("DatumIn", "UnitIn") if f"{n}(" in used]
+    geometry = layer_geometry(layer, reader)
     class_doc = (
         f"{reader.reference_intro(layer.table)} Published as layer "
         f"{layer.layer_id} of the NFHL MapServer, which also carries "
@@ -488,18 +507,10 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             "from overture.schema.system.optionality import Omitable",
             "from pydantic import ConfigDict, Field, model_validator",
             "",
-            "from nfhl.annotations import DatumIn, UnitIn",
-            "from nfhl.constraints import (",
-            "    Absent,",
-            "    AllOf,",
-            "    NoneOf,",
-            "    OneOf,",
-            "    Populated,",
-            "    drop_null_encodings,",
-            "    forbid_if,",
-            "    require_any_true,",
-            "    require_if,",
-            ")",
+            *import_lines("nfhl.annotations", annotation_names),
+            *import_lines(
+                "nfhl.constraints", [*constraint_names, "drop_null_encodings"]
+            ),
             "from nfhl.legacy import warn_on_legacy_values",
             "from nfhl.models.enums import (",
             *(f"    {e}," for e in ["LEGACY_MEMBERS", "REFERENCE_EDITION", *enums]),
@@ -528,19 +539,19 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             "        warn_on_legacy_values(LEGACY_MEMBERS, REFERENCE_EDITION)",
             "    )",
             "",
-            "    # A multipart zone is one feature: MultiPolygon as well as Polygon.",
+            *(f"    # {line}" for line in textwrap.wrap(geometry.comment, 82)),
             "    geometry: Annotated[",
             "        Geometry,",
             "        GeometryTypeConstraint(",
-            "            GeometryType.POLYGON, GeometryType.MULTI_POLYGON",
+            f"            {', '.join(f'GeometryType.{t}' for t in geometry.types)}",
             "        ),",
-            f"        Field(description={literal(GEOMETRY_DESCRIPTION)}),",
+            f"        Field(description={literal(geometry.description)}),",
             "    ]",
             "",
             "    # Redeclared from `Feature`, where it is a string: ArcGIS's GeoJSON",
             "    # output writes the service's integer OBJECTID here.",
             "    id: Omitable[int64] = Field(  # type: ignore[assignment]",
-            f"        description={literal(ID_DESCRIPTION)},",
+            f"        description={literal(id_description(table))},",
             "    )",
             "",
             *fields,
@@ -548,24 +559,76 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
     )
 
 
-# The reference describes the geometry only in the table's introduction.
-GEOMETRY_DESCRIPTION = (
-    "Extent of the flood zone: in the reference's words, one polygon for each "
-    "contiguous flood zone designated."
-)
+@dataclass(frozen=True, slots=True)
+class LayerGeometry:
+    """What a layer's features may be, from the reference's introduction to it.
 
-ID_DESCRIPTION = (
-    "The service's OBJECTID, which ArcGIS's GeoJSON output writes as the feature "
-    "id. It numbers rows in one copy of the service and identifies nothing beyond "
-    "it; the reference's key is FLD_AR_ID, assigned within one FIRM Database "
-    "(one DFIRM_ID)."
-)
+    `esri_type` is the service's `geometryType` the types must agree with.
+    """
+
+    esri_type: str
+    types: tuple[str, ...]  # `GeometryType` member names
+    comment: str
+    description: str
+
+
+# The reference describes the geometry only in each table's introduction.
+GEOMETRIES = {
+    "S_Fld_Haz_Ar": LayerGeometry(
+        "esriGeometryPolygon",
+        ("POLYGON", "MULTI_POLYGON"),
+        "A multipart zone is one feature: MultiPolygon as well as Polygon.",
+        "Extent of the flood zone: in the reference's words, one polygon for each "
+        "contiguous flood zone designated.",
+    ),
+    "S_BFE": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "“Each BFE is represented by a single line with no pseudo-nodes”, so a "
+        "LineString, though the service's polyline type admits several parts.",
+        "The BFE line: in the reference's words, a single line extending from "
+        "Special Flood Hazard Area (SFHA) boundary to SFHA boundary.",
+    ),
+}
+
+
+def layer_geometry(layer: Layer, reader: SpecReader) -> LayerGeometry:
+    if layer.table not in GEOMETRIES:
+        raise ValueError(f"{layer.table}: say what its features are in GEOMETRIES")
+    geometry = GEOMETRIES[layer.table]
+    published = reader.service_layer(layer)["geometryType"]
+    if published != geometry.esri_type:
+        raise ValueError(
+            f"{layer.table}: modelled as {geometry.esri_type}, service has {published}"
+        )
+    return geometry
+
+
+def id_description(table: ReferenceTable) -> str:
+    """The feature id's description, naming the table's own key: the field the
+    reference describes as its "Primary key"."""
+    (key,) = (f for f in table.fields if f.description.startswith("Primary key"))
+    return (
+        "The service's OBJECTID, which ArcGIS's GeoJSON output writes as the "
+        "feature id. It numbers rows in one copy of the service and identifies "
+        f"nothing beyond it; the reference's key is {key.name}, assigned within "
+        "one FIRM Database (one DFIRM_ID)."
+    )
+
+
+def import_lines(module: str, names: list[str]) -> list[str]:
+    """`from module import names`, in the order ruff's isort keeps them, or
+    nothing for no names; ruff format lays it out."""
+    if not names:
+        return []
+    ordered = ", ".join(sorted(names, key=lambda n: (not n[:1].isupper(), n)))
+    return [f"from {module} import {ordered}"]
 
 
 def render_init(layers: Iterable[Layer]) -> str:
-    imports = [
+    imports = sorted(
         f"from nfhl.models.{lyr.module} import {lyr.class_name}" for lyr in layers
-    ]
+    )
     names = sorted(lyr.class_name for lyr in LAYERS)
     return "\n".join(
         [

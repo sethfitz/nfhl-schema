@@ -11,7 +11,7 @@ retrieved, the edition, and a SHA-256 of every file.
 | `reference/*.txt` | `pdftotext -layout` of each PDF. Derived, not upstream; for grepping, and the second instrument the extraction is checked against. |
 | `reference/*.json` | Every ruled table in each PDF, extracted by `nfhl.extract` (pdfplumber). Derived, and **the generation source**. A test re-runs the extraction and asserts it reproduces these files. |
 | `service/MapServer.json`, `service/layers/<id>.json` | The [NFHL MapServer](https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer)'s metadata for all 32 layers and its one table: field names, Esri types, lengths. Taken whole so later slices need no new fetch. |
-| `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, and per-pair counts for every two fields a rule reads together (`combinations`), from the service's grouped statistics. Observations, not specification. |
+| `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, and per-pair counts for every two fields a rule reads together (`combinations`), from the service's grouped statistics. Observations, not specification. `snapshot-spec --layer ID` refreshes one layer's and keeps the others'. |
 | `repairs.json` | **Not upstream.** Corrections to published domain values, each quoting the reference sentence that licenses it. Not in the manifest. |
 | `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another or only for some zones (the AR revert fields), which values a field is limited to, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`, `DUAL_ZONE` from `AR_REVERT`), each quoting the field description it reads. Not in the manifest. |
 | `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot. Not in the manifest. |
@@ -259,6 +259,40 @@ clause given:
   predicate selects 9,679 rows, 7,708 of them `0`, which section 7.3 forbids
   as a stand-in for "does not apply"; 7,681 of the 8,638 without a unit are
   `0`, so most of those are nulls written as zero.
+
+## What the BFE lines hold that the reference does not allow
+
+Layer 16 has 1,506,074 rows (`service/observed/16.json`), and no value outside
+the reference clears the legacy bar of 1,507, so `legacy.json` lists none for
+it and every one is rejected. The model has no rules beyond its fields' types
+and vocabularies; `count-broken-rules` reports none. Its rejections, 16,790 rows
+(1.1%) by direct query on 2026-10-07, are these:
+
+- **`V_DATUM`: 509 rows outside `D_V_Datum`**, from `report-observed`:
+  `ASVD02` (284, American Samoa) and `GUVD03` (223, Guam), the same two the
+  zones hold, and `NAVD29` once, in DFIRM `01071C`, whose other lines say
+  `NGVD29`. One row has none (`V_DATUM IS NULL`, DFIRM `54013C`, with an `ELEV`
+  of 0).
+- **`SOURCE_CIT`, required, is null on 16,273 rows** (`SOURCE_CIT IS NULL`; no
+  row holds `''` or a lone space), in 21 DFIRMs, 15,578 of them in two North
+  Carolina counties (`37021C`, 10,325; `37067C`, 5,253). Flood Hazard Zones has
+  the same gap on 12,589 rows (`SOURCE_CIT IS NULL OR SOURCE_CIT = ''` on layer
+  28), which its model also rejects.
+- **`BFE_LN_ID`, the key, is empty on 9 rows** (`BFE_LN_ID IS NULL OR BFE_LN_ID
+  = ''`), 8 of them `''`. The one null also lacks `ELEV` and `SOURCE_CIT`
+  (DFIRM `51163C`, `V_DATUM` `NP`); it is the only row without an `ELEV`
+  (`ELEV IS NULL OR ELEV = -9999`).
+
+The union is `V_DATUM IS NULL OR V_DATUM IN ('ASVD02','GUVD03','NAVD29') OR
+SOURCE_CIT IS NULL OR BFE_LN_ID IS NULL OR BFE_LN_ID = '' OR ELEV IS NULL OR
+ELEV = -9999`.
+
+`ELEV` is "the rounded, whole-foot elevation", and the models do not hold it to
+that: the section's introduction allows tenths of a foot for ponding and
+lacustrine areas, and 3,587 lines are in `Meters`. 23,628 rows hold a fraction
+(`ELEV <> ROUND(ELEV,0)`). 3,021 are negative (`ELEV < 0`) and 127 are `0`;
+nothing in the reference bounds an elevation, and a `0` may stand in for "does
+not apply" as it does in the zones' revert fields, which section 7.3 forbids.
 
 **Read a count as the service's, not the models'.** The service is SQL Server
 (it accepts `SHAPE.STArea()` in a `where`), and its `=`, `<>`, `IN` and

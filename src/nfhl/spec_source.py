@@ -63,6 +63,7 @@ def layer_model(layer: Layer) -> type[BaseModel]:
 
 LAYERS: tuple[Layer, ...] = (
     Layer(28, "S_Fld_Haz_Ar", "FloodHazardZone", "flood_hazard_zones"),
+    Layer(16, "S_BFE", "BaseFloodElevation", "base_flood_elevations"),
 )
 
 
@@ -385,15 +386,19 @@ class SpecReader:
         return ReferenceTable(name, tuple(fields))
 
     def reference_intro(self, name: str) -> str:
-        """The prose the FIRM Database reference opens a table's section with.
+        """What a table's section says its features are, before its field list.
 
-        Only in running text, not in a table, so it is read from the
+        From the sentence that says what the table "contains information about"
+        to the field list. Sections open differently before that sentence: with
+        one line on when the table is required (`S_Fld_Haz_Ar`), or with pages
+        of submission guidance and a requirements grid (`S_BFE`), so that is
+        left out. Only in running text, not in a table, so it is read from the
         `pdftotext` rendering, with the running page header and footer removed.
         """
         text = self.reference_text(FIRM_DATABASE)
         match = re.search(
-            rf"Table: {name} (This table .*?) The {name} table contains the "
-            r"following elements:",
+            rf"(The {name}(?: table)? contains information .*?) "
+            rf"The {name} (?:table|layer) contains the following elements:",
             text,
         )
         if match is None:
@@ -541,6 +546,15 @@ class SpecReader:
         """`spec/legacy.json`: the threshold, its source, and the values."""
         payload: dict[str, Any] = self._json("legacy.json")
         return payload
+
+    def legacy_counted_at(self, layer_id: int) -> str:
+        """When the snapshot `spec/legacy.json` took `layer_id`'s counts from
+        was retrieved."""
+        path = f"service/observed/{layer_id}.json"
+        counted: str = next(
+            o["retrieved_at"] for o in self.legacy["observed"] if o["path"] == path
+        )
+        return counted
 
     def legacy_values(self, domain: str) -> tuple[LegacyValue, ...]:
         return tuple(

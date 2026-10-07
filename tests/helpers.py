@@ -6,23 +6,29 @@ import json
 import warnings
 from typing import Any
 
-from pydantic import ValidationError
+from pydantic import BaseModel, ValidationError
 
 from nfhl.legacy import LegacyValueWarning
 from nfhl.models import FloodHazardZone
 
 
-def validate(feature: dict[str, Any]) -> FloodHazardZone:
+def validate_as[M: BaseModel](model: type[M], feature: dict[str, Any]) -> M:
     # From JSON text, never a dict: the Feature envelope unwraps only in JSON mode.
-    return FloodHazardZone.model_validate_json(json.dumps(feature))
+    return model.model_validate_json(json.dumps(feature))
 
 
-def rejected_by(feature: dict[str, Any]) -> set[str]:
+def validate(feature: dict[str, Any]) -> FloodHazardZone:
+    return validate_as(FloodHazardZone, feature)
+
+
+def rejected_by(
+    feature: dict[str, Any], model: type[BaseModel] = FloodHazardZone
+) -> set[str]:
     """Wire field names (or rule names) that reject `feature`; empty if it is valid."""
     try:
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", LegacyValueWarning)
-            validate(feature)
+            validate_as(model, feature)
     except ValidationError as e:
         return {
             str(err["loc"][0]) if err["loc"] else err["msg"].split("`")[-2]

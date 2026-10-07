@@ -7,13 +7,13 @@ import subprocess
 
 from overture.schema.system.discovery import ModelKey, discover_models
 
-from nfhl.models import FloodHazardZone
+from nfhl.models import BaseFloodElevation, FloodHazardZone
 from nfhl.tags import nfhl_provider
 
 
 def test_discovery_finds_the_model_through_the_entry_point() -> None:
     found = discover_models()
-    assert FloodHazardZone in found.values()
+    assert {FloodHazardZone, BaseFloodElevation} <= set(found.values())
 
 
 def test_overture_codegen_lists_the_model() -> None:
@@ -22,12 +22,13 @@ def test_overture_codegen_lists_the_model() -> None:
     listed = subprocess.run(
         [codegen, "list"], check=True, capture_output=True, text=True
     ).stdout.split()
-    assert "FloodHazardZone" in listed
+    assert {"FloodHazardZone", "BaseFloodElevation"} <= set(listed)
 
 
 def test_the_tag_provider_tags_the_model_nfhl() -> None:
     tagged = {k.name: k.tags for k in discover_models()}
     assert "nfhl" in tagged["nfhl_flood_hazard_zone"]
+    assert "nfhl" in tagged["nfhl_base_flood_elevation"]
 
 
 def test_the_tag_provider_leaves_other_packages_alone() -> None:

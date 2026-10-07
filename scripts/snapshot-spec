@@ -23,7 +23,8 @@ Three sources, each pinned by what it is:
 every file written.
 
 Pass `--skip-observed` to leave the observation files alone: the grouped
-statistics take minutes over the full national layer.
+statistics take minutes over the full national layer. `--layer ID`, repeatable,
+refreshes only those layers' observations and leaves the others' alone.
 """
 
 from __future__ import annotations
@@ -46,6 +47,7 @@ from nfhl.spec_source import (
     FIRM_DATABASE,
     LAYERS,
     SPEC_DIR,
+    Layer,
     SpecReader,
     layer_model,
 )
@@ -111,10 +113,10 @@ def snapshot_service(spec: Path) -> list[dict[str, str]]:
     return sources
 
 
-def snapshot_observed(spec: Path) -> list[dict[str, str]]:
+def snapshot_observed(spec: Path, layers: list[Layer]) -> list[dict[str, str]]:
     reader = SpecReader(spec)
     sources = []
-    for layer in LAYERS:
+    for layer in layers:
         url = query_url(layer.layer_id)
         print(f"==> observed values, layer {layer.layer_id}")
         total = row_count(layer.layer_id)
@@ -192,7 +194,17 @@ def checksums(spec: Path) -> list[dict[str, Any]]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--skip-observed", action="store_true")
+    parser.add_argument("--layer", type=int, action="append", default=[])
     args = parser.parse_args()
+    unknown = set(args.layer) - {lyr.layer_id for lyr in LAYERS}
+    if unknown:
+        parser.error(f"not a modelled layer: {sorted(unknown)}")
+    layers = (
+        []
+        if args.skip_observed
+        else [lyr for lyr in LAYERS if not args.layer or lyr.layer_id in args.layer]
+    )
+    refreshed = {f"service/observed/{lyr.layer_id}.json" for lyr in layers}
 
     spec = SPEC_DIR
     manifest_path = spec / "MANIFEST.json"
@@ -201,18 +213,15 @@ def main() -> int:
 
     sources = [*snapshot_references(spec), *snapshot_service(spec)]
     retrieved = {s["path"]: now for s in sources}
-    if args.skip_observed:
-        kept = [
-            s
-            for s in previous.get("sources", [])
-            if s["path"].startswith("service/observed/")
-        ]
-        sources += kept
-        retrieved |= {s["path"]: s["retrieved_at"] for s in kept}
-    else:
-        observed = snapshot_observed(spec)
-        sources += observed
-        retrieved |= {s["path"]: now for s in observed}
+    kept = [
+        s
+        for s in previous.get("sources", [])
+        if s["path"].startswith("service/observed/") and s["path"] not in refreshed
+    ]
+    observed = snapshot_observed(spec, layers)
+    sources += sorted([*kept, *observed], key=lambda s: s["path"])
+    retrieved |= {s["path"]: s["retrieved_at"] for s in kept}
+    retrieved |= {s["path"]: now for s in observed}
 
     manifest = {
         "edition": "November 2024",

@@ -662,19 +662,19 @@ from nfhl.models.enums import (
 # “It should be false for any for AR Zones that revert to Shaded X.”
 @require_if(["dual_zone"], OneOf("ar_revert", (Zone.X,)), "X")
 class FloodHazardZone(Feature):
-    """This table is required for all FIRM Databases. The S_Fld_Haz_Ar table contains
-    information about the flood hazards within the Flood Risk Project area. A
-    spatial file with location information also corresponds with this data table.
-    These zones are used by FEMA to designate the Special Flood Hazard Area (SFHA).
-    These data are the regulatory flood zones designated by FEMA. This information
-    is needed for the following tables in the FIS Report: Flooding Sources Included
-    in this FIS Report and Summary of Hydrologic and Hydraulic Analyses. The spatial
-    elements representing the flood zones are polygons. The entire area of the
-    jurisdiction(s) mapped by the FIRM should have a corresponding flood zone
-    polygon. There is one polygon for each contiguous flood zone designated.
-    Published as layer 28 of the NFHL MapServer, which also carries `GFID`,
-    `GlobalID`, `OBJECTID`, `SHAPE.STArea()`, `SHAPE.STLength()`; the reference does
-    not define them, so they are optional and validated only by type.
+    """The S_Fld_Haz_Ar table contains information about the flood hazards within the
+    Flood Risk Project area. A spatial file with location information also
+    corresponds with this data table. These zones are used by FEMA to designate the
+    Special Flood Hazard Area (SFHA). These data are the regulatory flood zones
+    designated by FEMA. This information is needed for the following tables in the
+    FIS Report: Flooding Sources Included in this FIS Report and Summary of
+    Hydrologic and Hydraulic Analyses. The spatial elements representing the flood
+    zones are polygons. The entire area of the jurisdiction(s) mapped by the FIRM
+    should have a corresponding flood zone polygon. There is one polygon for each
+    contiguous flood zone designated. Published as layer 28 of the NFHL MapServer,
+    which also carries `GFID`, `GlobalID`, `OBJECTID`, `SHAPE.STArea()`,
+    `SHAPE.STLength()`; the reference does not define them, so they are optional and
+    validated only by type.
     """
 
     model_config = ConfigDict(

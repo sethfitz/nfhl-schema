@@ -64,6 +64,34 @@ rejects. Those counts were what made each judgement call visible.
   and vanishes. The 1,607 lone spaces in `STUDY_TYP` are hidden that way. `LIKE`
   keeps a trailing blank in its pattern, so it counts lone spaces exactly.
 
+## The second layer
+
+Base Flood Elevations (`S_BFE`, 2026-10-07) was the first test of "the generator
+makes models, not a model". Its reference table joined on the first try, and
+both its domains and the unit and datum relationships were already shaped per
+table. What had been written for one layer was everywhere else: the geometry
+(Polygon, hardcoded), the feature id's description (naming `FLD_AR_ID`), the
+model's imports (a model with no rules imported every constraint and failed
+lint), the section-introduction regex (it expected "This table", and `S_BFE`
+opens with two pages of submission guidance and a requirements grid),
+`legacy.json`'s single snapshot path, `report-observed` reading `FLD_ZONE`, the
+fixture script, and the tests' `(only,) = LAYERS`. `snapshot-spec` could only
+re-count every layer, which for a new one would have moved every zone figure in
+the README; it now takes `--layer`.
+
+- `VERSION_ID`, the zones layer's one missing field, is published on layer 16,
+  so "the service omits it" is a fact about one layer, not the service.
+- No BFE value clears the legacy bar; the largest outside the reference,
+  `ASVD02`, is a fifth of it. The policy was never tested on a layer where it
+  admits nothing.
+- The largest rejection is not a vocabulary or a rule: `SOURCE_CIT`, required,
+  is null on 16,273 lines. Checking the zones for the same found 12,589 rows
+  nobody had counted, because the instruments built so far (`report-observed`,
+  `count-broken-rules`) count values and rules, not empty required fields.
+- Enums are per domain, legacy status is per layer. A value legacy on one layer
+  would validate with a warning on every layer sharing its domain. Not hit
+  here, since BFE adds no legacy value.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.

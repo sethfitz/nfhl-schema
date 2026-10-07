@@ -13,6 +13,7 @@ from nfhl.spec_source import (
     CROSSWALK,
     DOMAIN_TABLES,
     FIRM_DATABASE,
+    LAYERS,
     SPEC_DIR,
     TEXT_NULLS,
     Layer,
@@ -32,6 +33,7 @@ def test_manifest_hashes_match_the_files_on_disk() -> None:
         assert hashlib.sha256(data).hexdigest() == entry["sha256"], entry["path"]
 
 
+@pytest.mark.parametrize("layer", LAYERS, ids=lambda lyr: lyr.table)
 def test_every_relationship_quotes_its_own_field_description(
     reader: SpecReader, layer: Layer
 ) -> None:
@@ -88,6 +90,17 @@ def test_stored_values_are_descriptions_not_codes(
     assert open_water.code not in observed
 
 
+@pytest.mark.parametrize("layer", LAYERS, ids=lambda lyr: lyr.table)
+def test_a_section_introduction_is_its_prose_without_the_guidance(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # S_BFE opens with submission guidance and a requirements grid (Table 7).
+    intro = reader.reference_intro(layer.table)
+    assert intro.startswith(f"The {layer.table} ")
+    assert "Study Scenarios" not in intro
+    assert "contains the following elements" not in intro
+
+
 def test_rows_for_other_fema_databases_are_excluded(reader: SpecReader) -> None:
     # D_Zone's NP row applies to the FRD only.
     assert "NP" not in {v.code for v in reader.domain("D_Zone").values}
@@ -102,28 +115,44 @@ def test_every_reference_field_is_published_except_version_id(
     assert missing == {"VERSION_ID"}
 
 
+def test_the_base_flood_elevations_layer_publishes_every_reference_field(
+    reader: SpecReader, bfe_layer: Layer
+) -> None:
+    # Including VERSION_ID, which the zones layer leaves out.
+    published = set(reader.service_fields(bfe_layer))
+    assert {f.name for f in reader.reference_table("S_BFE").fields} <= published
+
+
 def test_legacy_json_lists_exactly_what_its_threshold_selects(
-    reader: SpecReader, layer: Layer
+    reader: SpecReader,
 ) -> None:
     def key(v: LegacyValue) -> tuple[str, str, int, str, int]:
         return (v.domain, v.field, v.layer, v.value, v.count)
 
-    listed = [
-        key(v)
-        for d in {"D_Study_Typ", "D_Zone_Subtype"}
-        for v in reader.legacy_values(d)
-    ]
-    selected = [key(v) for v in reader.legacy_candidates(layer)]
+    listed = [key(LegacyValue(**v)) for v in reader.legacy["values"]]
+    selected = [key(v) for lyr in LAYERS for v in reader.legacy_candidates(lyr)]
     assert listed and sorted(listed) == sorted(selected)
     assert all(v["note"] for v in reader.legacy["values"])
 
 
-def test_legacy_json_cites_the_snapshot_it_counted(reader: SpecReader) -> None:
+def test_legacy_json_cites_the_snapshot_it_counted_for_each_layer(
+    reader: SpecReader,
+) -> None:
     manifest = json.loads((SPEC_DIR / "MANIFEST.json").read_text())
-    source = next(
-        s for s in manifest["sources"] if s["path"] == reader.legacy["observed"]
-    )
-    assert reader.legacy["retrieved_at"] == source["retrieved_at"]
+    retrieved = {s["path"]: s["retrieved_at"] for s in manifest["sources"]}
+    cited = {o["path"]: o["retrieved_at"] for o in reader.legacy["observed"]}
+    assert set(cited) == {f"service/observed/{lyr.layer_id}.json" for lyr in LAYERS}
+    for path, at in cited.items():
+        assert retrieved[path] == at, path
+
+
+def test_no_base_flood_elevation_value_is_common_enough_to_be_legacy(
+    reader: SpecReader, bfe_layer: Layer
+) -> None:
+    # The largest value outside the reference, ASVD02 in V_DATUM, is a fifth of
+    # the bar; a did-happen control that the counts were read at all.
+    assert reader.legacy_candidates(bfe_layer) == []
+    assert "ASVD02" in observed_values(reader, bfe_layer, "V_DATUM")
 
 
 def test_a_lower_threshold_admits_more_but_never_a_text_null(

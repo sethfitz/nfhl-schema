@@ -15,9 +15,10 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Slice 1 of N: **one model, `FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer
-28). The snapshot already holds every layer's service metadata and both
-references whole, so the next tables need no new fetch.
+Two models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28) and
+**`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
+elevation across a stream. The snapshot holds every layer's service metadata and
+both references whole, so the next tables need no new fetch.
 
 - `spec/` -- the pinned snapshot, refreshed by `scripts/snapshot-spec`. See
   [`spec/README.md`](spec/README.md) for provenance, the defects in the
@@ -39,6 +40,8 @@ references whole, so the next tables need no new fetch.
   and seven that do not, five of them against the zone rules, each recorded with
   the field or rule that should warn or reject. Fetched by
   `scripts/fetch-fixtures`.
+- `tests/fixtures/base_flood_elevations.json` -- eleven real BFE lines, five
+  that validate and six that do not, the same way.
 
 ## Why generate rather than hand-write
 
@@ -90,10 +93,17 @@ number, `STATIC_BFE: -9999` is an elevation. `drop_null_encodings` treats them,
 and JSON `null`, as absent. "Not populated" (`NP`, `-8888`, `U`) is a value and
 stays one; `"-9999"` in a text field is rejected.
 
-**Units and datums live in sibling fields.** `STATIC_BFE` is in whatever
-`LEN_UNIT` says and measured from whatever `V_DATUM` says. `UnitIn("LEN_UNIT")`
-and `DatumIn("V_DATUM")` declare that on the measured field;
-`field_units(FloodHazardZone)` and `field_datums(...)` read it back.
+**Units and datums live in sibling fields.** `STATIC_BFE`, and a BFE line's
+`ELEV`, are in whatever `LEN_UNIT` says and measured from whatever `V_DATUM`
+says. `UnitIn("LEN_UNIT")` and `DatumIn("V_DATUM")` declare that on the measured
+field; `field_units(FloodHazardZone)` and `field_datums(...)` read it back.
+
+**Geometry follows each table's introduction, checked against the service.**
+A flood zone is a Polygon or MultiPolygon. A BFE is a LineString only: "Each BFE
+is represented by a single line with no pseudo-nodes", though the service's
+polyline type admits several parts. A sample of 8,000 lines across the layer
+held no MultiLineString. `nfhl.codegen.GEOMETRIES` records both, and generation
+stops if the service's geometry type disagrees.
 
 **Populated-only-if rules are constraints, not validators.** `V_DATUM` only with
 a `STATIC_BFE`, `LEN_UNIT` only with a `STATIC_BFE` or `DEPTH`, and `VEL_UNIT`

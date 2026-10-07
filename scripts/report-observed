@@ -90,9 +90,9 @@ def report_single_field_rules(
         )
         for value, count in broken.items():
             print(f"{count:>10}  {value!r}")
-    zones = {r["value"]: r["count"] for r in observed["fields"]["FLD_ZONE"]}
     table = reader.reference_table(layer.table)
     for only in relations.only_when:
+        when = {r["value"]: r["count"] for r in observed["fields"][only.when]}
         header = (
             f"\n## {only.field} populated when {only.when} is not "
             f"{', '.join(only.any_of)}"
@@ -103,7 +103,7 @@ def report_single_field_rules(
             continue
         held = accepted(reader, layer, only.field)
         most = sum(held.values())
-        least = max(0, most - sum(zones.get(z, 0) for z in only.any_of))
+        least = max(0, most - sum(when.get(z, 0) for z in only.any_of))
         span = str(most) if least == most else f"{least} to {most}"
         print(f"{header}: {span}")
         for value, count in held.items():

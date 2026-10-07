@@ -26,7 +26,7 @@ REFERENCE_EDITION = "November 2024"
 
 class LengthUnits(str, DocumentedEnum):
     """Values of `D_Length_Units` that apply to the FIRM Database, each as the data
-    stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`.
+    stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`.
     """
 
     CENTIMETERS = "Centimeters", "Code `CM`."
@@ -187,7 +187,7 @@ class TrueFalse(str, DocumentedEnum):
 
 class VDatum(str, DocumentedEnum):
     """Values of `D_V_Datum` that apply to the FIRM Database, each as the data stores
-    it. Used by `S_Fld_Haz_Ar.V_DATUM`.
+    it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`.
     """
 
     MSL = "MSL", "Mean Sea Level. Code `MSL`."

@@ -1,5 +1,6 @@
 #!/usr/bin/env -S uv run python
-"""Fetch real Flood Hazard Zones from the NFHL service into tests/fixtures/.
+"""Fetch real features of each modelled layer from the NFHL service into
+tests/fixtures/, one file per layer.
 
 Each case is one feature chosen by a `where` clause, recorded beside the feature
 with what the model should say about it: `expect` is `null` when it should
@@ -9,7 +10,7 @@ is the wire name of a field holding a legacy value, which validates with a
 that disagree with the technical reference -- findings, kept as fixtures so the
 disagreement stays visible and tested.
 
-Small polygons only (`SHAPE.STArea()` and `SHAPE.STLength()`, in degrees), so
+Small features only (`SHAPE.STArea()` and `SHAPE.STLength()`, in degrees), so
 the fixture stays reviewable. Re-running picks whatever the service returns
 first today, which may be a different feature; the test reads the expectations,
 not the ids.
@@ -17,24 +18,33 @@ not the ids.
 
 from __future__ import annotations
 
+import argparse
 import datetime as dt
 import json
 import subprocess
 import sys
 import urllib.parse
+from collections.abc import Callable
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-LAYER = 28
-QUERY = (
-    f"https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/{LAYER}/query"
-)
-OUT = (
-    Path(__file__).resolve().parents[1]
-    / "tests"
-    / "fixtures"
-    / "flood_hazard_zones.json"
-)
+SERVICE = "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer"
+FIXTURES = Path(__file__).resolve().parents[1] / "tests" / "fixtures"
+
+# (name, where, expect, warns)
+type Case = tuple[str, str, str | None, str | None]
+
+
+@dataclass(frozen=True, slots=True)
+class Fixture:
+    """One layer's cases, and the clauses added to each case's `where`."""
+
+    layer: int
+    out: str
+    cases: list[Case]
+    filters: Callable[[str], str]  # case name -> clauses ANDed to its `where`
+
 
 # Bounding perimeter as well as area keeps the vertex count, and the diff, small.
 SMALL = "SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01"
@@ -64,8 +74,7 @@ RARE = (
 NO_BFE = "STATIC_BFE = -9999 AND V_DATUM IS NULL"
 NO_DEPTH = "DEPTH = -9999 AND LEN_UNIT IS NULL"
 
-# (name, where, expect, warns)
-CASES: list[tuple[str, str, str | None, str | None]] = [
+ZONE_CASES: list[Case] = [
     (
         "ae_static_bfe",
         "FLD_ZONE = 'AE' AND ZONE_SUBTY IS NULL "
@@ -197,14 +206,66 @@ SPARSE = {
 }
 
 
-def query(where: str) -> dict[str, Any]:
+def zone_filters(name: str) -> str:
+    return RARE if name in SPARSE else f"{CLEAN} AND {SMALL}"
+
+
+# Every required field populated and in its vocabulary, unless the case is about
+# that field; `IS NULL` for the text ones, where the service writes no `""`.
+BFE_FIELDS = {
+    "ELEV": "ELEV <> -9999 AND ELEV IS NOT NULL",
+    "V_DATUM": "V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NAVD29')",
+    "SOURCE_CIT": "SOURCE_CIT IS NOT NULL",
+    "BFE_LN_ID": "BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> ''",
+}
+BFE_CASES: list[Case] = [
+    (
+        "navd88_feet",
+        "V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND ELEV > 0",
+        None,
+        None,
+    ),
+    ("ngvd29", "V_DATUM = 'NGVD29' AND LEN_UNIT = 'Feet'", None, None),
+    ("local_tidal_datum", "V_DATUM = 'LOCAL TIDAL DATUM'", None, None),
+    ("meters", "LEN_UNIT = 'Meters'", None, None),
+    # 3,021 rows; nothing in the reference says an elevation is positive.
+    ("below_datum", "ELEV < 0 AND LEN_UNIT = 'Feet'", None, None),
+    # Findings: published lines the reference does not allow.
+    ("american_samoa_datum", "V_DATUM = 'ASVD02'", "V_DATUM", None),
+    ("guam_2003_datum", "V_DATUM = 'GUVD03'", "V_DATUM", None),
+    ("navd29_datum", "V_DATUM = 'NAVD29'", "V_DATUM", None),
+    ("no_datum", "V_DATUM IS NULL", "V_DATUM", None),
+    ("no_source_citation", "SOURCE_CIT IS NULL", "SOURCE_CIT", None),
+    ("empty_line_id", "BFE_LN_ID = ''", "BFE_LN_ID", None),
+]
+# The findings with only a handful of rows, which may not be small.
+# The one row without an ELEV also lacks BFE_LN_ID and SOURCE_CIT, so it makes
+# no case: each case names one field.
+BFE_SPARSE = {"navd29_datum", "no_datum", "empty_line_id"}
+
+
+def bfe_filters(name: str) -> str:
+    expect = next(c[2] for c in BFE_CASES if c[0] == name)
+    clauses = [w for f, w in BFE_FIELDS.items() if f != expect]
+    if name not in BFE_SPARSE:
+        clauses.append("SHAPE.STLength() < 0.01")
+    return " AND ".join(clauses)
+
+
+FIXTURES_BY_LAYER = [
+    Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
+    Fixture(16, "base_flood_elevations.json", BFE_CASES, bfe_filters),
+]
+
+
+def query(layer: int, where: str) -> dict[str, Any]:
     params = {
         "where": where,
         "outFields": "*",
         "resultRecordCount": "1",
         "f": "geojson",
     }
-    url = f"{QUERY}?{urllib.parse.urlencode(params)}"
+    url = f"{SERVICE}/{layer}/query?{urllib.parse.urlencode(params)}"
     out = subprocess.run(
         ["curl", "-fsSL", "--max-time", "600", url], check=True, capture_output=True
     ).stdout
@@ -214,13 +275,13 @@ def query(where: str) -> dict[str, Any]:
     return payload
 
 
-def main() -> int:
+def fetch_fixture(fixture: Fixture) -> bool:
+    """Write `fixture`'s file; whether every case found a feature."""
     cases = []
-    for name, where, expect, warns in CASES:
-        filters = RARE if name in SPARSE else f"{CLEAN} AND {SMALL}"
-        full = f"({where}) AND {filters}"
+    for name, where, expect, warns in fixture.cases:
+        full = f"({where}) AND {fixture.filters(name)}"
         print(f"==> {name}")
-        features = query(full)["features"]
+        features = query(fixture.layer, full)["features"]
         if not features:
             print(f"    no feature matches; skipped: {full}", file=sys.stderr)
             continue
@@ -234,14 +295,29 @@ def main() -> int:
             }
         )
     payload = {
-        "source": QUERY,
+        "source": f"{SERVICE}/{fixture.layer}/query",
         "retrieved_at": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "cases": cases,
     }
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
-    print(f"wrote {len(cases)} of {len(CASES)} cases to {OUT}")
-    return 0 if len(cases) == len(CASES) else 1
+    out = FIXTURES / fixture.out
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+    print(f"wrote {len(cases)} of {len(fixture.cases)} cases to {out}")
+    return len(cases) == len(fixture.cases)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--layer", type=int, action="append", default=[], help="only these layers"
+    )
+    args = parser.parse_args()
+    complete = [
+        fetch_fixture(f)
+        for f in FIXTURES_BY_LAYER
+        if not args.layer or f.layer in args.layer
+    ]
+    return 0 if all(complete) else 1
 
 
 if __name__ == "__main__":

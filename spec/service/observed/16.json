@@ -1,0 +1,80 @@
+{
+  "layer": 16,
+  "total": 1506074,
+  "fields": {
+    "LEN_UNIT": [
+      {
+        "value": "Feet",
+        "count": 1501881
+      },
+      {
+        "value": "Meters",
+        "count": 3587
+      },
+      {
+        "value": "NP",
+        "count": 583
+      },
+      {
+        "value": "U.S. Survey Feet",
+        "count": 22
+      },
+      {
+        "value": "Inches",
+        "count": 1
+      }
+    ],
+    "V_DATUM": [
+      {
+        "value": "NAVD88",
+        "count": 1455456
+      },
+      {
+        "value": "NGVD29",
+        "count": 34881
+      },
+      {
+        "value": "MSL",
+        "count": 10853
+      },
+      {
+        "value": "LOCAL TIDAL DATUM",
+        "count": 4279
+      },
+      {
+        "value": "ASVD02",
+        "count": 284
+      },
+      {
+        "value": "GUVD03",
+        "count": 223
+      },
+      {
+        "value": "MLLW",
+        "count": 91
+      },
+      {
+        "value": "NP",
+        "count": 5
+      },
+      {
+        "value": "NAVD29",
+        "count": 1
+      },
+      {
+        "value": null,
+        "count": 1
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [],
+    "by_populated": [],
+    "groups": [
+      {
+        "count": 1506074
+      }
+    ]
+  }
+}

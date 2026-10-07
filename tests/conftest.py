@@ -17,17 +17,35 @@ def reader() -> SpecReader:
     return SpecReader()
 
 
+def modelled(table: str) -> Layer:
+    return next(lyr for lyr in LAYERS if lyr.table == table)
+
+
+def fixture_cases(name: str) -> list[dict[str, Any]]:
+    payload = json.loads((FIXTURES / name).read_text())
+    cases: list[dict[str, Any]] = payload["cases"]
+    return cases
+
+
 @pytest.fixture(scope="session")
 def layer() -> Layer:
-    (only,) = LAYERS
-    return only
+    """Flood Hazard Zones, which most of the tests are about."""
+    return modelled("S_Fld_Haz_Ar")
+
+
+@pytest.fixture(scope="session")
+def bfe_layer() -> Layer:
+    return modelled("S_BFE")
 
 
 @pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
-    payload = json.loads((FIXTURES / "flood_hazard_zones.json").read_text())
-    cases: list[dict[str, Any]] = payload["cases"]
-    return cases
+    return fixture_cases("flood_hazard_zones.json")
+
+
+@pytest.fixture(scope="session")
+def bfe_cases() -> list[dict[str, Any]]:
+    return fixture_cases("base_flood_elevations.json")
 
 
 @pytest.fixture

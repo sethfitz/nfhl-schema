@@ -106,8 +106,11 @@ def fetch_groups(layer_id: int, fields: RuleFields) -> list[dict[str, Any]]:
     """Rows per distinct combination of `fields`, from the service.
 
     Each group maps every field to its value, or for a numeric field to whether
-    it is populated, and `count` to its rows.
+    it is populated, and `count` to its rows. A layer whose model has no rules
+    is one group of every row.
     """
+    if not group_columns(fields):
+        return [{"count": service.row_count(layer_id)}]
     groups = []
     for spaced, where in lone_space_parts(layer_id, fields.by_value):
         for row in service.grouped(layer_id, group_columns(fields), where):

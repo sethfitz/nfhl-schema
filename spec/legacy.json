@@ -1,7 +1,15 @@
 {
   "about": "Values the NFHL holds that the November 2024 Domain Tables Technical Reference does not list, common enough that the models accept them with a LegacyValueWarning. Not upstream: an observation, not a specification. Each entry is a value of one domain-bound field of one service layer, with its row count from the observed snapshot; a test asserts the list is exactly what the threshold selects from that snapshot.",
-  "observed": "service/observed/28.json",
-  "retrieved_at": "2026-10-07T07:17:51Z",
+  "observed": [
+    {
+      "path": "service/observed/28.json",
+      "retrieved_at": "2026-10-07T07:17:51Z"
+    },
+    {
+      "path": "service/observed/16.json",
+      "retrieved_at": "2026-10-07T08:09:39Z"
+    }
+  ],
   "threshold": 0.001,
   "rule": "A value is common when at least one row in a thousand of its layer holds it (count / layer total >= threshold). Measured against the layer rather than the field, because most of these fields are empty on most rows, so a share of the populated rows would admit the text-encoded nulls (-9999 is 97% of populated AR_REVERT). The null encodings written as text ('-9999', '<Null>', lone spaces) are not vocabulary values and are never admitted here, whatever their count.",
   "values": [
