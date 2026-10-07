@@ -22,19 +22,10 @@ from .helpers import (
     DUAL_MISSING_X,
     DUAL_NOT_F,
     DUAL_NOT_T,
+    legacy_warnings_by,
     rejected_by,
     validate,
 )
-
-
-def legacy_warnings(feature: dict[str, Any]) -> list[str]:
-    """The LegacyValueWarning messages validating `feature` raises."""
-    with warnings.catch_warnings(record=True) as caught:
-        warnings.simplefilter("always")
-        validate(feature)
-    return [
-        str(w.message) for w in caught if issubclass(w.category, LegacyValueWarning)
-    ]
 
 
 def broken_rules(feature: dict[str, Any]) -> set[str]:
@@ -58,7 +49,7 @@ def test_each_real_feature_is_judged_as_recorded(cases: list[dict[str, Any]]) ->
         expected = {case["expect"]} if case["expect"] else set()
         assert rejected_by(case["feature"]) == expected, case["name"]
         if case["expect"] is None:
-            warned = [m.split("=")[0] for m in legacy_warnings(case["feature"])]
+            warned = [m.split("=")[0] for m in legacy_warnings_by(case["feature"])]
             assert warned == ([case["warns"]] if case["warns"] else []), case["name"]
 
 
@@ -80,7 +71,7 @@ def test_a_reference_value_validates_without_a_warning(
     valid_feature: dict[str, Any],
 ) -> None:
     assert valid_feature["properties"]["STUDY_TYP"] == "SFHA with BFE and floodway"
-    assert legacy_warnings(valid_feature) == []
+    assert legacy_warnings_by(valid_feature) == []
 
 
 def test_a_value_neither_listed_nor_legacy_is_still_rejected(
@@ -243,7 +234,7 @@ def test_the_crosswalk_does_not_judge_a_legacy_subtype(
         "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
     )
     assert rejected_by(valid_feature) == set()
-    assert len(legacy_warnings(valid_feature)) == 1
+    assert len(legacy_warnings_by(valid_feature)) == 1
 
 
 def test_open_water_takes_no_sfha_rule(valid_feature: dict[str, Any]) -> None:
@@ -422,7 +413,7 @@ def test_the_ar_subtype_limit_does_not_judge_a_legacy_subtype(
         AR_ZONE, AR_SUBTRV="AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
     )
     assert rejected_by(valid_feature) == set()
-    assert len(legacy_warnings(valid_feature)) == 1
+    assert len(legacy_warnings_by(valid_feature)) == 1
 
 
 def test_every_pair_rule_is_a_constraint_on_the_model(

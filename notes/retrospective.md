@@ -124,6 +124,40 @@ the colon.
 - Section 10 of the reference says "Multi-part features are not allowed" for
   every vector file. The zones accept MultiPolygon.
 
+## The fourth layer
+
+Profile Baselines (`S_Profil_Basln`, 2026-10-07) was picked because the cross
+sections point at it: `STREAM_STN` is "the measurement along the profile
+baseline", and both tables have the `START_ID` that joins them to the station
+start. Its section is the first that never says what the table "contains
+information about"; it says when the table is required and how to submit long
+text, so `reference_intro` raised. The class docstring falls back to the row
+the reference's Table 1 summary gives each table.
+
+- It is the first layer to share a domain with legacy values: five of the
+  zones' legacy study types clear layer 17's own bar. Enums are one per domain,
+  and legacy members were one per `legacy.json` entry, so the second layer's
+  entries would have generated duplicate members. A member now cites every
+  layer that counted it, and a value legacy on one layer validates with the
+  warning on every layer sharing the domain: the zones' ASCII-apostrophe study
+  type is on 2 baselines, under this layer's bar of 339, and warns rather than
+  rejects there.
+- `R1` decides the layer. 106,642 baselines (31.5%) have no `START_ID`, 23,554
+  of them `Hydraulic Link`s; read as required, the layer rejects 33.5% of its
+  rows, and read as optional, 2.3%.
+- The service folded blanks the other way round from layer 28. `DATUM_UNIT`
+  grouped 191,723 rows under `' '`; `LIKE ' '` counts 4,352. The empty strings
+  joined the lone spaces' group, so `report-observed` overstates the lone
+  spaces 44-fold here, where on the zones it hid them.
+- `V_DATM_OFF` is a number stored as six characters of text, and holds
+  `-9999`, `<Null>`, `NAVD88` and `Feet` as often as an offset. A text-encoded
+  null is rejected only by a vocabulary, and free text has none, so these
+  validate.
+- A page of 2,000 baselines as GeoJSON is a 500 from the service, and 1,000
+  sometimes is: the lines are long. The service also drops TLS handshakes
+  (curl exit 35) often enough that the first snapshot attempt died partway, so
+  every request now retries.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.

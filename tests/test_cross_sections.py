@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import copy
 from typing import Any
 
 from overture.schema.system.model_constraint import ModelConstraint
@@ -13,19 +12,13 @@ from nfhl.models.enums import LengthUnits, VDatum, XSLnTyp
 from nfhl.rule_counts import judge, rule_fields, take_census
 from nfhl.spec_source import Layer, SpecReader
 
-from .helpers import rejected_by, validate_as
+from .helpers import fixture_feature, rejected_by, validate_as
 
 LETTER_RULE = "@forbid_if(xs_ltr)"
 
 
 def rejected(feature: dict[str, Any]) -> set[str]:
     return rejected_by(feature, CrossSection)
-
-
-def a_valid_section(xs_cases: list[dict[str, Any]], name: str) -> dict[str, Any]:
-    case = next(c for c in xs_cases if c["name"] == name)
-    feature: dict[str, Any] = copy.deepcopy(case["feature"])
-    return feature
 
 
 def test_the_fixture_has_both_kinds_of_case(xs_cases: list[dict[str, Any]]) -> None:
@@ -54,7 +47,7 @@ def test_judging_agrees_with_validation_on_every_real_section(
 
 def test_a_valid_section_reads_back_typed(xs_cases: list[dict[str, Any]]) -> None:
     section = validate_as(
-        CrossSection, a_valid_section(xs_cases, "lettered_navd88_feet")
+        CrossSection, fixture_feature(xs_cases, "lettered_navd88_feet")
     )
     assert section.xs_ln_typ is XSLnTyp.LETTERED_MAPPED
     assert section.xs_ltr
@@ -79,7 +72,7 @@ def test_a_footnoted_requirement_is_still_a_requirement(
 ) -> None:
     # STREAM_STN, START_ID and XS_LN_TYP are "R1": required, with a footnote
     # on BLE databases.
-    feature = a_valid_section(xs_cases, "unlettered")
+    feature = fixture_feature(xs_cases, "unlettered")
     del feature["properties"]["XS_LN_TYP"]
     assert rejected(feature) == {"XS_LN_TYP"}
 
@@ -87,7 +80,7 @@ def test_a_footnoted_requirement_is_still_a_requirement(
 def test_a_letter_is_held_only_by_a_lettered_section(
     xs_cases: list[dict[str, Any]],
 ) -> None:
-    feature = a_valid_section(xs_cases, "unlettered")
+    feature = fixture_feature(xs_cases, "unlettered")
     feature["properties"]["XS_LTR"] = "A"
     assert rejected(feature) == {LETTER_RULE}
     feature["properties"]["XS_LN_TYP"] = "LETTERED, MAPPED"
@@ -95,7 +88,7 @@ def test_a_letter_is_held_only_by_a_lettered_section(
 
 
 def test_a_multipart_section_is_rejected(xs_cases: list[dict[str, Any]]) -> None:
-    feature = a_valid_section(xs_cases, "unlettered")
+    feature = fixture_feature(xs_cases, "unlettered")
     line = feature["geometry"]["coordinates"]
     feature["geometry"] = {"type": "MultiLineString", "coordinates": [line, line]}
     assert rejected(feature) == {"geometry"}

@@ -15,6 +15,7 @@ from nfhl.spec_source import (
     FIRM_DATABASE,
     LAYERS,
     SPEC_DIR,
+    SUMMARY_ONLY,
     TEXT_NULLS,
     Layer,
     LegacyValue,
@@ -90,15 +91,28 @@ def test_stored_values_are_descriptions_not_codes(
     assert open_water.code not in observed
 
 
-@pytest.mark.parametrize("layer", LAYERS, ids=lambda lyr: lyr.table)
+@pytest.mark.parametrize(
+    "table", [lyr.table for lyr in LAYERS if lyr.table not in SUMMARY_ONLY]
+)
 def test_a_section_introduction_is_its_prose_without_the_guidance(
-    reader: SpecReader, layer: Layer
+    reader: SpecReader, table: str
 ) -> None:
     # S_BFE opens with submission guidance and a requirements grid (Table 7).
-    intro = reader.reference_intro(layer.table)
-    assert intro.startswith(f"The {layer.table} ")
+    intro = reader.reference_intro(table)
+    assert intro.startswith(f"The {table} ")
     assert "Study Scenarios" not in intro
     assert "contains the following elements" not in intro
+
+
+def test_a_section_that_never_says_what_it_holds_reads_the_table_summary(
+    reader: SpecReader,
+) -> None:
+    # S_Profil_Basln's section says when it is required and how to submit its
+    # long text, never what it "contains information about".
+    intro = reader.reference_intro("S_Profil_Basln")
+    assert intro == reader.table_summary("S_Profil_Basln")
+    assert intro.startswith("Location and attributes for profile baseline")
+    assert reader.table_summary("S_XS") != reader.reference_intro("S_XS")
 
 
 def test_rows_for_other_fema_databases_are_excluded(reader: SpecReader) -> None:
@@ -123,6 +137,15 @@ def test_the_line_layers_publish_every_reference_field(
     layer = next(lyr for lyr in LAYERS if lyr.table == table)
     published = set(reader.service_fields(layer))
     assert {f.name for f in reader.reference_table(table).fields} <= published
+
+
+def test_the_profile_baselines_layer_leaves_out_only_shown_on_index(
+    reader: SpecReader, profile_layer: Layer
+) -> None:
+    published = set(reader.service_fields(profile_layer))
+    table = reader.reference_table(profile_layer.table)
+    assert {f.name for f in table.fields} - published == {"SHOWN_INDX"}
+    assert not table.field("SHOWN_INDX").required
 
 
 def test_a_field_name_wrapped_mid_word_joins_its_description(
@@ -181,6 +204,31 @@ def test_no_cross_section_value_is_common_enough_to_be_legacy(
     # of the bar; a did-happen control that the counts were read at all.
     assert reader.legacy_candidates(xs_layer) == []
     assert "ASVD02" in observed_values(reader, xs_layer, "V_DATUM")
+
+
+def test_the_profile_baselines_hold_the_zones_legacy_study_types(
+    reader: SpecReader, layer: Layer, profile_layer: Layer
+) -> None:
+    # Five of the zones' seven legacy study types clear layer 17's own bar; the
+    # ASCII apostrophe (2 rows) does not, and validates there only because the
+    # two layers share the StudyTyp enum.
+    def study_types(lyr: Layer) -> set[str]:
+        return {
+            v.value for v in reader.legacy_candidates(lyr) if v.field == "STUDY_TYP"
+        }
+
+    on_profiles = study_types(profile_layer)
+    assert on_profiles == {
+        "SFHAs WITH HIGH FLOOD RISK",
+        "SFHAs WITH LOW FLOOD RISK",
+        "SFHAs WITH MEDIUM FLOOD RISK",
+        "REDELINEATION",
+        "DIGITAL CONVERSION",
+    }
+    assert on_profiles < study_types(layer)
+    apostrophe = "Shaded Zone X with depths less than 1'"
+    assert apostrophe in observed_values(reader, profile_layer, "STUDY_TYP")
+    assert apostrophe not in on_profiles
 
 
 def test_a_lower_threshold_admits_more_but_never_a_text_null(

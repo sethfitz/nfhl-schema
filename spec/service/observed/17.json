@@ -1,0 +1,616 @@
+{
+  "layer": 17,
+  "total": 338155,
+  "fields": {
+    "WATER_TYP": [
+      {
+        "value": "Profile Baseline",
+        "count": 184798
+      },
+      {
+        "value": "Profile Baseline and Stream Centerline",
+        "count": 93516
+      },
+      {
+        "value": "Hydraulic Link",
+        "count": 58693
+      },
+      {
+        "value": "Stream / River",
+        "count": 426
+      },
+      {
+        "value": "Unknown",
+        "count": 189
+      },
+      {
+        "value": "Stream Centerline",
+        "count": 178
+      },
+      {
+        "value": "1032",
+        "count": 142
+      },
+      {
+        "value": "Creek",
+        "count": 66
+      },
+      {
+        "value": "NP",
+        "count": 64
+      },
+      {
+        "value": null,
+        "count": 40
+      },
+      {
+        "value": "Lake / Pond",
+        "count": 11
+      },
+      {
+        "value": "Channel",
+        "count": 10
+      },
+      {
+        "value": "",
+        "count": 7
+      },
+      {
+        "value": "Intermittent River / Stream",
+        "count": 6
+      },
+      {
+        "value": "2000",
+        "count": 2
+      },
+      {
+        "value": "Canal / Ditch",
+        "count": 2
+      },
+      {
+        "value": "Perennial River / Stream",
+        "count": 2
+      },
+      {
+        "value": "Stream/River",
+        "count": 2
+      },
+      {
+        "value": "Island",
+        "count": 1
+      }
+    ],
+    "STUDY_TYP": [
+      {
+        "value": "NP",
+        "count": 186584
+      },
+      {
+        "value": "SFHAs WITH HIGH FLOOD RISK",
+        "count": 63162
+      },
+      {
+        "value": "SFHAs WITH LOW FLOOD RISK",
+        "count": 29764
+      },
+      {
+        "value": "SFHA with unpublished BFE",
+        "count": 26376
+      },
+      {
+        "value": "SFHAs WITH MEDIUM FLOOD RISK",
+        "count": 14591
+      },
+      {
+        "value": "SFHA with BFE and floodway",
+        "count": 5503
+      },
+      {
+        "value": "SFHA without BFE",
+        "count": 3950
+      },
+      {
+        "value": "SFHA with BFE no floodway",
+        "count": 3297
+      },
+      {
+        "value": "REDELINEATION",
+        "count": 2183
+      },
+      {
+        "value": "DIGITAL CONVERSION",
+        "count": 1385
+      },
+      {
+        "value": "BLE available but unpublished",
+        "count": 926
+      },
+      {
+        "value": "SFHA with BFE published only in FIS",
+        "count": 224
+      },
+      {
+        "value": " ",
+        "count": 178
+      },
+      {
+        "value": "Shaded Zone X with depths less than 1’",
+        "count": 23
+      },
+      {
+        "value": "New H&H",
+        "count": 3
+      },
+      {
+        "value": "1050",
+        "count": 2
+      },
+      {
+        "value": "Shaded Zone X with depths less than 1'",
+        "count": 2
+      },
+      {
+        "value": null,
+        "count": 1
+      },
+      {
+        "value": "Profile Baseline",
+        "count": 1
+      }
+    ],
+    "SHOWN_FIRM": [
+      {
+        "value": "T",
+        "count": 180570
+      },
+      {
+        "value": "U",
+        "count": 109221
+      },
+      {
+        "value": "F",
+        "count": 25025
+      },
+      {
+        "value": null,
+        "count": 22968
+      },
+      {
+        "value": " ",
+        "count": 192
+      },
+      {
+        "value": "Y",
+        "count": 174
+      },
+      {
+        "value": "N",
+        "count": 5
+      }
+    ],
+    "DATUM_UNIT": [
+      {
+        "value": " ",
+        "count": 191723
+      },
+      {
+        "value": null,
+        "count": 136758
+      },
+      {
+        "value": "Feet",
+        "count": 8980
+      },
+      {
+        "value": "NP",
+        "count": 679
+      },
+      {
+        "value": "Meters",
+        "count": 14
+      },
+      {
+        "value": "Miles",
+        "count": 1
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [],
+    "by_populated": [],
+    "by_text_populated": [
+      "FLD_PROB1",
+      "FLD_PROB2",
+      "FLD_PROB3",
+      "SPEC_CONS1",
+      "SPEC_CONS2"
+    ],
+    "groups": [
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 297042
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 12665
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 11226
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 4764
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 3491
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 1638
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 1426
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 1133
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 715
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 692
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 657
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 538
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 355
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 332
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 234
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 192
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 187
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 171
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 127
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": true,
+        "count": 125
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 100
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 90
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 55
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 39
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 24
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 22
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 18
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": true,
+        "count": 16
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 13
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 11
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 10
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 10
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 7
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 5
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 4
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 3
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 2
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 2
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 2
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 2
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 2
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 2
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 1
+      },
+      {
+        "FLD_PROB1": false,
+        "FLD_PROB2": true,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": false,
+        "count": 1
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 1
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": false,
+        "FLD_PROB3": false,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": true,
+        "count": 1
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": false,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": false,
+        "SPEC_CONS2": false,
+        "count": 1
+      },
+      {
+        "FLD_PROB1": true,
+        "FLD_PROB2": true,
+        "FLD_PROB3": true,
+        "SPEC_CONS1": true,
+        "SPEC_CONS2": true,
+        "count": 1
+      }
+    ]
+  }
+}

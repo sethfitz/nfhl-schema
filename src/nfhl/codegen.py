@@ -155,16 +155,26 @@ def member_doc(value: DomainValue) -> str:
     return " ".join(parts)
 
 
-def legacy_doc(legacy: LegacyValue, reader: SpecReader) -> str:
-    """Marks the member legacy, says how common it is and where that was counted."""
-    total = reader.observed(next(lyr for lyr in LAYERS if lyr.layer_id == legacy.layer))
-    day = reader.legacy_counted_at(legacy.layer)[:10]
+def legacy_doc(entries: list[LegacyValue], reader: SpecReader) -> str:
+    """Marks the member legacy, says how common it is and where that was counted.
+
+    `entries` are one value's entries in `spec/legacy.json`, one per layer whose
+    threshold it clears: an enum serves every layer whose field uses its
+    domain, so the member is legacy on all of them.
+    """
+    notes = list(dict.fromkeys(sentence(e.note) for e in entries))
+    held = []
+    for e in entries:
+        total = reader.observed(next(lyr for lyr in LAYERS if lyr.layer_id == e.layer))
+        day = reader.legacy_counted_at(e.layer)[:10]
+        held.append(
+            f"{e.count:,} of {total['total']:,} rows of `{e.field}` on NFHL "
+            f"service layer {e.layer}, counted {day}"
+        )
     return (
         f"Legacy: not in the {reader.edition} Domain Tables Technical Reference; "
-        "validates with a LegacyValueWarning. "
-        f"{sentence(legacy.note)} Held by {legacy.count:,} of "
-        f"{total['total']:,} rows of `{legacy.field}` on NFHL service layer "
-        f"{legacy.layer}, counted {day}."
+        f"validates with a LegacyValueWarning. {' '.join(notes)} "
+        f"Held by {'; and by '.join(held)}."
     )
 
 
@@ -175,11 +185,13 @@ class RenderedEnum:
 
 
 def render_enum(domain: Domain, used_by: list[str], reader: SpecReader) -> RenderedEnum:
-    legacy = reader.legacy_values(domain.name)
+    legacy: dict[str, list[LegacyValue]] = {}
+    for entry in reader.legacy_values(domain.name):
+        legacy.setdefault(entry.value, []).append(entry)
     names = [member_name(v.value) for v in domain.values]
     legacy_names = []
-    for lv in legacy:
-        name = member_name(lv.value)
+    for legacy_value in legacy:
+        name = member_name(legacy_value)
         # `... less than 1'` differs from the reference's `1’` only in punctuation.
         legacy_names.append(f"{name}_LEGACY" if name in names else name)
     every = names + legacy_names
@@ -208,9 +220,9 @@ def render_enum(domain: Domain, used_by: list[str], reader: SpecReader) -> Rende
         lines.append(
             f"    {name} = {literal(value.value)}, {literal(member_doc(value))}"
         )
-    for name, legacy_value in zip(legacy_names, legacy, strict=True):
-        doc = legacy_doc(legacy_value, reader)
-        lines.append(f"    {name} = {literal(legacy_value.value)}, {literal(doc)}")
+    for name, (legacy_value, entries) in zip(legacy_names, legacy.items(), strict=True):
+        doc = legacy_doc(entries, reader)
+        lines.append(f"    {name} = {literal(legacy_value)}, {literal(doc)}")
     return RenderedEnum(
         "\n".join(lines), [f"{domain.class_name}.{n}" for n in legacy_names]
     )
@@ -303,6 +315,8 @@ def render_field(
             "Required by the reference, and populated in the state and county "
             "downloads, but the NFHL map service does not publish it."
         )
+    elif svc is None:
+        comments.append("The NFHL map service does not publish it.")
     if not required:
         annotation = f"Omitable[{annotation}]"
     lines = [f"    # {line}" for c in comments for line in textwrap.wrap(c, 82)]
@@ -601,6 +615,15 @@ GEOMETRIES = {
         "feature: Table 4 holds S_XS to “Must Be Single Part”, so a LineString.",
         "The cross section line: in the reference's words, the spatial entities "
         "representing cross sections are lines.",
+    ),
+    "S_Profil_Basln": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "Table 4 holds S_Profil_Basln to “Must Be Single Part”, so a LineString, "
+        "though the service's polyline type admits several parts.",
+        "The profile baseline: in the reference's words, the location of a "
+        "profile baseline or stream centerline feature for the Flood Risk Project "
+        "area.",
     ),
 }
 

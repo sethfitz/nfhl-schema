@@ -1,5 +1,5 @@
 {
-  "about": "Values the NFHL holds that the November 2024 Domain Tables Technical Reference does not list, common enough that the models accept them with a LegacyValueWarning. Not upstream: an observation, not a specification. Each entry is a value of one domain-bound field of one service layer, with its row count from the observed snapshot; a test asserts the list is exactly what the threshold selects from that snapshot.",
+  "about": "Values the NFHL holds that the November 2024 Domain Tables Technical Reference does not list, common enough that the models accept them with a LegacyValueWarning. Not upstream: an observation, not a specification. Each entry is a value of one domain-bound field of one service layer, with its row count from the observed snapshot; a test asserts the list is exactly what the threshold selects from that snapshot. The models share one enum per domain, so a value listed for one layer validates, with the warning, on every layer whose field draws on the same domain.",
   "observed": [
     {
       "path": "service/observed/28.json",
@@ -12,6 +12,10 @@
     {
       "path": "service/observed/14.json",
       "retrieved_at": "2026-10-07T12:09:44Z"
+    },
+    {
+      "path": "service/observed/17.json",
+      "retrieved_at": "2026-10-07T17:08:38Z"
     }
   ],
   "threshold": 0.001,
@@ -80,6 +84,54 @@
       "value": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE",
       "count": 24849,
       "note": "An older wording of a levee subtype: the 2024 subtypes say FLOOD HAZARD and LEVEE SYSTEM, and the reference does not say which of them this one became."
+    },
+    {
+      "domain": "D_Prof_Basln_Typ",
+      "field": "WATER_TYP",
+      "layer": 17,
+      "value": "Stream / River",
+      "count": 426,
+      "note": "The November 2016 Domain Tables reference's D_Carto_Hydro_Code value 4600, a cartographic code for symbolising water features that applied to the FRD only, not a type of profile baseline. The 2019 and 2024 editions list it in no domain."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 17,
+      "value": "SFHAs WITH HIGH FLOOD RISK",
+      "count": 63162,
+      "note": "The November 2016 Domain Tables reference's study type 1020, one of three graded by flood risk (LOW, MEDIUM, HIGH) that the February 2019 edition replaced with the SFHA-with-BFE types the 2024 reference still lists."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 17,
+      "value": "SFHAs WITH LOW FLOOD RISK",
+      "count": 29764,
+      "note": "The November 2016 Domain Tables reference's study type 1000, one of three graded by flood risk (LOW, MEDIUM, HIGH) that the February 2019 edition replaced with the SFHA-with-BFE types the 2024 reference still lists."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 17,
+      "value": "SFHAs WITH MEDIUM FLOOD RISK",
+      "count": 14591,
+      "note": "The November 2016 Domain Tables reference's study type 1010, one of three graded by flood risk (LOW, MEDIUM, HIGH) that the February 2019 edition replaced with the SFHA-with-BFE types the 2024 reference still lists."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 17,
+      "value": "REDELINEATION",
+      "count": 2183,
+      "note": "The November 2016 Domain Tables reference's study type 1100. The 2019 and 2024 editions list it as a study method (D_Study_Mth, the same code), not a study type."
+    },
+    {
+      "domain": "D_Study_Typ",
+      "field": "STUDY_TYP",
+      "layer": 17,
+      "value": "DIGITAL CONVERSION",
+      "count": 1385,
+      "note": "The November 2016 Domain Tables reference's study type 1200. The 2019 and 2024 editions list it as a study method (D_Study_Mth, the same code), not a study type."
     }
   ]
 }

@@ -65,6 +65,7 @@ LAYERS: tuple[Layer, ...] = (
     Layer(28, "S_Fld_Haz_Ar", "FloodHazardZone", "flood_hazard_zones"),
     Layer(16, "S_BFE", "BaseFloodElevation", "base_flood_elevations"),
     Layer(14, "S_XS", "CrossSection", "cross_sections"),
+    Layer(17, "S_Profil_Basln", "ProfileBaseline", "profile_baselines"),
 )
 
 
@@ -290,7 +291,10 @@ CROSSWALK = "Flood Zone and Zone Subtype Cross-Walk"
 CROSSWALK_TABLE = "S_Fld_Haz_Ar"  # the section Table 14 is printed in
 CROSSWALK_LICENCE = f"Table 14: {CROSSWALK}"
 _CROSSWALK_HEADER = ["Flood Zones", "Applicable Zone Subtypes"]
+_TABLE_LIST = ["FIRM Table Name", "Table Type", "Table Description"]
 _NO_SUBTYPE = "<NULL>"
+# Sections that never say what the table "contains information about".
+SUMMARY_ONLY = frozenset({"S_Profil_Basln"})
 
 
 def split_cell(cell: str, terms: list[str]) -> list[str]:
@@ -401,6 +405,10 @@ class SpecReader:
         of submission guidance and a requirements grid (`S_BFE`), so that is
         left out. Only in running text, not in a table, so it is read from the
         `pdftotext` rendering, with the running page header and footer removed.
+
+        A section with no such sentence (`S_Profil_Basln`, which says only when
+        the table is required and how to submit its long text) is described by
+        its row of the reference's table summary instead (`table_summary`).
         """
         text = self.reference_text(FIRM_DATABASE)
         match = re.search(
@@ -409,8 +417,24 @@ class SpecReader:
             text,
         )
         if match is None:
-            raise ValueError(f"{name}: section introduction not found")
+            if name not in SUMMARY_ONLY:
+                raise ValueError(f"{name}: section introduction not found")
+            return self.table_summary(name)
         return _RUNNING_HEAD.sub(" ", match[1]).strip()
+
+    def table_summary(self, name: str) -> str:
+        """A table's one-line description in the reference's table summary
+        (Table 1, "FIRM Database Table Summary")."""
+        listing = next(
+            (t for t in self._firm_tables if t["header"] == _TABLE_LIST), None
+        )
+        if listing is None:
+            raise ValueError("the reference's table summary not found")
+        rows = [r for r in listing["rows"] if r[0].strip() == name]
+        if not rows:
+            raise ValueError(f"{name}: not in the reference's table summary")
+        summary: str = rows[0][2]
+        return summary
 
     def reference_text(self, stem: str) -> str:
         """The `pdftotext -layout` rendering, whitespace-collapsed for quoting."""

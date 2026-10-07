@@ -21,15 +21,14 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
-import subprocess
 import sys
-import urllib.parse
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-SERVICE = "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer"
+from nfhl.service import fetch_json, query_url
+
 FIXTURES = Path(__file__).resolve().parents[1] / "tests" / "fixtures"
 
 # (name, where, expect, warns)
@@ -248,11 +247,11 @@ def clean_except_expected(
     fields: dict[str, str], cases: list[Case], sparse: set[str]
 ) -> Callable[[str], str]:
     """Filters holding every field of `fields` clean but the one a case expects
-    to reject, and the features short unless the case is sparse."""
+    to reject or to warn, and the features short unless the case is sparse."""
 
     def filters(name: str) -> str:
-        expect = next(c[2] for c in cases if c[0] == name)
-        clauses = [w for f, w in fields.items() if f != expect]
+        _, _, expect, warns = next(c for c in cases if c[0] == name)
+        clauses = [w for f, w in fields.items() if f not in (expect, warns)]
         if name not in sparse:
             clauses.append("SHAPE.STLength() < 0.01")
         return " AND ".join(clauses)
@@ -323,6 +322,143 @@ XS_CASES: list[Case] = [
 XS_SPARSE = {"ngvd88_datum", "no_stream_station", "no_water_surface"}
 
 
+def continues_without(first: str, then: str) -> str:
+    """`then` holds text, a lone space included, while `first` holds none."""
+    return (
+        f"({then} IS NOT NULL AND ({then} <> '' OR {then} LIKE ' ')) "
+        f"AND ({first} IS NULL OR ({first} = '' AND {first} NOT LIKE ' '))"
+    )
+
+
+# STUDY_TYP values that are neither in D_Study_Typ nor legacy (spec/legacy.json).
+STUDY_TYP_OUT_OF_DOMAIN = ["New H&H", "1050", "Profile Baseline"]
+# The legacy ones, which validate with a warning.
+STUDY_TYP_LEGACY = [
+    "SFHAs WITH HIGH FLOOD RISK",
+    "SFHAs WITH LOW FLOOD RISK",
+    "SFHAs WITH MEDIUM FLOOD RISK",
+    "REDELINEATION",
+    "DIGITAL CONVERSION",
+    "Shaded Zone X with depths less than 1'",
+]
+
+
+def sql_list(values: list[str]) -> str:
+    return ", ".join("'" + v.replace("'", "''") + "'" for v in values)
+
+
+# Every required field populated, every vocabulary value a reference one, no
+# lone-space unit, and no continuation field without the one it continues,
+# unless the case is about that.
+PROFILE_RULES = {
+    "@forbid_if(fld_prob2)": ("FLD_PROB1", "FLD_PROB2"),
+    "@forbid_if(fld_prob3)": ("FLD_PROB2", "FLD_PROB3"),
+    "@forbid_if(spec_cons2)": ("SPEC_CONS1", "SPEC_CONS2"),
+}
+PROFILE_FIELDS = {
+    **{
+        f: f"{f} IS NOT NULL AND {f} <> ''"
+        for f in (
+            "BASELN_ID",
+            "WTR_NM",
+            "R_ST_DESC",
+            "R_END_DESC",
+            "START_ID",
+            "SOURCE_CIT",
+        )
+    },
+    "WATER_TYP": "WATER_TYP IN ('Profile Baseline', "
+    "'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')",
+    "STUDY_TYP": "STUDY_TYP <> '' AND STUDY_TYP NOT IN "
+    f"({sql_list(STUDY_TYP_OUT_OF_DOMAIN + STUDY_TYP_LEGACY)})",
+    "SHOWN_FIRM": "SHOWN_FIRM IN ('T', 'F', 'U')",
+    "DATUM_UNIT": "(DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ')",
+    **{
+        rule: f"NOT ({continues_without(first, then)})"
+        for rule, (first, then) in PROFILE_RULES.items()
+    },
+}
+PROFILE_CASES: list[Case] = [
+    (
+        "profile_baseline_shown",
+        "WATER_TYP = 'Profile Baseline' AND SHOWN_FIRM = 'T'",
+        None,
+        None,
+    ),
+    (
+        "stream_centerline",
+        "WATER_TYP = 'Profile Baseline and Stream Centerline'",
+        None,
+        None,
+    ),
+    (
+        "hydraulic_link_not_shown",
+        "WATER_TYP = 'Hydraulic Link' AND SHOWN_FIRM = 'F'",
+        None,
+        None,
+    ),
+    # A number in a text field, in DATUM_UNIT; most offsets are written `3.7`.
+    ("datum_offset", "V_DATM_OFF LIKE '%.%' AND DATUM_UNIT = 'Feet'", None, None),
+    (
+        "flooding_problem_continued",
+        "FLD_PROB1 <> '' AND FLD_PROB2 <> '' AND FLD_PROB3 <> '' "
+        "AND SPEC_CONS1 <> '' AND SPEC_CONS2 <> ''",
+        None,
+        None,
+    ),
+    # V_DATM_OFF is free text, so a datum name, or a numeric null written as
+    # text, validates there; neither is an offset.
+    (
+        "datum_name_as_offset",
+        "V_DATM_OFF = 'NAVD88' AND SHAPE.STLength() < 0.05",
+        None,
+        None,
+    ),
+    ("text_null_offset", "V_DATM_OFF = '-9999'", None, None),
+    # Legacy values (spec/legacy.json), which validate with a warning.
+    ("stream_river_water_type", "WATER_TYP = 'Stream / River'", None, "WATER_TYP"),
+    (
+        "legacy_study_type",
+        "STUDY_TYP = 'SFHAs WITH HIGH FLOOD RISK'",
+        None,
+        "STUDY_TYP",
+    ),
+    # Findings: published profile baselines the reference does not allow.
+    ("no_station_start", "START_ID IS NULL", "START_ID", None),
+    ("not_said_if_shown", "SHOWN_FIRM IS NULL", "SHOWN_FIRM", None),
+    ("no_water_name", "WTR_NM IS NULL OR WTR_NM = ''", "WTR_NM", None),
+    ("no_source_citation", "SOURCE_CIT IS NULL", "SOURCE_CIT", None),
+    ("coded_water_type", "WATER_TYP = '1032'", "WATER_TYP", None),
+    ("creek_water_type", "WATER_TYP = 'Creek'", "WATER_TYP", None),
+    ("lone_space_datum_unit", "DATUM_UNIT LIKE ' '", "DATUM_UNIT", None),
+    *(
+        (
+            f"{then.lower()}_without_{first.lower()}",
+            continues_without(first, then),
+            rule,
+            None,
+        )
+        for rule, (first, then) in PROFILE_RULES.items()
+    ),
+]
+# The findings with only a few hundred rows, which may not be short. Each case
+# names one field, so these make none: every row without an R_ST_DESC also lacks
+# R_END_DESC, all 174 `SHOWN_FIRM = 'Y'` lack a START_ID (DFIRM 51051C), and
+# the 11 without a BASELN_ID each lack something else too.
+PROFILE_SPARSE = {
+    "no_water_name",
+    "legacy_study_type",
+    "coded_water_type",
+    "creek_water_type",
+    "no_source_citation",
+    "fld_prob3_without_fld_prob2",
+    "spec_cons2_without_spec_cons1",
+    "fld_prob2_without_fld_prob1",
+    "datum_name_as_offset",
+    "stream_river_water_type",
+}
+
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -337,23 +473,28 @@ FIXTURES_BY_LAYER = [
         XS_CASES,
         clean_except_expected(XS_FIELDS, XS_CASES, XS_SPARSE),
     ),
+    Fixture(
+        17,
+        "profile_baselines.json",
+        PROFILE_CASES,
+        clean_except_expected(PROFILE_FIELDS, PROFILE_CASES, PROFILE_SPARSE),
+    ),
 ]
 
 
 def query(layer: int, where: str) -> dict[str, Any]:
-    params = {
-        "where": where,
-        "outFields": "*",
-        "resultRecordCount": "1",
-        "f": "geojson",
-    }
-    url = f"{SERVICE}/{layer}/query?{urllib.parse.urlencode(params)}"
-    out = subprocess.run(
-        ["curl", "-fsSL", "--max-time", "600", url], check=True, capture_output=True
-    ).stdout
-    payload: dict[str, Any] = json.loads(out)
-    if "error" in payload:
-        raise RuntimeError(f"{where}: {payload['error']}")
+    try:
+        payload: dict[str, Any] = fetch_json(
+            query_url(layer),
+            {
+                "where": where,
+                "outFields": "*",
+                "resultRecordCount": "1",
+                "f": "geojson",
+            },
+        )
+    except RuntimeError as e:
+        raise RuntimeError(f"{where}: {e}") from e
     return payload
 
 
@@ -377,7 +518,7 @@ def fetch_fixture(fixture: Fixture) -> bool:
             }
         )
     payload = {
-        "source": f"{SERVICE}/{fixture.layer}/query",
+        "source": query_url(fixture.layer),
         "retrieved_at": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "cases": cases,
     }

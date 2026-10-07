@@ -15,10 +15,12 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Three models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Four models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
-elevation across a stream, and **`CrossSection`** (`S_XS`, layer 14), the
-modelled cross sections with their water-surface and streambed elevations. The
+elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
+modelled cross sections with their water-surface and streambed elevations, and
+**`ProfileBaseline`** (`S_Profil_Basln`, layer 17), the lines the cross
+sections' stream stations are measured along. The
 snapshot holds every layer's service metadata and both references whole, so the
 next tables need no new fetch.
 
@@ -46,6 +48,9 @@ next tables need no new fetch.
   that validate and six that do not, the same way.
 - `tests/fixtures/cross_sections.json` -- eighteen real cross sections, seven
   that validate and eleven that do not, two of them against the letter rule.
+- `tests/fixtures/profile_baselines.json` -- nineteen real profile baselines,
+  seven that validate, two that validate with a legacy-value warning, and ten
+  that do not, three of them against the continuation rules.
 
 ## Why generate rather than hand-write
 
@@ -81,9 +86,11 @@ reference attaches to it, and its coded value.
 zones have a `STUDY_TYP` the November 2024 reference does not list, most of them
 study types such as `SFHAs WITH LOW FLOOD RISK` that no current domain defines.
 A value outside the reference that at least one row in a thousand of the layer
-holds is a legacy value: [`spec/legacy.json`](spec/legacy.json) lists the eight
-that clear that bar, with their counts and what is known of each, and the
-generator adds each as an enum member whose description begins `Legacy:`. A
+holds is a legacy value: [`spec/legacy.json`](spec/legacy.json) lists those
+that clear that bar on each layer, with their counts and what is known of each,
+and the generator adds each as an enum member whose description begins
+`Legacy:`. Layers whose fields share a domain share its enum, so a value legacy
+on one of them validates, with the warning, on all of them. A
 feature holding one validates and raises `nfhl.legacy.LegacyValueWarning`;
 `warnings.simplefilter("error", LegacyValueWarning)` makes them rejections
 again. Everything else outside the reference is still rejected: 1,992 rows of

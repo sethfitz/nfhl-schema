@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import warnings
 from typing import Any
@@ -35,6 +36,25 @@ def rejected_by(
             for err in e.errors()
         }
     return set()
+
+
+def legacy_warnings_by(
+    feature: dict[str, Any], model: type[BaseModel] = FloodHazardZone
+) -> list[str]:
+    """The LegacyValueWarning messages validating `feature` raises."""
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        validate_as(model, feature)
+    return [
+        str(w.message) for w in caught if issubclass(w.category, LegacyValueWarning)
+    ]
+
+
+def fixture_feature(cases: list[dict[str, Any]], name: str) -> dict[str, Any]:
+    """A fresh copy of the named fixture case's feature, to mutate in a test."""
+    case = next(c for c in cases if c["name"] == name)
+    feature: dict[str, Any] = copy.deepcopy(case["feature"])
+    return feature
 
 
 DUAL_NOT_T = "@forbid_if(dual_zone) [A, AE, AH, AO]"

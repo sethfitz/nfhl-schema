@@ -162,6 +162,32 @@
           "quote": "This field is populated when the cross section is lettered."
         }
       ]
+    },
+    "S_Profil_Basln": {
+      "units": [
+        {
+          "field": "V_DATM_OFF",
+          "unit_field": "DATUM_UNIT",
+          "quote": "This is the unit of measure for the vertical datum offset (conversion factor) distance height."
+        }
+      ],
+      "only_if": [
+        {
+          "field": "FLD_PROB2",
+          "any_of": ["FLD_PROB1"],
+          "quote": "Used when FLD_PRB1 field does not have enough characters to hold the flooding problem description."
+        },
+        {
+          "field": "FLD_PROB3",
+          "any_of": ["FLD_PROB2"],
+          "quote": "Used when FLD_PRB1 and FLD_PRB2 fields do not have enough characters to hold the flooding problem description."
+        },
+        {
+          "field": "SPEC_CONS2",
+          "any_of": ["SPEC_CONS1"],
+          "quote": "Use this field when the description cannot be contained within the SPEC_CONS1 field."
+        }
+      ]
     }
   }
 }

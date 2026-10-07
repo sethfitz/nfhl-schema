@@ -26,7 +26,8 @@ REFERENCE_EDITION = "November 2024"
 
 class LengthUnits(str, DocumentedEnum):
     """Values of `D_Length_Units` that apply to the FIRM Database, each as the data
-    stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`, `S_XS.LEN_UNIT`.
+    stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`, `S_XS.LEN_UNIT`,
+    `S_Profil_Basln.DATUM_UNIT`.
     """
 
     CENTIMETERS = "Centimeters", "Code `CM`."
@@ -40,10 +41,37 @@ class LengthUnits(str, DocumentedEnum):
     NP = "NP", "Code `NP`."
 
 
+class ProfBaslnTyp(str, DocumentedEnum):
+    """Values of `D_Prof_Basln_Typ` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Profil_Basln.WATER_TYP`. The last is a legacy value:
+    common in the data, not in the reference.
+    """
+
+    PROFILE_BASELINE = "Profile Baseline", "Code `1000`."
+    PROFILE_BASELINE_AND_STREAM_CENTERLINE = (
+        "Profile Baseline and Stream Centerline",
+        "Code `2000`.",
+    )
+    HYDRAULIC_LINK = "Hydraulic Link", "Code `3000`."
+    UNKNOWN = "Unknown", "Code `UNK`."
+    STREAM_RIVER = (
+        "Stream / River",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. The November 2016 Domain Tables "
+            "reference's D_Carto_Hydro_Code value 4600, a cartographic code for "
+            "symbolising water features that applied to the FRD only, not a type of"
+            " profile baseline. The 2019 and 2024 editions list it in no domain. "
+            "Held by 426 of 338,155 rows of `WATER_TYP` on NFHL service layer 17, "
+            "counted 2026-10-07."
+        ),
+    )
+
+
 class StudyTyp(str, DocumentedEnum):
     """Values of `D_Study_Typ` that apply to the FIRM Database, each as the data stores
-    it. Used by `S_Fld_Haz_Ar.STUDY_TYP`. The last 7 are legacy values: common in
-    the data, not in the reference.
+    it. Used by `S_Fld_Haz_Ar.STUDY_TYP`, `S_Profil_Basln.STUDY_TYP`. The last 7 are
+    legacy values: common in the data, not in the reference.
     """
 
     BLE_AVAILABLE_BUT_UNPUBLISHED = (
@@ -101,7 +129,8 @@ class StudyTyp(str, DocumentedEnum):
             "MEDIUM, HIGH) that the February 2019 edition replaced with the "
             "SFHA-with-BFE types the 2024 reference still lists. Held by 979,597 of"
             " 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, counted "
-            "2026-10-07."
+            "2026-10-07; and by 29,764 of 338,155 rows of `STUDY_TYP` on NFHL "
+            "service layer 17, counted 2026-10-07."
         ),
     )
     SFHAS_WITH_HIGH_FLOOD_RISK = (
@@ -113,7 +142,8 @@ class StudyTyp(str, DocumentedEnum):
             "MEDIUM, HIGH) that the February 2019 edition replaced with the "
             "SFHA-with-BFE types the 2024 reference still lists. Held by 557,258 of"
             " 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, counted "
-            "2026-10-07."
+            "2026-10-07; and by 63,162 of 338,155 rows of `STUDY_TYP` on NFHL "
+            "service layer 17, counted 2026-10-07."
         ),
     )
     SFHAS_WITH_MEDIUM_FLOOD_RISK = (
@@ -125,7 +155,8 @@ class StudyTyp(str, DocumentedEnum):
             "MEDIUM, HIGH) that the February 2019 edition replaced with the "
             "SFHA-with-BFE types the 2024 reference still lists. Held by 193,351 of"
             " 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, counted "
-            "2026-10-07."
+            "2026-10-07; and by 14,591 of 338,155 rows of `STUDY_TYP` on NFHL "
+            "service layer 17, counted 2026-10-07."
         ),
     )
     REDELINEATION = (
@@ -136,7 +167,8 @@ class StudyTyp(str, DocumentedEnum):
             "reference's study type 1100. The 2019 and 2024 editions list it as a "
             "study method (D_Study_Mth, the same code), not a study type. Held by "
             "72,844 of 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, "
-            "counted 2026-10-07."
+            "counted 2026-10-07; and by 2,183 of 338,155 rows of `STUDY_TYP` on "
+            "NFHL service layer 17, counted 2026-10-07."
         ),
     )
     SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1_LEGACY = (
@@ -159,7 +191,8 @@ class StudyTyp(str, DocumentedEnum):
             "reference's study type 1200. The 2019 and 2024 editions list it as a "
             "study method (D_Study_Mth, the same code), not a study type. Held by "
             "12,946 of 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, "
-            "counted 2026-10-07."
+            "counted 2026-10-07; and by 1,385 of 338,155 rows of `STUDY_TYP` on "
+            "NFHL service layer 17, counted 2026-10-07."
         ),
     )
     SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO = (
@@ -177,7 +210,8 @@ class StudyTyp(str, DocumentedEnum):
 
 class TrueFalse(str, DocumentedEnum):
     """Values of `D_TrueFalse` that apply to the FIRM Database, each as the data stores
-    it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`.
+    it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
+    `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`.
     """
 
     T = "T", "True (Yes). Code `T`."
@@ -585,6 +619,7 @@ class ZoneSubtype(str, DocumentedEnum):
 # Members the reference does not list; each use raises a warning.
 LEGACY_MEMBERS: frozenset[Enum] = frozenset(
     {
+        ProfBaslnTyp.STREAM_RIVER,
         StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_MEDIUM_FLOOD_RISK,

@@ -21,6 +21,7 @@ dependencies = [
 nfhl_flood_hazard_zone = "nfhl.models:FloodHazardZone"
 nfhl_base_flood_elevation = "nfhl.models:BaseFloodElevation"
 nfhl_cross_section = "nfhl.models:CrossSection"
+nfhl_profile_baseline = "nfhl.models:ProfileBaseline"
 
 # Tags the models above with `nfhl`, so `--tag nfhl` selects them.
 [project.entry-points."overture.tag_providers"]

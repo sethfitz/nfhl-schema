@@ -107,6 +107,9 @@ Each is pinned by a test, so an upstream change shows up as a failure.
   reference says which is meant.
 - **`AR_SUBTRV` cites "the D_Zone_Subtype_ table"**, with a stray underscore;
   its type table names `D_Zone_Subtype` correctly.
+- **`S_Profil_Basln`'s `FLD_PROB2` and `FLD_PROB3` cite `FLD_PRB1` and
+  `FLD_PRB2`**, fields the table does not have; the relationships quote them as
+  printed and read them as `FLD_PROB1` and `FLD_PROB2`.
 - **The AR fields' descriptions leave two things open**, and the models take
   the narrower reading of each. `AR_SUBTRV` "must be one of the allowable
   subtypes for Zones AE, AO, AH, A or X", which names the five zones together:
@@ -332,6 +335,67 @@ rejected exactly as many as the union selects over the same `OBJECTID` range:
 `LEN_UNIT` is `Miles` on 1,778 sections in 36 DFIRMs (`LEN_UNIT = 'Miles'`).
 `D_Length_Units` lists it, so they validate, but their `WSEL_REG` runs from
 66.2 to 1,494.7, elevations in feet. The reference gives `STREAM_STN` no unit.
+
+## What the profile baselines hold that the reference does not allow
+
+Layer 17 has 338,155 rows (`service/observed/17.json`), so its legacy bar is
+339. Six values outside the reference clear it: five of the zones' legacy study
+types (`SFHAs WITH HIGH FLOOD RISK` 63,162, `... LOW ...` 29,764, `... MEDIUM
+...` 14,591, `REDELINEATION` 2,183, `DIGITAL CONVERSION` 1,385), and
+`WATER_TYP` `Stream / River` (426), the [November 2016 Domain Tables
+reference](https://www.fema.gov/sites/default/files/nepa/Domain_Tables_Technical_Reference_Nov_2016_SUPERSEDED.pdf)'s
+FRD-only cartographic code 4600 (`D_Carto_Hydro_Code`), which the 2019 and 2024
+editions list in no domain. The layers share one `StudyTyp` enum, so the
+zones' ASCII-apostrophe study type also validates, with a warning, on the 2
+baselines that hold it, far below this layer's bar.
+
+Its rejections, 113,286 rows (33.5%) by direct query on 2026-10-07, are these;
+"missing" is as for the cross sections:
+
+- **`START_ID`, required (`R1`), is missing on 106,642 rows**, 31.5% of the
+  layer, in 707 DFIRMs, 29,438 of them in `12053C`. 23,554 are `Hydraulic
+  Link`s, 40% of the layer's 58,693.
+- **`SHOWN_FIRM`, required (`R1`), is missing on 23,153 rows** (22,968 null,
+  185 `''`) in 371 DFIRMs, and holds `Y` (174, all in DFIRM `51051C`), `N` (5)
+  or a lone space (7) on 186 more. `U` is on 109,221 and validates, since
+  `D_TrueFalse` lists it.
+- **Other required text missing**: `WTR_NM` 2,020, `R_END_DESC` 362,
+  `R_ST_DESC` 358 (no row with a null `R_ST_DESC` has an `R_END_DESC`),
+  `SOURCE_CIT` 326 (none `''`), `BASELN_ID` 11 (one null, in DFIRM `48485C`).
+- **`WATER_TYP` outside `D_Prof_Basln_Typ`**, from `report-observed`:
+  `Stream Centerline` (178), `1032` (142), `Creek` (66), `NP` (64), the 2016
+  cartographic codes `Lake / Pond` (11) and `Canal / Ditch` (2), and six more
+  of 10 rows or fewer; with the 40 nulls and 7 `''`, 533 rows.
+- **`STUDY_TYP`**: 147 missing, 32 lone spaces, and `New H&H` (3), `1050` (2)
+  and `Profile Baseline` (1), 185 rows.
+- **`DATUM_UNIT` holds a lone space on 4,352 rows** (`DATUM_UNIT LIKE ' '`),
+  which `D_Length_Units` does not list. `report-observed` prints 191,723 `' '`:
+  the snapshot's grouping folded 187,371 empty strings into the lone spaces'
+  group, the opposite of the way `STUDY_TYP`'s blanks fell on layer 28.
+- **The continuation rules reject 375 rows**, from `count-broken-rules`:
+  `FLD_PROB2` without `FLD_PROB1` (218), `FLD_PROB3` without `FLD_PROB2` (15),
+  and `SPEC_CONS2` without `SPEC_CONS1` (142). Each continuation is "used when"
+  the field before it "does not have enough characters", read as a limit, as
+  `XS_LTR`'s "populated when" was. No row breaks two.
+
+The union joins every clause above with `OR`, the vocabularies' as the values
+`report-observed` prints and the rules' as `(F2 IS NOT NULL AND (F2 <> '' OR F2
+LIKE ' ')) AND (F1 IS NULL OR (F1 = '' AND F1 NOT LIKE ' '))`. On eight pages of
+live features (7,500 in all, spread across the layer by `resultOffset`),
+validating each rejected exactly as many as the union selects over the same
+`OBJECTID` range: 1,000, 60, 31, 60, 991, 9, 894 and 1,000. None of the 7,500
+was a MultiLineString. The `R1` fields decide most of the total: without
+`START_ID`, `SHOWN_FIRM`, `WATER_TYP`, `STUDY_TYP`, `R_ST_DESC` and
+`R_END_DESC` required, the union is 7,615 rows (2.3%).
+
+`V_DATM_OFF`, the datum offset, is `Text` of length 6, so the model checks its
+length and nothing else: it holds `-9999` (2,172) and `<Null>` (147) written
+as text, a datum name (`NAVD88`, 428) or a unit (`Feet`, 184) as often as a
+number, and a lone space on 6,105 rows, and all of them validate. `DATUM_UNIT`
+is set on 8,413 rows without an offset, and 113 offsets have no unit; no
+sentence ties the two beyond "the unit of measure for the vertical datum
+offset", so neither is rejected. `SHOWN_INDX` is in the reference and not on
+the service.
 
 **Read a count as the service's, not the models'.** The service is SQL Server
 (it accepts `SHAPE.STArea()` in a `where`), and its `=`, `<>`, `IN` and

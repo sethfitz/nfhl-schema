@@ -10,5 +10,6 @@ from __future__ import annotations
 from nfhl.models.base_flood_elevations import BaseFloodElevation
 from nfhl.models.cross_sections import CrossSection
 from nfhl.models.flood_hazard_zones import FloodHazardZone
+from nfhl.models.profile_baselines import ProfileBaseline
 
-__all__ = ["BaseFloodElevation", "CrossSection", "FloodHazardZone"]
+__all__ = ["BaseFloodElevation", "CrossSection", "FloodHazardZone", "ProfileBaseline"]
