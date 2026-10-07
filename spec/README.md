@@ -142,15 +142,14 @@ Each is pinned by a test, so an upstream change shows up as a failure.
   field to AR zones, so `T` off one validates. "For any for AR Zones" is the
   reference's typo, quoted as printed.
 
-Nine of the reference's 53 tables do not yet join their description table to
+Eight of the reference's 53 tables do not yet join their description table to
 their type table, so `SpecReader.reference_table` raises on them: `L_Mtg_POC`
-spells a field `E-MAIL` in one and `EMAIL` in the other; `S_XS` and
-`L_Profil_Label` wrap field names mid-word (`STREAM_ST N`, `RIENT`);
-`S_Alluvial_Fan`, `S_Cst_Gage`, `S_Label_Pt` and `S_Nodes` each have a blank row;
-`L_Comm_Revis` and `L_Profil_Bkwtr_El` head the requirement column
-`R/A/ OR/ A` and `R/A/O`. In the Domain Tables reference, `D_SFHA_FLDWY` and
-`D_Time_Units` have irregular rows, and `D_Zone_Subtype`'s rotated "Footnote"
-header extracts reversed. None of these is in this slice.
+spells a field `E-MAIL` in one and `EMAIL` in the other, and `L_Profil_Label`
+`ORIENT` and `RIENT`; `S_Alluvial_Fan`, `S_Cst_Gage`, `S_Label_Pt` and `S_Nodes`
+each have a blank row; `L_Comm_Revis` and `L_Profil_Bkwtr_El` head the
+requirement column `R/A/ OR/ A` and `R/A/O`. In the Domain Tables reference,
+`D_SFHA_FLDWY` and `D_Time_Units` have irregular rows, and `D_Zone_Subtype`'s
+rotated "Footnote" header extracts reversed. None of these is in this slice.
 
 ## What the service holds that the reference does not allow
 

@@ -123,6 +123,15 @@ def test_the_base_flood_elevations_layer_publishes_every_reference_field(
     assert {f.name for f in reader.reference_table("S_BFE").fields} <= published
 
 
+def test_a_field_name_wrapped_mid_word_joins_its_description(
+    reader: SpecReader,
+) -> None:
+    # Table 39 wraps STREAM_STN and STRMBED_EL over two lines.
+    fields = {f.name: f for f in reader.reference_table("S_XS").fields}
+    assert {"STREAM_STN", "STRMBED_EL"} <= fields.keys()
+    assert fields["STREAM_STN"].description.startswith("Stream Station.")
+
+
 def test_legacy_json_lists_exactly_what_its_threshold_selects(
     reader: SpecReader,
 ) -> None:

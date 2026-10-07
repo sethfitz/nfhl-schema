@@ -364,15 +364,18 @@ class SpecReader:
         The PDF publishes each table twice -- prose descriptions, then a
         type/length/domain grid -- so a field missing from either is a defect
         in the reference and raises here rather than silently going untyped.
+        A name the grid wraps mid-word (`S_XS`'s `STREAM_ST N`) extracts with a
+        space where the line broke; no field name holds one, so it is removed.
         """
         ours = [t for t in self._firm_tables if t["section"] == name]
         described = next(t for t in ours if t["header"][0] == "Field Name")
         typed = next(t for t in ours if t["header"][:2] == ["Field", "R/A"])
         descriptions = {r[0]: r[2] for r in described["rows"]}
-        if set(descriptions) != {r[0] for r in typed["rows"]}:
+        rows = [[r[0].replace(" ", ""), *r[1:]] for r in typed["rows"]]
+        if set(descriptions) != {r[0] for r in rows}:
             raise ValueError(f"{name}: description and field tables disagree")
         fields = []
-        for name_, requirement, type_, length, _scale, joined in typed["rows"]:
+        for name_, requirement, type_, length, _scale, joined in rows:
             fields.append(
                 ReferenceField(
                     name=name_,
