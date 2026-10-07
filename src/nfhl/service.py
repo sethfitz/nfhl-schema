@@ -13,6 +13,15 @@ from typing import Any
 
 SERVICE = "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer"
 TIMEOUT = 600
+RETRY = [
+    "--retry",
+    "5",
+    "--retry-all-errors",
+    "--retry-delay",
+    "5",
+    "--retry-max-time",
+    "120",
+]
 
 
 def fetch(url: str, params: dict[str, str] | None = None) -> bytes:
@@ -21,11 +30,14 @@ def fetch(url: str, params: dict[str, str] | None = None) -> bytes:
     curl rather than urllib because fema.gov's CDN answers 403 to urllib's
     User-Agent, and to a spoofed browser one, while serving curl's own. Checked
     2026-10-04; do not "fix" a 403 here by impersonating a browser.
+
+    Every failure is retried, because curl's default retry set leaves out exit
+    35, a dropped TLS handshake, which this service produces.
     """
     if params:
         url = f"{url}?{urllib.parse.urlencode(params)}"
     result = subprocess.run(
-        ["curl", "-fsSL", "--max-time", str(TIMEOUT), url],
+        ["curl", "-fsSL", "--max-time", str(TIMEOUT), *RETRY, url],
         check=True,
         capture_output=True,
     )
