@@ -99,9 +99,9 @@ class StudyTyp(str, DocumentedEnum):
             "validates with a LegacyValueWarning. The November 2016 Domain Tables "
             "reference's study type 1000, one of three graded by flood risk (LOW, "
             "MEDIUM, HIGH) that the February 2019 edition replaced with the "
-            "SFHA-with-BFE types the 2024 reference still lists. Held by 979,594 of"
-            " 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
-            "2026-10-05."
+            "SFHA-with-BFE types the 2024 reference still lists. Held by 979,597 of"
+            " 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-07."
         ),
     )
     SFHAS_WITH_HIGH_FLOOD_RISK = (
@@ -111,9 +111,9 @@ class StudyTyp(str, DocumentedEnum):
             "validates with a LegacyValueWarning. The November 2016 Domain Tables "
             "reference's study type 1020, one of three graded by flood risk (LOW, "
             "MEDIUM, HIGH) that the February 2019 edition replaced with the "
-            "SFHA-with-BFE types the 2024 reference still lists. Held by 557,235 of"
-            " 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
-            "2026-10-05."
+            "SFHA-with-BFE types the 2024 reference still lists. Held by 557,258 of"
+            " 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-07."
         ),
     )
     SFHAS_WITH_MEDIUM_FLOOD_RISK = (
@@ -124,8 +124,8 @@ class StudyTyp(str, DocumentedEnum):
             "reference's study type 1010, one of three graded by flood risk (LOW, "
             "MEDIUM, HIGH) that the February 2019 edition replaced with the "
             "SFHA-with-BFE types the 2024 reference still lists. Held by 193,351 of"
-            " 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
-            "2026-10-05."
+            " 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-07."
         ),
     )
     REDELINEATION = (
@@ -135,8 +135,8 @@ class StudyTyp(str, DocumentedEnum):
             "validates with a LegacyValueWarning. The November 2016 Domain Tables "
             "reference's study type 1100. The 2019 and 2024 editions list it as a "
             "study method (D_Study_Mth, the same code), not a study type. Held by "
-            "72,844 of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, "
-            "counted 2026-10-05."
+            "72,844 of 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, "
+            "counted 2026-10-07."
         ),
     )
     SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1_LEGACY = (
@@ -147,8 +147,8 @@ class StudyTyp(str, DocumentedEnum):
             "`Shaded Zone X with depths less than 1’`, written with an ASCII "
             "apostrophe where the reference prints a typographic one. More rows "
             "hold this form (33,992) than the reference's (10,645). Held by 33,992 "
-            "of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, counted "
-            "2026-10-05."
+            "of 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, counted "
+            "2026-10-07."
         ),
     )
     DIGITAL_CONVERSION = (
@@ -158,8 +158,8 @@ class StudyTyp(str, DocumentedEnum):
             "validates with a LegacyValueWarning. The November 2016 Domain Tables "
             "reference's study type 1200. The 2019 and 2024 editions list it as a "
             "study method (D_Study_Mth, the same code), not a study type. Held by "
-            "12,946 of 5,810,832 rows of `STUDY_TYP` on NFHL service layer 28, "
-            "counted 2026-10-05."
+            "12,946 of 5,810,408 rows of `STUDY_TYP` on NFHL service layer 28, "
+            "counted 2026-10-07."
         ),
     )
     SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO = (
@@ -169,8 +169,8 @@ class StudyTyp(str, DocumentedEnum):
             "validates with a LegacyValueWarning. The February 2019 Domain Tables "
             "reference's study type 1000, `Special Flood Hazard Area (SFHA) without"
             " BFE`, cut off at the field's 38 characters; the 2024 reference writes"
-            " code 1000 `SFHA without BFE`. Held by 6,493 of 5,810,832 rows of "
-            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-05."
+            " code 1000 `SFHA without BFE`. Held by 6,493 of 5,810,408 rows of "
+            "`STUDY_TYP` on NFHL service layer 28, counted 2026-10-07."
         ),
     )
 
@@ -550,8 +550,8 @@ class ZoneSubtype(str, DocumentedEnum):
             "validates with a LegacyValueWarning. An older wording of a levee "
             "subtype: the 2024 subtypes say FLOOD HAZARD and LEVEE SYSTEM, and the "
             "reference does not say which of them this one became. Held by 24,849 "
-            "of 5,810,832 rows of `ZONE_SUBTY` on NFHL service layer 28, counted "
-            "2026-10-05."
+            "of 5,810,408 rows of `ZONE_SUBTY` on NFHL service layer 28, counted "
+            "2026-10-07."
         ),
     )
 

@@ -151,11 +151,11 @@ models reject every one except the eight it marks `legacy`, which
 `legacy.json` admits with a warning by a count threshold, not by a judgement
 about each value.
 
-- **`STUDY_TYP`: 1,858,447 of 5,810,832 rows (32.0%) hold a value outside
+- **`STUDY_TYP`: 1,858,473 of 5,810,408 rows (32.0%) hold a value outside
   `D_Study_Typ`**, not counting the 1,607 lone spaces below. Most are the study
   types of the [November 2016 Domain Tables reference](https://www.fema.gov/sites/default/files/nepa/Domain_Tables_Technical_Reference_Nov_2016_SUPERSEDED.pdf),
   which the [February 2019 edition](https://www.fema.gov/sites/default/files/2020-02/Domain_Tables_Technical_Reference_Feb_2019.pdf)
-  replaced: `SFHAs WITH LOW FLOOD RISK` (979,594), `... HIGH ...` (557,235),
+  replaced: `SFHAs WITH LOW FLOOD RISK` (979,597), `... HIGH ...` (557,258),
   `... MEDIUM ...` (193,351), `REDELINEATION` (72,844) and `DIGITAL
   CONVERSION` (12,946). The 2019 and 2024 editions list the last two under
   `D_Study_Mth`, the study method. Then the ASCII apostrophe, `Shaded Zone X
@@ -163,10 +163,10 @@ about each value.
   Flood Hazard Area (SFHA) without BFE`, cut to the field's 38 characters
   (`Special Flood Hazard Area (SFHA) witho`, 6,493); FRD-only `OTHER` (1,485);
   and a bare coded value, `1050`, once.
-- **`ZONE_SUBTY`: 26,365 rows outside `D_Zone_Subtype`**, 75 of them the lone
+- **`ZONE_SUBTY`: 26,355 rows outside `D_Zone_Subtype`**, 75 of them the lone
   spaces below. Chiefly the 2019 edition's `AREA WITH REDUCED FLOOD RISK DUE TO
   LEVEE` (24,849), compound subtypes such as `1 PCT FUTURE CONDITIONS,
-  FLOODWAY`, and the literal string `<Null>` (353).
+  FLOODWAY`, and the literal string `<Null>` (343).
 - **`V_DATUM`**: `ASVD02` (562, American Samoa, absent from `D_V_Datum`),
   `GUVD03` (199, where the reference lists `GUVD04`), `NAVD 88` and `NGVD 29`
   with spaces, and `-9999` written as text (302).
@@ -249,7 +249,7 @@ variant differing only in case or trailing blanks. A total of values outside a
 vocabulary is a lower bound: a variant of an allowed value folds into that
 value's group and drops out of the report. The 1,607 lone spaces in
 `STUDY_TYP` came back inside its 8,039 blanks and are missing from its
-1,858,447, while `ZONE_SUBTY`'s 75 came back as `' '`, because no empty string
-shared their group, and are counted in its 26,365. The fixture holds one real
+1,858,473, while `ZONE_SUBTY`'s 75 came back as `' '`, because no empty string
+shared their group, and are counted in its 26,355. The fixture holds one real
 `FEET` (`uppercase_len_unit`, DFIRM `39057C`), found because it failed
 validation, not because any statistic showed it.

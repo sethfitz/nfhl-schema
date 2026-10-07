@@ -39,7 +39,7 @@ is a legacy value: common in the data, not in the reference.
 - `AREA WITH REDUCED FLOOD HAZARD DUE TO PROVISIONALLY ACCREDITED LEVEE SYSTEM` - Code `3010`.
 - `AREA WITH UNDETERMINED FLOOD HAZARD DUE TO NON-ACCREDITED LEVEE SYSTEM` - This subtype is only used in levee impacted areas with a Zone D from implementing the Analysis and Mapping Procedures for Non-Accredited Levee Systems. More information on these procedures can be found in the Levee Guidance document. Code `3020`.
 - `AREA WITH REDUCED FLOOD HAZARD DUE TO ACCREDITED LEVEE SYSTEM` - Code `3030`.
-- `AREA WITH REDUCED FLOOD RISK DUE TO LEVEE` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. An older wording of a levee subtype: the 2024 subtypes say FLOOD HAZARD and LEVEE SYSTEM, and the reference does not say which of them this one became. Held by 24,849 of 5,810,832 rows of `ZONE_SUBTY` on NFHL service layer 28, counted 2026-10-05.
+- `AREA WITH REDUCED FLOOD RISK DUE TO LEVEE` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. An older wording of a levee subtype: the 2024 subtypes say FLOOD HAZARD and LEVEE SYSTEM, and the reference does not say which of them this one became. Held by 24,849 of 5,810,408 rows of `ZONE_SUBTY` on NFHL service layer 28, counted 2026-10-07.
 
 ## Used By
 

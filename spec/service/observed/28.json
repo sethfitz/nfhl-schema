@@ -1,15 +1,15 @@
 {
   "layer": 28,
-  "total": 5810832,
+  "total": 5810408,
   "fields": {
     "STUDY_TYP": [
       {
         "value": "NP",
-        "count": 2774615
+        "count": 2774163
       },
       {
         "value": "SFHAs WITH LOW FLOOD RISK",
-        "count": 979594
+        "count": 979597
       },
       {
         "value": "SFHA with unpublished BFE",
@@ -17,11 +17,11 @@
       },
       {
         "value": "SFHAs WITH HIGH FLOOD RISK",
-        "count": 557235
+        "count": 557258
       },
       {
         "value": "SFHA with BFE and floodway",
-        "count": 211278
+        "count": 211280
       },
       {
         "value": "SFHAs WITH MEDIUM FLOOD RISK",
@@ -111,15 +111,15 @@
     "FLD_ZONE": [
       {
         "value": "X",
-        "count": 4434825
+        "count": 4434498
       },
       {
         "value": "AE",
-        "count": 902809
+        "count": 902715
       },
       {
         "value": "A",
-        "count": 418366
+        "count": 418368
       },
       {
         "value": "VE",
@@ -131,7 +131,7 @@
       },
       {
         "value": "AO",
-        "count": 9740
+        "count": 9735
       },
       {
         "value": "D",
@@ -153,19 +153,19 @@
     "ZONE_SUBTY": [
       {
         "value": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD",
-        "count": 3373046
+        "count": 3372802
       },
       {
         "value": null,
-        "count": 1301955
+        "count": 1301870
       },
       {
         "value": "AREA OF MINIMAL FLOOD HAZARD",
-        "count": 840380
+        "count": 840288
       },
       {
         "value": "1 PCT FUTURE CONDITIONS",
-        "count": 68943
+        "count": 68951
       },
       {
         "value": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD IN COASTAL ZONE",
@@ -173,11 +173,11 @@
       },
       {
         "value": "FLOODWAY",
-        "count": 49799
+        "count": 49797
       },
       {
         "value": "1 PCT DEPTH LESS THAN 1 FOOT",
-        "count": 30980
+        "count": 30981
       },
       {
         "value": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE",
@@ -221,7 +221,7 @@
       },
       {
         "value": "<Null>",
-        "count": 353
+        "count": 343
       },
       {
         "value": "0.2PCT ANNUAL CHANCE FLOOD HAZARD IN COASTAL ZONE",
@@ -327,11 +327,11 @@
     "SFHA_TF": [
       {
         "value": "F",
-        "count": 4439135
+        "count": 4438806
       },
       {
         "value": "T",
-        "count": 1371691
+        "count": 1371596
       },
       {
         "value": "U",
@@ -341,15 +341,15 @@
     "V_DATUM": [
       {
         "value": "",
-        "count": 3482882
+        "count": 3482638
       },
       {
         "value": null,
-        "count": 2123032
+        "count": 2122973
       },
       {
         "value": "NAVD88",
-        "count": 188031
+        "count": 187910
       },
       {
         "value": "NGVD29",
@@ -399,15 +399,15 @@
     "LEN_UNIT": [
       {
         "value": "",
-        "count": 3487433
+        "count": 3487198
       },
       {
         "value": null,
-        "count": 2123976
+        "count": 2123917
       },
       {
         "value": "Feet",
-        "count": 197732
+        "count": 197602
       },
       {
         "value": "Meters",
@@ -429,15 +429,15 @@
     "VEL_UNIT": [
       {
         "value": "",
-        "count": 3694145
+        "count": 3693764
       },
       {
         "value": null,
-        "count": 2104702
+        "count": 2104647
       },
       {
         "value": "NP",
-        "count": 6398
+        "count": 6410
       },
       {
         "value": "-9999",
@@ -463,11 +463,11 @@
     "AR_REVERT": [
       {
         "value": "",
-        "count": 3678829
+        "count": 3678461
       },
       {
         "value": null,
-        "count": 2127185
+        "count": 2127129
       },
       {
         "value": "-9999",
@@ -493,11 +493,11 @@
     "AR_SUBTRV": [
       {
         "value": "",
-        "count": 3429876
+        "count": 3429478
       },
       {
         "value": null,
-        "count": 2379554
+        "count": 2379528
       },
       {
         "value": "-9999",
@@ -523,11 +523,11 @@
     "DUAL_ZONE": [
       {
         "value": "",
-        "count": 3360388
+        "count": 3359989
       },
       {
         "value": null,
-        "count": 2156565
+        "count": 2156540
       },
       {
         "value": "F",
@@ -544,21 +544,103 @@
     ]
   },
   "combinations": {
+    "AR_REVERT,DUAL_ZONE": [
+      {
+        "AR_REVERT": "",
+        "DUAL_ZONE": "",
+        "count": 3320805
+      },
+      {
+        "AR_REVERT": null,
+        "DUAL_ZONE": null,
+        "count": 1900596
+      },
+      {
+        "AR_REVERT": " ",
+        "DUAL_ZONE": null,
+        "count": 251142
+      },
+      {
+        "AR_REVERT": null,
+        "DUAL_ZONE": "F",
+        "count": 117386
+      },
+      {
+        "AR_REVERT": "",
+        "DUAL_ZONE": "F",
+        "count": 103560
+      },
+      {
+        "AR_REVERT": null,
+        "DUAL_ZONE": "U",
+        "count": 69975
+      },
+      {
+        "AR_REVERT": null,
+        "DUAL_ZONE": " ",
+        "count": 39168
+      },
+      {
+        "AR_REVERT": "-9999",
+        "DUAL_ZONE": null,
+        "count": 4666
+      },
+      {
+        "AR_REVERT": "",
+        "DUAL_ZONE": "U",
+        "count": 2954
+      },
+      {
+        "AR_REVERT": "A",
+        "DUAL_ZONE": null,
+        "count": 71
+      },
+      {
+        "AR_REVERT": "<Null>",
+        "DUAL_ZONE": null,
+        "count": 50
+      },
+      {
+        "AR_REVERT": "-9999",
+        "DUAL_ZONE": "",
+        "count": 15
+      },
+      {
+        "AR_REVERT": "NSPNUL",
+        "DUAL_ZONE": null,
+        "count": 14
+      },
+      {
+        "AR_REVERT": null,
+        "DUAL_ZONE": "T",
+        "count": 4
+      },
+      {
+        "AR_REVERT": "A",
+        "DUAL_ZONE": "",
+        "count": 1
+      },
+      {
+        "AR_REVERT": "AE",
+        "DUAL_ZONE": null,
+        "count": 1
+      }
+    ],
     "FLD_ZONE,SFHA_TF": [
       {
         "FLD_ZONE": "X",
         "SFHA_TF": "F",
-        "count": 4434810
+        "count": 4434483
       },
       {
         "FLD_ZONE": "AE",
         "SFHA_TF": "T",
-        "count": 902807
+        "count": 902713
       },
       {
         "FLD_ZONE": "A",
         "SFHA_TF": "T",
-        "count": 418366
+        "count": 418368
       },
       {
         "FLD_ZONE": "VE",
@@ -573,7 +655,7 @@
       {
         "FLD_ZONE": "AO",
         "SFHA_TF": "T",
-        "count": 9740
+        "count": 9735
       },
       {
         "FLD_ZONE": "D",
@@ -583,7 +665,7 @@
       {
         "FLD_ZONE": "OPEN WATER",
         "SFHA_TF": "F",
-        "count": 741
+        "count": 739
       },
       {
         "FLD_ZONE": "V",
@@ -596,14 +678,14 @@
         "count": 24
       },
       {
+        "FLD_ZONE": "OPEN WATER",
+        "SFHA_TF": "T",
+        "count": 15
+      },
+      {
         "FLD_ZONE": "X",
         "SFHA_TF": "T",
         "count": 14
-      },
-      {
-        "FLD_ZONE": "OPEN WATER",
-        "SFHA_TF": "T",
-        "count": 13
       },
       {
         "FLD_ZONE": "OPEN WATER",
@@ -625,27 +707,27 @@
       {
         "FLD_ZONE": "X",
         "ZONE_SUBTY": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD",
-        "count": 3373046
+        "count": 3372802
       },
       {
         "FLD_ZONE": "X",
         "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD",
-        "count": 840380
+        "count": 840288
       },
       {
         "FLD_ZONE": "AE",
         "ZONE_SUBTY": null,
-        "count": 833641
+        "count": 833559
       },
       {
         "FLD_ZONE": "A",
         "ZONE_SUBTY": null,
-        "count": 417847
+        "count": 417849
       },
       {
         "FLD_ZONE": "X",
         "ZONE_SUBTY": "1 PCT FUTURE CONDITIONS",
-        "count": 68943
+        "count": 68951
       },
       {
         "FLD_ZONE": "X",
@@ -655,12 +737,12 @@
       {
         "FLD_ZONE": "AE",
         "ZONE_SUBTY": "FLOODWAY",
-        "count": 49775
+        "count": 49773
       },
       {
         "FLD_ZONE": "X",
         "ZONE_SUBTY": "1 PCT DEPTH LESS THAN 1 FOOT",
-        "count": 30980
+        "count": 30981
       },
       {
         "FLD_ZONE": "X",
@@ -695,7 +777,7 @@
       {
         "FLD_ZONE": "AO",
         "ZONE_SUBTY": null,
-        "count": 9487
+        "count": 9482
       },
       {
         "FLD_ZONE": "VE",
@@ -804,11 +886,6 @@
       },
       {
         "FLD_ZONE": "AE",
-        "ZONE_SUBTY": "<Null>",
-        "count": 95
-      },
-      {
-        "FLD_ZONE": "AE",
         "ZONE_SUBTY": "RIVERINE FLOODWAY SHOWN IN COASTAL ZONE",
         "count": 93
       },
@@ -821,6 +898,11 @@
         "FLD_ZONE": "D",
         "ZONE_SUBTY": "AREA WITH FLOOD RISK DUE TO LEVEE",
         "count": 88
+      },
+      {
+        "FLD_ZONE": "AE",
+        "ZONE_SUBTY": "<Null>",
+        "count": 85
       },
       {
         "FLD_ZONE": "AE",

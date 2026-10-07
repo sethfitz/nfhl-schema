@@ -1723,62 +1723,14 @@
               "algorithm": "esriCIELabAlgorithm",
               "fromColor": [
                 252,
-                204,
-                245,
-                255
-              ],
-              "toColor": [
-                252,
-                204,
-                245,
-                255
-              ]
-            },
-            {
-              "type": "algorithmic",
-              "algorithm": "esriCIELabAlgorithm",
-              "fromColor": [
-                179,
-                252,
-                199,
-                255
-              ],
-              "toColor": [
-                179,
-                252,
-                199,
-                255
-              ]
-            },
-            {
-              "type": "algorithmic",
-              "algorithm": "esriCIELabAlgorithm",
-              "fromColor": [
-                252,
-                217,
-                179,
-                255
-              ],
-              "toColor": [
-                252,
-                217,
-                179,
-                255
-              ]
-            },
-            {
-              "type": "algorithmic",
-              "algorithm": "esriCIELabAlgorithm",
-              "fromColor": [
                 182,
-                231,
-                252,
+                249,
                 255
               ],
               "toColor": [
+                252,
                 182,
-                231,
-                252,
+                249,
                 255
               ]
             },
@@ -1786,29 +1738,13 @@
               "type": "algorithmic",
               "algorithm": "esriCIELabAlgorithm",
               "fromColor": [
-                187,
-                196,
-                252,
-                255
-              ],
-              "toColor": [
-                187,
-                196,
-                252,
-                255
-              ]
-            },
-            {
-              "type": "algorithmic",
-              "algorithm": "esriCIELabAlgorithm",
-              "fromColor": [
-                244,
+                194,
                 252,
                 179,
                 255
               ],
               "toColor": [
-                244,
+                194,
                 252,
                 179,
                 255
@@ -1818,15 +1754,63 @@
               "type": "algorithmic",
               "algorithm": "esriCIELabAlgorithm",
               "fromColor": [
-                252,
                 184,
-                192,
+                233,
+                252,
+                255
+              ],
+              "toColor": [
+                184,
+                233,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                201,
+                184,
                 255
               ],
               "toColor": [
                 252,
+                201,
                 184,
-                192,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                189,
+                191,
+                252,
+                255
+              ],
+              "toColor": [
+                189,
+                191,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                241,
+                184,
+                255
+              ],
+              "toColor": [
+                252,
+                241,
+                184,
                 255
               ]
             },
@@ -1836,29 +1820,13 @@
               "fromColor": [
                 215,
                 252,
-                234,
+                225,
                 255
               ],
               "toColor": [
                 215,
                 252,
-                234,
-                255
-              ]
-            },
-            {
-              "type": "algorithmic",
-              "algorithm": "esriCIELabAlgorithm",
-              "fromColor": [
-                250,
-                179,
-                252,
-                255
-              ],
-              "toColor": [
-                250,
-                179,
-                252,
+                225,
                 255
               ]
             },
@@ -1867,30 +1835,14 @@
               "algorithm": "esriCIELabAlgorithm",
               "fromColor": [
                 252,
-                214,
-                207,
-                255
-              ],
-              "toColor": [
-                252,
-                214,
-                207,
-                255
-              ]
-            },
-            {
-              "type": "algorithmic",
-              "algorithm": "esriCIELabAlgorithm",
-              "fromColor": [
-                252,
-                250,
                 212,
+                238,
                 255
               ],
               "toColor": [
                 252,
-                250,
                 212,
+                238,
                 255
               ]
             },
@@ -1898,31 +1850,79 @@
               "type": "algorithmic",
               "algorithm": "esriCIELabAlgorithm",
               "fromColor": [
-                207,
+                252,
+                232,
+                204,
+                255
+              ],
+              "toColor": [
+                252,
+                232,
+                204,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                227,
+                252,
+                197,
+                255
+              ],
+              "toColor": [
+                227,
+                252,
+                197,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                215,
+                218,
+                252,
+                255
+              ],
+              "toColor": [
+                215,
+                218,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                184,
+                198,
+                255
+              ],
+              "toColor": [
+                252,
+                184,
+                198,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                217,
                 182,
                 252,
                 255
               ],
               "toColor": [
-                207,
+                217,
                 182,
                 252,
-                255
-              ]
-            },
-            {
-              "type": "algorithmic",
-              "algorithm": "esriCIELabAlgorithm",
-              "fromColor": [
-                224,
-                252,
-                212,
-                255
-              ],
-              "toColor": [
-                224,
-                252,
-                212,
                 255
               ]
             }
