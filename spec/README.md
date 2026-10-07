@@ -13,7 +13,7 @@ retrieved, the edition, and a SHA-256 of every file.
 | `service/MapServer.json`, `service/layers/<id>.json` | The [NFHL MapServer](https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer)'s metadata for all 32 layers and its one table: field names, Esri types, lengths. Taken whole so later slices need no new fetch. |
 | `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, and per-pair counts for every two fields a rule reads together (`combinations`), from the service's grouped statistics. Observations, not specification. |
 | `repairs.json` | **Not upstream.** Corrections to published domain values, each quoting the reference sentence that licenses it. Not in the manifest. |
-| `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another or only for some zones (the AR revert fields), which values a field is limited to, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`), each quoting the field description it reads. Not in the manifest. |
+| `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another or only for some zones (the AR revert fields), which values a field is limited to, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`, `DUAL_ZONE` from `AR_REVERT`), each quoting the field description it reads. Not in the manifest. |
 | `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot. Not in the manifest. |
 
 ## Why PDFs
@@ -132,6 +132,15 @@ Each is pinned by a test, so an upstream change shows up as a failure.
   but "is only populated if the STATIC_BFE or DEPTH field is populated", so an
   AR zone with only a `BFE_REVERT` could not state one. `V_DATUM` is limited to
   `STATIC_BFE` the same way. The models link neither field to them.
+- **`DUAL_ZONE` is defined by examples, and the models read it from
+  `AR_REVERT`.** "Zone AR/AE, Zone AR/AH, Zone AR/AO, Zone AR/A" names an AR
+  zone by what it reverts to, so `T` is required when `AR_REVERT` holds one of
+  those four, and `F` when it holds `X`. "Shaded X" has no value of its own: an
+  AR zone reverting to `X` takes `F` whatever its `AR_SUBTRV`, including the
+  unshaded `AREA OF MINIMAL FLOOD HAZARD`, which no sentence names. An AR zone
+  with no `AR_REVERT` takes no `DUAL_ZONE` rule. Neither sentence limits the
+  field to AR zones, so `T` off one validates. "For any for AR Zones" is the
+  reference's typo, quoted as printed.
 
 Nine of the reference's 53 tables do not yet join their description table to
 their type table, so `SpecReader.reference_table` raises on them: `L_Mtg_POC`

@@ -603,6 +603,64 @@ from nfhl.models.enums import (
     ),
     qualifier="D, X",
 )
+# “If the flood hazard areas shown on the effective FIRM shall be designated as “dual”
+# SFHAs (i.e., Zone AR/AE, Zone AR/AH, Zone AR/AO, Zone AR/A), this field will be
+# coded as true.”
+@forbid_if(
+    ["dual_zone"],
+    AllOf(
+        OneOf(
+            "ar_revert",
+            (
+                Zone.A,
+                Zone.AE,
+                Zone.AH,
+                Zone.AO,
+            ),
+        ),
+        OneOf(
+            "dual_zone",
+            (
+                TrueFalse.F,
+                TrueFalse.U,
+            ),
+        ),
+    ),
+    "A, AE, AH, AO",
+)
+# “If the flood hazard areas shown on the effective FIRM shall be designated as “dual”
+# SFHAs (i.e., Zone AR/AE, Zone AR/AH, Zone AR/AO, Zone AR/A), this field will be
+# coded as true.”
+@require_if(
+    ["dual_zone"],
+    OneOf(
+        "ar_revert",
+        (
+            Zone.A,
+            Zone.AE,
+            Zone.AH,
+            Zone.AO,
+        ),
+    ),
+    "A, AE, AH, AO",
+)
+# “It should be false for any for AR Zones that revert to Shaded X.”
+@forbid_if(
+    ["dual_zone"],
+    AllOf(
+        OneOf("ar_revert", (Zone.X,)),
+        OneOf(
+            "dual_zone",
+            (
+                TrueFalse.T,
+                TrueFalse.U,
+            ),
+        ),
+    ),
+    "X",
+)
+# “It should be false for any for AR Zones that revert to Shaded X.”
+@require_if(["dual_zone"], OneOf("ar_revert", (Zone.X,)), "X")
 class FloodHazardZone(Feature):
     """This table is required for all FIRM Databases. The S_Fld_Haz_Ar table contains
     information about the flood hazards within the Flood Risk Project area. A

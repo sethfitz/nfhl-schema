@@ -52,6 +52,10 @@ not define them, so they are optional and validated only by type.
 
 ## Constraints
 
+- `dual_zone` is required when ar_revert is X
+- `dual_zone` is forbidden when ar_revert is X and dual_zone is T or U
+- `dual_zone` is required when ar_revert is A, AE, AH or AO
+- `dual_zone` is forbidden when ar_revert is A, AE, AH or AO and dual_zone is F or U
 - At least one of these conditions must be true: fld_zone is neither D nor X, sfha_tf is neither T nor U
 - At least one of these conditions must be true: fld_zone is not A, A99, AE, AH, AO, AR, V or VE, sfha_tf is neither F nor U
 - `zone_subty` is required when fld_zone is A99, AR or X

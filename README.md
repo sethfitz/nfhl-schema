@@ -131,6 +131,15 @@ area reverts to, are "populated when Zone equals AR and the reverted zone has" a
 static BFE or a depth, and are forbidden off AR zones the same way. A `0` or a
 `-8888` is a value and breaks the rule; `-9999` is a null.
 
+**`DUAL_ZONE` follows the zone an AR area reverts to.** A "dual" SFHA is
+"Zone AR/AE, Zone AR/AH, Zone AR/AO, Zone AR/A", and for one the field "will be
+coded as true"; it "should be false for any for AR Zones that revert to Shaded
+X". The generator reads both the way it reads `SFHA_TF`'s, keyed on
+`AR_REVERT`: `T` when it holds `A`, `AE`, `AH` or `AO`, `F` when it holds `X`,
+whatever the subtype. `DUAL_ZONE` is optional, so each sentence also requires
+it: a field "coded as true" is populated. Where `AR_REVERT` is empty, as off an
+AR zone, nothing limits it.
+
 **Stacking two system constraints of one kind loses one in Python.** Each
 `forbid_if` registers its check under the name `@forbid_if`, so a second on the
 same class replaces the first's validator while both reach the JSON Schema. The

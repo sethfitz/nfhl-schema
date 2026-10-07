@@ -340,7 +340,7 @@ def render_pair_rule(
     zones = members(when_domain, rule.when_values)
     values = members(domain, rule.forbidden)
     crosswalk = rule.licence == CROSSWALK_LICENCE
-    lines = [f"# {rule.licence}" if crosswalk else f"# “{rule.licence}”"]
+    lines = [f"# {rule.licence}"] if crosswalk else quote_comment(rule.licence)
     if rule.requires_value:
         lines.append(f"@require_if([{field}], OneOf({when}, {zones}), {qualifier})")
     elif required:

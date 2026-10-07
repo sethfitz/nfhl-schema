@@ -11,6 +11,7 @@ from overture.schema.system.model_constraint import ModelConstraint
 from pydantic import ValidationError
 
 from nfhl.annotations import DatumIn, UnitIn, field_datums, field_units
+from nfhl.constraints import drop_null_encodings
 from nfhl.legacy import LegacyValueWarning
 from nfhl.models import FloodHazardZone
 from nfhl.models.enums import LEGACY_MEMBERS, LengthUnits, StudyTyp, Zone
@@ -44,6 +45,24 @@ def rejected_by(feature: dict[str, Any]) -> set[str]:
             for err in e.errors()
         }
     return set()
+
+
+def broken_rules(feature: dict[str, Any]) -> set[str]:
+    """Every rule `feature` breaks, each run on its own.
+
+    Validation stops at the first rule that fails, so `rejected_by` names one
+    rule however many a feature breaks. This judges the rules only: a value its
+    field rejects, such as `DUAL_ZONE` `"t"`, breaks no rule here.
+    """
+    properties = drop_null_encodings(feature["properties"])
+    instance = FloodHazardZone.model_construct(**properties)
+    broken = set()
+    for constraint in ModelConstraint.get_model_constraints(FloodHazardZone):
+        try:
+            constraint.validate_instance(instance)
+        except ValueError:
+            broken.add(constraint.name)
+    return broken
 
 
 def test_the_fixture_has_both_kinds_of_case(cases: list[dict[str, Any]]) -> None:
@@ -259,11 +278,19 @@ AR_ZONE = {
     "SFHA_TF": "T",
 }
 
+# The dual zone rules, for an AR zone that reverts to an A zone or to X.
+DUAL_NOT_T = "@forbid_if(dual_zone) [A, AE, AH, AO]"
+DUAL_MISSING = "@require_if(dual_zone) [A, AE, AH, AO]"
+DUAL_NOT_F = "@forbid_if(dual_zone) [X]"
+DUAL_MISSING_X = "@require_if(dual_zone) [X]"
+
 
 def test_an_ar_zone_takes_what_it_reverts_to(valid_feature: dict[str, Any]) -> None:
     # The did-happen control for the AR rules below: an AR zone that reverts to
     # AE with a subtype Table 14 lists for one of the five zones validates.
-    valid_feature["properties"].update(AR_ZONE, AR_REVERT="AE", AR_SUBTRV="FLOODWAY")
+    valid_feature["properties"].update(
+        AR_ZONE, AR_REVERT="AE", AR_SUBTRV="FLOODWAY", DUAL_ZONE="T"
+    )
     assert rejected_by(valid_feature) == set()
 
 
@@ -279,7 +306,7 @@ def test_an_ar_zone_takes_the_bfe_or_depth_it_reverts_to(
     valid_feature: dict[str, Any], revert: dict[str, Any]
 ) -> None:
     # The did-happen control for the revert BFE and depth rules below.
-    valid_feature["properties"].update(AR_ZONE, **revert)
+    valid_feature["properties"].update(AR_ZONE, DUAL_ZONE="T", **revert)
     assert rejected_by(valid_feature) == set()
 
 
@@ -287,7 +314,7 @@ def test_an_ar_zone_takes_the_bfe_or_depth_it_reverts_to(
     ("change", "rule"),
     [
         # "This field is only populated if the corresponding area is Zone AR."
-        ({"AR_REVERT": "AE"}, "@forbid_if(ar_revert)"),
+        ({"AR_REVERT": "AE", "DUAL_ZONE": "T"}, "@forbid_if(ar_revert)"),
         ({"AR_SUBTRV": "FLOODWAY"}, "@forbid_if(ar_subtrv)"),
         # "This field is populated when Zone equals AR and the reverted zone has
         # a static BFE." / "... has a depth assigned."
@@ -330,14 +357,73 @@ def test_a_null_encoded_revert_bfe_or_depth_is_not_populated(
     assert rejected_by(valid_feature) == set()
 
 
-def test_the_73_live_ar_revert_rows_break_only_the_ar_revert_rule(
-    valid_feature: dict[str, Any],
+@pytest.mark.parametrize("dual", [None, ""])
+def test_the_73_live_ar_revert_rows_break_the_ar_revert_and_dual_zone_rules(
+    valid_feature: dict[str, Any], dual: str | None
 ) -> None:
-    # Their shape: AR_REVERT set off an AR zone, both revert numbers -9999.
+    # Their shape: AR_REVERT set to A or AE off an AR zone, both revert numbers
+    # -9999, DUAL_ZONE null (72) or empty (1).
     valid_feature["properties"].update(
-        AR_REVERT="A", BFE_REVERT=-9999, DEP_REVERT=-9999
+        AR_REVERT="A", BFE_REVERT=-9999, DEP_REVERT=-9999, DUAL_ZONE=dual
     )
-    assert rejected_by(valid_feature) == {"@forbid_if(ar_revert)"}
+    assert broken_rules(valid_feature) == {"@forbid_if(ar_revert)", DUAL_MISSING}
+    assert rejected_by(valid_feature) <= {"@forbid_if(ar_revert)", DUAL_MISSING}
+
+
+@pytest.mark.parametrize(
+    "revert",
+    [
+        {"AR_REVERT": "A", "DUAL_ZONE": "T"},
+        {"AR_REVERT": "AE", "DUAL_ZONE": "T"},
+        {"AR_REVERT": "AH", "DUAL_ZONE": "T"},
+        {"AR_REVERT": "AO", "DUAL_ZONE": "T"},
+        {
+            "AR_REVERT": "X",
+            "AR_SUBTRV": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD",
+            "DUAL_ZONE": "F",
+        },
+    ],
+)
+def test_an_ar_zone_is_dual_unless_it_reverts_to_x(
+    valid_feature: dict[str, Any], revert: dict[str, Any]
+) -> None:
+    # The did-happen control for the dual zone rules below.
+    valid_feature["properties"].update(AR_ZONE, **revert)
+    assert broken_rules(valid_feature) == set()
+    assert rejected_by(valid_feature) == set()
+
+
+@pytest.mark.parametrize(
+    ("change", "rule"),
+    [
+        # "... (i.e., Zone AR/AE, Zone AR/AH, Zone AR/AO, Zone AR/A), this field
+        # will be coded as true."
+        ({"AR_REVERT": "AE", "DUAL_ZONE": "F"}, DUAL_NOT_T),
+        ({"AR_REVERT": "A", "DUAL_ZONE": "U"}, DUAL_NOT_T),
+        ({"AR_REVERT": "AO"}, DUAL_MISSING),
+        ({"AR_REVERT": "AH", "DUAL_ZONE": ""}, DUAL_MISSING),
+        # "It should be false for any for AR Zones that revert to Shaded X."
+        ({"AR_REVERT": "X", "DUAL_ZONE": "T"}, DUAL_NOT_F),
+        ({"AR_REVERT": "X"}, DUAL_MISSING_X),
+    ],
+)
+def test_each_dual_zone_rule_fires(
+    valid_feature: dict[str, Any], change: dict[str, Any], rule: str
+) -> None:
+    valid_feature["properties"].update(AR_ZONE, **change)
+    assert broken_rules(valid_feature) == {rule}
+    assert rejected_by(valid_feature) == {rule}
+
+
+@pytest.mark.parametrize("dual", ["T", "F", "U"])
+def test_dual_zone_is_free_where_ar_revert_is_empty(
+    valid_feature: dict[str, Any], dual: str
+) -> None:
+    # Neither sentence names a zone that is not AR: the 4 live T rows are AE
+    # and X zones in DFIRM 51107C, and validate (spec/README.md).
+    valid_feature["properties"]["DUAL_ZONE"] = dual
+    assert broken_rules(valid_feature) == set()
+    assert rejected_by(valid_feature) == set()
 
 
 def test_ar_subtrv_is_not_paired_with_ar_revert(
@@ -346,7 +432,9 @@ def test_ar_subtrv_is_not_paired_with_ar_revert(
     # The description lists the subtypes of all five zones together, and says
     # nothing tying the subtype to the zone in AR_REVERT: AH with FLOODWAY,
     # which Table 14 lists for AE and not AH, validates (spec/README.md).
-    valid_feature["properties"].update(AR_ZONE, AR_REVERT="AH", AR_SUBTRV="FLOODWAY")
+    valid_feature["properties"].update(
+        AR_ZONE, AR_REVERT="AH", AR_SUBTRV="FLOODWAY", DUAL_ZONE="T"
+    )
     assert rejected_by(valid_feature) == set()
 
 

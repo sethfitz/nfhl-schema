@@ -653,7 +653,8 @@ class SpecReader:
         The cross-walk gives one rule per set of zones that forbid the same
         subtypes, and one requiring a subtype of the zones whose row has no
         `<NULL>`. Each `value_when` relationship forbids the field's other
-        domain values.
+        domain values and, on a field the reference does not require, requires
+        it: a field that holds a value is populated.
         """
         rules = []
         if table == CROSSWALK_TABLE:
@@ -682,12 +683,25 @@ class SpecReader:
             )
         reference_table = self.reference_table(table)
         for rel in self.relationships(table).value_when:
-            domain = reference_table.field(rel.field).domain
-            assert domain is not None, f"{table}.{rel.field} has no domain"
+            field = reference_table.field(rel.field)
+            assert field.domain is not None, f"{table}.{rel.field} has no domain"
             others = tuple(
-                v.value for v in self.domain(domain).values if v.value != rel.value
+                v.value
+                for v in self.domain(field.domain).values
+                if v.value != rel.value
             )
             rules.append(
                 PairRule(rel.field, rel.when, rel.any_of, others, False, rel.quote)
             )
+            if not field.required:
+                rules.append(
+                    PairRule(
+                        rel.field,
+                        rel.when,
+                        rel.any_of,
+                        forbidden=(),
+                        requires_value=True,
+                        licence=rel.quote,
+                    )
+                )
         return tuple(rules)

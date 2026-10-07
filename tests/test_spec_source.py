@@ -228,12 +228,49 @@ def test_the_sfha_rules_read_a_or_v_and_x_or_d_as_zone_codes(
     # INCLUDED, whose code begins A but names no flood zone), and X and D.
     # OPEN WATER and AREA NOT INCLUDED are named by neither sentence.
     zones = reader.domain("D_Zone").values
-    by_flag = {v.value: v.any_of for v in reader.relationships(layer.table).value_when}
+    by_flag = {
+        v.value: v.any_of
+        for v in reader.relationships(layer.table).value_when
+        if v.field == "SFHA_TF"
+    }
     sfha = {z.value for z in zones if z.code[0] in "AV" and z.code != "ANI"}
     assert set(by_flag["T"]) == sfha
     assert set(by_flag["F"]) == {"X", "D"}
     unnamed = {z.value for z in zones} - sfha - {"X", "D"}
     assert unnamed == {"AREA NOT INCLUDED", "OPEN WATER"}
+
+
+def test_the_dual_zone_rules_read_the_zones_after_zone_ar(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # "Zone AR/AE, Zone AR/AH, Zone AR/AO, Zone AR/A" names the zone each dual
+    # SFHA reverts to; "Shaded X" is read as X, whatever its subtype.
+    by_flag = {
+        v.value: v
+        for v in reader.relationships(layer.table).value_when
+        if v.field == "DUAL_ZONE"
+    }
+    dual = by_flag["T"]
+    assert dual.when == "AR_REVERT"
+    assert set(dual.any_of) == set(re.findall(r"Zone AR/(\w+)", dual.quote))
+    assert by_flag["F"].any_of == ("X",)
+
+
+def test_a_value_rule_also_requires_an_optional_field(
+    reader: SpecReader, layer: Layer
+) -> None:
+    # "will be coded as true" asks for a value, not only for no other one. SFHA_TF
+    # is required for all records, so its rules need no second half.
+    halves: dict[tuple[str, tuple[str, ...]], set[bool]] = {
+        (v.field, v.any_of): set() for v in reader.relationships(layer.table).value_when
+    }
+    for rule in reader.pair_rules(layer.table):
+        if (rule.field, rule.when_values) in halves:
+            halves[rule.field, rule.when_values].add(rule.requires_value)
+    table = reader.reference_table(layer.table)
+    for (field, _), kinds in halves.items():
+        assert kinds == ({False} if table.field(field).required else {False, True})
+    assert {f for f, _ in halves} == {"SFHA_TF", "DUAL_ZONE"}
 
 
 def test_each_allowed_list_is_the_zones_its_quote_names(

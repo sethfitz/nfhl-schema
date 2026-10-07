@@ -96,6 +96,20 @@
           "when": "FLD_ZONE",
           "any_of": ["D", "X"],
           "quote": "It should be false for any X or D flood areas."
+        },
+        {
+          "field": "DUAL_ZONE",
+          "value": "T",
+          "when": "AR_REVERT",
+          "any_of": ["A", "AE", "AH", "AO"],
+          "quote": "If the flood hazard areas shown on the effective FIRM shall be designated as “dual” SFHAs (i.e., Zone AR/AE, Zone AR/AH, Zone AR/AO, Zone AR/A), this field will be coded as true."
+        },
+        {
+          "field": "DUAL_ZONE",
+          "value": "F",
+          "when": "AR_REVERT",
+          "any_of": ["X"],
+          "quote": "It should be false for any for AR Zones that revert to Shaded X."
         }
       ]
     }
