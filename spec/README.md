@@ -261,6 +261,11 @@ clause given:
   predicate selects 9,679 rows, 7,708 of them `0`, which section 7.3 forbids
   as a stand-in for "does not apply"; 7,681 of the 8,638 without a unit are
   `0`, so most of those are nulls written as zero.
+- **496 rows have no geometry** (`SHAPE IS NULL`, on 2026-10-08), in 26
+  DFIRMs, 313 of them in `36025C`. The models reject them: a zone is a
+  Polygon or MultiPolygon, and three fetched from `53067C` all failed on
+  `geometry`. None of the counts above includes them, since each reads only
+  attributes.
 
 ## What the BFE lines hold that the reference does not allow
 
