@@ -640,6 +640,16 @@ GEOMETRIES = {
         "profile baseline or stream centerline feature for the Flood Risk Project "
         "area.",
     ),
+    "S_Stn_Start": LayerGeometry(
+        "esriGeometryPoint",
+        ("POINT",),
+        "“These locations indicate the reference point that was used as the "
+        "origin”, so a Point, as the service's point type is: Esri publishes "
+        "several points as esriGeometryMultipoint.",
+        "The station starting location: in the reference's words, the reference "
+        "point that was used as the origin for distance measurements along streams "
+        "and rivers.",
+    ),
 }
 
 

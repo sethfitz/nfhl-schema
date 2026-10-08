@@ -243,17 +243,24 @@ BFE_CASES: list[Case] = [
 BFE_SPARSE = {"navd29_datum", "no_datum", "empty_line_id"}
 
 
+SHORT = "SHAPE.STLength() < 0.01"
+
+
 def clean_except_expected(
-    fields: dict[str, str], cases: list[Case], sparse: set[str]
+    fields: dict[str, str],
+    cases: list[Case],
+    sparse: set[str],
+    short: str | None = SHORT,
 ) -> Callable[[str], str]:
     """Filters holding every field of `fields` clean but the one a case expects
-    to reject or to warn, and the features short unless the case is sparse."""
+    to reject or to warn, and the features `short` unless the case is sparse.
+    A point has no length, so its layer passes `short=None`."""
 
     def filters(name: str) -> str:
         _, _, expect, warns = next(c for c in cases if c[0] == name)
         clauses = [w for f, w in fields.items() if f not in (expect, warns)]
-        if name not in sparse:
-            clauses.append("SHAPE.STLength() < 0.01")
+        if short and name not in sparse:
+            clauses.append(short)
         return " AND ".join(clauses)
 
     return filters
@@ -453,6 +460,33 @@ PROFILE_SPARSE = {
     "stream_river_water_type",
 }
 
+# Every required field populated, every accuracy a reference one and every
+# point a point, unless the case is about that; a lone space in free text is a
+# value. `SHAPE IS NULL` matches no row, so an empty point is found by its
+# missing X.
+STATION_FIELDS = {
+    "geometry": "SHAPE.STX IS NOT NULL",
+    "START_ID": "START_ID IS NOT NULL AND START_ID <> ''",
+    "START_DESC": "START_DESC IS NOT NULL",
+    "SOURCE_CIT": f"NOT {missing('SOURCE_CIT')}",
+    "LOC_ACC": "LOC_ACC IN ('High', 'Medium', 'Low')",
+}
+STATION_CASES: list[Case] = [
+    ("high_accuracy", "LOC_ACC = 'High'", None, None),
+    ("medium_accuracy", "LOC_ACC = 'Medium'", None, None),
+    ("low_accuracy", "LOC_ACC = 'Low'", None, None),
+    ("lone_space_source_citation", "SOURCE_CIT LIKE ' '", None, None),
+    # A legacy value (spec/legacy.json), which validates with a warning.
+    ("not_populated_accuracy", "LOC_ACC = 'NP'", None, "LOC_ACC"),
+    # Findings: published station starts the reference does not allow. Each
+    # case names one field, so a missing START_ID makes none: all 198 rows
+    # without one also lack START_DESC or SOURCE_CIT.
+    ("no_start_description", "START_DESC IS NULL", "START_DESC", None),
+    ("no_source_citation", missing("SOURCE_CIT"), "SOURCE_CIT", None),
+    ("no_accuracy", "LOC_ACC IS NULL", "LOC_ACC", None),
+    ("empty_point", "SHAPE.STX IS NULL", "geometry", None),
+]
+
 
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
@@ -473,6 +507,12 @@ FIXTURES_BY_LAYER = [
         "profile_baselines.json",
         PROFILE_CASES,
         clean_except_expected(PROFILE_FIELDS, PROFILE_CASES, PROFILE_SPARSE),
+    ),
+    Fixture(
+        13,
+        "station_starts.json",
+        STATION_CASES,
+        clean_except_expected(STATION_FIELDS, STATION_CASES, set(), short=None),
     ),
 ]
 

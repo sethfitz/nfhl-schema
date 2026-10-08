@@ -41,6 +41,29 @@ class LengthUnits(str, DocumentedEnum):
     NP = "NP", "Code `NP`."
 
 
+class LocAccuracy(str, DocumentedEnum):
+    """Values of `D_Loc_Accuracy` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Stn_Start.LOC_ACC`. The last is a legacy value: common in
+    the data, not in the reference.
+    """
+
+    HIGH = "High", "Code `H`."
+    MEDIUM = "Medium", "Code `M`."
+    LOW = "Low", "Code `L`."
+    NP = (
+        "NP",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Section 7.3 of the FIRM Database "
+            "reference's value for a text field “intentionally not populated”, "
+            "which the FEMA Project Officer may allow in a required field. "
+            "D_Loc_Accuracy has never listed it: the November 2016, February 2019 "
+            "and November 2024 editions all list only H, M and L. Held by 284 of "
+            "93,357 rows of `LOC_ACC` on NFHL service layer 13, counted 2026-10-08."
+        ),
+    )
+
+
 class ProfBaslnTyp(str, DocumentedEnum):
     """Values of `D_Prof_Basln_Typ` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Profil_Basln.WATER_TYP`. The last is a legacy value:
@@ -619,6 +642,7 @@ class ZoneSubtype(str, DocumentedEnum):
 # Members the reference does not list; each use raises a warning.
 LEGACY_MEMBERS: frozenset[Enum] = frozenset(
     {
+        LocAccuracy.NP,
         ProfBaslnTyp.STREAM_RIVER,
         StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,

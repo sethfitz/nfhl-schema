@@ -1,0 +1,39 @@
+{
+  "layer": 13,
+  "total": 93357,
+  "fields": {
+    "LOC_ACC": [
+      {
+        "value": "High",
+        "count": 64979
+      },
+      {
+        "value": "Low",
+        "count": 24309
+      },
+      {
+        "value": "Medium",
+        "count": 3782
+      },
+      {
+        "value": "NP",
+        "count": 284
+      },
+      {
+        "value": null,
+        "count": 3
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [],
+    "by_populated": [],
+    "by_text_populated": [],
+    "groups": [
+      {
+        "count": 93357
+      }
+    ]
+  }
+}

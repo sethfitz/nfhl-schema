@@ -409,6 +409,48 @@ sentence ties the two beyond "the unit of measure for the vertical datum
 offset", so neither is rejected. `SHOWN_INDX` is in the reference and not on
 the service.
 
+## What the station starts hold that the reference does not allow
+
+Layer 13 has 93,357 rows (`service/observed/13.json`), so its legacy bar is
+94. One value outside the reference clears it: `LOC_ACC` `NP` (284, in five
+DFIRMs, 154 of them in `19169C`), section 7.3's text value for "intentionally
+not populated". `D_Loc_Accuracy` lists only `High`, `Medium` and `Low`, and so
+did the 2016 and 2019 editions. The field description writes them `“HIGH”`,
+`“MEDIUM”` and `“LOW”`; the domain and the data write `High`.
+
+Its rejections, 9,276 rows (9.9%) by direct query on 2026-10-08, are these;
+"missing" is as for the cross sections:
+
+- **`SOURCE_CIT`, required, is missing on 8,427 rows** (8,363 null, 64 `''`),
+  in 934 DFIRMs, none with more than 218 (`29163C`). 65 hold a lone space,
+  which is a value and validates.
+- **`START_DESC`, required, is null on 770 rows**, in 37 DFIRMs, 473 of them in
+  `29139C`, `29219C` and `48471C`. No row holds `''`. 2,396 hold `NP`
+  (`START_DESC = 'NP'`), and validate.
+- **`START_ID`, the key, is missing on 198 rows** (124 null, 74 `''`), 123 of
+  them in `48471C` and 73 in `45045C`. Every one also lacks `START_DESC` or
+  `SOURCE_CIT`, so the fixture has no case for it.
+- **82 points are empty** (`SHAPE.STX IS NULL`), in 21 DFIRMs. ArcGIS writes
+  each as `{"type": "Point", "coordinates": []}`, and the model rejects it.
+  `SHAPE IS NULL` counts none of them, so a union built on it, as the line
+  layers' were, misses them: the first page validated rejected 155 where that
+  union selected 147.
+- **`LOC_ACC` is null on 3 rows** (two in `40073C`, one in `01129C`).
+
+The union joins every clause above with `OR`. On fourteen pages of 2,000
+`OBJECTID`s, six of them chosen for the rare clauses (`LOC_ACC` null, a missing
+`START_ID`, an empty point, `NP`), the model rejected exactly as many as the
+union selects over the same range, 1,735 of 9,792 features in all. The model
+has no rules, so `count-broken-rules` reports none.
+
+`START_ID` is required here and `R1`, optional, where it is a foreign key, in
+`S_XS` and `S_Profil_Basln`. Where it is set it joins: in four DFIRMs
+(`01003C`, `29163C`, `06037C`, `12086C`, the last with no station starts or
+sections), 3,373 of 3,458 cross sections name a station start the layer holds.
+The 108 baselines of `01003C` hold `NP`. The models do not check the join.
+`START_ID` is 32 long on the service and 25 in the reference, and `SOURCE_CIT`
+21 and 11; the models take the service's.
+
 **Read a count as the service's, not the models'.** The service is SQL Server
 (it accepts `SHAPE.STArea()` in a `where`), and its `=`, `<>`, `IN` and
 grouping ignore case and trailing blanks: `LEN_UNIT = 'feet'` and `LEN_UNIT =

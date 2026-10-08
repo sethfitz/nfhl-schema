@@ -12,6 +12,7 @@ from nfhl.models import (
     CrossSection,
     FloodHazardZone,
     ProfileBaseline,
+    StationStart,
 )
 from nfhl.tags import nfhl_provider
 
@@ -23,6 +24,7 @@ def test_discovery_finds_the_model_through_the_entry_point() -> None:
         BaseFloodElevation,
         CrossSection,
         ProfileBaseline,
+        StationStart,
     } <= set(found.values())
 
 
@@ -37,6 +39,7 @@ def test_overture_codegen_lists_the_model() -> None:
         "BaseFloodElevation",
         "CrossSection",
         "ProfileBaseline",
+        "StationStart",
     } <= set(listed)
 
 
@@ -46,6 +49,7 @@ def test_the_tag_provider_tags_the_model_nfhl() -> None:
     assert "nfhl" in tagged["nfhl_base_flood_elevation"]
     assert "nfhl" in tagged["nfhl_cross_section"]
     assert "nfhl" in tagged["nfhl_profile_baseline"]
+    assert "nfhl" in tagged["nfhl_station_start"]
 
 
 def test_the_tag_provider_leaves_other_packages_alone() -> None:

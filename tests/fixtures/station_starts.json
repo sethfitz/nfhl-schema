@@ -1,0 +1,255 @@
+{
+  "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/13/query",
+  "retrieved_at": "2026-10-08T15:59:31Z",
+  "cases": [
+    {
+      "name": "high_accuracy",
+      "where": "(LOC_ACC = 'High') AND SHAPE.STX IS NOT NULL AND START_ID IS NOT NULL AND START_ID <> '' AND START_DESC IS NOT NULL AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND LOC_ACC IN ('High', 'Medium', 'Low')",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 106,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -85.8135127658311,
+            31.34369468446123
+          ]
+        },
+        "properties": {
+          "OBJECTID": 106,
+          "DFIRM_ID": "01031C",
+          "VERSION_ID": "2.3.2.1",
+          "START_ID": "01031C_HCT1",
+          "START_DESC": "Confluence with Harrand Creek",
+          "LOC_ACC": "High",
+          "SOURCE_CIT": "01031C_STUDY2",
+          "GFID": "a427acb0-7358-4933-86c1-c9f1ddf77a37",
+          "GlobalID": "{99686544-04EB-41F7-A97A-E8EFFD4C1D26}"
+        }
+      }
+    },
+    {
+      "name": "medium_accuracy",
+      "where": "(LOC_ACC = 'Medium') AND SHAPE.STX IS NOT NULL AND START_ID IS NOT NULL AND START_ID <> '' AND START_DESC IS NOT NULL AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND LOC_ACC IN ('High', 'Medium', 'Low')",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 13,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -87.81682522063052,
+            30.630173695107565
+          ]
+        },
+        "properties": {
+          "OBJECTID": 13,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "START_ID": "01003C_1",
+          "START_DESC": "Distance measured in feet above Fish River confluence",
+          "LOC_ACC": "Medium",
+          "SOURCE_CIT": "01003C_STUDY1",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "GlobalID": "{35CDC057-E58F-43CD-BDAC-90AC07141DC5}"
+        }
+      }
+    },
+    {
+      "name": "low_accuracy",
+      "where": "(LOC_ACC = 'Low') AND SHAPE.STX IS NOT NULL AND START_ID IS NOT NULL AND START_ID <> '' AND START_DESC IS NOT NULL AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND LOC_ACC IN ('High', 'Medium', 'Low')",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 57,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -86.5682359990492,
+            33.981030299684875
+          ]
+        },
+        "properties": {
+          "OBJECTID": 57,
+          "DFIRM_ID": "01009C",
+          "VERSION_ID": "1.1.1.0",
+          "START_ID": "01009C_201",
+          "START_DESC": "FEET ABOVE MOUTH OF BLACKBURN FORK LITTLE WARRIOR RIVER",
+          "LOC_ACC": "Low",
+          "SOURCE_CIT": "NP",
+          "GFID": "ab1bd93a-570b-4cea-8ac3-782f01eaf93f",
+          "GlobalID": "{8FA948DA-AA33-4580-95C8-F43743F50886}"
+        }
+      }
+    },
+    {
+      "name": "lone_space_source_citation",
+      "where": "(SOURCE_CIT LIKE ' ') AND SHAPE.STX IS NOT NULL AND START_ID IS NOT NULL AND START_ID <> '' AND START_DESC IS NOT NULL AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND LOC_ACC IN ('High', 'Medium', 'Low')",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 9483,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -84.45541923198337,
+            34.69127222070703
+          ]
+        },
+        "properties": {
+          "OBJECTID": 9483,
+          "DFIRM_ID": "13123C",
+          "VERSION_ID": "1.1.1.0",
+          "START_ID": "13123C_50",
+          "START_DESC": "STREAM DISTANCE IN FEET ABOVE CONFLUENCE WITH ELLIJAY RIVER",
+          "LOC_ACC": "Low",
+          "SOURCE_CIT": " ",
+          "GFID": "464921ed-1cd3-4b4f-8717-e730ca61b9e7",
+          "GlobalID": "{BFB95B48-F063-4FA4-879D-9BAE91F4CB0E}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_accuracy",
+      "where": "(LOC_ACC = 'NP') AND SHAPE.STX IS NOT NULL AND START_ID IS NOT NULL AND START_ID <> '' AND START_DESC IS NOT NULL AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))",
+      "expect": null,
+      "warns": "LOC_ACC",
+      "feature": {
+        "type": "Feature",
+        "id": 214490,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -94.06705257427213,
+            44.03462632792128
+          ]
+        },
+        "properties": {
+          "OBJECTID": 214490,
+          "DFIRM_ID": "27013C",
+          "VERSION_ID": "1.1.1.0",
+          "START_ID": "27013C_1",
+          "START_DESC": "NP",
+          "LOC_ACC": "NP",
+          "SOURCE_CIT": "27013C_FIRM1",
+          "GFID": "3e63dfcc-2180-4b05-a832-4416d42ca165",
+          "GlobalID": "{A414A34F-0C6E-47E4-98A3-7E69D9D05420}"
+        }
+      }
+    },
+    {
+      "name": "no_start_description",
+      "where": "(START_DESC IS NULL) AND SHAPE.STX IS NOT NULL AND START_ID IS NOT NULL AND START_ID <> '' AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND LOC_ACC IN ('High', 'Medium', 'Low')",
+      "expect": "START_DESC",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 2614,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -92.28594550386912,
+            36.38926674061403
+          ]
+        },
+        "properties": {
+          "OBJECTID": 2614,
+          "DFIRM_ID": "05005C",
+          "VERSION_ID": "1.1.1.0",
+          "START_ID": "05005C_5",
+          "START_DESC": null,
+          "LOC_ACC": "Medium",
+          "SOURCE_CIT": "05005C_STUDY1",
+          "GFID": null,
+          "GlobalID": "{7EE9F804-7FE0-4779-96C3-58575AD0AF6B}"
+        }
+      }
+    },
+    {
+      "name": "no_source_citation",
+      "where": "((SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))) AND SHAPE.STX IS NOT NULL AND START_ID IS NOT NULL AND START_ID <> '' AND START_DESC IS NOT NULL AND LOC_ACC IN ('High', 'Medium', 'Low')",
+      "expect": "SOURCE_CIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 67,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -86.68030890304011,
+            31.752321944738345
+          ]
+        },
+        "properties": {
+          "OBJECTID": 67,
+          "DFIRM_ID": "01013C",
+          "VERSION_ID": "1.1.1.0",
+          "START_ID": "01013C_1",
+          "START_DESC": "FEET ABOVE MOUTH",
+          "LOC_ACC": "Low",
+          "SOURCE_CIT": null,
+          "GFID": null,
+          "GlobalID": "{1F4DED0B-0741-4C41-8DB3-FBF47FF06374}"
+        }
+      }
+    },
+    {
+      "name": "no_accuracy",
+      "where": "(LOC_ACC IS NULL) AND SHAPE.STX IS NOT NULL AND START_ID IS NOT NULL AND START_ID <> '' AND START_DESC IS NOT NULL AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))",
+      "expect": "LOC_ACC",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 46835,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -97.92553140722327,
+            35.87148029327113
+          ]
+        },
+        "properties": {
+          "OBJECTID": 46835,
+          "DFIRM_ID": "40073C",
+          "VERSION_ID": "2.3.2.1",
+          "START_ID": "40073C_12",
+          "START_DESC": "Feet above confluence with Kingfisher Creek",
+          "LOC_ACC": null,
+          "SOURCE_CIT": "40073C_STUDY1",
+          "GFID": "451cd6d6-34d9-4758-8434-2ff76b5f8881",
+          "GlobalID": "{2C251CB1-C81B-4EF9-ABB8-6FF60314712B}"
+        }
+      }
+    },
+    {
+      "name": "empty_point",
+      "where": "(SHAPE.STX IS NULL) AND START_ID IS NOT NULL AND START_ID <> '' AND START_DESC IS NOT NULL AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND LOC_ACC IN ('High', 'Medium', 'Low')",
+      "expect": "geometry",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 65,
+        "geometry": {
+          "type": "Point",
+          "coordinates": []
+        },
+        "properties": {
+          "OBJECTID": 65,
+          "DFIRM_ID": "01009C",
+          "VERSION_ID": "2.3.3.3",
+          "START_ID": "01009C_6",
+          "START_DESC": "ZONE A - NO PROFILES SHOWN",
+          "LOC_ACC": "Low",
+          "SOURCE_CIT": "01009C_FIRM2",
+          "GFID": "ab1bd93a-570b-4cea-8ac3-782f01eaf93f",
+          "GlobalID": "{53D7755C-37F3-436A-8DDB-2604ADBA5EF7}"
+        }
+      }
+    }
+  ]
+}

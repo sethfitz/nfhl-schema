@@ -34,6 +34,10 @@ def test_manifest_hashes_match_the_files_on_disk() -> None:
         assert hashlib.sha256(data).hexdigest() == entry["sha256"], entry["path"]
 
 
+# Modelled tables whose field descriptions state no unit, datum or rule.
+NO_RELATIONSHIPS = {"S_Stn_Start"}
+
+
 @pytest.mark.parametrize("layer", LAYERS, ids=lambda lyr: lyr.table)
 def test_every_relationship_quotes_its_own_field_description(
     reader: SpecReader, layer: Layer
@@ -49,7 +53,7 @@ def test_every_relationship_quotes_its_own_field_description(
         *((r.field, r.quote) for r in rel.required_when),
         *((v.field, v.quote) for v in rel.value_when),
     ]
-    assert quoted
+    assert bool(quoted) == (layer.table not in NO_RELATIONSHIPS)
     for field, quote in quoted:
         assert squash(quote) in squash(table.field(field).description), field
 

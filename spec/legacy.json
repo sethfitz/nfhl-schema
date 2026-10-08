@@ -16,6 +16,10 @@
     {
       "path": "service/observed/17.json",
       "retrieved_at": "2026-10-07T17:08:38Z"
+    },
+    {
+      "path": "service/observed/13.json",
+      "retrieved_at": "2026-10-08T15:55:39Z"
     }
   ],
   "threshold": 0.001,
@@ -132,6 +136,14 @@
       "value": "DIGITAL CONVERSION",
       "count": 1385,
       "note": "The November 2016 Domain Tables reference's study type 1200. The 2019 and 2024 editions list it as a study method (D_Study_Mth, the same code), not a study type."
+    },
+    {
+      "domain": "D_Loc_Accuracy",
+      "field": "LOC_ACC",
+      "layer": 13,
+      "value": "NP",
+      "count": 284,
+      "note": "Section 7.3 of the FIRM Database reference's value for a text field “intentionally not populated”, which the FEMA Project Officer may allow in a required field. D_Loc_Accuracy has never listed it: the November 2016, February 2019 and November 2024 editions all list only H, M and L."
     }
   ]
 }

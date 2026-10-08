@@ -49,6 +49,11 @@ def profile_layer() -> Layer:
 
 
 @pytest.fixture(scope="session")
+def station_layer() -> Layer:
+    return modelled("S_Stn_Start")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 
@@ -66,6 +71,11 @@ def xs_cases() -> list[dict[str, Any]]:
 @pytest.fixture(scope="session")
 def profile_cases() -> list[dict[str, Any]]:
     return fixture_cases("profile_baselines.json")
+
+
+@pytest.fixture(scope="session")
+def station_cases() -> list[dict[str, Any]]:
+    return fixture_cases("station_starts.json")
 
 
 @pytest.fixture

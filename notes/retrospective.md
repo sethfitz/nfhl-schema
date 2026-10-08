@@ -180,6 +180,35 @@ of the reference.
   on 14 or 16, and 496 on layer 28. The earlier unions read only attributes,
   so they missed them.
 
+## The fifth layer
+
+Station Start Points (`S_Stn_Start`, 2026-10-08) was picked over Water Lines
+because both line layers already modelled name it by key: `START_ID` is its
+primary key and the foreign key of `S_XS` and `S_Profil_Basln`. Water Lines
+joins them only by `WTR_NM`, a name. It is the first point layer and the first
+with no rules: six fields, one of them coded.
+
+- The first legacy value in a second domain broke the warning. `NP` cleared
+  layer 13's bar in `LOC_ACC`, and every flood zone with `STUDY_TYP` `NP` began
+  to warn. The enums are `str` enums, so `LocAccuracy.NP == StudyTyp.NP` and
+  they hash alike: `value in LEGACY_MEMBERS` was a test of the string. It held
+  only while no two legacy-bearing domains shared a value. `warn_on_legacy_values`
+  now keys members by enum and name. The fixture caught it, not a unit test.
+- Empty geometry is not null geometry. 82 station starts come back as
+  `{"type": "Point", "coordinates": []}`, and `SHAPE IS NULL` counts none of
+  them; `SHAPE.STX IS NULL` counts them, and `SHAPE.STIsEmpty() = 1` is a 400.
+  The control found them: the first live page rejected 155 against a union of
+  147. Whether the line and polygon layers hold empty shapes beyond their
+  `SHAPE IS NULL` counts is not checked; their controls agreed on the pages
+  they ran.
+- The table states no relationship, so step 3 of "Adding a layer" had nothing
+  to add, and a test asserting every modelled table quotes at least one failed
+  until it named the tables expected to have none.
+- `clean_except_expected` bounded every non-sparse case by `SHAPE.STLength()`,
+  which a point does not have; it takes the bound as a parameter now.
+- The 2016 and 2019 Domain Tables references were fetched again to check
+  whether `D_Loc_Accuracy` ever listed `NP`. Neither did.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.
