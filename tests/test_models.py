@@ -74,6 +74,15 @@ def test_a_reference_value_validates_without_a_warning(
     assert legacy_warnings_by(valid_feature) == []
 
 
+def test_a_value_legacy_in_one_domain_is_not_legacy_in_another(
+    valid_feature: dict[str, Any],
+) -> None:
+    # `NP` is legacy in D_Loc_Accuracy and listed in D_Study_Typ; the str enums'
+    # members are equal by value, so membership must go by enum as well.
+    valid_feature["properties"]["STUDY_TYP"] = "NP"
+    assert legacy_warnings_by(valid_feature) == []
+
+
 def test_a_value_neither_listed_nor_legacy_is_still_rejected(
     valid_feature: dict[str, Any],
 ) -> None:

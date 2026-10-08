@@ -34,10 +34,14 @@ def warn_on_legacy_values[M: BaseModel](
     legacy values, or `"ignore"` to accept them silently.
     """
 
+    # By enum and member, not by value: the enums are `str` enums, so
+    # `LocAccuracy.NP == StudyTyp.NP`, and only the first is legacy.
+    members = frozenset((type(m), m.name) for m in legacy)
+
     def check(model: M) -> M:
         for name, info in type(model).model_fields.items():
             value = getattr(model, name, None)
-            if isinstance(value, Enum) and value in legacy:
+            if isinstance(value, Enum) and (type(value), value.name) in members:
                 warnings.warn(
                     f"{info.alias or name}={value.value!r} is a legacy value, not "
                     f"in FEMA's {edition} Domain Tables Technical Reference",
