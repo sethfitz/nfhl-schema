@@ -157,12 +157,15 @@ def test_a_field_name_wrapped_mid_word_joins_its_description(
     assert fields["STREAM_STN"].description.startswith("Stream Station.")
 
 
-def test_a_footnote_marker_leaves_a_requirement_as_it_is(reader: SpecReader) -> None:
-    # "R1": the footnote reads "Field is applicable for BLE database."
+def test_a_footnoted_requirement_is_optional_and_keeps_its_footnote(
+    reader: SpecReader,
+) -> None:
     fields = {f.name: f for f in reader.reference_table("S_XS").fields}
     assert fields["START_ID"].requirement == "R1"
-    assert fields["START_ID"].required
-    assert not fields["XS_LTR"].required
+    assert not fields["START_ID"].required
+    assert fields["START_ID"].footnote == "Field is applicable for BLE database."
+    assert fields["XS_LN_ID"].required
+    assert fields["XS_LN_ID"].footnote is None
 
 
 def test_legacy_json_lists_exactly_what_its_threshold_selects(

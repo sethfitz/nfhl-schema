@@ -78,10 +78,11 @@ def test_judging_agrees_with_validation_on_every_real_baseline(
 
 
 def test_a_valid_baseline_reads_back_typed(shown: dict[str, Any]) -> None:
-    baseline = validate_as(ProfileBaseline, shown)
-    assert baseline.water_typ is ProfBaslnTyp.PROFILE_BASELINE
-    assert baseline.shown_firm is TrueFalse.T
-    assert baseline.start_id
+    # Omitable hides the enums from mypy; the dump holds the members themselves.
+    baseline = validate_as(ProfileBaseline, shown).model_dump()
+    assert baseline["WATER_TYP"] is ProfBaslnTyp.PROFILE_BASELINE
+    assert baseline["SHOWN_FIRM"] is TrueFalse.T
+    assert baseline["START_ID"]
 
 
 def test_the_datum_offset_is_in_datum_unit_and_has_no_datum() -> None:
@@ -89,13 +90,16 @@ def test_the_datum_offset_is_in_datum_unit_and_has_no_datum() -> None:
     assert field_datums(ProfileBaseline) == {}
 
 
-def test_a_footnoted_requirement_is_still_a_requirement(shown: dict[str, Any]) -> None:
+def test_a_footnoted_requirement_is_optional(shown: dict[str, Any]) -> None:
     # WATER_TYP, STUDY_TYP, SHOWN_FIRM, R_ST_DESC, R_END_DESC and START_ID are
-    # "R1": required, with a footnote on BLE databases.
-    for field in ("START_ID", "SHOWN_FIRM", "R_END_DESC"):
+    # "R1": "Field is applicable for BLE database."
+    footnoted = ("WATER_TYP", "STUDY_TYP", "SHOWN_FIRM", "R_ST_DESC", "R_END_DESC")
+    for field in (*footnoted, "START_ID"):
         feature = copy.deepcopy(shown)
         del feature["properties"][field]
-        assert rejected(feature) == {field}
+        assert rejected(feature) == set(), field
+    shown["properties"]["SHOWN_FIRM"] = "Y"
+    assert rejected(shown) == {"SHOWN_FIRM"}
 
 
 def test_shown_on_index_is_optional_and_unpublished(shown: dict[str, Any]) -> None:

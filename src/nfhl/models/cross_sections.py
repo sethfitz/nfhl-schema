@@ -127,23 +127,25 @@ class CrossSection(Feature):
         ),
     )
 
-    stream_stn: float64 = Field(
+    stream_stn: Omitable[float64] = Field(
         alias="STREAM_STN",
         description=(
             "Stream Station. This is the measurement along the profile baseline to "
             "the cross section location. This value is used in the FDTs and "
-            "profiles."
+            'profiles. Required in the reference, with the footnote "Field is '
+            'applicable for BLE database."'
         ),
     )
 
     # Length 32 on the service; the reference says 25.
-    start_id: Annotated[str, MaxLen(32)] = Field(
+    start_id: Omitable[Annotated[str, MaxLen(32)]] = Field(
         alias="START_ID",
         description=(
             "Station Start Identification. This is the foreign key to the "
             "S_Stn_Start layer. The station start describes the origin for the "
             "measurements in the STREAM_STN field. This value is used in the FDTs "
-            "and profiles."
+            'and profiles. Required in the reference, with the footnote "Field is '
+            'applicable for BLE database."'
         ),
     )
 
@@ -156,7 +158,7 @@ class CrossSection(Feature):
         ),
     )
 
-    xs_ln_typ: XSLnTyp = Field(
+    xs_ln_typ: Omitable[XSLnTyp] = Field(
         alias="XS_LN_TYP",
         description=(
             "Cross-Section Line Type. This attribute should contain ‘LETTERED, "
@@ -171,7 +173,8 @@ class CrossSection(Feature):
             "sections used in the development of effective hydraulic models shall "
             "be stored in this table, regardless of the flood hazard zone depicted "
             "on the effective panels. Acceptable values for this field are listed "
-            "in the D_XS_Ln_Typ table."
+            "in the D_XS_Ln_Typ table. Required in the reference, with the footnote"
+            ' "Field is applicable for BLE database."'
         ),
     )
 

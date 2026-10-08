@@ -266,14 +266,11 @@ LETTER_RULE = "@forbid_if(xs_ltr)"
 XS_FIELDS = {
     **{
         f: f"{f} IS NOT NULL AND {f} <> ''"
-        for f in ("XS_LN_ID", "WTR_NM", "START_ID", "MODEL_ID", "LEN_UNIT")
+        for f in ("XS_LN_ID", "WTR_NM", "MODEL_ID", "LEN_UNIT")
     },
     "SOURCE_CIT": "SOURCE_CIT IS NOT NULL",
     "V_DATUM": "V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88')",
-    **{
-        f: f"{f} <> -9999 AND {f} IS NOT NULL"
-        for f in ("STREAM_STN", "WSEL_REG", "STRMBED_EL")
-    },
+    **{f: f"{f} <> -9999 AND {f} IS NOT NULL" for f in ("WSEL_REG", "STRMBED_EL")},
     LETTER_RULE: "(XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL "
     "OR (XS_LTR = '' AND XS_LTR NOT LIKE ' '))",
 }
@@ -296,6 +293,9 @@ XS_CASES: list[Case] = [
     ("coded_streambed", "STRMBED_EL = -8888", None, None),
     # 1,778 rows; the elevations' unit, and D_Length_Units lists it.
     ("miles", "LEN_UNIT = 'Miles'", None, None),
+    # "R1", applicable for BLE databases, and not required.
+    ("no_station_start", "START_ID IS NULL", None, None),
+    ("no_stream_station", "STREAM_STN = -9999", None, None),
     # Findings: published cross sections the reference does not allow.
     (
         "letter_on_unlettered",
@@ -312,8 +312,6 @@ XS_CASES: list[Case] = [
     ("american_samoa_datum", "V_DATUM = 'ASVD02'", "V_DATUM", None),
     ("ngvd88_datum", "V_DATUM = 'NGVD88'", "V_DATUM", None),
     ("no_source_citation", "SOURCE_CIT IS NULL", "SOURCE_CIT", None),
-    ("no_station_start", "START_ID IS NULL", "START_ID", None),
-    ("no_stream_station", "STREAM_STN = -9999", "STREAM_STN", None),
     ("no_water_surface", "WSEL_REG = -9999", "WSEL_REG", None),
     ("no_streambed", "STRMBED_EL = -9999", "STRMBED_EL", None),
     ("no_model_id", "MODEL_ID IS NULL", "MODEL_ID", None),
@@ -322,12 +320,15 @@ XS_CASES: list[Case] = [
 XS_SPARSE = {"ngvd88_datum", "no_stream_station", "no_water_surface"}
 
 
+def missing(field: str) -> str:
+    """`field` holds no text; a lone space is text."""
+    return f"({field} IS NULL OR ({field} = '' AND {field} NOT LIKE ' '))"
+
+
 def continues_without(first: str, then: str) -> str:
     """`then` holds text, a lone space included, while `first` holds none."""
-    return (
-        f"({then} IS NOT NULL AND ({then} <> '' OR {then} LIKE ' ')) "
-        f"AND ({first} IS NULL OR ({first} = '' AND {first} NOT LIKE ' '))"
-    )
+    holds_text = f"({then} IS NOT NULL AND ({then} <> '' OR {then} LIKE ' '))"
+    return f"{holds_text} AND {missing(first)}"
 
 
 # STUDY_TYP values that are neither in D_Study_Typ nor legacy (spec/legacy.json).
@@ -358,20 +359,13 @@ PROFILE_RULES = {
 PROFILE_FIELDS = {
     **{
         f: f"{f} IS NOT NULL AND {f} <> ''"
-        for f in (
-            "BASELN_ID",
-            "WTR_NM",
-            "R_ST_DESC",
-            "R_END_DESC",
-            "START_ID",
-            "SOURCE_CIT",
-        )
+        for f in ("BASELN_ID", "WTR_NM", "SOURCE_CIT")
     },
-    "WATER_TYP": "WATER_TYP IN ('Profile Baseline', "
-    "'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')",
-    "STUDY_TYP": "STUDY_TYP <> '' AND STUDY_TYP NOT IN "
-    f"({sql_list(STUDY_TYP_OUT_OF_DOMAIN + STUDY_TYP_LEGACY)})",
-    "SHOWN_FIRM": "SHOWN_FIRM IN ('T', 'F', 'U')",
+    "WATER_TYP": f"({missing('WATER_TYP')} OR WATER_TYP IN ('Profile Baseline', "
+    "'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown'))",
+    "STUDY_TYP": f"({missing('STUDY_TYP')} OR (STUDY_TYP NOT LIKE ' ' AND "
+    f"STUDY_TYP NOT IN ({sql_list(STUDY_TYP_OUT_OF_DOMAIN + STUDY_TYP_LEGACY)})))",
+    "SHOWN_FIRM": f"({missing('SHOWN_FIRM')} OR SHOWN_FIRM IN ('T', 'F', 'U'))",
     "DATUM_UNIT": "(DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ')",
     **{
         rule: f"NOT ({continues_without(first, then)})"
@@ -381,7 +375,7 @@ PROFILE_FIELDS = {
 PROFILE_CASES: list[Case] = [
     (
         "profile_baseline_shown",
-        "WATER_TYP = 'Profile Baseline' AND SHOWN_FIRM = 'T'",
+        "WATER_TYP = 'Profile Baseline' AND SHOWN_FIRM = 'T' AND START_ID <> ''",
         None,
         None,
     ),
@@ -423,9 +417,10 @@ PROFILE_CASES: list[Case] = [
         None,
         "STUDY_TYP",
     ),
+    # "R1", applicable for BLE databases, and not required.
+    ("no_station_start", "START_ID IS NULL", None, None),
+    ("not_said_if_shown", "SHOWN_FIRM IS NULL", None, None),
     # Findings: published profile baselines the reference does not allow.
-    ("no_station_start", "START_ID IS NULL", "START_ID", None),
-    ("not_said_if_shown", "SHOWN_FIRM IS NULL", "SHOWN_FIRM", None),
     ("no_water_name", "WTR_NM IS NULL OR WTR_NM = ''", "WTR_NM", None),
     ("no_source_citation", "SOURCE_CIT IS NULL", "SOURCE_CIT", None),
     ("coded_water_type", "WATER_TYP = '1032'", "WATER_TYP", None),

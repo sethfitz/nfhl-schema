@@ -1,10 +1,10 @@
 {
   "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/14/query",
-  "retrieved_at": "2026-10-07T12:12:49Z",
+  "retrieved_at": "2026-10-08T07:09:08Z",
   "cases": [
     {
       "name": "lettered_navd88_feet",
-      "where": "(XS_LN_TYP = 'LETTERED, MAPPED' AND XS_LTR <> '' AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND STRMBED_EL > 0) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(XS_LN_TYP = 'LETTERED, MAPPED' AND XS_LTR <> '' AND V_DATUM = 'NAVD88' AND LEN_UNIT = 'Feet' AND STRMBED_EL > 0) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -69,7 +69,7 @@
     },
     {
       "name": "unlettered",
-      "where": "(XS_LN_TYP = 'NOT LETTERED, MAPPED' AND XS_LTR IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(XS_LN_TYP = 'NOT LETTERED, MAPPED' AND XS_LTR IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -122,7 +122,7 @@
     },
     {
       "name": "ngvd29",
-      "where": "(V_DATUM = 'NGVD29' AND LEN_UNIT = 'Feet') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(V_DATUM = 'NGVD29' AND LEN_UNIT = 'Feet') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -175,7 +175,7 @@
     },
     {
       "name": "meters",
-      "where": "(LEN_UNIT = 'Meters') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(LEN_UNIT = 'Meters') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -236,7 +236,7 @@
     },
     {
       "name": "coded_water_surface",
-      "where": "(WSEL_REG = -8888) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(WSEL_REG = -8888) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -281,7 +281,7 @@
     },
     {
       "name": "coded_streambed",
-      "where": "(STRMBED_EL = -8888) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(STRMBED_EL = -8888) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -350,7 +350,7 @@
     },
     {
       "name": "miles",
-      "where": "(LEN_UNIT = 'Miles') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(LEN_UNIT = 'Miles') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -394,278 +394,9 @@
       }
     },
     {
-      "name": "letter_on_unlettered",
-      "where": "(XS_LN_TYP = 'NOT LETTERED, MAPPED' AND XS_LTR <> '') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND SHAPE.STLength() < 0.01",
-      "expect": "@forbid_if(xs_ltr)",
-      "warns": null,
-      "feature": {
-        "type": "Feature",
-        "id": 10096,
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [
-              -84.96234406817995,
-              32.491990395708676
-            ],
-            [
-              -84.9629438619186,
-              32.49206868140827
-            ],
-            [
-              -84.96419061467498,
-              32.49246545605409
-            ],
-            [
-              -84.96529401058416,
-              32.49287212528672
-            ]
-          ]
-        },
-        "properties": {
-          "OBJECTID": 10096,
-          "DFIRM_ID": "135158",
-          "VERSION_ID": "1.1.1.0",
-          "XS_LN_ID": "135158_2494",
-          "WTR_NM": "WERACOBA CREEK",
-          "STREAM_STN": 29334,
-          "START_ID": "135158_28",
-          "XS_LTR": "Y",
-          "XS_LN_TYP": "NOT LETTERED, MAPPED",
-          "WSEL_REG": 300.5,
-          "STRMBED_EL": 289.8,
-          "LEN_UNIT": "Feet",
-          "V_DATUM": "NAVD88",
-          "PROFXS_TXT": "",
-          "MODEL_ID": "NP",
-          "SEQ": -9999,
-          "SOURCE_CIT": "135158_LOMC11",
-          "SHAPE.STLength()": 0.003089198318514063,
-          "GFID": "ed585c67-d37b-449a-85e1-6a87ba92e776",
-          "GlobalID": "{B5A36EB8-D477-4B25-98B0-87A09778554C}"
-        }
-      }
-    },
-    {
-      "name": "lone_space_letter_on_unlettered",
-      "where": "(XS_LN_TYP = 'NOT LETTERED, MAPPED' AND XS_LTR LIKE ' ') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND SHAPE.STLength() < 0.01",
-      "expect": "@forbid_if(xs_ltr)",
-      "warns": null,
-      "feature": {
-        "type": "Feature",
-        "id": 786448,
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [
-              -82.65355147295924,
-              37.63369808880489
-            ],
-            [
-              -82.65391132805159,
-              37.634656938565094
-            ],
-            [
-              -82.65456723615836,
-              37.636137535946766
-            ]
-          ]
-        },
-        "properties": {
-          "OBJECTID": 786448,
-          "DFIRM_ID": "21071C",
-          "VERSION_ID": "2.3.3.2",
-          "XS_LN_ID": "21071C_748",
-          "WTR_NM": "Cow Creek",
-          "STREAM_STN": 15110.57,
-          "START_ID": "21071C_17",
-          "XS_LTR": " ",
-          "XS_LN_TYP": "NOT LETTERED, MAPPED",
-          "WSEL_REG": 676,
-          "STRMBED_EL": 668.51,
-          "LEN_UNIT": "Feet",
-          "V_DATUM": "NAVD88",
-          "PROFXS_TXT": " ",
-          "MODEL_ID": "Cow Creek 80.0",
-          "SEQ": -999,
-          "SOURCE_CIT": "21071C_STUDY2",
-          "SHAPE.STLength()": 0.0026435296854251345,
-          "GFID": "20150914",
-          "GlobalID": "{5EF6BFC8-559D-4361-A23F-8C33788AE974}"
-        }
-      }
-    },
-    {
-      "name": "american_samoa_datum",
-      "where": "(V_DATUM = 'ASVD02') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
-      "expect": "V_DATUM",
-      "warns": null,
-      "feature": {
-        "type": "Feature",
-        "id": 68208,
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [
-              -170.75082042863474,
-              -14.335687570620433
-            ],
-            [
-              -170.75047190922,
-              -14.336793310491176
-            ]
-          ]
-        },
-        "properties": {
-          "OBJECTID": 68208,
-          "DFIRM_ID": "600001",
-          "VERSION_ID": "1.1.1.0",
-          "XS_LN_ID": "600001_159",
-          "WTR_NM": "DRAINAGEWAY # 2",
-          "STREAM_STN": 15810,
-          "START_ID": "600001_13",
-          "XS_LTR": "Q",
-          "XS_LN_TYP": "LETTERED, MAPPED",
-          "WSEL_REG": 246.2,
-          "STRMBED_EL": -8888,
-          "LEN_UNIT": "Feet",
-          "V_DATUM": "ASVD02",
-          "PROFXS_TXT": null,
-          "MODEL_ID": "NP",
-          "SEQ": -9999,
-          "SOURCE_CIT": "600001_FIS1",
-          "SHAPE.STLength()": 0.0011593647754246296,
-          "GFID": null,
-          "GlobalID": "{8AB2ED47-DB4E-4274-B777-B44575C8D705}"
-        }
-      }
-    },
-    {
-      "name": "ngvd88_datum",
-      "where": "(V_DATUM = 'NGVD88') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' '))",
-      "expect": "V_DATUM",
-      "warns": null,
-      "feature": {
-        "type": "Feature",
-        "id": 149563,
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [
-              -85.82237750070323,
-              34.897942109711614
-            ],
-            [
-              -85.82095173788423,
-              34.89802023047009
-            ],
-            [
-              -85.81926462712728,
-              34.898157021982314
-            ],
-            [
-              -85.81705482180057,
-              34.8983526571357
-            ],
-            [
-              -85.81551020351033,
-              34.89854812331434
-            ],
-            [
-              -85.8143219840118,
-              34.898665470087344
-            ]
-          ]
-        },
-        "properties": {
-          "OBJECTID": 149563,
-          "DFIRM_ID": "01071C",
-          "VERSION_ID": "1.1.1.0",
-          "XS_LN_ID": "01071C_2",
-          "WTR_NM": "BENGIS CREEK",
-          "STREAM_STN": 4.81,
-          "START_ID": "01071C_1",
-          "XS_LTR": "K",
-          "XS_LN_TYP": "LETTERED, MAPPED",
-          "WSEL_REG": 620.2,
-          "STRMBED_EL": 0,
-          "LEN_UNIT": "Feet",
-          "V_DATUM": "NGVD88",
-          "PROFXS_TXT": null,
-          "MODEL_ID": "NP",
-          "SEQ": -9999,
-          "SOURCE_CIT": "01071C_BASE8",
-          "SHAPE.STLength()": 0.008089931498070144,
-          "GFID": "66c2b122-c101-4a0e-ac4f-d44af23a1f95",
-          "GlobalID": "{F4ACFCEA-D430-464E-ABD4-59534672DC86}"
-        }
-      }
-    },
-    {
-      "name": "no_source_citation",
-      "where": "(SOURCE_CIT IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
-      "expect": "SOURCE_CIT",
-      "warns": null,
-      "feature": {
-        "type": "Feature",
-        "id": 712411,
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [
-              -80.51574778731373,
-              36.04109435285057
-            ],
-            [
-              -80.51596586755677,
-              36.04070720425447
-            ],
-            [
-              -80.51577037651657,
-              36.0403223083119
-            ],
-            [
-              -80.51567611014485,
-              36.04014766076477
-            ],
-            [
-              -80.51545159152012,
-              36.04005361444495
-            ],
-            [
-              -80.51490796439919,
-              36.03950741915481
-            ]
-          ]
-        },
-        "properties": {
-          "OBJECTID": 712411,
-          "DFIRM_ID": "37059C",
-          "VERSION_ID": "1.1.1.0",
-          "XS_LN_ID": "37059C_8411",
-          "WTR_NM": "Hauser Creek",
-          "STREAM_STN": 6889,
-          "START_ID": "37059C_1",
-          "XS_LTR": "069",
-          "XS_LN_TYP": "LETTERED, MAPPED",
-          "WSEL_REG": 711,
-          "STRMBED_EL": -8888,
-          "LEN_UNIT": "Feet",
-          "V_DATUM": "NAVD88",
-          "PROFXS_TXT": null,
-          "MODEL_ID": "NP",
-          "SEQ": -9999,
-          "SOURCE_CIT": null,
-          "SHAPE.STLength()": 0.0020885482205810803,
-          "GFID": "5ed709bb-15c6-4899-bb3b-59235d4b32fc",
-          "GlobalID": "{F6DF7C6C-827B-47DB-8292-EEC90A6B4AC2}"
-        }
-      }
-    },
-    {
       "name": "no_station_start",
-      "where": "(START_ID IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
-      "expect": "START_ID",
+      "where": "(START_ID IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "expect": null,
       "warns": null,
       "feature": {
         "type": "Feature",
@@ -713,8 +444,8 @@
     },
     {
       "name": "no_stream_station",
-      "where": "(STREAM_STN = -9999) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' '))",
-      "expect": "STREAM_STN",
+      "where": "(STREAM_STN = -9999) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' '))",
+      "expect": null,
       "warns": null,
       "feature": {
         "type": "Feature",
@@ -777,8 +508,277 @@
       }
     },
     {
+      "name": "letter_on_unlettered",
+      "where": "(XS_LN_TYP = 'NOT LETTERED, MAPPED' AND XS_LTR <> '') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": "@forbid_if(xs_ltr)",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 10096,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -84.96234406817995,
+              32.491990395708676
+            ],
+            [
+              -84.9629438619186,
+              32.49206868140827
+            ],
+            [
+              -84.96419061467498,
+              32.49246545605409
+            ],
+            [
+              -84.96529401058416,
+              32.49287212528672
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 10096,
+          "DFIRM_ID": "135158",
+          "VERSION_ID": "1.1.1.0",
+          "XS_LN_ID": "135158_2494",
+          "WTR_NM": "WERACOBA CREEK",
+          "STREAM_STN": 29334,
+          "START_ID": "135158_28",
+          "XS_LTR": "Y",
+          "XS_LN_TYP": "NOT LETTERED, MAPPED",
+          "WSEL_REG": 300.5,
+          "STRMBED_EL": 289.8,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NAVD88",
+          "PROFXS_TXT": "",
+          "MODEL_ID": "NP",
+          "SEQ": -9999,
+          "SOURCE_CIT": "135158_LOMC11",
+          "SHAPE.STLength()": 0.003089198318514063,
+          "GFID": "ed585c67-d37b-449a-85e1-6a87ba92e776",
+          "GlobalID": "{B5A36EB8-D477-4B25-98B0-87A09778554C}"
+        }
+      }
+    },
+    {
+      "name": "lone_space_letter_on_unlettered",
+      "where": "(XS_LN_TYP = 'NOT LETTERED, MAPPED' AND XS_LTR LIKE ' ') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": "@forbid_if(xs_ltr)",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 786448,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -82.65355147295924,
+              37.63369808880489
+            ],
+            [
+              -82.65391132805159,
+              37.634656938565094
+            ],
+            [
+              -82.65456723615836,
+              37.636137535946766
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 786448,
+          "DFIRM_ID": "21071C",
+          "VERSION_ID": "2.3.3.2",
+          "XS_LN_ID": "21071C_748",
+          "WTR_NM": "Cow Creek",
+          "STREAM_STN": 15110.57,
+          "START_ID": "21071C_17",
+          "XS_LTR": " ",
+          "XS_LN_TYP": "NOT LETTERED, MAPPED",
+          "WSEL_REG": 676,
+          "STRMBED_EL": 668.51,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NAVD88",
+          "PROFXS_TXT": " ",
+          "MODEL_ID": "Cow Creek 80.0",
+          "SEQ": -999,
+          "SOURCE_CIT": "21071C_STUDY2",
+          "SHAPE.STLength()": 0.0026435296854251345,
+          "GFID": "20150914",
+          "GlobalID": "{5EF6BFC8-559D-4361-A23F-8C33788AE974}"
+        }
+      }
+    },
+    {
+      "name": "american_samoa_datum",
+      "where": "(V_DATUM = 'ASVD02') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "expect": "V_DATUM",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 68208,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -170.75082042863474,
+              -14.335687570620433
+            ],
+            [
+              -170.75047190922,
+              -14.336793310491176
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 68208,
+          "DFIRM_ID": "600001",
+          "VERSION_ID": "1.1.1.0",
+          "XS_LN_ID": "600001_159",
+          "WTR_NM": "DRAINAGEWAY # 2",
+          "STREAM_STN": 15810,
+          "START_ID": "600001_13",
+          "XS_LTR": "Q",
+          "XS_LN_TYP": "LETTERED, MAPPED",
+          "WSEL_REG": 246.2,
+          "STRMBED_EL": -8888,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "ASVD02",
+          "PROFXS_TXT": null,
+          "MODEL_ID": "NP",
+          "SEQ": -9999,
+          "SOURCE_CIT": "600001_FIS1",
+          "SHAPE.STLength()": 0.0011593647754246296,
+          "GFID": null,
+          "GlobalID": "{8AB2ED47-DB4E-4274-B777-B44575C8D705}"
+        }
+      }
+    },
+    {
+      "name": "ngvd88_datum",
+      "where": "(V_DATUM = 'NGVD88') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' '))",
+      "expect": "V_DATUM",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 149563,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -85.82237750070323,
+              34.897942109711614
+            ],
+            [
+              -85.82095173788423,
+              34.89802023047009
+            ],
+            [
+              -85.81926462712728,
+              34.898157021982314
+            ],
+            [
+              -85.81705482180057,
+              34.8983526571357
+            ],
+            [
+              -85.81551020351033,
+              34.89854812331434
+            ],
+            [
+              -85.8143219840118,
+              34.898665470087344
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 149563,
+          "DFIRM_ID": "01071C",
+          "VERSION_ID": "1.1.1.0",
+          "XS_LN_ID": "01071C_2",
+          "WTR_NM": "BENGIS CREEK",
+          "STREAM_STN": 4.81,
+          "START_ID": "01071C_1",
+          "XS_LTR": "K",
+          "XS_LN_TYP": "LETTERED, MAPPED",
+          "WSEL_REG": 620.2,
+          "STRMBED_EL": 0,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NGVD88",
+          "PROFXS_TXT": null,
+          "MODEL_ID": "NP",
+          "SEQ": -9999,
+          "SOURCE_CIT": "01071C_BASE8",
+          "SHAPE.STLength()": 0.008089931498070144,
+          "GFID": "66c2b122-c101-4a0e-ac4f-d44af23a1f95",
+          "GlobalID": "{F4ACFCEA-D430-464E-ABD4-59534672DC86}"
+        }
+      }
+    },
+    {
+      "name": "no_source_citation",
+      "where": "(SOURCE_CIT IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "expect": "SOURCE_CIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 712411,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -80.51574778731373,
+              36.04109435285057
+            ],
+            [
+              -80.51596586755677,
+              36.04070720425447
+            ],
+            [
+              -80.51577037651657,
+              36.0403223083119
+            ],
+            [
+              -80.51567611014485,
+              36.04014766076477
+            ],
+            [
+              -80.51545159152012,
+              36.04005361444495
+            ],
+            [
+              -80.51490796439919,
+              36.03950741915481
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 712411,
+          "DFIRM_ID": "37059C",
+          "VERSION_ID": "1.1.1.0",
+          "XS_LN_ID": "37059C_8411",
+          "WTR_NM": "Hauser Creek",
+          "STREAM_STN": 6889,
+          "START_ID": "37059C_1",
+          "XS_LTR": "069",
+          "XS_LN_TYP": "LETTERED, MAPPED",
+          "WSEL_REG": 711,
+          "STRMBED_EL": -8888,
+          "LEN_UNIT": "Feet",
+          "V_DATUM": "NAVD88",
+          "PROFXS_TXT": null,
+          "MODEL_ID": "NP",
+          "SEQ": -9999,
+          "SOURCE_CIT": null,
+          "SHAPE.STLength()": 0.0020885482205810803,
+          "GFID": "5ed709bb-15c6-4899-bb3b-59235d4b32fc",
+          "GlobalID": "{F6DF7C6C-827B-47DB-8292-EEC90A6B4AC2}"
+        }
+      }
+    },
+    {
       "name": "no_water_surface",
-      "where": "(WSEL_REG = -9999) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' '))",
+      "where": "(WSEL_REG = -9999) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' '))",
       "expect": "WSEL_REG",
       "warns": null,
       "feature": {
@@ -827,7 +827,7 @@
     },
     {
       "name": "no_streambed",
-      "where": "(STRMBED_EL = -9999) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(STRMBED_EL = -9999) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": "STRMBED_EL",
       "warns": null,
       "feature": {
@@ -884,7 +884,7 @@
     },
     {
       "name": "no_model_id",
-      "where": "(MODEL_ID IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(MODEL_ID IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": "MODEL_ID",
       "warns": null,
       "feature": {
@@ -941,7 +941,7 @@
     },
     {
       "name": "no_water_name",
-      "where": "(WTR_NM IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND STREAM_STN <> -9999 AND STREAM_STN IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
+      "where": "(WTR_NM IS NULL) AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND V_DATUM NOT IN ('ASVD02', 'GUVD03', 'NGVD88') AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
       "expect": "WTR_NM",
       "warns": null,
       "feature": {

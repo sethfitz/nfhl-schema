@@ -76,16 +76,17 @@ class ReferenceField:
     name: str
     # "R" required for all records, "A" required if applicable; a digit after
     # either is a footnote marker (`S_XS`'s "R1": "Field is applicable for BLE
-    # database"), which does not change what a FIRM Database must hold.
+    # database"), and a footnoted requirement is not enforced.
     requirement: str
     type: str  # "Text", "Double", "Date", ...
     length: int | None  # declared text length; None for "Default"
     domain: str | None  # a D_* domain table; L_/S_ joins are not vocabularies
     description: str
+    footnote: str | None  # the text of the footnote `requirement` marks
 
     @property
     def required(self) -> bool:
-        return self.requirement.rstrip("0123456789") == "R"
+        return self.requirement == "R"
 
 
 @dataclass(frozen=True, slots=True)
@@ -384,6 +385,7 @@ class SpecReader:
             raise ValueError(f"{name}: description and field tables disagree")
         fields = []
         for name_, requirement, type_, length, _scale, joined in rows:
+            marker = requirement.lstrip("RA")
             fields.append(
                 ReferenceField(
                     name=name_,
@@ -392,9 +394,29 @@ class SpecReader:
                     length=int(length) if length.isdigit() else None,
                     domain=joined if joined.startswith("D_") else None,
                     description=descriptions[name_],
+                    footnote=self.section_footnote(name, marker) if marker else None,
                 )
             )
         return ReferenceTable(name, tuple(fields))
+
+    def section_footnote(self, name: str, marker: str) -> str:
+        """The footnote `marker` cites in table `name`'s section.
+
+        Read from the `pdftotext` rendering, where a footnote is a line of its
+        own under the table that cites it: `1 Field is applicable for BLE
+        database.` The section runs from its heading to the next table's.
+        """
+        text = (self.spec_dir / "reference" / f"{FIRM_DATABASE}.txt").read_text()
+        section = re.search(
+            rf"^\d+(?:\.\d+)*\.\s+Table:\s+{name}\s*$(.*?)"
+            r"(?=^\d+(?:\.\d+)*\.\s+Table:\s+\w+\s*$|\Z)",
+            text,
+            re.MULTILINE | re.DOTALL,
+        )
+        notes = re.findall(rf"^{marker} (\S.*)$", section[1] if section else "", re.M)
+        if not notes or len(set(notes)) > 1:
+            raise ValueError(f"{name}: footnote {marker} not found once in its section")
+        return squash(notes[0])
 
     def reference_intro(self, name: str) -> str:
         """What a table's section says its features are, before its field list.

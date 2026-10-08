@@ -1,10 +1,10 @@
 {
   "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/17/query",
-  "retrieved_at": "2026-10-07T17:49:57Z",
+  "retrieved_at": "2026-10-08T07:09:45Z",
   "cases": [
     {
       "name": "profile_baseline_shown",
-      "where": "(WATER_TYP = 'Profile Baseline' AND SHOWN_FIRM = 'T') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "where": "(WATER_TYP = 'Profile Baseline' AND SHOWN_FIRM = 'T' AND START_ID <> '') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -144,51 +144,35 @@
     },
     {
       "name": "stream_centerline",
-      "where": "(WATER_TYP = 'Profile Baseline and Stream Centerline') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "where": "(WATER_TYP = 'Profile Baseline and Stream Centerline') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
         "type": "Feature",
-        "id": 311856,
+        "id": 5474,
         "geometry": {
           "type": "LineString",
           "coordinates": [
             [
-              -96.94349600942421,
-              30.184235412739437
+              -92.67126063094246,
+              33.65965025877462
             ],
             [
-              -96.94350987755392,
-              30.184211128777314
-            ],
-            [
-              -96.94350804662879,
-              30.18417218302366
-            ],
-            [
-              -96.94350253290285,
-              30.184147032058593
-            ],
-            [
-              -96.94349874663588,
-              30.18411777264838
-            ],
-            [
-              -96.94350306986578,
-              30.184081003571443
+              -92.67913358947236,
+              33.65870997721257
             ]
           ]
         },
         "properties": {
-          "OBJECTID": 311856,
-          "DFIRM_ID": "48287C",
+          "OBJECTID": 5474,
+          "DFIRM_ID": "05103C",
           "VERSION_ID": "1.1.1.0",
-          "BASELN_ID": "48287C_1265",
-          "WTR_NM": "Unnamed Tributary to South of Giddings",
+          "BASELN_ID": "05103C_6363",
+          "WTR_NM": "TWO BAYOU MAIN CANAL",
           "SEGMT_NAME": null,
           "WATER_TYP": "Profile Baseline and Stream Centerline",
           "STUDY_TYP": "NP",
-          "SHOWN_FIRM": "U",
+          "SHOWN_FIRM": null,
           "R_ST_DESC": "NP",
           "R_END_DESC": "NP",
           "V_DATM_OFF": null,
@@ -198,17 +182,17 @@
           "FLD_PROB3": null,
           "SPEC_CONS1": null,
           "SPEC_CONS2": null,
-          "START_ID": "48287C_-8888",
-          "SOURCE_CIT": "48287C_STUDY2",
-          "SHAPE.STLength()": 0.00015922761998498247,
-          "GFID": "20140411",
-          "GlobalID": "{252EE3A7-1AB7-44F6-A64B-A9E94A192373}"
+          "START_ID": null,
+          "SOURCE_CIT": "05103C_BASE2",
+          "SHAPE.STLength()": 0.007928907380666136,
+          "GFID": null,
+          "GlobalID": "{74BB3691-C1B3-4652-8D25-18DED2A4CFF8}"
         }
       }
     },
     {
       "name": "hydraulic_link_not_shown",
-      "where": "(WATER_TYP = 'Hydraulic Link' AND SHOWN_FIRM = 'F') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "where": "(WATER_TYP = 'Hydraulic Link' AND SHOWN_FIRM = 'F') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -428,7 +412,7 @@
     },
     {
       "name": "datum_offset",
-      "where": "(V_DATM_OFF LIKE '%.%' AND DATUM_UNIT = 'Feet') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "where": "(V_DATM_OFF LIKE '%.%' AND DATUM_UNIT = 'Feet') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -700,7 +684,7 @@
     },
     {
       "name": "flooding_problem_continued",
-      "where": "(FLD_PROB1 <> '' AND FLD_PROB2 <> '' AND FLD_PROB3 <> '' AND SPEC_CONS1 <> '' AND SPEC_CONS2 <> '') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "where": "(FLD_PROB1 <> '' AND FLD_PROB2 <> '' AND FLD_PROB3 <> '' AND SPEC_CONS1 <> '' AND SPEC_CONS2 <> '') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -2884,7 +2868,7 @@
     },
     {
       "name": "datum_name_as_offset",
-      "where": "(V_DATM_OFF = 'NAVD88' AND SHAPE.STLength() < 0.05) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "(V_DATM_OFF = 'NAVD88' AND SHAPE.STLength() < 0.05) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": null,
       "warns": null,
       "feature": {
@@ -2964,7 +2948,7 @@
     },
     {
       "name": "text_null_offset",
-      "where": "(V_DATM_OFF = '-9999') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "where": "(V_DATM_OFF = '-9999') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
       "expect": null,
       "warns": null,
       "feature": {
@@ -3164,199 +3148,1167 @@
     },
     {
       "name": "stream_river_water_type",
-      "where": "(WATER_TYP = 'Stream / River') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "(WATER_TYP = 'Stream / River') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": null,
       "warns": "WATER_TYP",
       "feature": {
         "type": "Feature",
-        "id": 2404042,
+        "id": 81014,
         "geometry": {
           "type": "LineString",
           "coordinates": [
             [
-              -97.99814148292828,
-              38.863363741662845
+              -91.15265270222366,
+              38.81995206304363
             ],
             [
-              -97.99840832102035,
-              38.863444552412844
+              -91.15261800112211,
+              38.819996487161525
             ],
             [
-              -97.99850409219651,
-              38.86348302143825
+              -91.15237224355177,
+              38.82019262514783
             ],
             [
-              -97.99864933234463,
-              38.863427793819824
+              -91.15215397864132,
+              38.8203505403193
             ],
             [
-              -97.99872314159367,
-              38.86331547886013
+              -91.15203964940014,
+              38.8204053566986
             ],
             [
-              -97.99879721408519,
-              38.86318434258667
+              -91.15197326467903,
+              38.82043318463904
             ],
             [
-              -97.99889483319734,
-              38.86309105586757
+              -91.15175902308341,
+              38.82057048031491
             ],
             [
-              -97.99899192320522,
-              38.86303541439535
+              -91.15174158871582,
+              38.8206187614196
             ],
             [
-              -97.99911308893807,
-              38.86297997854031
+              -91.15171577243622,
+              38.8206392132782
             ],
             [
-              -97.9992334623241,
-              38.862981010555536
+              -91.1516978351559,
+              38.8207082802068
             ],
             [
-              -97.99932976129492,
-              38.862981835643815
+              -91.1516889503384,
+              38.820783717385524
             ],
             [
-              -97.99942685130279,
-              38.86292619417153
+              -91.15174628262388,
+              38.821061324888696
             ],
             [
-              -97.99964563352842,
-              38.862777471597475
+              -91.15181266737235,
+              38.82134614345222
             ],
             [
-              -97.9998152100246,
-              38.862703625663215
+              -91.15184736849285,
+              38.821517972578576
             ],
             [
-              -98.00005701107632,
-              38.86263039919994
+              -91.1518565886048,
+              38.821648729044
             ],
             [
-              -98.0002742086084,
-              38.862594608437306
+              -91.15184317756366,
+              38.82180983063947
             ],
             [
-              -98.0004437851046,
-              38.86252076119331
+              -91.15183060470324,
+              38.821854588722914
             ],
             [
-              -98.00063901678055,
-              38.86233418644552
+              -91.15180378259758,
+              38.8219100769599
             ],
             [
-              -98.00066519844535,
-              38.862183815004535
+              -91.15176941677147,
+              38.82194377223471
             ],
             [
-              -98.00071650880497,
-              38.86195835999675
+              -91.15176053195046,
+              38.821978808613494
             ],
             [
-              -98.00086279930365,
-              38.861827837955694
+              -91.15169900873985,
+              38.82203999655023
             ],
             [
-              -98.00100671800061,
-              38.86186671690596
+              -91.15142743488965,
+              38.82225373523652
             ],
             [
-              -98.00110143489721,
-              38.861980477734654
+              -91.1513655764003,
+              38.82228793473697
             ],
             [
-              -98.00097921881381,
-              38.86211120408335
+              -91.15132165519493,
+              38.82229447131841
             ],
             [
-              -98.00100197701668,
-              38.862205520198245
+              -91.15129583891535,
+              38.82231475553886
             ],
             [
-              -98.00109801143532,
-              38.86222516790994
+              -91.15123448333819,
+              38.82232196398358
             ],
             [
-              -98.00121838351171,
-              38.86222619599614
+              -91.15119106504564,
+              38.82230855293202
             ],
             [
-              -98.00133822910313,
-              38.86226487194849
+              -91.15107690343058,
+              38.82222573968025
             ],
             [
-              -98.00145702172466,
-              38.86237883315575
+              -91.15084472453862,
+              38.82224987958973
             ],
             [
-              -98.00152740227315,
-              38.862511207061694
+              -91.15063852956379,
+              38.82224669578514
             ],
             [
-              -98.00164540516721,
-              38.86268163744887
+              -91.15043652554556,
+              38.822264128856354
             ],
             [
-              -98.00176551531081,
-              38.862701488158464
+              -91.1503575679599,
+              38.822288268757674
             ],
             [
-              -98.00186391760205,
-              38.86255173487881
+              -91.15023452153508,
+              38.822370076193074
             ],
             [
-              -98.00174696767783,
-              38.86230601399801
+              -91.15023535973093,
+              38.822425899704925
             ],
             [
-              -98.00186944569406,
-              38.862156465025926
+              -91.15031348044225,
+              38.82248038210728
             ],
             [
-              -98.00203822984348,
-              38.86213908303285
+              -91.15043635793533,
+              38.82258314430127
             ],
             [
-              -98.00189098324417,
-              38.861874853852036
+              -91.1504197617599,
+              38.82264517042648
             ],
             [
-              -98.00183935591427,
-              38.86180423889498
+              -91.15038439010466,
+              38.82267970389218
+            ],
+            [
+              -91.15028799946127,
+              38.82275480579924
+            ],
+            [
+              -91.15016478539842,
+              38.82283745142558
+            ],
+            [
+              -91.15008582650697,
+              38.82290651835745
+            ],
+            [
+              -91.15007761224044,
+              38.822961336040706
+            ],
+            [
+              -91.1500866647069,
+              38.82300928055798
+            ],
+            [
+              -91.150174004213,
+              38.8231088576286
+            ],
+            [
+              -91.15027877808961,
+              38.82319435309166
+            ],
+            [
+              -91.15032353749109,
+              38.82324632092315
+            ],
+            [
+              -91.15034952141274,
+              38.823270125542415
+            ],
+            [
+              -91.15040182453068,
+              38.823298121114675
+            ],
+            [
+              -91.15045915679212,
+              38.82330080332239
+            ],
+            [
+              -91.15053325287151,
+              38.8232910803043
+            ],
+            [
+              -91.15056460121228,
+              38.823280854374026
+            ],
+            [
+              -91.15089283678623,
+              38.82324280049095
+            ],
+            [
+              -91.1510240974895,
+              38.82324212993128
+            ],
+            [
+              -91.15113926493439,
+              38.823332319262605
+            ],
+            [
+              -91.15113859438334,
+              38.82335210056715
+            ],
+            [
+              -91.15111277810803,
+              38.823421167496164
+            ],
+            [
+              -91.15101638615504,
+              38.82349693995594
+            ],
+            [
+              -91.15092837610975,
+              38.823551590005316
+            ],
+            [
+              -91.15086702053375,
+              38.82357220950397
+            ],
+            [
+              -91.1508214229479,
+              38.823595008298085
+            ],
+            [
+              -91.15079946234519,
+              38.82359819342456
+            ],
+            [
+              -91.15075269129194,
+              38.82362082458053
+            ],
+            [
+              -91.15066585471098,
+              38.82364110880424
+            ],
+            [
+              -91.1506215982305,
+              38.82366206357835
+            ],
+            [
+              -91.15059511139633,
+              38.823661560665265
+            ],
+            [
+              -91.15053392346101,
+              38.82371017573895
+            ],
+            [
+              -91.15053342055181,
+              38.82377136367242
+            ],
+            [
+              -91.15056057794052,
+              38.823792653719046
+            ],
+            [
+              -91.15061288105835,
+              38.82381947582408
+            ],
+            [
+              -91.15077146678797,
+              38.823833725060325
+            ],
+            [
+              -91.15085830337667,
+              38.82390178615429
+            ],
+            [
+              -91.15084170720186,
+              38.82397085308282
+            ],
+            [
+              -91.15072285173686,
+              38.824109657497125
+            ],
+            [
+              -91.15050861014467,
+              38.824286348143865
+            ],
+            [
+              -91.15041137999957,
+              38.824348877187944
+            ],
+            [
+              -91.15022379287927,
+              38.82452070632622
+            ],
+            [
+              -91.15019277981754,
+              38.824561777680465
+            ],
+            [
+              -91.1501320948106,
+              38.8247679726376
+            ],
+            [
+              -91.15016629300689,
+              38.82482983112193
+            ],
+            [
+              -91.15025463964847,
+              38.82489152196514
+            ],
+            [
+              -91.1504038363303,
+              38.824911973814366
+            ],
+            [
+              -91.15052671513251,
+              38.82500853339595
+            ],
+            [
+              -91.15057046870443,
+              38.825055974996815
+            ],
+            [
+              -91.15058807071749,
+              38.82509050845968
+            ],
+            [
+              -91.15060969607563,
+              38.82545126580868
+            ],
+            [
+              -91.15056141631553,
+              38.82589399822842
+            ],
+            [
+              -91.15032538178941,
+              38.826422729041475
+            ],
+            [
+              -91.15028179586345,
+              38.8264643033109
+            ],
+            [
+              -91.15027291104178,
+              38.82649213124822
+            ],
+            [
+              -91.1502549737575,
+              38.82651627114628
+            ],
+            [
+              -91.1502291587879,
+              38.82654007445865
+            ],
+            [
+              -91.15021239366511,
+              38.82660830450599
+            ],
+            [
+              -91.15023854523552,
+              38.82675297624863
+            ],
+            [
+              -91.15026452915686,
+              38.82677309151842
+            ],
+            [
+              -91.15036108875952,
+              38.826828747387
+            ],
+            [
+              -91.15046636554513,
+              38.82684936818639
+            ],
+            [
+              -91.15068597157666,
+              38.82686998636032
+            ],
+            [
+              -91.15079074545363,
+              38.826959003534725
+            ],
+            [
+              -91.15076409099338,
+              38.82709646552902
+            ],
+            [
+              -91.15072955753,
+              38.82714088964697
+            ],
+            [
+              -91.150624784978,
+              38.82722672039757
+            ],
+            [
+              -91.15055236397328,
+              38.82726427266211
+            ],
+            [
+              -91.15044105222164,
+              38.82734356552429
+            ],
+            [
+              -91.15044943413413,
+              38.827377931349496
+            ],
+            [
+              -91.15052872700257,
+              38.82742620982963
+            ],
+            [
+              -91.15057231293271,
+              38.82743308430209
+            ],
+            [
+              -91.15075587675024,
+              38.82741883373782
+            ],
+            [
+              -91.1509486606719,
+              38.827446158749844
+            ],
+            [
+              -91.15111579595168,
+              38.82748756667948
+            ],
+            [
+              -91.15113725364127,
+              38.82750148064678
+            ],
+            [
+              -91.1513000303352,
+              38.82762486233401
+            ],
+            [
+              -91.15135250109432,
+              38.82768688845552
+            ],
+            [
+              -91.15136976783155,
+              38.82772779085934
+            ],
+            [
+              -91.15139591939105,
+              38.82774790743879
+            ],
+            [
+              -91.15140513949517,
+              38.827789481705445
+            ],
+            [
+              -91.15144503739393,
+              38.82789660249636
+            ],
+            [
+              -91.15147152423944,
+              38.82802668971787
+            ],
+            [
+              -91.15148409711193,
+              38.828119728903715
+            ],
+            [
+              -91.1514842647693,
+              38.82833866566844
+            ],
+            [
+              -91.15146666276411,
+              38.828394152595244
+            ],
+            [
+              -91.15144067884697,
+              38.82842181289534
+            ],
+            [
+              -91.15141435965434,
+              38.82845919751918
+            ],
+            [
+              -91.1511424505287,
+              38.828682993186206
+            ],
+            [
+              -91.15113457153669,
+              38.828717023735926
+            ],
+            [
+              -91.15115250885258,
+              38.82905330591171
+            ],
+            [
+              -91.15119626243177,
+              38.82918372971832
+            ],
+            [
+              -91.15124890082907,
+              38.82924592216834
+            ],
+            [
+              -91.15131042405469,
+              38.82935589280711
+            ],
+            [
+              -91.15130137159603,
+              38.829397131798316
+            ],
+            [
+              -91.15123079592254,
+              38.82945194948499
+            ],
+            [
+              -91.15115217361235,
+              38.829466031095805
+            ],
+            [
+              -91.15109970286039,
+              38.82948598004132
+            ],
+            [
+              -91.1510472321092,
+              38.829513976928816
+            ],
+            [
+              -91.15101236336612,
+              38.829520681147976
+            ],
+            [
+              -91.15098554125683,
+              38.82953459511785
+            ],
+            [
+              -91.15094212296846,
+              38.8295689609458
+            ],
+            [
+              -91.1509065836871,
+              38.829740622437775
+            ],
+            [
+              -91.15084623394387,
+              38.82980281620347
+            ],
+            [
+              -91.15081957947935,
+              38.82989149810855
+            ],
+            [
+              -91.15082812902952,
+              38.829919660011626
+            ],
+            [
+              -91.15115334714167,
+              38.830173464189414
+            ],
+            [
+              -91.15141570093046,
+              38.83040648123702
+            ],
+            [
+              -91.15167067863713,
+              38.83061954934235
+            ],
+            [
+              -91.15174091904686,
+              38.83070890048523
+            ],
+            [
+              -91.15179741312828,
+              38.83083597021803
+            ],
+            [
+              -91.1518114947435,
+              38.83091828056064
+            ],
+            [
+              -91.1518373110269,
+              38.830941917541764
+            ],
+            [
+              -91.15173639284643,
+              38.83105926426888
+            ],
+            [
+              -91.15167084632166,
+              38.83114844778088
+            ],
+            [
+              -91.15166179386237,
+              38.83118247833068
+            ],
+            [
+              -91.15160027065185,
+              38.83124467209644
+            ],
+            [
+              -91.1515830039218,
+              38.83128574344999
+            ],
+            [
+              -91.15157512493046,
+              38.83132715007936
+            ],
+            [
+              -91.15159205639672,
+              38.83143007991719
+            ],
+            [
+              -91.1517199643477,
+              38.831561005324104
+            ],
+            [
+              -91.1517412544003,
+              38.831588330345305
+            ],
+            [
+              -91.1517593593291,
+              38.83163644250025
+            ],
+            [
+              -91.15178400218092,
+              38.83206760788207
+            ],
+            [
+              -91.15181199776914,
+              38.83218596043133
+            ],
+            [
+              -91.15197460684868,
+              38.83258058068392
+            ],
+            [
+              -91.15202322194291,
+              38.8327966662874
+            ],
+            [
+              -91.15203143622567,
+              38.83292742406255
+            ],
+            [
+              -91.15198097716026,
+              38.83326907066359
+            ],
+            [
+              -91.15195566380157,
+              38.833361439298756
+            ],
+            [
+              -91.15192280672989,
+              38.83351767807855
+            ],
+            [
+              -91.15189598462453,
+              38.83357668671719
+            ],
+            [
+              -91.15187050362735,
+              38.83366553495069
+            ],
+            [
+              -91.15184016113982,
+              38.833950687486045
+            ],
+            [
+              -91.151865642152,
+              38.834033165466224
+            ],
+            [
+              -91.15188357943994,
+              38.83405059852569
+            ],
+            [
+              -91.15190956336161,
+              38.83407440445463
+            ],
+            [
+              -91.15211223794613,
+              38.83421186774632
+            ],
+            [
+              -91.15233134106435,
+              38.83424589828388
+            ],
+            [
+              -91.15236604216976,
+              38.834245561695994
+            ],
+            [
+              -91.15247098368442,
+              38.83432837625792
+            ],
+            [
+              -91.15256754329063,
+              38.83442443161669
+            ],
+            [
+              -91.15260341787067,
+              38.834507078544156
+            ],
+            [
+              -91.15258531295686,
+              38.8346301236551
+            ],
+            [
+              -91.15252446030458,
+              38.834754512492985
+            ],
+            [
+              -91.15249730291944,
+              38.83477479671351
+            ],
+            [
+              -91.1524542199141,
+              38.834884933686375
+            ],
+            [
+              -91.15241951881288,
+              38.83493304584413
+            ],
+            [
+              -91.15241096927056,
+              38.83499507327857
+            ],
+            [
+              -91.15245421993755,
+              38.83515248552151
+            ],
+            [
+              -91.15251624607293,
+              38.83520763847736
+            ],
+            [
+              -91.1526216905045,
+              38.835317441475624
+            ],
+            [
+              -91.15270869473515,
+              38.83542774607966
+            ],
+            [
+              -91.15276166841116,
+              38.83551693089502
+            ],
+            [
+              -91.15278781997799,
+              38.83562002706083
+            ],
+            [
+              -91.15283174118692,
+              38.83565405891746
+            ],
+            [
+              -91.15282319164102,
+              38.835674677103604
+            ],
+            [
+              -91.15283224411593,
+              38.835819014880514
+            ],
+            [
+              -91.15280592492662,
+              38.8358942831123
+            ],
+            [
+              -91.15277038563376,
+              38.83593518682863
+            ],
+            [
+              -91.15252580153046,
+              38.83612780310348
+            ],
+            [
+              -91.15238532073815,
+              38.836258729834476
+            ],
+            [
+              -91.15232329461483,
+              38.83634087123335
+            ],
+            [
+              -91.15231088939177,
+              38.83637573997418
+            ],
+            [
+              -91.15227937341672,
+              38.83643022238233
+            ],
+            [
+              -91.15221885603594,
+              38.836499456951415
+            ],
+            [
+              -91.15220997121483,
+              38.836533655139355
+            ],
+            [
+              -91.15210536499467,
+              38.836657204479124
+            ],
+            [
+              -91.15205255897546,
+              38.83678075512572
+            ],
+            [
+              -91.15202623979093,
+              38.83691100998825
+            ],
+            [
+              -91.15204367420135,
+              38.83735089124584
+            ],
+            [
+              -91.15207032867669,
+              38.83738559234637
+            ],
+            [
+              -91.15211424989404,
+              38.83751601615297
+            ],
+            [
+              -91.1521712469044,
+              38.83780720234824
+            ],
+            [
+              -91.15213235487047,
+              38.83810660543848
+            ],
+            [
+              -91.15208373980389,
+              38.83820584593032
+            ],
+            [
+              -91.15206278503874,
+              38.83830559064492
+            ],
+            [
+              -91.15205390022126,
+              38.83838102782364
+            ],
+            [
+              -91.15206211450345,
+              38.838504578466974
+            ],
+            [
+              -91.15214123975059,
+              38.838745473208895
+            ],
+            [
+              -91.15220276297256,
+              38.838814204856874
+            ],
+            [
+              -91.15222019734794,
+              38.83885494093223
+            ],
+            [
+              -91.15226411855755,
+              38.83889617992059
+            ],
+            [
+              -91.15230871032107,
+              38.83895099760108
+            ],
+            [
+              -91.15232597705837,
+              38.83899257186725
+            ],
+            [
+              -91.15236956299239,
+              38.83904386914613
+            ],
+            [
+              -91.15248791556435,
+              38.83915015174203
+            ],
+            [
+              -91.15256301748099,
+              38.83923246208137
+            ],
+            [
+              -91.15258531336286,
+              38.839261631122376
+            ],
+            [
+              -91.15272931458058,
+              38.839397418035475
+            ],
+            [
+              -91.15279067016502,
+              38.83947302284858
+            ],
+            [
+              -91.1527992197148,
+              38.839496659830644
+            ],
+            [
+              -91.15290047319014,
+              38.83959020192622
+            ],
+            [
+              -91.15292276907194,
+              38.83961752694738
+            ],
+            [
+              -91.15301882445992,
+              38.839782147628945
+            ],
+            [
+              -91.15306341753731,
+              38.839884574550794
+            ],
+            [
+              -91.15315109233816,
+              38.840194202253194
+            ],
+            [
+              -91.15321730944846,
+              38.84047918714521
+            ],
+            [
+              -91.15323960533831,
+              38.84059921607646
+            ],
+            [
+              -91.15323876715038,
+              38.84063358190217
+            ],
+            [
+              -91.15318629642984,
+              38.841011103072496
+            ],
+            [
+              -91.15306392057538,
+              38.84129307048748
+            ],
+            [
+              -91.15304900077986,
+              38.841332465459125
+            ],
+            [
+              -91.15302972239469,
+              38.841409579020144
+            ],
+            [
+              -91.15292008703824,
+              38.84164041679143
+            ],
+            [
+              -91.15284800264946,
+              38.842019446706395
+            ],
+            [
+              -91.15282419803316,
+              38.84209655895796
+            ],
+            [
+              -91.15276720105742,
+              38.842200160662145
+            ],
+            [
+              -91.15274021131053,
+              38.84222061252075
+            ],
+            [
+              -91.15264482519935,
+              38.842440553809986
+            ],
+            [
+              -91.15260107163516,
+              38.84248145752676
+            ],
+            [
+              -91.15259218681345,
+              38.84250928546409
+            ],
+            [
+              -91.15256603525899,
+              38.842546668778255
+            ],
+            [
+              -91.15241616672836,
+              38.84268128223988
+            ],
+            [
+              -91.1523988999983,
+              38.84272235359343
+            ],
+            [
+              -91.15233737678749,
+              38.842780859319376
+            ],
+            [
+              -91.15218901699986,
+              38.84290742614864
+            ],
+            [
+              -91.15215331006891,
+              38.842949168055796
+            ],
+            [
+              -91.15207452013672,
+              38.843147986934206
+            ],
+            [
+              -91.15199623310956,
+              38.84323767336146
+            ],
+            [
+              -91.15155802692708,
+              38.843784172522
+            ],
+            [
+              -91.15145291779021,
+              38.84388341432662
+            ],
+            [
+              -91.15133858855617,
+              38.84402037603046
+            ],
+            [
+              -91.15132165710197,
+              38.84405507713335
+            ],
+            [
+              -91.15092301351588,
+              38.8444119775172
+            ],
+            [
+              -91.15089183281638,
+              38.84445740746398
+            ],
+            [
+              -91.15077867704638,
+              38.84455665057863
+            ],
+            [
+              -91.1506904993678,
+              38.844666956501726
+            ],
+            [
+              -91.1506559659083,
+              38.84475563578788
+            ],
+            [
+              -91.15063400530923,
+              38.84480039649119
+            ],
+            [
+              -91.15061187707678,
+              38.84489997356764
+            ],
+            [
+              -91.15059863366184,
+              38.844924113465375
+            ],
+            [
+              -91.15058522261285,
+              38.84499586260447
+            ],
+            [
+              -91.15049855368464,
+              38.845181939672464
+            ],
+            [
+              -91.15045480012044,
+              38.84522267575104
+            ],
+            [
+              -91.15044591529943,
+              38.84525771212983
+            ],
+            [
+              -91.15034885279606,
+              38.84536081092164
+            ],
+            [
+              -91.15027861240138,
+              38.84544345654513
+            ],
+            [
+              -91.15023100447048,
+              38.84550665482955
+            ],
+            [
+              -91.1500335253889,
+              38.84569726075348
+            ],
+            [
+              -91.14996328499483,
+              38.84578627531787
+            ],
+            [
+              -91.14993797163527,
+              38.845868753300806
+            ],
+            [
+              -91.14992003435546,
+              38.84594419178968
+            ],
+            [
+              -91.14994199497359,
+              38.84611652383121
+            ],
+            [
+              -91.14996412321834,
+              38.846157593872945
+            ],
+            [
+              -91.15003386070964,
+              38.846202856176156
             ]
           ]
         },
         "properties": {
-          "OBJECTID": 2404042,
-          "DFIRM_ID": "20053C",
+          "OBJECTID": 81014,
+          "DFIRM_ID": "29219C",
           "VERSION_ID": "1.1.1.0",
-          "BASELN_ID": "20053C_1",
-          "WTR_NM": "Unnamed Stream 135",
-          "SEGMT_NAME": "",
+          "BASELN_ID": "29219C_7",
+          "WTR_NM": "NP",
+          "SEGMT_NAME": null,
           "WATER_TYP": "Stream / River",
           "STUDY_TYP": "NP",
           "SHOWN_FIRM": "T",
           "R_ST_DESC": "NP",
           "R_END_DESC": "NP",
-          "V_DATM_OFF": "",
-          "DATUM_UNIT": "",
-          "FLD_PROB1": "",
-          "FLD_PROB2": "",
-          "FLD_PROB3": "",
-          "SPEC_CONS1": "",
-          "SPEC_CONS2": "",
-          "START_ID": "NP",
-          "SOURCE_CIT": "20053C_STUDY1",
-          "SHAPE.STLength()": 0.006253609944322645,
-          "GFID": "cb573950-5e2e-457c-8ea0-c85d1d842cfb",
-          "GlobalID": "{81A70E56-EF54-4A22-A719-001C55AD3D6B}"
+          "V_DATM_OFF": null,
+          "DATUM_UNIT": null,
+          "FLD_PROB1": null,
+          "FLD_PROB2": null,
+          "FLD_PROB3": null,
+          "SPEC_CONS1": null,
+          "SPEC_CONS2": null,
+          "START_ID": null,
+          "SOURCE_CIT": "29219C_STUDY1",
+          "SHAPE.STLength()": 0.03547363145469175,
+          "GFID": null,
+          "GlobalID": "{786803DC-37D4-4FBE-9E02-DE62AAD14479}"
         }
       }
     },
     {
       "name": "legacy_study_type",
-      "where": "(STUDY_TYP = 'SFHAs WITH HIGH FLOOD RISK') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "(STUDY_TYP = 'SFHAs WITH HIGH FLOOD RISK') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": null,
       "warns": "STUDY_TYP",
       "feature": {
@@ -3524,8 +4476,8 @@
     },
     {
       "name": "no_station_start",
-      "where": "(START_ID IS NULL) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
-      "expect": "START_ID",
+      "where": "(START_ID IS NULL) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
       "warns": null,
       "feature": {
         "type": "Feature",
@@ -3688,79 +4640,163 @@
     },
     {
       "name": "not_said_if_shown",
-      "where": "(SHOWN_FIRM IS NULL) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
-      "expect": "SHOWN_FIRM",
+      "where": "(SHOWN_FIRM IS NULL) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
       "warns": null,
       "feature": {
         "type": "Feature",
-        "id": 238877,
+        "id": 235,
         "geometry": {
           "type": "LineString",
           "coordinates": [
             [
-              -117.07517314056022,
-              39.20754901891093
+              -86.66107325980344,
+              31.828425958584454
             ],
             [
-              -117.07498270360091,
-              39.20759662816299
+              -86.66095105156622,
+              31.8285136333571
             ],
             [
-              -117.07466922022653,
-              39.207678100332856
+              -86.66074737117086,
+              31.828659478581294
             ],
             [
-              -117.07430812761267,
-              39.20777449230263
+              -86.66074468895994,
+              31.82866132260134
             ],
             [
-              -117.07403739197201,
-              39.20785227642973
+              -86.66060772856224,
+              31.828756039487804
             ],
             [
-              -117.07378861693253,
-              39.2079335809565
+              -86.66024948575746,
+              31.828961731547764
             ],
             [
-              -117.07370496548629,
-              39.20795235643685
+              -86.66006005460686,
+              31.829076394760182
             ],
             [
-              -117.07347697889422,
-              39.20806702095602
+              -86.65982686988833,
+              31.8291908916456
             ],
             [
-              -117.07326323892481,
-              39.20815955723686
+              -86.65955479310948,
+              31.829305220894152
             ],
             [
-              -117.07297356017244,
-              39.208252093523484
+              -86.65925857642947,
+              31.829386190145694
             ],
             [
-              -117.07264113368808,
-              39.20836323764922
+              -86.65897459733613,
+              31.829440169649708
             ],
             [
-              -117.07206630371208,
-              39.208456109233886
+              -86.6587866749244,
+              31.829453246744027
             ],
             [
-              -117.07174326365532,
-              39.208563397681196
+              -86.65867469261221,
+              31.829442684232912
             ],
             [
-              -117.07158166046148,
-              39.20860782180605
+              -86.6585389069865,
+              31.829432123032237
+            ],
+            [
+              -86.65819507974741,
+              31.82944821761924
+            ],
+            [
+              -86.65798301874574,
+              31.829459615713283
+            ],
+            [
+              -86.65771513160793,
+              31.829489622956963
+            ],
+            [
+              -86.65738723261698,
+              31.82951946387417
+            ],
+            [
+              -86.65700317352447,
+              31.829593559963342
+            ],
+            [
+              -86.65663101543447,
+              31.829681234744765
+            ],
+            [
+              -86.65637872127076,
+              31.82977276389039
+            ],
+            [
+              -86.6560343911251,
+              31.829956160071895
+            ],
+            [
+              -86.6557899759588,
+              31.830098820172037
+            ],
+            [
+              -86.65558948068977,
+              31.830258747003267
+            ],
+            [
+              -86.65536903516522,
+              31.83039637795711
+            ],
+            [
+              -86.65508036351953,
+              31.830603746396456
+            ],
+            [
+              -86.65480778383059,
+              31.830811282473444
+            ],
+            [
+              -86.65460728856253,
+              31.830991493524493
+            ],
+            [
+              -86.65438248575965,
+              31.831233227788616
+            ],
+            [
+              -86.65416572958891,
+              31.83145283381266
+            ],
+            [
+              -86.65400915552695,
+              31.831633380138502
+            ],
+            [
+              -86.65391276357171,
+              31.831731951392022
+            ],
+            [
+              -86.65382860920367,
+              31.831813758827018
+            ],
+            [
+              -86.65375652347336,
+              31.83184762174203
+            ],
+            [
+              -86.6536965103133,
+              31.831903612896397
             ]
           ]
         },
         "properties": {
-          "OBJECTID": 238877,
-          "DFIRM_ID": "32015C",
+          "OBJECTID": 235,
+          "DFIRM_ID": "01013C",
           "VERSION_ID": "1.1.1.0",
-          "BASELN_ID": "32015C_294",
-          "WTR_NM": "KINGSTON CREEK",
+          "BASELN_ID": "01013C_8233",
+          "WTR_NM": "Stallings Creek",
           "SEGMT_NAME": null,
           "WATER_TYP": "Profile Baseline",
           "STUDY_TYP": "NP",
@@ -3774,2301 +4810,1037 @@
           "FLD_PROB3": null,
           "SPEC_CONS1": null,
           "SPEC_CONS2": null,
-          "START_ID": "32015C",
-          "SOURCE_CIT": "32015C_BASE11",
-          "SHAPE.STLength()": 0.0037560722706654476,
-          "GFID": "20131120",
-          "GlobalID": "{49CA3569-97B1-4703-851D-DDF831C1DFC7}"
+          "START_ID": null,
+          "SOURCE_CIT": "01013C_BASE9",
+          "SHAPE.STLength()": 0.008442266521688037,
+          "GFID": null,
+          "GlobalID": "{394AFF0A-37AA-4795-AB27-EFCA6096176E}"
         }
       }
     },
     {
       "name": "no_water_name",
-      "where": "(WTR_NM IS NULL OR WTR_NM = '') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "(WTR_NM IS NULL OR WTR_NM = '') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": "WTR_NM",
       "warns": null,
       "feature": {
         "type": "Feature",
-        "id": 2835681,
+        "id": 510342,
         "geometry": {
           "type": "LineString",
           "coordinates": [
             [
-              -81.6253569982715,
-              31.834795731827942
+              -98.52332644103572,
+              45.45266041634108
             ],
             [
-              -81.6253407609415,
-              31.834809459823965
+              -98.52328447518876,
+              45.452763488932675
             ],
             [
-              -81.62532781744038,
-              31.834831423045532
+              -98.52321913298294,
+              45.45287189582494
             ],
             [
-              -81.62532436645246,
-              31.83486428929706
+              -98.5231924628111,
+              45.45297520284683
             ],
             [
-              -81.62532750443057,
-              31.834880840948077
+              -98.52316594979803,
+              45.45306572483919
             ],
             [
-              -81.62533072098928,
-              31.83490013767433
+              -98.523139279627,
+              45.453174522011054
             ],
             [
-              -81.62541920253555,
-              31.835186292119324
+              -98.52311935557985,
+              45.45326049419834
             ],
             [
-              -81.62547905330923,
-              31.835409301976764
+              -98.5231118249759,
+              45.45337384248299
             ],
             [
-              -81.62549113374251,
-              31.83554673123418
+              -98.52310445153348,
+              45.453491661991805
             ],
             [
-              -81.62554494429918,
-              31.835692710037527
+              -98.52310374563238,
+              45.453573318804466
             ],
             [
-              -81.62556973118487,
-              31.83585767255626
+              -98.52310947153781,
+              45.45365952673091
             ],
             [
-              -81.62557828205112,
-              31.83605856203343
+              -98.52314767340837,
+              45.453714121763824
             ],
             [
-              -81.62559051833443,
-              31.836171204413986
+              -98.52319881615921,
+              45.453755068691564
             ],
             [
-              -81.62562471915405,
-              31.83637483765586
+              -98.52328212186819,
+              45.45379625004829
             ],
             [
-              -81.6256688040769,
-              31.83653713367914
+              -98.52345563395004,
+              45.453846766748356
             ],
             [
-              -81.62569076730401,
-              31.83663902888034
+              -98.52349116800873,
+              45.45385531629204
             ],
             [
-              -81.62567115625738,
-              31.836699429703742
+              -98.52359071104522,
+              45.45387908423304
             ],
             [
-              -81.62563444612242,
-              31.836927379651996
+              -98.52375786990022,
+              45.4539206584852
             ],
             [
-              -81.62560714861075,
-              31.83717196114116
+              -98.52388008076372,
+              45.453948347585886
             ],
             [
-              -81.62558400799712,
-              31.83729550655302
+              -98.52398299620751,
+              45.45396238858395
             ],
             [
-              -81.6255409433253,
-              31.83748784517484
+              -98.52414999921284,
+              45.454013062445284
             ],
             [
-              -81.62552078483837,
-              31.83761970439273
+              -98.5242850749983,
+              45.454045222769196
             ],
             [
-              -81.62549780138325,
-              31.83769100824648
+              -98.52441348323822,
+              45.454086639863576
             ],
             [
-              -81.62551027340663,
-              31.837776274526092
+              -98.52451341787038,
+              45.45413182227056
             ],
             [
-              -81.62552564766763,
-              31.837894642798247
+              -98.52468363613936,
+              45.4542814890881
             ],
             [
-              -81.62557294783936,
-              31.83807356774329
+              -98.52478647302317,
+              45.4544254287101
             ],
             [
-              -81.62565892004591,
-              31.838233274541118
+              -98.52481988936938,
+              45.45462012079227
             ],
             [
-              -81.62567170638812,
-              31.838255394922673
+              -98.52482247731149,
+              45.45479528041113
             ],
             [
-              -81.62582843239123,
-              31.838453930912213
+              -98.52481149572401,
+              45.45494518298394
             ],
             [
-              -81.62588271311692,
-              31.83851456616476
+              -98.52477800216836,
+              45.45513979649097
             ],
             [
-              -81.62592750394877,
-              31.838564375658226
+              -98.52478498274975,
+              45.45528240287314
             ],
             [
-              -81.6259881392112,
-              31.838658114212855
+              -98.52480631865959,
+              45.455417714374605
             ],
             [
-              -81.62606830563145,
-              31.838721651700652
+              -98.52485965905719,
+              45.45555349604627
             ],
             [
-              -81.62612282340731,
-              31.83876589246288
+              -98.5249386494027,
+              45.45565954944453
             ],
             [
-              -81.62616455353191,
-              31.83880174083906
+              -98.5250888650227,
+              45.45575901387158
             ],
             [
-              -81.6262413488532,
-              31.838873513552645
+              -98.52523264883294,
+              45.45583337579342
             ],
             [
-              -81.6263244960919,
-              31.838978469458436
+              -98.52541306419975,
+              45.45586318394078
             ],
             [
-              -81.62643007803622,
-              31.83909699357881
+              -98.52560830506543,
+              45.455870714546315
             ],
             [
-              -81.6265036568002,
-              31.83917975052247
+              -98.52589798908743,
+              45.45582513920698
             ],
             [
-              -81.62657723425365,
-              31.83924328801046
+              -98.52643335339498,
+              45.45559687491838
             ],
             [
-              -81.62666697176772,
-              31.839323454419795
+              -98.5267541002294,
+              45.455423440113904
             ],
             [
-              -81.62691069020488,
-              31.839497595122033
+              -98.52693373108534,
+              45.455348215092236
             ],
             [
-              -81.62704192210306,
-              31.839630240139044
+              -98.52719502007535,
+              45.4552765196334
             ],
             [
-              -81.62710585250414,
-              31.83973495899455
+              -98.52732680202519,
+              45.455263263111284
             ],
             [
-              -81.62716648776536,
-              31.839801241558177
+              -98.52748627309374,
+              45.45528028492109
             ],
             [
-              -81.6271854701744,
-              31.839869956186472
+              -98.52761640748479,
+              45.455331977711054
             ],
             [
-              -81.62718860815276,
-              31.839891920717246
+              -98.52780451065269,
+              45.45547944820528
             ],
             [
-              -81.62720421815354,
-              31.83997726426753
+              -98.5279078962865,
+              45.455603306608445
             ],
             [
-              -81.62720406099348,
-              31.839993815918675
+              -98.5281460447119,
+              45.45587392959616
             ],
             [
-              -81.62721041422029,
-              31.840021349180162
+              -98.5282812789831,
+              45.4560032008761
             ],
             [
-              -81.62721323918824,
-              31.840079003617987
+              -98.52868313397886,
+              45.45640599868697
             ],
             [
-              -81.62719362814096,
-              31.840122930060982
+              -98.52886574700749,
+              45.45662587053391
             ],
             [
-              -81.62719017715345,
-              31.84016685781319
+              -98.52901627565943,
+              45.45685288010212
             ],
             [
-              -81.6271993540386,
-              31.840252124092917
+              -98.52916445213062,
+              45.45703235377306
             ],
             [
-              -81.62719919818869,
-              31.840279657354618
+              -98.52927152449419,
+              45.45715127077911
             ],
             [
-              -81.62716397716565,
-              31.840812745465044
+              -98.52936722365864,
+              45.45729756519401
             ],
             [
-              -81.62712608964209,
-              31.84121946450869
+              -98.529399071008,
+              45.4574404845861
             ],
             [
-              -81.62710953930375,
-              31.841315633819498
+              -98.52945178276634,
+              45.45760121160272
             ],
             [
-              -81.627096439952,
-              31.84134850138092
+              -98.52958458498911,
+              45.457825476097355
             ],
             [
-              -81.62707980972307,
-              31.841433689081118
+              -98.52982249767486,
+              45.458106140349294
             ],
             [
-              -81.62707918239362,
-              31.841527190586824
+              -98.53000871754433,
+              45.45832860011016
             ],
             [
-              -81.62707596583675,
-              31.84154915380815
+              -98.53009265061004,
+              45.458517251975714
             ],
             [
-              -81.62706239631524,
-              31.84165073599854
+              -98.53027840033079,
+              45.45889220222278
             ],
             [
-              -81.62704262810905,
-              31.84173874735441
+              -98.5304137904523,
+              45.45901645352539
             ],
             [
-              -81.62704231509912,
-              31.84178534160133
+              -98.5305814980716,
+              45.459128702980564
             ],
             [
-              -81.6270389413821,
-              31.841821268559336
+              -98.53072583063185,
+              45.4591830635737
             ],
             [
-              -81.62701211535018,
-              31.842005292064872
+              -98.53098037351324,
+              45.45923130536515
             ],
             [
-              -81.62700811430302,
-              31.84212067952116
+              -98.53121106985675,
+              45.45924424753745
             ],
             [
-              -81.62699148407422,
-              31.842208690876934
+              -98.53153487611287,
+              45.45922840177648
             ],
             [
-              -81.62697140416783,
-              31.84234329647977
+              -98.53193022196318,
+              45.459193417755884
             ],
             [
-              -81.62694457682639,
-              31.84253006506052
+              -98.53219386313357,
+              45.459166747550874
             ],
             [
-              -81.62691759232584,
-              31.84275534982325
+              -98.53236839544061,
+              45.45915145186431
             ],
             [
-              -81.62689076629346,
-              31.842928313137826
+              -98.53253437820867,
+              45.4591911428065
             ],
             [
-              -81.62687044933782,
-              31.84310151219332
+              -98.53276672213266,
+              45.45927664349177
             ],
             [
-              -81.62682118860006,
-              31.84326631755362
+              -98.53286281288707,
+              45.459407876665175
             ],
             [
-              -81.6268097355087,
-              31.843320912595036
+              -98.53296533545168,
+              45.45956672036788
             ],
             [
-              -81.62680455837089,
-              31.843345935213236
+              -98.53299310448179,
+              45.4597321530421
             ],
             [
-              -81.62681295207675,
-              31.84355482548454
+              -98.53299875182394,
+              45.459927316608756
             ],
             [
-              -81.62679836232857,
-              31.84385988506678
+              -98.53297898495788,
+              45.46014208860415
             ],
             [
-              -81.62677490739452,
-              31.844011119591546
+              -98.53291113342442,
+              45.46029128526758
             ],
             [
-              -81.6267676911009,
-              31.844165021920265
+              -98.5328138653244,
+              45.4604826036418
             ],
             [
-              -81.62674737414409,
-              31.844310530553322
+              -98.53272271602387,
+              45.46070906447583
             ],
             [
-              -81.62673380462354,
-              31.844434233125654
+              -98.5326928306183,
+              45.4609037565629
             ],
             [
-              -81.62665842245369,
-              31.844681323950404
+              -98.53274185695658,
+              45.46106942497669
             ],
             [
-              -81.62656366497477,
-              31.844903627898887
+              -98.53286320606894,
+              45.461185988498926
             ],
             [
-              -81.62655362371181,
-              31.844969518872436
+              -98.53311923806235,
+              45.461319339401335
             ],
             [
-              -81.6265068736232,
-              31.845255123258905
+              -98.53328851597014,
+              45.46136899302712
             ],
             [
-              -81.62648286993986,
-              31.845494213287814
+              -98.5335226633033,
+              45.46138444584264
             ],
             [
-              -81.62647855588392,
-              31.845681140338318
+              -98.53380724877272,
+              45.461375581952446
             ],
             [
-              -81.62647196691891,
-              31.84572240028609
+              -98.53406351779338,
+              45.46135887312208
             ],
             [
-              -81.6264312557374,
-              31.84607962284693
+              -98.53438802995919,
+              45.46131549541169
             ],
             [
-              -81.6263746202354,
-              31.84639542829991
+              -98.5345758973654,
+              45.461332908811535
             ],
             [
-              -81.62631069116901,
-              31.84686529324247
+              -98.53490754858227,
+              45.46142711750596
             ],
             [
-              -81.62620675551933,
-              31.847552126522732
+              -98.53511071167897,
+              45.46154226919412
             ],
             [
-              -81.62614008006561,
-              31.847969749907207
+              -98.5352708899889,
+              45.46167185479368
             ],
             [
-              -81.62610917440607,
-              31.84826641579386
+              -98.53534180096543,
+              45.461815324245464
             ],
             [
-              -81.62609732973675,
-              31.84865132746662
+              -98.53537176501591,
+              45.462030724880094
             ],
             [
-              -81.62609293710125,
-              31.848857551243515
+              -98.53536956872915,
+              45.462255773879484
             ],
             [
-              -81.62608878020919,
-              31.84911538793535
+              -98.53538353118002,
+              45.46240355739912
             ],
             [
-              -81.62608878020922,
-              31.84911601526883
+              -98.5354757793548,
+              45.462547262590434
             ],
             [
-              -81.62608791713674,
-              31.84916802239551
-            ],
-            [
-              -81.62608438756877,
-              31.849209203762783
-            ],
-            [
-              -81.62608423040908,
-              31.84923407052967
-            ],
-            [
-              -81.62607952345456,
-              31.849500771090398
-            ],
-            [
-              -81.62611340995507,
-              31.84976190291904
-            ],
-            [
-              -81.62619420503846,
-              31.85028197025381
-            ],
-            [
-              -81.62629163035007,
-              31.850700219656908
-            ],
-            [
-              -81.62635006929595,
-              31.85092550441691
-            ],
-            [
-              -81.62635312738381,
-              31.85093711336099
-            ],
-            [
-              -81.62639234817925,
-              31.851088113452164
-            ],
-            [
-              -81.62645839632916,
-              31.85135230467664
-            ],
-            [
-              -81.62655613464985,
-              31.851704664416097
-            ],
-            [
-              -81.62666344275607,
-              31.85210651932853
-            ],
-            [
-              -81.62680510753066,
-              31.85265686499831
-            ],
-            [
-              -81.62688088262503,
-              31.85292662626298
-            ],
-            [
-              -81.62693430159227,
-              31.853138496039577
-            ],
-            [
-              -81.62704482494625,
-              31.853532115726185
+              -98.53552080462212,
+              45.462592836593984
             ]
           ]
         },
         "properties": {
-          "OBJECTID": 2835681,
-          "DFIRM_ID": "13179C",
+          "OBJECTID": 510342,
+          "DFIRM_ID": "46013C",
           "VERSION_ID": "1.1.1.0",
-          "BASELN_ID": "13179C_1",
-          "WTR_NM": "",
-          "SEGMT_NAME": "",
+          "BASELN_ID": "46013C_24730",
+          "WTR_NM": null,
+          "SEGMT_NAME": null,
           "WATER_TYP": "Profile Baseline",
           "STUDY_TYP": "NP",
-          "SHOWN_FIRM": "U",
+          "SHOWN_FIRM": null,
           "R_ST_DESC": "NP",
           "R_END_DESC": "NP",
-          "V_DATM_OFF": "",
-          "DATUM_UNIT": "",
-          "FLD_PROB1": "",
-          "FLD_PROB2": "",
-          "FLD_PROB3": "",
-          "SPEC_CONS1": "",
-          "SPEC_CONS2": "",
-          "START_ID": "NP",
-          "SOURCE_CIT": "13179C_STUDY3",
-          "SHAPE.STLength()": 0.019694614035617036,
-          "GFID": "780c1225-964c-404b-8004-97b4bed52e0d",
-          "GlobalID": "{D2E92C11-5FB2-4BA5-87F5-690119559D1B}"
+          "V_DATM_OFF": null,
+          "DATUM_UNIT": null,
+          "FLD_PROB1": null,
+          "FLD_PROB2": null,
+          "FLD_PROB3": null,
+          "SPEC_CONS1": null,
+          "SPEC_CONS2": null,
+          "START_ID": "46013C",
+          "SOURCE_CIT": "46013C_LOMC5",
+          "SHAPE.STLength()": 0.019813425331951778,
+          "GFID": "20150327",
+          "GlobalID": "{C532EA8F-A5E4-4C35-A801-5500666630AF}"
         }
       }
     },
     {
       "name": "no_source_citation",
-      "where": "(SOURCE_CIT IS NULL) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "(SOURCE_CIT IS NULL) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": "SOURCE_CIT",
       "warns": null,
       "feature": {
         "type": "Feature",
-        "id": 3869840,
+        "id": 1340348,
         "geometry": {
           "type": "LineString",
           "coordinates": [
             [
-              -84.52514192104957,
-              38.058549335615666
+              -82.62421558930976,
+              34.4980558365817
             ],
             [
-              -84.52540124947734,
-              38.058557963731424
+              -82.6242187744354,
+              34.49805516471918
             ],
             [
-              -84.52571783944428,
-              38.058558435199565
+              -82.62440837192024,
+              34.498018116674444
             ],
             [
-              -84.52659834596096,
-              38.058595381042565
+              -82.62463418187376,
+              34.4979736925484
             ],
             [
-              -84.52764067571816,
-              38.058589655104235
+              -82.62519610509541,
+              34.497936981075945
             ],
             [
-              -84.5278288574506,
-              38.05862212975383
+              -82.62591376419562,
+              34.49784511532682
             ],
             [
-              -84.52799021183482,
-              38.05867358680877
+              -82.62635817174443,
+              34.497998504244954
             ],
             [
-              -84.52829636895498,
-              38.05883321501005
+              -82.62664067746975,
+              34.498158178291156
             ],
             [
-              -84.5287368972696,
-              38.05919749798678
-            ],
-            [
-              -84.52899889089683,
-              38.059402857360716
-            ],
-            [
-              -84.52953731337347,
-              38.059843542741724
-            ],
-            [
-              -84.52967560703343,
-              38.05996034201575
-            ],
-            [
-              -84.5299521917353,
-              38.06021410036416
-            ],
-            [
-              -84.53007095161472,
-              38.06030415087253
-            ],
-            [
-              -84.53032423983475,
-              38.060395064449445
-            ],
-            [
-              -84.53100558302609,
-              38.06065588191852
-            ],
-            [
-              -84.53116238760501,
-              38.06070906643271
-            ],
-            [
-              -84.53159287464625,
-              38.060968629246105
-            ],
-            [
-              -84.53186247747415,
-              38.061149750496774
-            ],
-            [
-              -84.53212611998023,
-              38.06135597294535
-            ],
-            [
-              -84.53234026468827,
-              38.06153340746828
-            ],
-            [
-              -84.53241980508545,
-              38.061580864784766
-            ],
-            [
-              -84.53255935209776,
-              38.061627694765086
-            ],
-            [
-              -84.53281750313197,
-              38.061675465085465
-            ],
-            [
-              -84.53311738560316,
-              38.061782537408924
-            ],
-            [
-              -84.53316766658563,
-              38.061808188667044
-            ],
-            [
-              -84.53324147978219,
-              38.06187125466964
-            ],
-            [
-              -84.53332360809766,
-              38.06196977745589
-            ],
-            [
-              -84.53344174065614,
-              38.06223522333559
-            ],
-            [
-              -84.53352128106573,
-              38.06245580112097
-            ],
-            [
-              -84.533576346293,
-              38.06259134837136
-            ],
-            [
-              -84.53364945359645,
-              38.06294433543274
-            ],
-            [
-              -84.53372185629101,
-              38.06323347068434
-            ],
-            [
-              -84.53393003937462,
-              38.06353311736737
-            ],
-            [
-              -84.53411453438474,
-              38.06368043071644
-            ],
-            [
-              -84.5342830264867,
-              38.06370121784277
-            ],
-            [
-              -84.53440468859851,
-              38.06373831957097
-            ],
-            [
-              -84.53475493063095,
-              38.063847510943496
-            ],
-            [
-              -84.53534504590064,
-              38.06407240276959
-            ],
-            [
-              -84.53678327162862,
-              38.06464682932358
-            ],
-            [
-              -84.53702432226136,
-              38.06474943173493
-            ],
-            [
-              -84.5373014557075,
-              38.06487854586027
-            ],
-            [
-              -84.5379537765519,
-              38.06535264623959
-            ],
-            [
-              -84.53825083406072,
-              38.06550199874488
-            ],
-            [
-              -84.53853047814819,
-              38.06559683479199
-            ],
-            [
-              -84.538572994077,
-              38.065620524159954
+              -82.62664533597818,
+              34.498161951459714
             ]
           ]
         },
         "properties": {
-          "OBJECTID": 3869840,
-          "DFIRM_ID": "210067",
+          "OBJECTID": 1340348,
+          "DFIRM_ID": "45007C",
           "VERSION_ID": "1.1.1.0",
-          "BASELN_ID": "210067_1536",
-          "WTR_NM": "TOWN BRANCH",
-          "SEGMT_NAME": "",
+          "BASELN_ID": "45007C_37",
+          "WTR_NM": "ROCKY RIVER TRIBUTARY",
+          "SEGMT_NAME": null,
           "WATER_TYP": "Profile Baseline",
           "STUDY_TYP": "NP",
-          "SHOWN_FIRM": "T",
+          "SHOWN_FIRM": "U",
           "R_ST_DESC": "NP",
           "R_END_DESC": "NP",
-          "V_DATM_OFF": "",
-          "DATUM_UNIT": "",
-          "FLD_PROB1": "",
-          "FLD_PROB2": "",
-          "FLD_PROB3": "",
-          "SPEC_CONS1": "",
-          "SPEC_CONS2": "",
-          "START_ID": "210067_7",
+          "V_DATM_OFF": null,
+          "DATUM_UNIT": null,
+          "FLD_PROB1": null,
+          "FLD_PROB2": null,
+          "FLD_PROB3": null,
+          "SPEC_CONS1": null,
+          "SPEC_CONS2": null,
+          "START_ID": null,
           "SOURCE_CIT": null,
-          "SHAPE.STLength()": 0.01604355006626781,
-          "GFID": "7bac7f1b-a2a6-4062-b6ac-0d1a7c2846ae",
-          "GlobalID": "{6062F970-DE56-427B-9963-FA4DD614B65C}"
+          "SHAPE.STLength()": 0.002513849050090074,
+          "GFID": "c5d40606-1477-4d21-94ee-73e42d42d1ed",
+          "GlobalID": "{83D35FCF-6BC3-4804-BA20-C570864F7841}"
         }
       }
     },
     {
       "name": "coded_water_type",
-      "where": "(WATER_TYP = '1032') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "(WATER_TYP = '1032') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": "WATER_TYP",
       "warns": null,
       "feature": {
         "type": "Feature",
-        "id": 2528900,
+        "id": 394651,
         "geometry": {
           "type": "LineString",
           "coordinates": [
             [
-              -89.29915061674465,
-              31.434094317491578
+              -88.79360429438748,
+              33.4901694798531
             ],
             [
-              -89.29916873606585,
-              31.433893506596615
+              -88.79384456183435,
+              33.49035083553995
             ],
             [
-              -89.29920544750856,
-              31.43365982945003
+              -88.79408263164859,
+              33.4905189360237
             ],
             [
-              -89.29926749458048,
-              31.43338826476426
+              -88.79435827468082,
+              33.49066609221102
             ],
             [
-              -89.29936774220738,
-              31.433165256213925
+              -88.7946751789767,
+              33.49089067104177
             ],
             [
-              -89.29944296852918,
-              31.433034650353115
-            ],
-            [
-              -89.29954996228689,
-              31.432882317011433
-            ],
-            [
-              -89.29975194927408,
-              31.43275657527268
-            ],
-            [
-              -89.29990969549677,
-              31.432663701096132
-            ],
-            [
-              -89.30006775473292,
-              31.432603536009697
-            ],
-            [
-              -89.30024479768497,
-              31.432553882360335
-            ],
-            [
-              -89.30045972686774,
-              31.43249889572005
-            ],
-            [
-              -89.30070650337882,
-              31.43247073511644
-            ],
-            [
-              -89.30091515791648,
-              31.432415747166704
-            ],
-            [
-              -89.30129489377491,
-              31.432349228847343
-            ],
-            [
-              -89.30168043410303,
-              31.432228349918955
-            ],
-            [
-              -89.30175636503378,
-              31.432194777751388
-            ],
-            [
-              -89.30207303356327,
-              31.431957413864577
-            ],
-            [
-              -89.30235565843844,
-              31.431615251232806
-            ],
-            [
-              -89.30249630424636,
-              31.431322272076436
-            ],
-            [
-              -89.30243747239057,
-              31.43093249628468
-            ],
-            [
-              -89.30235048125019,
-              31.43059166822316
-            ],
-            [
-              -89.30209201587715,
-              31.430056461078795
-            ],
-            [
-              -89.30191497422045,
-              31.429809527426904
-            ],
-            [
-              -89.30177534862746,
-              31.429676412239676
-            ],
-            [
-              -89.30157218423132,
-              31.429541415054246
-            ],
-            [
-              -89.30131144528049,
-              31.429319817034884
-            ],
-            [
-              -89.30102529080811,
-              31.429092807446445
-            ],
-            [
-              -89.30084714902806,
-              31.42889254662118
-            ],
-            [
-              -89.30058005554207,
-              31.42867087133135
-            ],
-            [
-              -89.30027531025952,
-              31.42850912407279
-            ],
-            [
-              -89.29995173973349,
-              31.428374675644708
-            ],
-            [
-              -89.299634601014,
-              31.42825630738492
-            ],
-            [
-              -89.29931761814652,
-              31.42815441219565
-            ],
-            [
-              -89.2989370205141,
-              31.42803620109895
-            ],
-            [
-              -89.29851241654926,
-              31.42796175928483
-            ],
-            [
-              -89.29820210123272,
-              31.427941129322317
-            ],
-            [
-              -89.29788543268997,
-              31.427904262030715
-            ],
-            [
-              -89.29747973385983,
-              31.42782433006554
-            ],
-            [
-              -89.29718173339744,
-              31.427711530535863
-            ],
-            [
-              -89.29686451609706,
-              31.42758225924604
-            ],
-            [
-              -89.29666739322361,
-              31.427436436301047
-            ],
-            [
-              -89.29645128663302,
-              31.42725264854769
-            ],
-            [
-              -89.29629189282498,
-              31.427008930143
-            ],
-            [
-              -89.29622764940879,
-              31.42682451505078
-            ],
-            [
-              -89.29619462598193,
-              31.426553263380296
-            ],
-            [
-              -89.29617423042563,
-              31.4262818558582
-            ],
-            [
-              -89.29615407192196,
-              31.426048335874388
-            ],
-            [
-              -89.29614701146528,
-              31.42589098255912
-            ],
-            [
-              -89.29610198619729,
-              31.42573370651586
-            ],
-            [
-              -89.29601240583969,
-              31.425538544245583
-            ],
-            [
-              -89.29588486067188,
-              31.425365423777937
-            ],
-            [
-              -89.29570703321681,
-              31.425235681000757
-            ],
-            [
-              -89.29552912849236,
-              31.425133237053473
-            ],
-            [
-              -89.2952944310921,
-              31.425025458808925
-            ],
-            [
-              -89.29507871609827,
-              31.424933916583342
-            ],
-            [
-              -89.29486292383345,
-              31.42483704136816
-            ],
-            [
-              -89.29463442380722,
-              31.424723850243716
-            ],
-            [
-              -89.29432348115088,
-              31.424573007325105
-            ],
-            [
-              -89.29410117849747,
-              31.42442710711024
-            ],
-            [
-              -89.29385965638514,
-              31.424232493598417
-            ],
-            [
-              -89.29366245492969,
-              31.42405411741439
-            ],
-            [
-              -89.29349066768586,
-              31.423875584068686
-            ],
-            [
-              -89.29334398294945,
-              31.42365885017179
-            ],
-            [
-              -89.29325424542951,
-              31.4234312132429
-            ],
-            [
-              -89.29318992343157,
-              31.423219656481578
-            ],
-            [
-              -89.29318270712166,
-              31.423018767007076
-            ],
-            [
-              -89.29320027768665,
-              31.422752772363317
-            ],
-            [
-              -89.29328146432638,
-              31.42250819218507
-            ],
-            [
-              -89.29334931586703,
-              31.422160460830142
-            ],
-            [
-              -89.29346815561223,
-              31.42183963409162
-            ],
-            [
-              -89.29354934225327,
-              31.421622194272732
-            ],
-            [
-              -89.29361789971365,
-              31.421394087165513
-            ],
-            [
-              -89.29363586318348,
-              31.421187550378928
-            ],
-            [
-              -89.29360935014441,
-              31.420948774676496
-            ],
-            [
-              -89.29358283710567,
-              31.42071548912448
-            ],
-            [
-              -89.29346784122563,
-              31.42049334234684
-            ],
-            [
-              -89.2932832689491,
-              31.420287668642178
-            ],
-            [
-              -89.29309249930034,
-              31.420125531096886
-            ],
-            [
-              -89.29286399796395,
-              31.420001514213077
-            ],
-            [
-              -89.2925089717042,
-              31.41988863741473
-            ],
-            [
-              -89.29226172501612,
-              31.41982980559013
-            ],
-            [
-              -89.2919448207298,
-              31.41974414773012
-            ],
-            [
-              -89.29165317480414,
-              31.419663667007782
-            ],
-            [
-              -89.29133015303539,
-              31.41961589668635
-            ],
-            [
-              -89.29105756809736,
-              31.419568125053456
-            ],
-            [
-              -89.2907851416293,
-              31.419509294539417
-            ],
-            [
-              -89.29048721974995,
-              31.419450619877335
-            ],
-            [
-              -89.29015133436735,
-              31.4193596277188
-            ],
-            [
-              -89.28990400778767,
-              31.419268243964776
-            ],
-            [
-              -89.28956137496478,
-              31.419111988167604
-            ],
-            [
-              -89.28933907231159,
-              31.41897165668357
-            ],
-            [
-              -89.289135437738,
-              31.418738841310503
-            ],
-            [
-              -89.28893172458433,
-              31.418511518707167
-            ],
-            [
-              -89.28880378651132,
-              31.418273134600675
-            ],
-            [
-              -89.2886695737901,
-              31.41796956543589
-            ],
-            [
-              -89.28862980292165,
-              31.417605911076986
-            ],
-            [
-              -89.28858391457155,
-              31.417296616017502
-            ],
-            [
-              -89.2885887786827,
-              31.416970926466117
-            ],
-            [
-              -89.28849904116355,
-              31.416759526866453
-            ],
-            [
-              -89.28837769205775,
-              31.41653188993863
-            ],
-            [
-              -89.28823751770892,
-              31.41634245356173
-            ],
-            [
-              -89.28803404029934,
-              31.416174823247136
-            ],
-            [
-              -89.28781809087108,
-              31.41602358873282
-            ],
-            [
-              -89.28751985597481,
-              31.415861842783638
-            ],
-            [
-              -89.28718357768865,
-              31.41573814022525
-            ],
-            [
-              -89.28682886444263,
-              31.41566338539671
-            ],
-            [
-              -89.28644865840464,
-              31.415588709149468
-            ],
-            [
-              -89.28616336701438,
-              31.41551363999682
-            ],
-            [
-              -89.28574511627397,
-              31.41541739212232
-            ],
-            [
-              -89.2853712647714,
-              31.415348207334876
-            ],
-            [
-              -89.28504808453029,
-              31.415262392314382
-            ],
-            [
-              -89.28455335410094,
-              31.41509586082602
-            ],
-            [
-              -89.28433356078375,
-              31.414992945397817
-            ],
-            [
-              -89.28413408443208,
-              31.414945723825067
-            ],
-            [
-              -89.28365786622693,
-              31.41459854124254
-            ],
-            [
-              -89.28302986341642,
-              31.414015799519564
-            ],
-            [
-              -89.28254368251237,
-              31.41338379705045
-            ],
-            [
-              -89.28234240140841,
-              31.412872828027417
-            ],
-            [
-              -89.2822810602289,
-              31.41269986471825
-            ],
-            [
-              -89.28225470434587,
-              31.41236139013736
-            ],
-            [
-              -89.2823380087193,
-              31.411946668993522
-            ],
-            [
-              -89.28256352790578,
-              31.41158034813045
-            ],
-            [
-              -89.28278983159373,
-              31.41136024050198
-            ],
-            [
-              -89.28324306761981,
-              31.41106624240867
-            ],
-            [
-              -89.28386722650019,
-              31.410844565777502
-            ],
-            [
-              -89.284130397501,
-              31.410787225652626
-            ],
-            [
-              -89.28438674379198,
-              31.410687996937803
-            ],
-            [
-              -89.28464591504888,
-              31.410600142735298
-            ],
-            [
-              -89.28506298838118,
-              31.410452123446422
-            ],
-            [
-              -89.28537895100322,
-              31.410347874751793
-            ],
-            [
-              -89.28565710466584,
-              31.410260019239004
-            ],
-            [
-              -89.28605558718873,
-              31.410193500918965
-            ],
-            [
-              -89.28662468085781,
-              31.410077486110612
-            ],
-            [
-              -89.28724076036792,
-              31.409952764592667
-            ],
-            [
-              -89.28758103969287,
-              31.409799881179918
-            ],
-            [
-              -89.28783299464749,
-              31.409668962300916
-            ],
-            [
-              -89.28821053286254,
-              31.409364374192165
-            ],
-            [
-              -89.28846185916663,
-              31.409081670728394
-            ],
-            [
-              -89.28867475048197,
-              31.40870185761158
-            ],
-            [
-              -89.28887454113048,
-              31.40823528780819
-            ],
-            [
-              -89.28906177987007,
-              31.407779463874494
-            ],
-            [
-              -89.28922439020785,
-              31.407443028448238
-            ],
-            [
-              -89.28931122415533,
-              31.40711780906661
-            ],
-            [
-              -89.28936025045165,
-              31.40678168796593
-            ],
-            [
-              -89.2894086494108,
-              31.406370026220134
-            ],
-            [
-              -89.28939421548243,
-              31.405990761864548
-            ],
-            [
-              -89.2892789065855,
-              31.40566624971364
-            ],
-            [
-              -89.28912586730979,
-              31.405363307883025
-            ],
-            [
-              -89.2889099178769,
-              31.40511488382422
-            ],
-            [
-              -89.28854249686194,
-              31.404867087104314
-            ],
-            [
-              -89.28828920995696,
-              31.404738050243704
-            ],
-            [
-              -89.28793481102892,
-              31.40458752164815
-            ],
-            [
-              -89.28768167997563,
-              31.4044693105469
-            ],
-            [
-              -89.28732728104805,
-              31.40432968367173
-            ],
-            [
-              -89.28688440058734,
-              31.404168722221964
-            ],
-            [
-              -89.28647932908576,
-              31.403986031981503
-            ],
-            [
-              -89.2862005467674,
-              31.40381369601349
-            ],
-            [
-              -89.285972282478,
-              31.403608649643825
-            ],
-            [
-              -89.28580708419952,
-              31.403403290260048
-            ],
-            [
-              -89.28567953902696,
-              31.40313290166752
-            ],
-            [
-              -89.28565302598749,
-              31.402883928848908
-            ],
-            [
-              -89.28571491589928,
-              31.402623581514753
-            ],
-            [
-              -89.28585289390624,
-              31.40240653328619
-            ],
-            [
-              -89.28601636601746,
-              31.402243375492812
-            ],
-            [
-              -89.28620494063802,
-              31.40208029496935
-            ],
-            [
-              -89.28651988302217,
-              31.401927412867185
-            ],
-            [
-              -89.28678478017098,
-              31.401839871676408
-            ],
-            [
-              -89.28701194694108,
-              31.401774059276345
-            ],
-            [
-              -89.28725166300184,
-              31.401719072635174
-            ],
-            [
-              -89.28757954889038,
-              31.40162031409052
-            ],
-            [
-              -89.28775557160087,
-              31.40144625195705
-            ],
-            [
-              -89.28790578719263,
-              31.401164177140036
-            ],
-            [
-              -89.28803019566612,
-              31.4007844412971
-            ],
-            [
-              -89.28810440174304,
-              31.400459223225557
-            ],
-            [
-              -89.28824190957312,
-              31.400155496890317
-            ],
-            [
-              -89.28832858766836,
-              31.39980847144858
-            ],
-            [
-              -89.28842828653983,
-              31.399537221083015
-            ],
-            [
-              -89.28845213305671,
-              31.399212160174045
-            ],
-            [
-              -89.28852602481044,
-              31.398854230393056
-            ],
-            [
-              -89.28858775755826,
-              31.398529012321962
-            ],
-            [
-              -89.28863717545214,
-              31.398301375388087
-            ],
-            [
-              -89.28864854995436,
-              31.398073894306616
-            ],
-            [
-              -89.28870981252474,
-              31.397651095098812
-            ],
-            [
-              -89.28875876024067,
-              31.397315051268862
-            ],
-            [
-              -89.28882010139512,
-              31.396968182988793
-            ],
-            [
-              -89.288856812836,
-              31.396697245637416
-            ],
-            [
-              -89.28885492950853,
-              31.396339710070706
-            ],
-            [
-              -89.2887518568851,
-              31.395917615472946
-            ],
-            [
-              -89.28853590745115,
-              31.395647541205125
-            ],
-            [
-              -89.2883455307024,
-              31.395442338983
-            ],
-            [
-              -89.28810440149051,
-              31.39521572098523
-            ],
-            [
-              -89.28793951753627,
-              31.39506448646909
-            ],
-            [
-              -89.28767297280163,
-              31.394805472393944
-            ],
-            [
-              -89.2873685405248,
-              31.39451414082223
-            ],
-            [
-              -89.28710215426119,
-              31.39426587261636
-            ],
-            [
-              -89.28679787914879,
-              31.394050237540938
-            ],
-            [
-              -89.28653196175398,
-              31.39392120068075
-            ],
-            [
-              -89.28650670470293,
-              31.39391563195087
-            ],
-            [
-              -89.28620054628402,
-              31.393777025309458
-            ],
-            [
-              -89.28554712929018,
-              31.393779221654725
-            ],
-            [
-              -89.2847523592577,
-              31.393928261192464
-            ],
-            [
-              -89.284043091254,
-              31.394150172258147
-            ],
-            [
-              -89.28353196634404,
-              31.3942006091039
-            ],
-            [
-              -89.28282167809306,
-              31.394178803068982
-            ],
-            [
-              -89.28242264680215,
-              31.393936419229853
-            ],
-            [
-              -89.28230765091877,
-              31.393644380427908
-            ],
-            [
-              -89.28230647482034,
-              31.39340066332725
-            ],
-            [
-              -89.28242484308458,
-              31.39310948759172
-            ],
-            [
-              -89.2825366996618,
-              31.39300351406462
-            ],
-            [
-              -89.28283556187958,
-              31.39291683594732
-            ],
-            [
-              -89.2831839218857,
-              31.392690923842544
-            ],
-            [
-              -89.28383553544168,
-              31.39232311255616
-            ],
-            [
-              -89.28423135145282,
-              31.391907372475472
-            ],
-            [
-              -89.284456634897,
-              31.39151657643811
-            ],
-            [
-              -89.28448228482162,
-              31.390931716950202
-            ],
-            [
-              -89.2843384237338,
-              31.390566570877123
-            ],
-            [
-              -89.28408968531767,
-              31.390297046673258
-            ],
-            [
-              -89.2840244216714,
-              31.39022644873739
-            ],
-            [
-              -89.28325514571124,
-              31.389766075032544
-            ],
-            [
-              -89.28237205127687,
-              31.389281777529987
-            ],
-            [
-              -89.28174491154708,
-              31.388820933647384
-            ],
-            [
-              -89.28137278485963,
-              31.388237407420927
-            ],
-            [
-              -89.28131309122824,
-              31.38762838708338
-            ],
-            [
-              -89.28133772090672,
-              31.386824048618195
-            ],
-            [
-              -89.28133638765905,
-              31.38681989040557
-            ],
-            [
-              -89.28113589104503,
-              31.386215341297596
-            ],
-            [
-              -89.28076305843535,
-              31.385461283823023
-            ],
-            [
-              -89.28058570245565,
-              31.385183521771726
-            ],
-            [
-              -89.28037665631177,
-              31.384950707708448
-            ],
-            [
-              -89.28002123713723,
-              31.38457269803187
-            ],
-            [
-              -89.27976692998529,
-              31.384205199789463
-            ],
-            [
-              -89.27957631618351,
-              31.383956618568938
-            ],
-            [
-              -89.2793476602976,
-              31.383664894092608
-            ],
-            [
-              -89.27919493403651,
-              31.38341631287074
-            ],
-            [
-              -89.27904228635525,
-              31.38315682861883
-            ],
-            [
-              -89.2789148197647,
-              31.38291891599461
-            ],
-            [
-              -89.27879966672053,
-              31.38262672134154
-            ],
-            [
-              -89.27873511028567,
-              31.38230205202801
-            ],
-            [
-              -89.27872075493879,
-              31.38194459373242
-            ],
-            [
-              -89.27884594791341,
-              31.381705739444218
-            ],
-            [
-              -89.27902110754191,
-              31.381380207047467
-            ],
-            [
-              -89.27923470346883,
-              31.381151862884217
-            ],
-            [
-              -89.27937283994738,
-              31.38095638759389
-            ],
-            [
-              -89.27939699948088,
-              31.380728749351174
-            ],
-            [
-              -89.27935793584163,
-              31.38047977653299
-            ],
-            [
-              -89.27910394170522,
-              31.38018813063791
-            ],
-            [
-              -89.27868686836275,
-              31.380124593163174
-            ],
-            [
-              -89.2782575574355,
-              31.380126083586575
-            ],
-            [
-              -89.27779051744017,
-              31.380171030280405
-            ],
-            [
-              -89.27724785821634,
-              31.380248765957113
-            ],
-            [
-              -89.27689479385693,
-              31.38033662147262
-            ],
-            [
-              -89.2765542002072,
-              31.380424475677987
-            ],
-            [
-              -89.2760871589022,
-              31.3804694223718
-            ],
-            [
-              -89.2756450629431,
-              31.380460166926348
-            ],
-            [
-              -89.27530376337012,
-              31.38035285885823
-            ],
-            [
-              -89.27501219732751,
-              31.38012639802298
-            ],
-            [
-              -89.27487272758688,
-              31.38001861846532
-            ],
-            [
-              -89.27478377456553,
-              31.379877973964597
-            ],
-            [
-              -89.27474471092576,
-              31.379618096806713
-            ],
-            [
-              -89.27478102946363,
-              31.379325587826614
-            ],
-            [
-              -89.27485531412094,
-              31.379000212594278
-            ],
-            [
-              -89.27498034993269,
-              31.378718059197745
-            ],
-            [
-              -89.27513056421583,
-              31.378457554699608
-            ],
-            [
-              -89.27530643107315,
-              31.37824027203818
-            ],
-            [
-              -89.27544409606566,
-              31.377969098941954
-            ],
-            [
-              -89.27564490565055,
-              31.37771910587981
-            ],
-            [
-              -89.27588360277501,
-              31.377447384026866
-            ],
-            [
-              -89.27623611968475,
-              31.377229631186463
-            ],
-            [
-              -89.27650038949486,
-              31.377033684409305
-            ],
-            [
-              -89.27692915035361,
-              31.376912962640233
-            ],
-            [
-              -89.27730786597806,
-              31.376879076140355
-            ],
-            [
-              -89.27775011910107,
-              31.376953516644317
-            ],
-            [
-              -89.27799085671693,
-              31.37710435956549
-            ],
-            [
-              -89.27829473892679,
-              31.3773090916109
-            ],
-            [
-              -89.27856096933772,
-              31.377524806577796
-            ],
-            [
-              -89.27880186280623,
-              31.377708202738
-            ],
-            [
-              -89.2791936005192,
-              31.37780429345274
-            ],
-            [
-              -89.27949685538717,
-              31.377835826445533
-            ],
-            [
-              -89.27974920193776,
-              31.377780839803997
-            ],
-            [
-              -89.28001370618257,
-              31.37764992092453
-            ],
-            [
-              -89.28021522299623,
-              31.377508254868342
-            ],
-            [
-              -89.28030252843187,
-              31.377302189561707
-            ],
-            [
-              -89.28038904936372,
-              31.37690103925226
-            ],
-            [
-              -89.28027389631742,
-              31.37656546691047
-            ],
-            [
-              -89.28006971298117,
-              31.376132939458845
-            ],
-            [
-              -89.27992922430323,
-              31.37578677709983
-            ],
-            [
-              -89.27980167913131,
-              31.375527057105835
-            ],
-            [
-              -89.27963601067489,
-              31.375213447986685
-            ],
-            [
-              -89.27950877851747,
-              31.375008088601533
-            ],
-            [
-              -89.27950776875922,
-              31.375005735118684
+              -88.79487708739839,
+              33.491035788070775
             ]
           ]
         },
         "properties": {
-          "OBJECTID": 2528900,
-          "DFIRM_ID": "28035C",
+          "OBJECTID": 394651,
+          "DFIRM_ID": "28105C",
           "VERSION_ID": "1.1.1.0",
-          "BASELN_ID": "28035C_16",
-          "WTR_NM": "LEAF RIVER",
-          "SEGMT_NAME": "",
+          "BASELN_ID": "28105C",
+          "WTR_NM": "Sand Creek",
+          "SEGMT_NAME": null,
           "WATER_TYP": "1032",
           "STUDY_TYP": "NP",
-          "SHOWN_FIRM": "U",
+          "SHOWN_FIRM": null,
           "R_ST_DESC": "start node: ",
           "R_END_DESC": "end node: ",
-          "V_DATM_OFF": "",
-          "DATUM_UNIT": "",
-          "FLD_PROB1": "",
-          "FLD_PROB2": "",
-          "FLD_PROB3": "",
-          "SPEC_CONS1": "",
-          "SPEC_CONS2": "",
-          "START_ID": "NP",
-          "SOURCE_CIT": "28035C_BASE5",
-          "SHAPE.STLength()": 0.09999560144486412,
-          "GFID": "88539124-8365-4755-84c7-3f014b37a6f0",
-          "GlobalID": "{098B7013-C6A9-4760-B771-AEE97AEAE53E}"
+          "V_DATM_OFF": null,
+          "DATUM_UNIT": null,
+          "FLD_PROB1": null,
+          "FLD_PROB2": null,
+          "FLD_PROB3": null,
+          "SPEC_CONS1": null,
+          "SPEC_CONS2": null,
+          "START_ID": "28105C",
+          "SOURCE_CIT": "28105C_",
+          "SHAPE.STLength()": 0.001541989338054249,
+          "GFID": "20140918",
+          "GlobalID": "{0DD6D970-4D86-4141-A7DC-540499598DA0}"
         }
       }
     },
     {
       "name": "creek_water_type",
-      "where": "(WATER_TYP = 'Creek') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "(WATER_TYP = 'Creek') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": "WATER_TYP",
       "warns": null,
       "feature": {
         "type": "Feature",
-        "id": 2920397,
+        "id": 81896,
         "geometry": {
           "type": "LineString",
           "coordinates": [
             [
-              -93.13457819765559,
-              36.26155720629827
+              -93.45906939156187,
+              32.99735508459212
             ],
             [
-              -93.13456792195711,
-              36.261539321400946
+              -93.45940898985931,
+              32.99733584809713
             ],
             [
-              -93.13448092952379,
-              36.26153516319271
+              -93.46086458045588,
+              32.997248274114696
             ],
             [
-              -93.13441001856879,
-              36.2615215150914
+              -93.46122879144617,
+              32.99725651718301
             ],
             [
-              -93.1343183990609,
-              36.26153665360892
+              -93.46170394486774,
+              32.997302271908175
             ],
             [
-              -93.13423587785528,
-              36.261570305666936
+              -93.46193185684456,
+              32.997333449980296
             ],
             [
-              -93.13416363365485,
-              36.26158387650467
+              -93.46201009673153,
+              32.99735478193505
             ],
             [
-              -93.13407005356527,
-              36.26158905364763
+              -93.4620558527905,
+              32.997376344393665
             ],
             [
-              -93.13398870975311,
-              36.26158552277261
+              -93.46220745665944,
+              32.99757247188685
             ],
             [
-              -93.13391434649904,
-              36.2615704628437
+              -93.46227519821868,
+              32.997829495260966
             ],
             [
-              -93.13384680795218,
-              36.26154677347741
+              -93.4623165118772,
+              32.99804835213808
             ],
             [
-              -93.13378146703884,
-              36.26154449857825
+              -93.46243120785326,
+              32.99844200324389
             ],
             [
-              -93.13371957580368,
-              36.26152394718879
+              -93.46252419205234,
+              32.998627602276194
             ],
             [
-              -93.13353861168588,
-              36.26149186413237
+              -93.46283152000923,
+              32.99878967956778
             ],
             [
-              -93.13350433229496,
-              36.261483863340274
+              -93.46327786456682,
+              32.99918632850191
             ],
             [
-              -93.13339137689537,
-              36.261457114579514
+              -93.46361222811632,
+              32.99944682511837
             ],
             [
-              -93.13331144490999,
-              36.26143813217954
+              -93.46377548021233,
+              32.99951135533237
             ],
             [
-              -93.13292990562358,
-              36.26134706145022
+              -93.46399038582317,
+              32.99954262770146
             ],
             [
-              -93.13262531750644,
-              36.261280307420144
+              -93.46426352605772,
+              32.999546049866304
             ],
             [
-              -93.13211356525449,
-              36.26115958569514
+              -93.46460115853384,
+              32.99949968218019
             ],
             [
-              -93.13205614524472,
-              36.261146093444246
+              -93.46495116610996,
+              32.999392950343434
             ],
             [
-              -93.13205300726729,
-              36.261145231679365
+              -93.46518999551219,
+              32.99922678030015
             ],
             [
-              -93.13200547267203,
-              36.26113197385951
+              -93.46535168384956,
+              32.99914337768097
             ],
             [
-              -93.13200052996466,
-              36.261130170439706
+              -93.4654879854823,
+              32.99912043612882
             ],
             [
-              -93.13199598146888,
-              36.2611277383767
+              -93.465644961625,
+              32.9992069295636
             ],
             [
-              -93.13199198041656,
-              36.261124757560616
+              -93.46578933478324,
+              32.999331869767055
             ],
             [
-              -93.13198860669777,
-              36.261121227991374
+              -93.46595983068674,
+              32.99946757810303
             ],
             [
-              -93.13198601878292,
-              36.261117305520145
+              -93.4660514475791,
+              32.99952167939181
             ],
             [
-              -93.13198429263312,
-              36.261113148617376
+              -93.46629276930359,
+              32.99959108944511
             ],
             [
-              -93.13198342955806,
-              36.26110875597338
+              -93.46660537916628,
+              32.99963805824413
             ],
             [
-              -93.1319809988025,
-              36.26108420352921
+              -93.46693047807113,
+              32.999635614380324
             ],
             [
-              -93.13198084164142,
-              36.261081144132525
+              -93.46716501961507,
+              32.99967768631425
             ],
             [
-              -93.13198813650965,
-              36.260917593447445
+              -93.46760749799537,
+              32.99970722859553
             ],
             [
-              -93.13199707894405,
-              36.2607153720404
+              -93.46796509644425,
+              32.99970453720206
             ],
             [
-              -93.13199692178294,
-              36.26071168531024
+              -93.46828403988629,
+              32.99973501983387
             ],
             [
-              -93.13198311650797,
-              36.26060296540607
+              -93.46840786557368,
+              32.99976148832527
             ],
             [
-              -93.13198248917415,
-              36.260599827429054
+              -93.46859655021315,
+              32.99977102011934
             ],
             [
-              -93.13198131177757,
-              36.26059668945199
+              -93.46886910763985,
+              32.99971964817445
             ],
             [
-              -93.13197974278869,
-              36.26059370863577
+              -93.46902497055405,
+              32.99970203830132
             ],
             [
-              -93.13193440451107,
-              36.2605203656268
+              -93.46927198673366,
+              32.99969469495308
             ],
             [
-              -93.13193244262015,
-              36.260517541971396
+              -93.46952568355802,
+              32.999703747404084
             ],
             [
-              -93.13193001186623,
-              36.26051495405719
+              -93.46974070573042,
+              32.99974596209326
             ],
             [
-              -93.13192726548101,
-              36.26051267915489
+              -93.47008822102033,
+              33.00001730804247
             ],
             [
-              -93.13183556738646,
-              36.260444198964976
+              -93.47041629028065,
+              33.00029426987139
             ],
             [
-              -93.13183266515014,
-              36.26044231696467
+              -93.47067958309871,
+              33.00059364938025
             ],
             [
-              -93.13182960575313,
-              36.26044066939587
+              -93.47081734109625,
+              33.000707668218695
             ],
             [
-              -93.13167664506797,
-              36.260369915616245
+              -93.47092840532783,
+              33.00075614838908
             ],
             [
-              -93.13161703004461,
-              36.26034261809983
+              -93.47101989518131,
+              33.00079929426105
             ],
             [
-              -93.13141214080939,
-              36.260248879557395
+              -93.47131458348264,
+              33.00099431638399
             ],
             [
-              -93.13140861123955,
-              36.26024699755711
+              -93.47143283782472,
+              33.00110849500343
             ],
             [
-              -93.1311961127995,
-              36.26011882377646
+              -93.47151133047991,
+              33.00115173779177
             ],
             [
-              -93.13119313198283,
-              36.26011678461539
+              -93.4715438483594,
+              33.00115149157185
             ],
             [
-              -93.13106268327073,
-              36.26001645710319
+              -93.4716475325769,
+              33.001117826416454
             ],
             [
-              -93.13106040836796,
-              36.260014417941996
+              -93.47174541232593,
+              33.00114996972311
             ],
             [
-              -93.13105829062599,
-              36.26001230020047
+              -93.47186343747393,
+              33.001242219173484
             ],
             [
-              -93.13093953074565,
-              36.259873380546296
+              -93.47197472042227,
+              33.00131261410653
             ],
             [
-              -93.13093741300361,
-              36.2598706354713
+              -93.47214477889226,
+              33.00140446934305
             ],
             [
-              -93.13078264757597,
-              36.25963248711599
+              -93.47227603567137,
+              33.001518549736424
             ],
             [
-              -93.13073017026802,
-              36.25954714226175
+              -93.47232875264667,
+              33.00158389195242
             ],
             [
-              -93.13068561517075,
-              36.259416850731185
+              -93.47238182061645,
+              33.001682125302644
             ],
             [
-              -93.13067330030675,
-              36.25934437079525
+              -93.47246189274635,
+              33.0018732983048
             ],
             [
-              -93.13015205549699,
-              36.25862333676617
+              -93.47260668369267,
+              33.00203658181226
             ],
             [
-              -93.12955064429592,
-              36.258222656674015
+              -93.47285111197937,
+              33.00239635952354
             ],
             [
-              -93.12940984260949,
-              36.25803714277592
+              -93.47298314277957,
+              33.002581654709914
             ],
             [
-              -93.12940748911939,
-              36.25794324837232
+              -93.47308394311632,
+              33.00288774237193
             ],
             [
-              -93.1293746215427,
-              36.257753733417154
+              -93.47309243504918,
+              33.00307397267024
             ],
             [
-              -93.129384034154,
-              36.257607597456996
+              -93.47296816803538,
+              33.00361736265863
             ],
             [
-              -93.12938928986816,
-              36.25754076483122
+              -93.47289962105856,
+              33.003897318417174
             ],
             [
-              -93.12939101601067,
-              36.25744906674943
+              -93.47290741100268,
+              33.0040178004986
             ],
             [
-              -93.12930520095283,
-              36.25716879537025
+              -93.47289603387935,
+              33.00417130992102
             ],
             [
-              -93.12923750654251,
-              36.25698233981353
+              -93.47290376488785,
+              33.00428631101981
             ],
             [
-              -93.129091840721,
-              36.25668645844192
+              -93.47293744969274,
+              33.00439564778074
             ],
             [
-              -93.12904257865999,
-              36.25658644524728
+              -93.47299701102294,
+              33.00449382088569
             ],
             [
-              -93.12902320334392,
-              36.25647403861321
+              -93.47333120300392,
+              33.00473238702348
             ],
             [
-              -93.1288335325097,
-              36.25633574629599
+              -93.47361945949976,
+              33.00493293596784
             ],
             [
-              -93.12864025221555,
-              36.256196356472735
+              -93.47373099914535,
+              33.00502524435374
             ],
             [
-              -93.12853137513605,
-              36.256133210582774
+              -93.47396080492011,
+              33.005231716952714
+            ],
+            [
+              -93.47421783357186,
+              33.0055530413469
+            ],
+            [
+              -93.4743297255215,
+              33.00567821860256
+            ],
+            [
+              -93.47451513075659,
+              33.00598913240702
+            ],
+            [
+              -93.47458946259245,
+              33.00625157127977
+            ],
+            [
+              -93.47461300137368,
+              33.00662946440074
+            ],
+            [
+              -93.47449208579653,
+              33.006876946813
+            ],
+            [
+              -93.47441569255938,
+              33.00703094998495
+            ],
+            [
+              -93.47442412817598,
+              33.007211697991025
+            ],
+            [
+              -93.47443847041617,
+              33.00733761259678
+            ],
+            [
+              -93.47436823133206,
+              33.007458686653756
+            ],
+            [
+              -93.47432969026742,
+              33.00750281347644
+            ],
+            [
+              -93.47431063845185,
+              33.00754679361495
+            ],
+            [
+              -93.47433062537935,
+              33.007590479075276
+            ],
+            [
+              -93.47437631595436,
+              33.00760656840937
+            ],
+            [
+              -93.47448696763655,
+              33.00761669348872
+            ],
+            [
+              -93.47463038472786,
+              33.00764847794306
+            ],
+            [
+              -93.47474789386163,
+              33.007691423433975
+            ],
+            [
+              -93.47487231938263,
+              33.007772667699705
+            ],
+            [
+              -93.47495859805294,
+              33.00793639125976
+            ],
+            [
+              -93.47497981477046,
+              33.00809513806418
+            ],
+            [
+              -93.47489105036237,
+              33.008309493599775
+            ],
+            [
+              -93.4746275480314,
+              33.00860189126238
             ]
           ]
         },
         "properties": {
-          "OBJECTID": 2920397,
-          "DFIRM_ID": "05009C",
+          "OBJECTID": 81896,
+          "DFIRM_ID": "22119C",
           "VERSION_ID": "1.1.1.0",
-          "BASELN_ID": "05009C_29",
-          "WTR_NM": "Dry Jordan Tributary",
-          "SEGMT_NAME": "",
+          "BASELN_ID": "22119C_1",
+          "WTR_NM": "West Branch Little Crooked Creek",
+          "SEGMT_NAME": null,
           "WATER_TYP": "Creek",
           "STUDY_TYP": "NP",
           "SHOWN_FIRM": "T",
           "R_ST_DESC": "NP",
           "R_END_DESC": "NP",
-          "V_DATM_OFF": "",
-          "DATUM_UNIT": "",
-          "FLD_PROB1": "",
-          "FLD_PROB2": "",
-          "FLD_PROB3": "",
-          "SPEC_CONS1": "",
-          "SPEC_CONS2": "",
-          "START_ID": "05009C_U",
-          "SOURCE_CIT": "05009C_LOMC1",
-          "SHAPE.STLength()": 0.009166393243721966,
-          "GFID": "7f58f2dd-5377-45e5-92fd-1be4d3608ddf",
-          "GlobalID": "{4A88D53C-62CB-4502-98C5-E7A619C63986}"
+          "V_DATM_OFF": null,
+          "DATUM_UNIT": null,
+          "FLD_PROB1": null,
+          "FLD_PROB2": null,
+          "FLD_PROB3": null,
+          "SPEC_CONS1": null,
+          "SPEC_CONS2": null,
+          "START_ID": null,
+          "SOURCE_CIT": "22119C_FIRM1",
+          "SHAPE.STLength()": 0.02396085472462901,
+          "GFID": null,
+          "GlobalID": "{0B940F44-CF2B-439F-A722-66E23687D30B}"
         }
       }
     },
     {
       "name": "lone_space_datum_unit",
-      "where": "(DATUM_UNIT LIKE ' ') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "where": "(DATUM_UNIT LIKE ' ') AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
       "expect": "DATUM_UNIT",
       "warns": null,
       "feature": {
@@ -6320,7 +6092,7 @@
     },
     {
       "name": "fld_prob2_without_fld_prob1",
-      "where": "((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": "@forbid_if(fld_prob2)",
       "warns": null,
       "feature": {
@@ -8124,7 +7896,7 @@
     },
     {
       "name": "fld_prob3_without_fld_prob2",
-      "where": "((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
+      "where": "((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' '))) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' ')))",
       "expect": "@forbid_if(fld_prob3)",
       "warns": null,
       "feature": {
@@ -8460,7 +8232,7 @@
     },
     {
       "name": "spec_cons2_without_spec_cons1",
-      "where": "((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND R_ST_DESC IS NOT NULL AND R_ST_DESC <> '' AND R_END_DESC IS NOT NULL AND R_END_DESC <> '' AND START_ID IS NOT NULL AND START_ID <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown') AND STUDY_TYP <> '' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1''') AND SHOWN_FIRM IN ('T', 'F', 'U') AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' ')))",
+      "where": "((SPEC_CONS2 IS NOT NULL AND (SPEC_CONS2 <> '' OR SPEC_CONS2 LIKE ' ')) AND (SPEC_CONS1 IS NULL OR (SPEC_CONS1 = '' AND SPEC_CONS1 NOT LIKE ' '))) AND BASELN_ID IS NOT NULL AND BASELN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND SOURCE_CIT IS NOT NULL AND SOURCE_CIT <> '' AND ((WATER_TYP IS NULL OR (WATER_TYP = '' AND WATER_TYP NOT LIKE ' ')) OR WATER_TYP IN ('Profile Baseline', 'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown')) AND ((STUDY_TYP IS NULL OR (STUDY_TYP = '' AND STUDY_TYP NOT LIKE ' ')) OR (STUDY_TYP NOT LIKE ' ' AND STUDY_TYP NOT IN ('New H&H', '1050', 'Profile Baseline', 'SFHAs WITH HIGH FLOOD RISK', 'SFHAs WITH LOW FLOOD RISK', 'SFHAs WITH MEDIUM FLOOD RISK', 'REDELINEATION', 'DIGITAL CONVERSION', 'Shaded Zone X with depths less than 1'''))) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND (DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ') AND NOT ((FLD_PROB2 IS NOT NULL AND (FLD_PROB2 <> '' OR FLD_PROB2 LIKE ' ')) AND (FLD_PROB1 IS NULL OR (FLD_PROB1 = '' AND FLD_PROB1 NOT LIKE ' '))) AND NOT ((FLD_PROB3 IS NOT NULL AND (FLD_PROB3 <> '' OR FLD_PROB3 LIKE ' ')) AND (FLD_PROB2 IS NULL OR (FLD_PROB2 = '' AND FLD_PROB2 NOT LIKE ' ')))",
       "expect": "@forbid_if(spec_cons2)",
       "warns": null,
       "feature": {

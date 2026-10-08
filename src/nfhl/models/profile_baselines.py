@@ -128,27 +128,29 @@ class ProfileBaseline(Feature):
         ),
     )
 
-    water_typ: ProfBaslnTyp = Field(
+    water_typ: Omitable[ProfBaslnTyp] = Field(
         alias="WATER_TYP",
         description=(
             "Surface Water Feature Type. The type value describes the kind of "
             "watercourse represented. In the FIRM Database, this layer contains "
             "profile baselines and/or streams that are coincident with profile "
             "baselines. Acceptable values for this field are listed in the "
-            "D_Prof_Basln_Typ table."
+            "D_Prof_Basln_Typ table. Required in the reference, with the footnote "
+            '"Field is applicable for BLE database."'
         ),
     )
 
-    study_typ: StudyTyp = Field(
+    study_typ: Omitable[StudyTyp] = Field(
         alias="STUDY_TYP",
         description=(
             "Study Type. This describes the type of Flood Risk Project performed "
             "for flood hazard identification. Acceptable values for this field are "
-            "listed in the D_Study_Typ table."
+            "listed in the D_Study_Typ table. Required in the reference, with the "
+            'footnote "Field is applicable for BLE database."'
         ),
     )
 
-    shown_firm: TrueFalse = Field(
+    shown_firm: Omitable[TrueFalse] = Field(
         alias="SHOWN_FIRM",
         description=(
             "Profile Baseline Shown on FIRM. This field is true only if the profile"
@@ -156,7 +158,8 @@ class ProfileBaseline(Feature):
             "profile baseline for all studied reaches regardless of zone "
             "designation, this field must be populated to determine which profile "
             "baselines are to be shown on the FIRM panels. Acceptable values for "
-            "this field are listed in the D_TrueFalse table."
+            "this field are listed in the D_TrueFalse table. Required in the "
+            'reference, with the footnote "Field is applicable for BLE database."'
         ),
     )
 
@@ -169,19 +172,21 @@ class ProfileBaseline(Feature):
         ),
     )
 
-    r_st_desc: Annotated[str, MaxLen(254)] = Field(
+    r_st_desc: Omitable[Annotated[str, MaxLen(254)]] = Field(
         alias="R_ST_DESC",
         description=(
             "Reach Name Start Description. This describes the location of the start"
-            " of the Flood Risk Project reach."
+            " of the Flood Risk Project reach. Required in the reference, with the "
+            'footnote "Field is applicable for BLE database."'
         ),
     )
 
-    r_end_desc: Annotated[str, MaxLen(254)] = Field(
+    r_end_desc: Omitable[Annotated[str, MaxLen(254)]] = Field(
         alias="R_END_DESC",
         description=(
             "Reach Name End Description. This describes the location of the end of "
-            "the Flood Risk Project reach."
+            "the Flood Risk Project reach. Required in the reference, with the "
+            'footnote "Field is applicable for BLE database."'
         ),
     )
 
@@ -246,7 +251,7 @@ class ProfileBaseline(Feature):
     )
 
     # Length 32 on the service; the reference says 25.
-    start_id: Annotated[str, MaxLen(32)] = Field(
+    start_id: Omitable[Annotated[str, MaxLen(32)]] = Field(
         alias="START_ID",
         description=(
             "Station Start Identification. This is the foreign key to the "
@@ -254,7 +259,8 @@ class ProfileBaseline(Feature):
             "station start descriptions in the FDTs and profiles and which links "
             "the S_Profil_Basln table, L_XS_Elev table via the S_XS table and river"
             " marks in the S_Riv_Mrk table to the appropriate stationing starting "
-            "point."
+            'point. Required in the reference, with the footnote "Field is '
+            'applicable for BLE database."'
         ),
     )
 

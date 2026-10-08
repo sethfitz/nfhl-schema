@@ -69,6 +69,8 @@ ESRI_TYPES = {
     "esriFieldTypeSmallInteger": "Short Integer",
     "esriFieldTypeDate": "Date",
 }
+# A footnoted requirement letter, as the field description words it.
+FOOTNOTED_REQUIREMENTS = {"R": "Required", "A": "Required if applicable"}
 PYTHON_TYPES = {"Text": "str", "Double": "float64", "Short Integer": "int16"}
 
 # Fields the service publishes and the reference does not define, by their Esri type.
@@ -323,10 +325,23 @@ def render_field(
     lines.append(
         f"    {ref.name.lower()}: {annotation} = Field(\n"
         f"        alias={literal(ref.name)},\n"
-        f"        description={literal(ref.description)},\n"
+        f"        description={literal(field_description(ref))},\n"
         "    )"
     )
     return lines
+
+
+def field_description(ref: ReferenceField) -> str:
+    """The reference's description, and the footnote on its requirement.
+
+    A footnoted requirement (`R1`: "Field is applicable for BLE database") is
+    not enforced, so the footnote is all the model says of it.
+    """
+    if ref.footnote is None:
+        return ref.description
+    marked = FOOTNOTED_REQUIREMENTS[ref.requirement.rstrip("0123456789")]
+    footnote = f'"{ref.footnote}"'
+    return f"{ref.description} {marked} in the reference, with the footnote {footnote}"
 
 
 def render_service_only_field(svc: ServiceField) -> list[str]:

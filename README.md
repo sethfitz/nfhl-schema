@@ -70,6 +70,14 @@ come from the service, and a field whose two types disagree stops generation.
 `VERSION_ID` is required by the reference and populated in the downloads, but
 the map service does not publish it, so it is optional here.
 
+**A footnoted requirement is optional.** The reference marks 22 fields in five
+tables `R1`, required with the footnote "Field is applicable for BLE database",
+and opens those tables' field lists with "BLE database requirements may vary,
+see footnote". The models read the footnote as limiting the requirement to BLE
+databases, so these fields are optional, and each one's description ends with
+the footnote. Required, `START_ID` alone would reject 31.5% of the profile
+baselines.
+
 **The models describe the data as FEMA stores it; nothing is transformed.**
 The NFHL stores each coded field as text: the reference's description of the
 value, not its coded value. `FLD_ZONE` holds `OPEN WATER`, never `OW`;

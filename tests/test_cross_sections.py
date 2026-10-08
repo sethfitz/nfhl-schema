@@ -49,7 +49,8 @@ def test_a_valid_section_reads_back_typed(xs_cases: list[dict[str, Any]]) -> Non
     section = validate_as(
         CrossSection, fixture_feature(xs_cases, "lettered_navd88_feet")
     )
-    assert section.xs_ln_typ is XSLnTyp.LETTERED_MAPPED
+    # Omitable hides the enum from mypy; the dump holds the member itself.
+    assert section.model_dump()["XS_LN_TYP"] is XSLnTyp.LETTERED_MAPPED
     assert section.xs_ltr
     assert section.len_unit is LengthUnits.FEET
     assert section.v_datum is VDatum.NAVD88
@@ -67,13 +68,15 @@ def test_both_elevations_are_in_len_unit_and_measured_from_v_datum() -> None:
     }
 
 
-def test_a_footnoted_requirement_is_still_a_requirement(
-    xs_cases: list[dict[str, Any]],
-) -> None:
-    # STREAM_STN, START_ID and XS_LN_TYP are "R1": required, with a footnote
-    # on BLE databases.
+def test_a_footnoted_requirement_is_optional(xs_cases: list[dict[str, Any]]) -> None:
+    # STREAM_STN, START_ID and XS_LN_TYP are "R1": "Field is applicable for BLE
+    # database."
+    for field in ("STREAM_STN", "START_ID", "XS_LN_TYP"):
+        feature = fixture_feature(xs_cases, "unlettered")
+        del feature["properties"][field]
+        assert rejected(feature) == set(), field
     feature = fixture_feature(xs_cases, "unlettered")
-    del feature["properties"]["XS_LN_TYP"]
+    feature["properties"]["XS_LN_TYP"] = "MAPPED"
     assert rejected(feature) == {"XS_LN_TYP"}
 
 
