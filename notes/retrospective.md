@@ -158,6 +158,28 @@ the reference's Table 1 summary gives each table.
   (curl exit 35) often enough that the first snapshot attempt died partway, so
   every request now retries.
 
+## Reading `R1` as optional
+
+`R1` was read as required when the third layer landed, on the grounds that a
+footnote about BLE databases does not change what a FIRM Database must hold.
+Seth reversed that on 2026-10-07: the footnote limits the requirement to BLE
+databases, and the profile baselines (33.5% rejected, 2.3% without `R1`) are
+what made the reading costly enough to revisit. The 22 fields are optional,
+and each description ends with the footnote, read from the table's own section
+of the reference.
+
+- The fixture filters had the requirement baked in. A case's "clean" clauses
+  held every field the model required populated, so a case about a missing
+  `START_ID` that now validates contradicted its own filter. The filters now
+  allow an `R1` field to be missing, and refetching layer 17 picked a shown
+  baseline without a `START_ID`, so that case asks for one.
+- The rejection unions were prose, not code. Rebuilding them from
+  `spec/README.md` reproduced 113,140 and 113,286 exactly, which is what
+  licensed the new totals.
+- Validating live pages found a baseline with no geometry: 69 on layer 17, none
+  on 14 or 16, and 496 on layer 28. The earlier unions read only attributes,
+  so they missed them.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.
@@ -178,6 +200,10 @@ These are inputs for the overture-schema backlog.
   `SHAPE_Area`), so forbidding extra fields means choosing one distribution. They
   started as extras and are now declared `Omitable` (2026-10-05), which was built
   for JSON and may not yet behave in PySpark's column structure check.
+- **mypy sees `Omitable[X]` as its own class, not `X`.** `Omitable` is a
+  `Generic` whose `__class_getitem__` returns `Annotated[X | MISSING, ...]` at
+  runtime, so mypy calls `field is SomeEnum.MEMBER` a non-overlapping check.
+  Tests compare through `model_dump()` instead.
 - **The GeoJSON envelope unwraps only in JSON mode**: validating a parsed dict
   reports every required field missing.
 - **Validation reports one broken constraint per feature.** Each constraint is

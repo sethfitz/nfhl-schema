@@ -300,7 +300,7 @@ not apply" as it does in the zones' revert fields, which section 7.3 forbids.
 
 Layer 14 has 952,002 rows (`service/observed/14.json`). No value outside the
 reference clears the legacy bar of 953, so `legacy.json` lists none for it. Its
-rejections, 113,140 rows (11.9%) by direct query on 2026-10-07, are these; a
+rejections, 98,766 rows (10.4%) by direct query on 2026-10-08, are these; a
 "missing" text field is `F IS NULL OR (F = '' AND F NOT LIKE ' ')`, since a
 lone space in free text is a value, and a missing number `F IS NULL OR F =
 -9999`:
@@ -310,11 +310,9 @@ lone space in free text is a value, and a missing number `F IS NULL OR F =
   populated" (section 7.3), and validate as an elevation. `WSEL_REG`'s
   description says to code a coastal or confluence section `-8888` (3,400
   rows); `STRMBED_EL`'s says nothing of it.
-- **Required text missing**: `START_ID` 16,669, `SOURCE_CIT` 5,114 (none
-  `''`), `WTR_NM` 2,179, `MODEL_ID` 1,090, `LEN_UNIT` 13, and `XS_LN_ID` and
-  `VERSION_ID` 9 each. Required numbers: `STREAM_STN` 404, `WSEL_REG` 101.
-  `START_ID`, `STREAM_STN` and `XS_LN_TYP` are `R1`, required with a footnote
-  for BLE databases.
+- **Required text missing**: `SOURCE_CIT` 5,114 (none `''`), `WTR_NM` 2,179,
+  `MODEL_ID` 1,090, `LEN_UNIT` 13, and `XS_LN_ID` and `VERSION_ID` 9 each. A
+  required number: `WSEL_REG` 101.
 - **The letter rule rejects 14,801 rows**, from `count-broken-rules`: a
   `NOT LETTERED, MAPPED` section with an `XS_LTR`. 2,914 hold a letter or
   number (`XS_LTR <> ''`), and 11,887 a lone space (`XS_LTR LIKE ' '`), which
@@ -328,9 +326,13 @@ lone space in free text is a value, and a missing number `F IS NULL OR F =
 The union joins every clause above with `OR`, the rule's as `(XS_LN_TYP <>
 'LETTERED, MAPPED' AND XS_LTR IS NOT NULL AND (XS_LTR <> '' OR XS_LTR LIKE
 ' '))` and the datums' as `V_DATUM IN ('ASVD02', 'NGVD88', 'GUVD03') OR
-LEN_UNIT LIKE ' '`. On four pages of 2,000 live features, validating each
+LEN_UNIT LIKE ' '`. On six pages of 2,000 live features, validating each
 rejected exactly as many as the union selects over the same `OBJECTID` range:
-263, 413, 1 and 0.
+253, 484, 391, 0, 0 and 0.
+
+`START_ID`, `STREAM_STN` and `XS_LN_TYP` are `R1`, optional (README.md): 16,669
+sections have no `START_ID` and 404 no `STREAM_STN`, and they validate. Read as
+required, they added 14,374 rows to the union, 113,140 (11.9%).
 
 `LEN_UNIT` is `Miles` on 1,778 sections in 36 DFIRMs (`LEN_UNIT = 'Miles'`).
 `D_Length_Units` lists it, so they validate, but their `WSEL_REG` runs from
@@ -349,25 +351,20 @@ editions list in no domain. The layers share one `StudyTyp` enum, so the
 zones' ASCII-apostrophe study type also validates, with a warning, on the 2
 baselines that hold it, far below this layer's bar.
 
-Its rejections, 113,286 rows (33.5%) by direct query on 2026-10-07, are these;
+Its rejections, 7,677 rows (2.3%) by direct query on 2026-10-08, are these;
 "missing" is as for the cross sections:
 
-- **`START_ID`, required (`R1`), is missing on 106,642 rows**, 31.5% of the
-  layer, in 707 DFIRMs, 29,438 of them in `12053C`. 23,554 are `Hydraulic
-  Link`s, 40% of the layer's 58,693.
-- **`SHOWN_FIRM`, required (`R1`), is missing on 23,153 rows** (22,968 null,
-  185 `''`) in 371 DFIRMs, and holds `Y` (174, all in DFIRM `51051C`), `N` (5)
-  or a lone space (7) on 186 more. `U` is on 109,221 and validates, since
-  `D_TrueFalse` lists it.
-- **Other required text missing**: `WTR_NM` 2,020, `R_END_DESC` 362,
-  `R_ST_DESC` 358 (no row with a null `R_ST_DESC` has an `R_END_DESC`),
-  `SOURCE_CIT` 326 (none `''`), `BASELN_ID` 11 (one null, in DFIRM `48485C`).
+- **`SHOWN_FIRM` holds `Y` (174, all in DFIRM `51051C`), `N` (5) or a lone
+  space (7)**, 186 rows, none of them in `D_TrueFalse`. `U` is on 109,221 and
+  validates, since `D_TrueFalse` lists it.
+- **Required text missing**: `WTR_NM` 2,020, `SOURCE_CIT` 326 (none `''`),
+  `BASELN_ID` 11 (one null, in DFIRM `48485C`).
 - **`WATER_TYP` outside `D_Prof_Basln_Typ`**, from `report-observed`:
   `Stream Centerline` (178), `1032` (142), `Creek` (66), `NP` (64), the 2016
   cartographic codes `Lake / Pond` (11) and `Canal / Ditch` (2), and six more
-  of 10 rows or fewer; with the 40 nulls and 7 `''`, 533 rows.
-- **`STUDY_TYP`**: 147 missing, 32 lone spaces, and `New H&H` (3), `1050` (2)
-  and `Profile Baseline` (1), 185 rows.
+  of 10 rows or fewer, 486 rows.
+- **`STUDY_TYP`**: 32 lone spaces, and `New H&H` (3), `1050` (2) and `Profile
+  Baseline` (1), 38 rows.
 - **`DATUM_UNIT` holds a lone space on 4,352 rows** (`DATUM_UNIT LIKE ' '`),
   which `D_Length_Units` does not list. `report-observed` prints 191,723 `' '`:
   the snapshot's grouping folded 187,371 empty strings into the lone spaces'
@@ -377,16 +374,26 @@ Its rejections, 113,286 rows (33.5%) by direct query on 2026-10-07, are these;
   and `SPEC_CONS2` without `SPEC_CONS1` (142). Each continuation is "used when"
   the field before it "does not have enough characters", read as a limit, as
   `XS_LTR`'s "populated when" was. No row breaks two.
+- **69 rows have no geometry** (`SHAPE IS NULL`), in 27 DFIRMs, 20 of them in
+  `12053C`.
 
 The union joins every clause above with `OR`, the vocabularies' as the values
 `report-observed` prints and the rules' as `(F2 IS NOT NULL AND (F2 <> '' OR F2
-LIKE ' ')) AND (F1 IS NULL OR (F1 = '' AND F1 NOT LIKE ' '))`. On eight pages of
-live features (7,500 in all, spread across the layer by `resultOffset`),
-validating each rejected exactly as many as the union selects over the same
-`OBJECTID` range: 1,000, 60, 31, 60, 991, 9, 894 and 1,000. None of the 7,500
-was a MultiLineString. The `R1` fields decide most of the total: without
+LIKE ' ')) AND (F1 IS NULL OR (F1 = '' AND F1 NOT LIKE ' '))`. Validating live
+features agrees with it: on six pages of 250 spread across the layer by
+`resultOffset`, the model rejected 0, 0, 1, 0, 0 and 0, the one a feature with
+no geometry; 400 rows the union selects were all rejected; and 400 rows only a
+missing `R1` field selects all validated. None of 7,500 features validated on
+2026-10-07 was a MultiLineString.
+
 `START_ID`, `SHOWN_FIRM`, `WATER_TYP`, `STUDY_TYP`, `R_ST_DESC` and
-`R_END_DESC` required, the union is 7,615 rows (2.3%).
+`R_END_DESC` are `R1`, optional (README.md), and decide most of what the layer
+would otherwise reject. `START_ID` is missing on 106,642 rows, 31.5% of the
+layer, in 707 DFIRMs, 29,438 of them in `12053C`; 23,554 are `Hydraulic Link`s,
+40% of the layer's 58,693. `SHOWN_FIRM` is missing on 23,153 (22,968 null, 185
+`''`), `R_END_DESC` on 362, `R_ST_DESC` on 358 (no row with a null `R_ST_DESC`
+has an `R_END_DESC`), `STUDY_TYP` on 147 and `WATER_TYP` on 47 (40 null, 7
+`''`). Read as required, they made the union 113,325 rows (33.5%).
 
 `V_DATM_OFF`, the datum offset, is `Text` of length 6, so the model checks its
 length and nothing else: it holds `-9999` (2,172) and `<Null>` (147) written
