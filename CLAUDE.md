@@ -44,7 +44,9 @@ URLs and the retrieval times are in the manifest.
 2. Add the table to `nfhl.codegen.GEOMETRIES`, saying what its features are in
    the words of the table's introduction. Generation stops if the entry is
    missing or names a different Esri type than the service publishes.
-3. Add the table's units, datums and rules to `spec/relationships.json`.
+3. Add the table's units, datums and rules to `spec/relationships.json`. A
+   table that states none goes in `NO_RELATIONSHIPS` in
+   `tests/test_spec_source.py` instead.
 4. Run `./scripts/generate-models`. It reads the service metadata that
    `spec/` already holds for every layer, but not observations, so it runs
    before them; `snapshot-spec` needs the model to know which fields the rules
@@ -55,12 +57,18 @@ URLs and the retrieval times are in the manifest.
    regenerate the models.
 6. Add real-feature cases and a `Fixture` to `scripts/fetch-fixtures`, and run
    it with `--layer <id>`; without `--layer` (and so `make fixtures`) it
-   refetches every layer.
+   refetches every layer. A point layer has no length, so it passes
+   `short=None` to `clean_except_expected`.
 7. Run `./scripts/generate-docs`. Add the layer's fixtures to
    `tests/conftest.py`, its class to `tests/test_discovery.py`, its page to
    `tests/test_docs.py`, and its own `tests/test_<module>.py`.
 8. Record what the service holds that the reference does not allow in
    `spec/README.md`, and the layer in `README.md`.
+9. Count the rejected rows as one union of every clause, and check it by
+   validating live pages against the union over the same `OBJECTID` range.
+   Geometry-less rows belong in the union, and empty is not null: an empty
+   point comes back with `coordinates: []`, which `SHAPE IS NULL` misses and
+   `SHAPE.STX IS NULL` counts.
 
 Eight reference tables do not yet join their two field listings, so
 `SpecReader.reference_table` raises on them; `spec/README.md` names them and
