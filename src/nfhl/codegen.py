@@ -660,6 +660,14 @@ GEOMETRIES = {
         "the centerline of the river at regular intervals or as indicated by the "
         "data source.",
     ),
+    "S_Wtr_Ln": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "Table 4 holds S_Wtr_Ln to “Must Be Single Part”, so a LineString, though "
+        "the service's polyline type admits several parts.",
+        "The water line: in the reference's words, a surface water linear feature "
+        "(a stream, as a line) that appears on the FIRM.",
+    ),
 }
 
 

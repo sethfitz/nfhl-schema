@@ -24,6 +24,7 @@ nfhl_cross_section = "nfhl.models:CrossSection"
 nfhl_profile_baseline = "nfhl.models:ProfileBaseline"
 nfhl_station_start = "nfhl.models:StationStart"
 nfhl_river_mark = "nfhl.models:RiverMark"
+nfhl_water_line = "nfhl.models:WaterLine"
 
 # Tags the models above with `nfhl`, so `--tag nfhl` selects them.
 [project.entry-points."overture.tag_providers"]

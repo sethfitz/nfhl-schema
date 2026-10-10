@@ -234,7 +234,8 @@ class StudyTyp(str, DocumentedEnum):
 class TrueFalse(str, DocumentedEnum):
     """Values of `D_TrueFalse` that apply to the FIRM Database, each as the data stores
     it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
-    `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`.
+    `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`, `S_Wtr_Ln.SHOWN_FIRM`,
+    `S_Wtr_Ln.SHOWN_INDX`.
     """
 
     T = "T", "True (Yes). Code `T`."

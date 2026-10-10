@@ -88,6 +88,11 @@ def mark_cases() -> list[dict[str, Any]]:
     return fixture_cases("river_marks.json")
 
 
+@pytest.fixture(scope="session")
+def water_cases() -> list[dict[str, Any]]:
+    return fixture_cases("water_lines.json")
+
+
 @pytest.fixture
 def valid_feature(cases: list[dict[str, Any]]) -> dict[str, Any]:
     """A fresh copy of a real feature that validates, to mutate in a test."""

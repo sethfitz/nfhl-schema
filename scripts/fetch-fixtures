@@ -509,6 +509,38 @@ MARK_CASES: list[Case] = [
 ]
 
 
+# Every required field populated and every vocabulary value listed, unless the
+# case is about that; a lone space in free text is a value. The shown flags are
+# R1-free `A` fields: missing is fine, anything but T, F or U is not.
+WATER_FIELDS = {
+    **{
+        f: f"NOT {missing(f)}"
+        for f in ("DFIRM_ID", "VERSION_ID", "WTR_LN_ID", "WTR_NM", "SOURCE_CIT")
+    },
+    **{
+        f: f"({missing(f)} OR {f} IN ('T', 'F', 'U'))"
+        for f in ("SHOWN_FIRM", "SHOWN_INDX")
+    },
+}
+WATER_CASES: list[Case] = [
+    ("shown_on_firm", "SHOWN_FIRM = 'T' AND SHOWN_INDX = 'T'", None, None),
+    ("not_shown", "SHOWN_FIRM = 'F' AND SHOWN_INDX = 'F'", None, None),
+    # `U` is in D_TrueFalse: "Unknown".
+    ("shown_unknown", "SHOWN_FIRM = 'U' AND SHOWN_INDX = 'U'", None, None),
+    # "A", required if applicable, and not required.
+    ("not_said_if_shown", "SHOWN_FIRM IS NULL AND SHOWN_INDX IS NULL", None, None),
+    # Findings: published water lines the reference does not allow. A lone space
+    # is text, not a missing value, and not in D_TrueFalse.
+    ("lone_space_shown_firm", "SHOWN_FIRM LIKE ' '", "SHOWN_FIRM", None),
+    ("lone_space_shown_indx", "SHOWN_INDX LIKE ' '", "SHOWN_INDX", None),
+    ("no_water_name", missing("WTR_NM"), "WTR_NM", None),
+    ("no_source_citation", missing("SOURCE_CIT"), "SOURCE_CIT", None),
+    ("no_line_id", missing("WTR_LN_ID"), "WTR_LN_ID", None),
+]
+# The findings with only a handful of rows, which may not be short.
+WATER_SPARSE = {"no_line_id"}
+
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -540,6 +572,12 @@ FIXTURES_BY_LAYER = [
         "river_marks.json",
         MARK_CASES,
         clean_except_expected(MARK_FIELDS, MARK_CASES, set(), short=None),
+    ),
+    Fixture(
+        20,
+        "water_lines.json",
+        WATER_CASES,
+        clean_except_expected(WATER_FIELDS, WATER_CASES, WATER_SPARSE),
     ),
 ]
 
