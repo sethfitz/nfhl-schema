@@ -11,6 +11,7 @@ from nfhl.models import (
     BaseFloodElevation,
     CrossSection,
     FloodHazardZone,
+    Levee,
     ProfileBaseline,
     RiverMark,
     StationStart,
@@ -29,6 +30,7 @@ def test_discovery_finds_the_model_through_the_entry_point() -> None:
         StationStart,
         RiverMark,
         WaterLine,
+        Levee,
     } <= set(found.values())
 
 
@@ -46,6 +48,7 @@ def test_overture_codegen_lists_the_model() -> None:
         "StationStart",
         "RiverMark",
         "WaterLine",
+        "Levee",
     } <= set(listed)
 
 
@@ -58,6 +61,7 @@ def test_the_tag_provider_tags_the_model_nfhl() -> None:
     assert "nfhl" in tagged["nfhl_station_start"]
     assert "nfhl" in tagged["nfhl_river_mark"]
     assert "nfhl" in tagged["nfhl_water_line"]
+    assert "nfhl" in tagged["nfhl_levee"]
 
 
 def test_the_tag_provider_leaves_other_packages_alone() -> None:

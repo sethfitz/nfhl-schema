@@ -27,7 +27,7 @@ REFERENCE_EDITION = "November 2024"
 class LengthUnits(str, DocumentedEnum):
     """Values of `D_Length_Units` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`, `S_XS.LEN_UNIT`,
-    `S_Profil_Basln.DATUM_UNIT`.
+    `S_Profil_Basln.DATUM_UNIT`, `S_Levee.LEN_UNIT`.
     """
 
     CENTIMETERS = "Centimeters", "Code `CM`."
@@ -38,6 +38,75 @@ class LengthUnits(str, DocumentedEnum):
     MILES = "Miles", "Code `MI`."
     MILLIMETERS = "Millimeters", "Code `MM`."
     U_S_SURVEY_FEET = "U.S. Survey Feet", "Code `USFT`."
+    NP = "NP", "Code `NP`."
+
+
+class LeveeAnalysisType(str, DocumentedEnum):
+    """Values of `D_Levee_Analysis_Type` that apply to the FIRM Database, each as the
+    data stores it. Used by `S_Levee.LEV_AN_TYP`.
+    """
+
+    NATURAL_VALLEY = "Natural Valley", "Code `NV`."
+    STRUCTURAL_BASED_INUNDATION = "Structural-Based Inundation", "Code `SBI`."
+    OVERTOPPING = "Overtopping", "Code `OVR`."
+    FREEBOARD_DEFICIENT = "Freeboard Deficient", "Code `FD`."
+    SOUND_REACH = "Sound Reach", "Code `SR`."
+    BFE_BELOW_TOE = "BFE Below Toe", "Code `BBT`."
+    NOT_HYDRAULICALLY_SIGNIFICANT = "Not Hydraulically Significant", "Code `NHS`."
+    OTHER = "Other", "Code `OTH`."
+    NP = "NP", "Code `NP`."
+
+
+class LeveeStatus(str, DocumentedEnum):
+    """Values of `D_Levee_Status` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Levee.LEVEE_STAT`. The last 2 are legacy values: common in
+    the data, not in the reference.
+    """
+
+    ACCREDITED = "Accredited", "Code `A`."
+    NON_ACCREDITED = "Non-Accredited", "Code `N`."
+    PROVISIONALLY_ACCREDITED = "Provisionally Accredited", "Code `P`."
+    AR = "AR", "Code `AR`."
+    A99 = "A99", "Code `A99`."
+    NP = "NP", "Code `NP`."
+    DE_ACCREDITED = (
+        "De-Accredited",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Not in the November 2024 "
+            "D_Levee_Status, which lists Accredited, Non-Accredited, Provisionally "
+            "Accredited, AR, A99 and NP. By its words it names a levee that was "
+            "accredited once and is not now; the reference maps it to no listed "
+            "value, and its LEV_AN_TYP rule (only for Non-Accredited) does not "
+            "mention it. Held by 991 of 16,320 rows of `LEVEE_STAT` on NFHL service"
+            " layer 23, counted 2026-10-10."
+        ),
+    )
+    NEVER_ACCREDITED = (
+        "Never Accredited",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Not in the November 2024 "
+            "D_Levee_Status, which lists Accredited, Non-Accredited, Provisionally "
+            "Accredited, AR, A99 and NP. By its words it names a levee that has "
+            "never been accredited; the reference maps it to no listed value, and "
+            "its LEV_AN_TYP rule (only for Non-Accredited) does not mention it. "
+            "Held by 912 of 16,320 rows of `LEVEE_STAT` on NFHL service layer 23, "
+            "counted 2026-10-10."
+        ),
+    )
+
+
+class LeveeTyp(str, DocumentedEnum):
+    """Values of `D_Levee_Typ` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_Levee.LEVEE_TYP`.
+    """
+
+    COASTAL_LEVEE_CENTERLINE = "Coastal Levee Centerline", "Code `CLC`."
+    LEVEE_CENTERLINE = "Levee Centerline", "Code `LC`."
+    FLOODWALL = "Floodwall", "Code `FW`."
+    CLOSURE_STRUCTURE = "Closure Structure", "Code `CS`."
+    DIKE = "Dike", "Code `D`."
     NP = "NP", "Code `NP`."
 
 
@@ -235,12 +304,59 @@ class TrueFalse(str, DocumentedEnum):
     """Values of `D_TrueFalse` that apply to the FIRM Database, each as the data stores
     it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
     `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`, `S_Wtr_Ln.SHOWN_FIRM`,
-    `S_Wtr_Ln.SHOWN_INDX`.
+    `S_Wtr_Ln.SHOWN_INDX`, `S_Levee.USACE_LEV`, `S_Levee.PL84_99TF`.
     """
 
     T = "T", "True (Yes). Code `T`."
     F = "F", "False (No). Code `F`."
     U = "U", "Unknown. Code `U`."
+
+
+class USACEDistrict(str, DocumentedEnum):
+    """Values of `D_USACE_District` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Levee.DISTRICT`.
+    """
+
+    ALASKA = "Alaska", "Code `1001`."
+    ALBUQUERQUE = "Albuquerque", "Code `1002`."
+    BALTIMORE = "Baltimore", "Code `1003`."
+    BUFFALO = "Buffalo", "Code `1004`."
+    CHARLESTON = "Charleston", "Code `1005`."
+    CHICAGO = "Chicago", "Code `1006`."
+    DETROIT = "Detroit", "Code `1007`."
+    FORT_WORTH = "Fort Worth", "Code `1008`."
+    GALVESTON = "Galveston", "Code `1009`."
+    GULF_REGION = "Gulf Region", "Code `1010`."
+    HONOLULU = "Honolulu", "Code `1011`."
+    HUNTINGTON = "Huntington", "Code `1012`."
+    JACKSONVILLE = "Jacksonville", "Code `1013`."
+    KANSAS_CITY = "Kansas City", "Code `1014`."
+    LITTLE_ROCK = "Little Rock", "Code `1015`."
+    LOUISVILLE = "Louisville", "Code `1016`."
+    LOS_ANGELES = "Los Angeles", "Code `1017`."
+    MEMPHIS = "Memphis", "Code `1018`."
+    MOBILE = "Mobile", "Code `1019`."
+    NASHVILLE = "Nashville", "Code `1020`."
+    NEW_ENGLAND = "New England", "Code `1021`."
+    NEW_ORLEANS = "New Orleans", "Code `1022`."
+    NEW_YORK = "New York", "Code `1023`."
+    NORFOLK = "Norfolk", "Code `1024`."
+    OMAHA = "Omaha", "Code `1025`."
+    PHILADELPHIA = "Philadelphia", "Code `1026`."
+    PITTSBURGH = "Pittsburgh", "Code `1027`."
+    PORTLAND = "Portland", "Code `1028`."
+    ROCK_ISLAND = "Rock Island", "Code `1029`."
+    SACRAMENTO = "Sacramento", "Code `1030`."
+    SAN_FRANCISCO = "San Francisco", "Code `1031`."
+    SAVANNAH = "Savannah", "Code `1032`."
+    SEATTLE = "Seattle", "Code `1033`."
+    ST_LOUIS = "St. Louis", "Code `1034`."
+    ST_PAUL = "St. Paul", "Code `1035`."
+    TULSA = "Tulsa", "Code `1036`."
+    VICKSBURG = "Vicksburg", "Code `1037`."
+    WALLA_WALLA = "Walla Walla", "Code `1038`."
+    WILMINGTON = "Wilmington", "Code `1039`."
+    NP = "NP", "Code `NP`."
 
 
 class VDatum(str, DocumentedEnum):
@@ -643,6 +759,8 @@ class ZoneSubtype(str, DocumentedEnum):
 # Members the reference does not list; each use raises a warning.
 LEGACY_MEMBERS: frozenset[Enum] = frozenset(
     {
+        LeveeStatus.DE_ACCREDITED,
+        LeveeStatus.NEVER_ACCREDITED,
         LocAccuracy.NP,
         ProfBaslnTyp.STREAM_RIVER,
         StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,

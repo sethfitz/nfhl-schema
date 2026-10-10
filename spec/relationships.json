@@ -188,6 +188,33 @@
           "quote": "Use this field when the description cannot be contained within the SPEC_CONS1 field."
         }
       ]
+    },
+    "S_Levee": {
+      "units": [
+        {
+          "field": "FREEBOARD",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for the freeboard elevations."
+        }
+      ],
+      "required_when": [
+        {
+          "field": "DISTRICT",
+          "when": "USACE_LEV",
+          "any_of": ["T"],
+          "quote": "Field is required when the structure is owned or maintained by the USACE, with a value of “T” in the USACE_LEV field."
+        }
+      ],
+      "only_when": [
+        {
+          "field": "LEV_AN_TYP",
+          "when": "LEVEE_STAT",
+          "any_of": ["Non-Accredited"],
+          "quote": "This should only be populated if LEVEE_STAT is Non-Accredited.",
+          "unless": ["NP"],
+          "unless_quote": "the FEMA Project Officer may allow the Mapping Partner to substitute a value that indicates that the affected field was intentionally not populated."
+        }
+      ]
     }
   }
 }

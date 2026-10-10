@@ -68,6 +68,18 @@ def test_repair_and_null_encoding_quotes_are_in_the_references(
     assert squash(NULL_ENCODING_QUOTE) in reader.reference_text(FIRM_DATABASE)
 
 
+@pytest.mark.parametrize("layer", LAYERS, ids=lambda lyr: lyr.table)
+def test_an_unless_exemption_quotes_the_non_populated_value_sentence(
+    reader: SpecReader, layer: Layer
+) -> None:
+    for only in reader.relationships(layer.table).only_when:
+        assert bool(only.unless) == bool(only.unless_quote), only.field
+        if only.unless_quote:
+            assert squash(only.unless_quote) in squash(
+                reader.reference_text(FIRM_DATABASE)
+            ), only.field
+
+
 def observed_values(reader: SpecReader, layer: Layer, field: str) -> set[str]:
     return {r["value"] for r in reader.observed(layer)["fields"][field] if r["value"]}
 

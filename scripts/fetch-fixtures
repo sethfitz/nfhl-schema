@@ -541,6 +541,167 @@ WATER_CASES: list[Case] = [
 WATER_SPARSE = {"no_line_id"}
 
 
+LEVEE_TYPES = [
+    "Coastal Levee Centerline",
+    "Levee Centerline",
+    "Floodwall",
+    "Closure Structure",
+    "Dike",
+    "NP",
+]
+# The reference's; the legacy ones validate with a warning, so a case that is not
+# about one leaves them out.
+LEVEE_STATUSES = [
+    "Accredited",
+    "Non-Accredited",
+    "Provisionally Accredited",
+    "AR",
+    "A99",
+    "NP",
+]
+LEVEE_ANALYSES = [
+    "Natural Valley",
+    "Structural-Based Inundation",
+    "Overtopping",
+    "Freeboard Deficient",
+    "Sound Reach",
+    "BFE Below Toe",
+    "Not Hydraulically Significant",
+    "Other",
+    "NP",
+]
+LENGTH_UNITS = [
+    "Centimeters",
+    "Feet",
+    "Inches",
+    "Kilometers",
+    "Meters",
+    "Miles",
+    "Millimeters",
+    "U.S. Survey Feet",
+    "NP",
+]
+LEVEE_RULES = {
+    "@forbid_if(lev_an_typ)": "NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' "
+    "AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' "
+    "OR LEVEE_STAT <> 'Non-Accredited'))",
+    "@require_if(district)": f"NOT (USACE_LEV = 'T' AND {missing('DISTRICT')})",
+}
+# The service compares case-insensitively, so every `IN` below also matches a
+# value in the wrong case. These four levees hold one, which the model rejects
+# (`KANSAS CITY`, `LEVEE CENTERLINE`, `NON-ACCREDITED` twice) and no `where` can
+# find by value; they are pinned by LEVEE_ID, and kept out of every other case.
+WRONG_CASE = {
+    "DISTRICT": "LEVEE_ID <> '20079C_1'",
+    "LEVEE_TYP": "LEVEE_ID <> '38055C_1'",
+    "LEVEE_STAT": "LEVEE_ID NOT IN ('1505901512', '1505000990')",
+}
+# Every required field populated, every vocabulary value listed, and no rule
+# broken, unless the case is about that; a lone space in free text is a value.
+# `FC_SEG_ID` is required, and 13,405 of 16,320 levees lack it, so every other
+# case names one that has it.
+LEVEE_FIELDS = {
+    **{
+        f: f"NOT {missing(f)}"
+        for f in (
+            "DFIRM_ID",
+            "VERSION_ID",
+            "LEVEE_ID",
+            "FC_SYS_ID",
+            "FC_SEG_ID",
+            "SOURCE_CIT",
+        )
+    },
+    "LEVEE_TYP": f"({missing('LEVEE_TYP')} OR LEVEE_TYP IN "
+    f"({sql_list(LEVEE_TYPES)})) AND {WRONG_CASE['LEVEE_TYP']}",
+    **{
+        f: f"({missing(f)} OR {f} IN ('T', 'F', 'U'))"
+        for f in ("USACE_LEV", "PL84_99TF")
+    },
+    "DISTRICT": "(DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') "
+    f"AND DISTRICT <> '1027' AND {WRONG_CASE['DISTRICT']}",
+    "LEVEE_STAT": f"({missing('LEVEE_STAT')} OR LEVEE_STAT IN "
+    f"({sql_list(LEVEE_STATUSES)})) AND {WRONG_CASE['LEVEE_STAT']}",
+    "LEV_AN_TYP": f"({missing('LEV_AN_TYP')} OR LEV_AN_TYP IN "
+    f"({sql_list(LEVEE_ANALYSES)}))",
+    "LEN_UNIT": f"({missing('LEN_UNIT')} OR LEN_UNIT IN ({sql_list(LENGTH_UNITS)}))",
+    **LEVEE_RULES,
+}
+# Section 7.3's non-populated date is 8/8/8888 and its null date 9/9/9999.
+NOT_POPULATED_DATE = "timestamp '8888-08-08 00:00:00'"
+LEVEE_CASES: list[Case] = [
+    (
+        "usace_accredited",
+        "LEVEE_STAT = 'Accredited' AND USACE_LEV = 'T' AND DISTRICT NOT IN ('', 'NP') "
+        "AND LEVEE_TYP = 'Levee Centerline' AND FREEBOARD > 0 AND LEN_UNIT = 'Feet'",
+        None,
+        None,
+    ),
+    ("floodwall", "LEVEE_TYP = 'Floodwall' AND LEVEE_STAT = 'Accredited'", None, None),
+    ("closure_structure", "LEVEE_TYP = 'Closure Structure'", None, None),
+    ("coastal_levee", "LEVEE_TYP = 'Coastal Levee Centerline'", None, None),
+    (
+        "non_accredited_analysis",
+        "LEVEE_STAT = 'Non-Accredited' AND LEV_AN_TYP = 'Natural Valley'",
+        None,
+        None,
+    ),
+    (
+        "provisionally_accredited",
+        "LEVEE_STAT = 'Provisionally Accredited' "
+        "AND PAL_DATE < timestamp '2100-01-01 00:00:00'",
+        None,
+        None,
+    ),
+    # Section 7.3's `NP` in both: the analysis type is not "populated" under the
+    # rule that limits it to Non-Accredited levees.
+    ("not_populated_status", "LEVEE_STAT = 'NP' AND LEV_AN_TYP = 'NP'", None, None),
+    # 7.3's non-populated number, in a freeboard with a unit.
+    ("not_populated_freeboard", "FREEBOARD = -8888 AND LEN_UNIT = 'Feet'", None, None),
+    # Legacy values (spec/legacy.json), which validate with a warning.
+    ("de_accredited", "LEVEE_STAT = 'De-Accredited'", None, "LEVEE_STAT"),
+    ("never_accredited", "LEVEE_STAT = 'Never Accredited'", None, "LEVEE_STAT"),
+    # Findings: published levees the reference does not allow. Each case names
+    # one field, so a finding in SOURCE_CIT, a coded DISTRICT, a coded or
+    # lone-space LEVEE_STAT, a lone-space LEN_UNIT or a coded USACE_LEV or
+    # PL84_99TF makes none: every such levee also lacks FC_SEG_ID, or breaks a
+    # second field.
+    ("no_segment_id", missing("FC_SEG_ID"), "FC_SEG_ID", None),
+    ("no_system_id", missing("FC_SYS_ID"), "FC_SYS_ID", None),
+    ("lone_space_district", "DISTRICT LIKE ' '", "DISTRICT", None),
+    ("uppercase_district", "LEVEE_ID = '20079C_1'", "DISTRICT", None),
+    ("uppercase_levee_type", "LEVEE_ID = '38055C_1'", "LEVEE_TYP", None),
+    ("uppercase_status", "LEVEE_ID = '1505901512'", "LEVEE_STAT", None),
+    ("coded_analysis", "LEV_AN_TYP = 'NV'", "LEV_AN_TYP", None),
+    ("lone_space_analysis", "LEV_AN_TYP LIKE ' '", "LEV_AN_TYP", None),
+    (
+        "analysis_on_accredited",
+        "LEVEE_STAT = 'Accredited' AND LEV_AN_TYP = 'Natural Valley'",
+        "@forbid_if(lev_an_typ)",
+        None,
+    ),
+    (
+        "usace_without_district",
+        f"USACE_LEV = 'T' AND {missing('DISTRICT')}",
+        "@require_if(district)",
+        None,
+    ),
+]
+# The findings with only a handful of rows, which may not be short.
+LEVEE_SPARSE = {
+    "no_system_id",
+    "lone_space_district",
+    "uppercase_district",
+    "uppercase_levee_type",
+    "uppercase_status",
+    "coded_analysis",
+    "lone_space_analysis",
+    "analysis_on_accredited",
+    "de_accredited",
+    "never_accredited",
+}
+
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -578,6 +739,12 @@ FIXTURES_BY_LAYER = [
         "water_lines.json",
         WATER_CASES,
         clean_except_expected(WATER_FIELDS, WATER_CASES, WATER_SPARSE),
+    ),
+    Fixture(
+        23,
+        "levees.json",
+        LEVEE_CASES,
+        clean_except_expected(LEVEE_FIELDS, LEVEE_CASES, LEVEE_SPARSE),
     ),
 ]
 

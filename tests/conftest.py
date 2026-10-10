@@ -59,6 +59,11 @@ def mark_layer() -> Layer:
 
 
 @pytest.fixture(scope="session")
+def levee_layer() -> Layer:
+    return modelled("S_Levee")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 
@@ -91,6 +96,11 @@ def mark_cases() -> list[dict[str, Any]]:
 @pytest.fixture(scope="session")
 def water_cases() -> list[dict[str, Any]]:
     return fixture_cases("water_lines.json")
+
+
+@pytest.fixture(scope="session")
+def levee_cases() -> list[dict[str, Any]]:
+    return fixture_cases("levees.json")
 
 
 @pytest.fixture

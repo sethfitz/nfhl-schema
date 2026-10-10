@@ -101,7 +101,11 @@ def report_single_field_rules(
             # A number: the snapshot counts the values of domain-bound fields only.
             print(f"{header}: see scripts/count-broken-rules")
             continue
-        held = accepted(reader, layer, only.field)
+        held = {
+            v: n
+            for v, n in accepted(reader, layer, only.field).items()
+            if v not in only.unless
+        }
         most = sum(held.values())
         least = max(0, most - sum(when.get(z, 0) for z in only.any_of))
         span = str(most) if least == most else f"{least} to {most}"

@@ -254,10 +254,13 @@ def require_any_true(
 # fields" in the formats FEMA distributes. The service publishes them as-is.
 NULL_TEXT = ""
 NULL_NUMBER = -9999
+# The service writes a date as milliseconds since the Unix epoch; this is 9/9/9999.
+NULL_DATE = 253_392_451_200_000
 NULL_ENCODING_QUOTE = (
     "Because of limitations in the GIS formats used by FEMA, a true Null value "
     "cannot be used for some fields. The value to use for “Null” fields for each "
-    "field type is as follows: Text: Null (or “”, the empty string) Numeric: -9999"
+    "field type is as follows: Text: Null (or “”, the empty string) Numeric: -9999 "
+    "Date: 9/9/9999"
 )
 
 
@@ -268,7 +271,7 @@ def _is_null_encoding(value: Any) -> bool:
     return (
         isinstance(value, int | float)
         and not isinstance(value, bool)
-        and value == NULL_NUMBER
+        and value in (NULL_NUMBER, NULL_DATE)
     )
 
 
@@ -279,6 +282,7 @@ def drop_null_encodings(data: Any) -> Any:
     number, it is an elevation 9,999 feet below the datum. Collapsing JSON `null`,
     `""` and numeric `-9999` to "not populated" is what lets the populated-only-if
     rules mean anything, since those rules are about whether a value is there.
+    The date null, 9/9/9999, is the same encoding for a date field.
 
     Two neighbouring encodings are deliberately left alone. "Not populated"
     (`NP`, `-8888`, `U`), which section 7.3 lets a Project Officer approve, is a

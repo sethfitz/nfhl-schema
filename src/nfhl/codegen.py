@@ -71,7 +71,13 @@ ESRI_TYPES = {
 }
 # A footnoted requirement letter, as the field description words it.
 FOOTNOTED_REQUIREMENTS = {"R": "Required", "A": "Required if applicable"}
-PYTHON_TYPES = {"Text": "str", "Double": "float64", "Short Integer": "int16"}
+PYTHON_TYPES = {
+    "Text": "str",
+    "Double": "float64",
+    "Short Integer": "int16",
+    # Epoch milliseconds, which is how the service writes a date.
+    "Date": "int64",
+}
 
 # Fields the service publishes and the reference does not define, by their Esri type.
 SERVICE_ONLY_TYPES = {
@@ -466,17 +472,33 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
         decorators.append(f"@forbid_if([{literal(only.field.lower())}], {condition})")
     for zoned in relations.only_when:
         domain = reader.domain(require_domain(table, zoned.when))
-        decorators.extend(quote_comment(zoned.quote))
-        decorators.append(
-            f"@forbid_if([{literal(zoned.field.lower())}], "
-            f"NoneOf({literal(zoned.when.lower())}, {members(domain, zoned.any_of)}))"
+        condition = (
+            f"NoneOf({literal(zoned.when.lower())}, {members(domain, zoned.any_of)})"
         )
+        decorators.extend(quote_comment(zoned.quote))
+        if zoned.unless:
+            own = reader.domain(require_domain(table, zoned.field))
+            assert zoned.unless_quote is not None, f"{zoned.field}: unless has no quote"
+            decorators.extend(quote_comment(zoned.unless_quote))
+            condition = (
+                f"AllOf({condition}, "
+                f"NoneOf({literal(zoned.field.lower())}, {members(own, zoned.unless)}))"
+            )
+        decorators.append(f"@forbid_if([{literal(zoned.field.lower())}], {condition})")
     for allowed in relations.allowed:
         decorators.extend(render_allowed(allowed, table, reader))
     for needed in relations.required_when:
+        if needed.any_of:
+            domain = reader.domain(require_domain(table, needed.when))
+            condition = (
+                f"OneOf({literal(needed.when.lower())}, "
+                f"{members(domain, needed.any_of)})"
+            )
+            decorators.extend(quote_comment(needed.quote))
+        else:
+            condition = f"Populated({literal(needed.when.lower())})"
         decorators.append(
-            f"@require_if([{literal(needed.field.lower())}], "
-            f"Populated({literal(needed.when.lower())}))"
+            f"@require_if([{literal(needed.field.lower())}], {condition})"
         )
     for rule in reader.pair_rules(layer.table):
         required = table.field(rule.field).required and rule.field in service
@@ -562,7 +584,8 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             "        serialize_by_alias=True,",
             "    )",
             "",
-            '    # The reference\'s null encodings ("" and -9999) mean not populated.',
+            '    # The reference\'s null encodings ("", -9999 and 9/9/9999) mean not',
+            "    # populated.",
             '    _drop_null_encodings = model_validator(mode="before")(',
             "        staticmethod(drop_null_encodings)",
             "    )",
@@ -667,6 +690,15 @@ GEOMETRIES = {
         "the service's polyline type admits several parts.",
         "The water line: in the reference's words, a surface water linear feature "
         "(a stream, as a line) that appears on the FIRM.",
+    ),
+    "S_Levee": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "Table 4 holds S_Levee to “Must Be Single Part”, so a LineString, though "
+        "the service's polyline type admits several parts.",
+        "The levee: in the reference's words, a line drawn at the centerline of a "
+        "levee, floodwall or levee closure structure shown on the FIRM, with its "
+        "accreditation status.",
     ),
 }
 

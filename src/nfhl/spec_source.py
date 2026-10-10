@@ -69,6 +69,7 @@ LAYERS: tuple[Layer, ...] = (
     Layer(13, "S_Stn_Start", "StationStart", "station_starts"),
     Layer(7, "S_Riv_Mrk", "RiverMark", "river_marks"),
     Layer(20, "S_Wtr_Ln", "WaterLine", "water_lines"),
+    Layer(23, "S_Levee", "Levee", "levees"),
 )
 
 
@@ -172,12 +173,20 @@ class OnlyIf:
 
 @dataclass(frozen=True, slots=True)
 class OnlyWhen:
-    """`field` may be populated only when `when` holds one of `any_of`."""
+    """`field` may be populated only when `when` holds one of `any_of`.
+
+    `unless` lists the values of `field` that are not "populated" for this rule:
+    the non-populated value section 7.3 lets a Project Officer substitute (`NP`)
+    says the field was intentionally left empty, so it is not content the rule
+    can forbid. `unless_quote` is the sentence of section 7.3 that says so.
+    """
 
     field: str
     when: str
     any_of: tuple[str, ...]
     quote: str
+    unless: tuple[str, ...] = ()
+    unless_quote: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -203,11 +212,13 @@ class Allowed:
 
 @dataclass(frozen=True, slots=True)
 class RequiredWhen:
-    """`field` must be populated whenever `when` is."""
+    """`field` must be populated whenever `when` is, or, when `any_of` lists
+    values, whenever `when` holds one of them."""
 
     field: str
     when: str
     quote: str
+    any_of: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -700,7 +711,14 @@ class SpecReader:
                 for r in raw.get("only_if", [])
             ),
             only_when=tuple(
-                OnlyWhen(r["field"], r["when"], tuple(r["any_of"]), r["quote"])
+                OnlyWhen(
+                    r["field"],
+                    r["when"],
+                    tuple(r["any_of"]),
+                    r["quote"],
+                    tuple(r.get("unless", [])),
+                    r.get("unless_quote"),
+                )
                 for r in raw.get("only_when", [])
             ),
             allowed=tuple(
@@ -713,7 +731,10 @@ class SpecReader:
                 for r in raw.get("allowed", [])
             ),
             required_when=tuple(
-                RequiredWhen(**r) for r in raw.get("required_when", [])
+                RequiredWhen(
+                    r["field"], r["when"], r["quote"], tuple(r.get("any_of", []))
+                )
+                for r in raw.get("required_when", [])
             ),
             value_when=tuple(
                 ValueWhen(

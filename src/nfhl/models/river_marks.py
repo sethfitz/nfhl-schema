@@ -45,7 +45,8 @@ class RiverMark(Feature):
         serialize_by_alias=True,
     )
 
-    # The reference's null encodings ("" and -9999) mean not populated.
+    # The reference's null encodings ("", -9999 and 9/9/9999) mean not
+    # populated.
     _drop_null_encodings = model_validator(mode="before")(
         staticmethod(drop_null_encodings)
     )

@@ -1,0 +1,3590 @@
+{
+  "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/23/query",
+  "retrieved_at": "2026-10-10T19:21:11Z",
+  "cases": [
+    {
+      "name": "usace_accredited",
+      "where": "(LEVEE_STAT = 'Accredited' AND USACE_LEV = 'T' AND DISTRICT NOT IN ('', 'NP') AND LEVEE_TYP = 'Levee Centerline' AND FREEBOARD > 0 AND LEN_UNIT = 'Feet') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 11041,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -82.29753730399943,
+              37.6754637818396
+            ],
+            [
+              -82.2977730150904,
+              37.67550878089338
+            ],
+            [
+              -82.29783754008112,
+              37.67553953594789
+            ],
+            [
+              -82.29786932978647,
+              37.67558643665572
+            ],
+            [
+              -82.29800382672394,
+              37.6760173427275
+            ],
+            [
+              -82.29820338693719,
+              37.67661980289713
+            ],
+            [
+              -82.29822361485145,
+              37.67675163067779
+            ],
+            [
+              -82.29817943433447,
+              37.67682975661878
+            ],
+            [
+              -82.29810262199452,
+              37.676897648774215
+            ],
+            [
+              -82.29787009342232,
+              37.67704038614378
+            ],
+            [
+              -82.2977529824323,
+              37.67711045890688
+            ],
+            [
+              -82.29749375092916,
+              37.67725110472932
+            ],
+            [
+              -82.29701743059232,
+              37.67751659516461
+            ],
+            [
+              -82.2966447289907,
+              37.6777195853681
+            ],
+            [
+              -82.29657111748942,
+              37.67774098674196
+            ],
+            [
+              -82.29621073859667,
+              37.67782224281525
+            ],
+            [
+              -82.29605796388718,
+              37.677841314283725
+            ],
+            [
+              -82.29560057748321,
+              37.67787649736534
+            ],
+            [
+              -82.29554297411823,
+              37.67787342880329
+            ],
+            [
+              -82.29546995327644,
+              37.677845032470685
+            ],
+            [
+              -82.2951294971023,
+              37.67742825909173
+            ],
+            [
+              -82.29499481678654,
+              37.676634290636954
+            ],
+            [
+              -82.29513261928653,
+              37.676263065054705
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 11041,
+          "DFIRM_ID": "21195C",
+          "VERSION_ID": "2.3.3.2",
+          "LEVEE_ID": "21195C_1",
+          "FC_SYS_ID": "3305000027",
+          "LEVEE_NM": "Appalachian Regional Hospital Levee",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "Tug Fork",
+          "BANK_LOC": "Left Bank",
+          "USACE_LEV": "T",
+          "DISTRICT": "Huntington",
+          "PL84_99TF": "T",
+          "CONST_DATE": 64108800000,
+          "DGN_FREQ": "0.2% plus 3 feet",
+          "FREEBOARD": 3,
+          "LEVEE_STAT": "Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "3305000027",
+          "OWNER": "Pike County Fiscal Court",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "21195C_FIS1",
+          "SHAPE.STLength()": 0.006388016329591626,
+          "GFID": "63d57008-3cbe-4b77-9967-7cefaf1cc102",
+          "GlobalID": "{991B537C-63EE-4CF4-869E-D62C3FDFB8F0}"
+        }
+      }
+    },
+    {
+      "name": "floodwall",
+      "where": "(LEVEE_TYP = 'Floodwall' AND LEVEE_STAT = 'Accredited') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 10446,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -92.4394635500727,
+              41.03976236084623
+            ],
+            [
+              -92.43955055429021,
+              41.03972892095482
+            ],
+            [
+              -92.43965614538382,
+              41.039616186897355
+            ],
+            [
+              -92.43974666868428,
+              41.039493568737
+            ],
+            [
+              -92.43983340048085,
+              41.03937565099406
+            ],
+            [
+              -92.43991798441293,
+              41.03925599662456
+            ],
+            [
+              -92.4400050357695,
+              41.03913506270421
+            ],
+            [
+              -92.44009726819326,
+              41.03900758827547
+            ],
+            [
+              -92.44018224633741,
+              41.03889150669447
+            ],
+            [
+              -92.44026323521652,
+              41.03877552464892
+            ],
+            [
+              -92.44035606354123,
+              41.03864476163068
+            ],
+            [
+              -92.44044452541567,
+              41.03852054566916
+            ],
+            [
+              -92.44053561973361,
+              41.03839607955984
+            ],
+            [
+              -92.44063177724878,
+              41.038272277454624
+            ],
+            [
+              -92.44072342555839,
+              41.038147199727895
+            ],
+            [
+              -92.44081482764987,
+              41.03802603006611
+            ],
+            [
+              -92.44093458023787,
+              41.03787774099928
+            ],
+            [
+              -92.44102810399995,
+              41.03775425714476
+            ],
+            [
+              -92.44110855329652,
+              41.03766599433287
+            ],
+            [
+              -92.44120693332768,
+              41.03754482074159
+            ],
+            [
+              -92.44131218521503,
+              41.03742467000472
+            ],
+            [
+              -92.44147735073868,
+              41.03738858718802
+            ],
+            [
+              -92.44164203038547,
+              41.03746730508685
+            ],
+            [
+              -92.44179385951888,
+              41.03756182550348
+            ],
+            [
+              -92.44194015266304,
+              41.03765684490591
+            ],
+            [
+              -92.44214305775176,
+              41.037787793879986
+            ],
+            [
+              -92.44229189166225,
+              41.03788269803106
+            ],
+            [
+              -92.44244411631739,
+              41.03798085802953
+            ],
+            [
+              -92.44258924254251,
+              41.038075315582205
+            ],
+            [
+              -92.44273171405932,
+              41.03816576946406
+            ],
+            [
+              -92.44294183282979,
+              41.0383048122182
+            ],
+            [
+              -92.44308112838871,
+              41.03839557911211
+            ],
+            [
+              -92.44318789297503,
+              41.03852550392753
+            ],
+            [
+              -92.44323267858123,
+              41.03867716277363
+            ],
+            [
+              -92.44326086538973,
+              41.0388522739391
+            ],
+            [
+              -92.44328413306398,
+              41.03901759529747
+            ],
+            [
+              -92.4433053445474,
+              41.03914728306715
+            ],
+            [
+              -92.44332560128038,
+              41.039291372003554
+            ],
+            [
+              -92.44334270693913,
+              41.0394340608995
+            ],
+            [
+              -92.44335800524858,
+              41.03957645773842
+            ],
+            [
+              -92.44337407102874,
+              41.03973883102288
+            ],
+            [
+              -92.4433800641093,
+              41.039884985314764
+            ],
+            [
+              -92.4433847815675,
+              41.04002591139132
+            ],
+            [
+              -92.44338385302459,
+              41.04017419783166
+            ],
+            [
+              -92.44339817431764,
+              41.040315350481066
+            ],
+            [
+              -92.44339472596361,
+              41.04046814350709
+            ],
+            [
+              -92.44340084215864,
+              41.04066315908739
+            ],
+            [
+              -92.44341952335479,
+              41.04080936052679
+            ],
+            [
+              -92.44340425781768,
+              41.040958613506824
+            ],
+            [
+              -92.44339309286774,
+              41.04110660003259
+            ],
+            [
+              -92.44338842258755,
+              41.04125073480907
+            ],
+            [
+              -92.44338724127698,
+              41.04139215594238
+            ],
+            [
+              -92.4433912999696,
+              41.04153465624618
+            ],
+            [
+              -92.44339452309143,
+              41.04168401006994
+            ],
+            [
+              -92.44340195288322,
+              41.04182537357715
+            ],
+            [
+              -92.44341050244608,
+              41.04197038452418
+            ],
+            [
+              -92.44340964200578,
+              41.04211441714593
+            ],
+            [
+              -92.44341669985093,
+              41.04226202255571
+            ],
+            [
+              -92.44341006506058,
+              41.04240442332496
+            ],
+            [
+              -92.4433177802485,
+              41.04251838061644
+            ],
+            [
+              -92.44329283489947,
+              41.0425139657095
+            ],
+            [
+              -92.44322317467729,
+              41.04246062141388
+            ],
+            [
+              -92.4431499416664,
+              41.04240957821437
+            ],
+            [
+              -92.44307924025418,
+              41.042359039238804
+            ],
+            [
+              -92.44301238535296,
+              41.04231162252407
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 10446,
+          "DFIRM_ID": "19179C",
+          "VERSION_ID": "2.4.3.6",
+          "LEVEE_ID": "19179C_5",
+          "FC_SYS_ID": "5",
+          "LEVEE_NM": "Ottumwa, IA - LDB Des Moines R RDB Drainage D (Westside - Upper Cell)",
+          "LEVEE_TYP": "Floodwall",
+          "WTR_NM": "DES MOINES RIVER",
+          "BANK_LOC": "Left Bank",
+          "USACE_LEV": "T",
+          "DISTRICT": "Rock Island",
+          "PL84_99TF": "T",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "5105940004",
+          "OWNER": "Ottumwa City",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "19179C_STUDY3",
+          "SHAPE.STLength()": 0.009645717388027901,
+          "GFID": "df44bee8-83f0-473a-87ce-33a255b85609",
+          "GlobalID": "{EA92478C-B924-4646-B965-C0EAB048F69F}"
+        }
+      }
+    },
+    {
+      "name": "closure_structure",
+      "where": "(LEVEE_TYP = 'Closure Structure') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 84504,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -96.58733444366939,
+              46.27365741842331
+            ],
+            [
+              -96.5873296582063,
+              46.27417670121757
+            ],
+            [
+              -96.58721207452437,
+              46.27481419512121
+            ],
+            [
+              -96.58627862057986,
+              46.27499712117442
+            ],
+            [
+              -96.58579283269216,
+              46.27552879744305
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 84504,
+          "DFIRM_ID": "27167C",
+          "VERSION_ID": "2.6.4.0",
+          "LEVEE_ID": "27167C_2",
+          "FC_SYS_ID": "5705000096",
+          "LEVEE_NM": "Red River of the North - Breckenridge North",
+          "LEVEE_TYP": "Closure Structure",
+          "WTR_NM": "Otter Tail River",
+          "BANK_LOC": "Along right overbanks of Red River of the North and Otter Tail River",
+          "USACE_LEV": "T",
+          "DISTRICT": "St. Paul",
+          "PL84_99TF": "T",
+          "CONST_DATE": 1435190400000,
+          "DGN_FREQ": "NP",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "NP",
+          "FC_SEG_ID": "5704000096",
+          "OWNER": "USACE",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "27167C_STUDY3",
+          "SHAPE.STLength()": 0.0028389474745820413,
+          "GFID": "5e4d48ad-58fc-45f1-9704-a30eb0eaab41",
+          "GlobalID": "{DB47C050-832C-4C39-AB61-DEE137DD2104}"
+        }
+      }
+    },
+    {
+      "name": "coastal_levee",
+      "where": "(LEVEE_TYP = 'Coastal Levee Centerline') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1761,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.36993535577464,
+              37.71833410292165
+            ],
+            [
+              -122.36992374682409,
+              37.718270252429456
+            ],
+            [
+              -122.36991456863059,
+              37.71823801220724
+            ],
+            [
+              -122.3698758180115,
+              37.71816333595906
+            ],
+            [
+              -122.36980114174355,
+              37.7180596373575
+            ],
+            [
+              -122.36970089410761,
+              37.71796566439023
+            ],
+            [
+              -122.3696718704376,
+              37.717945661754975
+            ],
+            [
+              -122.3695833889111,
+              37.71789906752123
+            ],
+            [
+              -122.36948792551813,
+              37.71786416081083
+            ],
+            [
+              -122.36944627267083,
+              37.71785553137775
+            ],
+            [
+              -122.3692616218447,
+              37.71783639182838
+            ],
+            [
+              -122.36925040449371,
+              37.71783560733498
+            ],
+            [
+              -122.36923495165959,
+              37.717835058583105
+            ],
+            [
+              -122.3692165965898,
+              37.71783537290595
+            ],
+            [
+              -122.3688952211265,
+              37.717866042854226
+            ],
+            [
+              -122.36873292511659,
+              37.717885496750355
+            ],
+            [
+              -122.36871292247817,
+              37.717888320407056
+            ],
+            [
+              -122.36868703678753,
+              37.717889026322744
+            ],
+            [
+              -122.3685848285809,
+              37.71788243736474
+            ],
+            [
+              -122.36839515646732,
+              37.717859768246754
+            ],
+            [
+              -122.36819356239901,
+              37.71783976562405
+            ],
+            [
+              -122.36795235464623,
+              37.717825881796955
+            ],
+            [
+              -122.36791156487347,
+              37.717816782191164
+            ],
+            [
+              -122.36787116669124,
+              37.71779238691312
+            ],
+            [
+              -122.36772879603767,
+              37.71771057164439
+            ],
+            [
+              -122.36737024023493,
+              37.71750638839424
+            ],
+            [
+              -122.36702901926678,
+              37.71730432419385
+            ],
+            [
+              -122.3666025320199,
+              37.71705597746176
+            ],
+            [
+              -122.36629519884978,
+              37.71688913298814
+            ],
+            [
+              -122.36615808260511,
+              37.71680739629943
+            ],
+            [
+              -122.36602026175055,
+              37.71667600728388
+            ],
+            [
+              -122.36589561751201,
+              37.71649292546979
+            ],
+            [
+              -122.36578642742302,
+              37.716360044734515
+            ],
+            [
+              -122.3657629724831,
+              37.71633745418478
+            ],
+            [
+              -122.36562507305044,
+              37.716226380818455
+            ],
+            [
+              -122.36553533554668,
+              37.71617374637244
+            ],
+            [
+              -122.3654850545698,
+              37.71614331088276
+            ],
+            [
+              -122.36545414890014,
+              37.71612950562075
+            ],
+            [
+              -122.36543108686463,
+              37.71612770089288
+            ],
+            [
+              -122.36540551549601,
+              37.71613217211876
+            ],
+            [
+              -122.36538261062223,
+              37.71613876108586
+            ],
+            [
+              -122.36519183970721,
+              37.71624050043581
+            ],
+            [
+              -122.36500201176253,
+              37.71639134335951
+            ],
+            [
+              -122.36489721434437,
+              37.71649206246789
+            ],
+            [
+              -122.36483548028286,
+              37.71652626196625
+            ],
+            [
+              -122.36479045503017,
+              37.71654414686548
+            ],
+            [
+              -122.36474668444359,
+              37.71655599155225
+            ],
+            [
+              -122.36472566287922,
+              37.71655646303609
+            ],
+            [
+              -122.36470471858519,
+              37.71655410955505
+            ],
+            [
+              -122.36467428308853,
+              37.71654351954052
+            ],
+            [
+              -122.364626982929,
+              37.716522810992785
+            ],
+            [
+              -122.36453544200646,
+              37.71648100230478
+            ],
+            [
+              -122.36444319516927,
+              37.71643197600839
+            ],
+            [
+              -122.36443166349544,
+              37.7164203670668
+            ],
+            [
+              -122.36442774102265,
+              37.71640648191277
+            ],
+            [
+              -122.36442672209503,
+              37.71639055890723
+            ],
+            [
+              -122.36442836965551,
+              37.71631768607595
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1761,
+          "DFIRM_ID": "060298",
+          "VERSION_ID": "2.3.2.0",
+          "LEVEE_ID": "060298_1",
+          "FC_SYS_ID": "1905077002",
+          "LEVEE_NM": "Hunters Point Levee",
+          "LEVEE_TYP": "Coastal Levee Centerline",
+          "WTR_NM": "San Francisco Bay",
+          "BANK_LOC": "N/A",
+          "USACE_LEV": "F",
+          "DISTRICT": "",
+          "PL84_99TF": "F",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "NP",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "NP",
+          "FC_SEG_ID": "1904077002",
+          "OWNER": "Undefined",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "060298_STUDY3",
+          "SHAPE.STLength()": 0.006575322175464031,
+          "GFID": "b85f29b4-ba63-47aa-a416-b802465d8ae3",
+          "GlobalID": "{68C3B73D-E129-461D-9D74-9BA487AAF50B}"
+        }
+      }
+    },
+    {
+      "name": "non_accredited_analysis",
+      "where": "(LEVEE_STAT = 'Non-Accredited' AND LEV_AN_TYP = 'Natural Valley') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 74976,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -86.68618271015355,
+              40.586800514172374
+            ],
+            [
+              -86.68598911684103,
+              40.58666598716715
+            ],
+            [
+              -86.68593828710415,
+              40.58663061027639
+            ],
+            [
+              -86.68569754947586,
+              40.58646368588674
+            ],
+            [
+              -86.6855221540762,
+              40.58634210238112
+            ],
+            [
+              -86.68542716215002,
+              40.58627628999636
+            ],
+            [
+              -86.6851547343529,
+              40.58608724522743
+            ],
+            [
+              -86.68495400201031,
+              40.585948089837366
+            ],
+            [
+              -86.68483579088326,
+              40.58586611870543
+            ],
+            [
+              -86.68461615471384,
+              40.58571323663113
+            ],
+            [
+              -86.68454453783963,
+              40.58566334725232
+            ],
+            [
+              -86.68424551843239,
+              40.58545532139059
+            ],
+            [
+              -86.6841064415875,
+              40.58535758310369
+            ],
+            [
+              -86.68407137769978,
+              40.58533295208102
+            ],
+            [
+              -86.68402305860684,
+              40.58529898701787
+            ],
+            [
+              -86.68392304539265,
+              40.58523019381703
+            ],
+            [
+              -86.68376153384133,
+              40.58511747286948
+            ],
+            [
+              -86.6837484344873,
+              40.58510837457018
+            ],
+            [
+              -86.68370670305197,
+              40.58507958664501
+            ],
+            [
+              -86.6836877992252,
+              40.585066564564976
+            ],
+            [
+              -86.68345490654106,
+              40.584905445956416
+            ],
+            [
+              -86.68323173949187,
+              40.5847490330033
+            ],
+            [
+              -86.68312388264313,
+              40.58467341640531
+            ],
+            [
+              -86.68282753104094,
+              40.58446978187788
+            ],
+            [
+              -86.68253337576212,
+              40.584277992035
+            ],
+            [
+              -86.68246199332044,
+              40.58423947716819
+            ],
+            [
+              -86.68244097044229,
+              40.584228103966915
+            ],
+            [
+              -86.68229726652315,
+              40.584150602751066
+            ],
+            [
+              -86.68223537528496,
+              40.58411718775136
+            ],
+            [
+              -86.6822100396525,
+              40.58410777382148
+            ],
+            [
+              -86.68218611453831,
+              40.58409883137387
+            ],
+            [
+              -86.68211951764444,
+              40.584074044501726
+            ],
+            [
+              -86.68191917820965,
+              40.5839990539324
+            ],
+            [
+              -86.68191258924266,
+              40.58399693619111
+            ],
+            [
+              -86.68189682208425,
+              40.58399105313975
+            ],
+            [
+              -86.68187509329238,
+              40.583982895186296
+            ],
+            [
+              -86.68186858290584,
+              40.58398124761769
+            ],
+            [
+              -86.6816913840927,
+              40.583935280715686
+            ],
+            [
+              -86.68158784131242,
+              40.58390845468426
+            ],
+            [
+              -86.68152296925915,
+              40.58389159002536
+            ],
+            [
+              -86.6813665575834,
+              40.58386186045108
+            ],
+            [
+              -86.68132529763241,
+              40.58385393693016
+            ],
+            [
+              -86.68123453988457,
+              40.583836680680335
+            ],
+            [
+              -86.68119586915788,
+              40.58382930722199
+            ],
+            [
+              -86.68098478254684,
+              40.58379361601801
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 74976,
+          "DFIRM_ID": "18015C",
+          "VERSION_ID": "2.8.3.0",
+          "LEVEE_ID": "18015C_2",
+          "FC_SYS_ID": "3905000005",
+          "LEVEE_NM": "Delphi Levee (Reach 5)",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "WABASH RIVER",
+          "BANK_LOC": "Left Bank",
+          "USACE_LEV": "T",
+          "DISTRICT": "Chicago",
+          "PL84_99TF": "U",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "NP",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "Non-Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "Natural Valley",
+          "FC_SEG_ID": "3904080001",
+          "OWNER": "City of Delphi",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "18015C_STUDY11",
+          "SHAPE.STLength()": 0.006070405005796753,
+          "GFID": "a60d228c-2ded-475c-aad4-c7d1b9aee484",
+          "GlobalID": "{9EFE0A31-3864-40B4-A7CB-EA9D36655161}"
+        }
+      }
+    },
+    {
+      "name": "provisionally_accredited",
+      "where": "(LEVEE_STAT = 'Provisionally Accredited' AND PAL_DATE < timestamp '2100-01-01 00:00:00') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 7,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -85.86145071975446,
+              31.033123033464346
+            ],
+            [
+              -85.86145409216648,
+              31.033193631403023
+            ],
+            [
+              -85.86146068113634,
+              31.033263915019976
+            ],
+            [
+              -85.86146609532913,
+              31.033333179711196
+            ],
+            [
+              -85.86147268429893,
+              31.03340354190858
+            ],
+            [
+              -85.86147982333159,
+              31.033473198191974
+            ],
+            [
+              -85.86148892163564,
+              31.033543874710873
+            ],
+            [
+              -85.86150053189316,
+              31.033614079747306
+            ],
+            [
+              -85.86151520023795,
+              31.033682638524265
+            ],
+            [
+              -85.86153316372094,
+              31.033750961559956
+            ],
+            [
+              -85.86155693167623,
+              31.03381802992845
+            ],
+            [
+              -85.86158219003978,
+              31.03388470408522
+            ],
+            [
+              -85.86160886023124,
+              31.0339503606258
+            ],
+            [
+              -85.86163804106647,
+              31.03401499824044
+            ],
+            [
+              -85.86167083005184,
+              31.03407986897688
+            ],
+            [
+              -85.86170157856611,
+              31.034144741022985
+            ],
+            [
+              -85.8617346805634,
+              31.034208984425923
+            ],
+            [
+              -85.86176825535266,
+              31.03427173742055
+            ],
+            [
+              -85.86180292633858,
+              31.034333707230555
+            ],
+            [
+              -85.86183885199158,
+              31.034397088868314
+            ],
+            [
+              -85.86187509196624,
+              31.034460156184487
+            ],
+            [
+              -85.86191580447533,
+              31.034521420080385
+            ],
+            [
+              -85.86195698453774,
+              31.034580564924877
+            ],
+            [
+              -85.86199047943641,
+              31.034631081641965
+            ],
+            [
+              -85.86203707368847,
+              31.034688580226998
+            ],
+            [
+              -85.86208280617545,
+              31.034745998921924
+            ],
+            [
+              -85.86212893025471,
+              31.034802164259528
+            ],
+            [
+              -85.86216673921729,
+              31.03484766099878
+            ],
+            [
+              -85.86222674583468,
+              31.034913943562067
+            ],
+            [
+              -85.86227788989189,
+              31.034968618491277
+            ],
+            [
+              -85.86232997560425,
+              31.035022900518488
+            ],
+            [
+              -85.86238198142652,
+              31.03507639805143
+            ],
+            [
+              -85.86243595044905,
+              31.035128405176025
+            ],
+            [
+              -85.86249078123669,
+              31.035181118214563
+            ],
+            [
+              -85.86254616077751,
+              31.035233203919528
+            ],
+            [
+              -85.86260146173784,
+              31.035284740871415
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 7,
+          "DFIRM_ID": "01061C",
+          "VERSION_ID": "2.3.2.1",
+          "LEVEE_ID": "01061C_81",
+          "FC_SYS_ID": "4104000005",
+          "LEVEE_NM": "Geneva Levee",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "Choctawhatchee River, Pea River, and Double Bridges Creek",
+          "BANK_LOC": "Left Descending",
+          "USACE_LEV": "T",
+          "DISTRICT": "Mobile",
+          "PL84_99TF": "T",
+          "CONST_DATE": -1009843200000,
+          "DGN_FREQ": "100-year flood",
+          "FREEBOARD": 1,
+          "LEVEE_STAT": "Provisionally Accredited",
+          "PAL_DATE": 1477267200000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "1401000023",
+          "OWNER": "City of Geneva Street and Sanitation Department",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "01061C_BASE4",
+          "SHAPE.STLength()": 0.0025255981762877197,
+          "GFID": "bf4addc7-0ddb-43b6-99bd-e5f3cbc59385",
+          "GlobalID": "{97EF24A9-AB90-41A5-94AD-31191FBF9BB5}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_status",
+      "where": "(LEVEE_STAT = 'NP' AND LEV_AN_TYP = 'NP') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1761,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.36993535577464,
+              37.71833410292165
+            ],
+            [
+              -122.36992374682409,
+              37.718270252429456
+            ],
+            [
+              -122.36991456863059,
+              37.71823801220724
+            ],
+            [
+              -122.3698758180115,
+              37.71816333595906
+            ],
+            [
+              -122.36980114174355,
+              37.7180596373575
+            ],
+            [
+              -122.36970089410761,
+              37.71796566439023
+            ],
+            [
+              -122.3696718704376,
+              37.717945661754975
+            ],
+            [
+              -122.3695833889111,
+              37.71789906752123
+            ],
+            [
+              -122.36948792551813,
+              37.71786416081083
+            ],
+            [
+              -122.36944627267083,
+              37.71785553137775
+            ],
+            [
+              -122.3692616218447,
+              37.71783639182838
+            ],
+            [
+              -122.36925040449371,
+              37.71783560733498
+            ],
+            [
+              -122.36923495165959,
+              37.717835058583105
+            ],
+            [
+              -122.3692165965898,
+              37.71783537290595
+            ],
+            [
+              -122.3688952211265,
+              37.717866042854226
+            ],
+            [
+              -122.36873292511659,
+              37.717885496750355
+            ],
+            [
+              -122.36871292247817,
+              37.717888320407056
+            ],
+            [
+              -122.36868703678753,
+              37.717889026322744
+            ],
+            [
+              -122.3685848285809,
+              37.71788243736474
+            ],
+            [
+              -122.36839515646732,
+              37.717859768246754
+            ],
+            [
+              -122.36819356239901,
+              37.71783976562405
+            ],
+            [
+              -122.36795235464623,
+              37.717825881796955
+            ],
+            [
+              -122.36791156487347,
+              37.717816782191164
+            ],
+            [
+              -122.36787116669124,
+              37.71779238691312
+            ],
+            [
+              -122.36772879603767,
+              37.71771057164439
+            ],
+            [
+              -122.36737024023493,
+              37.71750638839424
+            ],
+            [
+              -122.36702901926678,
+              37.71730432419385
+            ],
+            [
+              -122.3666025320199,
+              37.71705597746176
+            ],
+            [
+              -122.36629519884978,
+              37.71688913298814
+            ],
+            [
+              -122.36615808260511,
+              37.71680739629943
+            ],
+            [
+              -122.36602026175055,
+              37.71667600728388
+            ],
+            [
+              -122.36589561751201,
+              37.71649292546979
+            ],
+            [
+              -122.36578642742302,
+              37.716360044734515
+            ],
+            [
+              -122.3657629724831,
+              37.71633745418478
+            ],
+            [
+              -122.36562507305044,
+              37.716226380818455
+            ],
+            [
+              -122.36553533554668,
+              37.71617374637244
+            ],
+            [
+              -122.3654850545698,
+              37.71614331088276
+            ],
+            [
+              -122.36545414890014,
+              37.71612950562075
+            ],
+            [
+              -122.36543108686463,
+              37.71612770089288
+            ],
+            [
+              -122.36540551549601,
+              37.71613217211876
+            ],
+            [
+              -122.36538261062223,
+              37.71613876108586
+            ],
+            [
+              -122.36519183970721,
+              37.71624050043581
+            ],
+            [
+              -122.36500201176253,
+              37.71639134335951
+            ],
+            [
+              -122.36489721434437,
+              37.71649206246789
+            ],
+            [
+              -122.36483548028286,
+              37.71652626196625
+            ],
+            [
+              -122.36479045503017,
+              37.71654414686548
+            ],
+            [
+              -122.36474668444359,
+              37.71655599155225
+            ],
+            [
+              -122.36472566287922,
+              37.71655646303609
+            ],
+            [
+              -122.36470471858519,
+              37.71655410955505
+            ],
+            [
+              -122.36467428308853,
+              37.71654351954052
+            ],
+            [
+              -122.364626982929,
+              37.716522810992785
+            ],
+            [
+              -122.36453544200646,
+              37.71648100230478
+            ],
+            [
+              -122.36444319516927,
+              37.71643197600839
+            ],
+            [
+              -122.36443166349544,
+              37.7164203670668
+            ],
+            [
+              -122.36442774102265,
+              37.71640648191277
+            ],
+            [
+              -122.36442672209503,
+              37.71639055890723
+            ],
+            [
+              -122.36442836965551,
+              37.71631768607595
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1761,
+          "DFIRM_ID": "060298",
+          "VERSION_ID": "2.3.2.0",
+          "LEVEE_ID": "060298_1",
+          "FC_SYS_ID": "1905077002",
+          "LEVEE_NM": "Hunters Point Levee",
+          "LEVEE_TYP": "Coastal Levee Centerline",
+          "WTR_NM": "San Francisco Bay",
+          "BANK_LOC": "N/A",
+          "USACE_LEV": "F",
+          "DISTRICT": "",
+          "PL84_99TF": "F",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "NP",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "NP",
+          "FC_SEG_ID": "1904077002",
+          "OWNER": "Undefined",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "060298_STUDY3",
+          "SHAPE.STLength()": 0.006575322175464031,
+          "GFID": "b85f29b4-ba63-47aa-a416-b802465d8ae3",
+          "GlobalID": "{68C3B73D-E129-461D-9D74-9BA487AAF50B}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_freeboard",
+      "where": "(FREEBOARD = -8888 AND LEN_UNIT = 'Feet') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 85890,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -83.07635054334683,
+              40.460856331565566
+            ],
+            [
+              -83.07721120313406,
+              40.46155697134905
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 85890,
+          "DFIRM_ID": "39101C",
+          "VERSION_ID": "2.1.1.0",
+          "LEVEE_ID": "2",
+          "FC_SYS_ID": "1505000858",
+          "LEVEE_NM": "WALDO LEVEE",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "OLENTANGY RIVER",
+          "BANK_LOC": "Right Bank",
+          "USACE_LEV": "T",
+          "DISTRICT": "Huntington",
+          "PL84_99TF": "F",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": null,
+          "FREEBOARD": -8888,
+          "LEVEE_STAT": "Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "1504001338",
+          "OWNER": "USACE",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "39101C_STUDY6",
+          "SHAPE.STLength()": 0.0011097885852038754,
+          "GFID": "459ed373-1710-45e6-9749-b7b752282e8f",
+          "GlobalID": "{D9CAF134-B4A6-4449-881E-A4E1852C0849}"
+        }
+      }
+    },
+    {
+      "name": "de_accredited",
+      "where": "(LEVEE_STAT = 'De-Accredited') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": null,
+      "warns": "LEVEE_STAT",
+      "feature": {
+        "type": "Feature",
+        "id": 10548,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -96.84340863174269,
+              37.820566680644866
+            ],
+            [
+              -96.84337921515223,
+              37.82037151838184
+            ],
+            [
+              -96.84328986922442,
+              37.8202311083209
+            ],
+            [
+              -96.84320005312549,
+              37.82010905463984
+            ],
+            [
+              -96.84304081647983,
+              37.81996715417469
+            ],
+            [
+              -96.84290409181085,
+              37.819844158841256
+            ],
+            [
+              -96.84273301048034,
+              37.81971135798639
+            ],
+            [
+              -96.84252725685609,
+              37.81955957342009
+            ],
+            [
+              -96.84232142596113,
+              37.819407475841906
+            ],
+            [
+              -96.84216163925431,
+              37.819284244768575
+            ],
+            [
+              -96.8419916554258,
+              37.81910500683024
+            ],
+            [
+              -96.84190183932694,
+              37.81898310900028
+            ],
+            [
+              -96.84181312073096,
+              37.818824030857186
+            ],
+            [
+              -96.84171553825665,
+              37.81856297762862
+            ],
+            [
+              -96.84160775866152,
+              37.818255331466105
+            ],
+            [
+              -96.841513548586,
+              37.81788312758074
+            ],
+            [
+              -96.84145204891936,
+              37.817594778140844
+            ],
+            [
+              -96.84134426801461,
+              37.81728744499021
+            ],
+            [
+              -96.84127869004017,
+              37.81716562573927
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 10548,
+          "DFIRM_ID": "20015C",
+          "VERSION_ID": "2.3.3.3",
+          "LEVEE_ID": "20015C_65",
+          "FC_SYS_ID": "1705000108",
+          "LEVEE_NM": "WEST BRANCH WALNUT RIVER LEVEE",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "WEST BRANCH WALNUT RIVER",
+          "BANK_LOC": "Left Bank",
+          "USACE_LEV": "F",
+          "DISTRICT": "Tulsa",
+          "PL84_99TF": "F",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "De-Accredited",
+          "PAL_DATE": 1177545600000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "1704000109",
+          "OWNER": "City of El Dorado",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "20015C_FIRM3",
+          "SHAPE.STLength()": 0.004170565925284382,
+          "GFID": "5ee8676f-55ac-4583-bc65-fbd07c2497ef",
+          "GlobalID": "{1DD5F354-27F4-4483-A24B-36DA443E016B}"
+        }
+      }
+    },
+    {
+      "name": "never_accredited",
+      "where": "(LEVEE_STAT = 'Never Accredited') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": null,
+      "warns": "LEVEE_STAT",
+      "feature": {
+        "type": "Feature",
+        "id": 14477,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -123.99057817547678,
+              44.88743359199051
+            ],
+            [
+              -123.99042564569041,
+              44.88739574638317
+            ],
+            [
+              -123.98976833770789,
+              44.88723269870055
+            ],
+            [
+              -123.98941197166555,
+              44.88704584506005
+            ],
+            [
+              -123.98936504083146,
+              44.88702121404335
+            ],
+            [
+              -123.98929341344942,
+              44.88679430140378
+            ],
+            [
+              -123.98933603410997,
+              44.88662381470735
+            ],
+            [
+              -123.9894047395511,
+              44.88655085019418
+            ],
+            [
+              -123.9894334528201,
+              44.88652028242175
+            ],
+            [
+              -123.98970137789898,
+              44.886495940810974
+            ],
+            [
+              -123.99024324865995,
+              44.886623839499336
+            ],
+            [
+              -123.99067004106948,
+              44.886815567735866
+            ],
+            [
+              -123.99114604183437,
+              44.88702943599068
+            ],
+            [
+              -123.99135245943783,
+              44.88708677345689
+            ],
+            [
+              -123.99157565002679,
+              44.88714876680919
+            ],
+            [
+              -123.99219158671725,
+              44.88718395766234
+            ],
+            [
+              -123.99304402158363,
+              44.88726922122213
+            ],
+            [
+              -123.99417645018198,
+              44.88740314565653
+            ],
+            [
+              -123.99496193193663,
+              44.88749446515134
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 14477,
+          "DFIRM_ID": "41041C",
+          "VERSION_ID": "2.3.2.1",
+          "LEVEE_ID": "41041C_2",
+          "FC_SYS_ID": "2005000212",
+          "LEVEE_NM": "Millport Slough Levee",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "Millport Slough",
+          "BANK_LOC": "Right",
+          "USACE_LEV": "F",
+          "DISTRICT": "Portland",
+          "PL84_99TF": "F",
+          "CONST_DATE": 218330035200000,
+          "DGN_FREQ": "1 Percent Chance",
+          "FREEBOARD": -8888,
+          "LEVEE_STAT": "Never Accredited",
+          "PAL_DATE": 218330035200000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "2004000212",
+          "OWNER": "Non-USACE",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "41041C_FIRM01",
+          "SHAPE.STLength()": 0.007511711257291021,
+          "GFID": "8d88d881-313c-4fbe-920b-73aa8c15bd02",
+          "GlobalID": "{988A91E1-83E2-462B-9CAE-2E66071E245A}"
+        }
+      }
+    },
+    {
+      "name": "no_segment_id",
+      "where": "((FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": "FC_SEG_ID",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 55,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -109.29461645190518,
+              33.04153054652675
+            ],
+            [
+              -109.29474015448463,
+              33.041672918474184
+            ],
+            [
+              -109.29484322709213,
+              33.04183615482625
+            ],
+            [
+              -109.29491249047881,
+              33.04192236275114
+            ],
+            [
+              -109.29496073230216,
+              33.04204237727124
+            ],
+            [
+              -109.29503368242385,
+              33.04219675106631
+            ],
+            [
+              -109.29507156997086,
+              33.042325002121586
+            ],
+            [
+              -109.2950951807672,
+              33.04241921084229
+            ],
+            [
+              -109.29511784991108,
+              33.04255146294997
+            ],
+            [
+              -109.29512451747058,
+              33.04273485910635
+            ],
+            [
+              -109.29514499160983,
+              33.04297795016617
+            ],
+            [
+              -109.29513024470607,
+              33.04322488380893
+            ],
+            [
+              -109.29513659794486,
+              33.0434210663047
+            ],
+            [
+              -109.29518821218282,
+              33.04362626851749
+            ],
+            [
+              -109.29520570549857,
+              33.0437672286425
+            ],
+            [
+              -109.29525818280888,
+              33.043938387210275
+            ],
+            [
+              -109.29529097050698,
+              33.04433498768386
+            ],
+            [
+              -109.29529097052489,
+              33.04459062803326
+            ],
+            [
+              -109.29530595320654,
+              33.0448679198992
+            ],
+            [
+              -109.29532321078229,
+              33.045025821956614
+            ],
+            [
+              -109.29535152854521,
+              33.045132659855675
+            ],
+            [
+              -109.29543247946806,
+              33.045389477597304
+            ],
+            [
+              -109.29553876733067,
+              33.0456551578961
+            ],
+            [
+              -109.29561422810526,
+              33.04594162663907
+            ],
+            [
+              -109.29567941318366,
+              33.04623233086564
+            ],
+            [
+              -109.29568561057165,
+              33.04643267026415
+            ],
+            [
+              -109.2956954946952,
+              33.046709804969524
+            ],
+            [
+              -109.29569078774645,
+              33.04695250312866
+            ],
+            [
+              -109.29567172677599,
+              33.04715684227034
+            ],
+            [
+              -109.29563250600455,
+              33.04735647575724
+            ],
+            [
+              -109.2955748515746,
+              33.04745374387852
+            ],
+            [
+              -109.29544675638535,
+              33.047801396634235
+            ],
+            [
+              -109.29530320836169,
+              33.04815728592538
+            ],
+            [
+              -109.2950715704122,
+              33.04862722942066
+            ],
+            [
+              -109.29489703814099,
+              33.0490210049395
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 55,
+          "DFIRM_ID": "04011C",
+          "VERSION_ID": "1.1.1.0",
+          "LEVEE_ID": "04011C_1",
+          "FC_SYS_ID": "NP",
+          "LEVEE_NM": "LEVEE",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "SAN FRANCISCO RIVER",
+          "BANK_LOC": "NP",
+          "USACE_LEV": "U",
+          "DISTRICT": "",
+          "PL84_99TF": "U",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "",
+          "OWNER": "NP",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "04011C_LOMC1",
+          "SHAPE.STLength()": 0.00786254218907962,
+          "GFID": "5d27d66d-4261-4e0f-8a83-5119b944986c",
+          "GlobalID": "{D75047A1-B36A-4FA9-A410-61C86E99E46D}"
+        }
+      }
+    },
+    {
+      "name": "no_system_id",
+      "where": "((FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": "FC_SYS_ID",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12483,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -90.19510188728498,
+              34.53478636359285
+            ],
+            [
+              -90.1951228865878,
+              34.53478936405342
+            ],
+            [
+              -90.19514088673839,
+              34.53478836346224
+            ],
+            [
+              -90.19515818752376,
+              34.5347923645133
+            ],
+            [
+              -90.1951578862986,
+              34.534788363461494
+            ],
+            [
+              -90.19517288729729,
+              34.53478836346085
+            ],
+            [
+              -90.19518788698629,
+              34.5347883634602
+            ],
+            [
+              -90.19520188739462,
+              34.53479036333067
+            ],
+            [
+              -90.19521388662203,
+              34.53479136392054
+            ],
+            [
+              -90.19522188741668,
+              34.53479336379128
+            ],
+            [
+              -90.1952338866441,
+              34.534794364381106
+            ],
+            [
+              -90.1952448879004,
+              34.53479536366137
+            ],
+            [
+              -90.19524588718126,
+              34.534797364842014
+            ],
+            [
+              -90.19527788774018,
+              34.534797364840635
+            ],
+            [
+              -90.19535588664685,
+              34.53479836280832
+            ],
+            [
+              -90.19539978820777,
+              34.534801764027904
+            ],
+            [
+              -90.19542588737855,
+              34.534802363857125
+            ],
+            [
+              -90.19550988720883,
+              34.534807364186015
+            ],
+            [
+              -90.19558888670635,
+              34.53481436438615
+            ],
+            [
+              -90.19559288775845,
+              34.53481406316116
+            ],
+            [
+              -90.19567188725614,
+              34.53482336314753
+            ],
+            [
+              -90.19575888754781,
+              34.53482336314379
+            ],
+            [
+              -90.19584588783981,
+              34.534829364062944
+            ],
+            [
+              -90.1959318862317,
+              34.534835363672435
+            ],
+            [
+              -90.19602688731813,
+              34.534838362820096
+            ],
+            [
+              -90.19611888794286,
+              34.53484136327753
+            ],
+            [
+              -90.19620388836357,
+              34.53484636360643
+            ],
+            [
+              -90.19628588701295,
+              34.534851363935374
+            ],
+            [
+              -90.19636988684329,
+              34.534856364264236
+            ],
+            [
+              -90.19645688844489,
+              34.53486136328336
+            ],
+            [
+              -90.19654188755604,
+              34.53486736420254
+            ],
+            [
+              -90.19662688797672,
+              34.534871363941015
+            ],
+            [
+              -90.19670688806463,
+              34.53487736355079
+            ],
+            [
+              -90.19674488823728,
+              34.534879363420224
+            ],
+            [
+              -90.19678188781958,
+              34.53488236388004
+            ],
+            [
+              -90.19682388773462,
+              34.53488336315896
+            ],
+            [
+              -90.196869887392,
+              34.534882363876235
+            ],
+            [
+              -90.19690988743513,
+              34.534872364519224
+            ],
+            [
+              -90.19694388786407,
+              34.53485336377806
+            ],
+            [
+              -90.19697488783092,
+              34.534828363423884
+            ],
+            [
+              -90.19700388661643,
+              34.534796364175826
+            ],
+            [
+              -90.19703188743055,
+              34.534759363285666
+            ],
+            [
+              -90.19706188811591,
+              34.53472236370508
+            ],
+            [
+              -90.19708988762036,
+              34.534686363405314
+            ],
+            [
+              -90.19711788843453,
+              34.53465036310555
+            ],
+            [
+              -90.19714888709085,
+              34.534611363653845
+            ],
+            [
+              -90.19717788849553,
+              34.534576363944375
+            ],
+            [
+              -90.19721088833272,
+              34.534537364492586
+            ],
+            [
+              -90.1972418869892,
+              34.534500363602284
+            ],
+            [
+              -90.1972738875456,
+              34.534461364150616
+            ],
+            [
+              -90.19730488751156,
+              34.53442236338923
+            ],
+            [
+              -90.19733688675842,
+              34.534384364527895
+            ],
+            [
+              -90.19736888731494,
+              34.53434736363756
+            ],
+            [
+              -90.19740088787152,
+              34.53431036405687
+            ],
+            [
+              -90.19743088855672,
+              34.53427136460523
+            ],
+            [
+              -90.19746088793237,
+              34.534234363714965
+            ],
+            [
+              -90.19749188789847,
+              34.53419736282467
+            ],
+            [
+              -90.1975228878645,
+              34.534159363963376
+            ],
+            [
+              -90.19755688698231,
+              34.53411736274046
+            ],
+            [
+              -90.19758688766753,
+              34.5340783632888
+            ],
+            [
+              -90.19761788763338,
+              34.53403736396609
+            ],
+            [
+              -90.19764988688004,
+              34.53399736392392
+            ],
+            [
+              -90.19768088815569,
+              34.53395836447229
+            ],
+            [
+              -90.19771288740253,
+              34.53392036430121
+            ],
+            [
+              -90.19774288808776,
+              34.53388236282064
+            ],
+            [
+              -90.19777388805404,
+              34.533847363111065
+            ],
+            [
+              -90.19780388742986,
+              34.53381336399198
+            ],
+            [
+              -90.19783888844833,
+              34.53378036415332
+            ],
+            [
+              -90.1978718882866,
+              34.53375836426048
+            ],
+            [
+              -90.19790888786757,
+              34.53374036410954
+            ],
+            [
+              -90.19794388757776,
+              34.53372936285263
+            ],
+            [
+              -90.19797718733243,
+              34.53372576386911
+            ],
+            [
+              -90.19797788800722,
+              34.53371936349586
+            ],
+            [
+              -90.19801188843678,
+              34.53371036341974
+            ],
+            [
+              -90.19805188847978,
+              34.533698364191594
+            ],
+            [
+              -90.19808488831882,
+              34.53368836352517
+            ],
+            [
+              -90.1981548877393,
+              34.5336683635018
+            ],
+            [
+              -90.19824488849106,
+              34.53364336314501
+            ],
+            [
+              -90.19831188744979,
+              34.533622363841104
+            ],
+            [
+              -90.19838188817967,
+              34.53359736348518
+            ],
+            [
+              -90.19841337010728,
+              34.53358770857258
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12483,
+          "DFIRM_ID": "28107C",
+          "VERSION_ID": "2.5.3.6",
+          "LEVEE_ID": "28107C_1",
+          "FC_SYS_ID": null,
+          "LEVEE_NM": "Coldwater River - East Bank",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "Coldwater River",
+          "BANK_LOC": "Left Bank",
+          "USACE_LEV": "T",
+          "DISTRICT": "Vicksburg",
+          "PL84_99TF": "U",
+          "CONST_DATE": null,
+          "DGN_FREQ": "",
+          "FREEBOARD": 0,
+          "LEVEE_STAT": "Accredited",
+          "PAL_DATE": null,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "5905000011",
+          "OWNER": "U.S. Army Corps of Engineers",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "28107C_FIRM1",
+          "SHAPE.STLength()": 0.0038692622694672238,
+          "GFID": "06143852-b965-4505-b266-a460fa1c8c78",
+          "GlobalID": "{EED75107-99C1-468D-AC3D-53F620CE71C7}"
+        }
+      }
+    },
+    {
+      "name": "lone_space_district",
+      "where": "(DISTRICT LIKE ' ') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": "DISTRICT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 14846,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -77.64569537105032,
+              41.73248071225325
+            ],
+            [
+              -77.64589949021627,
+              41.73269531268343
+            ],
+            [
+              -77.64606281436049,
+              41.7328486151687
+            ],
+            [
+              -77.6461904263269,
+              41.732959765822066
+            ],
+            [
+              -77.64631810508352,
+              41.733028801312855
+            ],
+            [
+              -77.64642539746097,
+              41.73305952755241
+            ],
+            [
+              -77.64655317443864,
+              41.73306730045787
+            ],
+            [
+              -77.64671675919598,
+              41.733059788165335
+            ],
+            [
+              -77.6469877162172,
+              41.73303322929042
+            ],
+            [
+              -77.64896112162589,
+              41.73282055268004
+            ],
+            [
+              -77.64903781871932,
+              41.73280530415133
+            ],
+            [
+              -77.64908385242877,
+              41.73278620125542
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 14846,
+          "DFIRM_ID": "42105C",
+          "VERSION_ID": "1.1.1.0",
+          "LEVEE_ID": "42105C_6",
+          "FC_SYS_ID": "NP",
+          "LEVEE_NM": "Levee",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "West Branch Pine Creek",
+          "BANK_LOC": "NP",
+          "USACE_LEV": "U",
+          "DISTRICT": " ",
+          "PL84_99TF": "U",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": " ",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "NP",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": " ",
+          "OWNER": "NP",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "42105C_LOMC2",
+          "SHAPE.STLength()": 0.003623052883147964,
+          "GFID": "6bffc195-4873-4500-9021-6f01dcbffe2d",
+          "GlobalID": "{5CCA4538-5568-44D0-B285-9E3343FC4A9A}"
+        }
+      }
+    },
+    {
+      "name": "uppercase_district",
+      "where": "(LEVEE_ID = '20079C_1') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": "DISTRICT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 10579,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -97.48339458441525,
+              37.977775167954036
+            ],
+            [
+              -97.48364609017545,
+              37.97801126142082
+            ],
+            [
+              -97.48414393766005,
+              37.97855020894701
+            ],
+            [
+              -97.484857422877,
+              37.97927914158675
+            ],
+            [
+              -97.48546316781126,
+              37.979946376837056
+            ],
+            [
+              -97.48593022487763,
+              37.98050592290537
+            ],
+            [
+              -97.48610991732217,
+              37.98076768990045
+            ],
+            [
+              -97.48622791497921,
+              37.980967887851364
+            ],
+            [
+              -97.48639734221828,
+              37.98138363836594
+            ],
+            [
+              -97.48650000884491,
+              37.981645427629836
+            ],
+            [
+              -97.48664368006854,
+              37.98228190261193
+            ],
+            [
+              -97.48672586078438,
+              37.982538572364476
+            ],
+            [
+              -97.48691577654839,
+              37.98290300333277
+            ],
+            [
+              -97.48712624239397,
+              37.98323664519222
+            ],
+            [
+              -97.48746495669224,
+              37.983580520830756
+            ],
+            [
+              -97.48782172090314,
+              37.98386715065197
+            ],
+            [
+              -97.48841027765651,
+              37.98422985413825
+            ],
+            [
+              -97.48895783245658,
+              37.984483102997466
+            ],
+            [
+              -97.48920418333785,
+              37.98466785072605
+            ],
+            [
+              -97.48933420510431,
+              37.98485263120317
+            ],
+            [
+              -97.48934790036724,
+              37.984948459991685
+            ],
+            [
+              -97.489341058664,
+              37.9852770059252
+            ],
+            [
+              -97.48941641466669,
+              37.985475460703555
+            ],
+            [
+              -97.48966963873569,
+              37.985899819695305
+            ],
+            [
+              -97.49008021352536,
+              37.98651571445703
+            ],
+            [
+              -97.49078516493826,
+              37.98754231093583
+            ],
+            [
+              -97.49131218934774,
+              37.988322540866875
+            ],
+            [
+              -97.49181174990485,
+              37.98907541172602
+            ],
+            [
+              -97.49231824127156,
+              37.99002669545785
+            ],
+            [
+              -97.4926604419668,
+              37.990875368921934
+            ],
+            [
+              -97.4928247051717,
+              37.991374967335474
+            ],
+            [
+              -97.49298208342701,
+              37.991908766555845
+            ],
+            [
+              -97.49318058150497,
+              37.99253842206631
+            ],
+            [
+              -97.49337901936879,
+              37.9935034089268
+            ],
+            [
+              -97.49352963582238,
+              37.99448899694976
+            ],
+            [
+              -97.49361859281993,
+              37.9950912121933
+            ],
+            [
+              -97.49376231778504,
+              37.99621364797116
+            ],
+            [
+              -97.49381703991845,
+              37.99678172134555
+            ],
+            [
+              -97.49375548268131,
+              37.99709648035222
+            ],
+            [
+              -97.49362540203194,
+              37.99747979289774
+            ],
+            [
+              -97.4933516332006,
+              37.99795882422843
+            ],
+            [
+              -97.49324896663344,
+              37.998342096172465
+            ],
+            [
+              -97.49322847944755,
+              37.99871165190421
+            ],
+            [
+              -97.4932695599919,
+              37.99893754826747
+            ],
+            [
+              -97.4934064457589,
+              37.99914970746274
+            ],
+            [
+              -97.49372906025152,
+              37.99958714615689
+            ],
+            [
+              -97.4939456461926,
+              37.99983404050072
+            ],
+            [
+              -97.49425745325068,
+              38.0001609807564
+            ],
+            [
+              -97.49448478112967,
+              38.00037754961621
+            ],
+            [
+              -97.49473169255363,
+              38.00058975464374
+            ],
+            [
+              -97.49497421918753,
+              38.000760862125965
+            ],
+            [
+              -97.49522326275351,
+              38.00090593461387
+            ],
+            [
+              -97.49556968315359,
+              38.00107483791011
+            ],
+            [
+              -97.49590972282138,
+              38.00120262794498
+            ],
+            [
+              -97.49627351734195,
+              38.001306519061615
+            ],
+            [
+              -97.49643590898079,
+              38.001341203128085
+            ],
+            [
+              -97.49674771208464,
+              38.001395352858935
+            ],
+            [
+              -97.49700326602681,
+              38.00143213239716
+            ],
+            [
+              -97.49721118976667,
+              38.00144296469231
+            ],
+            [
+              -97.49765506425517,
+              38.001458139850214
+            ],
+            [
+              -97.49807085934533,
+              38.00145165170511
+            ],
+            [
+              -97.49827438782127,
+              38.001460317801026
+            ],
+            [
+              -97.49852343661479,
+              38.001484130265055
+            ],
+            [
+              -97.49876160595441,
+              38.00153607058142
+            ],
+            [
+              -97.49896734778392,
+              38.00160537847622
+            ],
+            [
+              -97.49910165217122,
+              38.001670373621266
+            ],
+            [
+              -97.49930087576189,
+              38.001798123064404
+            ],
+            [
+              -97.49946538646319,
+              38.00195187607133
+            ],
+            [
+              -97.49959963585636,
+              38.002148900683096
+            ],
+            [
+              -97.49968410456823,
+              38.00236980718889
+            ],
+            [
+              -97.4997101421938,
+              38.00247809882702
+            ],
+            [
+              -97.49973174134247,
+              38.00265130310885
+            ],
+            [
+              -97.49971446552485,
+              38.00355429921934
+            ],
+            [
+              -97.49972095760874,
+              38.00391378618178
+            ],
+            [
+              -97.49974258951082,
+              38.00421263658305
+            ],
+            [
+              -97.49977940182593,
+              38.00439668102918
+            ],
+            [
+              -97.49990933062742,
+              38.00481681109317
+            ],
+            [
+              -97.49997641735615,
+              38.005052812893474
+            ],
+            [
+              -97.50002192067116,
+              38.00531918470724
+            ],
+            [
+              -97.5000522697817,
+              38.005864870529024
+            ],
+            [
+              -97.50008258088955,
+              38.00617018154775
+            ],
+            [
+              -97.50008036362124,
+              38.00626333205551
+            ],
+            [
+              -97.5001237098852,
+              38.00632391491669
+            ],
+            [
+              -97.50035545004933,
+              38.00649286012902
+            ],
+            [
+              -97.50081232176056,
+              38.0067743926962
+            ],
+            [
+              -97.501734838686,
+              38.007350365969195
+            ],
+            [
+              -97.5020012118512,
+              38.00751280472301
+            ],
+            [
+              -97.50239316567114,
+              38.007757460825104
+            ],
+            [
+              -97.50275041576408,
+              38.0079696894204
+            ],
+            [
+              -97.50294096276488,
+              38.00805417249961
+            ],
+            [
+              -97.50307745561392,
+              38.00809315884408
+            ],
+            [
+              -97.50324198070923,
+              38.00811260748184
+            ],
+            [
+              -97.50343471092714,
+              38.008106136375375
+            ],
+            [
+              -97.50359282254672,
+              38.00806717096864
+            ],
+            [
+              -97.50371185875164,
+              38.00801736932797
+            ],
+            [
+              -97.50391325768494,
+              38.00787660432924
+            ],
+            [
+              -97.50411032290558,
+              38.0076968726235
+            ],
+            [
+              -97.5044286573178,
+              38.00739801172518
+            ],
+            [
+              -97.50461269653223,
+              38.00727028190496
+            ],
+            [
+              -97.50492458474726,
+              38.00713381262798
+            ],
+            [
+              -97.5050480135967,
+              38.00708617587693
+            ],
+            [
+              -97.50523855010778,
+              38.00703635851609
+            ],
+            [
+              -97.50546595916494,
+              38.00701905379068
+            ],
+            [
+              -97.50578854871942,
+              38.0068674983873
+            ],
+            [
+              -97.50585568388446,
+              38.00686964493783
+            ],
+            [
+              -97.50595041648727,
+              38.006884381375414
+            ],
+            [
+              -97.5063148370235,
+              38.006899745130816
+            ],
+            [
+              -97.50656636634226,
+              38.00696647427644
+            ],
+            [
+              -97.5067562532699,
+              38.00707429049371
+            ],
+            [
+              -97.50697186349483,
+              38.00721802711693
+            ],
+            [
+              -97.5074594667071,
+              38.0076748725392
+            ],
+            [
+              -97.50795223265267,
+              38.00814192162521
+            ],
+            [
+              -97.50813194080288,
+              38.0082907777631
+            ],
+            [
+              -97.5082602508131,
+              38.008331885778595
+            ],
+            [
+              -97.50836804609685,
+              38.00833698040119
+            ],
+            [
+              -97.50850147299609,
+              38.00832670600709
+            ],
+            [
+              -97.50902503192277,
+              38.008162483432734
+            ],
+            [
+              -97.50966663432287,
+              38.00795716330597
+            ],
+            [
+              -97.51045200349357,
+              38.00774673020667
+            ],
+            [
+              -97.51089855756332,
+              38.00764920798403
+            ],
+            [
+              -97.51139645214133,
+              38.00759269162688
+            ],
+            [
+              -97.51177629800488,
+              38.00755166085269
+            ],
+            [
+              -97.51217159277753,
+              38.00753623156968
+            ],
+            [
+              -97.51256676837129,
+              38.00753624857259
+            ],
+            [
+              -97.51304928084441,
+              38.00757214799729
+            ],
+            [
+              -97.51347018497655,
+              38.00763375893013
+            ],
+            [
+              -97.51402453827518,
+              38.007715914699006
+            ],
+            [
+              -97.51452241846003,
+              38.00780315724196
+            ],
+            [
+              -97.51496387398568,
+              38.007859647351296
+            ],
+            [
+              -97.51542069852368,
+              38.00786991909193
+            ],
+            [
+              -97.51578518453837,
+              38.00782881628663
+            ],
+            [
+              -97.51610852847014,
+              38.00773642406115
+            ],
+            [
+              -97.51640621720945,
+              38.00762864317679
+            ],
+            [
+              -97.51660900832832,
+              38.007518283551384
+            ],
+            [
+              -97.51699911415697,
+              38.00730608765477
+            ],
+            [
+              -97.51733449660259,
+              38.007176097329854
+            ],
+            [
+              -97.51769716871782,
+              38.007114513854816
+            ],
+            [
+              -97.5180873217124,
+              38.007093941485365
+            ],
+            [
+              -97.5186963944651,
+              38.00709393359211
+            ],
+            [
+              -97.52208043451941,
+              38.00714685336223
+            ],
+            [
+              -97.52600092855735,
+              38.007179326482955
+            ],
+            [
+              -97.52769077387076,
+              38.00719328226305
+            ],
+            [
+              -97.52804529196817,
+              38.007222984321466
+            ],
+            [
+              -97.52914172037713,
+              38.007379090757226
+            ],
+            [
+              -97.5294288256576,
+              38.00739484349016
+            ],
+            [
+              -97.52988758849423,
+              38.00721138967793
+            ],
+            [
+              -97.53063758336239,
+              38.006722805563385
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 10579,
+          "DFIRM_ID": "20079C",
+          "VERSION_ID": "1.1.1.0",
+          "LEVEE_ID": "20079C_1",
+          "FC_SYS_ID": "5805000015",
+          "LEVEE_NM": "HALSTEAD LEVEE",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "LITTLE ARKANSAS RIVER",
+          "BANK_LOC": "RIGHT",
+          "USACE_LEV": "T",
+          "DISTRICT": "KANSAS CITY",
+          "PL84_99TF": "U",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": null,
+          "FREEBOARD": 0,
+          "LEVEE_STAT": "Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": null,
+          "FC_SEG_ID": "5805000015",
+          "OWNER": "CITY OF HALSTEAD",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "20079C_STUDY1",
+          "SHAPE.STLength()": 0.06887113256103647,
+          "GFID": "ddc1b9f6-739e-4480-8d00-146c56b0bf36",
+          "GlobalID": "{406FA29F-C2C6-4B90-967F-50DC3BBE611D}"
+        }
+      }
+    },
+    {
+      "name": "uppercase_levee_type",
+      "where": "(LEVEE_ID = '38055C_1') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": "LEVEE_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 90968,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -100.9716178390072,
+              47.21108644406441
+            ],
+            [
+              -100.97671167465371,
+              47.21107004914007
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 90968,
+          "DFIRM_ID": "38055C",
+          "VERSION_ID": "2.3.3.2",
+          "LEVEE_ID": "38055C_1",
+          "FC_SYS_ID": "400005000002",
+          "LEVEE_NM": "4698",
+          "LEVEE_TYP": "LEVEE CENTERLINE",
+          "WTR_NM": "PAINTED WOODS CREEK",
+          "BANK_LOC": "NP",
+          "USACE_LEV": "F",
+          "DISTRICT": "Omaha",
+          "PL84_99TF": "F",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "Non-Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "",
+          "FC_SEG_ID": "400004000002",
+          "OWNER": "Locally Constructed, Locally Operated and Maintained",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "38055C_BASE11",
+          "SHAPE.STLength()": 0.005093860690890512,
+          "GFID": "99f45396-56a6-48f3-bbb1-66d59db349cd",
+          "GlobalID": "{01FFE478-5863-4CB5-B4CE-9BD88DB92293}"
+        }
+      }
+    },
+    {
+      "name": "uppercase_status",
+      "where": "(LEVEE_ID = '1505901512') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": "LEVEE_STAT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 97884,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -87.21095235873466,
+              41.598442335431976
+            ],
+            [
+              -87.21141257532996,
+              41.59830427751332
+            ],
+            [
+              -87.2119978264396,
+              41.59812668579177
+            ],
+            [
+              -87.21285919337127,
+              41.59796235187729
+            ],
+            [
+              -87.21364164724018,
+              41.597771659483726
+            ],
+            [
+              -87.21549584872656,
+              41.597331132457185
+            ],
+            [
+              -87.2161271453306,
+              41.597127262139814
+            ],
+            [
+              -87.21662030676312,
+              41.59702207308836
+            ],
+            [
+              -87.21708060194321,
+              41.59692998208058
+            ],
+            [
+              -87.21747508472922,
+              41.596870758635774
+            ],
+            [
+              -87.21808002547559,
+              41.596765568268474
+            ],
+            [
+              -87.21857969860285,
+              41.59664727855536
+            ],
+            [
+              -87.21886247933297,
+              41.59645650891831
+            ],
+            [
+              -87.21913208343473,
+              41.596219850951435
+            ],
+            [
+              -87.21926355105839,
+              41.59611466061003
+            ],
+            [
+              -87.21948710967725,
+              41.59602257092483
+            ],
+            [
+              -87.21966462280544,
+              41.59599629232185
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 97884,
+          "DFIRM_ID": "18127C",
+          "VERSION_ID": "2.3.1.0",
+          "LEVEE_ID": "1505901512",
+          "FC_SYS_ID": "1505901512",
+          "LEVEE_NM": "City of Portage Levee 2",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "Little Calumet River",
+          "BANK_LOC": "Left Bank",
+          "USACE_LEV": "F",
+          "DISTRICT": "Chicago",
+          "PL84_99TF": "F",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "NON-ACCREDITED",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "NP",
+          "FC_SEG_ID": "NP",
+          "OWNER": "City of Portage, IN",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "18127C_FIRM1",
+          "SHAPE.STLength()": 0.009133080447809886,
+          "GFID": "c9cd9178-49a2-4841-ab40-0d4dacbc5c33",
+          "GlobalID": "{E6D44D44-0C89-4C49-AB0A-35BBAA610047}"
+        }
+      }
+    },
+    {
+      "name": "coded_analysis",
+      "where": "(LEV_AN_TYP = 'NV') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": "LEV_AN_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 89591,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -90.18625819887579,
+              33.33944750156622
+            ],
+            [
+              -90.18625592397314,
+              33.339447815887844
+            ],
+            [
+              -90.18610931651925,
+              33.33946883745939
+            ],
+            [
+              -90.18378227058115,
+              33.33983531687538
+            ],
+            [
+              -90.18250273281839,
+              33.3400424810444
+            ],
+            [
+              -90.18061817572669,
+              33.34016618368965
+            ],
+            [
+              -90.1782671260823,
+              33.34030651527524
+            ],
+            [
+              -90.17806090360516,
+              33.34029945483498
+            ],
+            [
+              -90.17785020989795,
+              33.34020101194272
+            ],
+            [
+              -90.1751453885746,
+              33.33873846979228
+            ],
+            [
+              -90.17469497750143,
+              33.338760824623485
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 89591,
+          "DFIRM_ID": "28083C",
+          "VERSION_ID": "2.5.3.6",
+          "LEVEE_ID": "28083C_1",
+          "FC_SYS_ID": "1405000234",
+          "LEVEE_NM": "Abiaca Creek Levee 1",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "Abiaca Creek",
+          "BANK_LOC": "Left Bank",
+          "USACE_LEV": "F",
+          "DISTRICT": "Vicksburg",
+          "PL84_99TF": "U",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "Non-Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "NV",
+          "FC_SEG_ID": "1404000267",
+          "OWNER": "County of Leflore, Holmes County",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "28083C_BASE11",
+          "SHAPE.STLength()": 0.01201095235411608,
+          "GFID": "8beec0c5-c566-4543-9aea-6f27748cfce7",
+          "GlobalID": "{14DF08D0-2D77-4A3F-9B63-FEAD3BA1E2A3}"
+        }
+      }
+    },
+    {
+      "name": "lone_space_analysis",
+      "where": "(LEV_AN_TYP LIKE ' ') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": "LEV_AN_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 125755,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -105.04412441105279,
+              40.57605797854347
+            ],
+            [
+              -105.0439500359316,
+              40.576229138433675
+            ],
+            [
+              -105.04379346580915,
+              40.57632099237314
+            ],
+            [
+              -105.04355037604557,
+              40.57638602028318
+            ],
+            [
+              -105.04332509128567,
+              40.576411514397385
+            ],
+            [
+              -105.04309965067303,
+              40.576423907850874
+            ],
+            [
+              -105.04289193779333,
+              40.57639661034779
+            ],
+            [
+              -105.04268438207114,
+              40.576342956981776
+            ],
+            [
+              -105.04247706077885,
+              40.57627604579412
+            ],
+            [
+              -105.04226934789916,
+              40.57624890545179
+            ],
+            [
+              -105.04207889127488,
+              40.57622176510829
+            ],
+            [
+              -105.04188843596033,
+              40.57619462345512
+            ],
+            [
+              -105.04168056592307,
+              40.576193760395405
+            ],
+            [
+              -105.04147253872671,
+              40.576206155157315
+            ],
+            [
+              -105.04126466868946,
+              40.57620537067802
+            ],
+            [
+              -105.04109131247282,
+              40.57620466477664
+            ],
+            [
+              -105.04091834915326,
+              40.576164266610334
+            ],
+            [
+              -105.04074530725333,
+              40.576124026914464
+            ],
+            [
+              -105.0405377515328,
+              40.576083628750595
+            ],
+            [
+              -105.04036478690352,
+              40.57604323189389
+            ],
+            [
+              -105.04017417443146,
+              40.57604252599382
+            ],
+            [
+              -105.04000097537396,
+              40.57602864216089
+            ],
+            [
+              -105.0398275418915,
+              40.57606754863441
+            ],
+            [
+              -105.03965402851735,
+              40.57609335575681
+            ],
+            [
+              -105.03951518743587,
+              40.57613241938865
+            ],
+            [
+              -105.03942803916625,
+              40.57622443179356
+            ],
+            [
+              -105.0392888837665,
+              40.57629000844913
+            ],
+            [
+              -105.0391669859351,
+              40.57638202085654
+            ],
+            [
+              -105.0390279091157,
+              40.5764475975121
+            ],
+            [
+              -105.0389061671338,
+              40.57652619624686
+            ],
+            [
+              -105.03878442645828,
+              40.576578673550124
+            ],
+            [
+              -105.03861114882368,
+              40.576591224160616
+            ],
+            [
+              -105.03850721445993,
+              40.57659075399542
+            ],
+            [
+              -105.03847246489977,
+              40.57660385334905
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 125755,
+          "DFIRM_ID": "08069C",
+          "VERSION_ID": "1.1.1.0",
+          "LEVEE_ID": "08069C_3",
+          "FC_SYS_ID": "NP",
+          "LEVEE_NM": "TIMBERLINE LEVEE",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "COBB LAKE",
+          "BANK_LOC": "NP",
+          "USACE_LEV": "U",
+          "DISTRICT": "",
+          "PL84_99TF": "U",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": " ",
+          "FREEBOARD": -8888,
+          "LEVEE_STAT": "NP",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": " ",
+          "FC_SEG_ID": " ",
+          "OWNER": "NP",
+          "LEN_UNIT": "NP",
+          "SOURCE_CIT": "08069C_LOMC56",
+          "SHAPE.STLength()": 0.005948919807095275,
+          "GFID": "80ee6e91-5667-418d-a53b-06a762a4f848",
+          "GlobalID": "{C64A4F33-E7CC-4B4C-86BD-3F1F3466AA96}"
+        }
+      }
+    },
+    {
+      "name": "analysis_on_accredited",
+      "where": "(LEVEE_STAT = 'Accredited' AND LEV_AN_TYP = 'Natural Valley') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' ')))",
+      "expect": "@forbid_if(lev_an_typ)",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 94213,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -94.2834141383623,
+              39.18750703476442
+            ],
+            [
+              -94.28358451375725,
+              39.187386626017926
+            ],
+            [
+              -94.28382140614433,
+              39.18718409027917
+            ],
+            [
+              -94.28382383820755,
+              39.187181815376654
+            ],
+            [
+              -94.28399970374849,
+              39.187011754298645
+            ],
+            [
+              -94.28412599553837,
+              39.18689126828396
+            ],
+            [
+              -94.28417839425477,
+              39.18684114446743
+            ],
+            [
+              -94.28418239399676,
+              39.18683651608205
+            ],
+            [
+              -94.28418874853116,
+              39.18682906404105
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 94213,
+          "DFIRM_ID": "29095C",
+          "VERSION_ID": "2.6.4.6",
+          "LEVEE_ID": "29095C_28",
+          "FC_SYS_ID": "3605000098",
+          "LEVEE_NM": "MRLS 351-R",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "Missouri River",
+          "BANK_LOC": "Right Bank",
+          "USACE_LEV": "T",
+          "DISTRICT": "Kansas City",
+          "PL84_99TF": "T",
+          "CONST_DATE": -143510400000,
+          "DGN_FREQ": "0.001",
+          "FREEBOARD": -9999,
+          "LEVEE_STAT": "Accredited",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "Natural Valley",
+          "FC_SEG_ID": "3604000133",
+          "OWNER": "Atherton Levee District",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "29095C_BASE2",
+          "SHAPE.STLength()": 0.001031240746250587,
+          "GFID": "72b5d425-11f9-4f72-b48e-5b79e4a74de2",
+          "GlobalID": "{1E710656-C4F1-488F-A272-4408C8DDE45E}"
+        }
+      }
+    },
+    {
+      "name": "usace_without_district",
+      "where": "(USACE_LEV = 'T' AND (DISTRICT IS NULL OR (DISTRICT = '' AND DISTRICT NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LEVEE_ID IS NULL OR (LEVEE_ID = '' AND LEVEE_ID NOT LIKE ' ')) AND NOT (FC_SYS_ID IS NULL OR (FC_SYS_ID = '' AND FC_SYS_ID NOT LIKE ' ')) AND NOT (FC_SEG_ID IS NULL OR (FC_SEG_ID = '' AND FC_SEG_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((LEVEE_TYP IS NULL OR (LEVEE_TYP = '' AND LEVEE_TYP NOT LIKE ' ')) OR LEVEE_TYP IN ('Coastal Levee Centerline', 'Levee Centerline', 'Floodwall', 'Closure Structure', 'Dike', 'NP')) AND LEVEE_ID <> '38055C_1' AND ((USACE_LEV IS NULL OR (USACE_LEV = '' AND USACE_LEV NOT LIKE ' ')) OR USACE_LEV IN ('T', 'F', 'U')) AND ((PL84_99TF IS NULL OR (PL84_99TF = '' AND PL84_99TF NOT LIKE ' ')) OR PL84_99TF IN ('T', 'F', 'U')) AND (DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') AND DISTRICT <> '1027' AND LEVEE_ID <> '20079C_1' AND ((LEVEE_STAT IS NULL OR (LEVEE_STAT = '' AND LEVEE_STAT NOT LIKE ' ')) OR LEVEE_STAT IN ('Accredited', 'Non-Accredited', 'Provisionally Accredited', 'AR', 'A99', 'NP')) AND LEVEE_ID NOT IN ('1505901512', '1505000990') AND ((LEV_AN_TYP IS NULL OR (LEV_AN_TYP = '' AND LEV_AN_TYP NOT LIKE ' ')) OR LEV_AN_TYP IN ('Natural Valley', 'Structural-Based Inundation', 'Overtopping', 'Freeboard Deficient', 'Sound Reach', 'BFE Below Toe', 'Not Hydraulically Significant', 'Other', 'NP')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <> 'Non-Accredited')) AND SHAPE.STLength() < 0.01",
+      "expect": "@require_if(district)",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 113125,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -96.91885845967865,
+              46.89292503328343
+            ],
+            [
+              -96.91849441236458,
+              46.89275677698086
+            ],
+            [
+              -96.91825493071866,
+              46.8926784925958
+            ],
+            [
+              -96.91800501623102,
+              46.89269700353615
+            ],
+            [
+              -96.91722162079797,
+              46.89326923516667
+            ],
+            [
+              -96.9159063919815,
+              46.894353689183276
+            ],
+            [
+              -96.91497897704718,
+              46.89516336195137
+            ],
+            [
+              -96.91429669363603,
+              46.895732847189294
+            ],
+            [
+              -96.91378925551987,
+              46.8961345462547
+            ],
+            [
+              -96.91311944277005,
+              46.8964162308128
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 113125,
+          "DFIRM_ID": "38017C",
+          "VERSION_ID": "2.3.3.2",
+          "LEVEE_ID": "38017C_6",
+          "FC_SYS_ID": "1805100568",
+          "LEVEE_NM": "West Fargo - North side of Diversion",
+          "LEVEE_TYP": "Levee Centerline",
+          "WTR_NM": "Sheyenne River",
+          "BANK_LOC": "Left Bank",
+          "USACE_LEV": "T",
+          "DISTRICT": "",
+          "PL84_99TF": "T",
+          "CONST_DATE": 253392451200000,
+          "DGN_FREQ": "",
+          "FREEBOARD": 0,
+          "LEVEE_STAT": "NP",
+          "PAL_DATE": 253392451200000,
+          "LEV_AN_TYP": "",
+          "FC_SEG_ID": "1805100568",
+          "OWNER": "SE Cass Water Resource District",
+          "LEN_UNIT": "Feet",
+          "SOURCE_CIT": "38017C_BASE3",
+          "SHAPE.STLength()": 0.007072061232518467,
+          "GFID": "1c3b027f-4b5c-4cb4-b449-ab9a1a8d7940",
+          "GlobalID": "{59B5DD58-ADAA-4560-A584-2D1139DA2719}"
+        }
+      }
+    }
+  ]
+}

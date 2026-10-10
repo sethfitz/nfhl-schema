@@ -28,6 +28,10 @@
     {
       "path": "service/observed/20.json",
       "retrieved_at": "2026-10-10T18:12:24Z"
+    },
+    {
+      "path": "service/observed/23.json",
+      "retrieved_at": "2026-10-10T19:18:04Z"
     }
   ],
   "threshold": 0.001,
@@ -152,6 +156,22 @@
       "value": "NP",
       "count": 284,
       "note": "Section 7.3 of the FIRM Database reference's value for a text field “intentionally not populated”, which the FEMA Project Officer may allow in a required field. D_Loc_Accuracy has never listed it: the November 2016, February 2019 and November 2024 editions all list only H, M and L."
+    },
+    {
+      "domain": "D_Levee_Status",
+      "field": "LEVEE_STAT",
+      "layer": 23,
+      "value": "De-Accredited",
+      "count": 991,
+      "note": "Not in the November 2024 D_Levee_Status, which lists Accredited, Non-Accredited, Provisionally Accredited, AR, A99 and NP. By its words it names a levee that was accredited once and is not now; the reference maps it to no listed value, and its LEV_AN_TYP rule (only for Non-Accredited) does not mention it."
+    },
+    {
+      "domain": "D_Levee_Status",
+      "field": "LEVEE_STAT",
+      "layer": 23,
+      "value": "Never Accredited",
+      "count": 912,
+      "note": "Not in the November 2024 D_Levee_Status, which lists Accredited, Non-Accredited, Provisionally Accredited, AR, A99 and NP. By its words it names a levee that has never been accredited; the reference maps it to no listed value, and its LEV_AN_TYP rule (only for Non-Accredited) does not mention it."
     }
   ]
 }

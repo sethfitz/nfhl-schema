@@ -2,7 +2,7 @@
 
 Values of `D_Length_Units` that apply to the FIRM Database, each as the data
 stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`, `S_XS.LEN_UNIT`,
-`S_Profil_Basln.DATUM_UNIT`.
+`S_Profil_Basln.DATUM_UNIT`, `S_Levee.LEN_UNIT`.
 
 ## Values
 
@@ -21,4 +21,5 @@ stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`, `S_XS.LEN_UNIT`,
 - [`BaseFloodElevation`](../base_flood_elevation.md)
 - [`CrossSection`](../cross_section.md)
 - [`FloodHazardZone`](../flood_hazard_zone.md)
+- [`Levee`](../levee.md)
 - [`ProfileBaseline`](../profile_baseline.md)
