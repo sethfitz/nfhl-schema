@@ -451,6 +451,41 @@ The 108 baselines of `01003C` hold `NP`. The models do not check the join.
 `START_ID` is 32 long on the service and 25 in the reference, and `SOURCE_CIT`
 21 and 11; the models take the service's.
 
+## What the river marks hold that the reference does not allow
+
+Layer 7 has 13,097 rows (`service/observed/7.json`, 2026-10-10). No field has
+a domain, so `report-observed` prints nothing for it and `legacy.json` lists
+nothing. Its rejections, 227 rows (1.7%) by direct query on 2026-10-10, are
+these; "missing" is as for the cross sections:
+
+- **`START_ID`, the foreign key, is missing on 227 rows** (224 null, 3 `''`),
+  in nine DFIRMs, 184 of them in `28149C`, `13113C` and `28001C`.
+- **`RIV_MRK_ID`, the key, is missing on 3** (all `''`, DFIRM `28029C`), and
+  **`RIV_MRK_NO` and `SOURCE_CIT` on 1** (DFIRM `12117C`). Each of the four
+  also lacks `START_ID`, so the fixture has no case for them.
+
+No point is empty (`SHAPE.STX IS NULL` and `SHAPE IS NULL` both count 0), no
+text field holds `-9999`, `<Null>` or a lone space, and every feature is a
+Point. The union is the `OR` of the four fields' missing clauses and
+`SHAPE.STX IS NULL`. Validating the whole layer, in 19 pages of 2,000
+`OBJECTID`s, rejected exactly as many as the union selects over each range,
+227 in all: 223 for `START_ID` alone, 3 with `RIV_MRK_ID`, 1 with `RIV_MRK_NO`
+and `SOURCE_CIT`. None raised a legacy-value warning. The model has no rules.
+
+Section 7.3's `NP` is in `START_ID` on 1,593 rows, `RIV_MRK_NO` on 369 and
+`SOURCE_CIT` on 176, and validates: the fields are free text. No row holds
+`NP` in `RIV_MRK_NO` or `SOURCE_CIT` without it in `START_ID`. `RIV_MRK_NO`
+"usually represents the distance", with no unit, and is `Text`, so the model
+reads it as text.
+
+`START_ID` is required here, as in `S_Stn_Start`, and joins where it is set:
+in the six DFIRMs with the most river marks, 1,759 of 2,771 name a station
+start the layer holds and 737 hold `NP`. The other 275 are DFIRM `155166`,
+where every mark names `155166_1035` and the station starts run `155166_1`
+upward without it. The models do not check the join. `RIV_MRK_ID` and
+`START_ID` are 32 long on the service and 25 in the reference, and
+`SOURCE_CIT` 21 and 11; the models take the service's.
+
 **Read a count as the service's, not the models'.** The service is SQL Server
 (it accepts `SHAPE.STArea()` in a `where`), and its `=`, `<>`, `IN` and
 grouping ignore case and trailing blanks: `LEN_UNIT = 'feet'` and `LEN_UNIT =

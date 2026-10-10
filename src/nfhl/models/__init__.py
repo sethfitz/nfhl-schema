@@ -11,6 +11,7 @@ from nfhl.models.base_flood_elevations import BaseFloodElevation
 from nfhl.models.cross_sections import CrossSection
 from nfhl.models.flood_hazard_zones import FloodHazardZone
 from nfhl.models.profile_baselines import ProfileBaseline
+from nfhl.models.river_marks import RiverMark
 from nfhl.models.station_starts import StationStart
 
 __all__ = [
@@ -18,5 +19,6 @@ __all__ = [
     "CrossSection",
     "FloodHazardZone",
     "ProfileBaseline",
+    "RiverMark",
     "StationStart",
 ]

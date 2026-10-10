@@ -650,6 +650,16 @@ GEOMETRIES = {
         "point that was used as the origin for distance measurements along streams "
         "and rivers.",
     ),
+    "S_Riv_Mrk": LayerGeometry(
+        "esriGeometryPoint",
+        ("POINT",),
+        "“The spatial entities representing the river marks are points”, so a "
+        "Point, as the service's point type is: Esri publishes several points as "
+        "esriGeometryMultipoint.",
+        "The river mark: in the reference's words, a point generally located along "
+        "the centerline of the river at regular intervals or as indicated by the "
+        "data source.",
+    ),
 }
 
 

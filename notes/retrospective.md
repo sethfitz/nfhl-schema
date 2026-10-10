@@ -209,6 +209,25 @@ with no rules: six fields, one of them coded.
 - The 2016 and 2019 Domain Tables references were fetched again to check
   whether `D_Loc_Accuracy` ever listed `NP`. Neither did.
 
+## The sixth layer
+
+River Mile Markers (`S_Riv_Mrk`, 2026-10-10) was picked because its required
+`START_ID` is "the foreign key to the S_Stn_Start layer", the layer modelled
+last. A scan of every reference table for the five modelled keys found two
+others, `L_XS_Elev` and `L_XS_Struct`, both by `XS_LN_ID`; neither is on the
+service. Water Lines still joins only by name.
+
+- The layer is small enough to validate whole: 13,097 rows in 19 pages. Every
+  page's rejections matched the union's count over its `OBJECTID` range, so
+  the control covers the population rather than a sample of it.
+- The control does not reach the empty-point clause on this layer: no river
+  mark is empty. A unit test holds the model to rejecting one.
+- The first two `NP` cases fetched the same feature. `NP` in `RIV_MRK_NO` or
+  `SOURCE_CIT` never appears without `NP` in `START_ID`, so one case covers
+  both.
+- No domain, no relationship and no rule: steps 3 and 5's legacy pass had
+  nothing to add, and `report-observed` prints a header and nothing under it.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.

@@ -67,6 +67,7 @@ LAYERS: tuple[Layer, ...] = (
     Layer(14, "S_XS", "CrossSection", "cross_sections"),
     Layer(17, "S_Profil_Basln", "ProfileBaseline", "profile_baselines"),
     Layer(13, "S_Stn_Start", "StationStart", "station_starts"),
+    Layer(7, "S_Riv_Mrk", "RiverMark", "river_marks"),
 )
 
 

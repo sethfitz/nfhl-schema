@@ -488,6 +488,27 @@ STATION_CASES: list[Case] = [
 ]
 
 
+# Every required field populated and every point a point, unless the case is
+# about that. Section 7.3's `NP` is a value in a text field, not a null.
+MARK_FIELDS = {
+    "geometry": "SHAPE.STX IS NOT NULL",
+    "RIV_MRK_ID": f"NOT {missing('RIV_MRK_ID')}",
+    "START_ID": f"NOT {missing('START_ID')}",
+    "RIV_MRK_NO": f"NOT {missing('RIV_MRK_NO')}",
+    "SOURCE_CIT": f"NOT {missing('SOURCE_CIT')}",
+}
+MARK_CASES: list[Case] = [
+    ("numbered_mark", "RIV_MRK_NO <> 'NP' AND START_ID <> 'NP'", None, None),
+    ("not_populated_start_id", "START_ID = 'NP' AND RIV_MRK_NO <> 'NP'", None, None),
+    # No row holds `NP` in RIV_MRK_NO or SOURCE_CIT without it in START_ID.
+    ("not_populated_mark", "RIV_MRK_NO = 'NP' AND SOURCE_CIT = 'NP'", None, None),
+    # Findings: published river marks the reference does not allow. Each case
+    # names one field, so a missing RIV_MRK_ID, RIV_MRK_NO or SOURCE_CIT makes
+    # none: each of the 4 rows lacking one also lacks START_ID.
+    ("no_start_id", missing("START_ID"), "START_ID", None),
+]
+
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -513,6 +534,12 @@ FIXTURES_BY_LAYER = [
         "station_starts.json",
         STATION_CASES,
         clean_except_expected(STATION_FIELDS, STATION_CASES, set(), short=None),
+    ),
+    Fixture(
+        7,
+        "river_marks.json",
+        MARK_CASES,
+        clean_except_expected(MARK_FIELDS, MARK_CASES, set(), short=None),
     ),
 ]
 

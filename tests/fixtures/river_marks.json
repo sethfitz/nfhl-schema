@@ -1,0 +1,118 @@
+{
+  "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/7/query",
+  "retrieved_at": "2026-10-10T11:08:26Z",
+  "cases": [
+    {
+      "name": "numbered_mark",
+      "where": "(RIV_MRK_NO <> 'NP' AND START_ID <> 'NP') AND SHAPE.STX IS NOT NULL AND NOT (RIV_MRK_ID IS NULL OR (RIV_MRK_ID = '' AND RIV_MRK_ID NOT LIKE ' ')) AND NOT (START_ID IS NULL OR (START_ID = '' AND START_ID NOT LIKE ' ')) AND NOT (RIV_MRK_NO IS NULL OR (RIV_MRK_NO = '' AND RIV_MRK_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 849,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -121.60774362954864,
+            38.78099058278808
+          ]
+        },
+        "properties": {
+          "OBJECTID": 849,
+          "DFIRM_ID": "060394",
+          "VERSION_ID": "1.1.1.0",
+          "RIV_MRK_ID": "060394_1",
+          "START_ID": "060394_1",
+          "RIV_MRK_NO": "79",
+          "SOURCE_CIT": "060394_STUDY1",
+          "GFID": "b85f29b4-ba63-47aa-a416-b802465d8ae3",
+          "GlobalID": "{285F34D9-7386-4CAA-A144-559C481FF6D1}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_start_id",
+      "where": "(START_ID = 'NP' AND RIV_MRK_NO <> 'NP') AND SHAPE.STX IS NOT NULL AND NOT (RIV_MRK_ID IS NULL OR (RIV_MRK_ID = '' AND RIV_MRK_ID NOT LIKE ' ')) AND NOT (START_ID IS NULL OR (START_ID = '' AND START_ID NOT LIKE ' ')) AND NOT (RIV_MRK_NO IS NULL OR (RIV_MRK_NO = '' AND RIV_MRK_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1908,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -84.46629179111996,
+            34.255195715885876
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1908,
+          "DFIRM_ID": "13057C",
+          "VERSION_ID": "1.1.1.0",
+          "RIV_MRK_ID": "13057C_6",
+          "START_ID": "NP",
+          "RIV_MRK_NO": "2000",
+          "SOURCE_CIT": "13057C_FIRM1",
+          "GFID": "54e6b787-2cb2-435e-bb95-50855a483955",
+          "GlobalID": "{BC84EC31-5313-44DA-9E78-A107C0929192}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_mark",
+      "where": "(RIV_MRK_NO = 'NP' AND SOURCE_CIT = 'NP') AND SHAPE.STX IS NOT NULL AND NOT (RIV_MRK_ID IS NULL OR (RIV_MRK_ID = '' AND RIV_MRK_ID NOT LIKE ' ')) AND NOT (START_ID IS NULL OR (START_ID = '' AND START_ID NOT LIKE ' ')) AND NOT (RIV_MRK_NO IS NULL OR (RIV_MRK_NO = '' AND RIV_MRK_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 8110,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -98.46640355369071,
+            40.85378220426167
+          ]
+        },
+        "properties": {
+          "OBJECTID": 8110,
+          "DFIRM_ID": "31079C",
+          "VERSION_ID": "1.1.1.0",
+          "RIV_MRK_ID": "31079C_1",
+          "START_ID": "NP",
+          "RIV_MRK_NO": "NP",
+          "SOURCE_CIT": "NP",
+          "GFID": "3822c1f5-df95-4ccc-8c34-b153ff99bb61",
+          "GlobalID": "{EAB206FA-C6AB-488E-A553-F6B30F097828}"
+        }
+      }
+    },
+    {
+      "name": "no_start_id",
+      "where": "((START_ID IS NULL OR (START_ID = '' AND START_ID NOT LIKE ' '))) AND SHAPE.STX IS NOT NULL AND NOT (RIV_MRK_ID IS NULL OR (RIV_MRK_ID = '' AND RIV_MRK_ID NOT LIKE ' ')) AND NOT (RIV_MRK_NO IS NULL OR (RIV_MRK_NO = '' AND RIV_MRK_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))",
+      "expect": "START_ID",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1948,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -84.42943601967767,
+            33.44644452913796
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1948,
+          "DFIRM_ID": "13113C",
+          "VERSION_ID": "1.1.1.0",
+          "RIV_MRK_ID": "13113C_46",
+          "START_ID": null,
+          "RIV_MRK_NO": "6000",
+          "SOURCE_CIT": "13113C_STUDY1",
+          "GFID": "e5694756-0a8e-414f-83d3-dfcee8afd0fb",
+          "GlobalID": "{5D6C68C4-3BF2-4D33-8E32-4AA096F405FA}"
+        }
+      }
+    }
+  ]
+}

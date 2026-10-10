@@ -15,14 +15,16 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Five models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Six models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
 elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
 modelled cross sections with their water-surface and streambed elevations,
 **`ProfileBaseline`** (`S_Profil_Basln`, layer 17), the lines the cross
 sections' stream stations are measured along, and **`StationStart`**
 (`S_Stn_Start`, layer 13), the points those stations are measured from, which
-both name by `START_ID`. The
+both name by `START_ID`, and **`RiverMark`** (`S_Riv_Mrk`, layer 7), the river
+distance marks on the FIRM, measured from a station start named the same way.
+The
 snapshot holds every layer's service metadata and both references whole, so the
 next tables need no new fetch.
 
@@ -56,6 +58,8 @@ next tables need no new fetch.
 - `tests/fixtures/station_starts.json` -- nine real station starts, four that
   validate, one that validates with a legacy-value warning, and four that do
   not, one of them an empty point.
+- `tests/fixtures/river_marks.json` -- four real river marks, three that
+  validate, two of them holding `NP`, and one that does not.
 
 ## Why generate rather than hand-write
 
@@ -130,6 +134,8 @@ held no MultiLineString. A cross section is a LineString too: "The spatial
 entities representing cross sections are lines", and Table 4's topology rules
 hold `S_XS` to "Must Be Single Part"; a sample of 9,000 held no MultiLineString.
 A station start is a Point: "the reference point that was used as the origin".
+A river mark is a Point: "The spatial entities representing the river marks are
+points".
 `nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
 geometry type disagrees.
 

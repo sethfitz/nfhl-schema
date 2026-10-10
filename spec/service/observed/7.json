@@ -1,0 +1,16 @@
+{
+  "layer": 7,
+  "total": 13097,
+  "fields": {},
+  "combinations": {},
+  "rules": {
+    "by_value": [],
+    "by_populated": [],
+    "by_text_populated": [],
+    "groups": [
+      {
+        "count": 13097
+      }
+    ]
+  }
+}
