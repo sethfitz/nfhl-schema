@@ -228,6 +228,32 @@ service. Water Lines still joins only by name.
 - No domain, no relationship and no rule: steps 3 and 5's legacy pass had
   nothing to add, and `report-observed` prints a header and nothing under it.
 
+## The seventh layer
+
+Water Lines (`S_Wtr_Ln`, 2026-10-10). No layer joins the modelled ones by a
+key any more: the reference's other foreign keys, `TBASELN_ID`, `NODE_ID` and
+`CST_MDL_ID`, point at layers and tables not yet modelled. What the modelled
+layers share with the rest is `WTR_NM`, the stream's name, a field of Gages,
+High Water Marks, Levees, General Structures, Water Areas, Subbasins, Transect
+Baselines and Water Lines among the service layers. Water Lines was taken over
+those because the reference makes `S_Profil_Basln` the hydrologic structure and
+`S_Wtr_Ln` the streams drawn beside it, because its geometry is a line like the
+modelled line layers', and because its table has two coded fields and no rule.
+Levees and LOMRs stay candidates for the eighth.
+
+- The layer has 6.2 million rows, 28.3 million `OBJECTID`s wide. Counting a
+  clause over a geometry (`SHAPE.STLength() IS NULL`) did not finish in 120
+  seconds; the same count on `SHAPE IS NULL` or a text field takes seconds. The
+  whole-layer validation the river marks got is out of reach, so the control is
+  ten pages of 2,000, and three of them held rejections.
+- `GROUP BY` folds `''` into the lone space, so `report-observed` printed `' '`
+  for 1,029,367 rows of `SHOWN_FIRM`. `LIKE ' '` separates them: 47,976 hold a
+  lone space, and 981,391 hold `''`, which the model reads as null.
+- `WTR_NM` is `NP` on 46% of the layer (2,817,055 rows), a value that validates;
+  a model that read `NP` as null would have counted them as rejections.
+- No rule, no unit, no datum: `relationships.json` and `legacy.json` gain
+  nothing but the `observed` entry.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.

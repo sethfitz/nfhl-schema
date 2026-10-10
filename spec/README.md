@@ -486,6 +486,45 @@ upward without it. The models do not check the join. `RIV_MRK_ID` and
 `START_ID` are 32 long on the service and 25 in the reference, and
 `SOURCE_CIT` 21 and 11; the models take the service's.
 
+## What the water lines hold that the reference does not allow
+
+Layer 20 has 6,171,300 rows (`service/observed/20.json`, 2026-10-10). Its
+rejections, 131,004 rows (2.1%) by direct query on 2026-10-10, are these;
+"missing" is as for the cross sections:
+
+- **`WTR_NM` is missing on 51,624** (41,074 null, 10,550 `''`), in 75 DFIRMs,
+  15,248 of them in `37175C`. A lone space is text and validates (2,211 rows),
+  as does `NP`, which 2,817,055 rows hold.
+- **`SOURCE_CIT` is missing on 30,262** (all null), in 89 DFIRMs, 19,359 of
+  them in `37021C`.
+- **`SHOWN_FIRM` holds a lone space on 47,976 rows and `SHOWN_INDX` on 47,925**
+  (46,829 hold it in both), 49,072 rows in 39 DFIRMs, 7,018 of them in
+  `53077C`. A lone space is no value of `D_TrueFalse`. Nothing else is outside
+  it: the rest of both fields is `T`, `F`, `U`, null or `''`, and `U` validates.
+- **`WTR_LN_ID`, the key, is missing on 27** (26 null, 1 `''`).
+- **21 rows have no geometry** (`SHAPE IS NULL`), in nine DFIRMs, 9 of them in
+  `36067C`.
+
+`DFIRM_ID` and `VERSION_ID` are missing on none. The model has no rules, so
+`count-broken-rules` reports none. The union joins every clause above
+with `OR`, each text field's as its missing clause (`F IS NULL OR (F = '' AND F
+NOT LIKE ' ')`), the flags' as `SHOWN_FIRM LIKE ' ' OR SHOWN_INDX LIKE ' '`, and
+`SHAPE IS NULL`. The layer is too large to validate whole (6.2 million rows, its
+`OBJECTID`s running to 28,306,080), so ten pages of 2,000 features were
+validated, each the first 2,000 rows with `OBJECTID >= n`, for `n` of 1 and 3,000,000
+to 27,000,000 in steps of 3,000,000. On each, the model rejected exactly as many
+as the union selects over the page's `OBJECTID` range: 0, 1,479, 0, 47, 820, 0,
+0, 0, 0 and 0. No feature on them was rejected for a MultiLineString. The control does not reach an empty line that has a
+geometry object: no query for it finished in 120 seconds (`SHAPE.STLength() IS
+NULL` over the layer), so only a unit test holds the model to the `SHAPE IS
+NULL` rows.
+
+`SHOWN_FIRM` and `SHOWN_INDX` are `A`, required if applicable, and validate when
+null or `''`. `WTR_NM` joins the cross sections, base flood elevations and
+profile baselines by name, as `WTR_NM`, not by key; the models do not check it.
+`WTR_LN_ID` and `SOURCE_CIT` are 32 and 21 long on the service and 25 and 11 in
+the reference; the models take the service's.
+
 **Read a count as the service's, not the models'.** The service is SQL Server
 (it accepts `SHAPE.STArea()` in a `where`), and its `=`, `<>`, `IN` and
 grouping ignore case and trailing blanks: `LEN_UNIT = 'feet'` and `LEN_UNIT =

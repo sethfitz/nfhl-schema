@@ -15,7 +15,7 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Six models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Seven models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
 elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
 modelled cross sections with their water-surface and streambed elevations,
@@ -23,8 +23,9 @@ modelled cross sections with their water-surface and streambed elevations,
 sections' stream stations are measured along, and **`StationStart`**
 (`S_Stn_Start`, layer 13), the points those stations are measured from, which
 both name by `START_ID`, and **`RiverMark`** (`S_Riv_Mrk`, layer 7), the river
-distance marks on the FIRM, measured from a station start named the same way.
-The
+distance marks on the FIRM, measured from a station start named the same way,
+and **`WaterLine`** (`S_Wtr_Ln`, layer 20), the streams drawn as lines on the
+FIRM, which the others name by `WTR_NM`. The
 snapshot holds every layer's service metadata and both references whole, so the
 next tables need no new fetch.
 
@@ -60,6 +61,8 @@ next tables need no new fetch.
   not, one of them an empty point.
 - `tests/fixtures/river_marks.json` -- four real river marks, three that
   validate, two of them holding `NP`, and one that does not.
+- `tests/fixtures/water_lines.json` -- nine real water lines, four that
+  validate and five that do not, two of them for a lone space in a flag.
 
 ## Why generate rather than hand-write
 
@@ -135,7 +138,8 @@ entities representing cross sections are lines", and Table 4's topology rules
 hold `S_XS` to "Must Be Single Part"; a sample of 9,000 held no MultiLineString.
 A station start is a Point: "the reference point that was used as the origin".
 A river mark is a Point: "The spatial entities representing the river marks are
-points".
+points". A water line is a LineString: Table 4 holds `S_Wtr_Ln` to "Must Be
+Single Part".
 `nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
 geometry type disagrees.
 
