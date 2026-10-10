@@ -1,0 +1,61 @@
+{
+  "layer": 20,
+  "total": 6171300,
+  "fields": {
+    "SHOWN_FIRM": [
+      {
+        "value": null,
+        "count": 2450770
+      },
+      {
+        "value": "F",
+        "count": 1196934
+      },
+      {
+        "value": "U",
+        "count": 1154880
+      },
+      {
+        "value": " ",
+        "count": 1029367
+      },
+      {
+        "value": "T",
+        "count": 339349
+      }
+    ],
+    "SHOWN_INDX": [
+      {
+        "value": null,
+        "count": 2453858
+      },
+      {
+        "value": "F",
+        "count": 1354206
+      },
+      {
+        "value": "U",
+        "count": 1194808
+      },
+      {
+        "value": "",
+        "count": 1046200
+      },
+      {
+        "value": "T",
+        "count": 122228
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [],
+    "by_populated": [],
+    "by_text_populated": [],
+    "groups": [
+      {
+        "count": 6171300
+      }
+    ]
+  }
+}
