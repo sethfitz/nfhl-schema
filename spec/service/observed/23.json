@@ -1,0 +1,2508 @@
+{
+  "layer": 23,
+  "total": 16320,
+  "fields": {
+    "LEVEE_TYP": [
+      {
+        "value": "Levee Centerline",
+        "count": 15017
+      },
+      {
+        "value": "NP",
+        "count": 863
+      },
+      {
+        "value": "Floodwall",
+        "count": 266
+      },
+      {
+        "value": "Coastal Levee Centerline",
+        "count": 87
+      },
+      {
+        "value": "Closure Structure",
+        "count": 70
+      },
+      {
+        "value": "",
+        "count": 17
+      }
+    ],
+    "USACE_LEV": [
+      {
+        "value": "U",
+        "count": 13838
+      },
+      {
+        "value": "F",
+        "count": 1690
+      },
+      {
+        "value": "T",
+        "count": 763
+      },
+      {
+        "value": "",
+        "count": 20
+      },
+      {
+        "value": null,
+        "count": 5
+      },
+      {
+        "value": "N",
+        "count": 4
+      }
+    ],
+    "DISTRICT": [
+      {
+        "value": "",
+        "count": 10979
+      },
+      {
+        "value": null,
+        "count": 4020
+      },
+      {
+        "value": "Rock Island",
+        "count": 216
+      },
+      {
+        "value": "NP",
+        "count": 176
+      },
+      {
+        "value": "Omaha",
+        "count": 176
+      },
+      {
+        "value": "Kansas City",
+        "count": 154
+      },
+      {
+        "value": "New Orleans",
+        "count": 69
+      },
+      {
+        "value": "Los Angeles",
+        "count": 62
+      },
+      {
+        "value": "Louisville",
+        "count": 62
+      },
+      {
+        "value": "Sacramento",
+        "count": 60
+      },
+      {
+        "value": "Vicksburg",
+        "count": 50
+      },
+      {
+        "value": "Baltimore",
+        "count": 46
+      },
+      {
+        "value": "Detroit",
+        "count": 32
+      },
+      {
+        "value": "St. Paul",
+        "count": 27
+      },
+      {
+        "value": "Philadelphia",
+        "count": 21
+      },
+      {
+        "value": "Portland",
+        "count": 21
+      },
+      {
+        "value": "Mobile",
+        "count": 18
+      },
+      {
+        "value": "Tulsa",
+        "count": 14
+      },
+      {
+        "value": "Fort Worth",
+        "count": 12
+      },
+      {
+        "value": "St. Louis",
+        "count": 11
+      },
+      {
+        "value": "Huntington",
+        "count": 10
+      },
+      {
+        "value": "Seattle",
+        "count": 10
+      },
+      {
+        "value": "Alaska",
+        "count": 9
+      },
+      {
+        "value": "Buffalo",
+        "count": 9
+      },
+      {
+        "value": "Galveston",
+        "count": 8
+      },
+      {
+        "value": "Memphis",
+        "count": 8
+      },
+      {
+        "value": "Chicago",
+        "count": 7
+      },
+      {
+        "value": "Norfolk",
+        "count": 6
+      },
+      {
+        "value": "Honolulu",
+        "count": 5
+      },
+      {
+        "value": "New England",
+        "count": 5
+      },
+      {
+        "value": "Walla Walla",
+        "count": 5
+      },
+      {
+        "value": "Jacksonville",
+        "count": 3
+      },
+      {
+        "value": "Nashville",
+        "count": 2
+      },
+      {
+        "value": "San Francisco",
+        "count": 2
+      },
+      {
+        "value": "1027",
+        "count": 1
+      },
+      {
+        "value": "Albuquerque",
+        "count": 1
+      },
+      {
+        "value": "Little Rock",
+        "count": 1
+      },
+      {
+        "value": "Pittsburgh",
+        "count": 1
+      },
+      {
+        "value": "Savannah",
+        "count": 1
+      }
+    ],
+    "PL84_99TF": [
+      {
+        "value": "U",
+        "count": 14601
+      },
+      {
+        "value": "F",
+        "count": 1300
+      },
+      {
+        "value": "T",
+        "count": 388
+      },
+      {
+        "value": "",
+        "count": 20
+      },
+      {
+        "value": null,
+        "count": 10
+      },
+      {
+        "value": "N",
+        "count": 1
+      }
+    ],
+    "LEVEE_STAT": [
+      {
+        "value": "NP",
+        "count": 10787
+      },
+      {
+        "value": "Accredited",
+        "count": 2148
+      },
+      {
+        "value": "Non-Accredited",
+        "count": 1056
+      },
+      {
+        "value": "De-Accredited",
+        "count": 991
+      },
+      {
+        "value": "Never Accredited",
+        "count": 912
+      },
+      {
+        "value": "Provisionally Accredited",
+        "count": 321
+      },
+      {
+        "value": "",
+        "count": 100
+      },
+      {
+        "value": "A",
+        "count": 3
+      },
+      {
+        "value": "N",
+        "count": 2
+      }
+    ],
+    "LEV_AN_TYP": [
+      {
+        "value": "NP",
+        "count": 9443
+      },
+      {
+        "value": null,
+        "count": 5844
+      },
+      {
+        "value": "",
+        "count": 812
+      },
+      {
+        "value": "Natural Valley",
+        "count": 131
+      },
+      {
+        "value": "Other",
+        "count": 62
+      },
+      {
+        "value": "Sound Reach",
+        "count": 7
+      },
+      {
+        "value": "Not Hydraulically Signific*",
+        "count": 6
+      },
+      {
+        "value": "NV",
+        "count": 5
+      },
+      {
+        "value": "<Null>",
+        "count": 2
+      },
+      {
+        "value": "NHS",
+        "count": 2
+      },
+      {
+        "value": "OTH",
+        "count": 2
+      },
+      {
+        "value": "Overtopping",
+        "count": 2
+      },
+      {
+        "value": "SR",
+        "count": 2
+      }
+    ],
+    "LEN_UNIT": [
+      {
+        "value": "NP",
+        "count": 13051
+      },
+      {
+        "value": "Feet",
+        "count": 2362
+      },
+      {
+        "value": "",
+        "count": 879
+      },
+      {
+        "value": null,
+        "count": 21
+      },
+      {
+        "value": "Miles",
+        "count": 6
+      },
+      {
+        "value": "Meters",
+        "count": 1
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [
+      "USACE_LEV",
+      "DISTRICT",
+      "LEVEE_STAT",
+      "LEV_AN_TYP"
+    ],
+    "by_populated": [],
+    "by_text_populated": [],
+    "groups": [
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 6985
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 1463
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 1379
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 619
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "",
+        "count": 540
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 524
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 400
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 375
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 362
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 332
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 218
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 180
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 139
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 132
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 112
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 92
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 77
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 68
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 62
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 59
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 58
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 58
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 57
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 54
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 52
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "",
+        "LEV_AN_TYP": "NP",
+        "count": 51
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 51
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 48
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 44
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 42
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "",
+        "count": 40
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 37
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 37
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 36
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 36
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 35
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 34
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 34
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "New Orleans",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 30
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 30
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 30
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 30
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 29
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 26
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Detroit",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 24
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "",
+        "LEV_AN_TYP": "NP",
+        "count": 24
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 23
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 23
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Sacramento",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 23
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 21
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 21
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Philadelphia",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 21
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "",
+        "count": 21
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Sacramento",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 20
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 18
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 18
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 17
+      },
+      {
+        "USACE_LEV": "",
+        "DISTRICT": "",
+        "LEVEE_STAT": " ",
+        "LEV_AN_TYP": "",
+        "count": 16
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Baltimore",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 16
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 15
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 15
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 14
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 14
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 14
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "New Orleans",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 14
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 13
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 13
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 13
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": "",
+        "count": 13
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 12
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 12
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Sacramento",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 12
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Fort Worth",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 11
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 11
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 11
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 11
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 11
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 11
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 10
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 10
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Baltimore",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 10
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "New Orleans",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 10
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 9
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 9
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Huntington",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 9
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 9
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Mobile",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 9
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 9
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 8
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Tulsa",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 8
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "",
+        "count": 8
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Baltimore",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 8
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 8
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "New Orleans",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 8
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 8
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Alaska",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 7
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 7
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Memphis",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 7
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Portland",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 7
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Seattle",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "",
+        "count": 7
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 7
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 7
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 7
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "",
+        "count": 7
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": " ",
+        "count": 6
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "",
+        "count": 6
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 6
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Mobile",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 6
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 6
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "",
+        "count": 6
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 6
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 6
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": " ",
+        "count": 6
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 6
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Buffalo",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 5
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Detroit",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 5
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Norfolk",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Portland",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 5
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Not Hydraulically Signific*",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 5
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Portland",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": null,
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 5
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 5
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 4
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "New England",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "New Orleans",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 4
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 4
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Baltimore",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Chicago",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 4
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Sound Reach",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Louis",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "",
+        "count": 4
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Detroit",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Galveston",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Tulsa",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NV",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": null,
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Buffalo",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Jacksonville",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Sound Reach",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Sacramento",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Louis",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Walla Walla",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "",
+        "count": 3
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "St. Louis",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": null,
+        "DISTRICT": null,
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 3
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Alaska",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Baltimore",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Chicago",
+        "LEVEE_STAT": "NON-ACCREDITED",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Mobile",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Portland",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Seattle",
+        "LEVEE_STAT": "",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NHS",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "N",
+        "DISTRICT": "Baltimore",
+        "LEVEE_STAT": "A",
+        "LEV_AN_TYP": "SR",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "N",
+        "DISTRICT": "Baltimore",
+        "LEVEE_STAT": "N",
+        "LEV_AN_TYP": "OTH",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Baltimore",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Galveston",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Honolulu",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Nashville",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Walla Walla",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": null,
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NV",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "<Null>",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 2
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": null,
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 2
+      },
+      {
+        "USACE_LEV": " ",
+        "DISTRICT": " ",
+        "LEVEE_STAT": " ",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "",
+        "DISTRICT": "",
+        "LEVEE_STAT": " ",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "",
+        "DISTRICT": "",
+        "LEVEE_STAT": "",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "",
+        "DISTRICT": "",
+        "LEVEE_STAT": "",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": " ",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Fort Worth",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Galveston",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Mobile",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Not Hydraulically Signific*",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "New England",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "New Orleans",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Norfolk",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "A",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Savannah",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Tulsa",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Tulsa",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "F",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "1027",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Albuquerque",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Buffalo",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Chicago",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Galveston",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Galveston",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Honolulu",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Honolulu",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Overtopping",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Huntington",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Kansas City",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Little Rock",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Los Angeles",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Memphis",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "New Orleans",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Overtopping",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "New Orleans",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Pittsburgh",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Portland",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Rock Island",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Sacramento",
+        "LEVEE_STAT": "",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Sacramento",
+        "LEVEE_STAT": "",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "San Francisco",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Seattle",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Louis",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": "Tulsa",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "Other",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "T",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": " ",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": " ",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "",
+        "LEVEE_STAT": "Provisionally Accredited",
+        "LEV_AN_TYP": "",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Honolulu",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Louisville",
+        "LEVEE_STAT": "De-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "NP",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Omaha",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Portland",
+        "LEVEE_STAT": "Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "San Francisco",
+        "LEVEE_STAT": "Never Accredited",
+        "LEV_AN_TYP": null,
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "St. Paul",
+        "LEVEE_STAT": "NP",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": "Vicksburg",
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "Natural Valley",
+        "count": 1
+      },
+      {
+        "USACE_LEV": "U",
+        "DISTRICT": null,
+        "LEVEE_STAT": "Non-Accredited",
+        "LEV_AN_TYP": "NP",
+        "count": 1
+      }
+    ]
+  }
+}
