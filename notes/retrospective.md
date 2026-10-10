@@ -254,6 +254,38 @@ Levees and LOMRs stay candidates for the eighth.
 - No rule, no unit, no datum: `relationships.json` and `legacy.json` gain
   nothing but the `observed` entry.
 
+## The eighth layer
+
+Levees (`S_Levee`, 2026-10-10), over LOMRs. Neither joins a modelled layer by
+key. Levees names its stream by `WTR_NM`, as the cross sections, BFE lines,
+profile baselines and water lines do; its `LEVEE_STAT` is the accreditation
+the flood zones' levee subtypes (`AREA WITH REDUCED FLOOD RISK DUE TO LEVEE`)
+record, and its `PAL_DATE` is "associated with the flood zone". LOMRs has no
+shared field and no domain beyond `SCALE` and `STATUS`. Levees also has three
+rules in prose and the first two `Date` fields.
+
+- The codegen had no `Date`. The service writes a date as milliseconds since
+  the epoch and the reference's null date, 9/9/9999, as `253392451200000`;
+  `int64`, and a third null encoding in `drop_null_encodings`, was the least
+  that read them. A `datetime` would have parsed the milliseconds and not the
+  state geodatabase's strings, and `overture-codegen` has no date type to
+  document it with.
+- "Should only be populated if LEVEE_STAT is Non-Accredited" rejected 8,821 of
+  the 9,443 levees holding `NP` in `LEV_AN_TYP`, since `NP` stayed a value
+  everywhere. Section 7.3's own sentence made `NP` the field left empty, so
+  `only_when` gained an `unless` and `required_when` a value condition
+  (`DISTRICT` is required when `USACE_LEV` is `T`), each quoting its sentence.
+- `FC_SEG_ID` is `R`, and 82% of the layer lacks it. It decided the fixtures:
+  a finding in any other field co-occurs with a missing `FC_SEG_ID`, so seven
+  cases the earlier layers would have kept do not exist here.
+- The whole layer is 16,320 rows, so the control pages all of it, which the
+  river marks' and water lines' controls could not. It found four rows the
+  query cannot: values in the wrong case, which the service's collation folds
+  into the listed value. The same fold hid them from the snapshot's counts.
+- A rule's rejection shows only when every field validates, and two rules on
+  one levee show one: 43 levees are reported under the analysis rule and 44
+  break it.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.

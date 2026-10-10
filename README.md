@@ -15,7 +15,7 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Seven models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Eight models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
 elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
 modelled cross sections with their water-surface and streambed elevations,
@@ -24,8 +24,10 @@ sections' stream stations are measured along, and **`StationStart`**
 (`S_Stn_Start`, layer 13), the points those stations are measured from, which
 both name by `START_ID`, and **`RiverMark`** (`S_Riv_Mrk`, layer 7), the river
 distance marks on the FIRM, measured from a station start named the same way,
-and **`WaterLine`** (`S_Wtr_Ln`, layer 20), the streams drawn as lines on the
-FIRM, which the others name by `WTR_NM`. The
+**`WaterLine`** (`S_Wtr_Ln`, layer 20), the streams drawn as lines on the
+FIRM, which the others name by `WTR_NM`, and **`Levee`** (`S_Levee`, layer 23),
+the centerlines of the levees, floodwalls and closure structures shown on the
+FIRM, with their accreditation status, which name their stream by `WTR_NM` too. The
 snapshot holds every layer's service metadata and both references whole, so the
 next tables need no new fetch.
 
@@ -63,6 +65,9 @@ next tables need no new fetch.
   validate, two of them holding `NP`, and one that does not.
 - `tests/fixtures/water_lines.json` -- nine real water lines, four that
   validate and five that do not, two of them for a lone space in a flag.
+- `tests/fixtures/levees.json` -- twenty real levees, eight that validate, two
+  that validate with a legacy-value warning, and ten that do not, two of them
+  against the rules and three for a value in the wrong case.
 
 ## Why generate rather than hand-write
 
@@ -118,11 +123,14 @@ again. Everything else outside the reference is still rejected: 1,992 rows of
 prints beside the legacy ones. The text-encoded nulls (`-9999`, `<Null>`) are
 not vocabulary and are never legacy values, whatever their count.
 
-**`""` and `-9999` mean not populated.** Section 7.3 of the reference makes them
-the null encodings, since the GIS formats cannot hold a true null; read as a
-number, `STATIC_BFE: -9999` is an elevation. `drop_null_encodings` treats them,
-and JSON `null`, as absent. "Not populated" (`NP`, `-8888`, `U`) is a value and
-stays one; `"-9999"` in a text field is rejected.
+**`""`, `-9999` and 9/9/9999 mean not populated.** Section 7.3 of the reference
+makes them the null encodings, since the GIS formats cannot hold a true null; read
+as a number, `STATIC_BFE: -9999` is an elevation. `drop_null_encodings` treats
+them, and JSON `null`, as absent (the service writes the date as milliseconds,
+`253392451200000`). "Not populated" (`NP`, `-8888`, 8/8/8888, `U`) is a value and
+stays one, except where a rule limits a field to some other field's values: there
+`NP` is the field left empty, and `unless` in `spec/relationships.json` says so,
+quoting section 7.3. `"-9999"` in a text field is rejected.
 
 **Units and datums live in sibling fields.** `STATIC_BFE`, a BFE line's `ELEV`,
 and a cross section's `WSEL_REG` and `STRMBED_EL` are in whatever `LEN_UNIT` says and measured from whatever `V_DATUM`
@@ -139,7 +147,9 @@ hold `S_XS` to "Must Be Single Part"; a sample of 9,000 held no MultiLineString.
 A station start is a Point: "the reference point that was used as the origin".
 A river mark is a Point: "The spatial entities representing the river marks are
 points". A water line is a LineString: Table 4 holds `S_Wtr_Ln` to "Must Be
-Single Part".
+Single Part". A levee is a LineString: "lines, drawn at the centerline of
+levees, floodwalls and levee closure structures", and Table 4 holds `S_Levee` to
+"Must Be Single Part"; all 16,320 are LineStrings.
 `nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
 geometry type disagrees.
 

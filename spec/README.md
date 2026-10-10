@@ -79,9 +79,12 @@ to `0.2 PCT ANNUAL CHANCE`), because the service publishes
 `... DUE TO NON-ACCREDITED LEVEE SYSTEM` with its dash, and the note does not
 say which dashes it means.
 
-**Two null encodings, from section 7.3.** A field that does not apply is `""`
-(text) or `-9999` (numeric), because the GIS formats cannot hold a true null.
-The models read both, and JSON `null`, as not populated.
+**Three null encodings, from section 7.3.** A field that does not apply is `""`
+(text), `-9999` (numeric) or `9/9/9999` (date), because the GIS formats cannot
+hold a true null. The service writes a date as milliseconds since the Unix epoch,
+so the third is `253392451200000`. The models read all three, and JSON `null`, as
+not populated; `8/8/8888`, the date form of "not populated", is a value and stays
+one.
 
 ## What the November 2024 references get wrong
 
@@ -524,6 +527,92 @@ null or `''`. `WTR_NM` joins the cross sections, base flood elevations and
 profile baselines by name, as `WTR_NM`, not by key; the models do not check it.
 `WTR_LN_ID` and `SOURCE_CIT` are 32 and 21 long on the service and 25 and 11 in
 the reference; the models take the service's.
+
+## What the levees hold that the reference does not allow
+
+Layer 23 has 16,320 rows (`service/observed/23.json`, 2026-10-10), few enough to
+validate whole: every row was paged by `OBJECTID` (1,000 to a page, with
+geometry) and run through the model. It rejects 13,626 (83.5%). One field
+accounts for nearly all of them; "missing" is as for the cross sections:
+
+- **`FC_SEG_ID` is missing on 13,405** (3,494 null, 9,911 `''`), in 606 DFIRMs,
+  714 of them in `06095C`. It is `R`, "Required for all records", and 2,504
+  levees hold one, 1,140 of those `NP`. Its description says "If the levee,
+  floodwall or closure structure is included in the NLD, this is the segment
+  identification number", a condition no field records; the model takes the
+  table's flag. 13,234 of the rejected levees are rejected for this field alone.
+- **`DISTRICT` is outside `D_USACE_District` on 184**: a lone space on 182, the
+  code `1027` on 1 and `KANSAS CITY` in capitals on 1. The domain lists names.
+- **`FC_SYS_ID` is missing on 110** (85 null, 25 `''`); it is `R` too, and 13,771
+  levees hold `NP`.
+- **`LEV_AN_TYP` is outside `D_Levee_Analysis_Type` on 33**: a lone space on 14,
+  `Not Hydraulically Signific*` on 6 (the name cut at 27 characters, the
+  service's length), `NV` on 5, `NHS`, `OTH`, `SR` and `<Null>` on 2 each.
+- **`LEV_AN_TYP` is populated on a levee that is not `Non-Accredited` on 44**
+  (by the census; validation names the rule on 43, as the 44th also breaks the
+  district rule, which it reports first): `Other` on 22, `Natural Valley` on 14,
+  `Sound Reach` on 7 and `Overtopping` on 1, among them 31 `Accredited`, 9
+  `Never Accredited` and 4 with a blank status.
+- **`DISTRICT` is missing on a USACE levee on 151** (`USACE_LEV` is `T`; 763
+  levees are).
+- **`LEVEE_STAT` is outside the status domain on 25**: a lone space on 18, `A` on
+  3, `N` on 2 and `NON-ACCREDITED` in capitals on 2.
+- **`USACE_LEV` is outside `D_TrueFalse` on 5** (`N` 4, a lone space 1),
+  **`PL84_99TF` on 2** (`N`, a lone space), **`LEN_UNIT` on 3** (a lone space),
+  **`SOURCE_CIT` is missing on 3** (null), and **`LEVEE_TYP` holds
+  `LEVEE CENTERLINE` on 1**.
+
+`DFIRM_ID`, `VERSION_ID` and `LEVEE_ID` are missing on none, and none lacks a
+geometry or holds a MultiLineString: all 16,320 are LineStrings.
+
+**The service's own query finds four fewer.** `KANSAS CITY`, `LEVEE CENTERLINE`
+and `NON-ACCREDITED` twice (DFIRMs `20079C`, `38055C`, `18127C`) differ from a
+listed value only in case, which the service's `IN` and `=` ignore, so no
+`where` selects them by value. The union query selects 13,622 rows and the model
+rejects 13,626; compared by `OBJECTID`, they differ on those four and no others.
+The union joins with `OR` each required field's missing clause (`F IS NULL OR
+(F = '' AND F NOT LIKE ' ')`), each coded field's
+(`F IS NOT NULL AND (F <> '' OR F LIKE ' ') AND NOT (F IN (<the values>) AND F
+NOT LIKE ' ')`), the analysis rule's (`LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> ''
+AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' OR LEVEE_STAT <>
+'Non-Accredited')`) and the district rule's (`USACE_LEV = 'T' AND <DISTRICT is
+missing>`). The analysis rule's query selects 50, six more than the census,
+because six of those levees hold a coded status or analysis type that the
+vocabulary rejects first.
+
+**`NP` is not populated, for `LEV_AN_TYP`.** "This should only be populated if
+LEVEE_STAT is Non-Accredited" would reject every levee holding `NP` there: 8,821
+of the 9,443 that do, 7,724 of them with `NP` in `LEVEE_STAT` as well. Section 7.3
+says `NP` is "a value that indicates that the affected field was intentionally
+not populated", so the rule's `unless` in `relationships.json` quotes that
+sentence and exempts it. Every other value is limited to `Non-Accredited`, as
+the rule says. Deleting the `unless` entry reverses it.
+
+**`De-Accredited` and `Never Accredited` are legacy values of `LEVEE_STAT`**, on
+991 and 912 levees, both over the one-in-a-thousand threshold. `D_Levee_Status`
+lists `A`, `N`, `P`, `AR`, `A99` and `NP`; what the data holds for the first two
+is the accreditation status in words.
+
+**A date is milliseconds since the Unix epoch.** `CONST_DATE` and `PAL_DATE` are
+the first `Date` fields modelled, as `int64`. The service writes `253392451200000`
+for the reference's null date, 9/9/9999 (14,338 levees in `CONST_DATE`, 15,821
+in `PAL_DATE`) and `218330035200000` for the non-populated date, 8/8/8888 (159
+and 110). The models read the first as not populated, as `-9999`, and keep the
+second as a value, as `-8888`. The state geodatabase and county shapefiles
+store a date as a date, not as milliseconds, and no download was converted for
+this layer, so the model has not met one. `PAL_DATE` is "populated for those
+structure features that have a PAL designation", but of the 274 levees holding
+a date in it, 66 are `Provisionally Accredited` and 99 are `Accredited`; no rule
+reads it.
+
+**`FREEBOARD` is in `LEN_UNIT`**, "the measurement system used for the freeboard
+elevations", declared `UnitIn("LEN_UNIT")`. Of 694 levees holding a freeboard
+(1,363 hold `-8888`), 536 hold `Feet`, 127 `NP` and 25 none; the model does not
+require a unit. `LEVEE_ID`, `FC_SYS_ID` and `SOURCE_CIT` are 32, 32 and 21 long
+on the service and 25, 25 and 11 in the reference, and `LEV_AN_TYP` 27 and 29;
+the models take the service's. Levees name their stream by `WTR_NM`, as the
+cross sections, BFE lines, profile baselines and water lines do; the models do
+not check the join, and `S_Levee` has no foreign key to a modelled layer.
 
 **Read a count as the service's, not the models'.** The service is SQL Server
 (it accepts `SHAPE.STArea()` in a `where`), and its `=`, `<>`, `IN` and
