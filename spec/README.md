@@ -686,3 +686,56 @@ than the reference's 11 (`LEN()` is a 400 on this service).
 modelled; the models check neither. `SCALE` is a number written as text, so
 `D_Scale`'s `6000` is the string `"6000"`. The LOMRs share no field with the
 other eight layers.
+
+## What the flood hazard boundaries hold that the reference does not allow
+
+Layer 27 has 15,233,741 rows (`service/observed/27.json`, 2026-10-10). Its
+rejections, 1,448,350 rows (9.5%) by one union query on 2026-10-10, are these;
+"missing" is as for the cross sections:
+
+- **`SOURCE_CIT` is missing on 1,448,053**, in 330 DFIRMs, 52,877 of them in
+  `34011C`, 48,315 in `12021C` and 43,607 in `37119C`. A lone space is text and
+  validates (7,234 rows), as does `NP`, which 1,782,479 rows hold. The rows
+  with it missing run together in `OBJECTID`: 8 of 50 sampled pages of 200
+  consecutive rows held 182 to 200 of them and the other 42 held none.
+- **`SHAPE` is null on 195**, in 15 DFIRMs, 124 of them in `19043C` and 28 in
+  `21157C`. Two of them also lack `SOURCE_CIT`.
+- **`VERSION_ID` is missing on 77**, 76 of them in `48201C`.
+- **`LN_TYP` holds `NP` on 21**, 19 of them in `47053C`. `NP` is no value of
+  `D_Ln_Typ`, and 21 rows is 1 in 725,000, so it is not common enough to be
+  legacy. The service holds three of the domain's four values: `SFHA / Flood
+  Zone Boundary` on 15,036,379, `Limit Lines` on 192,146 and `Flowage Easement
+  Boundary` on 5,195; `Other Boundary` on none.
+- **`FLD_LN_ID`, the key, is missing on 6**, in 3 DFIRMs. A lone space is text
+  and validates (962 rows).
+
+`DFIRM_ID` and `LN_TYP` are missing on none. The model has no rules, so
+`count-broken-rules` reports none. The union joins every clause above with
+`OR`, each text field's as its missing clause (`F IS NULL OR (F = '' AND F NOT
+LIKE ' ')`), `LN_TYP`'s as `LN_TYP NOT IN (<the four values>)`, and `SHAPE IS
+NULL`. The five counts sum to 1,448,352 and the union selects 1,448,350: the
+two rows in both `SOURCE_CIT` and `SHAPE`.
+
+The layer is too large to validate whole (`OBJECTID`s run to 70,201,356) and
+its lines are large: the first 250 rows by `OBJECTID` are 26 MB of GeoJSON, and
+a page of 2,000 is a 500. The control is 50 pages of 200 features, each the
+first 200 rows with `OBJECTID >= n`, for `n` of 1 and 1,400,000 to 68,600,000 in
+steps of 1,400,000 (10,000 rows). On each, the model rejected exactly as many
+rows as the union selects over the page's `OBJECTID` range: 1,579 in all,
+every one for `SOURCE_CIT`, on 8 pages. The rarer clauses are checked by
+fetching every row they select (`VERSION_ID` 77, `FLD_LN_ID` 6, `LN_TYP` `NP`
+21, `SHAPE IS NULL` 195) and validating it: each is rejected for its own field,
+and the two rows without `SOURCE_CIT` for both. All 10,000 sampled geometries
+are LineStrings and none is empty, so the sample holds no MultiLineString and
+no empty line. No `where` selects a multipart line, and no query for an empty one was
+tried, so the control does not reach either; only a unit test holds the model
+to the multipart case. A wrong-case `LN_TYP`
+is out of reach for the same reason as in the levees: the service folds case in
+`=`, `IN` and grouping, and `COLLATE` is a 400.
+
+`FLD_LN_ID` and `SOURCE_CIT` are 32 and 21 long on the service and 25 and 11 in
+the reference; the models take the service's. `SOURCE_CIT` "must match a value
+in `L_Source_Cit`", which the models do not check. The boundaries join the flood
+hazard zones by `DFIRM_ID`, `VERSION_ID` and `SOURCE_CIT`, and geometrically:
+Table 4 requires each line to be "Covered by Boundary Of" `S_Fld_Haz_Ar`.
+Nothing in the layer names a zone.

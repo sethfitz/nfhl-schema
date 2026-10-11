@@ -15,7 +15,7 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Nine models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Ten models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
 elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
 modelled cross sections with their water-surface and streambed elevations,
@@ -28,8 +28,10 @@ distance marks on the FIRM, measured from a station start named the same way,
 FIRM, which the others name by `WTR_NM`, and **`Levee`** (`S_Levee`, layer 23),
 the centerlines of the levees, floodwalls and closure structures shown on the
 FIRM, with their accreditation status, which name their stream by `WTR_NM` too,
-and **`Lomr`** (`S_LOMR`, layer 1), the areas of the effective LOMRs, which
-share no field with the others. The snapshot holds every layer's service
+**`Lomr`** (`S_LOMR`, layer 1), the areas of the effective LOMRs, which share
+no field with the others, and **`FloodHazardBoundary`** (`S_Fld_Haz_Ln`, layer
+27), the lines that bound the flood hazard areas of `FloodHazardZone`, with
+which it shares `DFIRM_ID`, `VERSION_ID` and `SOURCE_CIT`. The snapshot holds every layer's service
 metadata and both references whole, so the next tables need no new fetch.
 
 - `spec/` -- the pinned snapshot, refreshed by `scripts/snapshot-spec`. See
@@ -71,6 +73,9 @@ metadata and both references whole, so the next tables need no new fetch.
   against the rules and three for a value in the wrong case.
 - `tests/fixtures/lomrs.json` -- sixteen real LOMRs, eight that validate and
   eight that do not, three for a geometry the reference does not allow.
+- `tests/fixtures/flood_hazard_boundaries.json` -- ten real flood hazard
+  boundaries, five that validate and five that do not, one of them with no
+  geometry.
 
 ## Why generate rather than hand-write
 
@@ -154,7 +159,8 @@ Single Part". A levee is a LineString: "lines, drawn at the centerline of
 levees, floodwalls and levee closure structures", and Table 4 holds `S_Levee` to
 "Must Be Single Part"; all 16,320 are LineStrings. A LOMR is a Polygon, not a
 MultiPolygon: "Multipart polygons are not allowed", and four of 10,150 are
-multipart.
+multipart. A flood hazard boundary is a LineString: Table 4 holds `S_Fld_Haz_Ln`
+to "Must Be Single Part"; 10,000 sampled lines were all LineStrings.
 `nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
 geometry type disagrees.
 

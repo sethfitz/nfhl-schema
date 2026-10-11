@@ -308,6 +308,27 @@ lines, and the first with nothing for the codegen to learn.
 - `SCALE` is a number written as text and its three outliers hold the domain's
   coded value `1000` for `6000`. No mapping is guessed; the three are rejected.
 
+## The tenth layer
+
+Flood Hazard Boundaries (`S_Fld_Haz_Ln`, layer 27, 2026-10-10). The lines that
+bound the polygons of the flagship layer, with five fields, one domain and no
+rule, so the codegen learned nothing. It joins `S_Fld_Haz_Ar` only by geometry
+(Table 4: `S_Fld_Haz_Ln` "Must Be Covered by Boundary Of" `S_Fld_Haz_Ar`) and by
+the three fields the two share; no remaining layer has a foreign key to a
+modelled one, so none joins more directly.
+
+- The layer has 15.2 million rows, `OBJECTID` to 70.2 million, and some
+  boundaries are huge: the first 250 rows by `OBJECTID` are 26 MB of GeoJSON,
+  and a page of 2,000 is a 500. The control is 200-feature pages. Rejections
+  cluster in `OBJECTID`, so pages cannot stand in for a layer-wide rate: 8 of 50
+  pages held 182 or more `SOURCE_CIT` rejections each and 42 held none, against
+  9.5% of the layer.
+- `SHAPE IS NULL` took 152 seconds as a bare count on the first attempt and
+  the whole union, which contains it, took 18 seconds later in the session; a
+  timing says what the service was doing, not what the clause costs.
+- `SOURCE_CIT` is missing on 9.5% of the layer (1,448,053 rows), the highest
+  rate of any modelled required field, and `NP` on another 1,782,479.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.
