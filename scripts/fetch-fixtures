@@ -702,6 +702,69 @@ LEVEE_SPARSE = {
 }
 
 
+LOMR_STATUSES = [
+    "Superseded",
+    "Revalidated",
+    "Incorporated",
+    "Redetermined",
+    "Effective",
+    "NP",
+]
+LOMR_SCALES = ["6000", "12000", "24000", "10000"]
+# Four LOMRs are multipart, which the reference forbids and the model rejects.
+# A multipart polygon is not selectable by a `where` (`STNumGeometries` and
+# `STGeometryType` are a 400), so they are pinned by LOMR_ID, kept out of every
+# other case, and found by the multipart_polygon case.
+MULTIPART_LOMRS = ["49019C_1", "25021C_1", "39049C_38", "48439C_67"]
+# Every required field populated, every vocabulary value listed and every
+# polygon a single, non-empty one, unless the case is about that. A missing
+# shape is `IS NULL`; an empty one has no area, so `STArea() > 0` excludes both.
+LOMR_FIELDS = {
+    "geometry": f"SHAPE.STArea() > 0 AND LOMR_ID NOT IN ({sql_list(MULTIPART_LOMRS)})",
+    **{
+        f: f"NOT {missing(f)}"
+        for f in ("DFIRM_ID", "VERSION_ID", "LOMR_ID", "CASE_NO", "SOURCE_CIT")
+    },
+    "EFF_DATE": "EFF_DATE IS NOT NULL",
+    "SCALE": f"SCALE IN ({sql_list(LOMR_SCALES)})",
+    "STATUS": f"STATUS IN ({sql_list(LOMR_STATUSES)})",
+}
+LOMR_CASES: list[Case] = [
+    ("effective_6000", "STATUS = 'Effective' AND SCALE = '6000'", None, None),
+    ("scale_12000", "SCALE = '12000'", None, None),
+    ("scale_24000", "SCALE = '24000'", None, None),
+    ("scale_10000", "SCALE = '10000'", None, None),
+    ("superseded", "STATUS = 'Superseded'", None, None),
+    ("incorporated", "STATUS = 'Incorporated'", None, None),
+    ("revalidated", "STATUS = 'Revalidated'", None, None),
+    # Section 7.3's `NP`, in the one row that holds it.
+    ("not_populated_status", "STATUS = 'NP'", None, None),
+    # Findings: published LOMRs the reference does not allow. Each case names
+    # one field; every such row breaks that field alone.
+    ("no_geometry", "SHAPE IS NULL", "geometry", None),
+    ("empty_polygon", "SHAPE.STArea() = 0", "geometry", None),
+    ("multipart_polygon", "LOMR_ID = '49019C_1'", "geometry", None),
+    ("no_source_citation", missing("SOURCE_CIT"), "SOURCE_CIT", None),
+    ("no_lomr_id", missing("LOMR_ID"), "LOMR_ID", None),
+    ("no_scale", "SCALE IS NULL", "SCALE", None),
+    ("scale_1000", "SCALE = '1000'", "SCALE", None),
+    ("misspelled_status", "STATUS = 'Superceded'", "STATUS", None),
+]
+# The findings and values with only a handful of rows, which may not be small.
+LOMR_SPARSE = {
+    "revalidated",
+    "not_populated_status",
+    "no_geometry",
+    "empty_polygon",
+    "multipart_polygon",
+    "no_lomr_id",
+    "no_scale",
+    "scale_1000",
+    "scale_10000",
+    "misspelled_status",
+}
+
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -745,6 +808,12 @@ FIXTURES_BY_LAYER = [
         "levees.json",
         LEVEE_CASES,
         clean_except_expected(LEVEE_FIELDS, LEVEE_CASES, LEVEE_SPARSE),
+    ),
+    Fixture(
+        1,
+        "lomrs.json",
+        LOMR_CASES,
+        clean_except_expected(LOMR_FIELDS, LOMR_CASES, LOMR_SPARSE, short=SMALL),
     ),
 ]
 

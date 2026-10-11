@@ -64,6 +64,11 @@ def levee_layer() -> Layer:
 
 
 @pytest.fixture(scope="session")
+def lomr_cases() -> list[dict[str, Any]]:
+    return fixture_cases("lomrs.json")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 

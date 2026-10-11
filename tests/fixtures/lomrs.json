@@ -1,0 +1,1792 @@
+{
+  "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/1/query",
+  "retrieved_at": "2026-10-11T05:25:07Z",
+  "cases": [
+    {
+      "name": "effective_6000",
+      "where": "(STATUS = 'Effective' AND SCALE = '6000') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP') AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 3820,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.47823829718503,
+                37.32140137227637
+              ],
+              [
+                -87.47811208656304,
+                37.32115208776576
+              ],
+              [
+                -87.4777261506837,
+                37.32088383526957
+              ],
+              [
+                -87.47633206362396,
+                37.32092027830259
+              ],
+              [
+                -87.47589750871474,
+                37.32030751625968
+              ],
+              [
+                -87.47565370123552,
+                37.32039663036814
+              ],
+              [
+                -87.4759549589081,
+                37.32114295158581
+              ],
+              [
+                -87.47823829718503,
+                37.32140137227637
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 3820,
+          "DFIRM_ID": "21107C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "21107C_2",
+          "EFF_DATE": 1321488000000,
+          "CASE_NO": "12-04-0186P",
+          "SCALE": "6000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "21107C_LOMC2",
+          "SHAPE.STArea()": 9.725203638077879e-07,
+          "SHAPE.STLength()": 0.006257519244937544,
+          "GFID": "6e015285-e2d7-44ba-9ba7-6ebed42439e8",
+          "GlobalID": "{AA426E18-09D8-4F45-B515-C9BEC910CE85}"
+        }
+      }
+    },
+    {
+      "name": "scale_12000",
+      "where": "(SCALE = '12000') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP') AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 65,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -86.88045741849535,
+                34.521729608593326
+              ],
+              [
+                -86.88088193995326,
+                34.52176729573409
+              ],
+              [
+                -86.88100445333687,
+                34.52156508610535
+              ],
+              [
+                -86.88102409318456,
+                34.52132550626362
+              ],
+              [
+                -86.88095993096945,
+                34.52120830622467
+              ],
+              [
+                -86.88088927408666,
+                34.52113369414134
+              ],
+              [
+                -86.8807928952185,
+                34.52105373466312
+              ],
+              [
+                -86.88069000596717,
+                34.52102701209389
+              ],
+              [
+                -86.8805420731202,
+                34.52101089395097
+              ],
+              [
+                -86.88042626525294,
+                34.521021430277095
+              ],
+              [
+                -86.88032327908985,
+                34.52106392394019
+              ],
+              [
+                -86.88022667889607,
+                34.521138371011475
+              ],
+              [
+                -86.88019440723893,
+                34.52121288225412
+              ],
+              [
+                -86.88014922482357,
+                34.52131932595094
+              ],
+              [
+                -86.88012341640328,
+                34.5213725445253
+              ],
+              [
+                -86.88006543716654,
+                34.52143105680034
+              ],
+              [
+                -86.87995602312624,
+                34.52146822009347
+              ],
+              [
+                -86.87991093107459,
+                34.52151077137983
+              ],
+              [
+                -86.87980784407074,
+                34.52162248258487
+              ],
+              [
+                -86.88045741849535,
+                34.521729608593326
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 65,
+          "DFIRM_ID": "01103C",
+          "VERSION_ID": "2.3.3.2",
+          "LOMR_ID": "01103C_4",
+          "EFF_DATE": 1656979200000,
+          "CASE_NO": "22-04-1537X",
+          "SCALE": "12000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "01103C_LOMC4",
+          "SHAPE.STArea()": 6.064071513984737e-07,
+          "SHAPE.STLength()": 0.0031956321416009275,
+          "GFID": "6cc2065f-e499-452a-bf31-6cc70991dc22",
+          "GlobalID": "{890B60B2-3353-4CA0-A15D-EB87173F7A22}"
+        }
+      }
+    },
+    {
+      "name": "scale_24000",
+      "where": "(SCALE = '24000') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP') AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 5946,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -96.46875794473794,
+                43.1145448230496
+              ],
+              [
+                -96.46875787943246,
+                43.11591806646907
+              ],
+              [
+                -96.46897678345192,
+                43.11573680244529
+              ],
+              [
+                -96.46905705062635,
+                43.115073809198854
+              ],
+              [
+                -96.46906386484952,
+                43.115017527302655
+              ],
+              [
+                -96.46875794473794,
+                43.1145448230496
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 5946,
+          "DFIRM_ID": "46083C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "46083C_5",
+          "EFF_DATE": 1303689600000,
+          "CASE_NO": "10-08-0976P",
+          "SCALE": "24000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "46083C_LOMC4",
+          "SHAPE.STArea()": 2.8090035816955075e-07,
+          "SHAPE.STLength()": 0.0029450406987600345,
+          "GFID": "3f9e69b2-8f81-422f-b3aa-39b73ceb13f0",
+          "GlobalID": "{EEA8D294-A906-45F9-A597-B569BAD31313}"
+        }
+      }
+    },
+    {
+      "name": "scale_10000",
+      "where": "(SCALE = '10000') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 8405,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -66.30923803120004,
+                18.475581277807823
+              ],
+              [
+                -66.30916169819433,
+                18.475529742161378
+              ],
+              [
+                -66.30914715558079,
+                18.475526580610044
+              ],
+              [
+                -66.30910609470003,
+                18.475517329077928
+              ],
+              [
+                -66.30907899362813,
+                18.475510617002247
+              ],
+              [
+                -66.30906561269491,
+                18.4755069197945
+              ],
+              [
+                -66.30905241380621,
+                18.475502865045886
+              ],
+              [
+                -66.30903945589749,
+                18.475498315240785
+              ],
+              [
+                -66.30902684112314,
+                18.47549308833451
+              ],
+              [
+                -66.3090144227998,
+                18.4754869184634
+              ],
+              [
+                -66.3090023476109,
+                18.47548004660735
+              ],
+              [
+                -66.3089905317373,
+                18.47547266921732
+              ],
+              [
+                -66.30897889266961,
+                18.475464926428483
+              ],
+              [
+                -66.30895595897834,
+                18.47544875720122
+              ],
+              [
+                -66.30892196378527,
+                18.47542369267252
+              ],
+              [
+                -66.3087864597343,
+                18.475322491592856
+              ],
+              [
+                -66.30865034930451,
+                18.47522157078335
+              ],
+              [
+                -66.30854886664002,
+                18.475146324810325
+              ],
+              [
+                -66.30841324471841,
+                18.475045438052295
+              ],
+              [
+                -66.30839057034243,
+                18.475028737097656
+              ],
+              [
+                -66.308367737496,
+                18.47501228236162
+              ],
+              [
+                -66.30834456020546,
+                18.47499636590132
+              ],
+              [
+                -66.30833274957055,
+                18.474988759318514
+              ],
+              [
+                -66.3083207123622,
+                18.474981508966792
+              ],
+              [
+                -66.30830868825053,
+                18.474974847968166
+              ],
+              [
+                -66.30829644411376,
+                18.47496853141365
+              ],
+              [
+                -66.30828403757748,
+                18.474962465006694
+              ],
+              [
+                -66.30825891411232,
+                18.47495083117844
+              ],
+              [
+                -66.3082335444286,
+                18.47493957977479
+              ],
+              [
+                -66.30814424041777,
+                18.474900974533824
+              ],
+              [
+                -66.30811883144382,
+                18.474889788613883
+              ],
+              [
+                -66.30810297522778,
+                18.474882527784867
+              ],
+              [
+                -66.3079762905178,
+                18.474798504381226
+              ],
+              [
+                -66.30782709121148,
+                18.474669284149424
+              ],
+              [
+                -66.30780635515214,
+                18.47465070250373
+              ],
+              [
+                -66.30779667928483,
+                18.474641521693478
+              ],
+              [
+                -66.30778778398293,
+                18.474632465302143
+              ],
+              [
+                -66.30778003595488,
+                18.474623584407045
+              ],
+              [
+                -66.3077739223993,
+                18.474614956278884
+              ],
+              [
+                -66.30777010339148,
+                18.474606676523795
+              ],
+              [
+                -66.30776945117401,
+                18.474598883967165
+              ],
+              [
+                -66.30777255509985,
+                18.47459184971139
+              ],
+              [
+                -66.30775465186399,
+                18.474567928527307
+              ],
+              [
+                -66.30771724628093,
+                18.474517951391512
+              ],
+              [
+                -66.30748995769551,
+                18.474254337716836
+              ],
+              [
+                -66.30372596025299,
+                18.47400442459228
+              ],
+              [
+                -66.30329683397285,
+                18.473901841811955
+              ],
+              [
+                -66.30222535342993,
+                18.470553853032214
+              ],
+              [
+                -66.29915307180144,
+                18.471318494100448
+              ],
+              [
+                -66.29530139434374,
+                18.471065539915752
+              ],
+              [
+                -66.29535724280063,
+                18.474118570620305
+              ],
+              [
+                -66.29684278702999,
+                18.475311184064793
+              ],
+              [
+                -66.29911089255081,
+                18.476479675932225
+              ],
+              [
+                -66.29724652535394,
+                18.478968918468777
+              ],
+              [
+                -66.30012683114809,
+                18.479477027167043
+              ],
+              [
+                -66.31086464563725,
+                18.47941961615202
+              ],
+              [
+                -66.31385853021877,
+                18.478831361896557
+              ],
+              [
+                -66.31475882458406,
+                18.47784744879673
+              ],
+              [
+                -66.31165925324309,
+                18.475905639337565
+              ],
+              [
+                -66.31069278237139,
+                18.475815478817925
+              ],
+              [
+                -66.31022597810006,
+                18.47588560921585
+              ],
+              [
+                -66.30954296900927,
+                18.47568954326301
+              ],
+              [
+                -66.30923803120004,
+                18.475581277807823
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 8405,
+          "DFIRM_ID": "72000C",
+          "VERSION_ID": "2.3.2.0",
+          "LOMR_ID": "72000C_2",
+          "EFF_DATE": 1401321600000,
+          "CASE_NO": "13-02-1051P",
+          "SCALE": "10000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "72000C_LOMC5",
+          "SHAPE.STArea()": 9.773029805218649e-05,
+          "SHAPE.STLength()": 0.051791129169423376,
+          "GFID": "af0c2d6d-75eb-4d59-b488-d2cba27eb35b",
+          "GlobalID": "{08D8F759-A401-48D6-865D-1F2558933308}"
+        }
+      }
+    },
+    {
+      "name": "superseded",
+      "where": "(STATUS = 'Superseded') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP') AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 154606,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -85.60493721977319,
+                42.24118653606332
+              ],
+              [
+                -85.60493871018186,
+                42.24119045853453
+              ],
+              [
+                -85.605011190146,
+                42.24138821002022
+              ],
+              [
+                -85.60523592486172,
+                42.241388210008196
+              ],
+              [
+                -85.60545579675248,
+                42.24130937552618
+              ],
+              [
+                -85.60551399993633,
+                42.241190694244935
+              ],
+              [
+                -85.60494773119403,
+                42.24100259114835
+              ],
+              [
+                -85.60485517003296,
+                42.24106526556554
+              ],
+              [
+                -85.60485791511229,
+                42.24110566374577
+              ],
+              [
+                -85.60485807227337,
+                42.24110801591889
+              ],
+              [
+                -85.60486262207905,
+                42.241111625378025
+              ],
+              [
+                -85.60493392463404,
+                42.24117743776356
+              ],
+              [
+                -85.60493721977319,
+                42.24118653606332
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 154606,
+          "DFIRM_ID": "26077C",
+          "VERSION_ID": "2.5.3.6",
+          "LOMR_ID": "26077C_1",
+          "EFF_DATE": 1734307200000,
+          "CASE_NO": "24-05-1071P",
+          "SCALE": "6000",
+          "STATUS": "Superseded",
+          "SOURCE_CIT": "26077C_LOMC1",
+          "SHAPE.STArea()": 1.535286390806278e-07,
+          "SHAPE.STLength()": 0.0016691517270478484,
+          "GFID": "5496241a-f1f7-4e8b-8681-b5a259e11bee",
+          "GlobalID": "{2401A11E-3FA7-4D93-A061-B3EDCDA7F8C9}"
+        }
+      }
+    },
+    {
+      "name": "incorporated",
+      "where": "(STATUS = 'Incorporated') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP') AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 8055,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -82.59740302484173,
+                37.12032659630827
+              ],
+              [
+                -82.59659702038158,
+                37.11995226029028
+              ],
+              [
+                -82.59609293237403,
+                37.12059532036152
+              ],
+              [
+                -82.59678108718774,
+                37.12102866371332
+              ],
+              [
+                -82.59740302484173,
+                37.12032659630827
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 8055,
+          "DFIRM_ID": "51195C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "51195C_2",
+          "EFF_DATE": 898128000000,
+          "CASE_NO": "97-03-131P",
+          "SCALE": "12000",
+          "STATUS": "Incorporated",
+          "SOURCE_CIT": "51195C_LOMC1",
+          "SHAPE.STArea()": 7.298252328182429e-07,
+          "SHAPE.STLength()": 0.003456932645071206,
+          "GFID": "533005a2-5b6f-4e23-8fe6-a756f3b8ef92",
+          "GlobalID": "{8BFC44CA-D2AE-4A8F-8220-5FA01AB12D60}"
+        }
+      }
+    },
+    {
+      "name": "revalidated",
+      "where": "(STATUS = 'Revalidated') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 222647,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -97.37905545823169,
+                32.874342509599074
+              ],
+              [
+                -97.37870145218044,
+                32.8736788169814
+              ],
+              [
+                -97.37865846607974,
+                32.87363535940565
+              ],
+              [
+                -97.3784684023454,
+                32.87344349228356
+              ],
+              [
+                -97.37811423915211,
+                32.87308571969089
+              ],
+              [
+                -97.37797186717202,
+                32.87289353824507
+              ],
+              [
+                -97.3776586496017,
+                32.87247066048391
+              ],
+              [
+                -97.37762288111206,
+                32.87244924601823
+              ],
+              [
+                -97.37755032258762,
+                32.87240578975347
+              ],
+              [
+                -97.37676669130926,
+                32.87193663077967
+              ],
+              [
+                -97.37591379666499,
+                32.87175770587741
+              ],
+              [
+                -97.37548197640625,
+                32.87163949347946
+              ],
+              [
+                -97.37528093106941,
+                32.87158450685701
+              ],
+              [
+                -97.37518562482994,
+                32.87155838542827
+              ],
+              [
+                -97.37517738829428,
+                32.871556189106585
+              ],
+              [
+                -97.3750077188019,
+                32.87150975202974
+              ],
+              [
+                -97.37500771892977,
+                32.873599825510226
+              ],
+              [
+                -97.37550997997154,
+                32.873766749891836
+              ],
+              [
+                -97.37576083611586,
+                32.87385013284744
+              ],
+              [
+                -97.37665028508944,
+                32.87463399843934
+              ],
+              [
+                -97.37671052744649,
+                32.874687025796774
+              ],
+              [
+                -97.37746121255103,
+                32.87464121601325
+              ],
+              [
+                -97.3784471437921,
+                32.87449264663737
+              ],
+              [
+                -97.37905545823169,
+                32.874342509599074
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 222647,
+          "DFIRM_ID": "48439C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "48439C_189",
+          "EFF_DATE": 1538611200000,
+          "CASE_NO": "18-06-0328P",
+          "SCALE": "12000",
+          "STATUS": "Revalidated",
+          "SOURCE_CIT": "48439C_LOMC94",
+          "SHAPE.STArea()": 7.857538283800735e-06,
+          "SHAPE.STLength()": 0.011727918454390678,
+          "GFID": "c41f74b8-a9fb-43fb-bc45-9e497d4ded85",
+          "GlobalID": "{528A9466-3CD4-4B51-8D06-683CF27E099E}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_status",
+      "where": "(STATUS = 'NP') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 159758,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -81.10184243391527,
+                36.50743078659972
+              ],
+              [
+                -81.09744100145558,
+                36.507539428097154
+              ],
+              [
+                -81.0970367144749,
+                36.50800678371013
+              ],
+              [
+                -81.09678428933516,
+                36.50801101920327
+              ],
+              [
+                -81.09664686007496,
+                36.50813778117483
+              ],
+              [
+                -81.09665846902413,
+                36.508208142061235
+              ],
+              [
+                -81.09674836372868,
+                36.50875605696769
+              ],
+              [
+                -81.09690399096455,
+                36.50970417921049
+              ],
+              [
+                -81.10085532666403,
+                36.50966534986423
+              ],
+              [
+                -81.10209423191986,
+                36.5107634532288
+              ],
+              [
+                -81.10340177314183,
+                36.51039352286585
+              ],
+              [
+                -81.10361811546656,
+                36.510332338851164
+              ],
+              [
+                -81.10399267288275,
+                36.51022644258498
+              ],
+              [
+                -81.10420964254094,
+                36.51016502282915
+              ],
+              [
+                -81.10468617503315,
+                36.50966731160633
+              ],
+              [
+                -81.10412265131889,
+                36.50855069598391
+              ],
+              [
+                -81.10770483972765,
+                36.506343980201564
+              ],
+              [
+                -81.10668580636617,
+                36.505182339339385
+              ],
+              [
+                -81.10407307609673,
+                36.50594079087731
+              ],
+              [
+                -81.10184243391527,
+                36.50743078659972
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 159758,
+          "DFIRM_ID": "37005C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "37005C_1",
+          "EFF_DATE": 1544054400000,
+          "CASE_NO": "18-04-0634P",
+          "SCALE": "6000",
+          "STATUS": "NP",
+          "SOURCE_CIT": "37005C_LOMC1",
+          "SHAPE.STArea()": 2.7086000974637862e-05,
+          "SHAPE.STLength()": 0.0279484814667091,
+          "GFID": "6cbe2290-e247-438f-9955-ded90294ecb1",
+          "GlobalID": "{E13BD23C-02A0-489C-A802-8AC13C5EFD63}"
+        }
+      }
+    },
+    {
+      "name": "no_geometry",
+      "where": "(SHAPE IS NULL) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": "geometry",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 3927,
+        "geometry": null,
+        "properties": {
+          "OBJECTID": 3927,
+          "DFIRM_ID": "24009C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "24009C_1",
+          "EFF_DATE": 1611100800000,
+          "CASE_NO": "21-03-0161P",
+          "SCALE": "6000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "24009C_LOMC1",
+          "SHAPE": null,
+          "SHAPE.STArea()": null,
+          "SHAPE.STLength()": null,
+          "GFID": "bcd20347-8dd6-4d03-9697-15bc81b5a8d7",
+          "GlobalID": "{D334582C-7A53-4B0F-9155-F83B53518FD6}"
+        }
+      }
+    },
+    {
+      "name": "empty_polygon",
+      "where": "(SHAPE.STArea() = 0) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": "geometry",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 3987,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": []
+        },
+        "properties": {
+          "OBJECTID": 3987,
+          "DFIRM_ID": "24039C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "24039C_1",
+          "EFF_DATE": 1539734400000,
+          "CASE_NO": "18-03-1920P",
+          "SCALE": "6000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "24039C_LOMC1",
+          "SHAPE.STArea()": 0,
+          "SHAPE.STLength()": 0,
+          "GFID": "26aac0a7-e5a0-4067-a381-406c9a492964",
+          "GlobalID": "{EA9C9958-78A4-4016-8FE9-18B1AC7336E0}"
+        }
+      }
+    },
+    {
+      "name": "multipart_polygon",
+      "where": "(LOMR_ID = '49019C_1') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": "geometry",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 7717,
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -109.50001149763808,
+                  38.528942620600795
+                ],
+                [
+                  -109.50163919214503,
+                  38.52731241005216
+                ],
+                [
+                  -109.50165822816957,
+                  38.526627123566044
+                ],
+                [
+                  -109.50001144629677,
+                  38.52657837371523
+                ],
+                [
+                  -109.50001149763808,
+                  38.528942620600795
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -109.50001171613611,
+                  38.538716987789826
+                ],
+                [
+                  -109.50001171615806,
+                  38.538913158494836
+                ],
+                [
+                  -109.50001174232686,
+                  38.53869255059817
+                ],
+                [
+                  -109.50001171613611,
+                  38.538716987789826
+                ]
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 7717,
+          "DFIRM_ID": "49019C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "49019C_1",
+          "EFF_DATE": 1479081600000,
+          "CASE_NO": "15-08-1440P",
+          "SCALE": "24000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "49019C_LOMC1",
+          "SHAPE.STArea()": 2.488902093046687e-06,
+          "SHAPE.STLength()": 0.00744220312112387,
+          "GFID": "5f9b60f2-b4e2-49da-9189-46957942e2f3",
+          "GlobalID": "{3688CEBE-A20D-4840-8038-C1760B5881F4}"
+        }
+      }
+    },
+    {
+      "name": "no_source_citation",
+      "where": "((SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))) AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP') AND SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01",
+      "expect": "SOURCE_CIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 179373,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -81.38294198042195,
+                28.754471284440683
+              ],
+              [
+                -81.38262233112656,
+                28.756445187397976
+              ],
+              [
+                -81.38313400606881,
+                28.75523381421982
+              ],
+              [
+                -81.38294198042195,
+                28.754471284440683
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 179373,
+          "DFIRM_ID": "12117C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "12117C_19",
+          "EFF_DATE": 1162166400000,
+          "CASE_NO": "06-04-BJ43P",
+          "SCALE": "6000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": null,
+          "SHAPE.STArea()": 3.1139088400407536e-07,
+          "SHAPE.STLength()": 0.004100957142790988,
+          "GFID": "a5332de8-5970-41cd-8e8e-cb4dba4c1a6d",
+          "GlobalID": "{FB023084-815E-47F9-AC79-1210F1E8E201}"
+        }
+      }
+    },
+    {
+      "name": "no_lomr_id",
+      "where": "((LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' '))) AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000') AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": "LOMR_ID",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 5684,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -79.52166828344971,
+                40.78089292298872
+              ],
+              [
+                -79.52280285357087,
+                40.78154442644572
+              ],
+              [
+                -79.52073290968622,
+                40.78389237861146
+              ],
+              [
+                -79.5191267120576,
+                40.78718647014396
+              ],
+              [
+                -79.51809530650779,
+                40.790405061608325
+              ],
+              [
+                -79.51705780047709,
+                40.79332472277337
+              ],
+              [
+                -79.51618481014282,
+                40.79303581413095
+              ],
+              [
+                -79.51499249128432,
+                40.79241049628335
+              ],
+              [
+                -79.5142815888451,
+                40.79339836450956
+              ],
+              [
+                -79.5151219159739,
+                40.794350754930534
+              ],
+              [
+                -79.51618250653387,
+                40.79447031626554
+              ],
+              [
+                -79.51614729727937,
+                40.794543152435075
+              ],
+              [
+                -79.51478991911665,
+                40.79586971528768
+              ],
+              [
+                -79.51275825716694,
+                40.800657208907715
+              ],
+              [
+                -79.5132145136276,
+                40.804653878494456
+              ],
+              [
+                -79.51419978123491,
+                40.808728303359125
+              ],
+              [
+                -79.51434040243403,
+                40.81216734421268
+              ],
+              [
+                -79.51584935586312,
+                40.81372679434882
+              ],
+              [
+                -79.5179248478599,
+                40.815892445058836
+              ],
+              [
+                -79.52284725908575,
+                40.81313649026394
+              ],
+              [
+                -79.52578216503368,
+                40.811441393149714
+              ],
+              [
+                -79.52461471552516,
+                40.810301758758655
+              ],
+              [
+                -79.52369973290928,
+                40.807012761963655
+              ],
+              [
+                -79.52468912676066,
+                40.80386627063298
+              ],
+              [
+                -79.52520244247283,
+                40.799797631840384
+              ],
+              [
+                -79.52579099876833,
+                40.79365691970836
+              ],
+              [
+                -79.52748955578285,
+                40.78912092003706
+              ],
+              [
+                -79.52894858537255,
+                40.78531540241717
+              ],
+              [
+                -79.53069354948228,
+                40.782497328646535
+              ],
+              [
+                -79.53125313354703,
+                40.78125810138863
+              ],
+              [
+                -79.53385251562038,
+                40.780183709518234
+              ],
+              [
+                -79.53618842119616,
+                40.774657108335596
+              ],
+              [
+                -79.54393834499476,
+                40.768112757219875
+              ],
+              [
+                -79.54672501934346,
+                40.764485449401
+              ],
+              [
+                -79.5512182478451,
+                40.75999274347785
+              ],
+              [
+                -79.55478519156874,
+                40.75650563614658
+              ],
+              [
+                -79.55940911522376,
+                40.75504191893235
+              ],
+              [
+                -79.56583169592979,
+                40.75427437810119
+              ],
+              [
+                -79.56980959575905,
+                40.75396425385356
+              ],
+              [
+                -79.57657553745088,
+                40.75292381901221
+              ],
+              [
+                -79.5854583591708,
+                40.750457774626526
+              ],
+              [
+                -79.58896035504992,
+                40.74925844250867
+              ],
+              [
+                -79.59064654104002,
+                40.74675322741483
+              ],
+              [
+                -79.59058016378894,
+                40.74158756573358
+              ],
+              [
+                -79.59097727992226,
+                40.7359569778872
+              ],
+              [
+                -79.58974963605777,
+                40.72865531907739
+              ],
+              [
+                -79.5891593961347,
+                40.72540448221689
+              ],
+              [
+                -79.5844087859067,
+                40.719378721642954
+              ],
+              [
+                -79.58280352286435,
+                40.7156481881857
+              ],
+              [
+                -79.57713258860036,
+                40.71627144752152
+              ],
+              [
+                -79.57553221616388,
+                40.71639195979347
+              ],
+              [
+                -79.57549798534167,
+                40.717898668145025
+              ],
+              [
+                -79.57774624851001,
+                40.72501281313458
+              ],
+              [
+                -79.58181984167811,
+                40.734710075051275
+              ],
+              [
+                -79.58353621082458,
+                40.737905024176825
+              ],
+              [
+                -79.58412458066582,
+                40.742928984429014
+              ],
+              [
+                -79.58089094091251,
+                40.7456873018026
+              ],
+              [
+                -79.57458635651938,
+                40.74614879425508
+              ],
+              [
+                -79.56305940355445,
+                40.74631031020312
+              ],
+              [
+                -79.55701384118053,
+                40.747469696086306
+              ],
+              [
+                -79.55764878128562,
+                40.74692880624613
+              ],
+              [
+                -79.5596659230667,
+                40.74457142574468
+              ],
+              [
+                -79.56105948082066,
+                40.741403929856325
+              ],
+              [
+                -79.56109906160349,
+                40.73915361260835
+              ],
+              [
+                -79.5583770493117,
+                40.73673662908049
+              ],
+              [
+                -79.55515521994903,
+                40.736205098330785
+              ],
+              [
+                -79.55248534876227,
+                40.739013852506716
+              ],
+              [
+                -79.54786237854945,
+                40.74047729992824
+              ],
+              [
+                -79.54328931868041,
+                40.74193978866669
+              ],
+              [
+                -79.54065945126543,
+                40.74201851323842
+              ],
+              [
+                -79.54036143236917,
+                40.7407611915715
+              ],
+              [
+                -79.53969244452301,
+                40.73912336662256
+              ],
+              [
+                -79.53960053138778,
+                40.73567398720514
+              ],
+              [
+                -79.54114379390664,
+                40.731513036048234
+              ],
+              [
+                -79.5439417119064,
+                40.729296393000475
+              ],
+              [
+                -79.54439427601429,
+                40.728131183240215
+              ],
+              [
+                -79.54002341494129,
+                40.7245738974077
+              ],
+              [
+                -79.538488711987,
+                40.722511104481335
+              ],
+              [
+                -79.53537819976907,
+                40.72392335147197
+              ],
+              [
+                -79.53419444626148,
+                40.72446584830474
+              ],
+              [
+                -79.53287275542722,
+                40.72630331076139
+              ],
+              [
+                -79.53325988321794,
+                40.72790598933124
+              ],
+              [
+                -79.5351293686804,
+                40.72811556709341
+              ],
+              [
+                -79.53557947464977,
+                40.72854952599535
+              ],
+              [
+                -79.53577766497924,
+                40.72952356927197
+              ],
+              [
+                -79.53562703816954,
+                40.73004422071065
+              ],
+              [
+                -79.5359755462249,
+                40.73048569976076
+              ],
+              [
+                -79.53668624182518,
+                40.730704736032756
+              ],
+              [
+                -79.5363355860783,
+                40.73259758714876
+              ],
+              [
+                -79.53571692533522,
+                40.734780536139496
+              ],
+              [
+                -79.53650936829666,
+                40.737246814541656
+              ],
+              [
+                -79.53700505637073,
+                40.740804369023024
+              ],
+              [
+                -79.53636483317469,
+                40.74312110375625
+              ],
+              [
+                -79.53639662448506,
+                40.74714335520975
+              ],
+              [
+                -79.53882129763538,
+                40.74876468736814
+              ],
+              [
+                -79.54211173676786,
+                40.748065731640125
+              ],
+              [
+                -79.54431759073509,
+                40.746182342833926
+              ],
+              [
+                -79.54619087283696,
+                40.74499040127216
+              ],
+              [
+                -79.55083567005688,
+                40.74339323228208
+              ],
+              [
+                -79.55475977104432,
+                40.7420358618753
+              ],
+              [
+                -79.5553775086738,
+                40.74263634441386
+              ],
+              [
+                -79.55228538317793,
+                40.746974056996635
+              ],
+              [
+                -79.55201279960242,
+                40.747788714368696
+              ],
+              [
+                -79.54772116918103,
+                40.75299284134029
+              ],
+              [
+                -79.54283418587059,
+                40.75493678169439
+              ],
+              [
+                -79.54210053314239,
+                40.75656863983205
+              ],
+              [
+                -79.53992458965052,
+                40.76052960652996
+              ],
+              [
+                -79.53664446036741,
+                40.76258194716017
+              ],
+              [
+                -79.53495887014671,
+                40.763313274013065
+              ],
+              [
+                -79.53176280868492,
+                40.763819914697905
+              ],
+              [
+                -79.52682541101969,
+                40.76864273949833
+              ],
+              [
+                -79.52434573454487,
+                40.77159758509729
+              ],
+              [
+                -79.52284893534026,
+                40.77616742409767
+              ],
+              [
+                -79.52202020692961,
+                40.77858795830166
+              ],
+              [
+                -79.52212118152076,
+                40.779681456879246
+              ],
+              [
+                -79.52203176754398,
+                40.780302430595675
+              ],
+              [
+                -79.52166828344971,
+                40.78089292298872
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 5684,
+          "DFIRM_ID": "42005C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "",
+          "EFF_DATE": 1624233600000,
+          "CASE_NO": "20-03-1614P",
+          "SCALE": "6000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "42005C_LOMC1",
+          "SHAPE.STArea()": 0.0014932407443715855,
+          "SHAPE.STLength()": 0.41838375705699754,
+          "GFID": "b6957093-ac8f-46af-a447-2531f6ebd5af",
+          "GlobalID": "{65036379-A748-4896-9801-8B081D123499}"
+        }
+      }
+    },
+    {
+      "name": "no_scale",
+      "where": "(SCALE IS NULL) AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": "SCALE",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 207338,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.88572103770734,
+                42.6561453887235
+              ],
+              [
+                -87.88488994893758,
+                42.65462103522771
+              ],
+              [
+                -87.88293102990522,
+                42.65512494258862
+              ],
+              [
+                -87.88200086975102,
+                42.65520087487589
+              ],
+              [
+                -87.88213163151997,
+                42.65566571849371
+              ],
+              [
+                -87.88466192056167,
+                42.6562086905297
+              ],
+              [
+                -87.88572103770734,
+                42.6561453887235
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 207338,
+          "DFIRM_ID": "55059C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "55059C_20",
+          "EFF_DATE": 1776816000000,
+          "CASE_NO": "25-05-2231X",
+          "SCALE": null,
+          "STATUS": "Effective",
+          "SOURCE_CIT": "55059C_LOMC22",
+          "SHAPE.STArea()": 3.4534682613417515e-06,
+          "SHAPE.STLength()": 0.008823920418955748,
+          "GFID": "71f95b3a-1171-4beb-9a0a-156674b48467",
+          "GlobalID": "{21BE9FFB-C6F1-4D21-B756-F02CAD439ACF}"
+        }
+      }
+    },
+    {
+      "name": "scale_1000",
+      "where": "(SCALE = '1000') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND STATUS IN ('Superseded', 'Revalidated', 'Incorporated', 'Redetermined', 'Effective', 'NP')",
+      "expect": "SCALE",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 4198,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -84.26042400572743,
+                43.63410964960694
+              ],
+              [
+                -84.26071471924769,
+                43.63485634537195
+              ],
+              [
+                -84.26202155852205,
+                43.63489837926357
+              ],
+              [
+                -84.26182102256023,
+                43.634114604025505
+              ],
+              [
+                -84.26042400572743,
+                43.63410964960694
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 4198,
+          "DFIRM_ID": "26111C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "26111C_1",
+          "EFF_DATE": 1391472000000,
+          "CASE_NO": "13-05-3953P",
+          "SCALE": "1000",
+          "STATUS": "Effective",
+          "SOURCE_CIT": "26111C_LOMC1",
+          "SHAPE.STArea()": 1.0287721057979778e-06,
+          "SHAPE.STLength()": 0.004314854646805981,
+          "GFID": "20140129LOMR",
+          "GlobalID": "{26BF25EC-2207-4A78-ABC6-D84971632CEC}"
+        }
+      }
+    },
+    {
+      "name": "misspelled_status",
+      "where": "(STATUS = 'Superceded') AND SHAPE.STArea() > 0 AND LOMR_ID NOT IN ('49019C_1', '25021C_1', '39049C_38', '48439C_67') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (LOMR_ID IS NULL OR (LOMR_ID = '' AND LOMR_ID NOT LIKE ' ')) AND NOT (CASE_NO IS NULL OR (CASE_NO = '' AND CASE_NO NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND EFF_DATE IS NOT NULL AND SCALE IN ('6000', '12000', '24000', '10000')",
+      "expect": "STATUS",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 132407,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.3986726401213,
+                41.49276529015257
+              ],
+              [
+                -87.39810817508338,
+                41.49548093560099
+              ],
+              [
+                -87.39779032928749,
+                41.497010230568584
+              ],
+              [
+                -87.39920510140584,
+                41.497663257136686
+              ],
+              [
+                -87.40100384344461,
+                41.49704474552139
+              ],
+              [
+                -87.40214689356321,
+                41.49631610221056
+              ],
+              [
+                -87.40315674995878,
+                41.496210833240745
+              ],
+              [
+                -87.40351036433614,
+                41.49563036640196
+              ],
+              [
+                -87.40329394333092,
+                41.49461948989449
+              ],
+              [
+                -87.40327511807719,
+                41.4945315571254
+              ],
+              [
+                -87.40327417642158,
+                41.49452692874027
+              ],
+              [
+                -87.40325919375125,
+                41.494456880868476
+              ],
+              [
+                -87.40321761946059,
+                41.4942628161113
+              ],
+              [
+                -87.4034119199714,
+                41.494125386850236
+              ],
+              [
+                -87.40341184138892,
+                41.49410342363022
+              ],
+              [
+                -87.40339976094349,
+                41.493915634825456
+              ],
+              [
+                -87.40331465169113,
+                41.492596640658356
+              ],
+              [
+                -87.3986726401213,
+                41.49276529015257
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 132407,
+          "DFIRM_ID": "18089C",
+          "VERSION_ID": "1.1.1.0",
+          "LOMR_ID": "18089C_14",
+          "EFF_DATE": 1342051200000,
+          "CASE_NO": "12-05-7460P",
+          "SCALE": "6000",
+          "STATUS": "Superceded",
+          "SOURCE_CIT": "18089C_LOMC2",
+          "SHAPE.STArea()": 2.1946002920898003e-05,
+          "SHAPE.STLength()": 0.01866002079263113,
+          "GFID": "e83d1dd1-9044-49dd-a2dd-e44d7cd708c6",
+          "GlobalID": "{00C4F4C7-9FDE-4252-B571-5F9BE467592F}"
+        }
+      }
+    }
+  ]
+}

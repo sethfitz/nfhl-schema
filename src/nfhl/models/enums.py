@@ -24,6 +24,19 @@ from overture.schema.system.doc import DocumentedEnum
 REFERENCE_EDITION = "November 2024"
 
 
+class LOMCStatus(str, DocumentedEnum):
+    """Values of `D_LOMC_Status` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_LOMR.STATUS`.
+    """
+
+    SUPERSEDED = "Superseded", "Code `1000`."
+    REVALIDATED = "Revalidated", "Code `1010`."
+    INCORPORATED = "Incorporated", "Code `1020`."
+    REDETERMINED = "Redetermined", "Code `1030`."
+    EFFECTIVE = "Effective", "Code `1040`."
+    NP = "NP", "Code `NP`."
+
+
 class LengthUnits(str, DocumentedEnum):
     """Values of `D_Length_Units` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`, `S_XS.LEN_UNIT`,
@@ -158,6 +171,17 @@ class ProfBaslnTyp(str, DocumentedEnum):
             "counted 2026-10-07."
         ),
     )
+
+
+class Scale(str, DocumentedEnum):
+    """Values of `D_Scale` that apply to the FIRM Database, each as the data stores it.
+    Used by `S_LOMR.SCALE`.
+    """
+
+    V_6000 = "6000", "Code `1000`."
+    V_12000 = "12000", "Code `1010`."
+    V_24000 = "24000", "Code `1020`."
+    V_10000 = "10000", "Code `2000`."
 
 
 class StudyTyp(str, DocumentedEnum):

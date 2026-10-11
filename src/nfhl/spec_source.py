@@ -70,6 +70,7 @@ LAYERS: tuple[Layer, ...] = (
     Layer(7, "S_Riv_Mrk", "RiverMark", "river_marks"),
     Layer(20, "S_Wtr_Ln", "WaterLine", "water_lines"),
     Layer(23, "S_Levee", "Levee", "levees"),
+    Layer(1, "S_LOMR", "Lomr", "lomrs"),
 )
 
 
@@ -436,11 +437,12 @@ class SpecReader:
         """What a table's section says its features are, before its field list.
 
         From the sentence that says what the table "contains information about"
-        to the field list. Sections open differently before that sentence: with
-        one line on when the table is required (`S_Fld_Haz_Ar`), or with pages
-        of submission guidance and a requirements grid (`S_BFE`), so that is
-        left out. Only in running text, not in a table, so it is read from the
-        `pdftotext` rendering, with the running page header and footer removed.
+        (`S_LOMR` says "includes") to the field list. Sections open differently
+        before that sentence: with one line on when the table is required
+        (`S_Fld_Haz_Ar`), or with pages of submission guidance and a
+        requirements grid (`S_BFE`), so that is left out. Only in running text,
+        not in a table, so it is read from the `pdftotext` rendering, with the
+        running page header and footer removed.
 
         A section with no such sentence (`S_Profil_Basln`, which says only when
         the table is required and how to submit its long text) is described by
@@ -448,7 +450,7 @@ class SpecReader:
         """
         text = self.reference_text(FIRM_DATABASE)
         match = re.search(
-            rf"(The {name}(?: table)? contains information .*?) "
+            rf"(The {name}(?: table| layer)? (?:contains information|includes) .*?) "
             rf"The {name} (?:table|layer) contains the following elements\b",
             text,
         )

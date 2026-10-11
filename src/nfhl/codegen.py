@@ -700,6 +700,14 @@ GEOMETRIES = {
         "levee, floodwall or levee closure structure shown on the FIRM, with its "
         "accreditation status.",
     ),
+    "S_LOMR": LayerGeometry(
+        "esriGeometryPolygon",
+        ("POLYGON",),
+        "“Multipart polygons are not allowed”, so a Polygon, though the service's "
+        "polygon type admits several parts.",
+        "The LOMR area: in the reference's words, the bounding polygon for each "
+        "LOMR area, broken on panel boundaries.",
+    ),
 }
 
 
