@@ -632,3 +632,57 @@ validation, not because any statistic showed it. `count-broken-rules` inherits
 the case folding, judging a `FEET` as the `Feet` it is grouped with, but not
 the blank folding: the snapshot splits the rows by `LIKE ' '` on each field
 before grouping them, so a lone space and `""` are judged apart.
+
+## What the LOMRs hold that the reference does not allow
+
+Layer 1 has 10,150 rows (`service/observed/1.json`, 2026-10-10), few enough to
+validate whole: every row was paged by `OBJECTID` (1,000 to a page, with
+geometry) and run through the model. It rejects 69 (0.7%); "missing" is as for
+the cross sections. No row breaks two clauses.
+
+- **42 have a geometry the reference does not allow.** 37 have none
+  (`SHAPE IS NULL`), each in a different DFIRM; one is empty (`SHAPE.STArea() =
+  0`, `coordinates: []`); four are MultiPolygons of two or three parts, in
+  `49019C`, `25021C`, `39049C` and `48439C`. "Multipart polygons are not
+  allowed", so the model takes a Polygon where the flood zones take a
+  MultiPolygon.
+- **`SOURCE_CIT` is missing on 20** (all null), in 11 DFIRMs, 5 of them in
+  `37179C`.
+- **`SCALE` is outside `D_Scale` on 5**: `1000` on 3, in `26111C`, `17201C` and
+  `08005C`, and null on 2, in `55059C`. `1000` is the domain's coded value for
+  `6000`, not a denominator the domain lists.
+- **`STATUS` holds `Superceded` on 1** (`18089C_14`), a misspelling of the
+  domain's `Superseded`, which 209 rows hold.
+- **`LOMR_ID`, the key, is `''` on 1** (`42005C`).
+
+`DFIRM_ID`, `VERSION_ID`, `CASE_NO`, `EFF_DATE` and `STATUS` are missing on none.
+`STATUS` holds `NP` on 1 row, which validates. The model has no rules, so
+`count-broken-rules` reports none, and nothing is common enough to be legacy:
+the threshold is one row in a thousand (11 here) and the most frequent value
+outside the reference is `1000`, on 3.
+
+**The union query selects 65; the model rejects 69.** The four others are the
+MultiPolygons, which no `where` selects: `STNumGeometries()` and
+`STGeometryType()` are a 400 on this service. Compared by `OBJECTID`, the union's
+65 are a subset of the model's 69 and the difference is those four rows. The
+union joins with `OR` each required field's missing clause (`F IS NULL OR (F =
+'' AND F NOT LIKE ' ')`), `SCALE`'s and `STATUS`'s outside clause (`F IS NOT
+NULL AND (F <> '' OR F LIKE ' ') AND NOT (F IN (<the values>) AND F NOT LIKE '
+')`), and `SHAPE.STArea() IS NULL OR SHAPE.STArea() = 0`, since `SHAPE IS NULL`
+misses the empty polygon. `EFF_DATE` is `R`, a date: no row lacks one, and none
+holds 9/9/9999 or 8/8/8888.
+
+**The reference's two descriptions of the table disagree.** The table summary
+(Table 1) calls S_LOMR "LOMRs not yet incorporated on the FIRM"; the section
+says the layer "includes all LOMRs that have been incorporated into the NFHL
+database", and 9,877 rows hold `Effective` and 60 `Incorporated`. The model's
+description takes the section's.
+
+`LOMR_ID` and `SOURCE_CIT` are 32 and 21 long on the service and 25 and 11 in the
+reference; the models take the service's. In the paged rows the longest value
+of either is 16 and 19 characters, and 10,114 `SOURCE_CIT` values are longer
+than the reference's 11 (`LEN()` is a 400 on this service).
+`SOURCE_CIT` "must match a value in `L_Source_Cit`" and `LOMR_ID` joins nothing
+modelled; the models check neither. `SCALE` is a number written as text, so
+`D_Scale`'s `6000` is the string `"6000"`. The LOMRs share no field with the
+other eight layers.

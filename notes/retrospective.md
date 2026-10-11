@@ -286,6 +286,28 @@ rules in prose and the first two `Date` fields.
   one levee show one: 43 levees are reported under the analysis rule and 44
   break it.
 
+## The ninth layer
+
+LOMRs (`S_LOMR`, layer 1, 2026-10-10). Eight fields, no rule, no unit, no datum,
+and two domains that are digits and words: the cheapest layer since the water
+lines, and the first with nothing for the codegen to learn.
+
+- The first polygon layer that is a Polygon alone. The flood zones are
+  `POLYGON` or `MULTI_POLYGON`; "Multipart polygons are not allowed" holds this
+  one to a single part, and four of 10,150 rows break it. A multipart polygon
+  cannot be selected by a `where` on this service (`STNumGeometries()` and
+  `STGeometryType()` are a 400), so the union query is four rows short of the
+  model, as the levees' was, for a different reason: not a collation fold but
+  a predicate the service lacks. Paging the whole layer found them.
+- An empty polygon is `SHAPE.STArea() = 0`, not `SHAPE IS NULL`; the same split
+  as the empty point, found the same way, by validating every row.
+- `reference_intro` looked for "contains information about" and S_LOMR says
+  "includes all LOMRs". Falling back to the table summary would have described
+  the layer as "LOMRs not yet incorporated on the FIRM", the opposite of the
+  section, so the search takes "includes" too.
+- `SCALE` is a number written as text and its three outliers hold the domain's
+  coded value `1000` for `6000`. No mapping is guessed; the three are rejected.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.
