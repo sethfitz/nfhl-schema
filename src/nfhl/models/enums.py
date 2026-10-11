@@ -123,6 +123,17 @@ class LeveeTyp(str, DocumentedEnum):
     NP = "NP", "Code `NP`."
 
 
+class LnTyp(str, DocumentedEnum):
+    """Values of `D_Ln_Typ` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_Fld_Haz_Ln.LN_TYP`.
+    """
+
+    SFHA_FLOOD_ZONE_BOUNDARY = "SFHA / Flood Zone Boundary", "Code `2034`."
+    LIMIT_LINES = "Limit Lines", "Code `1010`."
+    OTHER_BOUNDARY = "Other Boundary", "Code `1020`."
+    FLOWAGE_EASEMENT_BOUNDARY = "Flowage Easement Boundary", "Code `2050`."
+
+
 class LocAccuracy(str, DocumentedEnum):
     """Values of `D_Loc_Accuracy` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Stn_Start.LOC_ACC`. The last is a legacy value: common in

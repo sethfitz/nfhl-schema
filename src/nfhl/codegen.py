@@ -708,6 +708,15 @@ GEOMETRIES = {
         "The LOMR area: in the reference's words, the bounding polygon for each "
         "LOMR area, broken on panel boundaries.",
     ),
+    "S_Fld_Haz_Ln": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "Table 4 holds S_Fld_Haz_Ln to “Must Be Single Part”, so a LineString, "
+        "though the service's polyline type admits several parts.",
+        "The flood hazard boundary: in the reference's words, the flood zone "
+        "boundary features of the Flood Risk Project area, the boundaries of the "
+        "flood hazard areas depicted on the FIRM.",
+    ),
 }
 
 

@@ -35,7 +35,7 @@ def test_manifest_hashes_match_the_files_on_disk() -> None:
 
 
 # Modelled tables whose field descriptions state no unit, datum or rule.
-NO_RELATIONSHIPS = {"S_Stn_Start", "S_Riv_Mrk", "S_Wtr_Ln", "S_LOMR"}
+NO_RELATIONSHIPS = {"S_Stn_Start", "S_Riv_Mrk", "S_Wtr_Ln", "S_LOMR", "S_Fld_Haz_Ln"}
 
 
 @pytest.mark.parametrize("layer", LAYERS, ids=lambda lyr: lyr.table)

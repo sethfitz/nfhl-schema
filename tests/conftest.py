@@ -69,6 +69,11 @@ def lomr_cases() -> list[dict[str, Any]]:
 
 
 @pytest.fixture(scope="session")
+def boundary_cases() -> list[dict[str, Any]]:
+    return fixture_cases("flood_hazard_boundaries.json")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 

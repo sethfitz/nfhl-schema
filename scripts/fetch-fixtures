@@ -765,6 +765,49 @@ LOMR_SPARSE = {
 }
 
 
+FLD_LN_TYPES = [
+    "SFHA / Flood Zone Boundary",
+    "Limit Lines",
+    "Other Boundary",
+    "Flowage Easement Boundary",
+]
+# Every required field populated and every line type a reference one, unless the
+# case is about that; a lone space in free text is a value. A line with no shape
+# is `IS NULL`.
+FLD_LN_FIELDS = {
+    "geometry": "SHAPE IS NOT NULL",
+    **{
+        f: f"NOT {missing(f)}"
+        for f in ("DFIRM_ID", "VERSION_ID", "FLD_LN_ID", "SOURCE_CIT")
+    },
+    "LN_TYP": f"LN_TYP IN ({sql_list(FLD_LN_TYPES)})",
+}
+FLD_LN_CASES: list[Case] = [
+    ("sfha_boundary", "LN_TYP = 'SFHA / Flood Zone Boundary'", None, None),
+    ("limit_lines", "LN_TYP = 'Limit Lines'", None, None),
+    ("flowage_easement", "LN_TYP = 'Flowage Easement Boundary'", None, None),
+    # The service holds no `Other Boundary`, so no case finds one. Section 7.3's
+    # `NP`, in a citation: text, so a value.
+    ("not_populated_source", "SOURCE_CIT = 'NP'", None, None),
+    # A lone space is text, not a missing value.
+    ("lone_space_line_id", "FLD_LN_ID LIKE ' '", None, None),
+    # Findings: published boundaries the reference does not allow. Each case
+    # names one field; every such line breaks that field alone.
+    ("not_populated_line_type", "LN_TYP = 'NP'", "LN_TYP", None),
+    ("no_geometry", "SHAPE IS NULL", "geometry", None),
+    ("no_source_citation", missing("SOURCE_CIT"), "SOURCE_CIT", None),
+    ("no_version_id", missing("VERSION_ID"), "VERSION_ID", None),
+    ("no_line_id", missing("FLD_LN_ID"), "FLD_LN_ID", None),
+]
+# The findings with only a handful of rows, which may not be short.
+FLD_LN_SPARSE = {
+    "not_populated_line_type",
+    "no_geometry",
+    "no_version_id",
+    "no_line_id",
+}
+
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -814,6 +857,12 @@ FIXTURES_BY_LAYER = [
         "lomrs.json",
         LOMR_CASES,
         clean_except_expected(LOMR_FIELDS, LOMR_CASES, LOMR_SPARSE, short=SMALL),
+    ),
+    Fixture(
+        27,
+        "flood_hazard_boundaries.json",
+        FLD_LN_CASES,
+        clean_except_expected(FLD_LN_FIELDS, FLD_LN_CASES, FLD_LN_SPARSE),
     ),
 ]
 
