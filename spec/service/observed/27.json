@@ -1,0 +1,35 @@
+{
+  "layer": 27,
+  "total": 15233741,
+  "fields": {
+    "LN_TYP": [
+      {
+        "value": "SFHA / Flood Zone Boundary",
+        "count": 15036379
+      },
+      {
+        "value": "Limit Lines",
+        "count": 192146
+      },
+      {
+        "value": "Flowage Easement Boundary",
+        "count": 5195
+      },
+      {
+        "value": "NP",
+        "count": 21
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [],
+    "by_populated": [],
+    "by_text_populated": [],
+    "groups": [
+      {
+        "count": 15233741
+      }
+    ]
+  }
+}
