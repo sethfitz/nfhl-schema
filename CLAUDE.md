@@ -25,7 +25,7 @@ generation. A change belongs in one of four places:
   reason, which admits a value under the bar; the test requires such an entry
   to be one the threshold would not select, so the threshold still governs the
   rest. Add one only when the maintainer has made that call. A decision also
-  admits a spelling the snapshot's case folding hides (`1 PCT ...` under
+  admits a case variant the snapshot's case folding hides (`1 PCT ...` under
   `1 Pct ...`). Count it by reading every row; the test checks it fits inside
   its folded group's count, and the generator numbers the members that differ
   only in case (`_CASE_2`).
@@ -82,10 +82,15 @@ service layer; `L_Pan_Revis` and the other lookup tables are not.
    "the rule would fire", not "the field is right". No `where` can exclude
    rows the service's case folding matches to a reference value but the model
    rejects: find them by reading every row, and pin their `OBJECTID`s out of
-   the fixture filters.
+   the fixture filters. `SHAPE.STArea() = 0` matches slivers the service
+   rounds to no area, which validate, as well as empty polygons; pin the
+   empty ones by `OBJECTID` too.
 7. Run `./scripts/generate-docs`. Add the layer's fixtures to
    `tests/conftest.py`, its class to `tests/test_discovery.py`, its page to
-   `tests/test_docs.py`, and its own `tests/test_<module>.py`.
+   `tests/test_docs.py`, and its own `tests/test_<module>.py`. Test a legacy
+   value by the warning it raises, not by `in LEGACY_MEMBERS`: the members are
+   `str`, so `TrueFalse("1")` equals `StateFIPS.V_1` and `in` finds it either
+   way.
 8. Record what the service holds that the reference does not allow in
    `spec/README.md`, and the layer in `README.md`.
 9. Count the rejected rows as one union of every clause, and check it by
