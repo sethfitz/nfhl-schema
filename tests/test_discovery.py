@@ -13,6 +13,7 @@ from nfhl.models import (
     FirmPanel,
     FloodHazardBoundary,
     FloodHazardZone,
+    GeneralStructure,
     Levee,
     Lomr,
     PoliticalJurisdiction,
@@ -39,6 +40,7 @@ def test_discovery_finds_the_model_through_the_entry_point() -> None:
         FloodHazardBoundary,
         PoliticalJurisdiction,
         FirmPanel,
+        GeneralStructure,
     } <= set(found.values())
 
 
@@ -61,6 +63,7 @@ def test_overture_codegen_lists_the_model() -> None:
         "FloodHazardBoundary",
         "PoliticalJurisdiction",
         "FirmPanel",
+        "GeneralStructure",
     } <= set(listed)
 
 
@@ -78,6 +81,7 @@ def test_the_tag_provider_tags_the_model_nfhl() -> None:
     assert "nfhl" in tagged["nfhl_flood_hazard_boundary"]
     assert "nfhl" in tagged["nfhl_political_jurisdiction"]
     assert "nfhl" in tagged["nfhl_firm_panel"]
+    assert "nfhl" in tagged["nfhl_general_structure"]
 
 
 def test_the_tag_provider_leaves_other_packages_alone() -> None:

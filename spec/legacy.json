@@ -48,6 +48,10 @@
     {
       "path": "service/observed/3.json",
       "retrieved_at": "2026-10-12T08:10:17Z"
+    },
+    {
+      "path": "service/observed/24.json",
+      "retrieved_at": "2026-10-12T17:11:55Z"
     }
   ],
   "threshold": 0.001,
@@ -261,6 +265,30 @@
       "value": "6",
       "count": 292,
       "note": "California's FIPS code, 06, without its leading zero. D_State_FIPS lists the two-digit 06; every row holding 6 is in a DFIRM whose ID begins 06 (4 DFIRMs)."
+    },
+    {
+      "domain": "D_Struct_Typ",
+      "field": "STRUCT_TYP",
+      "layer": 24,
+      "value": "1 Pct Annual Chance Flood Discharge Contained In Structure",
+      "count": 13200,
+      "note": "The snapshot's count folds case. Counted by reading every row on 2026-10-12, 310 hold this exact spelling and the rest hold `1 PCT ... Contained in Structure` (9,135), `1 PCT ... Contained In Structure` (3,753) or all capitals (2); the model rejects those as wrong case. Short for the reference's `1-Percent-Annual-Chance Flood Discharge Contained in Structure`: the data spells the percent as `Pct` or `PCT` and drops the hyphens. The exact spelling is in 86 DFIRMs."
+    },
+    {
+      "domain": "D_Struct_Typ",
+      "field": "STRUCT_TYP",
+      "layer": 24,
+      "value": "0.2 Pct Annual Chance Flood Discharge Contained In Structure",
+      "count": 10940,
+      "note": "The snapshot's count folds case. Counted by reading every row on 2026-10-12, 383 hold this exact spelling and the rest hold `0.2 PCT ... Contained in Structure` (5,430) or `0.2 PCT ... Contained In Structure` (5,127); the model rejects those as wrong case. Short for the reference's `0.2-Percent-Annual-Chance Flood Discharge Contained in Structure`: the data spells the percent as `Pct` or `PCT` and drops the hyphens. The exact spelling is in 83 DFIRMs."
+    },
+    {
+      "domain": "D_Struct_Typ",
+      "field": "STRUCT_TYP",
+      "layer": 24,
+      "value": "Other / Misc Structure",
+      "count": 379,
+      "note": "The reference's `Other / Misc. Structure` (code 9000) without its period; the data holds it on 379 rows in 86 DFIRMs against 16 for the reference's spelling, in 5."
     }
   ]
 }

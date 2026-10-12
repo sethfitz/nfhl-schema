@@ -94,6 +94,16 @@ def panel_layer() -> Layer:
 
 
 @pytest.fixture(scope="session")
+def structure_cases() -> list[dict[str, Any]]:
+    return fixture_cases("general_structures.json")
+
+
+@pytest.fixture(scope="session")
+def structure_layer() -> Layer:
+    return modelled("S_Gen_Struct")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 

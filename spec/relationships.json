@@ -241,6 +241,20 @@
           "quote": "Only completed if the hardcopy panel is not printed by FEMA."
         }
       ]
+    },
+    "S_Gen_Struct": {
+      "required_when": [
+        {
+          "field": "STRUC_DESC",
+          "when": "STRUCT_TYP",
+          "any_of": [
+            "0.2-Percent-Annual-Chance Flood Discharge Contained in Structure",
+            "1-Percent-Annual-Chance Flood Discharge Contained in Structure",
+            "Floodway Contained in Structure"
+          ],
+          "quote": "This is required for structures that have a contained in structure type"
+        }
+      ]
     }
   }
 }

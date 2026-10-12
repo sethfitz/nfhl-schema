@@ -34,6 +34,17 @@ class BasemapTyp(str, DocumentedEnum):
     NP = "NP", "Code `NP`."
 
 
+class CstStruct(str, DocumentedEnum):
+    """Values of `D_Cst_Struct` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Gen_Struct.CST_STRUCT`.
+    """
+
+    BEACH_STABILIZATION_STRUCTURE = "Beach Stabilization Structure", "Code `1000`."
+    COASTAL_ARMORING_STRUCTURE = "Coastal Armoring Structure", "Code `2000`."
+    MISCELLANEOUS_STRUCTURE = "Miscellaneous Structure", "Code `3000`."
+    NP = "NP", "Code `NP`."
+
+
 class LOMCStatus(str, DocumentedEnum):
     """Values of `D_LOMC_Status` that apply to the FIRM Database, each as the data
     stores it. Used by `S_LOMR.STATUS`.
@@ -352,6 +363,96 @@ class StateFIPS(str, DocumentedEnum):
     )
 
 
+class StructTyp(str, DocumentedEnum):
+    """Values of `D_Struct_Typ` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Gen_Struct.STRUCT_TYP`. The last 3 are legacy values:
+    common in the data, not in the reference.
+    """
+
+    AQUEDUCT = "Aqueduct", "Code `1000`."
+    BRIDGE = "Bridge", "Code `1001`."
+    CANAL = "Canal", "Code `1002`."
+    CHANNEL = "Channel", "Code `1003`."
+    CONTROL_STRUCTURE = "Control Structure", "Code `1006`."
+    CULVERT = "Culvert", "Code `1007`."
+    DAM = "Dam", "Code `1010`."
+    DOCK = "Dock", "Code `1012`."
+    DROP_STRUCTURE = "Drop Structure", "Code `1013`."
+    ENERGY_DISSIPATER = "Energy Dissipater", "Code `1014`."
+    FISH_LADDER = "Fish Ladder", "Code `1015`."
+    FLUME = "Flume", "Code `1017`."
+    FOOTBRIDGE = "Footbridge", "Code `1018`."
+    GATE = "Gate", "Code `1019`."
+    JETTY = "Jetty", "Code `1020`."
+    LEVEE = "Levee", "Code `1021`."
+    LOCK = "Lock", "Code `1022`."
+    PENSTOCK = "Penstock", "Code `1023`."
+    PIER = "Pier", "Code `1024`."
+    PUMP_STATION = "Pump Station", "Code `1025`."
+    SEAWALL = "Seawall", "Code `1026`."
+    SIDE_WEIR_STRUCTURE = "Side Weir Structure", "Code `1027`."
+    STORM_SEWER = "Storm Sewer", "Code `1028`."
+    UTILITY_CROSSING = "Utility Crossing", "Code `1029`."
+    WEIR = "Weir", "Code `1030`."
+    WING_WALL = "Wing Wall", "Code `1031`."
+    V_0_2_PERCENT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE = (
+        "0.2-Percent-Annual-Chance Flood Discharge Contained in Structure",
+        "Code `1033`.",
+    )
+    V_1_PERCENT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE = (
+        "1-Percent-Annual-Chance Flood Discharge Contained in Structure",
+        "Code `1032`.",
+    )
+    FLOODWAY_CONTAINED_IN_STRUCTURE = "Floodway Contained in Structure", "Code `1036`."
+    PIPELINE = "Pipeline", "Code `1037`."
+    RETAINING_WALL = "Retaining Wall", "Code `1038`."
+    REVETMENT = "Revetment", "Code `1039`."
+    SIPHON = "Siphon", "Code `1040`."
+    OTHER_MISC_STRUCTURE = "Other / Misc. Structure", "Code `9000`."
+    NP = "NP", "Code `NP`."
+    V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE = (
+        "1 Pct Annual Chance Flood Discharge Contained In Structure",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. The snapshot's count folds case. "
+            "Counted by reading every row on 2026-10-12, 310 hold this exact "
+            "spelling and the rest hold `1 PCT ... Contained in Structure` (9,135),"
+            " `1 PCT ... Contained In Structure` (3,753) or all capitals (2); the "
+            "model rejects those as wrong case. Short for the reference's "
+            "`1-Percent-Annual-Chance Flood Discharge Contained in Structure`: the "
+            "data spells the percent as `Pct` or `PCT` and drops the hyphens. The "
+            "exact spelling is in 86 DFIRMs. Held by 13,200 of 285,947 rows of "
+            "`STRUCT_TYP` on NFHL service layer 24, counted 2026-10-12."
+        ),
+    )
+    V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE = (
+        "0.2 Pct Annual Chance Flood Discharge Contained In Structure",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. The snapshot's count folds case. "
+            "Counted by reading every row on 2026-10-12, 383 hold this exact "
+            "spelling and the rest hold `0.2 PCT ... Contained in Structure` "
+            "(5,430) or `0.2 PCT ... Contained In Structure` (5,127); the model "
+            "rejects those as wrong case. Short for the reference's "
+            "`0.2-Percent-Annual-Chance Flood Discharge Contained in Structure`: "
+            "the data spells the percent as `Pct` or `PCT` and drops the hyphens. "
+            "The exact spelling is in 83 DFIRMs. Held by 10,940 of 285,947 rows of "
+            "`STRUCT_TYP` on NFHL service layer 24, counted 2026-10-12."
+        ),
+    )
+    OTHER_MISC_STRUCTURE_LEGACY = (
+        "Other / Misc Structure",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. The reference's `Other / Misc. "
+            "Structure` (code 9000) without its period; the data holds it on 379 "
+            "rows in 86 DFIRMs against 16 for the reference's spelling, in 5. Held "
+            "by 379 of 285,947 rows of `STRUCT_TYP` on NFHL service layer 24, "
+            "counted 2026-10-12."
+        ),
+    )
+
+
 class StudyTyp(str, DocumentedEnum):
     """Values of `D_Study_Typ` that apply to the FIRM Database, each as the data stores
     it. Used by `S_Fld_Haz_Ar.STUDY_TYP`, `S_Profil_Basln.STUDY_TYP`. The last 7 are
@@ -497,7 +598,7 @@ class TrueFalse(str, DocumentedEnum):
     it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
     `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`, `S_Wtr_Ln.SHOWN_FIRM`,
     `S_Wtr_Ln.SHOWN_INDX`, `S_Levee.USACE_LEV`, `S_Levee.PL84_99TF`,
-    `S_Pol_Ar.ANI_TF`.
+    `S_Pol_Ar.ANI_TF`, `S_Gen_Struct.SHOWN_FIRM`.
     """
 
     T = "T", "True (Yes). Code `T`."
@@ -961,6 +1062,9 @@ LEGACY_MEMBERS: frozenset[Enum] = frozenset(
         StateFIPS.V_6,
         StateFIPS.V_8,
         StateFIPS.V_4,
+        StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE,
+        StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE,
+        StructTyp.OTHER_MISC_STRUCTURE_LEGACY,
         StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_MEDIUM_FLOOD_RISK,

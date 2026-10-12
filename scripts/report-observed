@@ -35,9 +35,10 @@ def main() -> int:
             rows = observed["fields"].get(field.name)
             if field.domain is None or rows is None:
                 continue
-            allowed = {v.value for v in reader.domain(field.domain).values}
+            # The grouping folds case: a group that folds to a listed value is it.
+            allowed = {v.value.casefold() for v in reader.domain(field.domain).values}
             legacy = {v.value for v in reader.legacy_values(field.domain)}
-            outside = [r for r in rows if r["value"] not in allowed]
+            outside = [r for r in rows if (r["value"] or "").casefold() not in allowed]
             null = sum(r["count"] for r in rows if r["value"] in (None, ""))
             print(f"\n## {field.name} ({field.domain}); null or blank: {null}")
             for r in outside:

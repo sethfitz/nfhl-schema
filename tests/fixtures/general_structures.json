@@ -1,0 +1,1614 @@
+{
+  "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/24/query",
+  "retrieved_at": "2026-10-12T17:27:32Z",
+  "cases": [
+    {
+      "name": "bridge",
+      "where": "(STRUCT_TYP = 'Bridge' AND SHOWN_FIRM = 'T' AND WTR_NM IS NOT NULL) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 198907,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -82.13046943863054,
+              39.044469744492325
+            ],
+            [
+              -82.13088023343262,
+              39.04482497500907
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 198907,
+          "DFIRM_ID": "39105C",
+          "VERSION_ID": "2.2.2.1",
+          "STRUCT_ID": "39105C_1",
+          "STRUCT_TYP": "Bridge",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "MAIN ST",
+          "WTR_NM": "LITTLE LEADING CREEK",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "39105C_BASE1",
+          "SHAPE.STLength()": 0.0005430846438598082,
+          "GFID": "20140502",
+          "GlobalID": "{082D8DAF-83F2-451F-AABB-B6E33D7103C9}"
+        }
+      }
+    },
+    {
+      "name": "culvert",
+      "where": "(STRUCT_TYP = 'Culvert') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 76,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -87.82041198366237,
+              33.93323307571751
+            ],
+            [
+              -87.82041449823595,
+              33.933245816218935
+            ],
+            [
+              -87.82046931593939,
+              33.933504984840944
+            ],
+            [
+              -87.82048876197483,
+              33.93359668292386
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 76,
+          "DFIRM_ID": "01093C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "01093C_480",
+          "STRUCT_TYP": "Culvert",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "CULVERT",
+          "WTR_NM": "EAST BRANCH TRIBUTARY 1",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "01093C_FIS1",
+          "SHAPE.STLength()": 0.00037162606769747654,
+          "GFID": null,
+          "GlobalID": "{99B7C4D4-4555-46FB-B7B8-76531A7154D2}"
+        }
+      }
+    },
+    {
+      "name": "dam",
+      "where": "(STRUCT_TYP = 'Dam') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 6,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -85.1681634079772,
+              32.81393266960997
+            ],
+            [
+              -85.16847001825371,
+              32.81439836846383
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 6,
+          "DFIRM_ID": "01017C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "01017C_246",
+          "STRUCT_TYP": "Dam",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "LANGDALE DAM",
+          "WTR_NM": "CHATTAHOOCHEE RIVER",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "01017C_FIS1",
+          "SHAPE.STLength()": 0.000557570741998565,
+          "GFID": null,
+          "GlobalID": "{D38A6E3E-FD87-429A-A208-FCA6338DFECE}"
+        }
+      }
+    },
+    {
+      "name": "seawall_coastal_armoring",
+      "where": "(STRUCT_TYP = 'Seawall' AND CST_STRUCT = 'Coastal Armoring Structure') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 204870,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -121.88551696830687,
+              36.95502336684382
+            ],
+            [
+              -121.88582500866505,
+              36.954867268193674
+            ],
+            [
+              -121.88640979090212,
+              36.955397062359715
+            ],
+            [
+              -121.88837294668775,
+              36.957155720093304
+            ],
+            [
+              -121.88825967700166,
+              36.95733966630932
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 204870,
+          "DFIRM_ID": "06087C",
+          "VERSION_ID": "2.3.2.0",
+          "STRUCT_ID": "06087C_129",
+          "STRUCT_TYP": "Seawall",
+          "CST_STRUCT": "Coastal Armoring Structure",
+          "STRUCT_NM": "Via Gaviota Seawall",
+          "WTR_NM": "Pacific Ocean",
+          "LOC_DESC": "Via Gaviota Seawall @ Club House Dr",
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "06087C_STUDY2",
+          "SHAPE.STLength()": 0.003986129561795618,
+          "GFID": "5c32f5e6-e407-499e-9aac-21070df175a9",
+          "GlobalID": "{3037D6B7-CF27-4AF6-A3BC-9B14B25EEEAC}"
+        }
+      }
+    },
+    {
+      "name": "beach_stabilization",
+      "where": "(CST_STRUCT = 'Beach Stabilization Structure') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 233048,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -124.233229457533,
+              40.764641054455595
+            ],
+            [
+              -124.23913688840214,
+              40.76909339500132
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 233048,
+          "DFIRM_ID": "06023C",
+          "VERSION_ID": "2.3.2.0",
+          "STRUCT_ID": "06023C_184",
+          "STRUCT_TYP": "Jetty",
+          "CST_STRUCT": "Beach Stabilization Structure",
+          "STRUCT_NM": "North Spit Jetty",
+          "WTR_NM": "PACIFIC OCEAN",
+          "LOC_DESC": "",
+          "STRUC_DESC": "",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "06023C_STUDY9",
+          "SHAPE.STLength()": 0.007397368448711601,
+          "GFID": "eb7121fb-e281-4ce4-9d87-a1c616528971",
+          "GlobalID": "{34941B12-DBCC-4C7D-8424-5084A21F70A0}"
+        }
+      }
+    },
+    {
+      "name": "miscellaneous_structure",
+      "where": "(CST_STRUCT = 'Miscellaneous Structure') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 204879,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.27864419227492,
+              37.09651503052626
+            ],
+            [
+              -122.27853288314601,
+              37.09647855482827
+            ],
+            [
+              -122.27843655668055,
+              37.09646122000172
+            ],
+            [
+              -122.27841271015126,
+              37.09646365206638
+            ],
+            [
+              -122.27839035533943,
+              37.096463180585644
+            ],
+            [
+              -122.27836948831602,
+              37.09645972959848
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 204879,
+          "DFIRM_ID": "06087C",
+          "VERSION_ID": "2.3.2.0",
+          "STRUCT_ID": "06087C_140",
+          "STRUCT_TYP": "Revetment",
+          "CST_STRUCT": "Miscellaneous Structure",
+          "STRUCT_NM": null,
+          "WTR_NM": "Pacific Ocean",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "06087C_STUDY2",
+          "SHAPE.STLength()": 0.00028248749928380386,
+          "GFID": "5c32f5e6-e407-499e-9aac-21070df175a9",
+          "GlobalID": "{2E97BD13-F838-401B-8F53-517D77279CA8}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_type",
+      "where": "(STRUCT_TYP = 'NP') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 5111,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -91.75926540699524,
+              37.94848830301682
+            ],
+            [
+              -91.75918235275326,
+              37.948534209687445
+            ],
+            [
+              -91.75912231994852,
+              37.948567391571736
+            ],
+            [
+              -91.75909374680616,
+              37.9485831849228
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 5111,
+          "DFIRM_ID": "29161C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "29161C_29",
+          "STRUCT_TYP": "NP",
+          "CST_STRUCT": null,
+          "STRUCT_NM": null,
+          "WTR_NM": "BURGHER BRANCH TRIBUTARY",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "29161C_FIS1",
+          "SHAPE.STLength()": 0.0001961371411636488,
+          "GFID": "20110418LOMR",
+          "GlobalID": "{AD61FAE4-2E06-4E05-9115-5B3F283B1E79}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_class",
+      "where": "(CST_STRUCT = 'NP') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 47564,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -94.93219435373122,
+              36.37641829277845
+            ],
+            [
+              -94.93656596855398,
+              36.374508655390265
+            ],
+            [
+              -94.9363525794768,
+              36.37361524084898
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 47564,
+          "DFIRM_ID": "40041C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "40041C_1",
+          "STRUCT_TYP": "Dam",
+          "CST_STRUCT": "NP",
+          "STRUCT_NM": "DAM",
+          "WTR_NM": "SPAVINAW CREEK",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "40041C_STUDY1",
+          "SHAPE.STLength()": 0.005689049801392102,
+          "GFID": "954c5b95-dacb-447e-b442-ec74852ac110",
+          "GlobalID": "{B647420C-57BD-4364-98B1-38C002C9D2B6}"
+        }
+      }
+    },
+    {
+      "name": "not_shown",
+      "where": "(SHOWN_FIRM = 'F') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 245826,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -89.42499077463266,
+              42.313772421647045
+            ],
+            [
+              -89.42469486187554,
+              42.31456993669275
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 245826,
+          "DFIRM_ID": "17177C",
+          "VERSION_ID": "2.3.1.2",
+          "STRUCT_ID": "17177C_1",
+          "STRUCT_TYP": "Bridge",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "FARWELL BRIDGE RD",
+          "WTR_NM": "Pecatonica River",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "F",
+          "SOURCE_CIT": "17177C_STUDY2",
+          "SHAPE.STLength()": 0.0008506435026706691,
+          "GFID": "20150312",
+          "GlobalID": "{7EF93056-8993-4C52-9E33-9908983664CA}"
+        }
+      }
+    },
+    {
+      "name": "shown_unknown",
+      "where": "(SHOWN_FIRM = 'U') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 2,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -88.1026464150151,
+              33.753711545738426
+            ],
+            [
+              -88.10125183287596,
+              33.753204440303584
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 2,
+          "DFIRM_ID": "01075C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "01075C_8",
+          "STRUCT_TYP": "Bridge",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "BRIDGE",
+          "WTR_NM": "YELLOW CREEK",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "01075C_FIRM1",
+          "SHAPE.STLength()": 0.0014839184767648712,
+          "GFID": null,
+          "GlobalID": "{69A67394-524B-48BC-A977-1A1010FF80C1}"
+        }
+      }
+    },
+    {
+      "name": "no_flag",
+      "where": "(SHOWN_FIRM IS NULL) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 2232826,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -70.9574427229947,
+              42.13119772605481
+            ],
+            [
+              -70.95776394137174,
+              42.131437757719276
+            ],
+            [
+              -70.95781994824883,
+              42.1314823128015
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 2232826,
+          "DFIRM_ID": "25023C",
+          "VERSION_ID": "2.6.3.6",
+          "STRUCT_ID": "25023C_457",
+          "STRUCT_TYP": "Culvert",
+          "CST_STRUCT": null,
+          "STRUCT_NM": null,
+          "WTR_NM": "Shumatuscacant River",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": null,
+          "SOURCE_CIT": "25023C_FIRM1",
+          "SHAPE.STLength()": 0.0004725618137574402,
+          "GFID": "f80a7da4-77f9-4f78-9594-1ed456d6f84d",
+          "GlobalID": "{3C9940EB-395C-40EF-AB73-D5AB80E39395}"
+        }
+      }
+    },
+    {
+      "name": "one_percent_contained",
+      "where": "(STRUCT_TYP = '1-Percent-Annual-Chance Flood Discharge Contained in Structure' AND STRUC_DESC LIKE '_%') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1871322,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -90.72847380056635,
+              38.31805184210248
+            ],
+            [
+              -90.7285240815449,
+              38.31803584051228
+            ],
+            [
+              -90.72853019902898,
+              38.318033879931086
+            ],
+            [
+              -90.72857114596562,
+              38.318020779267556
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1871322,
+          "DFIRM_ID": "29099C",
+          "VERSION_ID": "2.7.5.6",
+          "STRUCT_ID": "29099C_108",
+          "STRUCT_TYP": "1-Percent-Annual-Chance Flood Discharge Contained in Structure",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "Calvery Ridge Road",
+          "WTR_NM": "Calvey Creek Tributary 1",
+          "LOC_DESC": "Calvery Ridge Road",
+          "STRUC_DESC": "Culvert",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "29099C_STUDY1",
+          "SHAPE.STLength()": 0.00010218134810455547,
+          "GFID": "3a7cd1aa-82f5-4b26-81b4-bb8013473ed9",
+          "GlobalID": "{4734CFC2-EF17-481A-85A4-91F3D1F63ABF}"
+        }
+      }
+    },
+    {
+      "name": "two_tenths_contained",
+      "where": "(STRUCT_TYP = '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure' AND STRUC_DESC LIKE '_%') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1479880,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -88.10048759195563,
+              43.54188921299152
+            ],
+            [
+              -88.1002499936284,
+              43.541887016683674
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1479880,
+          "DFIRM_ID": "55117C",
+          "VERSION_ID": "2.8.3.3",
+          "STRUCT_ID": "55117C_69",
+          "STRUCT_TYP": "0.2-Percent-Annual-Chance Flood Discharge Contained in Structure",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "Boltonville Road",
+          "WTR_NM": "UT-1 Mink Creek",
+          "LOC_DESC": null,
+          "STRUC_DESC": "Culvert",
+          "SHOWN_FIRM": "F",
+          "SOURCE_CIT": "55117C_STUDY11",
+          "SHAPE.STLength()": 0.00023760840732624778,
+          "GFID": "6f79874f-889e-4759-ae7f-31893fb2064d",
+          "GlobalID": "{FFDBF6DB-3B81-4E0A-B758-BD1151FC5EE3}"
+        }
+      }
+    },
+    {
+      "name": "floodway_contained",
+      "where": "(STRUCT_TYP = 'Floodway Contained in Structure' AND STRUC_DESC LIKE '_%') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 908368,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -112.56603184599824,
+              44.619219834801896
+            ],
+            [
+              -112.56602541419777,
+              44.61924775965285
+            ],
+            [
+              -112.56601027438664,
+              44.61931388635997
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 908368,
+          "DFIRM_ID": "30001C",
+          "VERSION_ID": "2.6.4.6",
+          "STRUCT_ID": "30001C_1",
+          "STRUCT_TYP": "Floodway Contained in Structure",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "UNION PACIFIC RR",
+          "WTR_NM": "JUNCTION CREEK",
+          "LOC_DESC": "",
+          "STRUC_DESC": "Stone block Culvert",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "30001C_STUDY2",
+          "SHAPE.STLength()": 9.64936878394667e-05,
+          "GFID": "666db75d-246e-4545-ae41-0bb791b270fb",
+          "GlobalID": "{71D6D048-4421-4008-9B6F-AA4E57D45CE9}"
+        }
+      }
+    },
+    {
+      "name": "other_misc_structure",
+      "where": "(STRUCT_TYP = 'Other / Misc. Structure') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1453546,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -87.86460410951439,
+              43.3903753657985
+            ],
+            [
+              -87.86458481278449,
+              43.390355597592134
+            ],
+            [
+              -87.86456567321541,
+              43.390335987856204
+            ],
+            [
+              -87.86447593569422,
+              43.39024397546012
+            ],
+            [
+              -87.85954753333158,
+              43.385250232382006
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1453546,
+          "DFIRM_ID": "55089C",
+          "VERSION_ID": "2.8.3.0",
+          "STRUCT_ID": "55089C_454",
+          "STRUCT_TYP": "Other / Misc. Structure",
+          "CST_STRUCT": "Miscellaneous Structure",
+          "STRUCT_NM": "Port Washington Harbor North Breakwater",
+          "WTR_NM": "Lake Michigan",
+          "LOC_DESC": "Port Washington, WI",
+          "STRUC_DESC": "Breakwater",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "55089C_STUDY21",
+          "SHAPE.STLength()": 0.007199720284634124,
+          "GFID": "53d87fd5-ef54-4420-9d42-825039669f55",
+          "GlobalID": "{7641393E-25F5-4F4C-8AAC-71E0A6B6FAB5}"
+        }
+      }
+    },
+    {
+      "name": "legacy_one_percent_contained",
+      "where": "(OBJECTID = 19899) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "STRUCT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 19899,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -81.25354979931589,
+              37.856819055498974
+            ],
+            [
+              -81.25372866926539,
+              37.85675585589868
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 19899,
+          "DFIRM_ID": "54081C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "54081C_31",
+          "STRUCT_TYP": "1 Pct Annual Chance Flood Discharge Contained In Structure",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "NP",
+          "WTR_NM": "North Sand Branch",
+          "LOC_DESC": "U",
+          "STRUC_DESC": "U",
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "54081C_FIS1",
+          "SHAPE.STLength()": 0.00018970668925650706,
+          "GFID": "20140714",
+          "GlobalID": "{D885FDC8-ABC7-4440-BF4E-E52EB21C5E28}"
+        }
+      }
+    },
+    {
+      "name": "legacy_two_tenths_contained",
+      "where": "(OBJECTID = 1322866) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "STRUCT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 1322866,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -77.80338166547803,
+              38.711595235494606
+            ],
+            [
+              -77.80198344630729,
+              38.710692921746116
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1322866,
+          "DFIRM_ID": "51061C",
+          "VERSION_ID": "2.6.4.6",
+          "STRUCT_ID": "51061C_11721",
+          "STRUCT_TYP": "0.2 Pct Annual Chance Flood Discharge Contained In Structure",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "Moffett Avenue",
+          "WTR_NM": "Cemetery Run",
+          "LOC_DESC": "-77.8026800468, 38.7111363688",
+          "STRUC_DESC": "Culvert",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "51061C_FIS2",
+          "SHAPE.STLength()": 0.0016640869420453028,
+          "GFID": "457a162a-15c6-46e9-ae3c-35ee54ff9d70",
+          "GlobalID": "{DB8EDE5D-4DBA-441C-916D-1F44539B492D}"
+        }
+      }
+    },
+    {
+      "name": "legacy_other_misc",
+      "where": "(OBJECTID = 203731) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "STRUCT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 203731,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -92.78859113087746,
+              35.12703548108736
+            ],
+            [
+              -92.7883550727115,
+              35.126719464801354
+            ],
+            [
+              -92.78646009306372,
+              35.124120550603536
+            ],
+            [
+              -92.78595657732173,
+              35.12361182115006
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 203731,
+          "DFIRM_ID": "05029C",
+          "VERSION_ID": "2.3.3.0",
+          "STRUCT_ID": "05029C_17",
+          "STRUCT_TYP": "Other / Misc Structure",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "Arthur V. Ormond Lock & Dam",
+          "WTR_NM": "Arkansas River",
+          "LOC_DESC": null,
+          "STRUC_DESC": "Dam",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "05029C_STUDY1",
+          "SHAPE.STLength()": 0.004326634097667719,
+          "GFID": "ab1bd93a-570b-4cea-8ac3-782f01eaf93f",
+          "GlobalID": "{D54D4E7A-6AFF-4ED8-9075-BBBE7C1D3CAE}"
+        }
+      }
+    },
+    {
+      "name": "no_source_citation",
+      "where": "((SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": "SOURCE_CIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 35531,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -82.47129002678777,
+              34.6599463545494
+            ],
+            [
+              -82.47122900648559,
+              34.659949873643775
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 35531,
+          "DFIRM_ID": "45007C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "45007C_1",
+          "STRUCT_TYP": "Culvert",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "CULVERT",
+          "WTR_NM": null,
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": null,
+          "SHAPE.STLength()": 6.112167466738958e-05,
+          "GFID": "c5d40606-1477-4d21-94ee-73e42d42d1ed",
+          "GlobalID": "{57F6404D-8660-4384-9902-AAA27C9D6AD6}"
+        }
+      }
+    },
+    {
+      "name": "no_version_id",
+      "where": "((VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": "VERSION_ID",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 2334160,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -97.33251485954466,
+              33.04279809595834
+            ],
+            [
+              -97.33240810152869,
+              33.042887127550145
+            ],
+            [
+              -97.33238566682569,
+              33.04290579694326
+            ],
+            [
+              -97.33217097208787,
+              33.04308511348431
+            ],
+            [
+              -97.33213261437737,
+              33.04311703939069
+            ],
+            [
+              -97.33212469216383,
+              33.04312370693755
+            ],
+            [
+              -97.3319258431633,
+              33.04329800481001
+            ],
+            [
+              -97.3318973682473,
+              33.04332294884789
+            ],
+            [
+              -97.33166737783601,
+              33.04352454293156
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 2334160,
+          "DFIRM_ID": "48121C",
+          "VERSION_ID": "",
+          "STRUCT_ID": "48121C_666",
+          "STRUCT_TYP": "Bridge",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "",
+          "WTR_NM": "Harriet Creek",
+          "LOC_DESC": "",
+          "STRUC_DESC": "",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "48121C_LOMC157",
+          "SHAPE.STLength()": 0.0011163027091440913,
+          "GFID": "bb21cd5b-d527-43e2-bd9a-0f163f454865",
+          "GlobalID": "{04CCC7A9-127B-45C0-A505-72881BED8B8E}"
+        }
+      }
+    },
+    {
+      "name": "no_structure_id",
+      "where": "((STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": "STRUCT_ID",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12943,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -97.110186673671,
+              29.686758328913847
+            ],
+            [
+              -97.11021617798386,
+              29.68658214118824
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12943,
+          "DFIRM_ID": "48149C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": null,
+          "STRUCT_TYP": "Culvert",
+          "CST_STRUCT": null,
+          "STRUCT_NM": null,
+          "WTR_NM": "BIG FIVEMILE CREEK",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "48149C_STUDY1",
+          "SHAPE.STLength()": 0.0001786409986041244,
+          "GFID": null,
+          "GlobalID": "{8E51D585-87CA-4D8A-AA16-B256D915E1C5}"
+        }
+      }
+    },
+    {
+      "name": "no_structure_type",
+      "where": "((STRUCT_TYP IS NULL OR (STRUCT_TYP = '' AND STRUCT_TYP NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": "STRUCT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 2059763,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -110.27453428696673,
+              31.55866086907255
+            ],
+            [
+              -110.27423989599131,
+              31.558668398396822
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 2059763,
+          "DFIRM_ID": "04003C",
+          "VERSION_ID": "2.1.3.0",
+          "STRUCT_ID": "04003C_81",
+          "STRUCT_TYP": "",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "",
+          "WTR_NM": "CHARLESTON WASH",
+          "LOC_DESC": "",
+          "STRUC_DESC": "Culvert",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "04003C_LOMC19",
+          "SHAPE.STLength()": 0.00029448718495368563,
+          "GFID": "013d6a44-e705-48cb-9f12-1cb3714a7854",
+          "GlobalID": "{44BBBC82-4D62-490E-8F5F-7C244A73E210}"
+        }
+      }
+    },
+    {
+      "name": "lone_space_class",
+      "where": "(CST_STRUCT LIKE ' ') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": "CST_STRUCT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 20911,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -97.18240111737086,
+              34.20789685462649
+            ],
+            [
+              -97.18241066488962,
+              34.207899556481934
+            ],
+            [
+              -97.18242153779792,
+              34.207904166531236
+            ],
+            [
+              -97.1824419739413,
+              34.20791420779499
+            ],
+            [
+              -97.18246867032337,
+              34.20792696270141
+            ],
+            [
+              -97.18249502880951,
+              34.20793671190773
+            ],
+            [
+              -97.1825263011898,
+              34.20794371472906
+            ],
+            [
+              -97.18253691478256,
+              34.207944817473454
+            ],
+            [
+              -97.18255690039776,
+              34.20794689461426
+            ],
+            [
+              -97.1825848475169,
+              34.207945984389994
+            ],
+            [
+              -97.18261179535514,
+              34.20794234480683
+            ],
+            [
+              -97.1826338031054,
+              34.20793653378565
+            ],
+            [
+              -97.18267120999393,
+              34.20791947398023
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 20911,
+          "DFIRM_ID": "40019C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "40019C_194",
+          "STRUCT_TYP": "Dam",
+          "CST_STRUCT": " ",
+          "STRUCT_NM": "Dam",
+          "WTR_NM": "NP",
+          "LOC_DESC": " ",
+          "STRUC_DESC": " ",
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "40019C_BASE2",
+          "SHAPE.STLength()": 0.00028403331461330567,
+          "GFID": "20141002",
+          "GlobalID": "{B87A8DA5-CEA7-482E-917B-B12C5A36D3D2}"
+        }
+      }
+    },
+    {
+      "name": "plural_class",
+      "where": "(CST_STRUCT = 'MISCELLANEOUS STRUCTURES') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": "CST_STRUCT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 245854,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -85.4093260352092,
+              38.74121301864998
+            ],
+            [
+              -85.40919787840949,
+              38.740948662420436
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 245854,
+          "DFIRM_ID": "18077C",
+          "VERSION_ID": "2.2.2.0",
+          "STRUCT_ID": "18077C_1",
+          "STRUCT_TYP": "Bridge",
+          "CST_STRUCT": "MISCELLANEOUS STRUCTURES",
+          "STRUCT_NM": "PRIVATE BRIDGE",
+          "WTR_NM": "CROOKED CREEK",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "F",
+          "SOURCE_CIT": "18077C_STUDY7",
+          "SHAPE.STLength()": 0.000293782816381429,
+          "GFID": "20150324",
+          "GlobalID": "{2A15D936-294F-4DE2-9218-E53DEC3CDBEC}"
+        }
+      }
+    },
+    {
+      "name": "dike",
+      "where": "(STRUCT_TYP = 'Dike') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": "STRUCT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 204833,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.59375775387274,
+              48.355081987142945
+            ],
+            [
+              -122.59354636217583,
+              48.35522637076406
+            ],
+            [
+              -122.59319776510559,
+              48.355059235565435
+            ],
+            [
+              -122.59275411980231,
+              48.354854538953994
+            ],
+            [
+              -122.59229395297363,
+              48.35465821508434
+            ],
+            [
+              -122.59183828880566,
+              48.354478356423975
+            ],
+            [
+              -122.59134962873011,
+              48.35429598057564
+            ],
+            [
+              -122.59084889477867,
+              48.354119113213535
+            ],
+            [
+              -122.59023258871373,
+              48.35393785453074
+            ],
+            [
+              -122.58965846199379,
+              48.35379451742671
+            ],
+            [
+              -122.58919598099754,
+              48.35369695862244
+            ],
+            [
+              -122.58860135920571,
+              48.35357027008474
+            ],
+            [
+              -122.58799499096533,
+              48.35348494364304
+            ],
+            [
+              -122.58736044773148,
+              48.35342439752858
+            ],
+            [
+              -122.58670569362555,
+              48.353383176952185
+            ],
+            [
+              -122.58608438858238,
+              48.35337744720232
+            ],
+            [
+              -122.5854635249046,
+              48.35339358375397
+            ],
+            [
+              -122.58507324622487,
+              48.35342426027
+            ],
+            [
+              -122.58487202934994,
+              48.35345342409246
+            ],
+            [
+              -122.58481536890942,
+              48.35326195251613
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 204833,
+          "DFIRM_ID": "53029C",
+          "VERSION_ID": "2.3.2.1",
+          "STRUCT_ID": "53029C_1",
+          "STRUCT_TYP": "Dike",
+          "CST_STRUCT": null,
+          "STRUCT_NM": null,
+          "WTR_NM": "DUGUALLA BAY",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "53029C_BASE1",
+          "SHAPE.STLength()": 0.009431473777657517,
+          "GFID": "695b59f1-f4e1-4d05-baf3-038e5f045535",
+          "GlobalID": "{EE73E304-68DF-4E8E-AD6B-86D3E3E02276}"
+        }
+      }
+    },
+    {
+      "name": "spillway",
+      "where": "(STRUCT_TYP = 'Spillway') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": "STRUCT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 2036,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -89.25432942818968,
+              39.53124911523418
+            ],
+            [
+              -89.25316826522328,
+              39.531190030697424
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 2036,
+          "DFIRM_ID": "17021C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "17021C_140",
+          "STRUCT_TYP": "Spillway",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "spillway 590'",
+          "WTR_NM": "South Fork Sangamon River",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "17021C_BASE2",
+          "SHAPE.STLength()": 0.0011626648881762874,
+          "GFID": "20110616",
+          "GlobalID": "{4AF8903B-0167-45D9-9FFD-0CA581599E44}"
+        }
+      }
+    },
+    {
+      "name": "misspelled_type",
+      "where": "(STRUCT_TYP = 'Brigdge') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": "STRUCT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1726210,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -115.99736005095066,
+              47.50995970704316
+            ],
+            [
+              -115.99752289566163,
+              47.50968837812179
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1726210,
+          "DFIRM_ID": "16079C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "16079C_17",
+          "STRUCT_TYP": "Brigdge",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "",
+          "WTR_NM": "SOUTH FORK COEUR D'ALENE RIVER",
+          "LOC_DESC": "",
+          "STRUC_DESC": "",
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "16079C_LOMC1",
+          "SHAPE.STLength()": 0.00031644552949633935,
+          "GFID": "164b0a38-d48b-4e24-a856-eba207c9be20",
+          "GlobalID": "{657BF816-17CD-4722-BA3C-7B9A4A2845D6}"
+        }
+      }
+    },
+    {
+      "name": "truncated_type",
+      "where": "(STRUCT_TYP = '1-Percent-Annual-Chance Flood Discharge Contained in Structu') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' ')))",
+      "expect": "STRUCT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 2298707,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -111.74109251557162,
+              45.33693130777286
+            ],
+            [
+              -111.74108333738137,
+              45.33693185652678
+            ],
+            [
+              -111.74096316569192,
+              45.33693899556614
+            ],
+            [
+              -111.74096089078947,
+              45.33693907414675
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 2298707,
+          "DFIRM_ID": "30057C",
+          "VERSION_ID": "2.6.4.6",
+          "STRUCT_ID": "30057C_20",
+          "STRUCT_TYP": "1-Percent-Annual-Chance Flood Discharge Contained in Structu",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "Bauer Lane",
+          "WTR_NM": "Moores Creek",
+          "LOC_DESC": "",
+          "STRUC_DESC": "Culvert",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "30057C_LOMC1",
+          "SHAPE.STLength()": 0.00013185436965033935,
+          "GFID": "8a178c38-ccd4-422f-b172-e9fe46fa7c77",
+          "GlobalID": "{706E4322-2217-480A-A3CE-84117E0F4ACE}"
+        }
+      }
+    },
+    {
+      "name": "wrong_case_floodway",
+      "where": "(OBJECTID = 217745) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": "STRUCT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 217745,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -83.8219085922547,
+              39.445489875824464
+            ],
+            [
+              -83.8218518781613,
+              39.4455301168473
+            ],
+            [
+              -83.82169232851876,
+              39.44564283781183
+            ],
+            [
+              -83.8213722089982,
+              39.4458692200864
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 217745,
+          "DFIRM_ID": "39027C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "39027C_7",
+          "STRUCT_TYP": "Floodway Contained In Structure",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "SOUTH WALL STREET",
+          "WTR_NM": "LYTLE CREEK BRANCH NO. 2",
+          "LOC_DESC": "",
+          "STRUC_DESC": "CULVERT",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "39027C_FIS1",
+          "SHAPE.STLength()": 0.0006569695520603017,
+          "GFID": "1f1162a6-d88a-45aa-b769-8b9266eec3d0",
+          "GlobalID": "{B026168D-439B-43B2-9D1A-092E508B8E95}"
+        }
+      }
+    },
+    {
+      "name": "wrong_case_legacy_percent",
+      "where": "(OBJECTID = 226298) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": "STRUCT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 226298,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -112.71451217063155,
+              46.006510902820274
+            ],
+            [
+              -112.71433481467494,
+              46.00649984264784
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 226298,
+          "DFIRM_ID": "30093C",
+          "VERSION_ID": "2.6.3.6",
+          "STRUCT_ID": "30093C_153",
+          "STRUCT_TYP": "1 PCT Annual Chance Flood Discharge Contained in Structure",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "Unnamed Rd",
+          "WTR_NM": "Silver Bow Creek",
+          "LOC_DESC": "",
+          "STRUC_DESC": "4-CMP Culverts",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "30093C_STUDY1",
+          "SHAPE.STLength()": 0.00017770044822212582,
+          "GFID": "6009bf70-fb9e-4a1f-b38e-45000a18afdd",
+          "GlobalID": "{B1B28E4E-6001-48D1-BC23-9B25CB2A2D7B}"
+        }
+      }
+    },
+    {
+      "name": "described_nothing_contained",
+      "where": "(STRUCT_TYP = '1-Percent-Annual-Chance Flood Discharge Contained in Structure' AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND SHAPE.STLength() < 0.01",
+      "expect": "@require_if(struc_desc)",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1630923,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -79.05032273509497,
+              37.57591648747765
+            ],
+            [
+              -79.0502057000586,
+              37.57588330690987
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1630923,
+          "DFIRM_ID": "51009C",
+          "VERSION_ID": "2.8.4.6",
+          "STRUCT_ID": "51009C_53",
+          "STRUCT_TYP": "1-Percent-Annual-Chance Flood Discharge Contained in Structure",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "S Amherst Hwy",
+          "WTR_NM": "Rutledge Creek",
+          "LOC_DESC": "Railroad\nRUT_00_0_600\n\nThis is a culvert arch culvert. Chart# shows CMP but the manning n value was selected to represent concrete pipe.",
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "51009C_STUDY3",
+          "SHAPE.STLength()": 0.00012164760921325727,
+          "GFID": "630de8f2-9f49-422b-a05b-7aa7a9917165",
+          "GlobalID": "{61C8C0E1-9FC3-455D-B304-6FF8BC0B6FD2}"
+        }
+      }
+    },
+    {
+      "name": "floodway_without_description",
+      "where": "(STRUCT_TYP = 'Floodway Contained in Structure' AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND STRUCT_TYP IN ('Aqueduct', 'Bridge', 'Canal', 'Channel', 'Control Structure', 'Culvert', 'Dam', 'Dock', 'Drop Structure', 'Energy Dissipater', 'Fish Ladder', 'Flume', 'Footbridge', 'Gate', 'Jetty', 'Levee', 'Lock', 'Penstock', 'Pier', 'Pump Station', 'Seawall', 'Side Weir Structure', 'Storm Sewer', 'Utility Crossing', 'Weir', 'Wing Wall', '0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure', 'Pipeline', 'Retaining Wall', 'Revetment', 'Siphon', 'Other / Misc. Structure', 'NP') AND OBJECTID NOT IN (488, 32457, 217745, 217747, 226260, 409494, 1082618, 1082619, 1082624, 1117638, 1117639, 1173922, 1173955, 1276564, 1442934, 1562027, 1562100, 1597371, 1597374, 1597375, 1597378, 1633097, 1742957, 1818327, 1950819, 1950927, 1951227, 1951366, 1951374, 1955190, 2019787, 2044204, 2044215, 2044227, 2044279, 2044281, 2044380, 2172223, 2172239, 2172240, 2172259, 2172274, 2172407, 2172433, 2172460, 2172528, 2172715, 2172726, 2172913, 2177093, 2177244, 2232373, 2232433, 2232434, 2232438, 2232447, 2232495, 2232518, 2232520, 2232526, 2232607, 2232612, 2232616, 2232617, 2232619, 2232627, 2232644, 2232647, 2232648, 2232654, 2232663, 2232671, 2232682, 2245935, 2246380, 2246387, 2246546, 2246581, 2263063, 2263216, 2263217, 2263218, 2272034, 2272044, 2272049, 2272051, 2272052, 2272068, 2272071, 2272090, 2272091, 2272099, 2272106, 2272118, 2272120, 2272125, 2272139, 2272220, 2272221, 2272224, 2272244, 2272254, 2272304, 2272307, 2272308, 2286490, 2286746, 2287714, 2288156, 2288192, 2288204, 2294870, 2294872, 2294873, 2294877, 2294892, 2294895, 2294896, 2294897, 2294932, 2294975, 2294977, 2295073, 2295081, 2295106, 2295109, 2295111, 2295112, 2295132, 2295134, 2295138, 2295140, 2295141, 2295145, 2295146, 2295155, 2295275, 2295278, 2295329, 2295330, 2295331, 2295332, 2295382, 2295407, 2295413, 2295414, 2295417, 2295418, 2295430, 2295431, 2295432, 2295434, 2295436, 2295437, 2295438, 2295439, 2295470, 2295472, 2295514, 2295515, 2295519, 2295520, 2295521, 2295526, 2295532, 2295533, 2295534, 2295535, 2295537, 2295547, 2295548, 2295579, 2295580, 2295610, 2295611, 2295612, 2295617, 2295621, 2303212, 2303213) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND SHAPE.STLength() < 0.01",
+      "expect": "@require_if(struc_desc)",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 125986,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -120.36247741718994,
+              38.24209054519382
+            ],
+            [
+              -120.36238705238559,
+              38.24232359498323
+            ],
+            [
+              -120.36233928206714,
+              38.242423372433194
+            ],
+            [
+              -120.36231198324455,
+              38.24247216299748
+            ],
+            [
+              -120.36229370676207,
+              38.242532170911396
+            ],
+            [
+              -120.36227762660155,
+              38.2425921788251
+            ],
+            [
+              -120.3622657033451,
+              38.2426632456183
+            ],
+            [
+              -120.36224758402255,
+              38.24271588007253
+            ],
+            [
+              -120.36223134539179,
+              38.242777771296204
+            ],
+            [
+              -120.36221455931982,
+              38.242858016279
+            ],
+            [
+              -120.36220804894016,
+              38.24290727832406
+            ],
+            [
+              -120.36219283185103,
+              38.24294038031323
+            ],
+            [
+              -120.3621807514312,
+              38.242989092296035
+            ],
+            [
+              -120.36216765208464,
+              38.24303019507806
+            ],
+            [
+              -120.36214702080962,
+              38.243089339917525
+            ],
+            [
+              -120.36212992172273,
+              38.24314456359545
+            ],
+            [
+              -120.36209642683981,
+              38.24322331817146
+            ],
+            [
+              -120.3620694423403,
+              38.243284816494
+            ],
+            [
+              -120.36203939975404,
+              38.24334756948364
+            ],
+            [
+              -120.36199915874244,
+              38.24340993088172
+            ],
+            [
+              -120.36196919473606,
+              38.24346907572187
+            ],
+            [
+              -120.36193428802534,
+              38.24354720296459
+            ],
+            [
+              -120.36192024702235,
+              38.24357669811386
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 125986,
+          "DFIRM_ID": "06009C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "06009C_18",
+          "STRUCT_TYP": "Floodway Contained in Structure",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "FLOODWAY CONTAINED IN CHANNEL",
+          "WTR_NM": "SAN ANTONIA CREEK TRIBUTARY",
+          "LOC_DESC": "",
+          "STRUC_DESC": "",
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "06009C_FIRM1",
+          "SHAPE.STLength()": 0.0015960065370037868,
+          "GFID": "66e6f2cd-a3e2-45e6-bca3-7b23c9f94515",
+          "GlobalID": "{226E752B-FBFC-4E42-8B17-E3EF0FF9E87D}"
+        }
+      }
+    }
+  ]
+}

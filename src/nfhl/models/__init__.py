@@ -12,6 +12,7 @@ from nfhl.models.cross_sections import CrossSection
 from nfhl.models.firm_panels import FirmPanel
 from nfhl.models.flood_hazard_boundaries import FloodHazardBoundary
 from nfhl.models.flood_hazard_zones import FloodHazardZone
+from nfhl.models.general_structures import GeneralStructure
 from nfhl.models.levees import Levee
 from nfhl.models.lomrs import Lomr
 from nfhl.models.political_jurisdictions import PoliticalJurisdiction
@@ -26,6 +27,7 @@ __all__ = [
     "FirmPanel",
     "FloodHazardBoundary",
     "FloodHazardZone",
+    "GeneralStructure",
     "Levee",
     "Lomr",
     "PoliticalJurisdiction",

@@ -4,7 +4,7 @@ Values of `D_TrueFalse` that apply to the FIRM Database, each as the data stores
 it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
 `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`, `S_Wtr_Ln.SHOWN_FIRM`,
 `S_Wtr_Ln.SHOWN_INDX`, `S_Levee.USACE_LEV`, `S_Levee.PL84_99TF`,
-`S_Pol_Ar.ANI_TF`.
+`S_Pol_Ar.ANI_TF`, `S_Gen_Struct.SHOWN_FIRM`.
 
 ## Values
 
@@ -15,6 +15,7 @@ it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
 ## Used By
 
 - [`FloodHazardZone`](../flood_hazard_zone.md)
+- [`GeneralStructure`](../general_structure.md)
 - [`Levee`](../levee.md)
 - [`PoliticalJurisdiction`](../political_jurisdiction.md)
 - [`ProfileBaseline`](../profile_baseline.md)

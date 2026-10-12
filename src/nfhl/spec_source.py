@@ -74,6 +74,7 @@ LAYERS: tuple[Layer, ...] = (
     Layer(27, "S_Fld_Haz_Ln", "FloodHazardBoundary", "flood_hazard_boundaries"),
     Layer(22, "S_Pol_Ar", "PoliticalJurisdiction", "political_jurisdictions"),
     Layer(3, "S_FIRM_Pan", "FirmPanel", "firm_panels"),
+    Layer(24, "S_Gen_Struct", "GeneralStructure", "general_structures"),
 )
 
 
@@ -315,7 +316,7 @@ _CROSSWALK_HEADER = ["Flood Zones", "Applicable Zone Subtypes"]
 _TABLE_LIST = ["FIRM Table Name", "Table Type", "Table Description"]
 _NO_SUBTYPE = "<NULL>"
 # Sections that never say what the table "contains information about".
-SUMMARY_ONLY = frozenset({"S_Profil_Basln"})
+SUMMARY_ONLY = frozenset({"S_Profil_Basln", "S_Gen_Struct"})
 
 
 def split_cell(cell: str, terms: list[str]) -> list[str]:
@@ -648,10 +649,12 @@ class SpecReader:
             rows = observed["fields"].get(field.name)
             if field.domain is None or rows is None:
                 continue
-            allowed = {v.value for v in self.domain(field.domain).values}
+            # The snapshot's grouping folds case and shows one spelling of each
+            # group, so a group that folds to a listed value is that value.
+            allowed = {v.value.casefold() for v in self.domain(field.domain).values}
             for row in rows:
                 value, count = row["value"], row["count"]
-                if value is None or value in TEXT_NULLS or value in allowed:
+                if value is None or value in TEXT_NULLS or value.casefold() in allowed:
                     continue
                 if count >= floor:
                     found.append(

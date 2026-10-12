@@ -120,14 +120,23 @@ def test_a_section_introduction_is_its_prose_without_the_guidance(
     assert "contains the following elements" not in intro
 
 
+@pytest.mark.parametrize(
+    ("table", "summary"),
+    [
+        ("S_Profil_Basln", "Location and attributes for profile baseline"),
+        ("S_Gen_Struct", "Location and attributes for flood control structures"),
+    ],
+)
 def test_a_section_that_never_says_what_it_holds_reads_the_table_summary(
-    reader: SpecReader,
+    reader: SpecReader, table: str, summary: str
 ) -> None:
     # S_Profil_Basln's section says when it is required and how to submit its
-    # long text, never what it "contains information about".
-    intro = reader.reference_intro("S_Profil_Basln")
-    assert intro == reader.table_summary("S_Profil_Basln")
-    assert intro.startswith("Location and attributes for profile baseline")
+    # long text; S_Gen_Struct's says when it is required and what lines stand
+    # for. Neither says what the table "contains information about".
+    assert table in SUMMARY_ONLY
+    intro = reader.reference_intro(table)
+    assert intro == reader.table_summary(table)
+    assert intro.startswith(summary)
     assert reader.table_summary("S_XS") != reader.reference_intro("S_XS")
 
 
@@ -265,6 +274,25 @@ def test_the_profile_baselines_hold_the_zones_legacy_study_types(
     apostrophe = "Shaded Zone X with depths less than 1'"
     assert apostrophe in observed_values(reader, profile_layer, "STUDY_TYP")
     assert apostrophe not in on_profiles
+
+
+def test_a_value_differing_from_a_listed_one_only_in_case_is_not_legacy(
+    reader: SpecReader, structure_layer: Layer
+) -> None:
+    # The snapshot's grouping folds case and shows one spelling of a group. 114 of
+    # the 292 rows it shows as `Floodway Contained In Structure` are the
+    # reference's `Contained in`; a group that folds to a listed value is that
+    # value, however the group is spelled.
+    listed = "Floodway Contained in Structure"
+    shown = "Floodway Contained In Structure"
+    floor = reader.legacy["threshold"] * reader.observed(structure_layer)["total"]
+    rows = reader.observed(structure_layer)["fields"]["STRUCT_TYP"]
+    assert listed in {v.value for v in reader.domain("D_Struct_Typ").values}
+    assert {"value": shown, "count": 292} in rows and floor <= 292
+    # A did-happen control: a value that differs by more than case is selected.
+    selected = {v.value for v in reader.legacy_candidates(structure_layer)}
+    assert shown not in selected
+    assert "Other / Misc Structure" in selected
 
 
 def test_a_lower_threshold_admits_more_but_never_a_text_null(

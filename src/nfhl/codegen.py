@@ -720,6 +720,16 @@ GEOMETRIES = {
         "levee, floodwall or levee closure structure shown on the FIRM, with its "
         "accreditation status.",
     ),
+    "S_Gen_Struct": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "“Spatial elements representing general structures are represented by "
+        "lines”, and Table 4 holds S_Gen_Struct to “Must Be Single Part”, so a "
+        "LineString, though the service's polyline type admits several parts.",
+        "The general structure: in the reference's words, a line representing the "
+        "primary characteristic of a structure that affects flood risk, such as the "
+        "transportation centerline a bridge carries or the top of a dam.",
+    ),
     "S_LOMR": LayerGeometry(
         "esriGeometryPolygon",
         ("POLYGON",),
