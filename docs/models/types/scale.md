@@ -1,7 +1,7 @@
 # Scale
 
 Values of `D_Scale` that apply to the FIRM Database, each as the data stores it.
-Used by `S_LOMR.SCALE`.
+Used by `S_LOMR.SCALE`, `S_FIRM_Pan.SCALE`.
 
 ## Values
 
@@ -12,4 +12,5 @@ Used by `S_LOMR.SCALE`.
 
 ## Used By
 
+- [`FirmPanel`](../firm_panel.md)
 - [`Lomr`](../lomr.md)

@@ -838,6 +838,118 @@ POL_AR_SPARSE = {
 }
 
 
+PANEL_TYPES = domain_values("D_Panel_Typ")
+PANEL_NOT_PRINTED = [t for t in PANEL_TYPES if t.endswith("Not Printed")]
+# The rule reads a panel type only once it validates.
+PANEL_PRINTED = [t for t in PANEL_TYPES if t not in PANEL_NOT_PRINTED]
+PNP_RULE = "@forbid_if(pnp_reason)"
+# Every required field populated, every vocabulary value a reference one, and a
+# reason given only for a panel not printed, unless the case is about that; a lone
+# space in free text is a value. A panel with no shape is `IS NULL`.
+PANEL_FIELDS = {
+    "geometry": "SHAPE IS NOT NULL",
+    **{
+        f: f"NOT {missing(f)}"
+        for f in (
+            "DFIRM_ID",
+            "VERSION_ID",
+            "FIRM_ID",
+            "PCOMM",
+            "PANEL",
+            "SUFFIX",
+            "FIRM_PAN",
+            "SOURCE_CIT",
+        )
+    },
+    "ST_FIPS": f"ST_FIPS IN ({sql_list(STATE_FIPS)})",
+    "PANEL_TYP": f"PANEL_TYP IN ({sql_list(PANEL_TYPES)})",
+    "SCALE": f"SCALE IN ({sql_list(domain_values('D_Scale'))})",
+    "BASE_TYP": f"BASE_TYP IN ({sql_list(domain_values('D_Basemap_Typ'))})",
+    PNP_RULE: f"({missing('PNP_REASON')} OR PANEL_TYP IS NULL "
+    f"OR PANEL_TYP NOT IN ({sql_list(PANEL_PRINTED)}))",
+}
+PANEL_CASES: list[Case] = [
+    (
+        "countywide_printed",
+        f"PANEL_TYP = 'Countywide, Panel Printed' AND {missing('PNP_REASON')}",
+        None,
+        None,
+    ),
+    (
+        "countywide_not_printed",
+        "PANEL_TYP = 'Countywide, Not Printed' AND PNP_REASON = "
+        "'NO SPECIAL FLOOD HAZARD AREAS'",
+        None,
+        None,
+    ),
+    ("community_printed", "PANEL_TYP = 'Community Based, Panel Printed'", None, None),
+    ("community_not_printed", "PANEL_TYP = 'Community Based, Not Printed'", None, None),
+    ("statewide_printed", "PANEL_TYP = 'Statewide, Panel Printed'", None, None),
+    ("statewide_not_printed", "PANEL_TYP = 'Statewide, Not Printed'", None, None),
+    ("unmapped_community", "PANEL_TYP = 'Unmapped Community'", None, None),
+    ("scale_6000", "SCALE = '6000'", None, None),
+    ("scale_12000", "SCALE = '12000'", None, None),
+    ("scale_24000", "SCALE = '24000'", None, None),
+    ("vector_base", "BASE_TYP = 'Vector'", None, None),
+    ("orthophoto_base", "BASE_TYP = 'Orthophoto'", None, None),
+    # Section 7.3's `NP`, which D_Basemap_Typ lists and D_Scale does not.
+    ("not_populated_base", "BASE_TYP = 'NP'", None, None),
+    ("with_dates", "PRE_DATE IS NOT NULL AND EFF_DATE IS NOT NULL", None, None),
+    # 9/9/9999, the reference's date null, in most panels' PRE_DATE.
+    (
+        "unset_preliminary_date",
+        "PRE_DATE = timestamp '9999-09-09 00:00:00'",
+        None,
+        None,
+    ),
+    # Legacy values (spec/legacy.json), which validate with a warning.
+    ("unpadded_state_fips", "ST_FIPS = '1'", None, "ST_FIPS"),
+    # Arizona's 04 without its zero, on too few rows to be legacy; admitted by
+    # decision.
+    ("rare_unpadded_state_fips", "ST_FIPS = '4'", None, "ST_FIPS"),
+    # Findings: published panels the reference does not allow. Each case names
+    # one field; every such panel breaks that field alone.
+    ("no_source_citation", missing("SOURCE_CIT"), "SOURCE_CIT", None),
+    ("no_geometry", "SHAPE IS NULL", "geometry", None),
+    ("scale_4800", "SCALE = '4800'", "SCALE", None),
+    ("not_populated_scale", "SCALE = 'NP'", "SCALE", None),
+    ("truncated_panel_type", "PANEL_TYP = 'Community B'", "PANEL_TYP", None),
+    ("stray_quote_panel_type", "PANEL_TYP LIKE '%Printed'''", "PANEL_TYP", None),
+    ("cut_off_panel_type", "PANEL_TYP = 'Countywide,'", "PANEL_TYP", None),
+    (
+        "reordered_panel_type",
+        "PANEL_TYP = 'Countywide, Panel Not Printed'",
+        "PANEL_TYP",
+        None,
+    ),
+    (
+        "reason_on_printed_panel",
+        "PNP_REASON LIKE '_%' AND PANEL_TYP LIKE '%Panel Printed'",
+        PNP_RULE,
+        None,
+    ),
+    (
+        "lone_space_reason",
+        "PNP_REASON LIKE ' ' AND PANEL_TYP LIKE '%Panel Printed'",
+        PNP_RULE,
+        None,
+    ),
+]
+# The findings and values with only a handful of rows, which may not be small.
+PANEL_SPARSE = {
+    "rare_unpadded_state_fips",
+    "no_geometry",
+    "scale_4800",
+    "not_populated_scale",
+    "truncated_panel_type",
+    "stray_quote_panel_type",
+    "cut_off_panel_type",
+    "reordered_panel_type",
+    "unmapped_community",
+    "not_populated_base",
+}
+
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -899,6 +1011,12 @@ FIXTURES_BY_LAYER = [
         "political_jurisdictions.json",
         POL_AR_CASES,
         clean_except_expected(POL_AR_FIELDS, POL_AR_CASES, POL_AR_SPARSE, short=SMALL),
+    ),
+    Fixture(
+        3,
+        "firm_panels.json",
+        PANEL_CASES,
+        clean_except_expected(PANEL_FIELDS, PANEL_CASES, PANEL_SPARSE, short=None),
     ),
 ]
 

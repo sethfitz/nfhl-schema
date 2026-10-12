@@ -29,6 +29,7 @@ nfhl_levee = "nfhl.models:Levee"
 nfhl_lomr = "nfhl.models:Lomr"
 nfhl_flood_hazard_boundary = "nfhl.models:FloodHazardBoundary"
 nfhl_political_jurisdiction = "nfhl.models:PoliticalJurisdiction"
+nfhl_firm_panel = "nfhl.models:FirmPanel"
 
 # Tags the models above with `nfhl`, so `--tag nfhl` selects them.
 [project.entry-points."overture.tag_providers"]

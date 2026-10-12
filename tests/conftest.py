@@ -84,6 +84,16 @@ def jurisdiction_layer() -> Layer:
 
 
 @pytest.fixture(scope="session")
+def panel_cases() -> list[dict[str, Any]]:
+    return fixture_cases("firm_panels.json")
+
+
+@pytest.fixture(scope="session")
+def panel_layer() -> Layer:
+    return modelled("S_FIRM_Pan")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 

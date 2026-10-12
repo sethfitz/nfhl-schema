@@ -747,6 +747,15 @@ GEOMETRIES = {
         "Flood Risk Project area, assigned the jurisdiction responsible for NFIP and "
         "floodplain management for that area.",
     ),
+    "S_FIRM_Pan": LayerGeometry(
+        "esriGeometryPolygon",
+        ("POLYGON", "MULTI_POLYGON"),
+        "“The spatial entities representing FIRM panels are polygons”, and "
+        "Table 4 does not hold S_FIRM_Pan to “Must Be Single Part”, so a "
+        "MultiPolygon as well as a Polygon.",
+        "The FIRM panel: in the reference's words, the area of a hardcopy map "
+        "panel, a polygon that corresponds to the panel neatlines.",
+    ),
 }
 
 

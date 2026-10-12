@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from nfhl.models.base_flood_elevations import BaseFloodElevation
 from nfhl.models.cross_sections import CrossSection
+from nfhl.models.firm_panels import FirmPanel
 from nfhl.models.flood_hazard_boundaries import FloodHazardBoundary
 from nfhl.models.flood_hazard_zones import FloodHazardZone
 from nfhl.models.levees import Levee
@@ -22,6 +23,7 @@ from nfhl.models.water_lines import WaterLine
 __all__ = [
     "BaseFloodElevation",
     "CrossSection",
+    "FirmPanel",
     "FloodHazardBoundary",
     "FloodHazardZone",
     "Levee",

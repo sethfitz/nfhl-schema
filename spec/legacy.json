@@ -44,6 +44,10 @@
     {
       "path": "service/observed/22.json",
       "retrieved_at": "2026-10-12T01:16:19Z"
+    },
+    {
+      "path": "service/observed/3.json",
+      "retrieved_at": "2026-10-12T08:10:17Z"
     }
   ],
   "threshold": 0.001,
@@ -225,6 +229,38 @@
       "count": 17,
       "note": "Arizona's FIPS code, 04, without its leading zero. D_State_FIPS lists the two-digit 04; every row holding 4 is in DFIRM 04009C.",
       "decision": "Seth Fitzsimmons, 2026-10-11: \"Allow '4', since we know what's there and why they're legacy values.\" Under the bar (89 rows), admitted because it is the same defect as 5, 1, 6 and 8: a state code missing its leading zero."
+    },
+    {
+      "domain": "D_State_FIPS",
+      "field": "ST_FIPS",
+      "layer": 3,
+      "value": "1",
+      "count": 600,
+      "note": "Alabama's FIPS code, 01, without its leading zero. D_State_FIPS lists the two-digit 01; every row holding 1 is in a DFIRM whose ID begins 01 (11 DFIRMs)."
+    },
+    {
+      "domain": "D_State_FIPS",
+      "field": "ST_FIPS",
+      "layer": 3,
+      "value": "5",
+      "count": 447,
+      "note": "Arkansas's FIPS code, 05, without its leading zero. D_State_FIPS lists the two-digit 05; every row holding 5 is in a DFIRM whose ID begins 05 (17 DFIRMs)."
+    },
+    {
+      "domain": "D_State_FIPS",
+      "field": "ST_FIPS",
+      "layer": 3,
+      "value": "8",
+      "count": 363,
+      "note": "Colorado's FIPS code, 08, without its leading zero. D_State_FIPS lists the two-digit 08; every row holding 8 is in a DFIRM whose ID begins 08 (5 DFIRMs)."
+    },
+    {
+      "domain": "D_State_FIPS",
+      "field": "ST_FIPS",
+      "layer": 3,
+      "value": "6",
+      "count": 292,
+      "note": "California's FIPS code, 06, without its leading zero. D_State_FIPS lists the two-digit 06; every row holding 6 is in a DFIRM whose ID begins 06 (4 DFIRMs)."
     }
   ]
 }

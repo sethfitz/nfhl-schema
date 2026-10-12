@@ -1,0 +1,1934 @@
+{
+  "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/3/query",
+  "retrieved_at": "2026-10-12T08:18:05Z",
+  "cases": [
+    {
+      "name": "countywide_printed",
+      "where": "(PANEL_TYP = 'Countywide, Panel Printed' AND (PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' '))) AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 86,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.65625493827785,
+                30.250005552907602
+              ],
+              [
+                -87.68750494309755,
+                30.25000555190502
+              ],
+              [
+                -87.68750494176895,
+                30.21875555014498
+              ],
+              [
+                -87.65625493694984,
+                30.218755551145435
+              ],
+              [
+                -87.65625493827785,
+                30.250005552907602
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 86,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01003C_5",
+          "ST_FIPS": "01",
+          "PCOMM": "003C",
+          "PANEL": "1081",
+          "SUFFIX": "M",
+          "FIRM_PAN": "01003C1081M",
+          "PANEL_TYP": "Countywide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1555632000000,
+          "SCALE": "6000",
+          "PNP_REASON": "",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01003C_STUDY2",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "SHAPE.STArea()": 0.0009765622172474259,
+          "SHAPE.STLength()": 0.12499998190383398,
+          "GlobalID": "{45A46D07-2993-41A5-9E5F-F54BF7CF9F2A}"
+        }
+      }
+    },
+    {
+      "name": "countywide_not_printed",
+      "where": "(PANEL_TYP = 'Countywide, Not Printed' AND PNP_REASON = 'NO SPECIAL FLOOD HAZARD AREAS') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 139,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.71875495195874,
+                30.375005560513777
+              ],
+              [
+                -87.750004956776,
+                30.375005559501787
+              ],
+              [
+                -87.78125503886152,
+                30.375005558489367
+              ],
+              [
+                -87.78125503751639,
+                30.343755555441653
+              ],
+              [
+                -87.75000495543148,
+                30.34375555645196
+              ],
+              [
+                -87.71875495061481,
+                30.343755557461808
+              ],
+              [
+                -87.71875495195874,
+                30.375005560513777
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 139,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01003C_58",
+          "ST_FIPS": "01",
+          "PCOMM": "003C",
+          "PANEL": "0930",
+          "SUFFIX": "M",
+          "FIRM_PAN": "01003C0930M",
+          "PANEL_TYP": "Countywide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1555632000000,
+          "SCALE": "12000",
+          "PNP_REASON": "NO SPECIAL FLOOD HAZARD AREAS",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01003C_STUDY2",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "SHAPE.STArea()": 0.001953126931058699,
+          "SHAPE.STLength()": 0.18750013132618396,
+          "GlobalID": "{8B790F2F-F73F-4DD7-9894-C3F87E420074}"
+        }
+      }
+    },
+    {
+      "name": "community_printed",
+      "where": "(PANEL_TYP = 'Community Based, Panel Printed') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 5076,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -149.7500217787895,
+                61.12500176609666
+              ],
+              [
+                -149.75002142234447,
+                61.06250185774191
+              ],
+              [
+                -149.68752151066653,
+                61.06251645767334
+              ],
+              [
+                -149.6875234361027,
+                61.12501613029773
+              ],
+              [
+                -149.7500217787895,
+                61.12500176609666
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 5076,
+          "DFIRM_ID": "020005",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "020005_1",
+          "ST_FIPS": "02",
+          "PCOMM": "0005",
+          "PANEL": "1180",
+          "SUFFIX": "D",
+          "FIRM_PAN": "0200051180D",
+          "PANEL_TYP": "Community Based, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1253836800000,
+          "SCALE": "12000",
+          "PNP_REASON": "",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "020005_BASE1",
+          "GFID": "5779d6d1-30df-40db-baef-65df4fe3bb02",
+          "SHAPE.STArea()": 0.0039061826647107632,
+          "SHAPE.STLength()": 0.2499978481371097,
+          "GlobalID": "{F2F1342A-2971-49A6-AFC0-6DD6406DC7AA}"
+        }
+      }
+    },
+    {
+      "name": "community_not_printed",
+      "where": "(PANEL_TYP = 'Community Based, Not Printed') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 5078,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -150.12502112756016,
+                61.062501796706044
+              ],
+              [
+                -150.1250230529745,
+                61.12500170499455
+              ],
+              [
+                -150.18752320019246,
+                61.125016048828655
+              ],
+              [
+                -150.18752150921298,
+                61.062516219131496
+              ],
+              [
+                -150.12502112756016,
+                61.062501796706044
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 5078,
+          "DFIRM_ID": "020005",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "020005_3",
+          "ST_FIPS": "02",
+          "PCOMM": "0005",
+          "PANEL": "1085",
+          "SUFFIX": "D",
+          "FIRM_PAN": "0200051085D",
+          "PANEL_TYP": "Community Based, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1253836800000,
+          "SCALE": "12000",
+          "PNP_REASON": "OPEN WATER AREA",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "020005_BASE1",
+          "GFID": "5779d6d1-30df-40db-baef-65df4fe3bb02",
+          "SHAPE.STArea()": 0.0039062586251750854,
+          "SHAPE.STLength()": 0.25000028018425313,
+          "GlobalID": "{B2179274-2175-4A72-869B-76C0FAEB0888}"
+        }
+      }
+    },
+    {
+      "name": "statewide_printed",
+      "where": "(PANEL_TYP = 'Statewide, Panel Printed') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 102434,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -80.203909229166,
+                35.11785156502402
+              ],
+              [
+                -80.2035038785568,
+                35.090376341810575
+              ],
+              [
+                -80.2030986955885,
+                35.062901118593736
+              ],
+              [
+                -80.16968254141237,
+                35.063229522981636
+              ],
+              [
+                -80.13626605195722,
+                35.063548707268616
+              ],
+              [
+                -80.13664860376694,
+                35.09102409681746
+              ],
+              [
+                -80.13703149085568,
+                35.11849948767257
+              ],
+              [
+                -80.17047061146947,
+                35.11818013574393
+              ],
+              [
+                -80.203909229166,
+                35.11785156502402
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 102434,
+          "DFIRM_ID": "37007C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "37007C_502",
+          "ST_FIPS": "37",
+          "PCOMM": "007C",
+          "PANEL": "6448",
+          "SUFFIX": "J",
+          "FIRM_PAN": "3710644800J",
+          "PANEL_TYP": "Statewide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1219104000000,
+          "SCALE": "12000",
+          "PNP_REASON": null,
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "37007C_STUDY1",
+          "GFID": null,
+          "SHAPE.STArea()": 0.003674244698429727,
+          "SHAPE.STLength()": 0.24362913060964173,
+          "GlobalID": "{988A6CC2-0C72-48FC-B130-B668F8228878}"
+        }
+      }
+    },
+    {
+      "name": "statewide_not_printed",
+      "where": "(PANEL_TYP = 'Statewide, Not Printed') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 102435,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -80.13321418712256,
+                34.843742565409734
+              ],
+              [
+                -80.13283381463309,
+                34.81626666898664
+              ],
+              [
+                -80.13245378004198,
+                34.788790610160646
+              ],
+              [
+                -80.09914910396172,
+                34.789099398242996
+              ],
+              [
+                -80.06584426024067,
+                34.78939913648197
+              ],
+              [
+                -80.06620200156901,
+                34.81687536556894
+              ],
+              [
+                -80.06655991053813,
+                34.84435142832396
+              ],
+              [
+                -80.09988721646985,
+                34.844051690081564
+              ],
+              [
+                -80.13321418712256,
+                34.843742565409734
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 102435,
+          "DFIRM_ID": "37007C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "37007C_507",
+          "ST_FIPS": "37",
+          "PCOMM": "007C",
+          "PANEL": "6368",
+          "SUFFIX": "J",
+          "FIRM_PAN": "3710636800J",
+          "PANEL_TYP": "Statewide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1219104000000,
+          "SCALE": "12000",
+          "PNP_REASON": "NO SPECIAL FLOOD HAZARD AREAS",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "37007C_STUDY1",
+          "GFID": null,
+          "SHAPE.STArea()": 0.003662015043330439,
+          "SHAPE.STLength()": 0.2431834622083721,
+          "GlobalID": "{0967D44F-A4A1-40B1-B4F4-C50DD687C096}"
+        }
+      }
+    },
+    {
+      "name": "unmapped_community",
+      "where": "(PANEL_TYP = 'Unmapped Community') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 173923,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                145.59374509693487,
+                14.875006345279619
+              ],
+              [
+                145.56249501391127,
+                14.875006346452862
+              ],
+              [
+                145.56249501267004,
+                14.843756432072091
+              ],
+              [
+                145.5624950114264,
+                14.812506517691354
+              ],
+              [
+                145.59374509444882,
+                14.812506516512881
+              ],
+              [
+                145.62499500983554,
+                14.812506515333858
+              ],
+              [
+                145.62499501108036,
+                14.843756429719845
+              ],
+              [
+                145.62499501232276,
+                14.875006344105847
+              ],
+              [
+                145.59374509693487,
+                14.875006345279619
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 173923,
+          "DFIRM_ID": "690000",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "690000_85",
+          "ST_FIPS": "69",
+          "PCOMM": "0000",
+          "PANEL": "0210",
+          "SUFFIX": "C",
+          "FIRM_PAN": "6900000210C",
+          "PANEL_TYP": "Unmapped Community",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1144022400000,
+          "SCALE": "12000",
+          "PNP_REASON": null,
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "690000_STUDY1",
+          "GFID": null,
+          "SHAPE.STArea()": 0.0039062415020765947,
+          "SHAPE.STLength()": 0.24999972806652795,
+          "GlobalID": "{4E081A58-6827-4FBD-998F-A3DA6640AA92}"
+        }
+      }
+    },
+    {
+      "name": "scale_6000",
+      "where": "(SCALE = '6000') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 85,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.62500493476539,
+                30.250005553909737
+              ],
+              [
+                -87.65625493827785,
+                30.250005552907602
+              ],
+              [
+                -87.65625493694984,
+                30.218755551145435
+              ],
+              [
+                -87.62500493343796,
+                30.218755552145442
+              ],
+              [
+                -87.62500493476539,
+                30.250005553909737
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 85,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01003C_4",
+          "ST_FIPS": "01",
+          "PCOMM": "003C",
+          "PANEL": "1082",
+          "SUFFIX": "M",
+          "FIRM_PAN": "01003C1082M",
+          "PANEL_TYP": "Countywide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1555632000000,
+          "SCALE": "6000",
+          "PNP_REASON": "OPEN WATER AREA",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01003C_STUDY2",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "SHAPE.STArea()": 0.0009765621763201515,
+          "SHAPE.STLength()": 0.12499997928448797,
+          "GlobalID": "{14477778-99A5-4928-BEC9-7DCB7774A9D8}"
+        }
+      }
+    },
+    {
+      "name": "scale_12000",
+      "where": "(SCALE = '12000') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 135,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.50000492340867,
+                30.375005567584893
+              ],
+              [
+                -87.53125492693324,
+                30.375005566576093
+              ],
+              [
+                -87.56250493176506,
+                30.375005565566855
+              ],
+              [
+                -87.56250493042415,
+                30.34375556250429
+              ],
+              [
+                -87.53125492559293,
+                30.343755563511426
+              ],
+              [
+                -87.50000492206897,
+                30.3437555645181
+              ],
+              [
+                -87.50000492340867,
+                30.375005567584893
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 135,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01003C_54",
+          "ST_FIPS": "01",
+          "PCOMM": "003C",
+          "PANEL": "0960",
+          "SUFFIX": "M",
+          "FIRM_PAN": "01003C0960M",
+          "PANEL_TYP": "Countywide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1555632000000,
+          "SCALE": "12000",
+          "PNP_REASON": "",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01003C_STUDY2",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "SHAPE.STArea()": 0.001953124475422128,
+          "SHAPE.STLength()": 0.18749997416542397,
+          "GlobalID": "{B26DE43C-9ADF-460C-B57B-2E3B608B0C00}"
+        }
+      }
+    },
+    {
+      "name": "scale_24000",
+      "where": "(SCALE = '24000') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 82,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.75000495009026,
+                30.218755548142752
+              ],
+              [
+                -87.75000494876416,
+                30.187505545073435
+              ],
+              [
+                -87.75000494744174,
+                30.156255543309904
+              ],
+              [
+                -87.75000494612297,
+                30.125005540232795
+              ],
+              [
+                -87.71875494131042,
+                30.12500554122774
+              ],
+              [
+                -87.68750493780516,
+                30.12500554222225
+              ],
+              [
+                -87.65625493298778,
+                30.125005543216325
+              ],
+              [
+                -87.62500492947764,
+                30.12500554420997
+              ],
+              [
+                -87.62500493343796,
+                30.218755552145442
+              ],
+              [
+                -87.65625493694984,
+                30.218755551145435
+              ],
+              [
+                -87.68750494176895,
+                30.21875555014498
+              ],
+              [
+                -87.71875494527596,
+                30.218755549144092
+              ],
+              [
+                -87.75000495009026,
+                30.218755548142752
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 82,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01003C_1",
+          "ST_FIPS": "01",
+          "PCOMM": "003C",
+          "PANEL": "1100",
+          "SUFFIX": "M",
+          "FIRM_PAN": "01003C1100M",
+          "PANEL_TYP": "Countywide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1555632000000,
+          "SCALE": "24000",
+          "PNP_REASON": "OUTSIDE COUNTY BOUNDARY",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01003C_STUDY2",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "SHAPE.STArea()": 0.011718746688823667,
+          "SHAPE.STLength()": 0.4374999379730919,
+          "GlobalID": "{75E5B2DA-DE01-4CD4-81FF-47698A7BA118}"
+        }
+      }
+    },
+    {
+      "name": "vector_base",
+      "where": "(BASE_TYP = 'Vector') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 1241,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -85.62500601193928,
+                31.25000894852212
+              ],
+              [
+                -85.62500596191416,
+                31.273427900287455
+              ],
+              [
+                -85.62500594655036,
+                31.281258952904896
+              ],
+              [
+                -85.62914931959605,
+                31.281259356146787
+              ],
+              [
+                -85.63795260610362,
+                31.281259930801124
+              ],
+              [
+                -85.65029369364422,
+                31.281259652740605
+              ],
+              [
+                -85.6550410697131,
+                31.28125919681669
+              ],
+              [
+                -85.65625605369975,
+                31.28125904223485
+              ],
+              [
+                -85.65625607679915,
+                31.27070975746405
+              ],
+              [
+                -85.65625611908793,
+                31.25000904309268
+              ],
+              [
+                -85.62500601193928,
+                31.25000894852212
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1241,
+          "DFIRM_ID": "01045C",
+          "VERSION_ID": "2.3.2.1",
+          "FIRM_ID": "01045C_81",
+          "ST_FIPS": "01",
+          "PCOMM": "045C",
+          "PANEL": "0244",
+          "SUFFIX": "D",
+          "FIRM_PAN": "01045C0244D",
+          "PANEL_TYP": "Countywide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1462147200000,
+          "SCALE": "6000",
+          "PNP_REASON": null,
+          "BASE_TYP": "Vector",
+          "SOURCE_CIT": "01045C_FIRM2",
+          "GFID": "bf4addc7-0ddb-43b6-99bd-e5f3cbc59385",
+          "SHAPE.STArea()": 0.0009765837555764073,
+          "SHAPE.STLength()": 0.12500018628635123,
+          "GlobalID": "{F1E3B1D8-EEDC-44D9-AF47-6730D1DB2BE5}"
+        }
+      }
+    },
+    {
+      "name": "orthophoto_base",
+      "where": "(BASE_TYP = 'Orthophoto') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 381,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -86.34375478982658,
+                34.00000640813287
+              ],
+              [
+                -86.31250478611375,
+                34.00000640935328
+              ],
+              [
+                -86.25000477737125,
+                34.000006411791865
+              ],
+              [
+                -86.25000477912991,
+                34.03125641446556
+              ],
+              [
+                -86.25000478089265,
+                34.0625064158254
+              ],
+              [
+                -86.28125478461243,
+                34.06250641460263
+              ],
+              [
+                -86.31250478963949,
+                34.062506413379104
+              ],
+              [
+                -86.37500479706718,
+                34.0625064109298
+              ],
+              [
+                -86.37500479353709,
+                34.00000640691172
+              ],
+              [
+                -86.34375478982658,
+                34.00000640813287
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 381,
+          "DFIRM_ID": "01009C",
+          "VERSION_ID": "2.3.3.3",
+          "FIRM_ID": "01009C_1",
+          "ST_FIPS": "01",
+          "PCOMM": "009C",
+          "PANEL": "0225",
+          "SUFFIX": "F",
+          "FIRM_PAN": "01009C0225F",
+          "PANEL_TYP": "Countywide, Panel Printed",
+          "PRE_DATE": 1490745600000,
+          "EFF_DATE": 1553126400000,
+          "SCALE": "24000",
+          "PNP_REASON": null,
+          "BASE_TYP": "Orthophoto",
+          "SOURCE_CIT": "01009C_STUDY2",
+          "GFID": "ab1bd93a-570b-4cea-8ac3-782f01eaf93f",
+          "SHAPE.STArea()": 0.00781249765612486,
+          "SHAPE.STLength()": 0.37499994309215595,
+          "GlobalID": "{8E9B7F9B-CED2-4149-80F6-944D26DD4574}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_base",
+      "where": "(BASE_TYP = 'NP') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 82,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.75000495009026,
+                30.218755548142752
+              ],
+              [
+                -87.75000494876416,
+                30.187505545073435
+              ],
+              [
+                -87.75000494744174,
+                30.156255543309904
+              ],
+              [
+                -87.75000494612297,
+                30.125005540232795
+              ],
+              [
+                -87.71875494131042,
+                30.12500554122774
+              ],
+              [
+                -87.68750493780516,
+                30.12500554222225
+              ],
+              [
+                -87.65625493298778,
+                30.125005543216325
+              ],
+              [
+                -87.62500492947764,
+                30.12500554420997
+              ],
+              [
+                -87.62500493343796,
+                30.218755552145442
+              ],
+              [
+                -87.65625493694984,
+                30.218755551145435
+              ],
+              [
+                -87.68750494176895,
+                30.21875555014498
+              ],
+              [
+                -87.71875494527596,
+                30.218755549144092
+              ],
+              [
+                -87.75000495009026,
+                30.218755548142752
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 82,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01003C_1",
+          "ST_FIPS": "01",
+          "PCOMM": "003C",
+          "PANEL": "1100",
+          "SUFFIX": "M",
+          "FIRM_PAN": "01003C1100M",
+          "PANEL_TYP": "Countywide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1555632000000,
+          "SCALE": "24000",
+          "PNP_REASON": "OUTSIDE COUNTY BOUNDARY",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01003C_STUDY2",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "SHAPE.STArea()": 0.011718746688823667,
+          "SHAPE.STLength()": 0.4374999379730919,
+          "GlobalID": "{75E5B2DA-DE01-4CD4-81FF-47698A7BA118}"
+        }
+      }
+    },
+    {
+      "name": "with_dates",
+      "where": "(PRE_DATE IS NOT NULL AND EFF_DATE IS NOT NULL) AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 82,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.75000495009026,
+                30.218755548142752
+              ],
+              [
+                -87.75000494876416,
+                30.187505545073435
+              ],
+              [
+                -87.75000494744174,
+                30.156255543309904
+              ],
+              [
+                -87.75000494612297,
+                30.125005540232795
+              ],
+              [
+                -87.71875494131042,
+                30.12500554122774
+              ],
+              [
+                -87.68750493780516,
+                30.12500554222225
+              ],
+              [
+                -87.65625493298778,
+                30.125005543216325
+              ],
+              [
+                -87.62500492947764,
+                30.12500554420997
+              ],
+              [
+                -87.62500493343796,
+                30.218755552145442
+              ],
+              [
+                -87.65625493694984,
+                30.218755551145435
+              ],
+              [
+                -87.68750494176895,
+                30.21875555014498
+              ],
+              [
+                -87.71875494527596,
+                30.218755549144092
+              ],
+              [
+                -87.75000495009026,
+                30.218755548142752
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 82,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01003C_1",
+          "ST_FIPS": "01",
+          "PCOMM": "003C",
+          "PANEL": "1100",
+          "SUFFIX": "M",
+          "FIRM_PAN": "01003C1100M",
+          "PANEL_TYP": "Countywide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1555632000000,
+          "SCALE": "24000",
+          "PNP_REASON": "OUTSIDE COUNTY BOUNDARY",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01003C_STUDY2",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "SHAPE.STArea()": 0.011718746688823667,
+          "SHAPE.STLength()": 0.4374999379730919,
+          "GlobalID": "{75E5B2DA-DE01-4CD4-81FF-47698A7BA118}"
+        }
+      }
+    },
+    {
+      "name": "unset_preliminary_date",
+      "where": "(PRE_DATE = timestamp '9999-09-09 00:00:00') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 82,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -87.75000495009026,
+                30.218755548142752
+              ],
+              [
+                -87.75000494876416,
+                30.187505545073435
+              ],
+              [
+                -87.75000494744174,
+                30.156255543309904
+              ],
+              [
+                -87.75000494612297,
+                30.125005540232795
+              ],
+              [
+                -87.71875494131042,
+                30.12500554122774
+              ],
+              [
+                -87.68750493780516,
+                30.12500554222225
+              ],
+              [
+                -87.65625493298778,
+                30.125005543216325
+              ],
+              [
+                -87.62500492947764,
+                30.12500554420997
+              ],
+              [
+                -87.62500493343796,
+                30.218755552145442
+              ],
+              [
+                -87.65625493694984,
+                30.218755551145435
+              ],
+              [
+                -87.68750494176895,
+                30.21875555014498
+              ],
+              [
+                -87.71875494527596,
+                30.218755549144092
+              ],
+              [
+                -87.75000495009026,
+                30.218755548142752
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 82,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01003C_1",
+          "ST_FIPS": "01",
+          "PCOMM": "003C",
+          "PANEL": "1100",
+          "SUFFIX": "M",
+          "FIRM_PAN": "01003C1100M",
+          "PANEL_TYP": "Countywide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1555632000000,
+          "SCALE": "24000",
+          "PNP_REASON": "OUTSIDE COUNTY BOUNDARY",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01003C_STUDY2",
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "SHAPE.STArea()": 0.011718746688823667,
+          "SHAPE.STLength()": 0.4374999379730919,
+          "GlobalID": "{75E5B2DA-DE01-4CD4-81FF-47698A7BA118}"
+        }
+      }
+    },
+    {
+      "name": "unpadded_state_fips",
+      "where": "(ST_FIPS = '1') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": "ST_FIPS",
+      "feature": {
+        "type": "Feature",
+        "id": 617,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -85.12500428512276,
+                32.687506177783504
+              ],
+              [
+                -85.12500428668147,
+                32.718756108667854
+              ],
+              [
+                -85.15625438735708,
+                32.718756107552295
+              ],
+              [
+                -85.15625438579744,
+                32.687506176669835
+              ],
+              [
+                -85.12500428512276,
+                32.687506177783504
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 617,
+          "DFIRM_ID": "01017C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "01017C_41",
+          "ST_FIPS": "1",
+          "PCOMM": "017C",
+          "PANEL": "0409",
+          "SUFFIX": "C",
+          "FIRM_PAN": "01017C0409C",
+          "PANEL_TYP": "Countywide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1297987200000,
+          "SCALE": "6000",
+          "PNP_REASON": "AREA OUTSIDE COUNTY BOUNDARY",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "01017C_BASE1",
+          "GFID": null,
+          "SHAPE.STArea()": 0.0009765629948587868,
+          "SHAPE.STLength()": 0.12500003167140797,
+          "GlobalID": "{79FE97A1-E885-4E3C-8BB5-8FD648BEED9E}"
+        }
+      }
+    },
+    {
+      "name": "rare_unpadded_state_fips",
+      "where": "(ST_FIPS = '4') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": null,
+      "warns": "ST_FIPS",
+      "feature": {
+        "type": "Feature",
+        "id": 777846,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -110.00001064698516,
+                33.000005223487214
+              ],
+              [
+                -110.00001064917907,
+                33.031255301438364
+              ],
+              [
+                -110.00001065137958,
+                33.06250530080574
+              ],
+              [
+                -110.00001065580042,
+                33.125005143679395
+              ],
+              [
+                -110.12501050601905,
+                33.12500513739766
+              ],
+              [
+                -110.12501049719559,
+                33.0000052172625
+              ],
+              [
+                -110.00001064698516,
+                33.000005223487214
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 777846,
+          "DFIRM_ID": "04009C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "04009C_1",
+          "ST_FIPS": "4",
+          "PCOMM": "009C",
+          "PANEL": "0975",
+          "SUFFIX": "D",
+          "FIRM_PAN": "04009C0975D",
+          "PANEL_TYP": "Countywide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1190937600000,
+          "SCALE": "24000",
+          "PNP_REASON": "",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "04009C_FIRM1",
+          "GFID": "fdbcc6ae-f63c-427f-98ab-b60637e7856c",
+          "SHAPE.STArea()": 0.015624965844624042,
+          "SHAPE.STLength()": 0.4999994535137099,
+          "GlobalID": "{EE78ABF6-B480-4E91-8DC6-285FBFBED7D0}"
+        }
+      }
+    },
+    {
+      "name": "no_source_citation",
+      "where": "((SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' '))) AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": "SOURCE_CIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 108847,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -82.07031770013532,
+                35.82701184698566
+              ],
+              [
+                -82.06927482002378,
+                35.79955221431492
+              ],
+              [
+                -82.03556764606513,
+                35.80039677676182
+              ],
+              [
+                -82.03659912677838,
+                35.827856744710786
+              ],
+              [
+                -82.07031770013532,
+                35.82701184698566
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 108847,
+          "DFIRM_ID": "37111C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "37111C_203",
+          "ST_FIPS": "37",
+          "PCOMM": "111C",
+          "PANEL": "0796",
+          "SUFFIX": "J",
+          "FIRM_PAN": "3710079600J",
+          "PANEL_TYP": "Statewide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1222905600000,
+          "SCALE": "6000",
+          "PNP_REASON": null,
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": null,
+          "GFID": "c5ed825d-d798-4326-ac9f-521d5474ca51",
+          "SHAPE.STArea()": 0.000926624447584526,
+          "SHAPE.STLength()": 0.12240564160626752,
+          "GlobalID": "{55442976-9E50-42E7-8660-AE31E8EBE2D0}"
+        }
+      }
+    },
+    {
+      "name": "no_geometry",
+      "where": "(SHAPE IS NULL) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": "geometry",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 157068,
+        "geometry": null,
+        "properties": {
+          "OBJECTID": 157068,
+          "DFIRM_ID": "51185C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "51185C_184",
+          "ST_FIPS": "51",
+          "PCOMM": "185C",
+          "PANEL": "0065",
+          "SUFFIX": "D",
+          "FIRM_PAN": "51185C0065D",
+          "PANEL_TYP": "Countywide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1297987200000,
+          "SCALE": "12000",
+          "PNP_REASON": null,
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "51185C_BASE4",
+          "GFID": "f13febc6-a1be-4b35-a974-b7024328f7b4",
+          "SHAPE": null,
+          "SHAPE.STArea()": null,
+          "SHAPE.STLength()": null,
+          "GlobalID": "{E81D0F25-D075-47F5-B4DE-AF460BA81E82}"
+        }
+      }
+    },
+    {
+      "name": "scale_4800",
+      "where": "(SCALE = '4800') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": "SCALE",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 151557,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -72.43720669318307,
+                44.505700645454986
+              ],
+              [
+                -72.41017680015807,
+                44.50509068182644
+              ],
+              [
+                -72.41002516878667,
+                44.505087258346
+              ],
+              [
+                -72.40881851091896,
+                44.53230431912425
+              ],
+              [
+                -72.40897048935383,
+                44.53230775701107
+              ],
+              [
+                -72.4243434820173,
+                44.532655520544715
+              ],
+              [
+                -72.43601277582121,
+                44.532918209146665
+              ],
+              [
+                -72.43649529934788,
+                44.52191819423145
+              ],
+              [
+                -72.43720669318307,
+                44.505700645454986
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 151557,
+          "DFIRM_ID": "500027",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "500027_962",
+          "ST_FIPS": "50",
+          "PCOMM": "0027",
+          "PANEL": "0011",
+          "SUFFIX": "D",
+          "FIRM_PAN": "5000270011D",
+          "PANEL_TYP": "Community Based, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1026864000000,
+          "SCALE": "4800",
+          "PNP_REASON": null,
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "500027_STUDY1",
+          "GFID": "22f8dcd2-6ee8-4f35-b287-bee0ad01a10f",
+          "SHAPE.STArea()": 0.0007407275800574824,
+          "SHAPE.STLength()": 0.1088771428804564,
+          "GlobalID": "{D5918EC6-A629-4B0F-96F2-F1CEA5B108E1}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_scale",
+      "where": "(SCALE = 'NP') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": "SCALE",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 150518,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -109.02872832436076,
+                38.44579800468432
+              ],
+              [
+                -109.02794927002417,
+                38.58348521936181
+              ],
+              [
+                -109.25754189237794,
+                38.583439054598244
+              ],
+              [
+                -109.25760289019745,
+                38.49933470797525
+              ],
+              [
+                -109.25764153667251,
+                38.44604739008806
+              ],
+              [
+                -109.02872832436076,
+                38.44579800468432
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 150518,
+          "DFIRM_ID": "49019C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "49019C_10",
+          "ST_FIPS": "49",
+          "PCOMM": "0232",
+          "PANEL": "0040",
+          "SUFFIX": "A",
+          "FIRM_PAN": "4902320040A",
+          "PANEL_TYP": "Countywide, Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 371174400000,
+          "SCALE": "NP",
+          "PNP_REASON": "NO SPECIAL FLOOD HAZARD AREAS",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "49019C_FIRM1",
+          "GFID": "5f9b60f2-b4e2-49da-9189-46957942e2f3",
+          "SHAPE.STArea()": 0.03153135169781424,
+          "SHAPE.STLength()": 0.7335869617222902,
+          "GlobalID": "{021D6C95-CB04-4D96-BBDF-A67417FEB668}"
+        }
+      }
+    },
+    {
+      "name": "truncated_panel_type",
+      "where": "(PANEL_TYP = 'Community B') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": "PANEL_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 38387,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -159.50001437605073,
+                22.0000035505584
+              ],
+              [
+                -159.4687642844252,
+                22.000003382651805
+              ],
+              [
+                -159.43751419410412,
+                22.000003550021837
+              ],
+              [
+                -159.43751419379896,
+                22.031253640884756
+              ],
+              [
+                -159.43751419349974,
+                22.062503227522615
+              ],
+              [
+                -159.46876428382015,
+                22.062503395418247
+              ],
+              [
+                -159.500014375445,
+                22.06250322803793
+              ],
+              [
+                -159.50001437574488,
+                22.03125347246288
+              ],
+              [
+                -159.50001437605073,
+                22.0000035505584
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 38387,
+          "DFIRM_ID": "150002",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "150002_1",
+          "ST_FIPS": "15",
+          "PCOMM": "0002",
+          "PANEL": "0190",
+          "SUFFIX": "E",
+          "FIRM_PAN": "1500020190E",
+          "PANEL_TYP": "Community B",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1126828800000,
+          "SCALE": "12000",
+          "PNP_REASON": "NO SPECIAL FLOOD HAZARD AREAS",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "150002_FIS1",
+          "GFID": "c43a82ce-f0d8-4895-87d3-72b2996c6951",
+          "SHAPE.STArea()": 0.003906252143144315,
+          "SHAPE.STLength()": 0.24999973330701852,
+          "GlobalID": "{7431DD03-812B-441F-8FA9-281F665C46DF}"
+        }
+      }
+    },
+    {
+      "name": "stray_quote_panel_type",
+      "where": "(PANEL_TYP LIKE '%Printed''') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": "PANEL_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 551005,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -120.00001305506962,
+                39.37500517661655
+              ],
+              [
+                -120.00001305913487,
+                39.40625533131448
+              ],
+              [
+                -120.00001306321003,
+                39.43750540742895
+              ],
+              [
+                -120.00001306729509,
+                39.468755484850014
+              ],
+              [
+                -120.00001307139,
+                39.500005089476026
+              ],
+              [
+                -120.03126314987404,
+                39.500005087015005
+              ],
+              [
+                -120.06251330824328,
+                39.5000050845535
+              ],
+              [
+                -120.09376291654497,
+                39.50000508209154
+              ],
+              [
+                -120.12501291643406,
+                39.50000507962906
+              ],
+              [
+                -120.12501299142801,
+                39.47266170473476
+              ],
+              [
+                -120.12501299091626,
+                39.46875547501802
+              ],
+              [
+                -120.12501298682795,
+                39.43750539761193
+              ],
+              [
+                -120.12501298274957,
+                39.40625532151246
+              ],
+              [
+                -120.12501290010071,
+                39.37500524410027
+              ],
+              [
+                -120.0937628216345,
+                39.375005246547744
+              ],
+              [
+                -120.06251321333603,
+                39.37500524899473
+              ],
+              [
+                -120.03126313355041,
+                39.375005251441245
+              ],
+              [
+                -120.00001305506962,
+                39.37500517661655
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 551005,
+          "DFIRM_ID": "06057C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "06057C_2",
+          "ST_FIPS": "06",
+          "PCOMM": "057C",
+          "PANEL": "0300",
+          "SUFFIX": "E",
+          "FIRM_PAN": "06057C0300E",
+          "PANEL_TYP": "Countywide, Panel Printed'",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1265155200000,
+          "SCALE": "24000",
+          "PNP_REASON": "",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "NP",
+          "GFID": "15930335-a7b7-45e5-b5e7-69b9e3c95f04",
+          "SHAPE.STArea()": 0.015624964913542894,
+          "SHAPE.STLength()": 0.49999937624331015,
+          "GlobalID": "{48A34BF3-B934-4748-8B08-56EA840A1F18}"
+        }
+      }
+    },
+    {
+      "name": "cut_off_panel_type",
+      "where": "(PANEL_TYP = 'Countywide,') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": "PANEL_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 75533,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -90.50000579185505,
+                30.875005614677033
+              ],
+              [
+                -90.50000579773881,
+                31.000005674261377
+              ],
+              [
+                -90.62500586589734,
+                31.000005669867303
+              ],
+              [
+                -90.62500586000351,
+                30.87500561032024
+              ],
+              [
+                -90.50000579185505,
+                30.875005614677033
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 75533,
+          "DFIRM_ID": "28005C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "28005C_231",
+          "ST_FIPS": "28",
+          "PCOMM": "005C",
+          "PANEL": "0500",
+          "SUFFIX": "C",
+          "FIRM_PAN": "28005C0500C",
+          "PANEL_TYP": "Countywide,",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1285718400000,
+          "SCALE": "24000",
+          "PNP_REASON": "NO SPECIAL FLOOD HAZARD AREAS",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "28005C_STUDY1",
+          "GFID": null,
+          "SHAPE.STArea()": 0.0156250084089805,
+          "SHAPE.STLength()": 0.5000001345436699,
+          "GlobalID": "{CBAD8E51-42B7-40CB-910D-E024B2220533}"
+        }
+      }
+    },
+    {
+      "name": "reordered_panel_type",
+      "where": "(PANEL_TYP = 'Countywide, Panel Not Printed') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP') AND ((PNP_REASON IS NULL OR (PNP_REASON = '' AND PNP_REASON NOT LIKE ' ')) OR PANEL_TYP IS NULL OR PANEL_TYP NOT IN ('Countywide, Panel Printed', 'Community Based, Panel Printed', 'Unmapped Community', 'Statewide, Panel Printed'))",
+      "expect": "PANEL_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 13232,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -120.00001268136026,
+                36.31250498151273
+              ],
+              [
+                -120.00001271934072,
+                36.31250477720372
+              ],
+              [
+                -120.00001268136025,
+                36.31250477720373
+              ],
+              [
+                -120.00001268136026,
+                36.31250498151273
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 13232,
+          "DFIRM_ID": "06031C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "06031C_63",
+          "ST_FIPS": "06",
+          "PCOMM": "031C",
+          "PANEL": "0130",
+          "SUFFIX": "D",
+          "FIRM_PAN": "06031C0130D",
+          "PANEL_TYP": "Countywide, Panel Not Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1442361600000,
+          "SCALE": "12000",
+          "PNP_REASON": "ALL ZONE D",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "06031C_STUDY1",
+          "GFID": "250b4e1d-4318-4b2f-bb4b-3092d19a1ec2",
+          "SHAPE.STArea()": 3.879880495993397e-15,
+          "SHAPE.STLength()": 4.500987498597304e-07,
+          "GlobalID": "{7152B308-C6C5-46BC-9895-CCF4F62DBE71}"
+        }
+      }
+    },
+    {
+      "name": "reason_on_printed_panel",
+      "where": "(PNP_REASON LIKE '_%' AND PANEL_TYP LIKE '%Panel Printed') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP')",
+      "expect": "@forbid_if(pnp_reason)",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 10093,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -92.31250619759628,
+                33.87500615268095
+              ],
+              [
+                -92.31250619566214,
+                33.843756084921516
+              ],
+              [
+                -92.31250619373286,
+                33.81250601453872
+              ],
+              [
+                -92.28125658735843,
+                33.81250601588096
+              ],
+              [
+                -92.25000651604708,
+                33.81250601722254
+              ],
+              [
+                -92.25000651797446,
+                33.84375608761011
+              ],
+              [
+                -92.25000651990668,
+                33.875006155374294
+              ],
+              [
+                -92.28125659121994,
+                33.87500615402796
+              ],
+              [
+                -92.31250619759628,
+                33.87500615268095
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 10093,
+          "DFIRM_ID": "05025C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "05025C_82",
+          "ST_FIPS": "05",
+          "PCOMM": "025C",
+          "PANEL": "0285",
+          "SUFFIX": "C",
+          "FIRM_PAN": "05025C0285C",
+          "PANEL_TYP": "Countywide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1328140800000,
+          "SCALE": "12000",
+          "PNP_REASON": " ",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "05025C_STUDY1",
+          "GFID": "20120302_2",
+          "SHAPE.STArea()": 0.0039062366726171378,
+          "SHAPE.STLength()": 0.24999957352511396,
+          "GlobalID": "{D6EF8116-24C6-4CF1-90D1-2DE8BA3D6981}"
+        }
+      }
+    },
+    {
+      "name": "lone_space_reason",
+      "where": "(PNP_REASON LIKE ' ' AND PANEL_TYP LIKE '%Panel Printed') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (FIRM_ID IS NULL OR (FIRM_ID = '' AND FIRM_ID NOT LIKE ' ')) AND NOT (PCOMM IS NULL OR (PCOMM = '' AND PCOMM NOT LIKE ' ')) AND NOT (PANEL IS NULL OR (PANEL = '' AND PANEL NOT LIKE ' ')) AND NOT (SUFFIX IS NULL OR (SUFFIX = '' AND SUFFIX NOT LIKE ' ')) AND NOT (FIRM_PAN IS NULL OR (FIRM_PAN = '' AND FIRM_PAN NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ST_FIPS IN ('01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56', '60', '64', '66', '68', '69', '70', '72', '74', '78') AND PANEL_TYP IN ('Countywide, Panel Printed', 'Countywide, Not Printed', 'Community Based, Panel Printed', 'Community Based, Not Printed', 'Unmapped Community', 'Statewide, Panel Printed', 'Statewide, Not Printed') AND SCALE IN ('6000', '12000', '24000', '10000') AND BASE_TYP IN ('Orthophoto', 'Vector', 'NP')",
+      "expect": "@forbid_if(pnp_reason)",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 10093,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -92.31250619759628,
+                33.87500615268095
+              ],
+              [
+                -92.31250619566214,
+                33.843756084921516
+              ],
+              [
+                -92.31250619373286,
+                33.81250601453872
+              ],
+              [
+                -92.28125658735843,
+                33.81250601588096
+              ],
+              [
+                -92.25000651604708,
+                33.81250601722254
+              ],
+              [
+                -92.25000651797446,
+                33.84375608761011
+              ],
+              [
+                -92.25000651990668,
+                33.875006155374294
+              ],
+              [
+                -92.28125659121994,
+                33.87500615402796
+              ],
+              [
+                -92.31250619759628,
+                33.87500615268095
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 10093,
+          "DFIRM_ID": "05025C",
+          "VERSION_ID": "1.1.1.0",
+          "FIRM_ID": "05025C_82",
+          "ST_FIPS": "05",
+          "PCOMM": "025C",
+          "PANEL": "0285",
+          "SUFFIX": "C",
+          "FIRM_PAN": "05025C0285C",
+          "PANEL_TYP": "Countywide, Panel Printed",
+          "PRE_DATE": 253392451200000,
+          "EFF_DATE": 1328140800000,
+          "SCALE": "12000",
+          "PNP_REASON": " ",
+          "BASE_TYP": "NP",
+          "SOURCE_CIT": "05025C_STUDY1",
+          "GFID": "20120302_2",
+          "SHAPE.STArea()": 0.0039062366726171378,
+          "SHAPE.STLength()": 0.24999957352511396,
+          "GlobalID": "{D6EF8116-24C6-4CF1-90D1-2DE8BA3D6981}"
+        }
+      }
+    }
+  ]
+}

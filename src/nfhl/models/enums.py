@@ -24,6 +24,16 @@ from overture.schema.system.doc import DocumentedEnum
 REFERENCE_EDITION = "November 2024"
 
 
+class BasemapTyp(str, DocumentedEnum):
+    """Values of `D_Basemap_Typ` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_FIRM_Pan.BASE_TYP`.
+    """
+
+    ORTHOPHOTO = "Orthophoto", "Code `1000`."
+    VECTOR = "Vector", "Code `2000`."
+    NP = "NP", "Code `NP`."
+
+
 class LOMCStatus(str, DocumentedEnum):
     """Values of `D_LOMC_Status` that apply to the FIRM Database, each as the data
     stores it. Used by `S_LOMR.STATUS`.
@@ -157,6 +167,20 @@ class LocAccuracy(str, DocumentedEnum):
     )
 
 
+class PanelTyp(str, DocumentedEnum):
+    """Values of `D_Panel_Typ` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_FIRM_Pan.PANEL_TYP`.
+    """
+
+    COUNTYWIDE_PANEL_PRINTED = "Countywide, Panel Printed", "Code `1000`."
+    COUNTYWIDE_NOT_PRINTED = "Countywide, Not Printed", "Code `1010`."
+    COMMUNITY_BASED_PANEL_PRINTED = "Community Based, Panel Printed", "Code `1020`."
+    COMMUNITY_BASED_NOT_PRINTED = "Community Based, Not Printed", "Code `1030`."
+    UNMAPPED_COMMUNITY = "Unmapped Community", "Code `1040`."
+    STATEWIDE_PANEL_PRINTED = "Statewide, Panel Printed", "Code `1050`."
+    STATEWIDE_NOT_PRINTED = "Statewide, Not Printed", "Code `1060`."
+
+
 class ProfBaslnTyp(str, DocumentedEnum):
     """Values of `D_Prof_Basln_Typ` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Profil_Basln.WATER_TYP`. The last is a legacy value:
@@ -186,7 +210,7 @@ class ProfBaslnTyp(str, DocumentedEnum):
 
 class Scale(str, DocumentedEnum):
     """Values of `D_Scale` that apply to the FIRM Database, each as the data stores it.
-    Used by `S_LOMR.SCALE`.
+    Used by `S_LOMR.SCALE`, `S_FIRM_Pan.SCALE`.
     """
 
     V_6000 = "6000", "Code `1000`."
@@ -197,8 +221,8 @@ class Scale(str, DocumentedEnum):
 
 class StateFIPS(str, DocumentedEnum):
     """Values of `D_State_FIPS` that apply to the FIRM Database, each as the data
-    stores it. Used by `S_Pol_Ar.ST_FIPS`. The last 5 are legacy values: common in
-    the data, not in the reference.
+    stores it. Used by `S_Pol_Ar.ST_FIPS`, `S_FIRM_Pan.ST_FIPS`. The last 5 are
+    legacy values: common in the data, not in the reference.
     """
 
     V_01 = "01", "01 - Alabama. Code `01`."
@@ -267,9 +291,12 @@ class StateFIPS(str, DocumentedEnum):
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
             "validates with a LegacyValueWarning. Arkansas's FIPS code, 05, without"
             " its leading zero. D_State_FIPS lists the two-digit 05; every row "
-            "holding 5 is in a DFIRM whose ID begins 05 (18 DFIRMs). Held by 352 of"
-            " 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted "
-            "2026-10-12."
+            "holding 5 is in a DFIRM whose ID begins 05 (18 DFIRMs). Arkansas's "
+            "FIPS code, 05, without its leading zero. D_State_FIPS lists the "
+            "two-digit 05; every row holding 5 is in a DFIRM whose ID begins 05 (17"
+            " DFIRMs). Held by 352 of 88,344 rows of `ST_FIPS` on NFHL service "
+            "layer 22, counted 2026-10-12; and by 447 of 183,680 rows of `ST_FIPS` "
+            "on NFHL service layer 3, counted 2026-10-12."
         ),
     )
     V_1 = (
@@ -278,9 +305,12 @@ class StateFIPS(str, DocumentedEnum):
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
             "validates with a LegacyValueWarning. Alabama's FIPS code, 01, without "
             "its leading zero. D_State_FIPS lists the two-digit 01; every row "
-            "holding 1 is in a DFIRM whose ID begins 01 (20 DFIRMs). Held by 282 of"
-            " 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted "
-            "2026-10-12."
+            "holding 1 is in a DFIRM whose ID begins 01 (20 DFIRMs). Alabama's FIPS"
+            " code, 01, without its leading zero. D_State_FIPS lists the two-digit "
+            "01; every row holding 1 is in a DFIRM whose ID begins 01 (11 DFIRMs). "
+            "Held by 282 of 88,344 rows of `ST_FIPS` on NFHL service layer 22, "
+            "counted 2026-10-12; and by 600 of 183,680 rows of `ST_FIPS` on NFHL "
+            "service layer 3, counted 2026-10-12."
         ),
     )
     V_6 = (
@@ -291,7 +321,8 @@ class StateFIPS(str, DocumentedEnum):
             "without its leading zero. D_State_FIPS lists the two-digit 06; every "
             "row holding 6 is in a DFIRM whose ID begins 06 (4 DFIRMs). Held by 116"
             " of 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted "
-            "2026-10-12."
+            "2026-10-12; and by 292 of 183,680 rows of `ST_FIPS` on NFHL service "
+            "layer 3, counted 2026-10-12."
         ),
     )
     V_8 = (
@@ -300,8 +331,12 @@ class StateFIPS(str, DocumentedEnum):
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
             "validates with a LegacyValueWarning. Colorado's FIPS code, 08, without"
             " its leading zero. D_State_FIPS lists the two-digit 08; every row "
-            "holding 8 is in a DFIRM whose ID begins 08 (4 DFIRMs). Held by 90 of "
-            "88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12."
+            "holding 8 is in a DFIRM whose ID begins 08 (4 DFIRMs). Colorado's FIPS"
+            " code, 08, without its leading zero. D_State_FIPS lists the two-digit "
+            "08; every row holding 8 is in a DFIRM whose ID begins 08 (5 DFIRMs). "
+            "Held by 90 of 88,344 rows of `ST_FIPS` on NFHL service layer 22, "
+            "counted 2026-10-12; and by 363 of 183,680 rows of `ST_FIPS` on NFHL "
+            "service layer 3, counted 2026-10-12."
         ),
     )
     V_4 = (

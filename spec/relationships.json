@@ -227,6 +227,20 @@
           "unless_quote": "the FEMA Project Officer may allow the Mapping Partner to substitute a value that indicates that the affected field was intentionally not populated."
         }
       ]
+    },
+    "S_FIRM_Pan": {
+      "only_when": [
+        {
+          "field": "PNP_REASON",
+          "when": "PANEL_TYP",
+          "any_of": [
+            "Countywide, Not Printed",
+            "Community Based, Not Printed",
+            "Statewide, Not Printed"
+          ],
+          "quote": "Only completed if the hardcopy panel is not printed by FEMA."
+        }
+      ]
     }
   }
 }
