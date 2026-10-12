@@ -17,7 +17,8 @@ combination of the values the rules read, with the number of rows that hold it,
 taken from the service's grouped statistics (`fetch_groups`). A numeric field,
 and a text field with no vocabulary (`S_XS`'s `XS_LTR`, a letter per cross
 section), is grouped by whether it is populated, since that is all any rule asks
-of one.
+of one, unless a rule compares the text's value (`S_Pol_Ar`'s `ANI_FIRM`, which
+a rule exempts when it is `NP`): that is grouped by value.
 `snapshot-spec` records the groups in `spec/service/observed/`; `--live` on
 `scripts/count-broken-rules` asks the service again.
 
@@ -187,27 +188,31 @@ def _holds(annotation: Any, kind: type) -> bool:
     return isinstance(annotation, type) and issubclass(annotation, kind)
 
 
-def check_set_fields_are_only_asked_if_set(
-    model: type[BaseModel], set_fields: set[str]
-) -> None:
-    """Raise if a rule asks a field grouped by whether it is set for more than
-    that, which `judge` cannot answer: it substitutes `POPULATED_NUMBER` or
-    `POPULATED_TEXT` for any value."""
+def compared_fields(model: type[BaseModel]) -> dict[str, str]:
+    """The Python names of the fields some rule of `model` reads the value of,
+    not only whether it is set, each with the message for the first rule that
+    does."""
+    compared: dict[str, str] = {}
     for constraint in ModelConstraint.get_model_constraints(model):
         for condition in constraint_conditions(constraint):
             for leaf in leaf_conditions(condition):
                 name = leaf.field_name  # type: ignore[attr-defined]
-                if name in set_fields and not isinstance(leaf, Absent | Populated):
-                    raise ValueError(
+                if name not in compared and not isinstance(leaf, Absent | Populated):
+                    compared[name] = (
                         f"{constraint.name} reads {name} with "
                         f"{type(leaf).__name__}, not only whether it is set"
                     )
+    return compared
 
 
 def rule_fields(model: type[BaseModel]) -> RuleFields:
+    """Which fields the rules read, and how to group each: a vocabulary field,
+    or free text a rule compares (`ANI_FIRM`'s `NP`), by value; any other field
+    by whether it is set."""
     names = set().union(
         *(constraint_fields(c) for c in ModelConstraint.get_model_constraints(model))
     )
+    compared = compared_fields(model)
     by_value: list[str] = []
     by_populated: list[str] = []
     by_text_populated: list[str] = []
@@ -215,7 +220,9 @@ def rule_fields(model: type[BaseModel]) -> RuleFields:
         if name not in names:
             continue
         wire = info.alias or name
-        if _holds(info.annotation, Enum):
+        if _holds(info.annotation, Enum) or (
+            name in compared and _holds(info.annotation, str)
+        ):
             by_value.append(wire)
         elif _holds(info.annotation, str):
             by_text_populated.append(wire)
@@ -226,7 +233,10 @@ def rule_fields(model: type[BaseModel]) -> RuleFields:
         for name, info in model.model_fields.items()
         if (info.alias or name) in {*by_populated, *by_text_populated}
     }
-    check_set_fields_are_only_asked_if_set(model, set_fields)
+    for name in compared.keys() & set_fields:
+        # `judge` substitutes `POPULATED_NUMBER` or `POPULATED_TEXT` for the
+        # value of a field grouped by whether it is set, so it cannot answer this.
+        raise ValueError(compared[name])
     return RuleFields(tuple(by_value), tuple(by_populated), tuple(by_text_populated))
 
 

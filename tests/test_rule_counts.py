@@ -12,7 +12,7 @@ from overture.schema.system.optionality import Omitable
 from pydantic import BaseModel, Field
 
 from nfhl import service
-from nfhl.constraints import NoneOf, forbid_if
+from nfhl.constraints import AllOf, NoneOf, forbid_if
 from nfhl.models import FloodHazardZone
 from nfhl.rule_counts import (
     RuleFields,
@@ -32,6 +32,11 @@ from nfhl.spec_source import Layer, SpecReader
 from .helpers import DUAL_MISSING, rejected_by
 
 FIELDS = rule_fields(FloodHazardZone)
+
+
+class Flag(StrEnum):
+    T = "T"
+    F = "F"
 
 
 class LineType(StrEnum):
@@ -103,6 +108,28 @@ def test_free_text_is_grouped_by_being_set() -> None:
     # XS_LTR has no vocabulary; the rule asks only whether it holds a letter.
     assert SECTION_FIELDS.by_value == ("XS_LN_TYP",)
     assert SECTION_FIELDS.by_text_populated == ("XS_LTR",)
+
+
+@forbid_if(
+    ["ani_firm"],
+    AllOf(NoneOf("ani_tf", (Flag.T,)), NoneOf("ani_firm", ("NP",))),
+)
+class Jurisdiction(BaseModel):
+    """A rule reading free text's value: another FIRM only on an ANI area,
+    unless it is `NP`."""
+
+    ani_tf: Flag = Field(alias="ANI_TF")
+    ani_firm: Omitable[str] = Field(alias="ANI_FIRM")
+
+
+def test_free_text_a_rule_compares_is_grouped_by_value() -> None:
+    fields = rule_fields(Jurisdiction)
+    assert fields.by_value == ("ANI_TF", "ANI_FIRM")
+    assert fields.by_text_populated == ()
+    assert judge(Jurisdiction, {"ANI_TF": "F", "ANI_FIRM": "NP"}).broken == set()
+    assert judge(Jurisdiction, {"ANI_TF": "F", "ANI_FIRM": "F"}).broken == {
+        "@forbid_if(ani_firm)"
+    }
 
 
 def test_a_value_its_field_limits_is_rejected_by_the_limit(
