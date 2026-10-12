@@ -190,10 +190,27 @@ def test_legacy_json_lists_exactly_what_its_threshold_selects(
     def key(v: LegacyValue) -> tuple[str, str, int, str, int]:
         return (v.domain, v.field, v.layer, v.value, v.count)
 
-    listed = [key(LegacyValue(**v)) for v in reader.legacy["values"]]
+    listed = [
+        key(LegacyValue(**v)) for v in reader.legacy["values"] if "decision" not in v
+    ]
     selected = [key(v) for lyr in LAYERS for v in reader.legacy_candidates(lyr)]
     assert listed and sorted(listed) == sorted(selected)
     assert all(v["note"] for v in reader.legacy["values"])
+
+
+def test_a_decision_admits_only_an_uncommon_value_at_its_observed_count(
+    reader: SpecReader,
+) -> None:
+    # A decision overrides the threshold, so it lists what the threshold would
+    # not select, outside the reference, at the count the snapshot holds.
+    decided = [LegacyValue(**v) for v in reader.legacy["values"] if "decision" in v]
+    assert decided
+    for v in decided:
+        layer = next(lyr for lyr in LAYERS if lyr.layer_id == v.layer)
+        assert v.decision and v not in reader.legacy_candidates(layer)
+        assert v.value not in {d.value for d in reader.domain(v.domain).values}
+        observed = reader.observed(layer)["fields"][v.field]
+        assert {"value": v.value, "count": v.count} in observed
 
 
 def test_legacy_json_cites_the_snapshot_it_counted_for_each_layer(

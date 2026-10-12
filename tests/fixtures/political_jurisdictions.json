@@ -61,7 +61,7 @@
           "ANI_FIRM": null,
           "COM_NFO_ID": "01007C_010226",
           "SOURCE_CIT": "01007C_NP",
-          "SHAPE.STArea()": 1.5389158603073874e-07,
+          "SHAPE.STArea()": 1.5389158603073874E-7,
           "SHAPE.STLength()": 0.0017451382365189963,
           "GFID": null,
           "GlobalID": "{D16F9E76-B00E-44F8-BD04-369F26BE2F2F}"
@@ -119,7 +119,7 @@
           "ANI_FIRM": null,
           "COM_NFO_ID": "",
           "SOURCE_CIT": "NP",
-          "SHAPE.STArea()": 1.6933375705078525e-07,
+          "SHAPE.STArea()": 1.6933375705078525E-7,
           "SHAPE.STLength()": 0.0016767245201923364,
           "GFID": "ae0d8846-7a12-471b-91c5-49c6744dc00f",
           "GlobalID": "{2968928E-7256-4D5A-AB5A-339E63FF6D1E}"
@@ -281,7 +281,7 @@
           "ANI_FIRM": null,
           "COM_NFO_ID": "41011C_410042",
           "SOURCE_CIT": "41011C_BASE4",
-          "SHAPE.STArea()": 5.422681121715548e-07,
+          "SHAPE.STArea()": 5.422681121715548E-7,
           "SHAPE.STLength()": 0.0031011880124033,
           "GFID": "ff2fc696-5df9-4fd4-a69f-fd362c8a75c2",
           "GlobalID": "{7BCA6374-3A25-439B-8657-F1B2CD4DBB34}"
@@ -399,7 +399,7 @@
           "ANI_FIRM": "51121C",
           "COM_NFO_ID": "510127_1",
           "SOURCE_CIT": "510127_BASE4",
-          "SHAPE.STArea()": 9.9479955604027e-07,
+          "SHAPE.STArea()": 9.9479955604027E-7,
           "SHAPE.STLength()": 0.003939793128977571,
           "GFID": "1064d87a-bdf3-437d-b8c8-df4d69ed0ae5",
           "GlobalID": "{2C2D2F44-8496-4A84-B115-2FC945DF221D}"
@@ -569,7 +569,7 @@
           "ANI_FIRM": null,
           "COM_NFO_ID": "41011C_410042",
           "SOURCE_CIT": "41011C_BASE4",
-          "SHAPE.STArea()": 9.694024345880991e-07,
+          "SHAPE.STArea()": 9.694024345880991E-7,
           "SHAPE.STLength()": 0.0047412925554687615,
           "GFID": "ff2fc696-5df9-4fd4-a69f-fd362c8a75c2",
           "GlobalID": "{53348D7F-CE07-4BB9-B1B0-145EFE220D44}"
@@ -627,7 +627,7 @@
           "ANI_FIRM": "NP",
           "COM_NFO_ID": "27097C_270617",
           "SOURCE_CIT": "27097C_BASE1",
-          "SHAPE.STArea()": 2.615812862567937e-07,
+          "SHAPE.STArea()": 2.615812862567937E-7,
           "SHAPE.STLength()": 0.0030812270225120133,
           "GFID": "dfb4b763-6f6d-4f5c-8380-7a1b01706713",
           "GlobalID": "{D91C0A4D-DEB7-4377-B9BA-1E225EC21F2D}"
@@ -701,7 +701,7 @@
           "ANI_FIRM": null,
           "COM_NFO_ID": null,
           "SOURCE_CIT": "NP",
-          "SHAPE.STArea()": 2.14731799811345e-07,
+          "SHAPE.STArea()": 2.14731799811345E-7,
           "SHAPE.STLength()": 0.0018594243211603172,
           "GFID": "f4b5c638-f185-4e5d-9e2a-0b42411c45b5",
           "GlobalID": "{4DBB808B-A7C6-4254-BC9B-4989E2051360}"
@@ -1521,8 +1521,8 @@
           "ANI_FIRM": null,
           "COM_NFO_ID": "01007C_010226",
           "SOURCE_CIT": "01007C_NP",
-          "SHAPE.STArea()": 2.8212322899248183e-14,
-          "SHAPE.STLength()": 8.116661149937792e-07,
+          "SHAPE.STArea()": 2.8212322899248183E-14,
+          "SHAPE.STLength()": 8.116661149937792E-7,
           "GFID": null,
           "GlobalID": "{655AAB38-D5F9-4F4C-BF29-B213FC7A377E}"
         }
@@ -1611,7 +1611,7 @@
           "ANI_FIRM": null,
           "COM_NFO_ID": "05135C_050464",
           "SOURCE_CIT": "05135C_NP",
-          "SHAPE.STArea()": 1.733403533794693e-07,
+          "SHAPE.STArea()": 1.733403533794693E-7,
           "SHAPE.STLength()": 0.0018666929014373597,
           "GFID": "20110916",
           "GlobalID": "{76F9EC05-2C0F-49C8-A9BA-A11ACE2EB0AB}"
@@ -1721,7 +1721,7 @@
           "ANI_FIRM": null,
           "COM_NFO_ID": null,
           "SOURCE_CIT": null,
-          "SHAPE.STArea()": 5.005593917436377e-07,
+          "SHAPE.STArea()": 5.005593917436377E-7,
           "SHAPE.STLength()": 0.0034372168468124755,
           "GFID": "c52349be-228a-440b-aa3c-2e408a9c4373",
           "GlobalID": "{F935BA64-0C6B-466D-98E2-68EF96F03AD1}"
@@ -1779,7 +1779,7 @@
           "ANI_FIRM": "",
           "COM_NFO_ID": "06107C_065066",
           "SOURCE_CIT": "NP",
-          "SHAPE.STArea()": 5.234754496264804e-07,
+          "SHAPE.STArea()": 5.234754496264804E-7,
           "SHAPE.STLength()": 0.0029533836318185814,
           "GFID": "64dc28d5-9489-42bb-9dd6-1978dc0d8765",
           "GlobalID": "{7433E667-1F6F-4AF4-8FA8-D9EA1E3A8893}"
@@ -1789,8 +1789,8 @@
     {
       "name": "rare_unpadded_state_fips",
       "where": "(ST_FIPS = '4') AND SHAPE IS NOT NULL AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (POL_AR_ID IS NULL OR (POL_AR_ID = '' AND POL_AR_ID NOT LIKE ' ')) AND NOT (POL_NAME1 IS NULL OR (POL_NAME1 = '' AND POL_NAME1 NOT LIKE ' ')) AND NOT (CO_FIPS IS NULL OR (CO_FIPS = '' AND CO_FIPS NOT LIKE ' ')) AND NOT (COMM_NO IS NULL OR (COMM_NO = '' AND COMM_NO NOT LIKE ' ')) AND NOT (CID IS NULL OR (CID = '' AND CID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ANI_TF IN ('T', 'F', 'U') AND ((ANI_FIRM IS NULL OR (ANI_FIRM = '' AND ANI_FIRM NOT LIKE ' ')) OR ANI_FIRM = 'NP' OR ANI_TF = 'T')",
-      "expect": "ST_FIPS",
-      "warns": null,
+      "expect": null,
+      "warns": "ST_FIPS",
       "feature": {
         "type": "Feature",
         "id": 554936,
@@ -2925,7 +2925,7 @@
           "ANI_FIRM": "F",
           "COM_NFO_ID": "20061C_200579",
           "SOURCE_CIT": "20061C_STUDY1",
-          "SHAPE.STArea()": 9.644299848258424e-08,
+          "SHAPE.STArea()": 9.644299848258424E-8,
           "SHAPE.STLength()": 0.0012535677710208513,
           "GFID": "20160310",
           "GlobalID": "{B5931DDC-8927-4FE0-9A2D-28F12B09B29C}"
@@ -3027,7 +3027,7 @@
           "ANI_FIRM": " ",
           "COM_NFO_ID": "27131C_270646",
           "SOURCE_CIT": "27131C_BASE4",
-          "SHAPE.STArea()": 2.3070347298097542e-07,
+          "SHAPE.STArea()": 2.3070347298097542E-7,
           "SHAPE.STLength()": 0.0020334404963213517,
           "GFID": "aed6d8a0-9447-475d-8d37-2b939d3bf9dc",
           "GlobalID": "{0A927427-14CA-42A3-8B4D-F39044EB4C19}"

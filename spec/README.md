@@ -14,7 +14,7 @@ retrieved, the edition, and a SHA-256 of every file.
 | `service/observed/<id>.json` | Per-value row counts for every domain-bound field of a modelled layer, and per-pair counts for every two fields a rule reads together (`combinations`), from the service's grouped statistics. Observations, not specification. `snapshot-spec --layer ID` refreshes one layer's and keeps the others'. |
 | `repairs.json` | **Not upstream.** Corrections to published domain values, each quoting the reference sentence that licenses it. Not in the manifest. |
 | `relationships.json` | **Not upstream.** Which field holds another's unit or datum, which fields may be populated only alongside another or only for some zones (the AR revert fields), which values a field is limited to, and which value a field takes when another holds certain values (`SFHA_TF` from `FLD_ZONE`, `DUAL_ZONE` from `AR_REVERT`), each quoting the field description it reads. Not in the manifest. |
-| `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot. Not in the manifest. |
+| `legacy.json` | **Not upstream.** Values outside the reference that at least one row in a thousand of the layer holds, which the models accept with a warning: each with its count from `service/observed/`, and a note on what is known of it. A test asserts it lists exactly what its threshold selects from that snapshot, besides the values whose `decision` admits them below the bar. Not in the manifest. |
 
 ## Why PDFs
 
@@ -745,7 +745,7 @@ Nothing in the layer names a zone.
 Layer 22 has 88,344 rows (`service/observed/22.json`, 2026-10-12 UTC), few
 enough to validate whole: every row was paged by `OBJECTID` (200 to a page, 50
 where a page of large polygons failed, with geometry) and run through the model.
-It rejects 18,201 (20.6%); "missing" is as for the cross sections.
+It rejects 18,184 (20.6%); "missing" is as for the cross sections.
 
 - **`SOURCE_CIT` is missing on 13,247** (13,220 null, 27 `''`), in 232 DFIRMs,
   904 of them in `45019C`. A lone space is text and validates (333 rows), as does
@@ -761,8 +761,7 @@ It rejects 18,201 (20.6%); "missing" is as for the cross sections.
   whose area the service rounds to 0; it validates.
 - **`VERSION_ID` is missing on 159**, 158 in `45063C`. Every one also lacks
   `SOURCE_CIT`, so the fixture has no case for it.
-- **`ST_FIPS` is missing on 60**, 59 in `06107C`, and holds `4` on 17 (all
-  `04009C`), Arizona's code without its zero.
+- **`ST_FIPS` is missing on 60**, 59 in `06107C`.
 - **`ANI_TF` is missing on 31**, 30 in `42073C`.
 - **One row holds nothing** but its `GlobalID` (`OBJECTID` 122639): every
   attribute null and no shape. It accounts for the single row missing
@@ -774,16 +773,18 @@ NOT NULL AND (F <> '' OR F LIKE ' ') AND NOT (F IN (<the values>) AND F NOT LIKE
 ' ')`, the legacy codes among `ST_FIPS`'s values), the rule's (`ANI_FIRM IS NOT
 NULL AND (ANI_FIRM <> '' OR ANI_FIRM LIKE ' ') AND ANI_FIRM <> 'NP' AND (ANI_TF
 IS NULL OR ANI_TF <> 'T' OR ANI_TF LIKE ' ')`) and `SHAPE IS NULL`. It selects
-18,201 rows on 2026-10-11; on each of the 446 pages the model rejected exactly as
+18,184 rows on 2026-10-11; on each of the 446 pages the model rejected exactly as
 many as the union selects over the page's `OBJECTID` range, and compared by
 `OBJECTID` the two sets are the same. `SHAPE.STArea() = 0` in place of `SHAPE IS
 NULL` would have added the sliver.
 
-**`ST_FIPS` drops the leading zero on four states often enough to be legacy.**
+**`ST_FIPS` drops the leading zero on five states, and all five are legacy.**
 `5` (352 rows, 18 DFIRMs), `1` (282, 20), `6` (116, 4) and `8` (90, 4) clear the
-bar of 89 rows, and validate with a warning; each is in DFIRMs whose ID begins
-with the padded code (`05...`, `01...`, `06...`, `08...`). `4` (17) does not,
-and is rejected. `D_State_FIPS`'s FIRM description is the two-digit code, so
+bar of 89 rows; each is in DFIRMs whose ID begins with the padded code (`05...`,
+`01...`, `06...`, `08...`). `4` (17 rows, all `04009C`) does not, and validates
+with the others by Seth Fitzsimmons's decision of 2026-10-11, recorded in its
+`legacy.json` entry: it is the same defect, and the DFIRM says which state it
+means. Without it the layer rejects 18,201. `D_State_FIPS`'s FIRM description is the two-digit code, so
 `01`, not `Alabama`, is what the field stores.
 
 **`ANI_FIRM` names another FIRM only on an Area Not Included.** "Used for ANI

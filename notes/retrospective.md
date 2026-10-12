@@ -434,3 +434,10 @@ These are inputs for the overture-schema backlog.
   five were not missing from 2024 but filed under another domain. Counting
   `V_DATUM` "set" rows also counted values the vocabulary rejects before the
   rule runs (16,933 rows, 16,571 reaching the rule).
+- The count threshold met its first exception on 2026-10-11: Arizona's unpadded
+  `4` (17 rows, one DFIRM) sat under layer 22's bar of 89 beside four unpadded
+  states above it, the same defect at a smaller count. A count cannot see that
+  two values share a cause. `legacy.json` gained a `decision` field for the
+  maintainer's call, and the selection test splits in two: undecided entries
+  must equal what the threshold selects, decided ones must be values it does not
+  select, at the count the snapshot holds.

@@ -110,18 +110,21 @@ def test_the_state_is_the_two_digit_code(area: dict[str, Any]) -> None:
     assert rejected(area) == {"ST_FIPS"}
 
 
-@pytest.mark.parametrize("code", ["5", "1", "6", "8"])
-def test_a_common_unpadded_state_warns(area: dict[str, Any], code: str) -> None:
+# Arizona's 4 is under the legacy threshold, admitted by decision
+# (spec/legacy.json).
+@pytest.mark.parametrize("code", ["5", "1", "6", "8", "4"])
+def test_an_unpadded_state_warns(area: dict[str, Any], code: str) -> None:
     area["properties"]["ST_FIPS"] = code
     assert rejected(area) == set()
     assert warned(area) == ["ST_FIPS"]
     assert StateFIPS(code) in LEGACY_MEMBERS
 
 
-def test_a_rare_unpadded_state_is_rejected(area: dict[str, Any]) -> None:
-    # Arizona's 04 without its zero is under the legacy threshold
-    # (spec/service/observed/22.json has the count).
-    area["properties"]["ST_FIPS"] = "4"
+def test_an_unpadded_state_without_a_legacy_entry_is_rejected(
+    area: dict[str, Any],
+) -> None:
+    # Connecticut's 09 without its zero is in no row, so no entry admits it.
+    area["properties"]["ST_FIPS"] = "9"
     assert rejected(area) == {"ST_FIPS"}
 
 

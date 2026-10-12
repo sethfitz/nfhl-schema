@@ -171,6 +171,11 @@ def legacy_doc(entries: list[LegacyValue], reader: SpecReader) -> str:
     domain, so the member is legacy on all of them.
     """
     notes = list(dict.fromkeys(sentence(e.note) for e in entries))
+    if any(e.decision for e in entries):
+        notes.append(
+            "Too rare to clear the legacy threshold; admitted by a decision "
+            "recorded in `spec/legacy.json`."
+        )
     held = []
     for e in entries:
         total = reader.observed(next(lyr for lyr in LAYERS if lyr.layer_id == e.layer))

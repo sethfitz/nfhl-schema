@@ -128,6 +128,7 @@ study types such as `SFHAs WITH LOW FLOOD RISK` that no current domain defines.
 A value outside the reference that at least one row in a thousand of the layer
 holds is a legacy value: [`spec/legacy.json`](spec/legacy.json) lists those
 that clear that bar on each layer, with their counts and what is known of each,
+and any a recorded decision admits below it (Arizona's unpadded `4`),
 and the generator adds each as an enum member whose description begins
 `Legacy:`. Layers whose fields share a domain share its enum, so a value legacy
 on one of them validates, with the warning, on all of them. A

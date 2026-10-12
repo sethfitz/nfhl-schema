@@ -1,7 +1,7 @@
 # StateFIPS
 
 Values of `D_State_FIPS` that apply to the FIRM Database, each as the data
-stores it. Used by `S_Pol_Ar.ST_FIPS`. The last 4 are legacy values: common in
+stores it. Used by `S_Pol_Ar.ST_FIPS`. The last 5 are legacy values: common in
 the data, not in the reference.
 
 ## Values
@@ -70,6 +70,7 @@ the data, not in the reference.
 - `1` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. Alabama's FIPS code, 01, without its leading zero. D_State_FIPS lists the two-digit 01; every row holding 1 is in a DFIRM whose ID begins 01 (20 DFIRMs). Held by 282 of 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12.
 - `6` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. California's FIPS code, 06, without its leading zero. D_State_FIPS lists the two-digit 06; every row holding 6 is in a DFIRM whose ID begins 06 (4 DFIRMs). Held by 116 of 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12.
 - `8` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. Colorado's FIPS code, 08, without its leading zero. D_State_FIPS lists the two-digit 08; every row holding 8 is in a DFIRM whose ID begins 08 (4 DFIRMs). Held by 90 of 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12.
+- `4` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. Arizona's FIPS code, 04, without its leading zero. D_State_FIPS lists the two-digit 04; every row holding 4 is in DFIRM 04009C. Too rare to clear the legacy threshold; admitted by a decision recorded in `spec/legacy.json`. Held by 17 of 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12.
 
 ## Used By
 

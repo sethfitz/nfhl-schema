@@ -47,7 +47,7 @@
     }
   ],
   "threshold": 0.001,
-  "rule": "A value is common when at least one row in a thousand of its layer holds it (count / layer total >= threshold). Measured against the layer rather than the field, because most of these fields are empty on most rows, so a share of the populated rows would admit the text-encoded nulls (-9999 is 97% of populated AR_REVERT). The null encodings written as text ('-9999', '<Null>', lone spaces) are not vocabulary values and are never admitted here, whatever their count.",
+  "rule": "A value is common when at least one row in a thousand of its layer holds it (count / layer total >= threshold). Measured against the layer rather than the field, because most of these fields are empty on most rows, so a share of the populated rows would admit the text-encoded nulls (-9999 is 97% of populated AR_REVERT). The null encodings written as text ('-9999', '<Null>', lone spaces) are not vocabulary values and are never admitted here, whatever their count. A value below the bar is admitted only by a maintainer's decision, recorded in its entry's `decision` with the date and the reason; the test then asserts its count instead of selecting it.",
   "values": [
     {
       "domain": "D_Study_Typ",
@@ -216,6 +216,15 @@
       "value": "8",
       "count": 90,
       "note": "Colorado's FIPS code, 08, without its leading zero. D_State_FIPS lists the two-digit 08; every row holding 8 is in a DFIRM whose ID begins 08 (4 DFIRMs)."
+    },
+    {
+      "domain": "D_State_FIPS",
+      "field": "ST_FIPS",
+      "layer": 22,
+      "value": "4",
+      "count": 17,
+      "note": "Arizona's FIPS code, 04, without its leading zero. D_State_FIPS lists the two-digit 04; every row holding 4 is in DFIRM 04009C.",
+      "decision": "Seth Fitzsimmons, 2026-10-11: \"Allow '4', since we know what's there and why they're legacy values.\" Under the bar (89 rows), admitted because it is the same defect as 5, 1, 6 and 8: a state code missing its leading zero."
     }
   ]
 }

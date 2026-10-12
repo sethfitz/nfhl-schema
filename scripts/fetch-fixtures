@@ -849,13 +849,13 @@ POL_AR_CASES: list[Case] = [
     ("zero_area_sliver", "SHAPE.STArea() = 0", None, None),
     # Legacy values (spec/legacy.json), which validate with a warning.
     ("unpadded_state_fips", "ST_FIPS = '5'", None, "ST_FIPS"),
+    # Arizona's 04 without its zero, too rare for the bar and admitted by decision.
+    ("rare_unpadded_state_fips", "ST_FIPS = '4'", None, "ST_FIPS"),
     # Findings: published political areas the reference does not allow. Each
     # case names one field; every such area breaks that field alone. A missing
     # VERSION_ID makes none: every such area also lacks SOURCE_CIT.
     ("no_source_citation", missing("SOURCE_CIT"), "SOURCE_CIT", None),
     ("no_state_fips", missing("ST_FIPS"), "ST_FIPS", None),
-    # Arizona's 04 without its zero, on too few rows to be legacy.
-    ("rare_unpadded_state_fips", "ST_FIPS = '4'", "ST_FIPS", None),
     ("no_ani_flag", missing("ANI_TF"), "ANI_TF", None),
     ("flag_as_other_firm", "ANI_TF = 'F' AND ANI_FIRM = 'F'", ANI_FIRM_RULE, None),
     (

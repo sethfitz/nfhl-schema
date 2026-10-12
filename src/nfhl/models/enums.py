@@ -197,7 +197,7 @@ class Scale(str, DocumentedEnum):
 
 class StateFIPS(str, DocumentedEnum):
     """Values of `D_State_FIPS` that apply to the FIRM Database, each as the data
-    stores it. Used by `S_Pol_Ar.ST_FIPS`. The last 4 are legacy values: common in
+    stores it. Used by `S_Pol_Ar.ST_FIPS`. The last 5 are legacy values: common in
     the data, not in the reference.
     """
 
@@ -301,6 +301,17 @@ class StateFIPS(str, DocumentedEnum):
             "validates with a LegacyValueWarning. Colorado's FIPS code, 08, without"
             " its leading zero. D_State_FIPS lists the two-digit 08; every row "
             "holding 8 is in a DFIRM whose ID begins 08 (4 DFIRMs). Held by 90 of "
+            "88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12."
+        ),
+    )
+    V_4 = (
+        "4",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Arizona's FIPS code, 04, without "
+            "its leading zero. D_State_FIPS lists the two-digit 04; every row "
+            "holding 4 is in DFIRM 04009C. Too rare to clear the legacy threshold; "
+            "admitted by a decision recorded in `spec/legacy.json`. Held by 17 of "
             "88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12."
         ),
     )
@@ -914,6 +925,7 @@ LEGACY_MEMBERS: frozenset[Enum] = frozenset(
         StateFIPS.V_1,
         StateFIPS.V_6,
         StateFIPS.V_8,
+        StateFIPS.V_4,
         StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_MEDIUM_FLOOD_RISK,
