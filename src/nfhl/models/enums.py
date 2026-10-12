@@ -656,12 +656,26 @@ class TrueFalse(str, DocumentedEnum):
     it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
     `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`, `S_Wtr_Ln.SHOWN_FIRM`,
     `S_Wtr_Ln.SHOWN_INDX`, `S_Levee.USACE_LEV`, `S_Levee.PL84_99TF`,
-    `S_Pol_Ar.ANI_TF`, `S_Gen_Struct.SHOWN_FIRM`.
+    `S_Pol_Ar.ANI_TF`, `S_Gen_Struct.SHOWN_FIRM`, `S_Wtr_Ar.SHOWN_FIRM`,
+    `S_Wtr_Ar.SHOWN_INDX`. The last is a legacy value: common in the data, not in
+    the reference.
     """
 
     T = "T", "True (Yes). Code `T`."
     F = "F", "False (No). Code `F`."
     U = "U", "Unknown. Code `U`."
+    V_1 = (
+        "1",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. A digit where D_TrueFalse lists "
+            "the letters T, F and U. Every water area in four DFIRMs holds it "
+            "(47025C 449, 37153C 281, 37093C 144, 13049C 14), each with SHOWN_INDX "
+            "F; no other modelled layer holds it. The reference does not say "
+            "whether it means T. Held by 888 of 779,833 rows of `SHOWN_FIRM` on "
+            "NFHL service layer 32, counted 2026-10-12."
+        ),
+    )
 
 
 class USACEDistrict(str, DocumentedEnum):
@@ -1108,33 +1122,34 @@ class ZoneSubtype(str, DocumentedEnum):
     )
 
 
-# Members the reference does not list; each use raises a warning.
-LEGACY_MEMBERS: frozenset[Enum] = frozenset(
-    {
-        LeveeStatus.DE_ACCREDITED,
-        LeveeStatus.NEVER_ACCREDITED,
-        LocAccuracy.NP,
-        ProfBaslnTyp.STREAM_RIVER,
-        StateFIPS.V_5,
-        StateFIPS.V_1,
-        StateFIPS.V_6,
-        StateFIPS.V_8,
-        StateFIPS.V_4,
-        StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE,
-        StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_2,
-        StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_3,
-        StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_4,
-        StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE,
-        StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_2,
-        StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_3,
-        StructTyp.OTHER_MISC_STRUCTURE_LEGACY,
-        StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
-        StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,
-        StudyTyp.SFHAS_WITH_MEDIUM_FLOOD_RISK,
-        StudyTyp.REDELINEATION,
-        StudyTyp.SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1_LEGACY,
-        StudyTyp.DIGITAL_CONVERSION,
-        StudyTyp.SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO,
-        ZoneSubtype.AREA_WITH_REDUCED_FLOOD_RISK_DUE_TO_LEVEE,
-    }
+# Members the reference does not list; each use raises a warning. A
+# tuple: the members are str, so a set would keep one of two equal values
+# (`StateFIPS.V_1`, `TrueFalse.V_1`).
+LEGACY_MEMBERS: tuple[Enum, ...] = (
+    LeveeStatus.DE_ACCREDITED,
+    LeveeStatus.NEVER_ACCREDITED,
+    LocAccuracy.NP,
+    ProfBaslnTyp.STREAM_RIVER,
+    StateFIPS.V_5,
+    StateFIPS.V_1,
+    StateFIPS.V_6,
+    StateFIPS.V_8,
+    StateFIPS.V_4,
+    StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE,
+    StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_2,
+    StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_3,
+    StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_4,
+    StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE,
+    StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_2,
+    StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_3,
+    StructTyp.OTHER_MISC_STRUCTURE_LEGACY,
+    StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
+    StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,
+    StudyTyp.SFHAS_WITH_MEDIUM_FLOOD_RISK,
+    StudyTyp.REDELINEATION,
+    StudyTyp.SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1_LEGACY,
+    StudyTyp.DIGITAL_CONVERSION,
+    StudyTyp.SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO,
+    TrueFalse.V_1,
+    ZoneSubtype.AREA_WITH_REDUCED_FLOOD_RISK_DUE_TO_LEVEE,
 )

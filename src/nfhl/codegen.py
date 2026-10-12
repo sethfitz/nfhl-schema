@@ -288,11 +288,11 @@ def render_enums(reader: SpecReader) -> str:
             "\n\n\n".join(r.source for r in rendered),
             "",
             "",
-            "# Members the reference does not list; each use raises a warning.",
-            "LEGACY_MEMBERS: frozenset[Enum] = frozenset(",
-            "    {",
-            *(f"        {m}," for m in legacy),
-            "    }",
+            "# Members the reference does not list; each use raises a warning. A",
+            "# tuple: the members are str, so a set would keep one of two equal values",
+            "# (`StateFIPS.V_1`, `TrueFalse.V_1`).",
+            "LEGACY_MEMBERS: tuple[Enum, ...] = (",
+            *(f"    {m}," for m in legacy),
             ")",
             "",
         ]
@@ -773,6 +773,15 @@ GEOMETRIES = {
         "MultiPolygon as well as a Polygon.",
         "The FIRM panel: in the reference's words, the area of a hardcopy map "
         "panel, a polygon that corresponds to the panel neatlines.",
+    ),
+    "S_Wtr_Ar": LayerGeometry(
+        "esriGeometryPolygon",
+        ("POLYGON", "MULTI_POLYGON"),
+        "“The spatial elements representing surface water area features are "
+        "polygons”, and Table 4 does not hold S_Wtr_Ar to “Must Be Single Part”, "
+        "so a MultiPolygon as well as a Polygon.",
+        "The water area: in the reference's words, a surface water area feature "
+        "(a hydrography feature shown on the FIRM as an area).",
     ),
 }
 

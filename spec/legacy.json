@@ -52,6 +52,10 @@
     {
       "path": "service/observed/24.json",
       "retrieved_at": "2026-10-12T17:11:55Z"
+    },
+    {
+      "path": "service/observed/32.json",
+      "retrieved_at": "2026-10-12T22:07:34Z"
     }
   ],
   "threshold": 0.001,
@@ -334,6 +338,14 @@
       "value": "Other / Misc Structure",
       "count": 379,
       "note": "The reference's `Other / Misc. Structure` (code 9000) without its period; the data holds it on 379 rows in 86 DFIRMs against 16 for the reference's spelling, in 5."
+    },
+    {
+      "domain": "D_TrueFalse",
+      "field": "SHOWN_FIRM",
+      "layer": 32,
+      "value": "1",
+      "count": 888,
+      "note": "A digit where D_TrueFalse lists the letters T, F and U. Every water area in four DFIRMs holds it (47025C 449, 37153C 281, 37093C 144, 13049C 14), each with SHOWN_INDX F; no other modelled layer holds it. The reference does not say whether it means T."
     }
   ]
 }

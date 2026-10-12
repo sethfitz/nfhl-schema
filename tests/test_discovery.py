@@ -20,6 +20,7 @@ from nfhl.models import (
     ProfileBaseline,
     RiverMark,
     StationStart,
+    WaterArea,
     WaterLine,
 )
 from nfhl.tags import nfhl_provider
@@ -41,6 +42,7 @@ def test_discovery_finds_the_model_through_the_entry_point() -> None:
         PoliticalJurisdiction,
         FirmPanel,
         GeneralStructure,
+        WaterArea,
     } <= set(found.values())
 
 
@@ -64,6 +66,7 @@ def test_overture_codegen_lists_the_model() -> None:
         "PoliticalJurisdiction",
         "FirmPanel",
         "GeneralStructure",
+        "WaterArea",
     } <= set(listed)
 
 
@@ -82,6 +85,7 @@ def test_the_tag_provider_tags_the_model_nfhl() -> None:
     assert "nfhl" in tagged["nfhl_political_jurisdiction"]
     assert "nfhl" in tagged["nfhl_firm_panel"]
     assert "nfhl" in tagged["nfhl_general_structure"]
+    assert "nfhl" in tagged["nfhl_water_area"]
 
 
 def test_the_tag_provider_leaves_other_packages_alone() -> None:

@@ -1108,6 +1108,61 @@ STRUCTURE_SPARSE = {
     "no_flag",
 }
 
+
+# The two water areas whose polygon has no rings. `SHAPE.STArea() = 0` also
+# matches 54 slivers the service rounds to no area, which have a shape and
+# validate, so the empty ones are pinned by OBJECTID.
+EMPTY_WATER_AREAS = [460719, 461325]
+# Every required field populated, every flag in D_TrueFalse and every polygon
+# a polygon, unless the case is about that; a lone space in free text is a
+# value. A water area with no shape is `IS NULL`.
+WATER_AREA_FIELDS = {
+    "geometry": "SHAPE IS NOT NULL "
+    f"AND OBJECTID NOT IN ({', '.join(map(str, EMPTY_WATER_AREAS))})",
+    **{
+        f: f"NOT {missing(f)}"
+        for f in ("DFIRM_ID", "VERSION_ID", "WTR_AR_ID", "WTR_NM", "SOURCE_CIT")
+    },
+    **{
+        f: f"({missing(f)} OR {f} IN ({sql_list(TRUE_FALSE)}))"
+        for f in ("SHOWN_FIRM", "SHOWN_INDX")
+    },
+}
+WATER_AREA_CASES: list[Case] = [
+    (
+        "shown_on_firm",
+        "SHOWN_FIRM = 'T' AND SHOWN_INDX = 'T' AND WTR_NM <> 'NP'",
+        None,
+        None,
+    ),
+    ("not_shown", "SHOWN_FIRM = 'F' AND SHOWN_INDX = 'F'", None, None),
+    # `U` is in D_TrueFalse: "Unknown".
+    ("shown_unknown", "SHOWN_FIRM = 'U' AND SHOWN_INDX = 'U'", None, None),
+    # "A", required if applicable, and not required.
+    ("not_said_if_shown", "SHOWN_FIRM IS NULL AND SHOWN_INDX IS NULL", None, None),
+    # "Unnamed bodies of water follow the convention shown in Section 5.3": `NP`,
+    # on 469,343 rows, and a lone space, which is text.
+    ("not_populated_name", "WTR_NM = 'NP'", None, None),
+    ("lone_space_name", "WTR_NM LIKE ' '", None, None),
+    # A sliver whose area the service rounds to 0; it has a shape and validates.
+    ("zero_area_sliver", "SHAPE.STArea() = 0", None, None),
+    # A legacy value (spec/legacy.json), which validates with a warning.
+    ("numeric_shown_firm", "SHOWN_FIRM = '1'", None, "SHOWN_FIRM"),
+    # Findings: published water areas the reference does not allow. Each case
+    # names one field; every such area breaks that field alone. A lone-space flag
+    # makes none: all 686 rows holding one hold it in both.
+    ("no_water_name", missing("WTR_NM"), "WTR_NM", None),
+    ("no_source_citation", missing("SOURCE_CIT"), "SOURCE_CIT", None),
+    ("no_geometry", "SHAPE IS NULL", "geometry", None),
+    ("empty_polygon", f"OBJECTID = {EMPTY_WATER_AREAS[0]}", "geometry", None),
+]
+# The findings and values with only a handful of rows, which may not be small.
+WATER_AREA_SPARSE = {
+    "zero_area_sliver",
+    "no_geometry",
+    "empty_polygon",
+}
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -1181,6 +1236,14 @@ FIXTURES_BY_LAYER = [
         "general_structures.json",
         STRUCTURE_CASES,
         clean_except_expected(STRUCTURE_FIELDS, STRUCTURE_CASES, STRUCTURE_SPARSE),
+    ),
+    Fixture(
+        32,
+        "water_areas.json",
+        WATER_AREA_CASES,
+        clean_except_expected(
+            WATER_AREA_FIELDS, WATER_AREA_CASES, WATER_AREA_SPARSE, short=SMALL
+        ),
     ),
 ]
 

@@ -83,6 +83,17 @@ def test_a_value_legacy_in_one_domain_is_not_legacy_in_another(
     assert legacy_warnings_by(valid_feature) == []
 
 
+def test_a_value_legacy_in_two_domains_is_a_member_of_each(
+    reader: SpecReader,
+) -> None:
+    # `1` is legacy in D_State_FIPS and in D_TrueFalse. The members are equal by
+    # value, so a set of them keeps one and the other never warns.
+    held = {(type(m).__name__, m.value) for m in LEGACY_MEMBERS}
+    assert {("StateFIPS", "1"), ("TrueFalse", "1")} <= held
+    legacy = {(v["domain"], v["value"]) for v in reader.legacy["values"]}
+    assert len(LEGACY_MEMBERS) == len(legacy)
+
+
 def test_a_value_neither_listed_nor_legacy_is_still_rejected(
     valid_feature: dict[str, Any],
 ) -> None:

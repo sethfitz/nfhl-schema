@@ -104,6 +104,16 @@ def structure_layer() -> Layer:
 
 
 @pytest.fixture(scope="session")
+def water_area_cases() -> list[dict[str, Any]]:
+    return fixture_cases("water_areas.json")
+
+
+@pytest.fixture(scope="session")
+def water_area_layer() -> Layer:
+    return modelled("S_Wtr_Ar")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 
