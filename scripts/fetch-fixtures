@@ -46,6 +46,21 @@ class Fixture:
     filters: Callable[[str], str]  # case name -> clauses ANDed to its `where`
 
 
+SPEC = SpecReader()
+
+
+def sql_list(values: list[str]) -> str:
+    return ", ".join("'" + v.replace("'", "''") + "'" for v in values)
+
+
+def domain_values(domain: str) -> list[str]:
+    """The values `domain` allows the FIRM Database, as the data stores them."""
+    return [v.value for v in SPEC.domain(domain).values]
+
+
+# Every field the reference types D_TrueFalse: T, F or U.
+TRUE_FALSE = domain_values("D_TrueFalse")
+
 # Bounding perimeter as well as area keeps the vertex count, and the diff, small.
 SMALL = "SHAPE.STArea() < 0.000001 AND SHAPE.STLength() < 0.01"
 # Nothing else on the feature disagrees with the reference, so the case tests
@@ -56,7 +71,7 @@ CLEAN = (
     "VELOCITY = -9999 AND VEL_UNIT IS NULL "
     "AND AR_REVERT IS NULL AND AR_SUBTRV IS NULL "
     "AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 "
-    "AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('T', 'F', 'U'))"
+    f"AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ({sql_list(TRUE_FALSE)}))"
 )
 # Most zone-rule findings are a few dozen rows nationally, none of them both
 # small and NULL where the service could write `""`. Those take a looser bound
@@ -68,7 +83,7 @@ RARE = (
     "AND (AR_REVERT IS NULL OR AR_REVERT = '') "
     "AND (AR_SUBTRV IS NULL OR AR_SUBTRV = '') "
     "AND BFE_REVERT = -9999 AND DEP_REVERT = -9999 "
-    "AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ('', 'T', 'F', 'U')) "
+    f"AND (DUAL_ZONE IS NULL OR DUAL_ZONE IN ({sql_list(['', *TRUE_FALSE])})) "
     "AND SHAPE.STArea() < 0.00005 AND SHAPE.STLength() < 0.05"
 )
 NO_BFE = "STATIC_BFE = -9999 AND V_DATUM IS NULL"
@@ -341,19 +356,11 @@ def continues_without(first: str, then: str) -> str:
 
 # STUDY_TYP values that are neither in D_Study_Typ nor legacy (spec/legacy.json).
 STUDY_TYP_OUT_OF_DOMAIN = ["New H&H", "1050", "Profile Baseline"]
-# The legacy ones, which validate with a warning.
-STUDY_TYP_LEGACY = [
-    "SFHAs WITH HIGH FLOOD RISK",
-    "SFHAs WITH LOW FLOOD RISK",
-    "SFHAs WITH MEDIUM FLOOD RISK",
-    "REDELINEATION",
-    "DIGITAL CONVERSION",
-    "Shaded Zone X with depths less than 1'",
-]
-
-
-def sql_list(values: list[str]) -> str:
-    return ", ".join("'" + v.replace("'", "''") + "'" for v in values)
+# The legacy ones, which validate with a warning; the domain lists a value once
+# per layer that holds it.
+STUDY_TYP_LEGACY = list(
+    dict.fromkeys(v.value for v in SPEC.legacy_values("D_Study_Typ"))
+)
 
 
 # Every required field populated, every vocabulary value a reference one, no
@@ -369,11 +376,12 @@ PROFILE_FIELDS = {
         f: f"{f} IS NOT NULL AND {f} <> ''"
         for f in ("BASELN_ID", "WTR_NM", "SOURCE_CIT")
     },
-    "WATER_TYP": f"({missing('WATER_TYP')} OR WATER_TYP IN ('Profile Baseline', "
-    "'Profile Baseline and Stream Centerline', 'Hydraulic Link', 'Unknown'))",
+    "WATER_TYP": f"({missing('WATER_TYP')} OR WATER_TYP IN "
+    f"({sql_list(domain_values('D_Prof_Basln_Typ'))}))",
     "STUDY_TYP": f"({missing('STUDY_TYP')} OR (STUDY_TYP NOT LIKE ' ' AND "
     f"STUDY_TYP NOT IN ({sql_list(STUDY_TYP_OUT_OF_DOMAIN + STUDY_TYP_LEGACY)})))",
-    "SHOWN_FIRM": f"({missing('SHOWN_FIRM')} OR SHOWN_FIRM IN ('T', 'F', 'U'))",
+    "SHOWN_FIRM": f"({missing('SHOWN_FIRM')} OR SHOWN_FIRM IN "
+    f"({sql_list(TRUE_FALSE)}))",
     "DATUM_UNIT": "(DATUM_UNIT IS NULL OR DATUM_UNIT NOT LIKE ' ')",
     **{
         rule: f"NOT ({continues_without(first, then)})"
@@ -470,7 +478,7 @@ STATION_FIELDS = {
     "START_ID": "START_ID IS NOT NULL AND START_ID <> ''",
     "START_DESC": "START_DESC IS NOT NULL",
     "SOURCE_CIT": f"NOT {missing('SOURCE_CIT')}",
-    "LOC_ACC": "LOC_ACC IN ('High', 'Medium', 'Low')",
+    "LOC_ACC": f"LOC_ACC IN ({sql_list(domain_values('D_Loc_Accuracy'))})",
 }
 STATION_CASES: list[Case] = [
     ("high_accuracy", "LOC_ACC = 'High'", None, None),
@@ -519,7 +527,7 @@ WATER_FIELDS = {
         for f in ("DFIRM_ID", "VERSION_ID", "WTR_LN_ID", "WTR_NM", "SOURCE_CIT")
     },
     **{
-        f: f"({missing(f)} OR {f} IN ('T', 'F', 'U'))"
+        f: f"({missing(f)} OR {f} IN ({sql_list(TRUE_FALSE)}))"
         for f in ("SHOWN_FIRM", "SHOWN_INDX")
     },
 }
@@ -542,46 +550,12 @@ WATER_CASES: list[Case] = [
 WATER_SPARSE = {"no_line_id"}
 
 
-LEVEE_TYPES = [
-    "Coastal Levee Centerline",
-    "Levee Centerline",
-    "Floodwall",
-    "Closure Structure",
-    "Dike",
-    "NP",
-]
+LEVEE_TYPES = domain_values("D_Levee_Typ")
 # The reference's; the legacy ones validate with a warning, so a case that is not
 # about one leaves them out.
-LEVEE_STATUSES = [
-    "Accredited",
-    "Non-Accredited",
-    "Provisionally Accredited",
-    "AR",
-    "A99",
-    "NP",
-]
-LEVEE_ANALYSES = [
-    "Natural Valley",
-    "Structural-Based Inundation",
-    "Overtopping",
-    "Freeboard Deficient",
-    "Sound Reach",
-    "BFE Below Toe",
-    "Not Hydraulically Significant",
-    "Other",
-    "NP",
-]
-LENGTH_UNITS = [
-    "Centimeters",
-    "Feet",
-    "Inches",
-    "Kilometers",
-    "Meters",
-    "Miles",
-    "Millimeters",
-    "U.S. Survey Feet",
-    "NP",
-]
+LEVEE_STATUSES = domain_values("D_Levee_Status")
+LEVEE_ANALYSES = domain_values("D_Levee_Analysis_Type")
+LENGTH_UNITS = domain_values("D_Length_Units")
 LEVEE_RULES = {
     "@forbid_if(lev_an_typ)": "NOT (LEV_AN_TYP IS NOT NULL AND LEV_AN_TYP <> '' "
     "AND LEV_AN_TYP <> 'NP' AND (LEVEE_STAT IS NULL OR LEVEE_STAT = '' "
@@ -616,7 +590,7 @@ LEVEE_FIELDS = {
     "LEVEE_TYP": f"({missing('LEVEE_TYP')} OR LEVEE_TYP IN "
     f"({sql_list(LEVEE_TYPES)})) AND {WRONG_CASE['LEVEE_TYP']}",
     **{
-        f: f"({missing(f)} OR {f} IN ('T', 'F', 'U'))"
+        f: f"({missing(f)} OR {f} IN ({sql_list(TRUE_FALSE)}))"
         for f in ("USACE_LEV", "PL84_99TF")
     },
     "DISTRICT": "(DISTRICT IS NULL OR DISTRICT NOT LIKE ' ') "
@@ -703,15 +677,8 @@ LEVEE_SPARSE = {
 }
 
 
-LOMR_STATUSES = [
-    "Superseded",
-    "Revalidated",
-    "Incorporated",
-    "Redetermined",
-    "Effective",
-    "NP",
-]
-LOMR_SCALES = ["6000", "12000", "24000", "10000"]
+LOMR_STATUSES = domain_values("D_LOMC_Status")
+LOMR_SCALES = domain_values("D_Scale")
 # Four LOMRs are multipart, which the reference forbids and the model rejects.
 # A multipart polygon is not selectable by a `where` (`STNumGeometries` and
 # `STGeometryType` are a 400), so they are pinned by LOMR_ID, kept out of every
@@ -766,12 +733,7 @@ LOMR_SPARSE = {
 }
 
 
-FLD_LN_TYPES = [
-    "SFHA / Flood Zone Boundary",
-    "Limit Lines",
-    "Other Boundary",
-    "Flowage Easement Boundary",
-]
+FLD_LN_TYPES = domain_values("D_Ln_Typ")
 # Every required field populated and every line type a reference one, unless the
 # case is about that; a lone space in free text is a value. A line with no shape
 # is `IS NULL`.
@@ -809,7 +771,7 @@ FLD_LN_SPARSE = {
 }
 
 
-STATE_FIPS = [v.value for v in SpecReader().domain("D_State_FIPS").values]
+STATE_FIPS = domain_values("D_State_FIPS")
 ANI_FIRM_RULE = "@forbid_if(ani_firm)"
 # Every required field populated, every vocabulary value a reference one, and
 # another FIRM named only on an ANI area (or `NP`), unless the case is about that;
@@ -831,7 +793,7 @@ POL_AR_FIELDS = {
         )
     },
     "ST_FIPS": f"ST_FIPS IN ({sql_list(STATE_FIPS)})",
-    "ANI_TF": "ANI_TF IN ('T', 'F', 'U')",
+    "ANI_TF": f"ANI_TF IN ({sql_list(TRUE_FALSE)})",
     ANI_FIRM_RULE: f"({missing('ANI_FIRM')} OR ANI_FIRM = 'NP' OR ANI_TF = 'T')",
 }
 POL_AR_CASES: list[Case] = [
