@@ -20,7 +20,11 @@ generation. A change belongs in one of four places:
   holds, accepted with a warning. Its entries are licensed by a count, not a
   quote: a test asserts the file lists exactly what its threshold selects from
   `spec/service/observed/`, so after `snapshot-spec` refreshes the counts,
-  update the counts and run `scripts/report-observed`.
+  update the counts and run `scripts/report-observed`. The one exception is an
+  entry with a `decision` field, a maintainer's call recorded with its date and
+  reason, which admits a value under the bar; the test requires such an entry
+  to be one the threshold would not select, so the threshold still governs the
+  rest. Add one only when the maintainer has made that call.
 
 Every entry in the first two JSON files quotes the reference sentence that licenses
 it, and a test asserts the quote is still in the reference. A judgement without
