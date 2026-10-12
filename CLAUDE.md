@@ -47,7 +47,9 @@ URLs and the retrieval times are in the manifest.
    table, class name, module) and an entry point in `pyproject.toml`.
 2. Add the table to `nfhl.codegen.GEOMETRIES`, saying what its features are in
    the words of the table's introduction. Generation stops if the entry is
-   missing or names a different Esri type than the service publishes.
+   missing or names a different Esri type than the service publishes. A table
+   whose polygons Table 4 does not hold to "Must Be Single Part" is Polygon
+   and MultiPolygon.
 3. Add the table's units, datums and rules to `spec/relationships.json`. A
    table that states none goes in `NO_RELATIONSHIPS` in
    `tests/test_spec_source.py` instead.
@@ -58,11 +60,14 @@ URLs and the retrieval times are in the manifest.
 5. Run `./scripts/snapshot-spec --layer <id>`, add the snapshot's path and
    retrieval time to `observed` in `spec/legacy.json`, then
    `./scripts/report-observed`. Add whatever the threshold selects, and
-   regenerate the models.
+   regenerate the models. The snapshot folds case, so a wrong-case value has
+   no count to license it.
 6. Add real-feature cases and a `Fixture` to `scripts/fetch-fixtures`, and run
    it with `--layer <id>`; without `--layer` (and so `make fixtures`) it
    refetches every layer. A point layer has no length, so it passes
-   `short=None` to `clean_except_expected`.
+   `short=None` to `clean_except_expected`. A rule that reads a vocabulary
+   field fires only once that field validates, so filter a rule's cases on
+   "the rule would fire", not "the field is right".
 7. Run `./scripts/generate-docs`. Add the layer's fixtures to
    `tests/conftest.py`, its class to `tests/test_discovery.py`, its page to
    `tests/test_docs.py`, and its own `tests/test_<module>.py`.
@@ -72,7 +77,12 @@ URLs and the retrieval times are in the manifest.
    validating live pages against the union over the same `OBJECTID` range.
    Geometry-less rows belong in the union, and empty is not null: an empty
    point comes back with `coordinates: []`, which `SHAPE IS NULL` misses and
-   `SHAPE.STX IS NULL` counts.
+   `SHAPE.STX IS NULL` counts. That test works only for points, since it
+   counts every polygon; check polygon emptiness by validating the rows. The
+   service folds case, so a wrong-case vocabulary value is in the model's
+   rejections and not in the union: have the page control print the
+   model-only rows by field and value, and expect their sum to equal the
+   difference.
 
 Eight reference tables do not yet join their two field listings, so
 `SpecReader.reference_table` raises on them; `spec/README.md` names them and
