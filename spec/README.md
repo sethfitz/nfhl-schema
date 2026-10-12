@@ -985,3 +985,64 @@ reference; the models take the service's. `SOURCE_CIT` "must match a value in
 joins by `STRUCT_ID` but is not a service layer. The FIRM Database reference's
 section for `S_Gen_Struct` never says what the table "contains information
 about", so the model's description is the table summary (`SUMMARY_ONLY`).
+
+## What the water areas hold that the reference does not allow
+
+Layer 32 has 779,833 rows (`service/observed/32.json`, 2026-10-12). The
+union of every clause selects 12,855 (1.65%); the model rejects 12,858
+(1.65%). The difference, 3 rows, is all polygons the service returns empty
+(below). Every row was read: paged in 780 windows of about 1,000 cut from the
+sorted `OBJECTID`s (ids run to 4,478,248), with geometry, and each row
+validated; the union's ids in the same window were compared with the rows the
+model rejects. The union selects no row the model accepts, and 778 windows
+agree exactly. The 40 polygons with a perimeter over 5 degrees were read
+generalised (`maxAllowableOffset` 0.0001), since the service cannot return
+the longest whole; the model checks only a geometry's type and that it has
+rings, which generalising keeps. 779,502 shapes are Polygons, 326
+MultiPolygons, and 5 null.
+
+- **`WTR_NM` is missing on 11,548** (6,643 null, 4,905 `''`), in 34 DFIRMs,
+  3,158 of them in `12073C`. A lone space is text and validates (337 rows), as
+  does `NP` (469,343): "Unnamed bodies of water follow the convention shown in
+  Section 5.3 related to null text values."
+- **`SHOWN_FIRM` and `SHOWN_INDX` both hold a lone space on 686 rows**, every
+  one in `27127C`. No row holds one in only one flag.
+- **`SOURCE_CIT` is missing on 616** (all null), in 15 DFIRMs, 516 of them in
+  `37021C`.
+- **5 rows have no geometry** (`SHAPE IS NULL`): 3 in `22051C`, 2 in `48361C`.
+- **3 polygons come back with no rings** (`coordinates: []`), which no `where`
+  selects. `460719` and `461325` (`39031C`) report no area, and `SHAPE.STArea()
+  = 0` finds them along with 54 slivers that have a shape and validate.
+  `206560` (`22051C`) reports an area of 309,055 square degrees, more than the
+  Earth's surface, and a perimeter of 8,616.
+
+`DFIRM_ID`, `VERSION_ID` and `WTR_AR_ID` are missing on none. The model has no
+rules. The union joins with `OR` each required field's missing clause (`F IS
+NULL OR (F = '' AND F NOT LIKE ' ')`) for `DFIRM_ID`, `VERSION_ID`,
+`WTR_AR_ID`, `WTR_NM` and `SOURCE_CIT`; each flag's optional clause (`NOT
+(<missing> OR (F IN ('T', 'F', 'U', '1') AND F NOT LIKE ' '))`, the legacy `1`
+among the values); and `SHAPE IS NULL`. Per clause: `WTR_NM` 11,548,
+`SOURCE_CIT` 616, `SHOWN_FIRM` 686, `SHOWN_INDX` 686, geometry 5, the others
+0; the flags' rows are the same 686, and no other row is in two clauses.
+
+**`SHOWN_FIRM` holds `1` on 888 rows**, every water area in four DFIRMs
+(`47025C` 449, `37153C` 281, `37093C` 144, `13049C` 14), each with `SHOWN_INDX`
+`F`. It is over the layer's legacy bar (780), so `legacy.json` admits it. It is
+the first legacy value in `D_TrueFalse`, and the models share one enum per
+domain, so it validates with a warning in every flag of every layer:
+`SFHA_TF`, `DUAL_ZONE`, `ANI_TF`, `USACE_LEV`, `PL84_99TF` and the `SHOWN_`
+flags. No other modelled layer's snapshot holds it. The reference does not
+say whether it means `T`.
+
+**Six polygons in `22051C` report impossible areas**, 61,044 to 309,055 square
+degrees, with perimeters of 1,621 to 8,616. The service returns one of them
+(`206560`) empty, which the model rejects; the other five come back as
+polygons and validate, since the model checks a geometry's type, not its
+extent.
+
+`SHOWN_FIRM` is null on 239,211 rows, `''` on 187,707, `F` on 193,767, `U` on
+132,379 and `T` on 25,195; it and `SHOWN_INDX` are optional (`A`).
+`WTR_AR_ID` and `SOURCE_CIT` are 32 and 21 long on the service and 25 and 11
+in the reference; the models take the service's. Water areas name their
+water by `WTR_NM`, as the water lines do, and "features that appear in both
+must match exactly"; the models do not check it.

@@ -15,7 +15,7 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Thirteen models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Fourteen models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
 elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
 modelled cross sections with their water-surface and streambed elevations,
@@ -41,7 +41,9 @@ type and the reason a panel is not printed; they share the state code and the
 FIRM Database fields with the political areas, and **`GeneralStructure`**
 (`S_Gen_Struct`, layer 24), the bridges, culverts, dams and other structures
 shown on the flood profiles and the FIRM, which name their stream by `WTR_NM`
-and carry `SHOWN_FIRM` as the water lines do. The snapshot holds every layer's service
+and carry `SHOWN_FIRM` as the water lines do, and **`WaterArea`** (`S_Wtr_Ar`,
+layer 32), the surface water shown on the FIRM as areas, which share `WTR_NM`,
+`SHOWN_FIRM` and `SHOWN_INDX` with the water lines. The snapshot holds every layer's service
 metadata and both references whole, so the next tables need no new fetch.
 
 - `spec/` -- the pinned snapshot, refreshed by `scripts/snapshot-spec`. See
@@ -96,6 +98,9 @@ metadata and both references whole, so the next tables need no new fetch.
   that validate, eight that validate with a legacy-value warning, and thirteen
   that do not, two of them against the `STRUC_DESC` rule and one for a value in
   the wrong case.
+- `tests/fixtures/water_areas.json` -- twelve real water areas, seven that
+  validate, one that validates with a legacy-value warning, and four that do
+  not, two of them for a geometry the reference does not allow.
 
 ## Why generate rather than hand-write
 
@@ -191,7 +196,10 @@ a Polygon or a MultiPolygon for the same reason: Table 4 does not hold
 `S_FIRM_Pan` to a single part; 4 of its 183,680 are multipart. A general
 structure is a LineString: "Spatial elements representing general structures
 are represented by lines", and Table 4 holds `S_Gen_Struct` to "Must Be Single
-Part"; every row the live control read was a LineString.
+Part"; every row the live control read was a LineString. A water area is a
+Polygon or a MultiPolygon: "The spatial elements representing surface water
+area features are polygons", and Table 4 does not hold `S_Wtr_Ar` to a single
+part; 326 of its 779,833 are multipart.
 `nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
 geometry type disagrees.
 

@@ -519,3 +519,39 @@ with the water lines and profile baselines.
 - `STRUC_DESC` is required for the contained types, and the legacy policy
   forbids a rule that rejects a common pair, so the rule's own subject (the
   legacy forms, 14,445 rows with no description) is left unchecked.
+
+## The fourteenth layer
+
+`S_Wtr_Ar` (layer 32, 2026-10-12), picked as the general structures were, by
+shared fields: `WTR_NM`, `SHOWN_FIRM` and `SHOWN_INDX` with the water lines,
+which the reference says must match a water area exactly where both draw a
+feature. Seven fields, no rule, Polygon and MultiPolygon.
+
+- The layer's one legacy value broke the warning machinery. `SHOWN_FIRM`
+  holds `1` on 888 rows, over the bar, and the model accepted it without a
+  warning. `LEGACY_MEMBERS` was a frozenset of `str` enum members, and
+  `TrueFalse.V_1 == "1" == StateFIPS.V_1`, so the set kept Alabama's
+  unpadded code and dropped the flag. The comment in `nfhl.legacy` already
+  said membership must go by enum, not value; the generated collection did
+  not. The tests had the same blind spot: `StateFIPS(code) in
+  LEGACY_MEMBERS` compares by value, so it would have passed with either
+  member missing. Only the fixture's warning assertion caught it. It is a
+  tuple now.
+- A count on one layer admits a value into a domain every layer shares.
+  `1` is the first legacy value in `D_TrueFalse`, so it validates with a
+  warning in ten flags on eight layers, though only four DFIRMs of water
+  areas hold it.
+- The live control's first run died after about 250 of 780 windows: one
+  window held polygons in `22051C` whose perimeters run to 8,616 degrees, and
+  the service errored rather than return them. The run kept nothing. The
+  second cached each window, halved a failing range, and read the 40
+  polygons with a perimeter over 5 degrees generalised; it read every row
+  in about 20 minutes.
+- `SHAPE.STArea() = 0` finds empty polygons and slivers alike: 2 empty, 54
+  that validate. Validating every row found a third empty one, `206560`,
+  which reports 309,055 square degrees. Five more polygons in the same DFIRM
+  report areas larger than the Earth and validate, since the model checks a
+  geometry's type and rings, not its extent.
+- The union's clauses summed exactly to the union (12,855): no row breaks
+  two fields, apart from the 686 whose two flags are both a lone space.
+  Every lone-space flag is in one DFIRM, `27127C`.

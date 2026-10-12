@@ -1109,10 +1109,12 @@ STRUCTURE_SPARSE = {
 }
 
 
-# The two water areas whose polygon has no rings. `SHAPE.STArea() = 0` also
+# The three water areas the service returns with no rings, found by validating
+# every row on 2026-10-12. `SHAPE.STArea() = 0` finds two of them and also
 # matches 54 slivers the service rounds to no area, which have a shape and
-# validate, so the empty ones are pinned by OBJECTID.
-EMPTY_WATER_AREAS = [460719, 461325]
+# validate; the third reports an area of 309,055 square degrees. So the empty
+# ones are pinned by OBJECTID.
+EMPTY_WATER_AREAS = [460719, 461325, 206560]
 # Every required field populated, every flag in D_TrueFalse and every polygon
 # a polygon, unless the case is about that; a lone space in free text is a
 # value. A water area with no shape is `IS NULL`.
