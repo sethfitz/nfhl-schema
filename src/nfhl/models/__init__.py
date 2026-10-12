@@ -19,6 +19,7 @@ from nfhl.models.political_jurisdictions import PoliticalJurisdiction
 from nfhl.models.profile_baselines import ProfileBaseline
 from nfhl.models.river_marks import RiverMark
 from nfhl.models.station_starts import StationStart
+from nfhl.models.transect_baselines import TransectBaseline
 from nfhl.models.water_areas import WaterArea
 from nfhl.models.water_lines import WaterLine
 
@@ -35,6 +36,7 @@ __all__ = [
     "ProfileBaseline",
     "RiverMark",
     "StationStart",
+    "TransectBaseline",
     "WaterArea",
     "WaterLine",
 ]

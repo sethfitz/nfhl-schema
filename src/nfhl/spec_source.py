@@ -76,6 +76,7 @@ LAYERS: tuple[Layer, ...] = (
     Layer(3, "S_FIRM_Pan", "FirmPanel", "firm_panels"),
     Layer(24, "S_Gen_Struct", "GeneralStructure", "general_structures"),
     Layer(32, "S_Wtr_Ar", "WaterArea", "water_areas"),
+    Layer(18, "S_Tsct_Basln", "TransectBaseline", "transect_baselines"),
 )
 
 
@@ -444,7 +445,8 @@ class SpecReader:
         """What a table's section says its features are, before its field list.
 
         From the sentence that says what the table "contains information about"
-        (`S_LOMR` says "includes") to the field list. Sections open differently
+        (`S_LOMR` says "includes"; `S_Tsct_Basln` names itself a "spatial file")
+        to the field list. Sections open differently
         before that sentence: with one line on when the table is required
         (`S_Fld_Haz_Ar`), or with pages of submission guidance and a
         requirements grid (`S_BFE`), so that is left out. Only in running text,
@@ -457,7 +459,8 @@ class SpecReader:
         """
         text = self.reference_text(FIRM_DATABASE)
         match = re.search(
-            rf"(The {name}(?: table| layer)? (?:contains information|includes) .*?) "
+            rf"(The {name}(?: table| layer| spatial file)? "
+            rf"(?:contains information|includes) .*?) "
             rf"The {name} (?:table|layer) contains the following elements\b",
             text,
         )

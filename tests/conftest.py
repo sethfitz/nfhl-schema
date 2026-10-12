@@ -114,6 +114,16 @@ def water_area_layer() -> Layer:
 
 
 @pytest.fixture(scope="session")
+def baseline_cases() -> list[dict[str, Any]]:
+    return fixture_cases("transect_baselines.json")
+
+
+@pytest.fixture(scope="session")
+def baseline_layer() -> Layer:
+    return modelled("S_Tsct_Basln")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 

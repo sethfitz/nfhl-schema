@@ -1165,6 +1165,76 @@ WATER_AREA_SPARSE = {
     "empty_polygon",
 }
 
+# The transect baselines holding the 2016 Domain Tables reference's spelling,
+# `Referenced To Tidal Datum`. The service folds case, so `IN (<the reference
+# types>)` matches them, and no `where` separates them from the 2024 spelling.
+TIDAL_TO_IDS = list(range(138617, 138636))
+# Every required field populated and every vocabulary value a reference one,
+# unless the case is about that; a lone space in free text is a value. A
+# baseline with no shape is `IS NULL`.
+BASELINE_FIELDS = {
+    "geometry": "SHAPE IS NOT NULL",
+    **{
+        f: f"NOT {missing(f)}"
+        for f in (
+            "DFIRM_ID",
+            "VERSION_ID",
+            "TBASELN_ID",
+            "R_ST_DESC",
+            "R_END_DESC",
+            "WTR_NM",
+            "SOURCE_CIT",
+        )
+    },
+    "TBASE_TYP": f"TBASE_TYP IN ({sql_list(domain_values('D_TsctBasln_Typ'))}) "
+    f"AND OBJECTID NOT IN ({', '.join(map(str, TIDAL_TO_IDS))})",
+    "V_DATUM": f"V_DATUM IN ({sql_list(domain_values('D_V_Datum'))})",
+}
+BASELINE_CASES: list[Case] = [
+    (
+        "lidar_navd88",
+        "TBASE_TYP = 'Zero Foot Contour LiDAR / Shoals' AND V_DATUM = 'NAVD88' "
+        "AND CST_MDL_ID IS NOT NULL AND CST_MDL_ID <> ''",
+        None,
+        None,
+    ),
+    ("field_survey", "TBASE_TYP = 'Zero Foot Contour Field Survey'", None, None),
+    (
+        "referenced_to_tidal_datum",
+        "TBASE_TYP = 'Zero Foot Contour Referenced to Tidal Datum'",
+        None,
+        None,
+    ),
+    ("other_source", "TBASE_TYP = 'Other Source'", None, None),
+    ("not_populated_type", "TBASE_TYP = 'NP'", None, None),
+    ("mean_sea_level", "V_DATUM = 'MSL'", None, None),
+    ("local_tidal_datum", "V_DATUM = 'LOCAL TIDAL DATUM'", None, None),
+    ("not_populated_datum", "V_DATUM = 'NP'", None, None),
+    ("not_populated_name", "WTR_NM = 'NP' AND R_ST_DESC = 'NP'", None, None),
+    # "A", required if applicable, and not required; a lone space is text.
+    ("no_model_id", "CST_MDL_ID IS NULL", None, None),
+    ("lone_space_model_id", "CST_MDL_ID LIKE ' '", None, None),
+    # Legacy values (spec/legacy.json), which validate with a warning.
+    ("legacy_zero_foot_contour", "TBASE_TYP = 'Zero Foot Contour'", None, "TBASE_TYP"),
+    ("legacy_shoreline_type", "TBASE_TYP = 'NON-ERODIBLE BLUFF'", None, "TBASE_TYP"),
+    ("legacy_truncated_type", "TBASE_TYP = 'ZERO FOOT C'", None, "TBASE_TYP"),
+    # Findings: published baselines the reference does not allow. Each case names
+    # one field. `SANDY BEACH-SMALL DUNE`, another shoreline type, makes none: all
+    # 13 rows holding it also lack SOURCE_CIT.
+    ("no_source_citation", missing("SOURCE_CIT"), "SOURCE_CIT", None),
+    # Wrong case, pinned: the model rejects the spelling, the service reports it
+    # as the right one.
+    ("wrong_case_tidal_datum", f"OBJECTID = {TIDAL_TO_IDS[0]}", "TBASE_TYP", None),
+]
+# The findings and values with only a handful of rows, which may not be short.
+BASELINE_SPARSE = {
+    "referenced_to_tidal_datum",
+    "not_populated_datum",
+    "legacy_truncated_type",
+    "no_source_citation",
+    "wrong_case_tidal_datum",
+}
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -1246,6 +1316,12 @@ FIXTURES_BY_LAYER = [
         clean_except_expected(
             WATER_AREA_FIELDS, WATER_AREA_CASES, WATER_AREA_SPARSE, short=SMALL
         ),
+    ),
+    Fixture(
+        18,
+        "transect_baselines.json",
+        BASELINE_CASES,
+        clean_except_expected(BASELINE_FIELDS, BASELINE_CASES, BASELINE_SPARSE),
     ),
 ]
 

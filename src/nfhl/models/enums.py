@@ -678,6 +678,57 @@ class TrueFalse(str, DocumentedEnum):
     )
 
 
+class TsctBaslnTyp(str, DocumentedEnum):
+    """Values of `D_TsctBasln_Typ` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Tsct_Basln.TBASE_TYP`. The last 3 are legacy values:
+    common in the data, not in the reference.
+    """
+
+    ZERO_FOOT_CONTOUR_FIELD_SURVEY = "Zero Foot Contour Field Survey", "Code `1000`."
+    ZERO_FOOT_CONTOUR_LIDAR_SHOALS = "Zero Foot Contour LiDAR / Shoals", "Code `1010`."
+    ZERO_FOOT_CONTOUR_REFERENCED_TO_TIDAL_DATUM = (
+        "Zero Foot Contour Referenced to Tidal Datum",
+        "Code `1020`.",
+    )
+    OTHER_SOURCE = "Other Source", "Code `9000`."
+    NP = "NP", "Code `NP`."
+    ZERO_FOOT_CONTOUR = (
+        "Zero Foot Contour",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. The words the three `Zero Foot "
+            "Contour ...` types of D_TsctBasln_Typ begin with (Field Survey, LiDAR "
+            "/ Shoals, Referenced to Tidal Datum), without the source that tells "
+            "them apart. Every row is in one DFIRM, 36103C. No edition of the "
+            "Domain Tables reference lists it (2016, 2019, 2024). Held by 926 of "
+            "35,354 rows of `TBASE_TYP` on NFHL service layer 18, counted "
+            "2026-10-12."
+        ),
+    )
+    NON_ERODIBLE_BLUFF = (
+        "NON-ERODIBLE BLUFF",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. D_Shr_Typ's shoreline type "
+            "`Non-Erodible Bluff` (code 1030), upper-cased, in the transect "
+            "baseline type: a value of another domain. Two DFIRMs, 23015C (222) and"
+            " 23023C (125). Held by 347 of 35,354 rows of `TBASE_TYP` on NFHL "
+            "service layer 18, counted 2026-10-12."
+        ),
+    )
+    ZERO_FOOT_C = (
+        "ZERO FOOT C",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. A `Zero Foot Contour ...` type "
+            "cut to 11 characters and upper-cased; the cut leaves no word saying "
+            "which of the three. Every row is in one DFIRM, 24009C. Held by 54 of "
+            "35,354 rows of `TBASE_TYP` on NFHL service layer 18, counted "
+            "2026-10-12."
+        ),
+    )
+
+
 class USACEDistrict(str, DocumentedEnum):
     """Values of `D_USACE_District` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Levee.DISTRICT`.
@@ -727,7 +778,8 @@ class USACEDistrict(str, DocumentedEnum):
 
 class VDatum(str, DocumentedEnum):
     """Values of `D_V_Datum` that apply to the FIRM Database, each as the data stores
-    it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`.
+    it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`,
+    `S_Tsct_Basln.V_DATUM`.
     """
 
     MSL = "MSL", "Mean Sea Level. Code `MSL`."
@@ -1151,5 +1203,8 @@ LEGACY_MEMBERS: tuple[Enum, ...] = (
     StudyTyp.DIGITAL_CONVERSION,
     StudyTyp.SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO,
     TrueFalse.V_1,
+    TsctBaslnTyp.ZERO_FOOT_CONTOUR,
+    TsctBaslnTyp.NON_ERODIBLE_BLUFF,
+    TsctBaslnTyp.ZERO_FOOT_C,
     ZoneSubtype.AREA_WITH_REDUCED_FLOOD_RISK_DUE_TO_LEVEE,
 )

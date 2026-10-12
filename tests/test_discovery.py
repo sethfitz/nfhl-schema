@@ -20,6 +20,7 @@ from nfhl.models import (
     ProfileBaseline,
     RiverMark,
     StationStart,
+    TransectBaseline,
     WaterArea,
     WaterLine,
 )
@@ -43,6 +44,7 @@ def test_discovery_finds_the_model_through_the_entry_point() -> None:
         FirmPanel,
         GeneralStructure,
         WaterArea,
+        TransectBaseline,
     } <= set(found.values())
 
 
@@ -67,6 +69,7 @@ def test_overture_codegen_lists_the_model() -> None:
         "FirmPanel",
         "GeneralStructure",
         "WaterArea",
+        "TransectBaseline",
     } <= set(listed)
 
 
@@ -86,6 +89,7 @@ def test_the_tag_provider_tags_the_model_nfhl() -> None:
     assert "nfhl" in tagged["nfhl_firm_panel"]
     assert "nfhl" in tagged["nfhl_general_structure"]
     assert "nfhl" in tagged["nfhl_water_area"]
+    assert "nfhl" in tagged["nfhl_transect_baseline"]
 
 
 def test_the_tag_provider_leaves_other_packages_alone() -> None:

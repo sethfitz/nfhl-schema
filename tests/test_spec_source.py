@@ -42,6 +42,7 @@ NO_RELATIONSHIPS = {
     "S_LOMR",
     "S_Fld_Haz_Ln",
     "S_Wtr_Ar",
+    "S_Tsct_Basln",
 }
 
 

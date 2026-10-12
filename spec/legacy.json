@@ -56,6 +56,10 @@
     {
       "path": "service/observed/32.json",
       "retrieved_at": "2026-10-12T22:07:34Z"
+    },
+    {
+      "path": "service/observed/18.json",
+      "retrieved_at": "2026-10-12T23:11:04Z"
     }
   ],
   "threshold": 0.001,
@@ -346,6 +350,30 @@
       "value": "1",
       "count": 888,
       "note": "A digit where D_TrueFalse lists the letters T, F and U. Every water area in four DFIRMs holds it (47025C 449, 37153C 281, 37093C 144, 13049C 14), each with SHOWN_INDX F; no other modelled layer holds it. The reference does not say whether it means T."
+    },
+    {
+      "domain": "D_TsctBasln_Typ",
+      "field": "TBASE_TYP",
+      "layer": 18,
+      "value": "Zero Foot Contour",
+      "count": 926,
+      "note": "The words the three `Zero Foot Contour ...` types of D_TsctBasln_Typ begin with (Field Survey, LiDAR / Shoals, Referenced to Tidal Datum), without the source that tells them apart. Every row is in one DFIRM, 36103C. No edition of the Domain Tables reference lists it (2016, 2019, 2024)."
+    },
+    {
+      "domain": "D_TsctBasln_Typ",
+      "field": "TBASE_TYP",
+      "layer": 18,
+      "value": "NON-ERODIBLE BLUFF",
+      "count": 347,
+      "note": "D_Shr_Typ's shoreline type `Non-Erodible Bluff` (code 1030), upper-cased, in the transect baseline type: a value of another domain. Two DFIRMs, 23015C (222) and 23023C (125)."
+    },
+    {
+      "domain": "D_TsctBasln_Typ",
+      "field": "TBASE_TYP",
+      "layer": 18,
+      "value": "ZERO FOOT C",
+      "count": 54,
+      "note": "A `Zero Foot Contour ...` type cut to 11 characters and upper-cased; the cut leaves no word saying which of the three. Every row is in one DFIRM, 24009C."
     }
   ]
 }

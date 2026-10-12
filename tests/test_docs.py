@@ -39,6 +39,7 @@ def test_regenerating_the_docs_changes_nothing(tmp_path: Path) -> None:
     assert "models/firm_panel.md" in committed
     assert "models/general_structure.md" in committed
     assert "models/water_area.md" in committed
+    assert "models/transect_baseline.md" in committed
     assert fresh.keys() == committed.keys()
     for name in fresh:
         assert fresh[name] == committed[name], f"{name} is stale; run generate-docs"

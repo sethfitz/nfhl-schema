@@ -1,7 +1,8 @@
 # VDatum
 
 Values of `D_V_Datum` that apply to the FIRM Database, each as the data stores
-it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`.
+it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`,
+`S_Tsct_Basln.V_DATUM`.
 
 ## Values
 
@@ -22,3 +23,4 @@ it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`.
 - [`BaseFloodElevation`](../base_flood_elevation.md)
 - [`CrossSection`](../cross_section.md)
 - [`FloodHazardZone`](../flood_hazard_zone.md)
+- [`TransectBaseline`](../transect_baseline.md)

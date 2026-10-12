@@ -783,6 +783,17 @@ GEOMETRIES = {
         "The water area: in the reference's words, a surface water area feature "
         "(a hydrography feature shown on the FIRM as an area).",
     ),
+    "S_Tsct_Basln": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "“The spatial elements representing the transect baselines are lines”, and "
+        "Table 4 holds S_Tsct_Basln to “Must Be Single Part”, so a LineString, "
+        "though the service's polyline type admits several parts.",
+        "The transect baseline: in the reference's words, the transect baseline "
+        "used in the coastal flood hazard model, typically the 0.0-foot elevation "
+        "contour, the starting point for the transect and the measuring point for "
+        "the coastal mapping.",
+    ),
 }
 
 
