@@ -15,7 +15,7 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Eleven models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Twelve models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
 elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
 modelled cross sections with their water-surface and streambed elevations,
@@ -31,11 +31,14 @@ FIRM, with their accreditation status, which name their stream by `WTR_NM` too,
 **`Lomr`** (`S_LOMR`, layer 1), the areas of the effective LOMRs, which share
 no field with the others, **`FloodHazardBoundary`** (`S_Fld_Haz_Ln`, layer
 27), the lines that bound the flood hazard areas of `FloodHazardZone`, with
-which it shares `DFIRM_ID`, `VERSION_ID` and `SOURCE_CIT`, and
+which it shares `DFIRM_ID`, `VERSION_ID` and `SOURCE_CIT`,
 **`PoliticalJurisdiction`** (`S_Pol_Ar`, layer 22), the political areas whose
 jurisdiction manages the floodplain, with their state, county and community
 codes and whether each is an Area Not Included; Table 4 requires the flood
-zones' boundaries to be covered by theirs. The snapshot holds every layer's service
+zones' boundaries to be covered by theirs, and **`FirmPanel`**
+(`S_FIRM_Pan`, layer 3), the hardcopy map panels, with their number, scale,
+type and the reason a panel is not printed; they share the state code and the
+FIRM Database fields with the political areas. The snapshot holds every layer's service
 metadata and both references whole, so the next tables need no new fetch.
 
 - `spec/` -- the pinned snapshot, refreshed by `scripts/snapshot-spec`. See
@@ -83,6 +86,9 @@ metadata and both references whole, so the next tables need no new fetch.
 - `tests/fixtures/political_jurisdictions.json` -- seventeen real political
   areas, nine that validate, one that validates with a legacy-value warning, and
   seven that do not, two of them against the `ANI_FIRM` rule.
+- `tests/fixtures/firm_panels.json` -- twenty-seven real FIRM panels, fifteen
+  that validate, two that validate with a legacy-value warning, and ten that do
+  not, two of them against the `PNP_REASON` rule.
 
 ## Why generate rather than hand-write
 
@@ -171,7 +177,9 @@ multipart. A flood hazard boundary is a LineString: Table 4 holds `S_Fld_Haz_Ln`
 to "Must Be Single Part"; 10,000 sampled lines were all LineStrings. A
 political area is a Polygon or a MultiPolygon: "The spatial entities
 representing political areas are polygons", and Table 4 does not hold
-`S_Pol_Ar` to a single part; 935 of its 88,344 are multipart.
+`S_Pol_Ar` to a single part; 935 of its 88,344 are multipart. A FIRM panel is
+a Polygon or a MultiPolygon for the same reason: Table 4 does not hold
+`S_FIRM_Pan` to a single part; 4 of its 183,680 are multipart.
 `nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
 geometry type disagrees.
 

@@ -441,3 +441,39 @@ These are inputs for the overture-schema backlog.
   maintainer's call, and the selection test splits in two: undecided entries
   must equal what the threshold selects, decided ones must be values it does not
   select, at the count the snapshot holds.
+
+## The twelfth layer
+
+FIRM Panels (`S_FIRM_Pan`, layer 3, 2026-10-12). The relationship criterion is
+used up: every foreign key a modelled layer holds names a modelled layer or an
+`L_` table, and Table 4's remaining rules are within one layer. A scan of every
+reference description for a `S_` name outside the modelled set finds only
+unmodelled layers pointing at each other (`S_Hydro_Reach` at `S_Nodes`,
+`S_Cst_Tsct_Ln` at `S_Tsct_Basln`, the label layers at `S_FIRM_Pan`). Chosen
+for what it shares: `ST_FIPS` and its legacy codes with the political areas, the
+FIRM Database fields, a single rule, and the panel number that joins four other
+tables. The next layer has no relationship to pick it by.
+
+- The wrong-case values cost the first live control run: 299 rows (`ORTHOPHOTO`,
+  `COUNTYWIDE, PANEL PRINTED`, `COUNTYWIDE, NOT PRINTED`) the model rejects and
+  the union cannot select. They are 4% of the rejected rows, against a handful
+  on the levees, and `ORTHOPHOTO` (211) is over the legacy bar the snapshot
+  cannot count because it folds case. A control run has to list the model-only
+  rows by field and value, or an unexplained difference reads as a failure.
+- A rule that reads a field with a vocabulary fires only on rows whose value
+  validates. The first fixture filter for the `PNP_REASON` rule demanded a
+  `Not Printed` type, so rows with a truncated type and a reason matched no
+  case; the filter has to mean "the rule would fire", not "the field is right".
+- `PRE_DATE` is `9/9/9999` on 170,984 of 183,680 rows, so a case for a missing
+  date is a case for the encoding. My first comment on that case quoted 1,609,
+  the `IS NULL` count, for the encoded rows.
+- `FIRM_PAN` is "made up of" four other fields and disagrees with them on 13,879
+  rows, 12,002 of those for reasons other than the legacy `ST_FIPS`. A
+  value-follows-value rule (SFHA_TF from FLD_ZONE) has a lookup; this one is a
+  concatenation, the service rejects it in a `where`, and the codegen has no
+  expression for it.
+- Panels are neatlines, so the fixtures' `SMALL` filter excludes most cases and the
+  fixture takes whole polygons (80 KB for 27 cases).
+- Lone space in free text is a value (the convention for `ANI_FIRM`), which
+  makes 6,307 of the rule's 6,688 rejections a single blank character in
+  `PNP_REASON`.

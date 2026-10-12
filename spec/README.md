@@ -816,3 +816,88 @@ are MultiPolygons, which the reference allows. `COM_NFO_ID` is a foreign key to
 `VERSION_ID` and `SOURCE_CIT` with the flood zones and join them geometrically:
 Table 4 requires `S_Fld_Haz_Ar`'s boundary to be "Covered by Feature Class Of"
 `S_Pol_Ar`. The models check neither.
+
+## What the FIRM panels hold that the reference does not allow
+
+Layer 3 has 183,680 rows (`service/observed/3.json`, 2026-10-12 UTC), few enough
+to validate whole: every row was paged by `OBJECTID` (2,000 to a page, with
+geometry) and run through the model. The union below selects 7,462 (4.1%) and
+the model rejects 7,761; the 299 more are wrong-case vocabulary, which no
+`where` can select (below). "Missing" is as for the cross sections.
+
+- **The `PNP_REASON` rule rejects 6,688**: a reason on a panel whose type is not
+  one of the three `Not Printed` values. 6,307 are a lone space (116 DFIRMs, 214
+  at most in one), which the model reads as a value, as it does for `ANI_FIRM`;
+  381 are text, six of them `<Null>`. `count-broken-rules` finds the same 6,688.
+  The description says "Only completed if the hardcopy panel is not printed by
+  FEMA"; `Unmapped Community` is not a `Not Printed` type, so a reason on one
+  breaks the rule (the layer has three, none with a reason).
+- **`SOURCE_CIT` is missing on 543** (542 with a shape), in 8 DFIRMs, 215 of them
+  in `37021C`.
+- **`PANEL_TYP` is outside `D_Panel_Typ` on 165** by the service's collation:
+  `Community B` (97, three DFIRMs, 74 in `150002`), `Countywide, Panel
+  Printed'` with a stray quote (43, all `06057C`), `Countywide,` (16, ten
+  DFIRMs), `''` (6, `06065C`), `Countywide, Panel Not Printed` (2, `06031C`)
+  and one null. The truncated ones can be a printed or a not-printed type, so
+  nothing maps them.
+- **`SCALE` is outside `D_Scale` on 40**: `NP` (36, all `49019C`), `4800` (3,
+  `500027`) and one null. `D_Scale` does not list `NP`; `D_Basemap_Typ` does, and
+  `BASE_TYP` is `NP` on 113,744 rows.
+- **`BASE_TYP` is missing on 1**, `ST_FIPS` on 1, and one row, `OBJECTID` 451726,
+  holds nothing but its `GlobalID`: every attribute null and no shape. It is the
+  single row missing `DFIRM_ID`, `VERSION_ID`, `FIRM_ID`, `PCOMM`, `PANEL`,
+  `SUFFIX` and `FIRM_PAN`, and the one null in `ST_FIPS`, `BASE_TYP` and `SCALE`.
+- **29 have no geometry** (`SHAPE IS NULL`), 24 in `06037C`. No polygon is empty,
+  by validating every row: the shapes are 183,647 Polygons, 4 MultiPolygons and
+  the 29 nulls. `SHAPE.STArea() = 0` selects one row, `OBJECTID` 13232, a sliver
+  with a `PANEL_TYP` the vocabulary rejects, so the fixture has no case for it.
+- **299 hold a vocabulary value in the wrong case**: `ORTHOPHOTO` for
+  `Orthophoto` (211, in 4 DFIRMs, 84 in `55023C`), `COUNTYWIDE, PANEL PRINTED`
+  (60) and `COUNTYWIDE, NOT PRINTED` (28), both `26109C`. The model rejects them;
+  the service folds case in `=`, `IN` and grouping, so the union cannot, and
+  `report-observed` counts `Orthophoto` as 60,336, the 211 included. 211 is
+  above the legacy bar of 184, but a count the snapshot cannot see is not one
+  `legacy.json` can be licensed by.
+
+The union joins with `OR` each required field's missing clause (`F IS NULL OR
+(F = '' AND F NOT LIKE ' ')`) for `DFIRM_ID`, `VERSION_ID`, `FIRM_ID`, `PCOMM`,
+`PANEL`, `SUFFIX`, `FIRM_PAN` and `SOURCE_CIT`; the outside clause (`F IS NULL OR
+NOT (F IN (<the values>) AND F NOT LIKE ' ')`, the legacy codes among
+`ST_FIPS`'s values) for `ST_FIPS`, `PANEL_TYP`, `SCALE` and `BASE_TYP`; the
+rule's (`PNP_REASON IS NOT NULL AND (PNP_REASON <> '' OR PNP_REASON LIKE ' ')
+AND PANEL_TYP IN (<the four types that are not Not Printed>) AND PANEL_TYP NOT
+LIKE ' '`); and `SHAPE IS NULL`. It selects 7,462 rows on 2026-10-12. Over the 92
+pages the union selects no row the model accepts, the model rejects 299 the
+union does not, and those 299 are the wrong-case values above (by `OBJECTID`
+and by field and value), so on 87 pages the two agree and on five they differ
+by exactly those rows.
+
+**`ST_FIPS` drops the leading zero on five states, and `4` is admitted by
+decision.** `1` (600 rows, 11 DFIRMs), `5` (447, 17), `8` (363, 5) and `6` (292,
+4) clear the bar of 184 rows and are in `legacy.json`; each is in DFIRMs whose
+ID begins with the padded code. `4` (132 rows, all `04009C`) does not. It
+validates with a warning because the political areas' `4` is admitted by
+Seth Fitzsimmons's decision of 2026-10-11 and the models share one `D_State_FIPS`
+enum; `legacy.json` has no layer 3 entry for it, so the selection test does not
+count it. Without it the layer rejects 7,594.
+
+**`FIRM_PAN` is "made up of ST_FIPS, PCOMM, PANEL and SUFFIX", and the models do
+not check it.** The service rejects string concatenation in a `where`, so the
+disagreement was counted by reading every row's attributes: 13,879 rows (7.6%)
+differ from `ST_FIPS + PCOMM + PANEL + SUFFIX`. 1,834 differ only by an unpadded
+`ST_FIPS` (the legacy codes and `4`), 41 by an `ST_FIPS` of `04` on `05139C`'s
+panels, 2 by a lowercase suffix (`08005C`), and 12,002 otherwise, in 108
+DFIRMs (268 in `37183C`), among them `PCOMM` `067` against a `FIRM_PAN` of
+`17067C0225E`. A rule that rejected them would reject 7.6% of the layer, so
+the models take each field alone.
+
+`FIRM_ID` is 32 long on the service and 25 in the reference; the models take the
+service's. `SOURCE_CIT` "must match a value in `L_Source_Cit`", `FIRM_PAN` is a
+join key of `L_Pan_Revis`, `L_MT2_LOMR`, `S_Label_Ld` and `S_Label_Pt`, and none
+of those is modelled. `PRE_DATE` is `9/9/9999`, the date null, on 170,984 rows
+(`PRE_DATE = timestamp '9999-09-09 00:00:00'`): the preliminary date is unset on
+most panels, which the description allows. The panels share `DFIRM_ID`,
+`VERSION_ID`, `SOURCE_CIT` and `ST_FIPS` with the political areas, and
+`PCOMM` is, for community-based maps, the FEMA community number. A panel is a
+Polygon or a MultiPolygon: Table 4 does not hold `S_FIRM_Pan` to "Must Be
+Single Part", and 4 of 183,680 are multipart.
