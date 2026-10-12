@@ -31,6 +31,7 @@ import keyword
 import re
 import shutil
 import subprocess
+import tempfile
 import textwrap
 from collections.abc import Iterable
 from dataclasses import dataclass
@@ -819,17 +820,26 @@ def render(reader: SpecReader | None = None) -> list[ModelFile]:
 def generate(
     out_dir: Path = MODELS_DIR, reader: SpecReader | None = None
 ) -> list[Path]:
-    """Rewrite `out_dir` from the snapshot, formatted by ruff."""
-    if out_dir.exists():
-        shutil.rmtree(out_dir)
-    out_dir.mkdir(parents=True)
-    written = []
-    for model_file in render(reader):
-        path = out_dir / model_file.path
-        path.write_text(model_file.source)
-        written.append(path)
+    """Rewrite `out_dir` from the snapshot, formatted by ruff.
+
+    Everything renders into a sibling directory first, so a failure anywhere
+    leaves `out_dir` as it was; only a complete set replaces it."""
     ruff = shutil.which("ruff")
     if ruff is None:
         raise RuntimeError("ruff not on PATH; run through `uv run`")
-    subprocess.run([ruff, "format", "--quiet", str(out_dir)], check=True)
-    return written
+    out_dir.parent.mkdir(parents=True, exist_ok=True)
+    staging = Path(tempfile.mkdtemp(prefix=f".{out_dir.name}-", dir=out_dir.parent))
+    try:
+        for model_file in render(reader):
+            (staging / model_file.path).write_text(model_file.source)
+        subprocess.run([ruff, "format", "--quiet", str(staging)], check=True)
+        staging.chmod(0o755)
+        retired = staging.with_name(f"{staging.name}-old")
+        if out_dir.exists():
+            out_dir.rename(retired)
+        staging.rename(out_dir)
+    except BaseException:
+        shutil.rmtree(staging, ignore_errors=True)
+        raise
+    shutil.rmtree(retired, ignore_errors=True)
+    return sorted(out_dir.iterdir())
