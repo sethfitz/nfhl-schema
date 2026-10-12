@@ -33,6 +33,7 @@ import shutil
 import subprocess
 import tempfile
 import textwrap
+from collections import Counter
 from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
@@ -174,8 +175,8 @@ def legacy_doc(entries: list[LegacyValue], reader: SpecReader) -> str:
     notes = list(dict.fromkeys(sentence(e.note) for e in entries))
     if any(e.decision for e in entries):
         notes.append(
-            "Too rare to clear the legacy threshold; admitted by a decision "
-            "recorded in `spec/legacy.json`."
+            "Admitted by a decision recorded in `spec/legacy.json`, not by the "
+            "legacy threshold."
         )
     held = []
     for e in entries:
@@ -204,10 +205,17 @@ def render_enum(domain: Domain, used_by: list[str], reader: SpecReader) -> Rende
         legacy.setdefault(entry.value, []).append(entry)
     names = [member_name(v.value) for v in domain.values]
     legacy_names = []
+    spellings: Counter[str] = Counter()
     for legacy_value in legacy:
         name = member_name(legacy_value)
         # `... less than 1'` differs from the reference's `1’` only in punctuation.
-        legacy_names.append(f"{name}_LEGACY" if name in names else name)
+        if name in names:
+            name = f"{name}_LEGACY"
+        # `1 PCT ... in Structure` differs from `1 Pct ... In Structure` only in
+        # case, so the later spellings are numbered in the order legacy.json lists.
+        spellings[name] += 1
+        n = spellings[name]
+        legacy_names.append(f"{name}_CASE_{n}" if n > 1 else name)
     every = names + legacy_names
     if len(set(every)) != len(every):
         raise ValueError(f"{domain.name}: member names collide: {every}")

@@ -153,15 +153,27 @@ def test_a_structure_type_in_the_wrong_case_is_rejected(
         "1 Pct Annual Chance Flood Discharge Contained In Structure",
         "0.2 Pct Annual Chance Flood Discharge Contained In Structure",
         "Other / Misc Structure",
+        # Admitted by decision: the service counts them under the `Pct` spelling.
+        "1 PCT Annual Chance Flood Discharge Contained in Structure",
+        "1 PCT Annual Chance Flood Discharge Contained In Structure",
+        "1 PCT ANNUAL CHANCE FLOOD DISCHARGE CONTAINED IN STRUCTURE",
+        "0.2 PCT Annual Chance Flood Discharge Contained in Structure",
+        "0.2 PCT Annual Chance Flood Discharge Contained In Structure",
     ],
 )
-def test_a_common_legacy_structure_type_warns(
-    bridge: dict[str, Any], legacy: str
-) -> None:
+def test_a_legacy_structure_type_warns(bridge: dict[str, Any], legacy: str) -> None:
     bridge["properties"]["STRUCT_TYP"] = legacy
     assert rejected(bridge) == set()
     assert warned(bridge) == ["STRUCT_TYP"]
     assert StructTyp(legacy) in LEGACY_MEMBERS
+
+
+def test_a_case_a_decision_does_not_list_is_rejected(bridge: dict[str, Any]) -> None:
+    # The decision lists spellings; it does not fold case.
+    bridge["properties"]["STRUCT_TYP"] = (
+        "1 pct annual chance flood discharge contained in structure"
+    )
+    assert rejected(bridge) == {"STRUCT_TYP"}
 
 
 def test_a_description_is_required_of_a_structure_that_contains_a_flood(
@@ -200,9 +212,9 @@ def test_a_lone_space_is_a_description(contained: dict[str, Any]) -> None:
 def test_the_rule_names_the_reference_types_not_the_legacy_spellings(
     contained: dict[str, Any],
 ) -> None:
-    # 14,445 rows hold a `Pct` or `PCT` spelling and no description (654 of
-    # them the two spellings the model admits); a rule that rejected them would
-    # reject a combination common enough that the legacy policy admits.
+    # 14,445 rows hold a `Pct` or `PCT` spelling and no description; a rule
+    # that rejected them would reject a combination common enough that the
+    # legacy policy admits.
     contained["properties"]["STRUC_DESC"] = None
     contained["properties"]["STRUCT_TYP"] = (
         "1 Pct Annual Chance Flood Discharge Contained In Structure"

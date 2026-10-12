@@ -120,8 +120,8 @@ class DomainValue:
 @dataclass(frozen=True, slots=True)
 class LegacyValue:
     """A value the data holds that the reference does not list, accepted with a
-    warning because it is common, or because `decision` admits it below the bar
-    (`spec/legacy.json`)."""
+    warning because it is common, or because `decision` admits what the threshold
+    cannot select (`spec/legacy.json`)."""
 
     domain: str
     field: str
@@ -640,7 +640,7 @@ class SpecReader:
         """What the threshold selects from the observed counts, notes left blank.
 
         `spec/legacy.json` must list exactly these, besides the values a
-        `decision` admits below the bar; it adds only the notes.
+        `decision` admits; it adds only the notes.
         """
         observed = self.observed(layer)
         floor = self.legacy["threshold"] * observed["total"]

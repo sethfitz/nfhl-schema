@@ -207,11 +207,13 @@ def test_legacy_json_lists_exactly_what_its_threshold_selects(
     assert all(v["note"] for v in reader.legacy["values"])
 
 
-def test_a_decision_admits_only_an_uncommon_value_at_its_observed_count(
+def test_a_decision_admits_only_what_the_threshold_cannot_select(
     reader: SpecReader,
 ) -> None:
     # A decision overrides the threshold, so it lists what the threshold would
-    # not select, outside the reference, at the count the snapshot holds.
+    # not select, outside the reference: a value under the bar, at the count the
+    # snapshot holds, or a spelling the snapshot's case folding counts under
+    # another, counted row by row and below its folded group's count.
     decided = [LegacyValue(**v) for v in reader.legacy["values"] if "decision" in v]
     assert decided
     for v in decided:
@@ -219,7 +221,18 @@ def test_a_decision_admits_only_an_uncommon_value_at_its_observed_count(
         assert v.decision and v not in reader.legacy_candidates(layer)
         assert v.value not in {d.value for d in reader.domain(v.domain).values}
         observed = reader.observed(layer)["fields"][v.field]
-        assert {"value": v.value, "count": v.count} in observed
+        if {"value": v.value, "count": v.count} in observed:
+            continue
+        folded = v.value.casefold()
+        groups = [r for r in observed if (r["value"] or "").casefold() == folded]
+        assert len(groups) == 1, v.value
+        group = groups[0]
+        hidden = [
+            d.count
+            for d in decided
+            if (d.layer, d.field, d.value.casefold()) == (v.layer, v.field, folded)
+        ]
+        assert group["value"] != v.value and sum(hidden) < group["count"]
 
 
 def test_legacy_json_cites_the_snapshot_it_counted_for_each_layer(

@@ -494,10 +494,21 @@ with the water lines and profile baselines.
   form and 12,890 of `PCT`. The selection test compared case-sensitively,
   so it demanded a legacy entry for a reference value. Fixed by comparing
   folded; the second case stays a call (below).
-- 22,882 rows (8.0% of the layer) are wrong-case `STRUCT_TYP`, against 299 on
-  the panels and a handful on the levees. The legacy policy admits a form
-  and the model rejects its other cases, so the commonest forms of a
-  legacy value are the rejected ones.
+- 23,447 rows hold a `PCT` form of a legacy percent type, and 22,847 of them
+  (8.0% of the layer) broke nothing else, against 299 wrong-case rows on the
+  panels and a handful on the levees. The
+  threshold admitted the form the snapshot shows and the model rejected its
+  other cases, so the commonest forms of a legacy value were the rejected ones,
+  and rejections stood at 11.3%. A decision admitted the `PCT` forms, which
+  brought the layer to 3.3%. The threshold cannot select a form the snapshot
+  never shows, so each decision entry is counted row by row, and the test
+  bounds it by its group's count instead of finding it in the snapshot. The
+  forms also share an enum member name once upper-cased, so the generator
+  numbers them (`_CASE_2`); it had only ever met a legacy name colliding with a
+  reference one.
+- A wrong-case reference value is a different call from a wrong-case legacy
+  one: `Floodway Contained In Structure` (178) stays rejected, as `ORTHOPHOTO`
+  does on the panels.
 - The fixture needed 180 ids pinned out of every case: `IN (<reference
   types>)` matches them, and no `where` separates them from the right form.
 - Windowing the control by a fixed `OBJECTID` width does not work here: 285,947

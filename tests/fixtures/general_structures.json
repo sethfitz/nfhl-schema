@@ -1,6 +1,6 @@
 {
   "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/24/query",
-  "retrieved_at": "2026-10-12T17:27:32Z",
+  "retrieved_at": "2026-10-12T20:18:40Z",
   "cases": [
     {
       "name": "bridge",
@@ -719,6 +719,134 @@
       }
     },
     {
+      "name": "legacy_one_percent_pct_in",
+      "where": "(OBJECTID = 226298) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "STRUCT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 226298,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -112.71451217063155,
+              46.006510902820274
+            ],
+            [
+              -112.71433481467494,
+              46.00649984264784
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 226298,
+          "DFIRM_ID": "30093C",
+          "VERSION_ID": "2.6.3.6",
+          "STRUCT_ID": "30093C_153",
+          "STRUCT_TYP": "1 PCT Annual Chance Flood Discharge Contained in Structure",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "Unnamed Rd",
+          "WTR_NM": "Silver Bow Creek",
+          "LOC_DESC": "",
+          "STRUC_DESC": "4-CMP Culverts",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "30093C_STUDY1",
+          "SHAPE.STLength()": 0.00017770044822212582,
+          "GFID": "6009bf70-fb9e-4a1f-b38e-45000a18afdd",
+          "GlobalID": "{B1B28E4E-6001-48D1-BC23-9B25CB2A2D7B}"
+        }
+      }
+    },
+    {
+      "name": "legacy_one_percent_pct_capital_in",
+      "where": "(OBJECTID = 20619) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "STRUCT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 20619,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -82.76563128634682,
+              38.544646229107556
+            ],
+            [
+              -82.76577797105057,
+              38.54428178894353
+            ],
+            [
+              -82.76582464387333,
+              38.54416985378767
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 20619,
+          "DFIRM_ID": "21089C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "21089C_33",
+          "STRUCT_TYP": "1 PCT Annual Chance Flood Discharge Contained In Structure",
+          "CST_STRUCT": null,
+          "STRUCT_NM": "US HWY 23",
+          "WTR_NM": "CHINNS BRANCH",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "21089C_FIS1",
+          "SHAPE.STLength()": 0.0005141281803414458,
+          "GFID": "20140929",
+          "GlobalID": "{0437A6C5-44AF-430A-845B-801BD78F2031}"
+        }
+      }
+    },
+    {
+      "name": "legacy_one_percent_pct_all_capitals",
+      "where": "(OBJECTID = 1592832) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "STRUCT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 1592832,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -104.616278027435,
+              39.35816883625429
+            ],
+            [
+              -104.61619182084016,
+              39.358444009073416
+            ],
+            [
+              -104.61618366288963,
+              39.35848385849994
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 1592832,
+          "DFIRM_ID": "08039C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "08039C_2",
+          "STRUCT_TYP": "1 PCT ANNUAL CHANCE FLOOD DISCHARGE CONTAINED IN STRUCTURE",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "",
+          "WTR_NM": "Gold Creek",
+          "LOC_DESC": "",
+          "STRUC_DESC": "",
+          "SHOWN_FIRM": "T",
+          "SOURCE_CIT": "08039C_LOMC3",
+          "SHAPE.STLength()": 0.0003290361476580363,
+          "GFID": "6934bda1-2e80-4c9f-a07a-c2c4230386ef",
+          "GlobalID": "{3A23EDE7-23BB-4D5E-AB60-4E0955A6AF85}"
+        }
+      }
+    },
+    {
       "name": "legacy_two_tenths_contained",
       "where": "(OBJECTID = 1322866) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
       "expect": null,
@@ -755,6 +883,102 @@
           "SHAPE.STLength()": 0.0016640869420453028,
           "GFID": "457a162a-15c6-46e9-ae3c-35ee54ff9d70",
           "GlobalID": "{DB8EDE5D-4DBA-441C-916D-1F44539B492D}"
+        }
+      }
+    },
+    {
+      "name": "legacy_two_tenths_pct_in",
+      "where": "(OBJECTID = 134505) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "STRUCT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 134505,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -149.85720153772334,
+              61.18099807272243
+            ],
+            [
+              -149.8571142321172,
+              61.18073270419119
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 134505,
+          "DFIRM_ID": "020005",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "020005_1",
+          "STRUCT_TYP": "0.2 PCT Annual Chance Flood Discharge Contained in Structure",
+          "CST_STRUCT": "",
+          "STRUCT_NM": "",
+          "WTR_NM": "Fish Creek",
+          "LOC_DESC": "",
+          "STRUC_DESC": "",
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "020005_FIRM11",
+          "SHAPE.STLength()": 0.00027936125473552526,
+          "GFID": "5779d6d1-30df-40db-baef-65df4fe3bb02",
+          "GlobalID": "{535DA630-6E42-447D-A321-45D24F795A43}"
+        }
+      }
+    },
+    {
+      "name": "legacy_two_tenths_pct_capital_in",
+      "where": "(OBJECTID = 20316) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "STRUCT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 20316,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -95.11414883085008,
+              39.560441739508576
+            ],
+            [
+              -95.11453069362828,
+              39.56054129822443
+            ],
+            [
+              -95.11484264603644,
+              39.56057365499241
+            ],
+            [
+              -95.12028231143836,
+              39.56064607304945
+            ],
+            [
+              -95.12060311461046,
+              39.560592320112555
+            ],
+            [
+              -95.12183503523778,
+              39.56023786484115
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 20316,
+          "DFIRM_ID": "20005C",
+          "VERSION_ID": "1.1.1.0",
+          "STRUCT_ID": "20005C_24",
+          "STRUCT_TYP": "0.2 PCT Annual Chance Flood Discharge Contained In Structure",
+          "CST_STRUCT": null,
+          "STRUCT_NM": null,
+          "WTR_NM": "WHITE CLAY CREEK",
+          "LOC_DESC": null,
+          "STRUC_DESC": null,
+          "SHOWN_FIRM": "U",
+          "SOURCE_CIT": "20005C_STUDY2",
+          "SHAPE.STLength()": 0.0077555742999839365,
+          "GFID": "20140804",
+          "GlobalID": "{12FD426C-15F3-4B88-8F18-B72BE49C524E}"
         }
       }
     },
@@ -1403,46 +1627,6 @@
           "SHAPE.STLength()": 0.0006569695520603017,
           "GFID": "1f1162a6-d88a-45aa-b769-8b9266eec3d0",
           "GlobalID": "{B026168D-439B-43B2-9D1A-092E508B8E95}"
-        }
-      }
-    },
-    {
-      "name": "wrong_case_legacy_percent",
-      "where": "(OBJECTID = 226298) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (STRUCT_ID IS NULL OR (STRUCT_ID = '' AND STRUCT_ID NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND ((CST_STRUCT IS NULL OR (CST_STRUCT = '' AND CST_STRUCT NOT LIKE ' ')) OR CST_STRUCT IN ('Beach Stabilization Structure', 'Coastal Armoring Structure', 'Miscellaneous Structure', 'NP')) AND ((SHOWN_FIRM IS NULL OR (SHOWN_FIRM = '' AND SHOWN_FIRM NOT LIKE ' ')) OR SHOWN_FIRM IN ('T', 'F', 'U')) AND NOT (STRUCT_TYP IN ('0.2-Percent-Annual-Chance Flood Discharge Contained in Structure', '1-Percent-Annual-Chance Flood Discharge Contained in Structure', 'Floodway Contained in Structure') AND (STRUC_DESC IS NULL OR (STRUC_DESC = '' AND STRUC_DESC NOT LIKE ' '))) AND SHAPE.STLength() < 0.01",
-      "expect": "STRUCT_TYP",
-      "warns": null,
-      "feature": {
-        "type": "Feature",
-        "id": 226298,
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [
-              -112.71451217063155,
-              46.006510902820274
-            ],
-            [
-              -112.71433481467494,
-              46.00649984264784
-            ]
-          ]
-        },
-        "properties": {
-          "OBJECTID": 226298,
-          "DFIRM_ID": "30093C",
-          "VERSION_ID": "2.6.3.6",
-          "STRUCT_ID": "30093C_153",
-          "STRUCT_TYP": "1 PCT Annual Chance Flood Discharge Contained in Structure",
-          "CST_STRUCT": "",
-          "STRUCT_NM": "Unnamed Rd",
-          "WTR_NM": "Silver Bow Creek",
-          "LOC_DESC": "",
-          "STRUC_DESC": "4-CMP Culverts",
-          "SHOWN_FIRM": "T",
-          "SOURCE_CIT": "30093C_STUDY1",
-          "SHAPE.STLength()": 0.00017770044822212582,
-          "GFID": "6009bf70-fb9e-4a1f-b38e-45000a18afdd",
-          "GlobalID": "{B1B28E4E-6001-48D1-BC23-9B25CB2A2D7B}"
         }
       }
     },

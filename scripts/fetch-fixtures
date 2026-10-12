@@ -1051,19 +1051,14 @@ STRUCTURE_CASES: list[Case] = [
     ("other_misc_structure", "STRUCT_TYP = 'Other / Misc. Structure'", None, None),
     # Legacy values (spec/legacy.json), which validate with a warning. The service
     # folds case, so each is pinned by the OBJECTID of a row holding exactly this
-    # spelling (`1 PCT` is the commoner one, and the model rejects it).
-    (
-        "legacy_one_percent_contained",
-        "OBJECTID = 19899",
-        None,
-        "STRUCT_TYP",
-    ),
-    (
-        "legacy_two_tenths_contained",
-        "OBJECTID = 1322866",
-        None,
-        "STRUCT_TYP",
-    ),
+    # spelling: `1 Pct ... In`, then the `PCT` spellings a decision admits.
+    ("legacy_one_percent_contained", "OBJECTID = 19899", None, "STRUCT_TYP"),
+    ("legacy_one_percent_pct_in", "OBJECTID = 226298", None, "STRUCT_TYP"),
+    ("legacy_one_percent_pct_capital_in", "OBJECTID = 20619", None, "STRUCT_TYP"),
+    ("legacy_one_percent_pct_all_capitals", "OBJECTID = 1592832", None, "STRUCT_TYP"),
+    ("legacy_two_tenths_contained", "OBJECTID = 1322866", None, "STRUCT_TYP"),
+    ("legacy_two_tenths_pct_in", "OBJECTID = 134505", None, "STRUCT_TYP"),
+    ("legacy_two_tenths_pct_capital_in", "OBJECTID = 20316", None, "STRUCT_TYP"),
     ("legacy_other_misc", "OBJECTID = 203731", None, "STRUCT_TYP"),
     # Findings: published structures the reference does not allow. Each case names
     # one field or rule, and every such structure breaks that one alone.
@@ -1085,7 +1080,6 @@ STRUCTURE_CASES: list[Case] = [
     # Wrong case, pinned like the legacy ones: the model rejects the spelling, the
     # service reports it as the right one.
     ("wrong_case_floodway", "OBJECTID = 217745", "STRUCT_TYP", None),
-    ("wrong_case_legacy_percent", "OBJECTID = 226298", "STRUCT_TYP", None),
     (
         "described_nothing_contained",
         "STRUCT_TYP = '1-Percent-Annual-Chance Flood Discharge Contained in Structure' "

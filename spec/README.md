@@ -905,13 +905,13 @@ Single Part", and 4 of 183,680 are multipart.
 ## What the general structures hold that the reference does not allow
 
 Layer 24 has 285,947 rows (`service/observed/24.json`, 2026-10-12). The
-union of every clause selects 9,521 (3.3%); the model rejects 32,403 (11.3%).
-The difference, 22,882 rows, is all `STRUCT_TYP` in the wrong case (below).
+union of every clause selects 9,521 (3.3%); the model rejects 9,556 (3.3%).
+The difference, 35 rows, is all `STRUCT_TYP` in the wrong case (below).
 Every row was read: paged in 286 windows of about 1,000 by `OBJECTID` (the ids
 run to 2,350,391, so windows are cut from the sorted ids, not from a fixed
 width), with geometry, and each row validated; the union's ids in the same
 window were compared with the rows the model rejects. The union selects no row
-the model accepts. On 50 pages the two agree and on 236 they differ by exactly
+the model accepts. On 275 pages the two agree and on 11 they differ by exactly
 the wrong-case rows. Every shape is a LineString; none is null or empty.
 
 - **`CST_STRUCT` is outside `D_Cst_Struct` on 8,909**: a lone space on 8,897
@@ -930,13 +930,10 @@ the wrong-case rows. Every shape is a LineString; none is null or empty.
   description. The union's clause for it selects 293, because the service folds
   case and 145 of those hold `Floodway Contained In Structure`, which the
   model rejects for its type first.
-- **22,882 hold a type in the wrong case**, more than twice the other causes
-  together. `1 PCT Annual Chance Flood Discharge Contained in Structure` (8,857
-  of them), `0.2 PCT ... in Structure` (5,270), `0.2 PCT ... In Structure`
-  (5,052) and `1 PCT ... In Structure` (3,666) are the legacy forms below in
-  another case; 33 are `Floodway Contained In Structure` and two the reference's
-  percent types with a capital `In`. The service folds case in `=`, `IN` and
-  grouping, so the union cannot select them; the control lists them by value.
+- **35 hold a reference type in the wrong case**: 33 `Floodway Contained In
+  Structure` and two the reference's percent types with a capital `In`. The
+  service folds case in `=`, `IN` and grouping, so the union cannot select them;
+  the control lists them by value.
 
 The union joins with `OR` each required field's missing clause (`F IS NULL OR
 (F = '' AND F NOT LIKE ' ')`) for `DFIRM_ID`, `VERSION_ID`, `STRUCT_ID` and
@@ -955,19 +952,24 @@ PCT ...` and `0.2 PCT ...` with `in` or `In`. The snapshot shows one form
 per group and counts the group: 13,200 and 10,940. Read row by row, the
 form shown has 310 and 383 rows (86 and 83 DFIRMs); the other 12,890 and
 10,557 are `PCT` forms. `legacy.json` lists the form shown, with the
-snapshot's count, which the selection test requires, and the model rejects the
-`PCT` forms as wrong case. `Other / Misc Structure` (379 rows, 86 DFIRMs;
+snapshot's count, which the selection test requires. The threshold cannot see
+the `PCT` forms, so a decision (2026-10-12) admits each at its row-read count:
+`1 PCT ... in` 9,135, `1 PCT ... In` 3,753, all capitals 2, `0.2 PCT ... in`
+5,430 and `0.2 PCT ... In` 5,127. The enum numbers the members that differ only
+in case (`..._CASE_2`). `Other / Misc Structure` (379 rows, 86 DFIRMs;
 the reference's `Other / Misc. Structure` has 16 in 5) is licensed the same way
 with no case variants. `Floodway Contained In Structure` (292 in the snapshot)
 is not legacy: 114 of the rows are the reference's `Contained in` and 178 are
 wrong-case, so `legacy_candidates` and `report-observed` compare case-folded.
+The decision does not reach those 178: they are a reference value in another
+case, rejected as the panels' `ORTHOPHOTO` is.
 
 **The `STRUC_DESC` rule names the reference's three types, not the legacy
 forms.** "Required for structures that have a contained in structure type"
 describes the legacy forms as much as the reference's, and 14,445 rows hold
-a `Pct` or `PCT` form with no description (654 in the two forms the
-model admits). A rule that rejected them would reject a combination the legacy
-policy admits, and `test_no_value_pair_a_rule_rejects_is_common` stops it.
+a `Pct` or `PCT` form with no description, all of which the model admits. A
+rule that rejected them would reject a combination the legacy policy admits,
+and `test_no_value_pair_a_rule_rejects_is_common` stops it.
 
 **`CST_STRUCT`, "populated when the structure type is a coastal structure",
 is not a rule.** The reference names no type as coastal (`Jetty`, `Seawall`,

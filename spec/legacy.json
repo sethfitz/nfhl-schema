@@ -55,7 +55,7 @@
     }
   ],
   "threshold": 0.001,
-  "rule": "A value is common when at least one row in a thousand of its layer holds it (count / layer total >= threshold). Measured against the layer rather than the field, because most of these fields are empty on most rows, so a share of the populated rows would admit the text-encoded nulls (-9999 is 97% of populated AR_REVERT). The null encodings written as text ('-9999', '<Null>', lone spaces) are not vocabulary values and are never admitted here, whatever their count. A value below the bar is admitted only by a maintainer's decision, recorded in its entry's `decision` with the date and the reason; the test then asserts its count instead of selecting it.",
+  "rule": "A value is common when at least one row in a thousand of its layer holds it (count / layer total >= threshold). Measured against the layer rather than the field, because most of these fields are empty on most rows, so a share of the populated rows would admit the text-encoded nulls (-9999 is 97% of populated AR_REVERT). The null encodings written as text ('-9999', '<Null>', lone spaces) are not vocabulary values and are never admitted here, whatever their count. A value the threshold does not select is admitted only by a maintainer's decision, recorded in its entry's `decision` with the date and the reason: a value below the bar, whose count the test asserts against the snapshot, or a spelling the snapshot cannot count because the service folds case and shows another spelling of its group, whose count is read row by row and must leave room in the group's count for the spelling shown.",
   "values": [
     {
       "domain": "D_Study_Typ",
@@ -272,7 +272,34 @@
       "layer": 24,
       "value": "1 Pct Annual Chance Flood Discharge Contained In Structure",
       "count": 13200,
-      "note": "The snapshot's count folds case. Counted by reading every row on 2026-10-12, 310 hold this exact spelling and the rest hold `1 PCT ... Contained in Structure` (9,135), `1 PCT ... Contained In Structure` (3,753) or all capitals (2); the model rejects those as wrong case. Short for the reference's `1-Percent-Annual-Chance Flood Discharge Contained in Structure`: the data spells the percent as `Pct` or `PCT` and drops the hyphens. The exact spelling is in 86 DFIRMs."
+      "note": "The snapshot's count folds case. Counted by reading every row on 2026-10-12, 310 hold this exact spelling, in 86 DFIRMs, and the rest the `PCT` spellings listed after it, which a decision admits. Short for the reference's `1-Percent-Annual-Chance Flood Discharge Contained in Structure`: the data spells the percent as `Pct` or `PCT` and drops the hyphens."
+    },
+    {
+      "domain": "D_Struct_Typ",
+      "field": "STRUCT_TYP",
+      "layer": 24,
+      "value": "1 PCT Annual Chance Flood Discharge Contained in Structure",
+      "count": 9135,
+      "note": "`1 Pct Annual Chance Flood Discharge Contained In Structure` in another case. Counted by reading every row on 2026-10-12: 9,135 rows in 333 DFIRMs.",
+      "decision": "Seth Fitzsimmons, 2026-10-12, asked whether to admit the wrong-case spellings of the legacy percent types (the ST_FIPS `4` reasoning: we know what the value is and why it is there) or reject them like `ORTHOPHOTO`, answered: \"admit\". Common, but the service's grouping folds case and counts it under `1 Pct Annual Chance Flood Discharge Contained In Structure`, so the threshold cannot select it."
+    },
+    {
+      "domain": "D_Struct_Typ",
+      "field": "STRUCT_TYP",
+      "layer": 24,
+      "value": "1 PCT Annual Chance Flood Discharge Contained In Structure",
+      "count": 3753,
+      "note": "`1 Pct Annual Chance Flood Discharge Contained In Structure` in another case. Counted by reading every row on 2026-10-12: 3,753 rows in 446 DFIRMs.",
+      "decision": "Seth Fitzsimmons, 2026-10-12, asked whether to admit the wrong-case spellings of the legacy percent types (the ST_FIPS `4` reasoning: we know what the value is and why it is there) or reject them like `ORTHOPHOTO`, answered: \"admit\". Common, but the service's grouping folds case and counts it under `1 Pct Annual Chance Flood Discharge Contained In Structure`, so the threshold cannot select it."
+    },
+    {
+      "domain": "D_Struct_Typ",
+      "field": "STRUCT_TYP",
+      "layer": 24,
+      "value": "1 PCT ANNUAL CHANCE FLOOD DISCHARGE CONTAINED IN STRUCTURE",
+      "count": 2,
+      "note": "`1 Pct Annual Chance Flood Discharge Contained In Structure` in another case. Counted by reading every row on 2026-10-12: 2 rows in 1 DFIRM.",
+      "decision": "Seth Fitzsimmons, 2026-10-12, asked whether to admit the wrong-case spellings of the legacy percent types (the ST_FIPS `4` reasoning: we know what the value is and why it is there) or reject them like `ORTHOPHOTO`, answered: \"admit\". Under the bar (2 rows), and the service's grouping folds case and counts it under `1 Pct Annual Chance Flood Discharge Contained In Structure`, so the threshold cannot select it."
     },
     {
       "domain": "D_Struct_Typ",
@@ -280,7 +307,25 @@
       "layer": 24,
       "value": "0.2 Pct Annual Chance Flood Discharge Contained In Structure",
       "count": 10940,
-      "note": "The snapshot's count folds case. Counted by reading every row on 2026-10-12, 383 hold this exact spelling and the rest hold `0.2 PCT ... Contained in Structure` (5,430) or `0.2 PCT ... Contained In Structure` (5,127); the model rejects those as wrong case. Short for the reference's `0.2-Percent-Annual-Chance Flood Discharge Contained in Structure`: the data spells the percent as `Pct` or `PCT` and drops the hyphens. The exact spelling is in 83 DFIRMs."
+      "note": "The snapshot's count folds case. Counted by reading every row on 2026-10-12, 383 hold this exact spelling, in 83 DFIRMs, and the rest the `PCT` spellings listed after it, which a decision admits. Short for the reference's `0.2-Percent-Annual-Chance Flood Discharge Contained in Structure`: the data spells the percent as `Pct` or `PCT` and drops the hyphens."
+    },
+    {
+      "domain": "D_Struct_Typ",
+      "field": "STRUCT_TYP",
+      "layer": 24,
+      "value": "0.2 PCT Annual Chance Flood Discharge Contained in Structure",
+      "count": 5430,
+      "note": "`0.2 Pct Annual Chance Flood Discharge Contained In Structure` in another case. Counted by reading every row on 2026-10-12: 5,430 rows in 300 DFIRMs.",
+      "decision": "Seth Fitzsimmons, 2026-10-12, asked whether to admit the wrong-case spellings of the legacy percent types (the ST_FIPS `4` reasoning: we know what the value is and why it is there) or reject them like `ORTHOPHOTO`, answered: \"admit\". Common, but the service's grouping folds case and counts it under `0.2 Pct Annual Chance Flood Discharge Contained In Structure`, so the threshold cannot select it."
+    },
+    {
+      "domain": "D_Struct_Typ",
+      "field": "STRUCT_TYP",
+      "layer": 24,
+      "value": "0.2 PCT Annual Chance Flood Discharge Contained In Structure",
+      "count": 5127,
+      "note": "`0.2 Pct Annual Chance Flood Discharge Contained In Structure` in another case. Counted by reading every row on 2026-10-12: 5,127 rows in 438 DFIRMs.",
+      "decision": "Seth Fitzsimmons, 2026-10-12, asked whether to admit the wrong-case spellings of the legacy percent types (the ST_FIPS `4` reasoning: we know what the value is and why it is there) or reject them like `ORTHOPHOTO`, answered: \"admit\". Common, but the service's grouping folds case and counts it under `0.2 Pct Annual Chance Flood Discharge Contained In Structure`, so the threshold cannot select it."
     },
     {
       "domain": "D_Struct_Typ",

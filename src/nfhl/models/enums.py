@@ -356,16 +356,16 @@ class StateFIPS(str, DocumentedEnum):
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
             "validates with a LegacyValueWarning. Arizona's FIPS code, 04, without "
             "its leading zero. D_State_FIPS lists the two-digit 04; every row "
-            "holding 4 is in DFIRM 04009C. Too rare to clear the legacy threshold; "
-            "admitted by a decision recorded in `spec/legacy.json`. Held by 17 of "
-            "88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12."
+            "holding 4 is in DFIRM 04009C. Admitted by a decision recorded in "
+            "`spec/legacy.json`, not by the legacy threshold. Held by 17 of 88,344 "
+            "rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12."
         ),
     )
 
 
 class StructTyp(str, DocumentedEnum):
     """Values of `D_Struct_Typ` that apply to the FIRM Database, each as the data
-    stores it. Used by `S_Gen_Struct.STRUCT_TYP`. The last 3 are legacy values:
+    stores it. Used by `S_Gen_Struct.STRUCT_TYP`. The last 8 are legacy values:
     common in the data, not in the reference.
     """
 
@@ -416,13 +416,48 @@ class StructTyp(str, DocumentedEnum):
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
             "validates with a LegacyValueWarning. The snapshot's count folds case. "
             "Counted by reading every row on 2026-10-12, 310 hold this exact "
-            "spelling and the rest hold `1 PCT ... Contained in Structure` (9,135),"
-            " `1 PCT ... Contained In Structure` (3,753) or all capitals (2); the "
-            "model rejects those as wrong case. Short for the reference's "
+            "spelling, in 86 DFIRMs, and the rest the `PCT` spellings listed after "
+            "it, which a decision admits. Short for the reference's "
             "`1-Percent-Annual-Chance Flood Discharge Contained in Structure`: the "
-            "data spells the percent as `Pct` or `PCT` and drops the hyphens. The "
-            "exact spelling is in 86 DFIRMs. Held by 13,200 of 285,947 rows of "
-            "`STRUCT_TYP` on NFHL service layer 24, counted 2026-10-12."
+            "data spells the percent as `Pct` or `PCT` and drops the hyphens. Held "
+            "by 13,200 of 285,947 rows of `STRUCT_TYP` on NFHL service layer 24, "
+            "counted 2026-10-12."
+        ),
+    )
+    V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_2 = (
+        "1 PCT Annual Chance Flood Discharge Contained in Structure",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. `1 Pct Annual Chance Flood "
+            "Discharge Contained In Structure` in another case. Counted by reading "
+            "every row on 2026-10-12: 9,135 rows in 333 DFIRMs. Admitted by a "
+            "decision recorded in `spec/legacy.json`, not by the legacy threshold. "
+            "Held by 9,135 of 285,947 rows of `STRUCT_TYP` on NFHL service layer "
+            "24, counted 2026-10-12."
+        ),
+    )
+    V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_3 = (
+        "1 PCT Annual Chance Flood Discharge Contained In Structure",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. `1 Pct Annual Chance Flood "
+            "Discharge Contained In Structure` in another case. Counted by reading "
+            "every row on 2026-10-12: 3,753 rows in 446 DFIRMs. Admitted by a "
+            "decision recorded in `spec/legacy.json`, not by the legacy threshold. "
+            "Held by 3,753 of 285,947 rows of `STRUCT_TYP` on NFHL service layer "
+            "24, counted 2026-10-12."
+        ),
+    )
+    V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_4 = (
+        "1 PCT ANNUAL CHANCE FLOOD DISCHARGE CONTAINED IN STRUCTURE",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. `1 Pct Annual Chance Flood "
+            "Discharge Contained In Structure` in another case. Counted by reading "
+            "every row on 2026-10-12: 2 rows in 1 DFIRM. Admitted by a decision "
+            "recorded in `spec/legacy.json`, not by the legacy threshold. Held by 2"
+            " of 285,947 rows of `STRUCT_TYP` on NFHL service layer 24, counted "
+            "2026-10-12."
         ),
     )
     V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE = (
@@ -431,13 +466,36 @@ class StructTyp(str, DocumentedEnum):
             "Legacy: not in the November 2024 Domain Tables Technical Reference; "
             "validates with a LegacyValueWarning. The snapshot's count folds case. "
             "Counted by reading every row on 2026-10-12, 383 hold this exact "
-            "spelling and the rest hold `0.2 PCT ... Contained in Structure` "
-            "(5,430) or `0.2 PCT ... Contained In Structure` (5,127); the model "
-            "rejects those as wrong case. Short for the reference's "
+            "spelling, in 83 DFIRMs, and the rest the `PCT` spellings listed after "
+            "it, which a decision admits. Short for the reference's "
             "`0.2-Percent-Annual-Chance Flood Discharge Contained in Structure`: "
             "the data spells the percent as `Pct` or `PCT` and drops the hyphens. "
-            "The exact spelling is in 83 DFIRMs. Held by 10,940 of 285,947 rows of "
-            "`STRUCT_TYP` on NFHL service layer 24, counted 2026-10-12."
+            "Held by 10,940 of 285,947 rows of `STRUCT_TYP` on NFHL service layer "
+            "24, counted 2026-10-12."
+        ),
+    )
+    V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_2 = (
+        "0.2 PCT Annual Chance Flood Discharge Contained in Structure",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. `0.2 Pct Annual Chance Flood "
+            "Discharge Contained In Structure` in another case. Counted by reading "
+            "every row on 2026-10-12: 5,430 rows in 300 DFIRMs. Admitted by a "
+            "decision recorded in `spec/legacy.json`, not by the legacy threshold. "
+            "Held by 5,430 of 285,947 rows of `STRUCT_TYP` on NFHL service layer "
+            "24, counted 2026-10-12."
+        ),
+    )
+    V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_3 = (
+        "0.2 PCT Annual Chance Flood Discharge Contained In Structure",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. `0.2 Pct Annual Chance Flood "
+            "Discharge Contained In Structure` in another case. Counted by reading "
+            "every row on 2026-10-12: 5,127 rows in 438 DFIRMs. Admitted by a "
+            "decision recorded in `spec/legacy.json`, not by the legacy threshold. "
+            "Held by 5,127 of 285,947 rows of `STRUCT_TYP` on NFHL service layer "
+            "24, counted 2026-10-12."
         ),
     )
     OTHER_MISC_STRUCTURE_LEGACY = (
@@ -1063,7 +1121,12 @@ LEGACY_MEMBERS: frozenset[Enum] = frozenset(
         StateFIPS.V_8,
         StateFIPS.V_4,
         StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE,
+        StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_2,
+        StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_3,
+        StructTyp.V_1_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_4,
         StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE,
+        StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_2,
+        StructTyp.V_0_2_PCT_ANNUAL_CHANCE_FLOOD_DISCHARGE_CONTAINED_IN_STRUCTURE_CASE_3,
         StructTyp.OTHER_MISC_STRUCTURE_LEGACY,
         StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,
