@@ -1,0 +1,1254 @@
+{
+  "layer": 22,
+  "total": 88344,
+  "fields": {
+    "ST_FIPS": [
+      {
+        "value": "17",
+        "count": 5393
+      },
+      {
+        "value": "41",
+        "count": 4849
+      },
+      {
+        "value": "12",
+        "count": 4183
+      },
+      {
+        "value": "01",
+        "count": 4036
+      },
+      {
+        "value": "48",
+        "count": 3785
+      },
+      {
+        "value": "06",
+        "count": 3693
+      },
+      {
+        "value": "45",
+        "count": 3410
+      },
+      {
+        "value": "42",
+        "count": 3111
+      },
+      {
+        "value": "40",
+        "count": 2923
+      },
+      {
+        "value": "39",
+        "count": 2833
+      },
+      {
+        "value": "08",
+        "count": 2804
+      },
+      {
+        "value": "26",
+        "count": 2550
+      },
+      {
+        "value": "13",
+        "count": 2521
+      },
+      {
+        "value": "29",
+        "count": 2377
+      },
+      {
+        "value": "37",
+        "count": 2376
+      },
+      {
+        "value": "27",
+        "count": 2316
+      },
+      {
+        "value": "04",
+        "count": 2224
+      },
+      {
+        "value": "16",
+        "count": 2159
+      },
+      {
+        "value": "30",
+        "count": 1951
+      },
+      {
+        "value": "35",
+        "count": 1945
+      },
+      {
+        "value": "36",
+        "count": 1786
+      },
+      {
+        "value": "55",
+        "count": 1734
+      },
+      {
+        "value": "21",
+        "count": 1681
+      },
+      {
+        "value": "53",
+        "count": 1673
+      },
+      {
+        "value": "18",
+        "count": 1470
+      },
+      {
+        "value": "19",
+        "count": 1408
+      },
+      {
+        "value": "20",
+        "count": 1200
+      },
+      {
+        "value": "47",
+        "count": 1130
+      },
+      {
+        "value": "31",
+        "count": 1063
+      },
+      {
+        "value": "05",
+        "count": 1037
+      },
+      {
+        "value": "50",
+        "count": 967
+      },
+      {
+        "value": "38",
+        "count": 950
+      },
+      {
+        "value": "72",
+        "count": 883
+      },
+      {
+        "value": "49",
+        "count": 875
+      },
+      {
+        "value": "23",
+        "count": 787
+      },
+      {
+        "value": "22",
+        "count": 698
+      },
+      {
+        "value": "51",
+        "count": 679
+      },
+      {
+        "value": "34",
+        "count": 648
+      },
+      {
+        "value": "54",
+        "count": 577
+      },
+      {
+        "value": "32",
+        "count": 572
+      },
+      {
+        "value": "46",
+        "count": 550
+      },
+      {
+        "value": "28",
+        "count": 527
+      },
+      {
+        "value": "09",
+        "count": 514
+      },
+      {
+        "value": "02",
+        "count": 409
+      },
+      {
+        "value": "56",
+        "count": 370
+      },
+      {
+        "value": "24",
+        "count": 366
+      },
+      {
+        "value": "15",
+        "count": 364
+      },
+      {
+        "value": "5",
+        "count": 352
+      },
+      {
+        "value": "33",
+        "count": 322
+      },
+      {
+        "value": "25",
+        "count": 304
+      },
+      {
+        "value": "1",
+        "count": 282
+      },
+      {
+        "value": "10",
+        "count": 230
+      },
+      {
+        "value": "6",
+        "count": 116
+      },
+      {
+        "value": "8",
+        "count": 90
+      },
+      {
+        "value": "66",
+        "count": 85
+      },
+      {
+        "value": "",
+        "count": 59
+      },
+      {
+        "value": "44",
+        "count": 59
+      },
+      {
+        "value": "78",
+        "count": 34
+      },
+      {
+        "value": "60",
+        "count": 29
+      },
+      {
+        "value": "4",
+        "count": 17
+      },
+      {
+        "value": "69",
+        "count": 6
+      },
+      {
+        "value": "11",
+        "count": 1
+      },
+      {
+        "value": null,
+        "count": 1
+      }
+    ],
+    "ANI_TF": [
+      {
+        "value": "F",
+        "count": 85876
+      },
+      {
+        "value": "T",
+        "count": 1958
+      },
+      {
+        "value": "U",
+        "count": 479
+      },
+      {
+        "value": null,
+        "count": 31
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [
+      "ANI_TF",
+      "ANI_FIRM"
+    ],
+    "by_populated": [],
+    "by_text_populated": [],
+    "groups": [
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "",
+        "count": 40697
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": null,
+        "count": 40502
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": " ",
+        "count": 2004
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "F",
+        "count": 1654
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": null,
+        "count": 691
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "",
+        "count": 657
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "U",
+        "count": 530
+      },
+      {
+        "ANI_TF": "U",
+        "ANI_FIRM": null,
+        "count": 425
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "20173C",
+        "count": 222
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "0",
+        "count": 169
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "NP",
+        "count": 109
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "NP",
+        "count": 80
+      },
+      {
+        "ANI_TF": "U",
+        "ANI_FIRM": "",
+        "count": 54
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "45083C",
+        "count": 38
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "08123C",
+        "count": 32
+      },
+      {
+        "ANI_TF": null,
+        "ANI_FIRM": null,
+        "count": 31
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "08005C",
+        "count": 24
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "45045C",
+        "count": 21
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "46083C",
+        "count": 18
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "U",
+        "count": 16
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "F",
+        "count": 13
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19153C",
+        "count": 12
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39049C",
+        "count": 12
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "08001C",
+        "count": 11
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": " ",
+        "count": 10
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "04021C",
+        "count": 9
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "08059C",
+        "count": 9
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "<Null>",
+        "count": 8
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39051C",
+        "count": 7
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "55043C",
+        "count": 7
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "20209C",
+        "count": 6
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "T",
+        "count": 6
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13045C",
+        "count": 5
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19031C",
+        "count": 5
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19049C",
+        "count": 5
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39017C",
+        "count": 5
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39165C",
+        "count": 5
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "01069C",
+        "count": 4
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "08069C",
+        "count": 4
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13275C",
+        "count": 4
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19061C",
+        "count": 4
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19181C",
+        "count": 4
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31173C",
+        "count": 4
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "06075C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "08013C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13285C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19019C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "20091C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "26161C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "37001C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "37081C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "45003C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "47165C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "48473C",
+        "count": 3
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "04013C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "10001C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13119C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13121C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13143C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13297C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19001C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19017C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19067C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19091C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19113C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19141C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19183C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "20079C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "20149C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "20173C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "21117C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "26147C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "26159C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "28035C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "28081C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "29077C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "29083C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31159C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "37061C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "37067C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39033",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39097C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39109C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "395505",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "45043C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "45059C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "46135C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "47179C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "48167C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "48355C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "53027C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "53033C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "55051C",
+        "count": 2
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "380031",
+        "count": 1
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "380205",
+        "count": 1
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "380694",
+        "count": 1
+      },
+      {
+        "ANI_TF": "F",
+        "ANI_FIRM": "38FED",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "01117C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "0460",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "05023C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "0800G",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "085073",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "12033C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "12035C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "12041C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13013C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13147C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13227C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13245C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "13277C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "18095C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19005C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19007C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19023C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "190270",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19027C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19037C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19043C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19071C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19073C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19077C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19081C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19089C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19097C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19145C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19147C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19159C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19169C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "19173C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "20041C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "20117C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "20131C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "20209C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "21077C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "21093C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "21103C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "21163C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "21193C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "24013C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "26081C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "26163C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "28049C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "28101C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "28107C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "28115C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "28119C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "28153C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "29015C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "29115C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "29179C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "29225C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "30070",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31019C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31033C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31053C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31131C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31155C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31169C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31179C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "31185C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "36069C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "361591",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "37151C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39003C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39019C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39025C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39027C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39061C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39065C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39071C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39077C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39093C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39119C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39125C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39135C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "39151C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "41005C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "45007C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "45047C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "46099C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "47001C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "47043C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "47119C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "47123C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "47163C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "51011C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "51059C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "51103C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "51121C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "51147C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "53015C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "54063C",
+        "count": 1
+      },
+      {
+        "ANI_TF": "T",
+        "ANI_FIRM": "55023C",
+        "count": 1
+      }
+    ]
+  }
+}
