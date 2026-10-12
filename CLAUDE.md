@@ -43,8 +43,14 @@ URLs and the retrieval times are in the manifest.
 
 ## Adding a layer
 
+A table that `FIRM_PAN` or another key joins is a candidate only if it is a
+service layer; `L_Pan_Revis` and the other lookup tables are not.
+
 1. Add a `Layer` to `nfhl.spec_source.LAYERS` (service layer id, reference
-   table, class name, module) and an entry point in `pyproject.toml`.
+   table, class name, module) and an entry point in `pyproject.toml`. A
+   table whose section never says what it "contains information about"
+   (`S_Profil_Basln`, `S_Gen_Struct`) also goes in `SUMMARY_ONLY` in
+   `nfhl.spec_source`, or generation stops at `reference_intro`.
 2. Add the table to `nfhl.codegen.GEOMETRIES`, saying what its features are in
    the words of the table's introduction. Generation stops if the entry is
    missing or names a different Esri type than the service publishes. A table
@@ -61,13 +67,18 @@ URLs and the retrieval times are in the manifest.
    retrieval time to `observed` in `spec/legacy.json`, then
    `./scripts/report-observed`. Add whatever the threshold selects, and
    regenerate the models. The snapshot folds case, so a wrong-case value has
-   no count to license it.
+   no count to license it, and the one form it shows can be a few percent of
+   its group. Before licensing a legacy value, read the layer's rows
+   (keyset-paged by `OBJECTID`, no geometry) and count the exact forms.
 6. Add real-feature cases and a `Fixture` to `scripts/fetch-fixtures`, and run
    it with `--layer <id>`; without `--layer` (and so `make fixtures`) it
    refetches every layer. A point layer has no length, so it passes
    `short=None` to `clean_except_expected`. A rule that reads a vocabulary
    field fires only once that field validates, so filter a rule's cases on
-   "the rule would fire", not "the field is right".
+   "the rule would fire", not "the field is right". No `where` can exclude
+   rows the service's case folding matches to a reference value but the model
+   rejects: find them by reading every row, and pin their `OBJECTID`s out of
+   the fixture filters.
 7. Run `./scripts/generate-docs`. Add the layer's fixtures to
    `tests/conftest.py`, its class to `tests/test_discovery.py`, its page to
    `tests/test_docs.py`, and its own `tests/test_<module>.py`.
@@ -82,7 +93,9 @@ URLs and the retrieval times are in the manifest.
    service folds case, so a wrong-case vocabulary value is in the model's
    rejections and not in the union: have the page control print the
    model-only rows by field and value, and expect their sum to equal the
-   difference.
+   difference. Cut the control's windows from the sorted ids, about 1,000
+   rows each: ids can be sparse (layer 24 has 285,947 rows and ids to
+   2,350,391).
 
 Eight reference tables do not yet join their two field listings, so
 `SpecReader.reference_table` raises on them; `spec/README.md` names them and
