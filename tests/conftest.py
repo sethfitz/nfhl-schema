@@ -74,6 +74,16 @@ def boundary_cases() -> list[dict[str, Any]]:
 
 
 @pytest.fixture(scope="session")
+def jurisdiction_cases() -> list[dict[str, Any]]:
+    return fixture_cases("political_jurisdictions.json")
+
+
+@pytest.fixture(scope="session")
+def jurisdiction_layer() -> Layer:
+    return modelled("S_Pol_Ar")
+
+
+@pytest.fixture(scope="session")
 def cases() -> list[dict[str, Any]]:
     return fixture_cases("flood_hazard_zones.json")
 

@@ -215,6 +215,18 @@
           "unless_quote": "the FEMA Project Officer may allow the Mapping Partner to substitute a value that indicates that the affected field was intentionally not populated."
         }
       ]
+    },
+    "S_Pol_Ar": {
+      "only_when": [
+        {
+          "field": "ANI_FIRM",
+          "when": "ANI_TF",
+          "any_of": ["T"],
+          "quote": "Used for ANI polygons where ANI_TF equals “T” and where the data are included in another FIRM Database, usually because it is a multicounty community.",
+          "unless": ["NP"],
+          "unless_quote": "the FEMA Project Officer may allow the Mapping Partner to substitute a value that indicates that the affected field was intentionally not populated."
+        }
+      ]
     }
   }
 }

@@ -72,6 +72,7 @@ LAYERS: tuple[Layer, ...] = (
     Layer(23, "S_Levee", "Levee", "levees"),
     Layer(1, "S_LOMR", "Lomr", "lomrs"),
     Layer(27, "S_Fld_Haz_Ln", "FloodHazardBoundary", "flood_hazard_boundaries"),
+    Layer(22, "S_Pol_Ar", "PoliticalJurisdiction", "political_jurisdictions"),
 )
 
 

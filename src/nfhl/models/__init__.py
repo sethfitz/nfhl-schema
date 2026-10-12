@@ -13,6 +13,7 @@ from nfhl.models.flood_hazard_boundaries import FloodHazardBoundary
 from nfhl.models.flood_hazard_zones import FloodHazardZone
 from nfhl.models.levees import Levee
 from nfhl.models.lomrs import Lomr
+from nfhl.models.political_jurisdictions import PoliticalJurisdiction
 from nfhl.models.profile_baselines import ProfileBaseline
 from nfhl.models.river_marks import RiverMark
 from nfhl.models.station_starts import StationStart
@@ -25,6 +26,7 @@ __all__ = [
     "FloodHazardZone",
     "Levee",
     "Lomr",
+    "PoliticalJurisdiction",
     "ProfileBaseline",
     "RiverMark",
     "StationStart",

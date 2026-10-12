@@ -367,10 +367,14 @@ def render_service_only_field(svc: ServiceField) -> list[str]:
     ]
 
 
+def tuple_expression(items: Iterable[str]) -> str:
+    return f"({', '.join(items)},)"
+
+
 def members(domain: Domain, values: Iterable[str]) -> str:
     """A tuple expression of `domain`'s enum members for `values`."""
     names = [f"{domain.class_name}.{member_name(v)}" for v in values]
-    return f"({', '.join(names)},)"
+    return tuple_expression(names)
 
 
 def render_pair_rule(
@@ -445,6 +449,17 @@ def render_allowed(
     ]
 
 
+def values_of(
+    table: ReferenceTable, name: str, values: Iterable[str], reader: SpecReader
+) -> str:
+    """A tuple expression of `values` as field `name` holds them: its domain's
+    enum members, or plain strings where the field is free text."""
+    domain = table.field(name).domain
+    if domain is None:
+        return tuple_expression(literal(v) for v in values)
+    return members(reader.domain(domain), values)
+
+
 def require_domain(table: ReferenceTable, name: str) -> str:
     domain = table.field(name).domain
     if domain is None:
@@ -477,12 +492,11 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
         )
         decorators.extend(quote_comment(zoned.quote))
         if zoned.unless:
-            own = reader.domain(require_domain(table, zoned.field))
             assert zoned.unless_quote is not None, f"{zoned.field}: unless has no quote"
             decorators.extend(quote_comment(zoned.unless_quote))
             condition = (
-                f"AllOf({condition}, "
-                f"NoneOf({literal(zoned.field.lower())}, {members(own, zoned.unless)}))"
+                f"AllOf({condition}, NoneOf({literal(zoned.field.lower())}, "
+                f"{values_of(table, zoned.field, zoned.unless, reader)}))"
             )
         decorators.append(f"@forbid_if([{literal(zoned.field.lower())}], {condition})")
     for allowed in relations.allowed:
@@ -716,6 +730,16 @@ GEOMETRIES = {
         "The flood hazard boundary: in the reference's words, the flood zone "
         "boundary features of the Flood Risk Project area, the boundaries of the "
         "flood hazard areas depicted on the FIRM.",
+    ),
+    "S_Pol_Ar": LayerGeometry(
+        "esriGeometryPolygon",
+        ("POLYGON", "MULTI_POLYGON"),
+        "“The spatial entities representing political areas are polygons”, and "
+        "Table 4 does not hold S_Pol_Ar to “Must Be Single Part”, so a "
+        "MultiPolygon as well as a Polygon.",
+        "The political area: in the reference's words, a political area within the "
+        "Flood Risk Project area, assigned the jurisdiction responsible for NFIP and "
+        "floodplain management for that area.",
     ),
 }
 

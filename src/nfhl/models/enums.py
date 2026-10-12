@@ -195,6 +195,117 @@ class Scale(str, DocumentedEnum):
     V_10000 = "10000", "Code `2000`."
 
 
+class StateFIPS(str, DocumentedEnum):
+    """Values of `D_State_FIPS` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Pol_Ar.ST_FIPS`. The last 4 are legacy values: common in
+    the data, not in the reference.
+    """
+
+    V_01 = "01", "01 - Alabama. Code `01`."
+    V_02 = "02", "02 - Alaska. Code `02`."
+    V_04 = "04", "04 - Arizona. Code `04`."
+    V_05 = "05", "05 - Arkansas. Code `05`."
+    V_06 = "06", "06 - California. Code `06`."
+    V_08 = "08", "08 - Colorado. Code `08`."
+    V_09 = "09", "09 - Connecticut. Code `09`."
+    V_10 = "10", "10 - Delaware. Code `10`."
+    V_11 = "11", "11 - District of Columbia. Code `11`."
+    V_12 = "12", "12 - Florida. Code `12`."
+    V_13 = "13", "13 - Georgia. Code `13`."
+    V_15 = "15", "15 - Hawaii. Code `15`."
+    V_16 = "16", "16 - Idaho. Code `16`."
+    V_17 = "17", "17 - Illinois. Code `17`."
+    V_18 = "18", "18 - Indiana. Code `18`."
+    V_19 = "19", "19 - Iowa. Code `19`."
+    V_20 = "20", "20 - Kansas. Code `20`."
+    V_21 = "21", "21 - Kentucky. Code `21`."
+    V_22 = "22", "22 - Louisiana. Code `22`."
+    V_23 = "23", "23 - Maine. Code `23`."
+    V_24 = "24", "24 - Maryland. Code `24`."
+    V_25 = "25", "25 - Massachusetts. Code `25`."
+    V_26 = "26", "26 - Michigan. Code `26`."
+    V_27 = "27", "27 - Minnesota. Code `27`."
+    V_28 = "28", "28 - Mississippi. Code `28`."
+    V_29 = "29", "29 - Missouri. Code `29`."
+    V_30 = "30", "30 - Montana. Code `30`."
+    V_31 = "31", "31 - Nebraska. Code `31`."
+    V_32 = "32", "32 - Nevada. Code `32`."
+    V_33 = "33", "33 - New Hampshire. Code `33`."
+    V_34 = "34", "34 - New Jersey. Code `34`."
+    V_35 = "35", "35 - New Mexico. Code `35`."
+    V_36 = "36", "36 - New York. Code `36`."
+    V_37 = "37", "37 - North Carolina. Code `37`."
+    V_38 = "38", "38 - North Dakota. Code `38`."
+    V_39 = "39", "39 - Ohio. Code `39`."
+    V_40 = "40", "40 - Oklahoma. Code `40`."
+    V_41 = "41", "41 - Oregon. Code `41`."
+    V_42 = "42", "42 - Pennsylvania. Code `42`."
+    V_44 = "44", "44 - Rhode Island. Code `44`."
+    V_45 = "45", "45 - South Carolina. Code `45`."
+    V_46 = "46", "46 - South Dakota. Code `46`."
+    V_47 = "47", "47 - Tennessee. Code `47`."
+    V_48 = "48", "48 - Texas. Code `48`."
+    V_49 = "49", "49 - Utah. Code `49`."
+    V_50 = "50", "50 - Vermont. Code `50`."
+    V_51 = "51", "51 - Virginia. Code `51`."
+    V_53 = "53", "53 - Washington. Code `53`."
+    V_54 = "54", "54 - West Virginia. Code `54`."
+    V_55 = "55", "55 - Wisconsin. Code `55`."
+    V_56 = "56", "56 - Wyoming. Code `56`."
+    V_60 = "60", "60 - American Samoa. Code `60`."
+    V_64 = "64", "64 - Micronesia. Code `64`."
+    V_66 = "66", "66 - Guam. Code `66`."
+    V_68 = "68", "68 - Marshall Islands. Code `68`."
+    V_69 = "69", "69 - Northern Mariana Islands. Code `69`."
+    V_70 = "70", "70 - Palau. Code `70`."
+    V_72 = "72", "72 - Puerto Rico. Code `72`."
+    V_74 = "74", "74 – U.S. Minor Islands. Code `74`."
+    V_78 = "78", "78 - Virgin Islands. Code `78`."
+    V_5 = (
+        "5",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Arkansas's FIPS code, 05, without"
+            " its leading zero. D_State_FIPS lists the two-digit 05; every row "
+            "holding 5 is in a DFIRM whose ID begins 05 (18 DFIRMs). Held by 352 of"
+            " 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted "
+            "2026-10-12."
+        ),
+    )
+    V_1 = (
+        "1",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Alabama's FIPS code, 01, without "
+            "its leading zero. D_State_FIPS lists the two-digit 01; every row "
+            "holding 1 is in a DFIRM whose ID begins 01 (20 DFIRMs). Held by 282 of"
+            " 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted "
+            "2026-10-12."
+        ),
+    )
+    V_6 = (
+        "6",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. California's FIPS code, 06, "
+            "without its leading zero. D_State_FIPS lists the two-digit 06; every "
+            "row holding 6 is in a DFIRM whose ID begins 06 (4 DFIRMs). Held by 116"
+            " of 88,344 rows of `ST_FIPS` on NFHL service layer 22, counted "
+            "2026-10-12."
+        ),
+    )
+    V_8 = (
+        "8",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Colorado's FIPS code, 08, without"
+            " its leading zero. D_State_FIPS lists the two-digit 08; every row "
+            "holding 8 is in a DFIRM whose ID begins 08 (4 DFIRMs). Held by 90 of "
+            "88,344 rows of `ST_FIPS` on NFHL service layer 22, counted 2026-10-12."
+        ),
+    )
+
+
 class StudyTyp(str, DocumentedEnum):
     """Values of `D_Study_Typ` that apply to the FIRM Database, each as the data stores
     it. Used by `S_Fld_Haz_Ar.STUDY_TYP`, `S_Profil_Basln.STUDY_TYP`. The last 7 are
@@ -339,7 +450,8 @@ class TrueFalse(str, DocumentedEnum):
     """Values of `D_TrueFalse` that apply to the FIRM Database, each as the data stores
     it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
     `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`, `S_Wtr_Ln.SHOWN_FIRM`,
-    `S_Wtr_Ln.SHOWN_INDX`, `S_Levee.USACE_LEV`, `S_Levee.PL84_99TF`.
+    `S_Wtr_Ln.SHOWN_INDX`, `S_Levee.USACE_LEV`, `S_Levee.PL84_99TF`,
+    `S_Pol_Ar.ANI_TF`.
     """
 
     T = "T", "True (Yes). Code `T`."
@@ -798,6 +910,10 @@ LEGACY_MEMBERS: frozenset[Enum] = frozenset(
         LeveeStatus.NEVER_ACCREDITED,
         LocAccuracy.NP,
         ProfBaslnTyp.STREAM_RIVER,
+        StateFIPS.V_5,
+        StateFIPS.V_1,
+        StateFIPS.V_6,
+        StateFIPS.V_8,
         StudyTyp.SFHAS_WITH_LOW_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_HIGH_FLOOD_RISK,
         StudyTyp.SFHAS_WITH_MEDIUM_FLOOD_RISK,
