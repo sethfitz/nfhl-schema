@@ -477,3 +477,34 @@ tables. The next layer has no relationship to pick it by.
 - Lone space in free text is a value (the convention for `ANI_FIRM`), which
   makes 6,307 of the rule's 6,688 rejections a single blank character in
   `PNP_REASON`.
+
+## The thirteenth layer
+
+`S_Gen_Struct` (layer 24). The chain the FIRM Panels pass left, `FIRM_PAN` as a
+join key of `L_Pan_Revis`, `L_MT2_LOMR`, `S_Label_Ld` and `S_Label_Pt`, ends at
+once: none of the four is a service layer, and a `Layer` needs a service id for
+its fields, so those tables cannot be modelled from this snapshot. The pick
+went by shared fields instead: `WTR_NM` with the water lines and `SHOWN_FIRM`
+with the water lines and profile baselines.
+
+- The case-folded snapshot misled the legacy selection for the first time. The
+  group it counts and the form it shows are different things: the shown
+  `Floodway Contained In Structure` (292) was 114 reference rows and 178
+  wrong-case ones, and the shown `1 Pct ...` (13,200) was 310 rows of that
+  form and 12,890 of `PCT`. The selection test compared case-sensitively,
+  so it demanded a legacy entry for a reference value. Fixed by comparing
+  folded; the second case stays a call (below).
+- 22,882 rows (8.0% of the layer) are wrong-case `STRUCT_TYP`, against 299 on
+  the panels and a handful on the levees. The legacy policy admits a form
+  and the model rejects its other cases, so the commonest forms of a
+  legacy value are the rejected ones.
+- The fixture needed 180 ids pinned out of every case: `IN (<reference
+  types>)` matches them, and no `where` separates them from the right form.
+- Windowing the control by a fixed `OBJECTID` width does not work here: 285,947
+  rows span ids to 2,350,391. Windows cut from the sorted ids hold a stable
+  1,000 rows each.
+- The section for the table has no "contains information about" sentence, so
+  `reference_intro` raised; the second table in `SUMMARY_ONLY`.
+- `STRUC_DESC` is required for the contained types, and the legacy policy
+  forbids a rule that rejects a common pair, so the rule's own subject (the
+  legacy forms, 14,445 rows with no description) is left unchecked.

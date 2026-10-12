@@ -901,3 +901,85 @@ most panels, which the description allows. The panels share `DFIRM_ID`,
 `PCOMM` is, for community-based maps, the FEMA community number. A panel is a
 Polygon or a MultiPolygon: Table 4 does not hold `S_FIRM_Pan` to "Must Be
 Single Part", and 4 of 183,680 are multipart.
+
+## What the general structures hold that the reference does not allow
+
+Layer 24 has 285,947 rows (`service/observed/24.json`, 2026-10-12). The
+union of every clause selects 9,521 (3.3%); the model rejects 32,403 (11.3%).
+The difference, 22,882 rows, is all `STRUCT_TYP` in the wrong case (below).
+Every row was read: paged in 286 windows of about 1,000 by `OBJECTID` (the ids
+run to 2,350,391, so windows are cut from the sorted ids, not from a fixed
+width), with geometry, and each row validated; the union's ids in the same
+window were compared with the rows the model rejects. The union selects no row
+the model accepts. On 50 pages the two agree and on 236 they differ by exactly
+the wrong-case rows. Every shape is a LineString; none is null or empty.
+
+- **`CST_STRUCT` is outside `D_Cst_Struct` on 8,909**: a lone space on 8,897
+  (`CST_STRUCT LIKE ' '`; the service's `= ''` counts 125,648 because it folds
+  the lone spaces into the empty strings), `MISCELLANEOUS STRUCTURES` on 11 and
+  `COASTAL ARMORING STRUCTURES` on 1. The class is optional, and 150,755 rows
+  hold no value. The lone space is a value, as it is in the water lines' flags.
+- **`STRUCT_TYP` is missing on 102** (`= ''`) **and outside the vocabulary on
+  58**: `Dike` 30, `1-Percent-Annual-Chance Flood Discharge Contained in
+  Structu` 12 (cut off at 64 characters), `Spillway` 6, `Other/Misc Structure`
+  3, and one to two rows each of `0.2-Percent-Annual-Chance ... Struc`,
+  `1-PCT-Annual-Chance ...`, `Floodway Contained in Channel` and `Brigdge`.
+- **`SOURCE_CIT` is missing on 142** (119 null, 23 empty), **`STRUCT_ID` on 15**
+  and **`VERSION_ID` on 3**.
+- **The `STRUC_DESC` rule breaks on 148 rows** whose type validates and has no
+  description. The union's clause for it selects 293, because the service folds
+  case and 145 of those hold `Floodway Contained In Structure`, which the
+  model rejects for its type first.
+- **22,882 hold a type in the wrong case**, more than twice the other causes
+  together. `1 PCT Annual Chance Flood Discharge Contained in Structure` (8,857
+  of them), `0.2 PCT ... in Structure` (5,270), `0.2 PCT ... In Structure`
+  (5,052) and `1 PCT ... In Structure` (3,666) are the legacy forms below in
+  another case; 33 are `Floodway Contained In Structure` and two the reference's
+  percent types with a capital `In`. The service folds case in `=`, `IN` and
+  grouping, so the union cannot select them; the control lists them by value.
+
+The union joins with `OR` each required field's missing clause (`F IS NULL OR
+(F = '' AND F NOT LIKE ' ')`) for `DFIRM_ID`, `VERSION_ID`, `STRUCT_ID` and
+`SOURCE_CIT`; the outside clause for `STRUCT_TYP` (`F IS NULL OR NOT (F IN
+(<the values> AND F NOT LIKE ' ')`, the legacy forms among the values);
+the optional fields' (`NOT (<missing> OR (F IN (<the values>) AND F NOT LIKE '
+'))`) for `CST_STRUCT` and `SHOWN_FIRM`; the rule's (`STRUCT_TYP IN (<the three
+contained types>) AND STRUCT_TYP NOT LIKE ' '` with no `STRUC_DESC`); and `SHAPE
+IS NULL`. Per clause: `CST_STRUCT` 8,909, `STRUCT_TYP` 160, `SOURCE_CIT` 142,
+`STRUCT_ID` 15, `VERSION_ID` 3, the rule 293, the others 0; one row is in two.
+
+**The legacy `STRUCT_TYP` forms are licensed by a count that folds case.**
+The data writes the three "contained in structure" types as `1 Pct Annual
+Chance Flood Discharge Contained In Structure` and `0.2 Pct ...`, and as `1
+PCT ...` and `0.2 PCT ...` with `in` or `In`. The snapshot shows one form
+per group and counts the group: 13,200 and 10,940. Read row by row, the
+form shown has 310 and 383 rows (86 and 83 DFIRMs); the other 12,890 and
+10,557 are `PCT` forms. `legacy.json` lists the form shown, with the
+snapshot's count, which the selection test requires, and the model rejects the
+`PCT` forms as wrong case. `Other / Misc Structure` (379 rows, 86 DFIRMs;
+the reference's `Other / Misc. Structure` has 16 in 5) is licensed the same way
+with no case variants. `Floodway Contained In Structure` (292 in the snapshot)
+is not legacy: 114 of the rows are the reference's `Contained in` and 178 are
+wrong-case, so `legacy_candidates` and `report-observed` compare case-folded.
+
+**The `STRUC_DESC` rule names the reference's three types, not the legacy
+forms.** "Required for structures that have a contained in structure type"
+describes the legacy forms as much as the reference's, and 14,445 rows hold
+a `Pct` or `PCT` form with no description (654 in the two forms the
+model admits). A rule that rejected them would reject a combination the legacy
+policy admits, and `test_no_value_pair_a_rule_rejects_is_common` stops it.
+
+**`CST_STRUCT`, "populated when the structure type is a coastal structure",
+is not a rule.** The reference names no type as coastal (`Jetty`, `Seawall`,
+`Revetment` and `Wing Wall` are candidates), so nothing says when it is
+required. 7,216 rows hold `NP`; 150,755 hold nothing.
+
+`SHOWN_FIRM` is `U` on 171,552 rows (60%), `T` on 85,140, `F` on 29,019, empty
+on 231 and null on 5; it is optional (`R1`). `STRUCT_ID`, `SOURCE_CIT` and
+`VERSION_ID` are 32, 21 and 11 long on the service and 25, 11 and 11 in the
+reference; the models take the service's. `SOURCE_CIT` "must match a value in
+`L_Source_Cit`", which the models do not check. Structures name their stream by
+`WTR_NM`, as the water lines do; the join is not checked, and `L_Cst_Struct`
+joins by `STRUCT_ID` but is not a service layer. The FIRM Database reference's
+section for `S_Gen_Struct` never says what the table "contains information
+about", so the model's description is the table summary (`SUMMARY_ONLY`).

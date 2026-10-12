@@ -15,7 +15,7 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Twelve models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Thirteen models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
 elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
 modelled cross sections with their water-surface and streambed elevations,
@@ -38,7 +38,10 @@ codes and whether each is an Area Not Included; Table 4 requires the flood
 zones' boundaries to be covered by theirs, and **`FirmPanel`**
 (`S_FIRM_Pan`, layer 3), the hardcopy map panels, with their number, scale,
 type and the reason a panel is not printed; they share the state code and the
-FIRM Database fields with the political areas. The snapshot holds every layer's service
+FIRM Database fields with the political areas, and **`GeneralStructure`**
+(`S_Gen_Struct`, layer 24), the bridges, culverts, dams and other structures
+shown on the flood profiles and the FIRM, which name their stream by `WTR_NM`
+and carry `SHOWN_FIRM` as the water lines do. The snapshot holds every layer's service
 metadata and both references whole, so the next tables need no new fetch.
 
 - `spec/` -- the pinned snapshot, refreshed by `scripts/snapshot-spec`. See
@@ -89,6 +92,10 @@ metadata and both references whole, so the next tables need no new fetch.
 - `tests/fixtures/firm_panels.json` -- twenty-seven real FIRM panels, fifteen
   that validate, two that validate with a legacy-value warning, and ten that do
   not, two of them against the `PNP_REASON` rule.
+- `tests/fixtures/general_structures.json` -- thirty-two real structures, fifteen
+  that validate, three that validate with a legacy-value warning, and fourteen
+  that do not, two of them against the `STRUC_DESC` rule and two for a value in
+  the wrong case.
 
 ## Why generate rather than hand-write
 
@@ -179,7 +186,10 @@ political area is a Polygon or a MultiPolygon: "The spatial entities
 representing political areas are polygons", and Table 4 does not hold
 `S_Pol_Ar` to a single part; 935 of its 88,344 are multipart. A FIRM panel is
 a Polygon or a MultiPolygon for the same reason: Table 4 does not hold
-`S_FIRM_Pan` to a single part; 4 of its 183,680 are multipart.
+`S_FIRM_Pan` to a single part; 4 of its 183,680 are multipart. A general
+structure is a LineString: "Spatial elements representing general structures
+are represented by lines", and Table 4 holds `S_Gen_Struct` to "Must Be Single
+Part"; every row the live control read was a LineString.
 `nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
 geometry type disagrees.
 
