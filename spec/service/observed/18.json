@@ -1,0 +1,73 @@
+{
+  "layer": 18,
+  "total": 35354,
+  "fields": {
+    "TBASE_TYP": [
+      {
+        "value": "Zero Foot Contour LiDAR / Shoals",
+        "count": 26257
+      },
+      {
+        "value": "NP",
+        "count": 4709
+      },
+      {
+        "value": "Other Source",
+        "count": 2658
+      },
+      {
+        "value": "Zero Foot Contour",
+        "count": 926
+      },
+      {
+        "value": "Zero Foot Contour Field Survey",
+        "count": 366
+      },
+      {
+        "value": "NON-ERODIBLE BLUFF",
+        "count": 347
+      },
+      {
+        "value": "ZERO FOOT C",
+        "count": 54
+      },
+      {
+        "value": "Zero Foot Contour Referenced to Tidal Datum",
+        "count": 24
+      },
+      {
+        "value": "SANDY BEACH-SMALL DUNE",
+        "count": 13
+      }
+    ],
+    "V_DATUM": [
+      {
+        "value": "NAVD88",
+        "count": 33888
+      },
+      {
+        "value": "MSL",
+        "count": 1005
+      },
+      {
+        "value": "LOCAL TIDAL DATUM",
+        "count": 344
+      },
+      {
+        "value": "NP",
+        "count": 117
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [],
+    "by_populated": [],
+    "by_text_populated": [],
+    "groups": [
+      {
+        "count": 35354
+      }
+    ]
+  }
+}
