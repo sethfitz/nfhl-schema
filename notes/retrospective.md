@@ -329,6 +329,33 @@ modelled one, so none joins more directly.
 - `SOURCE_CIT` is missing on 9.5% of the layer (1,448,053 rows), the highest
   rate of any modelled required field, and `NP` on another 1,782,479.
 
+## The eleventh layer
+
+Political Jurisdictions (`S_Pol_Ar`, layer 22, 2026-10-11). Chosen because
+Table 4 puts it in the `FLD_HAZ_POL` topology with both flood hazard layers and
+requires the flood zones' boundary to be "Covered by Feature Class Of" it; no
+remaining layer has a foreign key to a modelled one.
+
+- The first rule on free text that reads the value. `ANI_FIRM` is limited to ANI
+  areas with `NP` exempt, as in the levees, but the levees' field had a domain.
+  The codegen rendered `unless` only as enum members, and the rule census
+  refused any rule that asked free text more than whether it is set; both now
+  take plain strings, and the census groups such a field by value (193 groups).
+- `D_State_FIPS` is the first domain whose stored value is the coded value: its
+  FIRM description is `01`, not `Alabama`. The FIRM-description column rule
+  already gave the right answer.
+- Four states' codes without their leading zero clear the legacy bar, so a
+  warning admits `5` while `05` is the reference's value. That follows from the
+  count rule, and it is the first legacy value that is a formatting defect
+  rather than an older edition's vocabulary.
+- `SHAPE.STArea() = 0`, which found the LOMRs' empty polygon, here finds a real
+  sliver; the empty-geometry test is per layer, and `STLength() = 0` was the one
+  that showed there is none.
+- Small enough to validate whole, unlike the last two. One page of 200 failed
+  after every retry and went through at 50; the six-cursor run took about 15
+  minutes. `generate-models` deletes `src/nfhl/models/` before rendering, so a
+  generation error leaves the tree without models until `git checkout`.
+
 ## Where overture-schema-system got in the way
 
 These are inputs for the overture-schema backlog.

@@ -739,3 +739,79 @@ in `L_Source_Cit`", which the models do not check. The boundaries join the flood
 hazard zones by `DFIRM_ID`, `VERSION_ID` and `SOURCE_CIT`, and geometrically:
 Table 4 requires each line to be "Covered by Boundary Of" `S_Fld_Haz_Ar`.
 Nothing in the layer names a zone.
+
+## What the political jurisdictions hold that the reference does not allow
+
+Layer 22 has 88,344 rows (`service/observed/22.json`, 2026-10-12 UTC), few
+enough to validate whole: every row was paged by `OBJECTID` (200 to a page, 50
+where a page of large polygons failed, with geometry) and run through the model.
+It rejects 18,201 (20.6%); "missing" is as for the cross sections.
+
+- **`SOURCE_CIT` is missing on 13,247** (13,220 null, 27 `''`), in 232 DFIRMs,
+  904 of them in `45019C`. A lone space is text and validates (333 rows), as does
+  `NP`, which 18,474 rows hold.
+- **The `ANI_FIRM` rule rejects 4,597**, every one with `ANI_TF` `F`, in 189
+  DFIRMs, 393 of them in `53077C`: a lone space (2,004), the flags `F` (1,654)
+  and `U` (530), `0` (169), `<Null>` (8), and 232 DFIRM IDs, 222 of them
+  `20173C`. `count-broken-rules` finds the same 4,597; validation names the rule
+  on 4,557, since 40 of them also lack `SOURCE_CIT`, which fails first.
+- **292 have no geometry** (`SHAPE IS NULL`), 291 in `48187C`. No polygon is
+  empty: `SHAPE IS NOT NULL AND SHAPE.STLength() = 0` counts none.
+  `SHAPE.STArea() = 0` selects one row, `OBJECTID` 2923, a three-vertex sliver
+  whose area the service rounds to 0; it validates.
+- **`VERSION_ID` is missing on 159**, 158 in `45063C`. Every one also lacks
+  `SOURCE_CIT`, so the fixture has no case for it.
+- **`ST_FIPS` is missing on 60**, 59 in `06107C`, and holds `4` on 17 (all
+  `04009C`), Arizona's code without its zero.
+- **`ANI_TF` is missing on 31**, 30 in `42073C`.
+- **One row holds nothing** but its `GlobalID` (`OBJECTID` 122639): every
+  attribute null and no shape. It accounts for the single row missing
+  `DFIRM_ID`, `POL_AR_ID`, `POL_NAME1`, `CO_FIPS`, `COMM_NO` and `CID`.
+
+The union joins with `OR` each required field's missing clause (`F IS NULL OR
+(F = '' AND F NOT LIKE ' ')`), `ST_FIPS`'s and `ANI_TF`'s outside clause (`F IS
+NOT NULL AND (F <> '' OR F LIKE ' ') AND NOT (F IN (<the values>) AND F NOT LIKE
+' ')`, the legacy codes among `ST_FIPS`'s values), the rule's (`ANI_FIRM IS NOT
+NULL AND (ANI_FIRM <> '' OR ANI_FIRM LIKE ' ') AND ANI_FIRM <> 'NP' AND (ANI_TF
+IS NULL OR ANI_TF <> 'T' OR ANI_TF LIKE ' ')`) and `SHAPE IS NULL`. It selects
+18,201 rows on 2026-10-11; on each of the 446 pages the model rejected exactly as
+many as the union selects over the page's `OBJECTID` range, and compared by
+`OBJECTID` the two sets are the same. `SHAPE.STArea() = 0` in place of `SHAPE IS
+NULL` would have added the sliver.
+
+**`ST_FIPS` drops the leading zero on four states often enough to be legacy.**
+`5` (352 rows, 18 DFIRMs), `1` (282, 20), `6` (116, 4) and `8` (90, 4) clear the
+bar of 89 rows, and validate with a warning; each is in DFIRMs whose ID begins
+with the padded code (`05...`, `01...`, `06...`, `08...`). `4` (17) does not,
+and is rejected. `D_State_FIPS`'s FIRM description is the two-digit code, so
+`01`, not `Alabama`, is what the field stores.
+
+**`ANI_FIRM` names another FIRM only on an Area Not Included.** "Used for ANI
+polygons where ANI_TF equals “T”" is read as a limit, as `XS_LTR`'s "populated
+when" was. The description itself says to populate `NP` "if the area has never
+been converted to a FIRM Database", which is an ANI case, but `NP` is section
+7.3's "intentionally not populated", so the rule's `unless` exempts it as it
+does for the levees' `LEV_AN_TYP`: the 80 rows holding `NP` off an ANI area
+validate. A lone space is a value and breaks the rule; `""` is a null. Deleting
+the `S_Pol_Ar` entry from `relationships.json` reverses it, and would leave the
+layer's rejections at 13,644. The model does not check that `ANI_FIRM` is a
+DFIRM ID: on ANI areas, 40 values are neither `NP` nor of either form the
+description gives (`ANI_FIRM NOT LIKE '_____C' AND ANI_FIRM NOT LIKE
+'[0-9][0-9][0-9][0-9][0-9][0-9]'`).
+
+**Two sentences the model does not enforce.** `COM_NFO_ID` "is populated for any
+jurisdiction that has a CID number issued by FEMA", and a jurisdiction without
+one writes `FED`, `ST` or `OTHR` in `COMM_NO` (10,037 rows). 1,311 rows with a
+FEMA number lack it (`<COM_NFO_ID missing> AND COMM_NO NOT IN
+('FED','ST','OTHR')`); reading that pair of sentences as a `require_if` would
+reject them. `CID` "is created by combining the State FIPS code with the
+COMM_NO"; the service rejects string concatenation in a `where` (a 400), so
+how many rows disagree is not counted, and the model does not check it.
+
+`POL_AR_ID`, `COM_NFO_ID` and `SOURCE_CIT` are 32, 32 and 21 long on the service
+and 25, 25 and 11 in the reference; the models take the service's. 935 areas
+are MultiPolygons, which the reference allows. `COM_NFO_ID` is a foreign key to
+`L_Comm_Info`, which is not modelled. The political areas share `DFIRM_ID`,
+`VERSION_ID` and `SOURCE_CIT` with the flood zones and join them geometrically:
+Table 4 requires `S_Fld_Haz_Ar`'s boundary to be "Covered by Feature Class Of"
+`S_Pol_Ar`. The models check neither.
