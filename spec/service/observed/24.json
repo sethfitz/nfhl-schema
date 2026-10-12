@@ -1,0 +1,829 @@
+{
+  "layer": 24,
+  "total": 285947,
+  "fields": {
+    "STRUCT_TYP": [
+      {
+        "value": "Bridge",
+        "count": 119431
+      },
+      {
+        "value": "Culvert",
+        "count": 73633
+      },
+      {
+        "value": "Dam",
+        "count": 21821
+      },
+      {
+        "value": "Dock",
+        "count": 14575
+      },
+      {
+        "value": "1 Pct Annual Chance Flood Discharge Contained In Structure",
+        "count": 13200
+      },
+      {
+        "value": "0.2 Pct Annual Chance Flood Discharge Contained In Structure",
+        "count": 10940
+      },
+      {
+        "value": "Footbridge",
+        "count": 8474
+      },
+      {
+        "value": "Seawall",
+        "count": 4290
+      },
+      {
+        "value": "Canal",
+        "count": 3163
+      },
+      {
+        "value": "Pier",
+        "count": 3127
+      },
+      {
+        "value": "Weir",
+        "count": 2767
+      },
+      {
+        "value": "Revetment",
+        "count": 1547
+      },
+      {
+        "value": "Channel",
+        "count": 1339
+      },
+      {
+        "value": "Wing Wall",
+        "count": 1056
+      },
+      {
+        "value": "Lock",
+        "count": 711
+      },
+      {
+        "value": "Aqueduct",
+        "count": 682
+      },
+      {
+        "value": "Control Structure",
+        "count": 591
+      },
+      {
+        "value": "Storm Sewer",
+        "count": 561
+      },
+      {
+        "value": "Gate",
+        "count": 500
+      },
+      {
+        "value": "Jetty",
+        "count": 452
+      },
+      {
+        "value": "Utility Crossing",
+        "count": 400
+      },
+      {
+        "value": "Other / Misc Structure",
+        "count": 379
+      },
+      {
+        "value": "NP",
+        "count": 350
+      },
+      {
+        "value": "Energy Dissipater",
+        "count": 308
+      },
+      {
+        "value": "Drop Structure",
+        "count": 297
+      },
+      {
+        "value": "Floodway Contained In Structure",
+        "count": 292
+      },
+      {
+        "value": "Pipeline",
+        "count": 204
+      },
+      {
+        "value": "0.2-Percent-Annual-Chance Flood Discharge Contained in Structure",
+        "count": 173
+      },
+      {
+        "value": "Pump Station",
+        "count": 137
+      },
+      {
+        "value": "Flume",
+        "count": 134
+      },
+      {
+        "value": "",
+        "count": 102
+      },
+      {
+        "value": "1-Percent-Annual-Chance Flood Discharge Contained in Structure",
+        "count": 62
+      },
+      {
+        "value": "Retaining Wall",
+        "count": 53
+      },
+      {
+        "value": "Levee",
+        "count": 45
+      },
+      {
+        "value": "Siphon",
+        "count": 35
+      },
+      {
+        "value": "Side Weir Structure",
+        "count": 34
+      },
+      {
+        "value": "Dike",
+        "count": 30
+      },
+      {
+        "value": "Other / Misc. Structure",
+        "count": 16
+      },
+      {
+        "value": "1-Percent-Annual-Chance Flood Discharge Contained in Structu",
+        "count": 12
+      },
+      {
+        "value": "Penstock",
+        "count": 6
+      },
+      {
+        "value": "Spillway",
+        "count": 6
+      },
+      {
+        "value": "Other/Misc Structure",
+        "count": 3
+      },
+      {
+        "value": "0.2-Percent-Annual-Chance Flood Discharge Contained in Struc",
+        "count": 2
+      },
+      {
+        "value": "1-PCT-Annual-Chance Flood Discharge Contained in Structure",
+        "count": 2
+      },
+      {
+        "value": "Fish Ladder",
+        "count": 2
+      },
+      {
+        "value": "Floodway Contained in Channel",
+        "count": 2
+      },
+      {
+        "value": "Brigdge",
+        "count": 1
+      }
+    ],
+    "CST_STRUCT": [
+      {
+        "value": null,
+        "count": 150755
+      },
+      {
+        "value": " ",
+        "count": 125648
+      },
+      {
+        "value": "NP",
+        "count": 7216
+      },
+      {
+        "value": "Coastal Armoring Structure",
+        "count": 1860
+      },
+      {
+        "value": "Miscellaneous Structure",
+        "count": 399
+      },
+      {
+        "value": "Beach Stabilization Structure",
+        "count": 57
+      },
+      {
+        "value": "MISCELLANEOUS STRUCTURES",
+        "count": 11
+      },
+      {
+        "value": "COASTAL ARMORING STRUCTURES",
+        "count": 1
+      }
+    ],
+    "SHOWN_FIRM": [
+      {
+        "value": "U",
+        "count": 171552
+      },
+      {
+        "value": "T",
+        "count": 85140
+      },
+      {
+        "value": "F",
+        "count": 29019
+      },
+      {
+        "value": "",
+        "count": 231
+      },
+      {
+        "value": null,
+        "count": 5
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [
+      "STRUCT_TYP"
+    ],
+    "by_populated": [],
+    "by_text_populated": [
+      "STRUC_DESC"
+    ],
+    "groups": [
+      {
+        "STRUCT_TYP": "Bridge",
+        "STRUC_DESC": false,
+        "count": 94579
+      },
+      {
+        "STRUCT_TYP": "Culvert",
+        "STRUC_DESC": false,
+        "count": 56228
+      },
+      {
+        "STRUCT_TYP": "Bridge",
+        "STRUC_DESC": true,
+        "count": 22886
+      },
+      {
+        "STRUCT_TYP": "Dam",
+        "STRUC_DESC": false,
+        "count": 19197
+      },
+      {
+        "STRUCT_TYP": "Culvert",
+        "STRUC_DESC": true,
+        "count": 14874
+      },
+      {
+        "STRUCT_TYP": "Dock",
+        "STRUC_DESC": false,
+        "count": 14563
+      },
+      {
+        "STRUCT_TYP": "1 Pct Annual Chance Flood Discharge Contained In Structure",
+        "STRUC_DESC": false,
+        "count": 7779
+      },
+      {
+        "STRUCT_TYP": "Footbridge",
+        "STRUC_DESC": false,
+        "count": 7430
+      },
+      {
+        "STRUCT_TYP": "0.2 Pct Annual Chance Flood Discharge Contained In Structure",
+        "STRUC_DESC": false,
+        "count": 6666
+      },
+      {
+        "STRUCT_TYP": "0.2 PCT Annual Chance Flood Discharge Contained In Structure",
+        "STRUC_DESC": true,
+        "count": 4061
+      },
+      {
+        "STRUCT_TYP": "1 Pct Annual Chance Flood Discharge Contained In Structure",
+        "STRUC_DESC": true,
+        "count": 4046
+      },
+      {
+        "STRUCT_TYP": "Canal",
+        "STRUC_DESC": false,
+        "count": 2787
+      },
+      {
+        "STRUCT_TYP": "Culvert",
+        "STRUC_DESC": true,
+        "count": 2531
+      },
+      {
+        "STRUCT_TYP": "Weir",
+        "STRUC_DESC": false,
+        "count": 1976
+      },
+      {
+        "STRUCT_TYP": "Bridge",
+        "STRUC_DESC": true,
+        "count": 1966
+      },
+      {
+        "STRUCT_TYP": "Seawall",
+        "STRUC_DESC": true,
+        "count": 1832
+      },
+      {
+        "STRUCT_TYP": "Dam",
+        "STRUC_DESC": true,
+        "count": 1789
+      },
+      {
+        "STRUCT_TYP": "Seawall",
+        "STRUC_DESC": false,
+        "count": 1714
+      },
+      {
+        "STRUCT_TYP": "Pier",
+        "STRUC_DESC": false,
+        "count": 1676
+      },
+      {
+        "STRUCT_TYP": "Pier",
+        "STRUC_DESC": true,
+        "count": 1419
+      },
+      {
+        "STRUCT_TYP": "1 Pct Annual Chance Flood Discharge Contained In Structure",
+        "STRUC_DESC": true,
+        "count": 1375
+      },
+      {
+        "STRUCT_TYP": "Wing Wall",
+        "STRUC_DESC": false,
+        "count": 1000
+      },
+      {
+        "STRUCT_TYP": "Revetment",
+        "STRUC_DESC": false,
+        "count": 958
+      },
+      {
+        "STRUCT_TYP": "Dam",
+        "STRUC_DESC": true,
+        "count": 835
+      },
+      {
+        "STRUCT_TYP": "Seawall",
+        "STRUC_DESC": true,
+        "count": 744
+      },
+      {
+        "STRUCT_TYP": "Channel",
+        "STRUC_DESC": false,
+        "count": 735
+      },
+      {
+        "STRUCT_TYP": "Footbridge",
+        "STRUC_DESC": true,
+        "count": 731
+      },
+      {
+        "STRUCT_TYP": "Weir",
+        "STRUC_DESC": true,
+        "count": 706
+      },
+      {
+        "STRUCT_TYP": "Lock",
+        "STRUC_DESC": false,
+        "count": 705
+      },
+      {
+        "STRUCT_TYP": "Aqueduct",
+        "STRUC_DESC": false,
+        "count": 648
+      },
+      {
+        "STRUCT_TYP": "Revetment",
+        "STRUC_DESC": true,
+        "count": 587
+      },
+      {
+        "STRUCT_TYP": "Control Structure",
+        "STRUC_DESC": false,
+        "count": 510
+      },
+      {
+        "STRUCT_TYP": "Gate",
+        "STRUC_DESC": false,
+        "count": 470
+      },
+      {
+        "STRUCT_TYP": "Storm Sewer",
+        "STRUC_DESC": false,
+        "count": 453
+      },
+      {
+        "STRUCT_TYP": "Channel",
+        "STRUC_DESC": true,
+        "count": 445
+      },
+      {
+        "STRUCT_TYP": "Utility Crossing",
+        "STRUC_DESC": false,
+        "count": 370
+      },
+      {
+        "STRUCT_TYP": "NP",
+        "STRUC_DESC": false,
+        "count": 348
+      },
+      {
+        "STRUCT_TYP": "Footbridge",
+        "STRUC_DESC": true,
+        "count": 313
+      },
+      {
+        "STRUCT_TYP": "Energy Dissipater",
+        "STRUC_DESC": false,
+        "count": 289
+      },
+      {
+        "STRUCT_TYP": "Other / Misc Structure",
+        "STRUC_DESC": false,
+        "count": 251
+      },
+      {
+        "STRUCT_TYP": "Drop Structure",
+        "STRUC_DESC": false,
+        "count": 245
+      },
+      {
+        "STRUCT_TYP": "Jetty",
+        "STRUC_DESC": true,
+        "count": 225
+      },
+      {
+        "STRUCT_TYP": "Floodway Contained In Structure",
+        "STRUC_DESC": false,
+        "count": 214
+      },
+      {
+        "STRUCT_TYP": "0.2 Pct Annual Chance Flood Discharge Contained In Structure",
+        "STRUC_DESC": true,
+        "count": 213
+      },
+      {
+        "STRUCT_TYP": "Canal",
+        "STRUC_DESC": true,
+        "count": 198
+      },
+      {
+        "STRUCT_TYP": "Canal",
+        "STRUC_DESC": true,
+        "count": 178
+      },
+      {
+        "STRUCT_TYP": "Pipeline",
+        "STRUC_DESC": false,
+        "count": 175
+      },
+      {
+        "STRUCT_TYP": "Channel",
+        "STRUC_DESC": true,
+        "count": 159
+      },
+      {
+        "STRUCT_TYP": "Pump Station",
+        "STRUC_DESC": false,
+        "count": 130
+      },
+      {
+        "STRUCT_TYP": "Other / Misc Structure",
+        "STRUC_DESC": true,
+        "count": 128
+      },
+      {
+        "STRUCT_TYP": "0.2-Percent-Annual-Chance Flood Discharge Contained in Structure",
+        "STRUC_DESC": true,
+        "count": 126
+      },
+      {
+        "STRUCT_TYP": "Flume",
+        "STRUC_DESC": false,
+        "count": 122
+      },
+      {
+        "STRUCT_TYP": "Jetty",
+        "STRUC_DESC": false,
+        "count": 120
+      },
+      {
+        "STRUCT_TYP": "Jetty",
+        "STRUC_DESC": true,
+        "count": 107
+      },
+      {
+        "STRUCT_TYP": "Storm Sewer",
+        "STRUC_DESC": true,
+        "count": 101
+      },
+      {
+        "STRUCT_TYP": "",
+        "STRUC_DESC": false,
+        "count": 97
+      },
+      {
+        "STRUCT_TYP": "Weir",
+        "STRUC_DESC": true,
+        "count": 85
+      },
+      {
+        "STRUCT_TYP": "Floodway Contained In Structure",
+        "STRUC_DESC": true,
+        "count": 77
+      },
+      {
+        "STRUCT_TYP": "Control Structure",
+        "STRUC_DESC": true,
+        "count": 70
+      },
+      {
+        "STRUCT_TYP": "Wing Wall",
+        "STRUC_DESC": true,
+        "count": 53
+      },
+      {
+        "STRUCT_TYP": "0.2-Percent-Annual-Chance Flood Discharge Contained in Structure",
+        "STRUC_DESC": false,
+        "count": 47
+      },
+      {
+        "STRUCT_TYP": "Drop Structure",
+        "STRUC_DESC": true,
+        "count": 36
+      },
+      {
+        "STRUCT_TYP": "Retaining Wall",
+        "STRUC_DESC": true,
+        "count": 35
+      },
+      {
+        "STRUCT_TYP": "1-Percent-Annual-Chance Flood Discharge Contained in Structure",
+        "STRUC_DESC": false,
+        "count": 32
+      },
+      {
+        "STRUCT_TYP": "Pier",
+        "STRUC_DESC": true,
+        "count": 32
+      },
+      {
+        "STRUCT_TYP": "1-Percent-Annual-Chance Flood Discharge Contained in Structure",
+        "STRUC_DESC": true,
+        "count": 30
+      },
+      {
+        "STRUCT_TYP": "Gate",
+        "STRUC_DESC": true,
+        "count": 29
+      },
+      {
+        "STRUCT_TYP": "Pipeline",
+        "STRUC_DESC": true,
+        "count": 27
+      },
+      {
+        "STRUCT_TYP": "Utility Crossing",
+        "STRUC_DESC": true,
+        "count": 27
+      },
+      {
+        "STRUCT_TYP": "Siphon",
+        "STRUC_DESC": false,
+        "count": 26
+      },
+      {
+        "STRUCT_TYP": "Dike",
+        "STRUC_DESC": true,
+        "count": 25
+      },
+      {
+        "STRUCT_TYP": "Levee",
+        "STRUC_DESC": true,
+        "count": 23
+      },
+      {
+        "STRUCT_TYP": "Levee",
+        "STRUC_DESC": false,
+        "count": 22
+      },
+      {
+        "STRUCT_TYP": "Aqueduct",
+        "STRUC_DESC": true,
+        "count": 20
+      },
+      {
+        "STRUCT_TYP": "Retaining Wall",
+        "STRUC_DESC": false,
+        "count": 18
+      },
+      {
+        "STRUCT_TYP": "Energy Dissipater",
+        "STRUC_DESC": true,
+        "count": 17
+      },
+      {
+        "STRUCT_TYP": "Drop Structure",
+        "STRUC_DESC": true,
+        "count": 16
+      },
+      {
+        "STRUCT_TYP": "Side Weir Structure",
+        "STRUC_DESC": false,
+        "count": 16
+      },
+      {
+        "STRUCT_TYP": "Aqueduct",
+        "STRUC_DESC": true,
+        "count": 14
+      },
+      {
+        "STRUCT_TYP": "1-Percent-Annual-Chance Flood Discharge Contained in Structu",
+        "STRUC_DESC": true,
+        "count": 12
+      },
+      {
+        "STRUCT_TYP": "Dock",
+        "STRUC_DESC": true,
+        "count": 12
+      },
+      {
+        "STRUCT_TYP": "Control Structure",
+        "STRUC_DESC": true,
+        "count": 11
+      },
+      {
+        "STRUCT_TYP": "Side Weir Structure",
+        "STRUC_DESC": true,
+        "count": 10
+      },
+      {
+        "STRUCT_TYP": "Flume",
+        "STRUC_DESC": true,
+        "count": 9
+      },
+      {
+        "STRUCT_TYP": "Other / Misc. Structure",
+        "STRUC_DESC": false,
+        "count": 8
+      },
+      {
+        "STRUCT_TYP": "Side Weir Structure",
+        "STRUC_DESC": true,
+        "count": 8
+      },
+      {
+        "STRUCT_TYP": "Pump Station",
+        "STRUC_DESC": true,
+        "count": 7
+      },
+      {
+        "STRUCT_TYP": "Siphon",
+        "STRUC_DESC": true,
+        "count": 7
+      },
+      {
+        "STRUCT_TYP": "Storm Sewer",
+        "STRUC_DESC": true,
+        "count": 7
+      },
+      {
+        "STRUCT_TYP": "Lock",
+        "STRUC_DESC": true,
+        "count": 6
+      },
+      {
+        "STRUCT_TYP": "Spillway",
+        "STRUC_DESC": false,
+        "count": 6
+      },
+      {
+        "STRUCT_TYP": "",
+        "STRUC_DESC": true,
+        "count": 5
+      },
+      {
+        "STRUCT_TYP": "Dike",
+        "STRUC_DESC": false,
+        "count": 5
+      },
+      {
+        "STRUCT_TYP": "Other / Misc. Structure",
+        "STRUC_DESC": true,
+        "count": 5
+      },
+      {
+        "STRUCT_TYP": "Penstock",
+        "STRUC_DESC": false,
+        "count": 5
+      },
+      {
+        "STRUCT_TYP": "Flume",
+        "STRUC_DESC": true,
+        "count": 3
+      },
+      {
+        "STRUCT_TYP": "Other / Misc. Structure",
+        "STRUC_DESC": true,
+        "count": 3
+      },
+      {
+        "STRUCT_TYP": "Other/Misc Structure",
+        "STRUC_DESC": false,
+        "count": 3
+      },
+      {
+        "STRUCT_TYP": "Utility Crossing",
+        "STRUC_DESC": true,
+        "count": 3
+      },
+      {
+        "STRUCT_TYP": "Wing Wall",
+        "STRUC_DESC": true,
+        "count": 3
+      },
+      {
+        "STRUCT_TYP": "0.2-Percent-Annual-Chance Flood Discharge Contained in Struc",
+        "STRUC_DESC": true,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "1-PCT-Annual-Chance Flood Discharge Contained in Structure",
+        "STRUC_DESC": true,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "Energy Dissipater",
+        "STRUC_DESC": true,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "Fish Ladder",
+        "STRUC_DESC": true,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "Floodway Contained in Channel",
+        "STRUC_DESC": false,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "NP",
+        "STRUC_DESC": true,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "Pipeline",
+        "STRUC_DESC": true,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "Revetment",
+        "STRUC_DESC": true,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "Siphon",
+        "STRUC_DESC": true,
+        "count": 2
+      },
+      {
+        "STRUCT_TYP": "Brigdge",
+        "STRUC_DESC": false,
+        "count": 1
+      },
+      {
+        "STRUCT_TYP": "Floodway Contained in Structure",
+        "STRUC_DESC": true,
+        "count": 1
+      },
+      {
+        "STRUCT_TYP": "Gate",
+        "STRUC_DESC": true,
+        "count": 1
+      },
+      {
+        "STRUCT_TYP": "Penstock",
+        "STRUC_DESC": true,
+        "count": 1
+      }
+    ]
+  }
+}
