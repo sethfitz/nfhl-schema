@@ -1,0 +1,476 @@
+{
+  "layer": 3,
+  "total": 183680,
+  "fields": {
+    "ST_FIPS": [
+      {
+        "value": "37",
+        "count": 11768
+      },
+      {
+        "value": "55",
+        "count": 9097
+      },
+      {
+        "value": "06",
+        "count": 8581
+      },
+      {
+        "value": "42",
+        "count": 8414
+      },
+      {
+        "value": "12",
+        "count": 7368
+      },
+      {
+        "value": "13",
+        "count": 5797
+      },
+      {
+        "value": "36",
+        "count": 5795
+      },
+      {
+        "value": "39",
+        "count": 5450
+      },
+      {
+        "value": "48",
+        "count": 5445
+      },
+      {
+        "value": "26",
+        "count": 5227
+      },
+      {
+        "value": "51",
+        "count": 5099
+      },
+      {
+        "value": "47",
+        "count": 4731
+      },
+      {
+        "value": "18",
+        "count": 4707
+      },
+      {
+        "value": "29",
+        "count": 4674
+      },
+      {
+        "value": "01",
+        "count": 4536
+      },
+      {
+        "value": "21",
+        "count": 4527
+      },
+      {
+        "value": "19",
+        "count": 4430
+      },
+      {
+        "value": "27",
+        "count": 4309
+      },
+      {
+        "value": "08",
+        "count": 3744
+      },
+      {
+        "value": "04",
+        "count": 3680
+      },
+      {
+        "value": "45",
+        "count": 3631
+      },
+      {
+        "value": "53",
+        "count": 3451
+      },
+      {
+        "value": "30",
+        "count": 3374
+      },
+      {
+        "value": "41",
+        "count": 3295
+      },
+      {
+        "value": "23",
+        "count": 3283
+      },
+      {
+        "value": "17",
+        "count": 3247
+      },
+      {
+        "value": "28",
+        "count": 3129
+      },
+      {
+        "value": "54",
+        "count": 2997
+      },
+      {
+        "value": "20",
+        "count": 2900
+      },
+      {
+        "value": "32",
+        "count": 2736
+      },
+      {
+        "value": "40",
+        "count": 2375
+      },
+      {
+        "value": "35",
+        "count": 2302
+      },
+      {
+        "value": "34",
+        "count": 2286
+      },
+      {
+        "value": "38",
+        "count": 2262
+      },
+      {
+        "value": "31",
+        "count": 2221
+      },
+      {
+        "value": "46",
+        "count": 2195
+      },
+      {
+        "value": "22",
+        "count": 2193
+      },
+      {
+        "value": "25",
+        "count": 2172
+      },
+      {
+        "value": "56",
+        "count": 2061
+      },
+      {
+        "value": "24",
+        "count": 2050
+      },
+      {
+        "value": "33",
+        "count": 1511
+      },
+      {
+        "value": "49",
+        "count": 1438
+      },
+      {
+        "value": "09",
+        "count": 1176
+      },
+      {
+        "value": "16",
+        "count": 1126
+      },
+      {
+        "value": "05",
+        "count": 1122
+      },
+      {
+        "value": "50",
+        "count": 1058
+      },
+      {
+        "value": "02",
+        "count": 950
+      },
+      {
+        "value": "1",
+        "count": 600
+      },
+      {
+        "value": "15",
+        "count": 596
+      },
+      {
+        "value": "5",
+        "count": 447
+      },
+      {
+        "value": "10",
+        "count": 418
+      },
+      {
+        "value": "8",
+        "count": 363
+      },
+      {
+        "value": "44",
+        "count": 349
+      },
+      {
+        "value": "72",
+        "count": 297
+      },
+      {
+        "value": "6",
+        "count": 292
+      },
+      {
+        "value": "4",
+        "count": 132
+      },
+      {
+        "value": "78",
+        "count": 94
+      },
+      {
+        "value": "60",
+        "count": 47
+      },
+      {
+        "value": "66",
+        "count": 43
+      },
+      {
+        "value": "69",
+        "count": 43
+      },
+      {
+        "value": "11",
+        "count": 38
+      },
+      {
+        "value": null,
+        "count": 1
+      }
+    ],
+    "PANEL_TYP": [
+      {
+        "value": "Countywide, Panel Printed",
+        "count": 138360
+      },
+      {
+        "value": "Countywide, Not Printed",
+        "count": 30198
+      },
+      {
+        "value": "Statewide, Panel Printed",
+        "count": 10088
+      },
+      {
+        "value": "Community Based, Panel Printed",
+        "count": 2209
+      },
+      {
+        "value": "Statewide, Not Printed",
+        "count": 1680
+      },
+      {
+        "value": "Community Based, Not Printed",
+        "count": 977
+      },
+      {
+        "value": "Community B",
+        "count": 97
+      },
+      {
+        "value": "Countywide, Panel Printed'",
+        "count": 43
+      },
+      {
+        "value": "Countywide,",
+        "count": 16
+      },
+      {
+        "value": "",
+        "count": 6
+      },
+      {
+        "value": "Unmapped Community",
+        "count": 3
+      },
+      {
+        "value": "Countywide, Panel Not Printed",
+        "count": 2
+      },
+      {
+        "value": null,
+        "count": 1
+      }
+    ],
+    "SCALE": [
+      {
+        "value": "6000",
+        "count": 80903
+      },
+      {
+        "value": "12000",
+        "count": 55906
+      },
+      {
+        "value": "24000",
+        "count": 46831
+      },
+      {
+        "value": "NP",
+        "count": 36
+      },
+      {
+        "value": "4800",
+        "count": 3
+      },
+      {
+        "value": null,
+        "count": 1
+      }
+    ],
+    "BASE_TYP": [
+      {
+        "value": "NP",
+        "count": 113744
+      },
+      {
+        "value": "Orthophoto",
+        "count": 60336
+      },
+      {
+        "value": "Vector",
+        "count": 9599
+      },
+      {
+        "value": null,
+        "count": 1
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [
+      "PANEL_TYP"
+    ],
+    "by_populated": [],
+    "by_text_populated": [
+      "PNP_REASON"
+    ],
+    "groups": [
+      {
+        "PANEL_TYP": "Countywide, Panel Printed",
+        "PNP_REASON": false,
+        "count": 131918
+      },
+      {
+        "PANEL_TYP": "Countywide, Not Printed",
+        "PNP_REASON": true,
+        "count": 29491
+      },
+      {
+        "PANEL_TYP": "Statewide, Panel Printed",
+        "PNP_REASON": false,
+        "count": 10075
+      },
+      {
+        "PANEL_TYP": "Countywide, Panel Printed",
+        "PNP_REASON": true,
+        "count": 6077
+      },
+      {
+        "PANEL_TYP": "Community Based, Panel Printed",
+        "PNP_REASON": false,
+        "count": 1976
+      },
+      {
+        "PANEL_TYP": "Statewide, Not Printed",
+        "PNP_REASON": true,
+        "count": 1531
+      },
+      {
+        "PANEL_TYP": "Community Based, Not Printed",
+        "PNP_REASON": true,
+        "count": 971
+      },
+      {
+        "PANEL_TYP": "Countywide, Not Printed",
+        "PNP_REASON": false,
+        "count": 707
+      },
+      {
+        "PANEL_TYP": "Countywide, Panel Printed",
+        "PNP_REASON": true,
+        "count": 365
+      },
+      {
+        "PANEL_TYP": "Community Based, Panel Printed",
+        "PNP_REASON": true,
+        "count": 230
+      },
+      {
+        "PANEL_TYP": "Statewide, Not Printed",
+        "PNP_REASON": false,
+        "count": 149
+      },
+      {
+        "PANEL_TYP": "Community B",
+        "PNP_REASON": false,
+        "count": 68
+      },
+      {
+        "PANEL_TYP": "Countywide, Panel Printed'",
+        "PNP_REASON": false,
+        "count": 43
+      },
+      {
+        "PANEL_TYP": "Community B",
+        "PNP_REASON": true,
+        "count": 29
+      },
+      {
+        "PANEL_TYP": "Countywide,",
+        "PNP_REASON": true,
+        "count": 16
+      },
+      {
+        "PANEL_TYP": "Statewide, Panel Printed",
+        "PNP_REASON": true,
+        "count": 13
+      },
+      {
+        "PANEL_TYP": "",
+        "PNP_REASON": false,
+        "count": 6
+      },
+      {
+        "PANEL_TYP": "Community Based, Not Printed",
+        "PNP_REASON": false,
+        "count": 6
+      },
+      {
+        "PANEL_TYP": "Community Based, Panel Printed",
+        "PNP_REASON": true,
+        "count": 3
+      },
+      {
+        "PANEL_TYP": "Unmapped Community",
+        "PNP_REASON": false,
+        "count": 3
+      },
+      {
+        "PANEL_TYP": "Countywide, Panel Not Printed",
+        "PNP_REASON": true,
+        "count": 2
+      },
+      {
+        "PANEL_TYP": null,
+        "PNP_REASON": false,
+        "count": 1
+      }
+    ]
+  }
+}
