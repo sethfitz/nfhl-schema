@@ -24,7 +24,11 @@ generation. A change belongs in one of four places:
   entry with a `decision` field, a maintainer's call recorded with its date and
   reason, which admits a value under the bar; the test requires such an entry
   to be one the threshold would not select, so the threshold still governs the
-  rest. Add one only when the maintainer has made that call.
+  rest. Add one only when the maintainer has made that call. A decision also
+  admits a spelling the snapshot's case folding hides (`1 PCT ...` under
+  `1 Pct ...`). Count it by reading every row; the test checks it fits inside
+  its folded group's count, and the generator numbers the members that differ
+  only in case (`_CASE_2`).
 
 Every entry in the first two JSON files quotes the reference sentence that licenses
 it, and a test asserts the quote is still in the reference. A judgement without
