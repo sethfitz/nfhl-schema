@@ -77,6 +77,7 @@ LAYERS: tuple[Layer, ...] = (
     Layer(24, "S_Gen_Struct", "GeneralStructure", "general_structures"),
     Layer(32, "S_Wtr_Ar", "WaterArea", "water_areas"),
     Layer(18, "S_Tsct_Basln", "TransectBaseline", "transect_baselines"),
+    Layer(15, "S_Cst_Tsct_Ln", "CoastalTransect", "coastal_transects"),
 )
 
 
@@ -415,7 +416,9 @@ class SpecReader:
                     requirement=requirement,
                     type=type_,
                     length=int(length) if length.isdigit() else None,
-                    domain=joined if joined.startswith("D_") else None,
+                    domain=self.domain_name(joined)
+                    if joined.startswith("D_")
+                    else None,
                     description=descriptions[name_],
                     footnote=self.section_footnote(name, marker) if marker else None,
                 )
@@ -502,6 +505,19 @@ class SpecReader:
             if name and name.startswith("D_"):
                 found.setdefault(name, table)
         return found
+
+    @cached_property
+    def _domain_names_by_case(self) -> dict[str, str]:
+        return {n.casefold(): n for n in self._domain_tables}
+
+    def domain_name(self, joined: str) -> str:
+        """The name a Domain Tables section gives the table a field table joins.
+
+        The two sections differ in case (`D_VZONE` joins `D_VZone`), so a join
+        is matched without it. A name no section has is returned as written,
+        for `domain` to reject.
+        """
+        return self._domain_names_by_case.get(joined.casefold(), joined)
 
     def domain(self, name: str) -> Domain:
         """The values of one domain that apply to the FIRM Database.
