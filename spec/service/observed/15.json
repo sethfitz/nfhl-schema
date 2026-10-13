@@ -1,0 +1,435 @@
+{
+  "layer": 15,
+  "total": 22367,
+  "fields": {
+    "METHOD": [
+      {
+        "value": "Cut from Topo",
+        "count": 9533
+      },
+      {
+        "value": null,
+        "count": 5082
+      },
+      {
+        "value": "",
+        "count": 3793
+      },
+      {
+        "value": "Combo of Topo and Survey",
+        "count": 2239
+      },
+      {
+        "value": "Field Survey",
+        "count": 1395
+      },
+      {
+        "value": "NP",
+        "count": 249
+      },
+      {
+        "value": "Digitized from FIRM",
+        "count": 76
+      }
+    ],
+    "V_DATUM": [
+      {
+        "value": "NAVD88",
+        "count": 15076
+      },
+      {
+        "value": "NP",
+        "count": 6410
+      },
+      {
+        "value": null,
+        "count": 410
+      },
+      {
+        "value": "ASVD02",
+        "count": 374
+      },
+      {
+        "value": "GUVD03",
+        "count": 62
+      },
+      {
+        "value": "LOCAL TIDAL DATUM",
+        "count": 30
+      },
+      {
+        "value": "NGVD29",
+        "count": 5
+      }
+    ],
+    "CSTLN_TYP": [
+      {
+        "value": "NP",
+        "count": 10039
+      },
+      {
+        "value": "Open Coast",
+        "count": 8984
+      },
+      {
+        "value": "Sheltered Waters",
+        "count": 2864
+      },
+      {
+        "value": "Combined Open Coast and Sheltered Waters",
+        "count": 480
+      }
+    ],
+    "BEACH_SET": [
+      {
+        "value": null,
+        "count": 6987
+      },
+      {
+        "value": "",
+        "count": 4235
+      },
+      {
+        "value": "Sandy Beach Backed By Low Sand Berm or High Sand Dune Formation",
+        "count": 4131
+      },
+      {
+        "value": "Tidal Flats and Wetlands",
+        "count": 2753
+      },
+      {
+        "value": "Non-Erodible Coastal Cliffs and Bluffs",
+        "count": 1522
+      },
+      {
+        "value": "Sandy Beach Backed By Shore Protection Structures",
+        "count": 908
+      },
+      {
+        "value": "Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms",
+        "count": 737
+      },
+      {
+        "value": "NP",
+        "count": 699
+      },
+      {
+        "value": "Erodible Coastal Bluffs",
+        "count": 395
+      }
+    ],
+    "SHORE_TYP": [
+      {
+        "value": null,
+        "count": 7839
+      },
+      {
+        "value": "",
+        "count": 6618
+      },
+      {
+        "value": "Sandy Beach-Small Dune",
+        "count": 2526
+      },
+      {
+        "value": "Wetland",
+        "count": 1616
+      },
+      {
+        "value": "Non-Erodible Bluff",
+        "count": 1249
+      },
+      {
+        "value": "Shore Protection Structure",
+        "count": 1171
+      },
+      {
+        "value": "Sandy Beach-Large Dune",
+        "count": 869
+      },
+      {
+        "value": "Erodible Bluff",
+        "count": 479
+      }
+    ],
+    "EVENT_TYP": [
+      {
+        "value": "1 Percent Chance",
+        "count": 13376
+      },
+      {
+        "value": "NP",
+        "count": 8873
+      },
+      {
+        "value": "",
+        "count": 117
+      },
+      {
+        "value": "0.2 Percent Chance",
+        "count": 1
+      }
+    ],
+    "FTCHLNUNIT": [
+      {
+        "value": "",
+        "count": 9311
+      },
+      {
+        "value": null,
+        "count": 8939
+      },
+      {
+        "value": "Miles",
+        "count": 2323
+      },
+      {
+        "value": "NP",
+        "count": 1353
+      },
+      {
+        "value": "Feet",
+        "count": 413
+      },
+      {
+        "value": "NA",
+        "count": 28
+      }
+    ],
+    "EROS_METH": [
+      {
+        "value": "Not Applied",
+        "count": 6767
+      },
+      {
+        "value": null,
+        "count": 5659
+      },
+      {
+        "value": "",
+        "count": 5221
+      },
+      {
+        "value": "Dune Removal",
+        "count": 1716
+      },
+      {
+        "value": "Other",
+        "count": 1293
+      },
+      {
+        "value": "NP",
+        "count": 730
+      },
+      {
+        "value": "Dune Retreat",
+        "count": 684
+      },
+      {
+        "value": "K-D",
+        "count": 216
+      },
+      {
+        "value": "MK-A",
+        "count": 80
+      },
+      {
+        "value": "SBEACH",
+        "count": 1
+      }
+    ],
+    "ELEV_UNIT": [
+      {
+        "value": "Feet",
+        "count": 12408
+      },
+      {
+        "value": "NP",
+        "count": 9959
+      }
+    ],
+    "WHAFIS_TF": [
+      {
+        "value": "U",
+        "count": 10295
+      },
+      {
+        "value": "T",
+        "count": 6903
+      },
+      {
+        "value": "F",
+        "count": 5169
+      }
+    ],
+    "OVERTOP_TF": [
+      {
+        "value": "U",
+        "count": 10346
+      },
+      {
+        "value": "F",
+        "count": 8274
+      },
+      {
+        "value": "T",
+        "count": 3747
+      }
+    ],
+    "BW_HGT_TF": [
+      {
+        "value": "U",
+        "count": 10535
+      },
+      {
+        "value": "F",
+        "count": 6737
+      },
+      {
+        "value": "T",
+        "count": 5095
+      }
+    ],
+    "HVFLOW_TF": [
+      {
+        "value": "U",
+        "count": 10682
+      },
+      {
+        "value": "F",
+        "count": 9383
+      },
+      {
+        "value": "T",
+        "count": 2302
+      }
+    ],
+    "VZONE_EXT": [
+      {
+        "value": "",
+        "count": 6388
+      },
+      {
+        "value": null,
+        "count": 5592
+      },
+      {
+        "value": "Runup",
+        "count": 4280
+      },
+      {
+        "value": "Breaking Wave Ht",
+        "count": 2931
+      },
+      {
+        "value": "PFD",
+        "count": 1764
+      },
+      {
+        "value": "Wave Overtopping Splash Zone",
+        "count": 771
+      },
+      {
+        "value": "NP",
+        "count": 232
+      },
+      {
+        "value": "High Velocity Flow",
+        "count": 191
+      },
+      {
+        "value": "WHAFIS",
+        "count": 111
+      },
+      {
+        "value": "30 FOOT SPLASH ZONE BEHIND S",
+        "count": 66
+      },
+      {
+        "value": "RUNUP EXTENT",
+        "count": 41
+      }
+    ],
+    "WAVE_02PCT": [
+      {
+        "value": "U",
+        "count": 10511
+      },
+      {
+        "value": "T",
+        "count": 7968
+      },
+      {
+        "value": "F",
+        "count": 3888
+      }
+    ],
+    "LEN_UNIT": [
+      {
+        "value": "Feet",
+        "count": 9246
+      },
+      {
+        "value": null,
+        "count": 6830
+      },
+      {
+        "value": "",
+        "count": 4929
+      },
+      {
+        "value": "NP",
+        "count": 1334
+      },
+      {
+        "value": "NA",
+        "count": 28
+      }
+    ],
+    "TIME_UNIT": [
+      {
+        "value": "SECONDS",
+        "count": 7959
+      },
+      {
+        "value": "",
+        "count": 7076
+      },
+      {
+        "value": null,
+        "count": 6842
+      },
+      {
+        "value": "NP",
+        "count": 308
+      },
+      {
+        "value": "YEARS",
+        "count": 78
+      },
+      {
+        "value": "HOURS",
+        "count": 42
+      },
+      {
+        "value": "DAYS",
+        "count": 34
+      },
+      {
+        "value": "NA",
+        "count": 28
+      }
+    ]
+  },
+  "combinations": {},
+  "rules": {
+    "by_value": [],
+    "by_populated": [],
+    "by_text_populated": [],
+    "groups": [
+      {
+        "count": 22367
+      }
+    ]
+  }
+}
