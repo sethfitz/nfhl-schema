@@ -64,16 +64,24 @@ service layer; `L_Pan_Revis` and the other lookup tables are not.
    and MultiPolygon.
 3. Add the table's units, datums and rules to `spec/relationships.json`. A
    table that states none goes in `NO_RELATIONSHIPS` in
-   `tests/test_spec_source.py` instead.
+   `tests/test_spec_source.py` instead. A field "populated when" any of
+   several others is has no form in `relationships.json` (`RequiredWhen` follows
+   one field); count the rows that break it and record it in `spec/README.md`.
 4. Run `./scripts/generate-models`. It reads the service metadata that
    `spec/` already holds for every layer, but not observations, so it runs
    before them; `snapshot-spec` needs the model to know which fields the rules
-   read.
+   read. A domain that stops at `irregular` rows in `tests/test_extract.py` is
+   an extraction defect (`D_Time_Units` lost its second page to a header cut by
+   a stray rule), not a value to admit as legacy. A field table that names its
+   domain in another case (`D_VZONE`, `D_VZone`) is matched without it.
 5. Run `./scripts/snapshot-spec --layer <id>`, add the snapshot's path and
    retrieval time to `observed` in `spec/legacy.json`, then
    `./scripts/report-observed`. Add whatever the threshold selects, and
-   regenerate the models. The snapshot folds case, so a wrong-case value has
-   no count to license it, and the one form it shows can be a few percent of
+   regenerate the models, and run the whole suite: a legacy value belongs to
+   its domain, so other layers' fixture cases that expected it rejected
+   (`ASVD02` in the zones, BFEs and cross sections) move to `warns`, and a rule
+   count that reaches a row it did not before moves with them. The snapshot
+   folds case, so a wrong-case value has no count to license it, and the one form it shows can be a few percent of
    its group. Before licensing a legacy value, read the layer's rows
    (keyset-paged by `OBJECTID`, no geometry) and count the exact forms.
 6. Add real-feature cases and a `Fixture` to `scripts/fetch-fixtures`, and run
@@ -86,7 +94,13 @@ service layer; `L_Pan_Revis` and the other lookup tables are not.
    rejects: find them by reading every row, and pin their `OBJECTID`s out of
    the fixture filters. `SHAPE.STArea() = 0` matches slivers the service
    rounds to no area, which validate, as well as empty polygons; pin the
-   empty ones by `OBJECTID` too. Hold a vocabulary field's clean filter to
+   empty ones by `OBJECTID` too. Thousands of case-variant rows do not fit in
+   a `where` (the service accepts no `COLLATE`): exclude the DFIRMs that hold
+   them from the clean filters and pin the cases that need those DFIRMs. A
+   pinned row needs no clean filter. A row the model rejects never raises a
+   legacy warning, so a legacy value on one is untested by its fixture case;
+   test it by setting the value on a valid real row. Hold a vocabulary field's
+   clean filter to
    the reference's values, not the legacy ones: a legacy value makes a clean
    case warn, and the legacy cases free the field through `warns`.
 7. Run `./scripts/generate-docs`. Add the layer's fixtures to
