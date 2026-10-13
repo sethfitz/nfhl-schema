@@ -1,0 +1,2284 @@
+{
+  "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/15/query",
+  "retrieved_at": "2026-10-13T01:19:58Z",
+  "cases": [
+    {
+      "name": "full_study",
+      "where": "(OBJECTID = 59659) AND SHAPE IS NOT NULL",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 59659,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -83.05316368621386,
+              29.145027639026473
+            ],
+            [
+              -83.0530322971615,
+              29.145032659007978
+            ],
+            [
+              -83.05270307801673,
+              29.14504497387526
+            ],
+            [
+              -83.05245331937508,
+              29.145054543665097
+            ],
+            [
+              -83.05229369114537,
+              29.14506050530243
+            ],
+            [
+              -83.05225729401256,
+              29.14506183855087
+            ],
+            [
+              -83.05207742870986,
+              29.145068663263505
+            ],
+            [
+              -83.05155767435349,
+              29.14508827432614
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 59659,
+          "DFIRM_ID": "12075C",
+          "VERSION_ID": "2.3.3.2",
+          "TRAN_LN_ID": "12075C_82",
+          "TBASELN_ID": "12075C_1",
+          "TRAN_NO": "82",
+          "METHOD": "Field Survey",
+          "XCOORD": 319971.322056,
+          "YCOORD": 1750527.30296,
+          "WTR_NM": "Gulf of Mexico",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Tidal Flats and Wetlands",
+          "SHORE_TYP": "Wetland",
+          "CST_MDL_ID": "12075C_1",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 12.59,
+          "SIG_HT": 6.19874573,
+          "SIG_PD": 4.44879941,
+          "CON_HT": 9.91799316,
+          "CON_PD": 4.44879941,
+          "MEAN_HT": 3.88041483,
+          "MEAN_PD": 3.7814795,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "NP",
+          "EROS_METH": "NP",
+          "LOC_DESC": "Starts near Number Four Channel",
+          "LU_SOURCE": "Land Use shapefiles from SRWMD/SWFWMD and Aerials",
+          "RUP": 0,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Breaking Wave Ht",
+          "SETUP_DPTH": 1,
+          "WAVE_02PCT": "T",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "12075C_STUDY6",
+          "SHAPE.STLength()": 0.001607155751613557,
+          "GFID": "70f0bc75-e98a-44b9-b5fe-30c03643a0dd",
+          "GlobalID": "{101EDA82-2D71-4609-9E7D-E014C4D1DA1F}"
+        }
+      }
+    },
+    {
+      "name": "only_required_fields",
+      "where": "(METHOD IS NULL AND BEACH_SET IS NULL AND SHORE_TYP IS NULL AND EROS_METH IS NULL AND VZONE_EXT IS NULL AND TIME_UNIT IS NULL AND LEN_UNIT IS NULL AND FTCHLNUNIT IS NULL AND SIG_HT = -9999) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 112481,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -76.34099393957374,
+              38.11806293040317
+            ],
+            [
+              -76.34647096102442,
+              38.11812427137534
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 112481,
+          "DFIRM_ID": "24037C",
+          "VERSION_ID": "1.1.1.0",
+          "TRAN_LN_ID": "24037C_137",
+          "TBASELN_ID": "24037C_13199",
+          "TRAN_NO": "49",
+          "METHOD": null,
+          "XCOORD": -8888,
+          "YCOORD": -8888,
+          "WTR_NM": "NP",
+          "V_DATUM": "NP",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": null,
+          "SHORE_TYP": null,
+          "CST_MDL_ID": null,
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": -8888,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": null,
+          "EROS_METH": null,
+          "LOC_DESC": "NP",
+          "LU_SOURCE": null,
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": null,
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": null,
+          "TIME_UNIT": null,
+          "SOURCE_CIT": "24037C_FIRM1",
+          "SHAPE.STLength()": 0.005477363235653972,
+          "GFID": "4ce39ed3-da41-4e33-8f35-73cae4c3ae40",
+          "GlobalID": "{08641798-BAE8-4004-8E58-77D4AEE73C8A}"
+        }
+      }
+    },
+    {
+      "name": "open_coast",
+      "where": "(CSTLN_TYP = 'Open Coast') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12319,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -84.7183782364714,
+              45.775376091405604
+            ],
+            [
+              -84.72576115369512,
+              45.77605719831592
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12319,
+          "DFIRM_ID": "26031C",
+          "VERSION_ID": "2.6.4.0",
+          "TRAN_LN_ID": "26031C_7",
+          "TBASELN_ID": "26031C_7",
+          "TRAN_NO": "7",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 19593542,
+          "YCOORD": 896821.8,
+          "WTR_NM": "Lake Huron",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation",
+          "SHORE_TYP": "Sandy Beach-Small Dune",
+          "CST_MDL_ID": "26031C_3",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 582.8,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Other",
+          "LOC_DESC": "Beginning approximately 460 ft Northeast of the intersection of Lake Street and S Huron Avenue extending Southeast into Lake Huron",
+          "LU_SOURCE": "",
+          "RUP": 583.2,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Breaking Wave Ht",
+          "SETUP_DPTH": 0.25,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "",
+          "SOURCE_CIT": "26031C_STUDY6",
+          "SHAPE.STLength()": 0.0074142658728208145,
+          "GFID": "aa210b75-51e3-4b1f-9755-1934c142b6aa",
+          "GlobalID": "{15CB9CC7-0B9E-40D9-83DD-644B45226681}"
+        }
+      }
+    },
+    {
+      "name": "sheltered_waters",
+      "where": "(CSTLN_TYP = 'Sheltered Waters') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12651,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -86.3428277404521,
+              43.225056236057924
+            ],
+            [
+              -86.34218145988467,
+              43.22537651406068
+            ],
+            [
+              -86.33978664100718,
+              43.22656325624746
+            ],
+            [
+              -86.33935411353303,
+              43.226777556790964
+            ],
+            [
+              -86.33934893639442,
+              43.226780146015216
+            ],
+            [
+              -86.33919221040678,
+              43.226857803097595
+            ],
+            [
+              -86.33915400985519,
+              43.22687670692299
+            ],
+            [
+              -86.33901697218664,
+              43.226944638370895
+            ],
+            [
+              -86.33898967466543,
+              43.22695758187286
+            ],
+            [
+              -86.33873591629077,
+              43.22708395094637
+            ],
+            [
+              -86.33871669814434,
+              43.22709344083959
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12651,
+          "DFIRM_ID": "26121C",
+          "VERSION_ID": "2.6.2.0",
+          "TRAN_LN_ID": "26121C_8",
+          "TBASELN_ID": "26121C_5",
+          "TRAN_NO": "25",
+          "METHOD": "Cut from Topo",
+          "XCOORD": -86.33920288,
+          "YCOORD": 43.22679901,
+          "WTR_NM": "Lake Michigan",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Sheltered Waters",
+          "BEACH_SET": "Sandy Beach Backed by Shore Protection Structures",
+          "SHORE_TYP": "Shore Protection Structure",
+          "CST_MDL_ID": "26121C_4",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 583,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Other",
+          "LOC_DESC": "Located approximately 890 ft West of the intersection of Watson Avenue and Beach Street extending Southwest into Lake Michigan",
+          "LU_SOURCE": "",
+          "RUP": 589,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "T",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Wave Overtopping Splash Zone",
+          "SETUP_DPTH": 0.9,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "26121C_STUDY6",
+          "SHAPE.STLength()": 0.004588126915617465,
+          "GFID": "918e33e9-3051-49d0-b664-ffcca1634557",
+          "GlobalID": "{35952024-6B9E-4630-989F-B4F143E3BDE1}"
+        }
+      }
+    },
+    {
+      "name": "combined_coast",
+      "where": "(CSTLN_TYP = 'Combined Open Coast and Sheltered Waters') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 21100,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.86087158707399,
+              48.12465899108462
+            ],
+            [
+              -122.85672075523301,
+              48.12174939043702
+            ],
+            [
+              -122.85573853158789,
+              48.121060883629895
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 21100,
+          "DFIRM_ID": "53031C",
+          "VERSION_ID": "2.3.2.2",
+          "TRAN_LN_ID": "53031C_206",
+          "TBASELN_ID": "53031C_30",
+          "TRAN_NO": "40",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 1146280.11,
+          "YCOORD": 415675.71,
+          "WTR_NM": "Strait of Juan de Fuca",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Combined Open Coast and Sheltered Waters",
+          "BEACH_SET": "",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": "53031C_5",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 11.6,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "",
+          "LOC_DESC": "The transect intersects the extensive bluff between McCurdy Point and Cape George at a central location.",
+          "LU_SOURCE": "",
+          "RUP": 14.2,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": "",
+          "TIME_UNIT": "",
+          "SOURCE_CIT": "53031C_STUDY2",
+          "SHAPE.STLength()": 0.006268542189446401,
+          "GFID": "5afc142a-50f1-4332-92d2-d78a392bbbdd",
+          "GlobalID": "{2CD7068F-6D83-487E-A5FB-17DE0F1BCAA5}"
+        }
+      }
+    },
+    {
+      "name": "cut_from_topo",
+      "where": "(METHOD = 'Cut from Topo') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12319,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -84.7183782364714,
+              45.775376091405604
+            ],
+            [
+              -84.72576115369512,
+              45.77605719831592
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12319,
+          "DFIRM_ID": "26031C",
+          "VERSION_ID": "2.6.4.0",
+          "TRAN_LN_ID": "26031C_7",
+          "TBASELN_ID": "26031C_7",
+          "TRAN_NO": "7",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 19593542,
+          "YCOORD": 896821.8,
+          "WTR_NM": "Lake Huron",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation",
+          "SHORE_TYP": "Sandy Beach-Small Dune",
+          "CST_MDL_ID": "26031C_3",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 582.8,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Other",
+          "LOC_DESC": "Beginning approximately 460 ft Northeast of the intersection of Lake Street and S Huron Avenue extending Southeast into Lake Huron",
+          "LU_SOURCE": "",
+          "RUP": 583.2,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Breaking Wave Ht",
+          "SETUP_DPTH": 0.25,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "",
+          "SOURCE_CIT": "26031C_STUDY6",
+          "SHAPE.STLength()": 0.0074142658728208145,
+          "GFID": "aa210b75-51e3-4b1f-9755-1934c142b6aa",
+          "GlobalID": "{15CB9CC7-0B9E-40D9-83DD-644B45226681}"
+        }
+      }
+    },
+    {
+      "name": "combo_of_topo_and_survey",
+      "where": "(METHOD = 'Combo of Topo and Survey') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 15865,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -76.91755827744352,
+              35.05351538396314
+            ],
+            [
+              -76.91107045813459,
+              35.05718236722582
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 15865,
+          "DFIRM_ID": "37137C",
+          "VERSION_ID": "2.3.3.2",
+          "TRAN_LN_ID": "37137C_371040201404105",
+          "TBASELN_ID": "37137C_371040201404104",
+          "TRAN_NO": "5",
+          "METHOD": "Combo of Topo and Survey",
+          "XCOORD": 2623166.85,
+          "YCOORD": 480939.1,
+          "WTR_NM": "Upper Broad Creek",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Sheltered Waters",
+          "BEACH_SET": "Erodible Coastal Bluffs",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": "37137C_371040201404101",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 7.42000007,
+          "SIG_HT": 5.28,
+          "SIG_PD": 3.97,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "Approximately 2,829 feet west of the intersection of Goose Creek Rd and S. Goose Creek Rd",
+          "LU_SOURCE": "",
+          "RUP": -8888,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "T",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "T",
+          "VZONE_EXT": "",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "T",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "37137C_STUDY90",
+          "SHAPE.STLength()": 0.007452418050536337,
+          "GFID": "c81935f7-789b-4ae0-860f-c6411a38a8ba",
+          "GlobalID": "{1803EF76-F53B-4B39-818E-A51C046B425F}"
+        }
+      }
+    },
+    {
+      "name": "digitized_from_firm",
+      "where": "(METHOD = 'Digitized from FIRM') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 113596,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -70.20211759712461,
+              43.73095847479375
+            ],
+            [
+              -70.20214136507877,
+              43.73096929924232
+            ],
+            [
+              -70.20475182065036,
+              43.73215847329508
+            ],
+            [
+              -70.20532460110482,
+              43.73241936935434
+            ],
+            [
+              -70.20545850081096,
+              43.73248031892337
+            ],
+            [
+              -70.20584388401733,
+              43.73265587013176
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 113596,
+          "DFIRM_ID": "23005C",
+          "VERSION_ID": "2.3.2.1",
+          "TRAN_LN_ID": "23005C_CM-067",
+          "TBASELN_ID": "23005C_95",
+          "TRAN_NO": "067",
+          "METHOD": "Digitized from FIRM",
+          "XCOORD": 2942683,
+          "YCOORD": 327605,
+          "WTR_NM": "Casco Bay",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": null,
+          "SHORE_TYP": null,
+          "CST_MDL_ID": "23005C_2",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 8.91,
+          "SIG_HT": 2.8,
+          "SIG_PD": 3.7,
+          "CON_HT": 7.2,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": 3.7,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": null,
+          "EROS_METH": "NP",
+          "LOC_DESC": "The transect is located at Casco Bay shoreline in the vicinity of Ayers Court extending northwest along Burgess Street.",
+          "LU_SOURCE": " ",
+          "RUP": 9.7,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": "Runup",
+          "SETUP_DPTH": 0.5,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "23005C_STUDY1",
+          "SHAPE.STLength()": 0.004094673895952953,
+          "GFID": "c776f943-961c-42bf-b707-ee36f5ebfe9d",
+          "GlobalID": "{AC66A021-7DBF-4DF0-9ED7-D83B54F81A11}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_datum",
+      "where": "(V_DATUM = 'NP') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 111132,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -84.70998366395337,
+              29.81894675602863
+            ],
+            [
+              -84.71462873645059,
+              29.82527698582925
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 111132,
+          "DFIRM_ID": "12037C",
+          "VERSION_ID": "1.1.1.0",
+          "TRAN_LN_ID": "12037C_522",
+          "TBASELN_ID": "NP",
+          "TRAN_NO": "56",
+          "METHOD": "",
+          "XCOORD": -8888,
+          "YCOORD": -8888,
+          "WTR_NM": "Gulf of Mexico",
+          "V_DATUM": "NP",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": "",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": "",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": -8888,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -8888,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "",
+          "LOC_DESC": "NP",
+          "LU_SOURCE": "",
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": "",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": "NP",
+          "TIME_UNIT": "",
+          "SOURCE_CIT": "12037C_FIRM1",
+          "SHAPE.STLength()": 0.007851654384285079,
+          "GFID": "bf3e07fc-039f-44c2-949c-11788732c062",
+          "GlobalID": "{D1A0A0C5-D29A-4404-9F88-BF1D9020F4DC}"
+        }
+      }
+    },
+    {
+      "name": "runup_extent",
+      "where": "(VZONE_EXT = 'Runup') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12326,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -84.57135841814774,
+              45.71837508421737
+            ],
+            [
+              -84.57357776352973,
+              45.709971018512704
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12326,
+          "DFIRM_ID": "26031C",
+          "VERSION_ID": "2.6.4.0",
+          "TRAN_LN_ID": "26031C_32",
+          "TBASELN_ID": "26031C_32",
+          "TRAN_NO": "32",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 19632166.4,
+          "YCOORD": 872741.2,
+          "WTR_NM": "Lake Huron",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Sandy Beach Backed by Shore Protection Structures",
+          "SHORE_TYP": "Shore Protection Structure",
+          "CST_MDL_ID": "26031C_4",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 582.7,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "Beginning approximately 310 ft Northwest of the intersection of Edgewater Drive and Interstate 23 extending Northeast into Lake Huron",
+          "LU_SOURCE": "",
+          "RUP": 587.9,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Runup",
+          "SETUP_DPTH": 0.43,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "",
+          "SOURCE_CIT": "26031C_STUDY6",
+          "SHAPE.STLength()": 0.008692168377034569,
+          "GFID": "aa210b75-51e3-4b1f-9755-1934c142b6aa",
+          "GlobalID": "{2BF39F28-B69F-4637-AB68-AFFF6EDC34C8}"
+        }
+      }
+    },
+    {
+      "name": "splash_zone_extent",
+      "where": "(VZONE_EXT = 'Wave Overtopping Splash Zone') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12347,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -84.71243527304931,
+              45.7800093187232
+            ],
+            [
+              -84.71979638150124,
+              45.77992679709768
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12347,
+          "DFIRM_ID": "26031C",
+          "VERSION_ID": "2.6.4.0",
+          "TRAN_LN_ID": "26031C_6",
+          "TBASELN_ID": "26031C_6",
+          "TRAN_NO": "6",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 19595028.4,
+          "YCOORD": 898251,
+          "WTR_NM": "Lake Huron",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Sandy Beach Backed by Shore Protection Structures",
+          "SHORE_TYP": "Shore Protection Structure",
+          "CST_MDL_ID": "26031C_2",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 582.8,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "Beginning approximately 1,460 ft Southeast of the intersection of E Central Avenue and N Huron Avenue extending Northeast into Lake Huron",
+          "LU_SOURCE": "",
+          "RUP": 589.9,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "T",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Wave Overtopping Splash Zone",
+          "SETUP_DPTH": 0.63,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "",
+          "SOURCE_CIT": "26031C_STUDY6",
+          "SHAPE.STLength()": 0.007361568688838784,
+          "GFID": "aa210b75-51e3-4b1f-9755-1934c142b6aa",
+          "GlobalID": "{73FC4CB0-D88C-4DFC-A3AC-AC25E0C99130}"
+        }
+      }
+    },
+    {
+      "name": "pfd_extent",
+      "where": "(VZONE_EXT = 'PFD') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12658,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -86.28329422101788,
+              43.12722759201362
+            ],
+            [
+              -86.28158482358343,
+              43.127873322561356
+            ],
+            [
+              -86.28125544859566,
+              43.127997731058315
+            ],
+            [
+              -86.28116445511111,
+              43.12803208903069
+            ],
+            [
+              -86.28057488862994,
+              43.12825478589801
+            ],
+            [
+              -86.27811465022918,
+              43.12918408169471
+            ],
+            [
+              -86.27809527492174,
+              43.12919137657565
+            ],
+            [
+              -86.27779907919849,
+              43.12930323316254
+            ],
+            [
+              -86.27779374489897,
+              43.12930527363377
+            ],
+            [
+              -86.27763348933969,
+              43.12936583162275
+            ],
+            [
+              -86.27762760628703,
+              43.129368105215775
+            ],
+            [
+              -86.2774802143393,
+              43.1294237204973
+            ],
+            [
+              -86.27742977619955,
+              43.12944333023726
+            ],
+            [
+              -86.27691637770069,
+              43.12963669042019
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12658,
+          "DFIRM_ID": "26121C",
+          "VERSION_ID": "2.6.2.0",
+          "TRAN_LN_ID": "26121C_15",
+          "TBASELN_ID": "26121C_12",
+          "TRAN_NO": "3",
+          "METHOD": "Cut from Topo",
+          "XCOORD": -86.27809906,
+          "YCOORD": 43.12919998,
+          "WTR_NM": "Lake Michigan",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation",
+          "SHORE_TYP": "Sandy Beach-Small Dune",
+          "CST_MDL_ID": "26121C_5",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 583.2,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Other",
+          "LOC_DESC": "Located approximately 3,770 ft Southwest of the intersection of Lake Harbor Road and Henry Street extending Southwest into Lake Michigan",
+          "LU_SOURCE": "",
+          "RUP": 588.3,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "T",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "PFD",
+          "SETUP_DPTH": 1.5,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "26121C_STUDY6",
+          "SHAPE.STLength()": 0.006817672391146261,
+          "GFID": "918e33e9-3051-49d0-b664-ffcca1634557",
+          "GlobalID": "{4F9E5DC6-5FD5-4E5B-96A7-63865FDF76D9}"
+        }
+      }
+    },
+    {
+      "name": "fetch_in_miles",
+      "where": "(FETCH_LEN > 0 AND FTCHLNUNIT = 'Miles') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 146926,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -111.90553244216737,
+              40.339498740221686
+            ],
+            [
+              -111.90570164148,
+              40.33953066480136
+            ],
+            [
+              -111.90614224700941,
+              40.33961498938284
+            ],
+            [
+              -111.91333909953097,
+              40.34092331563427
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 146926,
+          "DFIRM_ID": "49049C",
+          "VERSION_ID": "2.8.5.6",
+          "TRAN_LN_ID": "49049C_29",
+          "TBASELN_ID": "49049C_1",
+          "TRAN_NO": "29",
+          "METHOD": "Combo of Topo and Survey",
+          "XCOORD": -111.905689,
+          "YCOORD": 40.339525,
+          "WTR_NM": "Utah Lake",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": 3.32,
+          "CSTLN_TYP": "Sheltered Waters",
+          "BEACH_SET": "NP",
+          "SHORE_TYP": "Non-Erodible Bluff",
+          "CST_MDL_ID": "49049C_1",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 4494.7,
+          "SIG_HT": 3.03,
+          "SIG_PD": 3.38,
+          "CON_HT": 4.8,
+          "CON_PD": 3.38,
+          "MEAN_HT": 1.9,
+          "MEAN_PD": 2.873,
+          "FETCH_LEN": 7.79,
+          "FTCHLNUNIT": "Miles",
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "Starts 2000 feet offshore of a point 170 feet north of the intersection of Parkway Blvd and Amber Rd",
+          "LU_SOURCE": "Aerial Imagery",
+          "RUP": -8888,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Breaking Wave Ht",
+          "SETUP_DPTH": 0.5,
+          "WAVE_02PCT": "T",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "49049C_STUDY7",
+          "SHAPE.STLength()": 0.00793559237407623,
+          "GFID": "a4e15a80-e2e4-4c34-b537-2310f8908577",
+          "GlobalID": "{C32746BC-93F8-4F46-8635-F3F0392BCA4C}"
+        }
+      }
+    },
+    {
+      "name": "wetland_shore",
+      "where": "(SHORE_TYP = 'Wetland') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12356,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -84.69433151524666,
+              45.762130224315875
+            ],
+            [
+              -84.69734853332625,
+              45.757091375659265
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12356,
+          "DFIRM_ID": "26031C",
+          "VERSION_ID": "2.6.4.0",
+          "TRAN_LN_ID": "26031C_17",
+          "TBASELN_ID": "26031C_17",
+          "TRAN_NO": "17",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 19600928.6,
+          "YCOORD": 890691.1,
+          "WTR_NM": "Lake Huron",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Tidal Flats and Wetlands",
+          "SHORE_TYP": "Wetland",
+          "CST_MDL_ID": "26031C_6",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 582.8,
+          "SIG_HT": 3.8,
+          "SIG_PD": 6.8,
+          "CON_HT": 6.1,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "Beginning approximately 2,160 ft Southeast of the intersection of Mary Ann Boulevard and Wallick Road extending Northeast into Lake Huron",
+          "LU_SOURCE": "",
+          "RUP": -8888,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Breaking Wave Ht",
+          "SETUP_DPTH": 0.58,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "26031C_STUDY6",
+          "SHAPE.STLength()": 0.005873021538601213,
+          "GFID": "aa210b75-51e3-4b1f-9755-1934c142b6aa",
+          "GlobalID": "{E728C8A2-E23A-4660-80C4-76B80DC8AA39}"
+        }
+      }
+    },
+    {
+      "name": "not_populated_numbers",
+      "where": "(RUP = -8888 AND SWEL = -8888) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 14797,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -76.20502040016075,
+              36.29927086791563
+            ],
+            [
+              -76.20789669449353,
+              36.300878448553284
+            ],
+            [
+              -76.21367289264225,
+              36.304106394858174
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 14797,
+          "DFIRM_ID": "37029C",
+          "VERSION_ID": "2.3.3.2",
+          "TRAN_LN_ID": "37029C_3710102014082298",
+          "TBASELN_ID": "NP",
+          "TRAN_NO": "37",
+          "METHOD": "Cut from Topo",
+          "XCOORD": -76.25127874,
+          "YCOORD": 36.32508555,
+          "WTR_NM": "Albemarle Sound",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Sheltered Waters",
+          "BEACH_SET": "Tidal Flats and Wetlands",
+          "SHORE_TYP": null,
+          "CST_MDL_ID": "37029C_371010201408222",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": -8888,
+          "SIG_HT": 3.13,
+          "SIG_PD": 3.064,
+          "CON_HT": 5,
+          "CON_PD": -9999,
+          "MEAN_HT": 1.95938,
+          "MEAN_PD": 2.6044,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": null,
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "Approximately 950 feet Southwest of the intersection of Creek road and Birdie lane",
+          "LU_SOURCE": null,
+          "RUP": -8888,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "T",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": null,
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "T",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "37029C_STUDY94",
+          "SHAPE.STLength()": 0.009912007334407138,
+          "GFID": "4f92a827-40d0-4026-a222-2cfda24345ab",
+          "GlobalID": "{4A517339-BA47-4E12-A69C-A8255DE701DE}"
+        }
+      }
+    },
+    {
+      "name": "datum_conversion",
+      "where": "(DATUM_CONV IS NOT NULL AND DATUM_CONV <> -9999) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 8142,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -81.21698360145263,
+              31.734573292885063
+            ],
+            [
+              -81.28780413829391,
+              31.757155818401458
+            ],
+            [
+              -81.2922278483381,
+              31.758566432010962
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 8142,
+          "DFIRM_ID": "13179C",
+          "VERSION_ID": "2.3.2.1",
+          "TRAN_LN_ID": "13179C_2",
+          "TBASELN_ID": "13179C_1",
+          "TRAN_NO": "2",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 951406.415147,
+          "YCOORD": 632150.047669,
+          "WTR_NM": "ATLANTIC OCEAN",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": 0,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "NP",
+          "SHORE_TYP": "Wetland",
+          "CST_MDL_ID": "13179C_3",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 9,
+          "SIG_HT": 17.53,
+          "SIG_PD": 11.37,
+          "CON_HT": 28,
+          "CON_PD": 11.4,
+          "MEAN_HT": 0,
+          "MEAN_PD": 0,
+          "FETCH_LEN": 24,
+          "FTCHLNUNIT": "Miles",
+          "EROS_METH": "NP",
+          "LOC_DESC": "Along the southern bank of the Medway River approximately 1.1 miles east northeast of the northern-most point of Deloach Rd.",
+          "LU_SOURCE": "Field Reconnaisance",
+          "RUP": 0,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": null,
+          "SETUP_DPTH": 0,
+          "WAVE_02PCT": "T",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": null,
+          "SOURCE_CIT": "13179C_STUDY2",
+          "SHAPE.STLength()": 0.07897698264241894,
+          "GFID": "780c1225-964c-404b-8004-97b4bed52e0d",
+          "GlobalID": "{5603A749-B197-4B10-87F1-537BB7A47155}"
+        }
+      }
+    },
+    {
+      "name": "no_model_id",
+      "where": "(CST_MDL_ID IS NULL) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 16452,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -124.42614920397725,
+              43.12079747878281
+            ],
+            [
+              -124.42709421442872,
+              43.12106269665898
+            ],
+            [
+              -124.42719896733422,
+              43.121092198344755
+            ],
+            [
+              -124.42731795245885,
+              43.121125502010145
+            ],
+            [
+              -124.42785405672741,
+              43.121275942795975
+            ],
+            [
+              -124.42800868460964,
+              43.12131929950848
+            ],
+            [
+              -124.42808675292257,
+              43.121341243073495
+            ],
+            [
+              -124.42834405918784,
+              43.121413508190145
+            ],
+            [
+              -124.42847172220743,
+              43.12144930940121
+            ],
+            [
+              -124.42860881487451,
+              43.121487807228334
+            ],
+            [
+              -124.42872667106087,
+              43.12152084895918
+            ],
+            [
+              -124.42946408520508,
+              43.12172784664804
+            ],
+            [
+              -124.42947360783926,
+              43.12173047123202
+            ],
+            [
+              -124.43003819750109,
+              43.121888918046615
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 16452,
+          "DFIRM_ID": "41011C",
+          "VERSION_ID": "1.1.1.0",
+          "TRAN_LN_ID": "41011C_13",
+          "TBASELN_ID": "NP",
+          "TRAN_NO": "BN01",
+          "METHOD": "Field Survey",
+          "XCOORD": -8888,
+          "YCOORD": -8888,
+          "WTR_NM": "Pacific Ocean",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": null,
+          "SHORE_TYP": null,
+          "CST_MDL_ID": null,
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": -8888,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": null,
+          "EROS_METH": null,
+          "LOC_DESC": "NP",
+          "LU_SOURCE": null,
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": null,
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": null,
+          "TIME_UNIT": null,
+          "SOURCE_CIT": "41011C_STUDY5",
+          "SHAPE.STLength()": 0.0040392458223631,
+          "GFID": "ff2fc696-5df9-4fd4-a69f-fd362c8a75c2",
+          "GlobalID": "{3DD51239-9E00-45A9-9D86-758BBBE4F7CF}"
+        }
+      }
+    },
+    {
+      "name": "time_in_years",
+      "where": "(OBJECTID = 143685) AND SHAPE IS NOT NULL",
+      "expect": null,
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 143685,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.31608253155231,
+              37.88648030130305
+            ],
+            [
+              -122.31411537622846,
+              37.886572078100244
+            ],
+            [
+              -122.31406493809462,
+              37.88657443158652
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 143685,
+          "DFIRM_ID": "06001C",
+          "VERSION_ID": "2.3.2.0",
+          "TRAN_LN_ID": "06001C_2",
+          "TBASELN_ID": "06001C_7",
+          "TRAN_NO": "4",
+          "METHOD": "Cut from Topo",
+          "XCOORD": -122.31606881,
+          "YCOORD": 37.88647391,
+          "WTR_NM": "San Francisco Bay",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Sheltered Waters",
+          "BEACH_SET": "Non-Erodible Coastal Cliffs and Bluffs",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": "06001C_1",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 9.93794997,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "NP",
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "NP",
+          "LU_SOURCE": "Aerial Imagery and Field Recon",
+          "RUP": 14.6,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "T",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Runup",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "",
+          "TIME_UNIT": "YEARS",
+          "SOURCE_CIT": "06001C_STUDY11",
+          "SHAPE.STLength()": 0.002019787777106222,
+          "GFID": "8a45ca2e-a2f9-413d-bee5-07a585b0aecb",
+          "GlobalID": "{51CD5EAE-1236-45C3-BEAD-A36ABEC3966D}"
+        }
+      }
+    },
+    {
+      "name": "legacy_not_populated_event",
+      "where": "(EVENT_TYP = 'NP') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": null,
+      "warns": "EVENT_TYP",
+      "feature": {
+        "type": "Feature",
+        "id": 4,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -87.92214893777857,
+              30.6305524203336
+            ],
+            [
+              -87.92118007677749,
+              30.630375268717955
+            ],
+            [
+              -87.91577766362859,
+              30.629323662800722
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 4,
+          "DFIRM_ID": "01003C",
+          "VERSION_ID": "1.1.1.0",
+          "TRAN_LN_ID": "01003C_4",
+          "TBASELN_ID": "NP",
+          "TRAN_NO": "8",
+          "METHOD": null,
+          "XCOORD": -8888,
+          "YCOORD": -8888,
+          "WTR_NM": "NP",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": null,
+          "SHORE_TYP": null,
+          "CST_MDL_ID": null,
+          "EVENT_TYP": "NP",
+          "SWEL": -8888,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": null,
+          "EROS_METH": null,
+          "LOC_DESC": "NP",
+          "LU_SOURCE": null,
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": null,
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": null,
+          "TIME_UNIT": null,
+          "SOURCE_CIT": "01003C_STUDY1",
+          "SHAPE.STLength()": 0.006488733379628805,
+          "GFID": "2daa8f96-8523-4ed3-bdef-653fac6517df",
+          "GlobalID": "{00B085B8-A9F7-42C2-A4EB-ADEE5C857EF9}"
+        }
+      }
+    },
+    {
+      "name": "no_location_description",
+      "where": "(OBJECTID = 21877) AND SHAPE IS NOT NULL",
+      "expect": "LOC_DESC",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 21877,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -170.67524212187985,
+              -14.28552523676819
+            ],
+            [
+              -170.6754204888405,
+              -14.2855072981409
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 21877,
+          "DFIRM_ID": "600001",
+          "VERSION_ID": "1.1.1.0",
+          "TRAN_LN_ID": "600001_368",
+          "TBASELN_ID": "600001_NP",
+          "TRAN_NO": "225",
+          "METHOD": null,
+          "XCOORD": 0,
+          "YCOORD": 0,
+          "WTR_NM": "NP",
+          "V_DATUM": "ASVD02",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": null,
+          "SHORE_TYP": null,
+          "CST_MDL_ID": null,
+          "EVENT_TYP": "NP",
+          "SWEL": -8888,
+          "SIG_HT": null,
+          "SIG_PD": null,
+          "CON_HT": null,
+          "CON_PD": null,
+          "MEAN_HT": null,
+          "MEAN_PD": 0,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": null,
+          "EROS_METH": null,
+          "LOC_DESC": null,
+          "LU_SOURCE": null,
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": null,
+          "SETUP_DPTH": null,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": null,
+          "TIME_UNIT": null,
+          "SOURCE_CIT": "600001_STUDY4",
+          "SHAPE.STLength()": 0.00017926676899251596,
+          "GFID": null,
+          "GlobalID": "{B9FF8166-9153-4354-85E4-EB490FD2B179}"
+        }
+      }
+    },
+    {
+      "name": "no_runup_elevation",
+      "where": "(RUP = -9999) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": "RUP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 152000,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -82.788537411084,
+              28.174927656708018
+            ],
+            [
+              -82.78356115913277,
+              28.176103338784735
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 152000,
+          "DFIRM_ID": "12101C",
+          "VERSION_ID": "2.4.3.2",
+          "TRAN_LN_ID": "12101C_110",
+          "TBASELN_ID": "12101C_82",
+          "TRAN_NO": "45",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 402122.323408,
+          "YCOORD": 1397124.82588,
+          "WTR_NM": "Gulf of Mexico",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Tidal Flats and Wetlands",
+          "SHORE_TYP": "Wetland",
+          "CST_MDL_ID": "12101C_1",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 9.10679009,
+          "SIG_HT": 4.15012713,
+          "SIG_PD": 3.53103387,
+          "CON_HT": 6.64020341,
+          "CON_PD": -9999,
+          "MEAN_HT": 2.59797958,
+          "MEAN_PD": 3.00137879,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "Feet",
+          "EROS_METH": "Dune Removal",
+          "LOC_DESC": "1300 ft WSW of intersection of Baillies Bluff Rd and Cemetery Rd",
+          "LU_SOURCE": "land-use shapefile",
+          "RUP": -9999,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Breaking Wave Ht",
+          "SETUP_DPTH": 0,
+          "WAVE_02PCT": "T",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "12101C_STUDY6",
+          "SHAPE.STLength()": 0.005113247204964034,
+          "GFID": "d1adfe5f-8431-4335-891c-01f7f9258ab8",
+          "GlobalID": "{5759799F-2AE6-47B7-AF7D-FF0DBA1B0D2A}"
+        }
+      }
+    },
+    {
+      "name": "no_baseline_id",
+      "where": "((TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": "TBASELN_ID",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 22365,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -65.61716453777085,
+              18.22810597048589
+            ],
+            [
+              -65.61547341154221,
+              18.230023582499033
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 22365,
+          "DFIRM_ID": "72000C",
+          "VERSION_ID": "1.1.1.0",
+          "TRAN_LN_ID": "72000C_1",
+          "TBASELN_ID": "",
+          "TRAN_NO": "95",
+          "METHOD": "",
+          "XCOORD": -8888,
+          "YCOORD": -8888,
+          "WTR_NM": "NP",
+          "V_DATUM": "NP",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": "",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": "",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": -8888,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "",
+          "LOC_DESC": "NP",
+          "LU_SOURCE": "",
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": "",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": "",
+          "TIME_UNIT": "",
+          "SOURCE_CIT": "72000C_FIS2",
+          "SHAPE.STLength()": 0.0025567830999582482,
+          "GFID": "af0c2d6d-75eb-4d59-b488-d2cba27eb35b",
+          "GlobalID": "{CD9535F5-833D-4173-A9AC-05A7792D5521}"
+        }
+      }
+    },
+    {
+      "name": "no_flood_event",
+      "where": "((EVENT_TYP IS NULL OR (EVENT_TYP = '' AND EVENT_TYP NOT LIKE ' '))) AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((FTCHLNUNIT IS NULL OR (FTCHLNUNIT = '' AND FTCHLNUNIT NOT LIKE ' ')) OR FTCHLNUNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": "EVENT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 106012,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.72055473670981,
+              47.13318146001971
+            ],
+            [
+              -122.71647679716324,
+              47.1348717965563
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 106012,
+          "DFIRM_ID": "53053C",
+          "VERSION_ID": "1.1.1.0",
+          "TRAN_LN_ID": "53053C_1",
+          "TBASELN_ID": "NP",
+          "TRAN_NO": "30",
+          "METHOD": "",
+          "XCOORD": -8888,
+          "YCOORD": -8888,
+          "WTR_NM": "NP",
+          "V_DATUM": "NP",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": "",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": "",
+          "EVENT_TYP": "",
+          "SWEL": -8888,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "",
+          "LOC_DESC": "NP",
+          "LU_SOURCE": "",
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": "",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": "",
+          "TIME_UNIT": "",
+          "SOURCE_CIT": "53053C_STUDY30",
+          "SHAPE.STLength()": 0.00441438837513408,
+          "GFID": "0fe99be1-9643-478b-b3e2-d6a8d452594a",
+          "GlobalID": "{4E0B3E78-B98E-4865-8AD9-A34CAF700D73}"
+        }
+      }
+    },
+    {
+      "name": "no_source_citation",
+      "where": "(OBJECTID = 139086) AND SHAPE IS NOT NULL",
+      "expect": "SOURCE_CIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 139086,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -89.09181456368302,
+              30.34821820736645
+            ],
+            [
+              -89.10286556317686,
+              30.361237302430368
+            ],
+            [
+              -89.10384921962616,
+              30.363043261969228
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 139086,
+          "DFIRM_ID": "28047C",
+          "VERSION_ID": "2.1.3.0",
+          "TRAN_LN_ID": "28047C_69",
+          "TBASELN_ID": "NP",
+          "TRAN_NO": "34",
+          "METHOD": null,
+          "XCOORD": 30.348,
+          "YCOORD": -89.0923,
+          "WTR_NM": "NP",
+          "V_DATUM": "NP",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": "",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": null,
+          "EVENT_TYP": "NP",
+          "SWEL": -8888,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "",
+          "LOC_DESC": "NP",
+          "LU_SOURCE": "",
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": null,
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": "NP",
+          "TIME_UNIT": null,
+          "SOURCE_CIT": null,
+          "SHAPE.STLength()": 0.01913339225430896,
+          "GFID": "a10bb93c-fee1-41b7-a1fe-ef6de1fea097",
+          "GlobalID": "{A0384CD5-720D-43B2-AC75-A3A8013E10E8}"
+        }
+      }
+    },
+    {
+      "name": "lone_space_fetch_unit",
+      "where": "(FTCHLNUNIT LIKE ' ') AND NOT (DFIRM_ID IS NULL OR (DFIRM_ID = '' AND DFIRM_ID NOT LIKE ' ')) AND NOT (VERSION_ID IS NULL OR (VERSION_ID = '' AND VERSION_ID NOT LIKE ' ')) AND NOT (TRAN_LN_ID IS NULL OR (TRAN_LN_ID = '' AND TRAN_LN_ID NOT LIKE ' ')) AND NOT (TBASELN_ID IS NULL OR (TBASELN_ID = '' AND TBASELN_ID NOT LIKE ' ')) AND NOT (TRAN_NO IS NULL OR (TRAN_NO = '' AND TRAN_NO NOT LIKE ' ')) AND NOT (WTR_NM IS NULL OR (WTR_NM = '' AND WTR_NM NOT LIKE ' ')) AND NOT (LOC_DESC IS NULL OR (LOC_DESC = '' AND LOC_DESC NOT LIKE ' ')) AND NOT (SOURCE_CIT IS NULL OR (SOURCE_CIT = '' AND SOURCE_CIT NOT LIKE ' ')) AND XCOORD IS NOT NULL AND XCOORD <> -9999 AND YCOORD IS NOT NULL AND YCOORD <> -9999 AND SWEL IS NOT NULL AND SWEL <> -9999 AND RUP IS NOT NULL AND RUP <> -9999 AND V_DATUM IN ('MSL', 'NAVD88', 'NGVD29', 'LOCAL TIDAL DATUM', 'MLLW', 'MLW', 'GUVD04', 'NMVD03', 'PRVD02', 'VIVD09', 'NP') AND CSTLN_TYP IN ('Open Coast', 'Sheltered Waters', 'Combined Open Coast and Sheltered Waters', 'NP') AND EVENT_TYP IN ('50 Percent Chance', '10 Percent Chance', '4 Percent Chance', '2 Percent Chance', '1 Percent Plus Chance', '1 Percent Minus Chance', '1 Percent Chance', '0.2 Percent Chance', '1 Percent Chance Future Conditions') AND ELEV_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP') AND WHAFIS_TF IN ('T', 'F', 'U') AND OVERTOP_TF IN ('T', 'F', 'U') AND BW_HGT_TF IN ('T', 'F', 'U') AND HVFLOW_TF IN ('T', 'F', 'U') AND WAVE_02PCT IN ('T', 'F', 'U') AND ((METHOD IS NULL OR (METHOD = '' AND METHOD NOT LIKE ' ')) OR METHOD IN ('Combo of Topo and Survey', 'Cut from Topo', 'Digitized from FIRM', 'Field Survey')) AND ((BEACH_SET IS NULL OR (BEACH_SET = '' AND BEACH_SET NOT LIKE ' ')) OR BEACH_SET IN ('Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms', 'Erodible Coastal Bluffs', 'Non-Erodible Coastal Cliffs and Bluffs', 'Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation', 'Sandy Beach Backed by Shore Protection Structures', 'Tidal Flats and Wetlands', 'NP')) AND ((SHORE_TYP IS NULL OR (SHORE_TYP = '' AND SHORE_TYP NOT LIKE ' ')) OR SHORE_TYP IN ('Sandy Beach-Small Dune', 'Sandy Beach-Large Dune', 'Erodible Bluff', 'Non-Erodible Bluff', 'Shore Protection Structure', 'Wetland')) AND ((EROS_METH IS NULL OR (EROS_METH = '' AND EROS_METH NOT LIKE ' ')) OR EROS_METH IN ('Not Applied', 'Dune Removal', 'Dune Retreat', 'K-D', 'MK-A', 'SBEACH', 'Other', 'NP')) AND ((VZONE_EXT IS NULL OR (VZONE_EXT = '' AND VZONE_EXT NOT LIKE ' ')) OR VZONE_EXT IN ('Breaking Wave Ht', 'High Velocity Flow', 'Runup', 'Wave Overtopping Splash Zone', 'PFD')) AND ((LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' ')) OR LEN_UNIT IN ('Centimeters', 'Feet', 'Inches', 'Kilometers', 'Meters', 'Miles', 'Millimeters', 'U.S. Survey Feet', 'NP')) AND ((TIME_UNIT IS NULL OR (TIME_UNIT = '' AND TIME_UNIT NOT LIKE ' ')) OR TIME_UNIT IN ('DAYS', 'HOURS', 'MINUTES', 'MONTHS', 'SECONDS', 'WEEKS', 'YEARS')) AND DFIRM_ID NOT IN ('020037', '020094', '02220C', '06001C', '06015C', '06023C', '060298', '06037C', '06041C', '06045C', '06059C', '06073C', '06081C', '06083C', '06087C', '06097C', '06111C', '12005C', '12009C', '12011C', '12015C', '12021C', '12031C', '12033C', '12035C', '12045C', '12057C', '12061C', '12071C', '12075C', '12081C', '12085C', '12089C', '12091C', '12099C', '12103C', '12109C', '12111C', '12113C', '12115C', '12127C', '12131C', '13029C', '13039C', '13051C', '13127C', '13191C', '150002', '17031C', '22053C', '23009C', '26011C', '26017C', '26019C', '26029C', '26033C', '26047C', '26055C', '26069C', '26089C', '26097C', '26099C', '26101C', '26103C', '26105C', '26109C', '26127C', '26147C', '26159C', '27137C', '34033C', '36011C', '36055C', '36073C', '37019C', '37031C', '37053C', '37055C', '37095C', '37129C', '37133C', '37141C', '39007C', '39035C', '39043C', '39123C', '39143C', '41007C', '41015C', '41039C', '41041C', '41057C', '44005C', '51099C', '53035C', '53055C', '53061C', '55029C', '55059C', '55061C', '55071C', '55079C', '55083C', '55089C', '55101C', '55117C') AND SHAPE IS NOT NULL AND SHAPE.STLength() < 0.01",
+      "expect": "FTCHLNUNIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 11980,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -83.2892330816176,
+              44.76198203274968
+            ],
+            [
+              -83.29563485185824,
+              44.763575572050094
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 11980,
+          "DFIRM_ID": "26001C",
+          "VERSION_ID": "2.6.4.0",
+          "TRAN_LN_ID": "26001C_27",
+          "TBASELN_ID": "26001C_27",
+          "TRAN_NO": "27",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 19963967.7,
+          "YCOORD": 529058.7,
+          "WTR_NM": "Lake Huron",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Tidal Flats and Wetlands",
+          "SHORE_TYP": "Wetland",
+          "CST_MDL_ID": "26001C_6",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 582.1,
+          "SIG_HT": 5.2,
+          "SIG_PD": 10.3,
+          "CON_HT": 8.3,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": " ",
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "Beginning approximately 1,430 ft Northeast of the intersection of Nancy Drive and Lake Shore Drive extending Southeast into Lake Huron",
+          "LU_SOURCE": " ",
+          "RUP": -8888,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Breaking Wave Ht",
+          "SETUP_DPTH": 0.7,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "26001C_STUDY2",
+          "SHAPE.STLength()": 0.006597120742683057,
+          "GFID": "805ecd4b-5a19-48f7-b6e7-3183011dc9b8",
+          "GlobalID": "{ED88B828-01CF-4E28-A33D-6E3800C1E374}"
+        }
+      }
+    },
+    {
+      "name": "lone_space_erosion",
+      "where": "(OBJECTID = 8957) AND SHAPE IS NOT NULL",
+      "expect": "EROS_METH",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 8957,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -92.6339136560321,
+              29.58232108232698
+            ],
+            [
+              -92.63325265873537,
+              29.58419661830269
+            ],
+            [
+              -92.61593480040504,
+              29.63330588177442
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 8957,
+          "DFIRM_ID": "22023C",
+          "VERSION_ID": "1.1.1.0",
+          "TRAN_LN_ID": "22023C_40",
+          "TBASELN_ID": "22023C_NP",
+          "TRAN_NO": "110",
+          "METHOD": "NP",
+          "XCOORD": -8888,
+          "YCOORD": -8888,
+          "WTR_NM": "NP",
+          "V_DATUM": "NP",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": null,
+          "SHORE_TYP": null,
+          "CST_MDL_ID": null,
+          "EVENT_TYP": "NP",
+          "SWEL": -8888,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -8888,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": null,
+          "EROS_METH": " ",
+          "LOC_DESC": "NP",
+          "LU_SOURCE": null,
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": "NP",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "U",
+          "LEN_UNIT": "NP",
+          "TIME_UNIT": "NP",
+          "SOURCE_CIT": "22023C_STUDY2",
+          "SHAPE.STLength()": 0.05406188832664415,
+          "GFID": "20121116_2",
+          "GlobalID": "{C7FE1BFC-5892-4F74-A5F2-051B1DBE0B90}"
+        }
+      }
+    },
+    {
+      "name": "wrong_case_beach_setting",
+      "where": "(OBJECTID = 149566) AND SHAPE IS NOT NULL",
+      "expect": "BEACH_SET",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 149566,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -77.93109817811349,
+              34.043420950611036
+            ],
+            [
+              -77.93112265067086,
+              34.04342714798428
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 149566,
+          "DFIRM_ID": "37019C",
+          "VERSION_ID": "2.3.3.2",
+          "TRAN_LN_ID": "37019C_3710402017052222",
+          "TBASELN_ID": "37019C_3710402017052214",
+          "TRAN_NO": "22",
+          "METHOD": "Combo of Topo and Survey",
+          "XCOORD": 2336024.55,
+          "YCOORD": 104952.06,
+          "WTR_NM": "Atlantic Ocean",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Sandy Beach Backed By Low Sand Berm or High Sand Dune Formation",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": "37019C_3710402017051602",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 10.15999984,
+          "SIG_HT": 19.14,
+          "SIG_PD": 11.23,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": 24,
+          "FTCHLNUNIT": "Miles",
+          "EROS_METH": "Dune Removal",
+          "LOC_DESC": "Approximately 440 feet east of the intersection of Cape Fear Blvd and N. Carolina Beach Ave",
+          "LU_SOURCE": "",
+          "RUP": 15.88,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "T",
+          "OVERTOP_TF": "T",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "T",
+          "VZONE_EXT": "",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "T",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "37019C_STUDY104",
+          "SHAPE.STLength()": 2.5245061206731493e-05,
+          "GFID": "1159a246-f7b6-4e93-907a-b92129c78306",
+          "GlobalID": "{59983600-FD3F-498D-B79F-CB7FB7397CCE}"
+        }
+      }
+    },
+    {
+      "name": "wrong_case_flood_event",
+      "where": "(OBJECTID = 12209) AND SHAPE IS NOT NULL",
+      "expect": "EVENT_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 12209,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -83.58639319127512,
+              44.04882676612963
+            ],
+            [
+              -83.58532277841434,
+              44.05116698983121
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 12209,
+          "DFIRM_ID": "26011C",
+          "VERSION_ID": "2.4.3.0",
+          "TRAN_LN_ID": "26011C_24",
+          "TBASELN_ID": "26011C_24",
+          "TRAN_NO": "24",
+          "METHOD": "Cut from Topo",
+          "XCOORD": 13328752.1,
+          "YCOORD": 930647.5,
+          "WTR_NM": "Lake Huron",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Sandy Beach Backed by Shore Protection Structures",
+          "SHORE_TYP": "Shore Protection Structure",
+          "CST_MDL_ID": "26011C_1",
+          "EVENT_TYP": "1 PERCENT CHANCE",
+          "SWEL": 582.7,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "Other",
+          "LOC_DESC": "Approximately 500 ft NW from the intersection of Bay Avenue and South Terrace Drive, extending S into Saginaw Bay.",
+          "LU_SOURCE": "",
+          "RUP": 584.1,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "T",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Runup",
+          "SETUP_DPTH": 0.2,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "26011C_STUDY1",
+          "SHAPE.STLength()": 0.0025734079277045657,
+          "GFID": "fb0d1e13-eb4c-4448-bda7-621e9a62e6f4",
+          "GlobalID": "{1ADB070D-970C-4D07-A656-3EBB817F1757}"
+        }
+      }
+    },
+    {
+      "name": "wrong_case_time_unit",
+      "where": "(OBJECTID = 19498) AND SHAPE IS NOT NULL",
+      "expect": "TIME_UNIT",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 19498,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -77.28278865144948,
+              38.34251454779243
+            ],
+            [
+              -77.28293329962348,
+              38.342263377338234
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 19498,
+          "DFIRM_ID": "51099C",
+          "VERSION_ID": "2.6.3.6",
+          "TRAN_LN_ID": "51099C_4",
+          "TBASELN_ID": "51099C_1",
+          "TRAN_NO": "4",
+          "METHOD": "",
+          "XCOORD": -77.28278631,
+          "YCOORD": 38.34250688,
+          "WTR_NM": "Potomac River",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": -9999,
+          "CSTLN_TYP": "NP",
+          "BEACH_SET": "",
+          "SHORE_TYP": "",
+          "CST_MDL_ID": "51099C_1",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 6.3,
+          "SIG_HT": 2.7,
+          "SIG_PD": 3.7,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": "",
+          "EROS_METH": "",
+          "LOC_DESC": "NP",
+          "LU_SOURCE": "",
+          "RUP": -8888,
+          "ELEV_UNIT": "NP",
+          "WHAFIS_TF": "U",
+          "OVERTOP_TF": "U",
+          "BW_HGT_TF": "U",
+          "HVFLOW_TF": "U",
+          "VZONE_EXT": "Runup",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "Seconds",
+          "SOURCE_CIT": "51099C_FIRM1",
+          "SHAPE.STLength()": 0.00028984418960094067,
+          "GFID": "7cc616fa-bc92-4c71-902e-540a05bf321e",
+          "GlobalID": "{475F6301-8782-4D33-A20C-2A4EB8B6F925}"
+        }
+      }
+    },
+    {
+      "name": "wrong_case_shore_type",
+      "where": "(OBJECTID = 87198) AND SHAPE IS NOT NULL",
+      "expect": "SHORE_TYP",
+      "warns": null,
+      "feature": {
+        "type": "Feature",
+        "id": 87198,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -87.38160497437522,
+              46.59676618295516
+            ],
+            [
+              -87.38149562654658,
+              46.59246013596587
+            ]
+          ]
+        },
+        "properties": {
+          "OBJECTID": 87198,
+          "DFIRM_ID": "26103C",
+          "VERSION_ID": "2.4.3.0",
+          "TRAN_LN_ID": "26103C_MQ-25",
+          "TBASELN_ID": "26103C_25",
+          "TRAN_NO": "25",
+          "METHOD": "Cut from Topo",
+          "XCOORD": -87.38151033,
+          "YCOORD": 46.59327593,
+          "WTR_NM": "Lake Superior",
+          "V_DATUM": "NAVD88",
+          "DATUM_CONV": 0.033,
+          "CSTLN_TYP": "Open Coast",
+          "BEACH_SET": "Non-Erodible Coastal Cliffs and Bluffs",
+          "SHORE_TYP": "Non-erodible Bluff",
+          "CST_MDL_ID": "26103C_4",
+          "EVENT_TYP": "1 Percent Chance",
+          "SWEL": 603.3,
+          "SIG_HT": -9999,
+          "SIG_PD": -9999,
+          "CON_HT": -9999,
+          "CON_PD": -9999,
+          "MEAN_HT": -9999,
+          "MEAN_PD": -9999,
+          "FETCH_LEN": -9999,
+          "FTCHLNUNIT": null,
+          "EROS_METH": "Not Applied",
+          "LOC_DESC": "Rocky coastline backed by forest. Located at Presque Isle Point, Marquette, MI",
+          "LU_SOURCE": null,
+          "RUP": 610.4,
+          "ELEV_UNIT": "Feet",
+          "WHAFIS_TF": "F",
+          "OVERTOP_TF": "F",
+          "BW_HGT_TF": "F",
+          "HVFLOW_TF": "F",
+          "VZONE_EXT": "Runup",
+          "SETUP_DPTH": -9999,
+          "WAVE_02PCT": "F",
+          "LEN_UNIT": "Feet",
+          "TIME_UNIT": "SECONDS",
+          "SOURCE_CIT": "26103C_STUDY4",
+          "SHAPE.STLength()": 0.004307434504804149,
+          "GFID": "3e52a32a-e137-414d-bd9d-76a01b22eab7",
+          "GlobalID": "{48589D65-4AB0-41F4-B56E-2E175D7B0E04}"
+        }
+      }
+    }
+  ]
+}

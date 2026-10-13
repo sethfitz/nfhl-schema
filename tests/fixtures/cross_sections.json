@@ -612,8 +612,8 @@
     {
       "name": "american_samoa_datum",
       "where": "(V_DATUM = 'ASVD02') AND XS_LN_ID IS NOT NULL AND XS_LN_ID <> '' AND WTR_NM IS NOT NULL AND WTR_NM <> '' AND MODEL_ID IS NOT NULL AND MODEL_ID <> '' AND LEN_UNIT IS NOT NULL AND LEN_UNIT <> '' AND SOURCE_CIT IS NOT NULL AND WSEL_REG <> -9999 AND WSEL_REG IS NOT NULL AND STRMBED_EL <> -9999 AND STRMBED_EL IS NOT NULL AND (XS_LN_TYP = 'LETTERED, MAPPED' OR XS_LTR IS NULL OR (XS_LTR = '' AND XS_LTR NOT LIKE ' ')) AND SHAPE.STLength() < 0.01",
-      "expect": "V_DATUM",
-      "warns": null,
+      "expect": null,
+      "warns": "V_DATUM",
       "feature": {
         "type": "Feature",
         "id": 68208,

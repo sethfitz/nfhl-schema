@@ -8,6 +8,7 @@ then regenerate.
 from __future__ import annotations
 
 from nfhl.models.base_flood_elevations import BaseFloodElevation
+from nfhl.models.coastal_transects import CoastalTransect
 from nfhl.models.cross_sections import CrossSection
 from nfhl.models.firm_panels import FirmPanel
 from nfhl.models.flood_hazard_boundaries import FloodHazardBoundary
@@ -25,6 +26,7 @@ from nfhl.models.water_lines import WaterLine
 
 __all__ = [
     "BaseFloodElevation",
+    "CoastalTransect",
     "CrossSection",
     "FirmPanel",
     "FloodHazardBoundary",

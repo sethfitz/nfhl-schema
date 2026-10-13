@@ -197,8 +197,8 @@
     {
       "name": "american_samoa_datum",
       "where": "(V_DATUM = 'ASVD02') AND ELEV <> -9999 AND ELEV IS NOT NULL AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
-      "expect": "V_DATUM",
-      "warns": null,
+      "expect": null,
+      "warns": "V_DATUM",
       "feature": {
         "type": "Feature",
         "id": 1563002,
@@ -233,8 +233,8 @@
     {
       "name": "guam_2003_datum",
       "where": "(V_DATUM = 'GUVD03') AND ELEV <> -9999 AND ELEV IS NOT NULL AND SOURCE_CIT IS NOT NULL AND BFE_LN_ID IS NOT NULL AND BFE_LN_ID <> '' AND SHAPE.STLength() < 0.01",
-      "expect": "V_DATUM",
-      "warns": null,
+      "expect": null,
+      "warns": "V_DATUM",
       "feature": {
         "type": "Feature",
         "id": 1563286,

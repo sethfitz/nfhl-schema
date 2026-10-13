@@ -794,6 +794,17 @@ GEOMETRIES = {
         "contour, the starting point for the transect and the measuring point for "
         "the coastal mapping.",
     ),
+    "S_Cst_Tsct_Ln": LayerGeometry(
+        "esriGeometryPolyline",
+        ("LINE_STRING",),
+        "“The spatial elements representing coastal transects are lines”, and "
+        "Table 4 holds S_Cst_Tsct_Ln to “Must Be Single Part”, so a LineString, "
+        "though the service's polyline type admits several parts.",
+        "The coastal transect: in the reference's words, a coastal transect line "
+        "within the Flood Risk Project area, generally extending from offshore all "
+        "the way across the coastal floodplain, with the stillwater, wave and "
+        "runup values of the coastal analysis along it.",
+    ),
 }
 
 

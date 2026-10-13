@@ -5,8 +5,10 @@ it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
 `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`, `S_Wtr_Ln.SHOWN_FIRM`,
 `S_Wtr_Ln.SHOWN_INDX`, `S_Levee.USACE_LEV`, `S_Levee.PL84_99TF`,
 `S_Pol_Ar.ANI_TF`, `S_Gen_Struct.SHOWN_FIRM`, `S_Wtr_Ar.SHOWN_FIRM`,
-`S_Wtr_Ar.SHOWN_INDX`. The last is a legacy value: common in the data, not in
-the reference.
+`S_Wtr_Ar.SHOWN_INDX`, `S_Cst_Tsct_Ln.WHAFIS_TF`, `S_Cst_Tsct_Ln.OVERTOP_TF`,
+`S_Cst_Tsct_Ln.BW_HGT_TF`, `S_Cst_Tsct_Ln.HVFLOW_TF`,
+`S_Cst_Tsct_Ln.WAVE_02PCT`. The last is a legacy value: common in the data, not
+in the reference.
 
 ## Values
 
@@ -17,6 +19,7 @@ the reference.
 
 ## Used By
 
+- [`CoastalTransect`](../coastal_transect.md)
 - [`FloodHazardZone`](../flood_hazard_zone.md)
 - [`GeneralStructure`](../general_structure.md)
 - [`Levee`](../levee.md)

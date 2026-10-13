@@ -2,7 +2,8 @@
 
 Values of `D_V_Datum` that apply to the FIRM Database, each as the data stores
 it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`,
-`S_Tsct_Basln.V_DATUM`.
+`S_Tsct_Basln.V_DATUM`, `S_Cst_Tsct_Ln.V_DATUM`. The last 2 are legacy values:
+common in the data, not in the reference.
 
 ## Values
 
@@ -17,10 +18,13 @@ it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`,
 - `PRVD02` - Puerto Rico Vertical Datum of 2002. Code `PRVD02`.
 - `VIVD09` - Virgin Islands Vertical Datum of 2009. Code `VIVD09`.
 - `NP` - Code `NP`.
+- `ASVD02` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. American Samoa's vertical datum (the American Samoa Vertical Datum of 2002), which D_V_Datum does not list; it lists the other territories' GUVD04, NMVD03, PRVD02 and VIVD09. Every row is in one DFIRM, 600001. Held by 374 of 22,367 rows of `V_DATUM` on NFHL service layer 15, counted 2026-10-13.
+- `GUVD03` - Legacy: not in the November 2024 Domain Tables Technical Reference; validates with a LegacyValueWarning. Guam's vertical datum written GUVD03, where D_V_Datum lists GUVD04. Every row is in one DFIRM, 660001. Held by 62 of 22,367 rows of `V_DATUM` on NFHL service layer 15, counted 2026-10-13.
 
 ## Used By
 
 - [`BaseFloodElevation`](../base_flood_elevation.md)
+- [`CoastalTransect`](../coastal_transect.md)
 - [`CrossSection`](../cross_section.md)
 - [`FloodHazardZone`](../flood_hazard_zone.md)
 - [`TransectBaseline`](../transect_baseline.md)

@@ -245,9 +245,11 @@ BFE_CASES: list[Case] = [
     ("meters", "LEN_UNIT = 'Meters'", None, None),
     # 3,021 rows; nothing in the reference says an elevation is positive.
     ("below_datum", "ELEV < 0 AND LEN_UNIT = 'Feet'", None, None),
+    # Legacy values that the Coastal Transects' counts admit into D_V_Datum, so
+    # they validate with a warning here although this layer's count is under the bar.
+    ("american_samoa_datum", "V_DATUM = 'ASVD02'", None, "V_DATUM"),
+    ("guam_2003_datum", "V_DATUM = 'GUVD03'", None, "V_DATUM"),
     # Findings: published lines the reference does not allow.
-    ("american_samoa_datum", "V_DATUM = 'ASVD02'", "V_DATUM", None),
-    ("guam_2003_datum", "V_DATUM = 'GUVD03'", "V_DATUM", None),
     ("navd29_datum", "V_DATUM = 'NAVD29'", "V_DATUM", None),
     ("no_datum", "V_DATUM IS NULL", "V_DATUM", None),
     ("no_source_citation", "SOURCE_CIT IS NULL", "SOURCE_CIT", None),
@@ -332,7 +334,8 @@ XS_CASES: list[Case] = [
         LETTER_RULE,
         None,
     ),
-    ("american_samoa_datum", "V_DATUM = 'ASVD02'", "V_DATUM", None),
+    # Admitted into D_V_Datum by the Coastal Transects' count; a warning here.
+    ("american_samoa_datum", "V_DATUM = 'ASVD02'", None, "V_DATUM"),
     ("ngvd88_datum", "V_DATUM = 'NGVD88'", "V_DATUM", None),
     ("no_source_citation", "SOURCE_CIT IS NULL", "SOURCE_CIT", None),
     ("no_water_surface", "WSEL_REG = -9999", "WSEL_REG", None),
@@ -1235,6 +1238,249 @@ BASELINE_SPARSE = {
     "wrong_case_tidal_datum",
 }
 
+# The coastal transects whose DFIRMs hold a value that differs from a reference
+# value only in case (`Cut From Topo`, `OPEN COAST`, `Seconds`). The service folds
+# case, so no `where` separates them from the reference's spelling; read from every
+# row, they are 4,762 rows in these DFIRMs, too many to pin by OBJECTID. The clean
+# cases leave these DFIRMs out, and the cases about a wrong-case value are pinned.
+CASE_VARIANT_DFIRMS = [
+    "020037",
+    "020094",
+    "02220C",
+    "06001C",
+    "06015C",
+    "06023C",
+    "060298",
+    "06037C",
+    "06041C",
+    "06045C",
+    "06059C",
+    "06073C",
+    "06081C",
+    "06083C",
+    "06087C",
+    "06097C",
+    "06111C",
+    "12005C",
+    "12009C",
+    "12011C",
+    "12015C",
+    "12021C",
+    "12031C",
+    "12033C",
+    "12035C",
+    "12045C",
+    "12057C",
+    "12061C",
+    "12071C",
+    "12075C",
+    "12081C",
+    "12085C",
+    "12089C",
+    "12091C",
+    "12099C",
+    "12103C",
+    "12109C",
+    "12111C",
+    "12113C",
+    "12115C",
+    "12127C",
+    "12131C",
+    "13029C",
+    "13039C",
+    "13051C",
+    "13127C",
+    "13191C",
+    "150002",
+    "17031C",
+    "22053C",
+    "23009C",
+    "26011C",
+    "26017C",
+    "26019C",
+    "26029C",
+    "26033C",
+    "26047C",
+    "26055C",
+    "26069C",
+    "26089C",
+    "26097C",
+    "26099C",
+    "26101C",
+    "26103C",
+    "26105C",
+    "26109C",
+    "26127C",
+    "26147C",
+    "26159C",
+    "27137C",
+    "34033C",
+    "36011C",
+    "36055C",
+    "36073C",
+    "37019C",
+    "37031C",
+    "37053C",
+    "37055C",
+    "37095C",
+    "37129C",
+    "37133C",
+    "37141C",
+    "39007C",
+    "39035C",
+    "39043C",
+    "39123C",
+    "39143C",
+    "41007C",
+    "41015C",
+    "41039C",
+    "41041C",
+    "41057C",
+    "44005C",
+    "51099C",
+    "53035C",
+    "53055C",
+    "53061C",
+    "55029C",
+    "55059C",
+    "55061C",
+    "55071C",
+    "55079C",
+    "55083C",
+    "55089C",
+    "55101C",
+    "55117C",
+]
+
+# Every required field populated and every vocabulary value a reference one,
+# unless the case is about that. A required number is -9999 when missing; a
+# vocabulary field that is only applicable is missing as NULL or `''`, and a lone
+# space is a value the vocabulary rejects.
+COASTAL_FIELDS = {
+    **{
+        f: f"NOT {missing(f)}"
+        for f in (
+            "DFIRM_ID",
+            "VERSION_ID",
+            "TRAN_LN_ID",
+            "TBASELN_ID",
+            "TRAN_NO",
+            "WTR_NM",
+            "LOC_DESC",
+            "SOURCE_CIT",
+        )
+    },
+    **{
+        f: f"{f} IS NOT NULL AND {f} <> -9999"
+        for f in ("XCOORD", "YCOORD", "SWEL", "RUP")
+    },
+    **{
+        f: f"{f} IN ({sql_list(domain_values(domain))})"
+        for f, domain in (
+            ("V_DATUM", "D_V_Datum"),
+            ("CSTLN_TYP", "D_Cst_Typ"),
+            ("EVENT_TYP", "D_Event"),
+            ("ELEV_UNIT", "D_Length_Units"),
+        )
+    },
+    **{
+        f: f"{f} IN ({sql_list(TRUE_FALSE)})"
+        for f in ("WHAFIS_TF", "OVERTOP_TF", "BW_HGT_TF", "HVFLOW_TF", "WAVE_02PCT")
+    },
+    **{
+        f: f"({missing(f)} OR {f} IN ({sql_list(domain_values(domain))}))"
+        for f, domain in (
+            ("METHOD", "D_Method"),
+            ("BEACH_SET", "D_BeachSet"),
+            ("SHORE_TYP", "D_Shr_Typ"),
+            ("FTCHLNUNIT", "D_Length_Units"),
+            ("EROS_METH", "D_Erosion"),
+            ("VZONE_EXT", "D_VZone"),
+            ("LEN_UNIT", "D_Length_Units"),
+            ("TIME_UNIT", "D_Time_Units"),
+        )
+    },
+    "case_variants": f"DFIRM_ID NOT IN ({sql_list(CASE_VARIANT_DFIRMS)})",
+    "geometry": "SHAPE IS NOT NULL",
+}
+COASTAL_CASES: list[Case] = [
+    # Pinned: every optional field populated, in a DFIRM the clean cases leave out.
+    ("full_study", "OBJECTID = 59659", None, None),
+    (
+        "only_required_fields",
+        "METHOD IS NULL AND BEACH_SET IS NULL AND SHORE_TYP IS NULL "
+        "AND EROS_METH IS NULL AND VZONE_EXT IS NULL AND TIME_UNIT IS NULL "
+        "AND LEN_UNIT IS NULL AND FTCHLNUNIT IS NULL AND SIG_HT = -9999",
+        None,
+        None,
+    ),
+    ("open_coast", "CSTLN_TYP = 'Open Coast'", None, None),
+    ("sheltered_waters", "CSTLN_TYP = 'Sheltered Waters'", None, None),
+    (
+        "combined_coast",
+        "CSTLN_TYP = 'Combined Open Coast and Sheltered Waters'",
+        None,
+        None,
+    ),
+    ("cut_from_topo", "METHOD = 'Cut from Topo'", None, None),
+    ("combo_of_topo_and_survey", "METHOD = 'Combo of Topo and Survey'", None, None),
+    ("digitized_from_firm", "METHOD = 'Digitized from FIRM'", None, None),
+    ("not_populated_datum", "V_DATUM = 'NP'", None, None),
+    ("runup_extent", "VZONE_EXT = 'Runup'", None, None),
+    (
+        "splash_zone_extent",
+        "VZONE_EXT = 'Wave Overtopping Splash Zone'",
+        None,
+        None,
+    ),
+    ("pfd_extent", "VZONE_EXT = 'PFD'", None, None),
+    ("fetch_in_miles", "FETCH_LEN > 0 AND FTCHLNUNIT = 'Miles'", None, None),
+    ("wetland_shore", "SHORE_TYP = 'Wetland'", None, None),
+    # Section 7.3's number for a field not populated is a value, not a null.
+    ("not_populated_numbers", "RUP = -8888 AND SWEL = -8888", None, None),
+    ("datum_conversion", "DATUM_CONV IS NOT NULL AND DATUM_CONV <> -9999", None, None),
+    ("no_model_id", "CST_MDL_ID IS NULL", None, None),
+    # Pinned: its only DFIRM is one the clean cases leave out.
+    ("time_in_years", "OBJECTID = 143685", None, None),
+    # A legacy value (spec/legacy.json), which validates with a warning.
+    ("legacy_not_populated_event", "EVENT_TYP = 'NP'", None, "EVENT_TYP"),
+    # Findings: published transects the reference does not allow. Each case names
+    # one field; most rows break several.
+    ("no_location_description", "OBJECTID = 21877", "LOC_DESC", None),
+    ("no_runup_elevation", "RUP = -9999", "RUP", None),
+    ("no_baseline_id", missing("TBASELN_ID"), "TBASELN_ID", None),
+    ("no_flood_event", missing("EVENT_TYP"), "EVENT_TYP", None),
+    ("no_source_citation", "OBJECTID = 139086", "SOURCE_CIT", None),
+    ("lone_space_fetch_unit", "FTCHLNUNIT LIKE ' '", "FTCHLNUNIT", None),
+    ("lone_space_erosion", "OBJECTID = 8957", "EROS_METH", None),
+    # Wrong case, pinned: the model rejects the spelling, the service reports it
+    # as the right one.
+    ("wrong_case_beach_setting", "OBJECTID = 149566", "BEACH_SET", None),
+    ("wrong_case_flood_event", "OBJECTID = 12209", "EVENT_TYP", None),
+    ("wrong_case_time_unit", "OBJECTID = 19498", "TIME_UNIT", None),
+    ("wrong_case_shore_type", "OBJECTID = 87198", "SHORE_TYP", None),
+]
+# Cases pinned by OBJECTID: the row sits in a case-variant DFIRM, or holds a
+# wrong-case or legacy value in a field the case is not about.
+COASTAL_PINNED = {c[0] for c in COASTAL_CASES if "OBJECTID = " in c[1]}
+# The findings and values with only a handful of rows, which may not be short.
+COASTAL_SPARSE = {
+    *COASTAL_PINNED,
+    "digitized_from_firm",
+    "not_populated_datum",
+    "datum_conversion",
+}
+
+
+def coastal_filters(name: str) -> str:
+    """The clean clauses, except for a pinned case: its `OBJECTID` already names a
+    row the model rejects for the case's field alone, and a legacy value or a
+    wrong-case one in another field would only make the clean clauses miss it."""
+    if name in COASTAL_PINNED:
+        return COASTAL_FIELDS["geometry"]
+    return clean_except_expected(COASTAL_FIELDS, COASTAL_CASES, COASTAL_SPARSE)(name)
+
+
 FIXTURES_BY_LAYER = [
     Fixture(28, "flood_hazard_zones.json", ZONE_CASES, zone_filters),
     Fixture(
@@ -1323,6 +1569,7 @@ FIXTURES_BY_LAYER = [
         BASELINE_CASES,
         clean_except_expected(BASELINE_FIELDS, BASELINE_CASES, BASELINE_SPARSE),
     ),
+    Fixture(15, "coastal_transects.json", COASTAL_CASES, coastal_filters),
 ]
 
 

@@ -527,3 +527,28 @@ def test_the_pair_counts_find_known_violations(
     total = reader.observed(layer)["total"]
     for rows in combos.values():
         assert sum(r["count"] for r in rows) == total
+
+
+def test_a_field_names_its_domain_as_the_domain_tables_spell_it(
+    reader: SpecReader,
+) -> None:
+    # S_Cst_Tsct_Ln's field table joins VZONE_EXT to `D_VZONE`; the Domain
+    # Tables reference titles the table `D_VZone`.
+    fields = {f.name: f for f in reader.reference_table("S_Cst_Tsct_Ln").fields}
+    assert fields["VZONE_EXT"].domain == "D_VZone"
+    assert reader.domain("D_VZone").values
+
+
+def test_the_event_dashes_are_repaired_to_what_the_service_publishes(
+    reader: SpecReader, coastal_layer: Layer
+) -> None:
+    # D_Event carries the note about dashes that D_Zone_Subtype's does: the
+    # reference prints `1-Percent-Chance` and the database template has none.
+    events = {v.published: v.value for v in reader.domain("D_Event").values}
+    assert events["1-Percent-Chance"] == "1 Percent Chance"
+    assert events["1-Percent-Chance Future Conditions"] == (
+        "1 Percent Chance Future Conditions"
+    )
+    observed = observed_values(reader, coastal_layer, "EVENT_TYP")
+    assert {"1 Percent Chance", "0.2 Percent Chance"} <= observed
+    assert not [v for v in observed if "-" in v]

@@ -60,6 +60,10 @@
     {
       "path": "service/observed/18.json",
       "retrieved_at": "2026-10-12T23:11:04Z"
+    },
+    {
+      "path": "service/observed/15.json",
+      "retrieved_at": "2026-10-13T01:08:04Z"
     }
   ],
   "threshold": 0.001,
@@ -374,6 +378,102 @@
       "value": "ZERO FOOT C",
       "count": 54,
       "note": "A `Zero Foot Contour ...` type cut to 11 characters and upper-cased; the cut leaves no word saying which of the three. Every row is in one DFIRM, 24009C."
+    },
+    {
+      "domain": "D_Method",
+      "field": "METHOD",
+      "layer": 15,
+      "value": "NP",
+      "count": 249,
+      "note": "Section 7.3 of the FIRM Database reference's value for a text field “intentionally not populated”, which the FEMA Project Officer may allow in a required field. D_Method lists four methods and not it (November 2024 edition). Seven DFIRMs: 22023C 110, 22113C 75, 22095C 27, 38005C 17, 34015C 10, 55047C 9, 26011C 1."
+    },
+    {
+      "domain": "D_V_Datum",
+      "field": "V_DATUM",
+      "layer": 15,
+      "value": "ASVD02",
+      "count": 374,
+      "note": "American Samoa's vertical datum (the American Samoa Vertical Datum of 2002), which D_V_Datum does not list; it lists the other territories' GUVD04, NMVD03, PRVD02 and VIVD09. Every row is in one DFIRM, 600001."
+    },
+    {
+      "domain": "D_V_Datum",
+      "field": "V_DATUM",
+      "layer": 15,
+      "value": "GUVD03",
+      "count": 62,
+      "note": "Guam's vertical datum written GUVD03, where D_V_Datum lists GUVD04. Every row is in one DFIRM, 660001."
+    },
+    {
+      "domain": "D_Event",
+      "field": "EVENT_TYP",
+      "layer": 15,
+      "value": "NP",
+      "count": 8873,
+      "note": "Section 7.3 of the FIRM Database reference's value for a text field “intentionally not populated”, which the FEMA Project Officer may allow in a required field. D_Event lists nine event types and not it (November 2024 edition). 132 DFIRMs, the largest 02110C (992), 600001 (374), 25023C (236), 25001C (204), 155166 (182) and 48201C (180)."
+    },
+    {
+      "domain": "D_Length_Units",
+      "field": "FTCHLNUNIT",
+      "layer": 15,
+      "value": "NA",
+      "count": 28,
+      "note": "`NA` where D_Length_Units lists `NP` for a field not populated. The same 28 coastal transects hold it in LEN_UNIT and TIME_UNIT, all in one DFIRM, 26099C."
+    },
+    {
+      "domain": "D_VZone",
+      "field": "VZONE_EXT",
+      "layer": 15,
+      "value": "NP",
+      "count": 232,
+      "note": "Section 7.3 of the FIRM Database reference's value for a text field “intentionally not populated”, which the FEMA Project Officer may allow in a required field. D_VZone lists five V zone types and not it (November 2024 edition). Six DFIRMs: 22023C 110, 22113C 75, 22095C 27, 34015C 10, 55047C 9, 26011C 1."
+    },
+    {
+      "domain": "D_VZone",
+      "field": "VZONE_EXT",
+      "layer": 15,
+      "value": "WHAFIS",
+      "count": 111,
+      "note": "A wave model, not a V zone extent: D_Wave_Mdl lists `WHAFIS 3.0 (1988)`, `WHAFIS 3.0 GL (1983)` and `WHAFIS 4.0 (2007)`. Five DFIRMs: 22053C 41, 25023C 30, 34033C 18, 44009C 16, 44005C 6."
+    },
+    {
+      "domain": "D_VZone",
+      "field": "VZONE_EXT",
+      "layer": 15,
+      "value": "30 FOOT SPLASH ZONE BEHIND S",
+      "count": 66,
+      "note": "A description cut at the field's 28 characters, mid-phrase. It names a splash zone, which D_VZone lists as `Wave Overtopping Splash Zone`, but the cut leaves no wording that matches. Three DFIRMs: 44005C 37, 44009C 26, 25023C 3."
+    },
+    {
+      "domain": "D_VZone",
+      "field": "VZONE_EXT",
+      "layer": 15,
+      "value": "RUNUP EXTENT",
+      "count": 41,
+      "note": "D_VZone's `Runup` with `EXTENT` added, the field's own subject. Two DFIRMs: 44005C 34, 34033C 7."
+    },
+    {
+      "domain": "D_Length_Units",
+      "field": "LEN_UNIT",
+      "layer": 15,
+      "value": "NA",
+      "count": 28,
+      "note": "`NA` where D_Length_Units lists `NP` for a field not populated. The same 28 coastal transects hold it in FTCHLNUNIT and TIME_UNIT, all in one DFIRM, 26099C."
+    },
+    {
+      "domain": "D_Time_Units",
+      "field": "TIME_UNIT",
+      "layer": 15,
+      "value": "NP",
+      "count": 308,
+      "note": "Section 7.3 of the FIRM Database reference's value for a text field “intentionally not populated”, which the FEMA Project Officer may allow in a required field. D_Time_Units lists seven time units and not it (November 2024 edition). Four DFIRMs: 22023C 110, 34029C 96, 22113C 75, 22095C 27."
+    },
+    {
+      "domain": "D_Time_Units",
+      "field": "TIME_UNIT",
+      "layer": 15,
+      "value": "NA",
+      "count": 28,
+      "note": "`NA` where D_Time_Units has no not-populated value; the other fields of the same 28 coastal transects hold it too. All in one DFIRM, 26099C."
     }
   ]
 }

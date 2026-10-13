@@ -416,7 +416,7 @@ def test_the_census_reproduces_the_counts_spec_readme_records(
     assert broken("dual_zone") == 73
     assert broken("@forbid_if(zone_subty)", "@require_if(zone_subty)") == 694
     assert broken("sfha_tf") == 17
-    assert broken("@forbid_if(v_datum)") == 16_571
+    assert broken("@forbid_if(v_datum)") == 16_572
     assert broken("@forbid_if(len_unit)") == 1_468
     # 8,638 velocities without a unit, less the 1,257 lone spaces.
     assert broken("@require_if(vel_unit)") == 7_381

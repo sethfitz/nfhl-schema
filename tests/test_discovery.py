@@ -9,6 +9,7 @@ from overture.schema.system.discovery import ModelKey, discover_models
 
 from nfhl.models import (
     BaseFloodElevation,
+    CoastalTransect,
     CrossSection,
     FirmPanel,
     FloodHazardBoundary,
@@ -45,6 +46,7 @@ def test_discovery_finds_the_model_through_the_entry_point() -> None:
         GeneralStructure,
         WaterArea,
         TransectBaseline,
+        CoastalTransect,
     } <= set(found.values())
 
 
@@ -70,6 +72,7 @@ def test_overture_codegen_lists_the_model() -> None:
         "GeneralStructure",
         "WaterArea",
         "TransectBaseline",
+        "CoastalTransect",
     } <= set(listed)
 
 
@@ -90,6 +93,7 @@ def test_the_tag_provider_tags_the_model_nfhl() -> None:
     assert "nfhl" in tagged["nfhl_general_structure"]
     assert "nfhl" in tagged["nfhl_water_area"]
     assert "nfhl" in tagged["nfhl_transect_baseline"]
+    assert "nfhl" in tagged["nfhl_coastal_transect"]
 
 
 def test_the_tag_provider_leaves_other_packages_alone() -> None:

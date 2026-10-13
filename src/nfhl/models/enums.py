@@ -34,6 +34,32 @@ class BasemapTyp(str, DocumentedEnum):
     NP = "NP", "Code `NP`."
 
 
+class BeachSet(str, DocumentedEnum):
+    """Values of `D_BeachSet` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_Cst_Tsct_Ln.BEACH_SET`.
+    """
+
+    COBBLE_GRAVEL_SHINGLE_OR_MIXED_GRAIN_SIZED_BEACH_AND_BERMS = (
+        "Cobble, Gravel, Shingle, or Mixed Grain Sized Beach and Berms",
+        "Code `1050`.",
+    )
+    ERODIBLE_COASTAL_BLUFFS = "Erodible Coastal Bluffs", "Code `1020`."
+    NON_ERODIBLE_COASTAL_CLIFFS_AND_BLUFFS = (
+        "Non-Erodible Coastal Cliffs and Bluffs",
+        "Code `1030`.",
+    )
+    SANDY_BEACH_BACKED_BY_LOW_SAND_BERM_OR_HIGH_SAND_DUNE_FORMATION = (
+        "Sandy Beach Backed by Low Sand Berm or High Sand Dune Formation",
+        "Code `1000`.",
+    )
+    SANDY_BEACH_BACKED_BY_SHORE_PROTECTION_STRUCTURES = (
+        "Sandy Beach Backed by Shore Protection Structures",
+        "Code `1010`.",
+    )
+    TIDAL_FLATS_AND_WETLANDS = "Tidal Flats and Wetlands", "Code `1040`."
+    NP = "NP", "Code `NP`."
+
+
 class CstStruct(str, DocumentedEnum):
     """Values of `D_Cst_Struct` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Gen_Struct.CST_STRUCT`.
@@ -43,6 +69,95 @@ class CstStruct(str, DocumentedEnum):
     COASTAL_ARMORING_STRUCTURE = "Coastal Armoring Structure", "Code `2000`."
     MISCELLANEOUS_STRUCTURE = "Miscellaneous Structure", "Code `3000`."
     NP = "NP", "Code `NP`."
+
+
+class CstTyp(str, DocumentedEnum):
+    """Values of `D_Cst_Typ` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_Cst_Tsct_Ln.CSTLN_TYP`.
+    """
+
+    OPEN_COAST = "Open Coast", "Code `1000`."
+    SHELTERED_WATERS = "Sheltered Waters", "Code `2000`."
+    COMBINED_OPEN_COAST_AND_SHELTERED_WATERS = (
+        "Combined Open Coast and Sheltered Waters",
+        "Code `3000`.",
+    )
+    NP = "NP", "Code `NP`."
+
+
+class Erosion(str, DocumentedEnum):
+    """Values of `D_Erosion` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_Cst_Tsct_Ln.EROS_METH`.
+    """
+
+    NOT_APPLIED = "Not Applied", "Code `1010`."
+    DUNE_REMOVAL = "Dune Removal", "Code `1020`."
+    DUNE_RETREAT = "Dune Retreat", "Code `1030`."
+    K_D = "K-D", "Code `1040`."
+    MK_A = "MK-A", "Code `1050`."
+    SBEACH = "SBEACH", "Code `1060`."
+    OTHER = "Other", "Code `9000`."
+    NP = "NP", "Code `NP`."
+
+
+class Event(str, DocumentedEnum):
+    """Values of `D_Event` that apply to the FIRM Database, each as the data stores it.
+    Used by `S_Cst_Tsct_Ln.EVENT_TYP`. The last is a legacy value: common in the
+    data, not in the reference.
+    """
+
+    V_50_PERCENT_CHANCE = (
+        "50 Percent Chance",
+        "Code `50pct`. Printed in the reference as `50-Percent-Chance`.",
+    )
+    V_10_PERCENT_CHANCE = (
+        "10 Percent Chance",
+        "Code `10pct`. Printed in the reference as `10-Percent-Chance`.",
+    )
+    V_4_PERCENT_CHANCE = (
+        "4 Percent Chance",
+        "Code `04pct`. Printed in the reference as `4-Percent-Chance`.",
+    )
+    V_2_PERCENT_CHANCE = (
+        "2 Percent Chance",
+        "Code `02pct`. Printed in the reference as `2-Percent-Chance`.",
+    )
+    V_1_PERCENT_PLUS_CHANCE = (
+        "1 Percent Plus Chance",
+        "Code `01plus`. Printed in the reference as `1-Percent-Plus-Chance`.",
+    )
+    V_1_PERCENT_MINUS_CHANCE = (
+        "1 Percent Minus Chance",
+        "Code `01minus`. Printed in the reference as `1-Percent-Minus-Chance`.",
+    )
+    V_1_PERCENT_CHANCE = (
+        "1 Percent Chance",
+        "Code `01pct`. Printed in the reference as `1-Percent-Chance`.",
+    )
+    V_0_2_PERCENT_CHANCE = (
+        "0.2 Percent Chance",
+        "Code `0_2pct`. Printed in the reference as `0.2-Percent-Chance`.",
+    )
+    V_1_PERCENT_CHANCE_FUTURE_CONDITIONS = (
+        "1 Percent Chance Future Conditions",
+        (
+            "Code `01pctfut`. Printed in the reference as `1-Percent-Chance Future "
+            "Conditions`."
+        ),
+    )
+    NP = (
+        "NP",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Section 7.3 of the FIRM Database "
+            "reference's value for a text field “intentionally not populated”, "
+            "which the FEMA Project Officer may allow in a required field. D_Event "
+            "lists nine event types and not it (November 2024 edition). 132 DFIRMs,"
+            " the largest 02110C (992), 600001 (374), 25023C (236), 25001C (204), "
+            "155166 (182) and 48201C (180). Held by 8,873 of 22,367 rows of "
+            "`EVENT_TYP` on NFHL service layer 15, counted 2026-10-13."
+        ),
+    )
 
 
 class LOMCStatus(str, DocumentedEnum):
@@ -61,7 +176,9 @@ class LOMCStatus(str, DocumentedEnum):
 class LengthUnits(str, DocumentedEnum):
     """Values of `D_Length_Units` that apply to the FIRM Database, each as the data
     stores it. Used by `S_Fld_Haz_Ar.LEN_UNIT`, `S_BFE.LEN_UNIT`, `S_XS.LEN_UNIT`,
-    `S_Profil_Basln.DATUM_UNIT`, `S_Levee.LEN_UNIT`.
+    `S_Profil_Basln.DATUM_UNIT`, `S_Levee.LEN_UNIT`, `S_Cst_Tsct_Ln.FTCHLNUNIT`,
+    `S_Cst_Tsct_Ln.ELEV_UNIT`, `S_Cst_Tsct_Ln.LEN_UNIT`. The last is a legacy value:
+    common in the data, not in the reference.
     """
 
     CENTIMETERS = "Centimeters", "Code `CM`."
@@ -73,6 +190,20 @@ class LengthUnits(str, DocumentedEnum):
     MILLIMETERS = "Millimeters", "Code `MM`."
     U_S_SURVEY_FEET = "U.S. Survey Feet", "Code `USFT`."
     NP = "NP", "Code `NP`."
+    NA = (
+        "NA",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. `NA` where D_Length_Units lists "
+            "`NP` for a field not populated. The same 28 coastal transects hold it "
+            "in LEN_UNIT and TIME_UNIT, all in one DFIRM, 26099C. `NA` where "
+            "D_Length_Units lists `NP` for a field not populated. The same 28 "
+            "coastal transects hold it in FTCHLNUNIT and TIME_UNIT, all in one "
+            "DFIRM, 26099C. Held by 28 of 22,367 rows of `FTCHLNUNIT` on NFHL "
+            "service layer 15, counted 2026-10-13; and by 28 of 22,367 rows of "
+            "`LEN_UNIT` on NFHL service layer 15, counted 2026-10-13."
+        ),
+    )
 
 
 class LeveeAnalysisType(str, DocumentedEnum):
@@ -178,6 +309,31 @@ class LocAccuracy(str, DocumentedEnum):
     )
 
 
+class Method(str, DocumentedEnum):
+    """Values of `D_Method` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_Cst_Tsct_Ln.METHOD`. The last is a legacy value: common in the
+    data, not in the reference.
+    """
+
+    COMBO_OF_TOPO_AND_SURVEY = "Combo of Topo and Survey", "Code `1000`."
+    CUT_FROM_TOPO = "Cut from Topo", "Code `1010`."
+    DIGITIZED_FROM_FIRM = "Digitized from FIRM", "Code `1020`."
+    FIELD_SURVEY = "Field Survey", "Code `1030`."
+    NP = (
+        "NP",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Section 7.3 of the FIRM Database "
+            "reference's value for a text field “intentionally not populated”, "
+            "which the FEMA Project Officer may allow in a required field. D_Method"
+            " lists four methods and not it (November 2024 edition). Seven DFIRMs: "
+            "22023C 110, 22113C 75, 22095C 27, 38005C 17, 34015C 10, 55047C 9, "
+            "26011C 1. Held by 249 of 22,367 rows of `METHOD` on NFHL service layer"
+            " 15, counted 2026-10-13."
+        ),
+    )
+
+
 class PanelTyp(str, DocumentedEnum):
     """Values of `D_Panel_Typ` that apply to the FIRM Database, each as the data stores
     it. Used by `S_FIRM_Pan.PANEL_TYP`.
@@ -228,6 +384,19 @@ class Scale(str, DocumentedEnum):
     V_12000 = "12000", "Code `1010`."
     V_24000 = "24000", "Code `1020`."
     V_10000 = "10000", "Code `2000`."
+
+
+class ShrTyp(str, DocumentedEnum):
+    """Values of `D_Shr_Typ` that apply to the FIRM Database, each as the data stores
+    it. Used by `S_Cst_Tsct_Ln.SHORE_TYP`.
+    """
+
+    SANDY_BEACH_SMALL_DUNE = "Sandy Beach-Small Dune", "Code `1000`."
+    SANDY_BEACH_LARGE_DUNE = "Sandy Beach-Large Dune", "Code `1010`."
+    ERODIBLE_BLUFF = "Erodible Bluff", "Code `1020`."
+    NON_ERODIBLE_BLUFF = "Non-Erodible Bluff", "Code `1030`."
+    SHORE_PROTECTION_STRUCTURE = "Shore Protection Structure", "Code `1040`."
+    WETLAND = "Wetland", "Code `1050`."
 
 
 class StateFIPS(str, DocumentedEnum):
@@ -651,14 +820,54 @@ class StudyTyp(str, DocumentedEnum):
     )
 
 
+class TimeUnits(str, DocumentedEnum):
+    """Values of `D_Time_Units` that apply to the FIRM Database, each as the data
+    stores it. Used by `S_Cst_Tsct_Ln.TIME_UNIT`. The last 2 are legacy values:
+    common in the data, not in the reference.
+    """
+
+    DAYS = "DAYS", "Code `1000`."
+    HOURS = "HOURS", "Code `1010`."
+    MINUTES = "MINUTES", "Code `1020`."
+    MONTHS = "MONTHS", "Code `1030`."
+    SECONDS = "SECONDS", "Code `1040`."
+    WEEKS = "WEEKS", "Code `1050`."
+    YEARS = "YEARS", "Code `1060`."
+    NP = (
+        "NP",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Section 7.3 of the FIRM Database "
+            "reference's value for a text field “intentionally not populated”, "
+            "which the FEMA Project Officer may allow in a required field. "
+            "D_Time_Units lists seven time units and not it (November 2024 "
+            "edition). Four DFIRMs: 22023C 110, 34029C 96, 22113C 75, 22095C 27. "
+            "Held by 308 of 22,367 rows of `TIME_UNIT` on NFHL service layer 15, "
+            "counted 2026-10-13."
+        ),
+    )
+    NA = (
+        "NA",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. `NA` where D_Time_Units has no "
+            "not-populated value; the other fields of the same 28 coastal transects"
+            " hold it too. All in one DFIRM, 26099C. Held by 28 of 22,367 rows of "
+            "`TIME_UNIT` on NFHL service layer 15, counted 2026-10-13."
+        ),
+    )
+
+
 class TrueFalse(str, DocumentedEnum):
     """Values of `D_TrueFalse` that apply to the FIRM Database, each as the data stores
     it. Used by `S_Fld_Haz_Ar.SFHA_TF`, `S_Fld_Haz_Ar.DUAL_ZONE`,
     `S_Profil_Basln.SHOWN_FIRM`, `S_Profil_Basln.SHOWN_INDX`, `S_Wtr_Ln.SHOWN_FIRM`,
     `S_Wtr_Ln.SHOWN_INDX`, `S_Levee.USACE_LEV`, `S_Levee.PL84_99TF`,
     `S_Pol_Ar.ANI_TF`, `S_Gen_Struct.SHOWN_FIRM`, `S_Wtr_Ar.SHOWN_FIRM`,
-    `S_Wtr_Ar.SHOWN_INDX`. The last is a legacy value: common in the data, not in
-    the reference.
+    `S_Wtr_Ar.SHOWN_INDX`, `S_Cst_Tsct_Ln.WHAFIS_TF`, `S_Cst_Tsct_Ln.OVERTOP_TF`,
+    `S_Cst_Tsct_Ln.BW_HGT_TF`, `S_Cst_Tsct_Ln.HVFLOW_TF`,
+    `S_Cst_Tsct_Ln.WAVE_02PCT`. The last is a legacy value: common in the data, not
+    in the reference.
     """
 
     T = "T", "True (Yes). Code `T`."
@@ -779,7 +988,8 @@ class USACEDistrict(str, DocumentedEnum):
 class VDatum(str, DocumentedEnum):
     """Values of `D_V_Datum` that apply to the FIRM Database, each as the data stores
     it. Used by `S_Fld_Haz_Ar.V_DATUM`, `S_BFE.V_DATUM`, `S_XS.V_DATUM`,
-    `S_Tsct_Basln.V_DATUM`.
+    `S_Tsct_Basln.V_DATUM`, `S_Cst_Tsct_Ln.V_DATUM`. The last 2 are legacy values:
+    common in the data, not in the reference.
     """
 
     MSL = "MSL", "Mean Sea Level. Code `MSL`."
@@ -793,6 +1003,86 @@ class VDatum(str, DocumentedEnum):
     PRVD02 = "PRVD02", "Puerto Rico Vertical Datum of 2002. Code `PRVD02`."
     VIVD09 = "VIVD09", "Virgin Islands Vertical Datum of 2009. Code `VIVD09`."
     NP = "NP", "Code `NP`."
+    ASVD02 = (
+        "ASVD02",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. American Samoa's vertical datum "
+            "(the American Samoa Vertical Datum of 2002), which D_V_Datum does not "
+            "list; it lists the other territories' GUVD04, NMVD03, PRVD02 and "
+            "VIVD09. Every row is in one DFIRM, 600001. Held by 374 of 22,367 rows "
+            "of `V_DATUM` on NFHL service layer 15, counted 2026-10-13."
+        ),
+    )
+    GUVD03 = (
+        "GUVD03",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Guam's vertical datum written "
+            "GUVD03, where D_V_Datum lists GUVD04. Every row is in one DFIRM, "
+            "660001. Held by 62 of 22,367 rows of `V_DATUM` on NFHL service layer "
+            "15, counted 2026-10-13."
+        ),
+    )
+
+
+class VZone(str, DocumentedEnum):
+    """Values of `D_VZone` that apply to the FIRM Database, each as the data stores it.
+    Used by `S_Cst_Tsct_Ln.VZONE_EXT`. The last 4 are legacy values: common in the
+    data, not in the reference.
+    """
+
+    BREAKING_WAVE_HT = "Breaking Wave Ht", "Code `1060`."
+    HIGH_VELOCITY_FLOW = "High Velocity Flow", "Code `1050`."
+    RUNUP = "Runup", "Code `1030`."
+    WAVE_OVERTOPPING_SPLASH_ZONE = "Wave Overtopping Splash Zone", "Code `1010`."
+    PFD = "PFD", "Code `1020`."
+    NP = (
+        "NP",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. Section 7.3 of the FIRM Database "
+            "reference's value for a text field “intentionally not populated”, "
+            "which the FEMA Project Officer may allow in a required field. D_VZone "
+            "lists five V zone types and not it (November 2024 edition). Six "
+            "DFIRMs: 22023C 110, 22113C 75, 22095C 27, 34015C 10, 55047C 9, 26011C "
+            "1. Held by 232 of 22,367 rows of `VZONE_EXT` on NFHL service layer 15,"
+            " counted 2026-10-13."
+        ),
+    )
+    WHAFIS = (
+        "WHAFIS",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. A wave model, not a V zone "
+            "extent: D_Wave_Mdl lists `WHAFIS 3.0 (1988)`, `WHAFIS 3.0 GL (1983)` "
+            "and `WHAFIS 4.0 (2007)`. Five DFIRMs: 22053C 41, 25023C 30, 34033C 18,"
+            " 44009C 16, 44005C 6. Held by 111 of 22,367 rows of `VZONE_EXT` on "
+            "NFHL service layer 15, counted 2026-10-13."
+        ),
+    )
+    V_30_FOOT_SPLASH_ZONE_BEHIND_S = (
+        "30 FOOT SPLASH ZONE BEHIND S",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. A description cut at the field's "
+            "28 characters, mid-phrase. It names a splash zone, which D_VZone lists"
+            " as `Wave Overtopping Splash Zone`, but the cut leaves no wording that"
+            " matches. Three DFIRMs: 44005C 37, 44009C 26, 25023C 3. Held by 66 of "
+            "22,367 rows of `VZONE_EXT` on NFHL service layer 15, counted "
+            "2026-10-13."
+        ),
+    )
+    RUNUP_EXTENT = (
+        "RUNUP EXTENT",
+        (
+            "Legacy: not in the November 2024 Domain Tables Technical Reference; "
+            "validates with a LegacyValueWarning. D_VZone's `Runup` with `EXTENT` "
+            "added, the field's own subject. Two DFIRMs: 44005C 34, 34033C 7. Held "
+            "by 41 of 22,367 rows of `VZONE_EXT` on NFHL service layer 15, counted "
+            "2026-10-13."
+        ),
+    )
 
 
 class VelocityUnits(str, DocumentedEnum):
@@ -1178,9 +1468,12 @@ class ZoneSubtype(str, DocumentedEnum):
 # tuple: the members are str, so a set would keep one of two equal values
 # (`StateFIPS.V_1`, `TrueFalse.V_1`).
 LEGACY_MEMBERS: tuple[Enum, ...] = (
+    Event.NP,
+    LengthUnits.NA,
     LeveeStatus.DE_ACCREDITED,
     LeveeStatus.NEVER_ACCREDITED,
     LocAccuracy.NP,
+    Method.NP,
     ProfBaslnTyp.STREAM_RIVER,
     StateFIPS.V_5,
     StateFIPS.V_1,
@@ -1202,9 +1495,17 @@ LEGACY_MEMBERS: tuple[Enum, ...] = (
     StudyTyp.SHADED_ZONE_X_WITH_DEPTHS_LESS_THAN_1_LEGACY,
     StudyTyp.DIGITAL_CONVERSION,
     StudyTyp.SPECIAL_FLOOD_HAZARD_AREA_SFHA_WITHO,
+    TimeUnits.NP,
+    TimeUnits.NA,
     TrueFalse.V_1,
     TsctBaslnTyp.ZERO_FOOT_CONTOUR,
     TsctBaslnTyp.NON_ERODIBLE_BLUFF,
     TsctBaslnTyp.ZERO_FOOT_C,
+    VDatum.ASVD02,
+    VDatum.GUVD03,
+    VZone.NP,
+    VZone.WHAFIS,
+    VZone.V_30_FOOT_SPLASH_ZONE_BEHIND_S,
+    VZone.RUNUP_EXTENT,
     ZoneSubtype.AREA_WITH_REDUCED_FLOOD_RISK_DUE_TO_LEVEE,
 )

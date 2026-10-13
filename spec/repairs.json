@@ -15,6 +15,13 @@
       "reason": "The same note, for the subtypes without ANNUAL CHANCE: `1-PCT FUTURE CONDITIONS` is published as `1 PCT FUTURE CONDITIONS`."
     },
     {
+      "applies_to": "D_Event",
+      "find": "-",
+      "replace": " ",
+      "quote": "Note: That the dashes will stay in the Domain Tables Technical Reference, however the FIRM DB template will not have dashes, and neither will DVT accept them/require them.",
+      "reason": "The note heads D_Event as it heads D_Zone_Subtype. The reference prints `1-Percent-Chance`; the service publishes `1 Percent Chance` on 13,376 coastal transects and the dashed form on none. Every dash in D_Event's FIRM descriptions joins words (`1-Percent-Chance Future Conditions`), so none is kept."
+    },
+    {
       "applies_to": "Flood Zone and Zone Subtype Cross-Walk",
       "find": "NON_ACCREDITED",
       "replace": "NON-ACCREDITED",

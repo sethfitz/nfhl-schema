@@ -33,6 +33,7 @@ nfhl_firm_panel = "nfhl.models:FirmPanel"
 nfhl_general_structure = "nfhl.models:GeneralStructure"
 nfhl_water_area = "nfhl.models:WaterArea"
 nfhl_transect_baseline = "nfhl.models:TransectBaseline"
+nfhl_coastal_transect = "nfhl.models:CoastalTransect"
 
 # Tags the models above with `nfhl`, so `--tag nfhl` selects them.
 [project.entry-points."overture.tag_providers"]

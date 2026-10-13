@@ -255,6 +255,72 @@
           "quote": "This is required for structures that have a contained in structure type"
         }
       ]
+    },
+    "S_Cst_Tsct_Ln": {
+      "units": [
+        {
+          "field": "SWEL",
+          "unit_field": "ELEV_UNIT",
+          "quote": "This is the unit of measurement for the SWEL and runup fields."
+        },
+        {
+          "field": "RUP",
+          "unit_field": "ELEV_UNIT",
+          "quote": "This is the unit of measurement for the SWEL and runup fields."
+        },
+        {
+          "field": "SETUP_DPTH",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for wave setup depth, controlling wave height, significant wave height or mean wave height."
+        },
+        {
+          "field": "CON_HT",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for wave setup depth, controlling wave height, significant wave height or mean wave height."
+        },
+        {
+          "field": "SIG_HT",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for wave setup depth, controlling wave height, significant wave height or mean wave height."
+        },
+        {
+          "field": "MEAN_HT",
+          "unit_field": "LEN_UNIT",
+          "quote": "This unit indicates the measurement system used for wave setup depth, controlling wave height, significant wave height or mean wave height."
+        },
+        {
+          "field": "SIG_PD",
+          "unit_field": "TIME_UNIT",
+          "quote": "The period values all should use the same unit of time measurement."
+        },
+        {
+          "field": "CON_PD",
+          "unit_field": "TIME_UNIT",
+          "quote": "The period values all should use the same unit of time measurement."
+        },
+        {
+          "field": "MEAN_PD",
+          "unit_field": "TIME_UNIT",
+          "quote": "The period values all should use the same unit of time measurement."
+        },
+        {
+          "field": "FETCH_LEN",
+          "unit_field": "FTCHLNUNIT",
+          "quote": "This unit indicates the measurement system used for the fetch length."
+        }
+      ],
+      "datums": [
+        {
+          "field": "SWEL",
+          "datum_field": "V_DATUM",
+          "quote": "The vertical datum indicates the reference surface from which the flood elevations are measured."
+        },
+        {
+          "field": "RUP",
+          "datum_field": "V_DATUM",
+          "quote": "The vertical datum indicates the reference surface from which the flood elevations are measured."
+        }
+      ]
     }
   }
 }
