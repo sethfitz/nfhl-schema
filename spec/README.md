@@ -1046,3 +1046,57 @@ extent.
 in the reference; the models take the service's. Water areas name their
 water by `WTR_NM`, as the water lines do, and "features that appear in both
 must match exactly"; the models do not check it.
+
+## What the transect baselines hold that the reference does not allow
+
+Layer 18 has 35,354 rows (`service/observed/18.json`, 2026-10-12). The union
+of every clause selects 140 (0.40%); the model rejects 159 (0.45%). The
+difference, 19 rows, is the wrong-case type below. Every row was read: paged in
+36 windows of about 1,000 cut from the sorted `OBJECTID`s (ids run to
+162,666), with geometry, and each row validated; the union's ids in the same
+window were compared with the rows the model rejects. The union selects no row
+the model accepts. Every shape is a LineString: none is null, empty or
+multipart.
+
+- **`SOURCE_CIT` is missing on 140** (all null): 138 in `23023C`, every
+  baseline of that DFIRM, and 2 in `36103C`.
+- **`TBASE_TYP` holds `Zero Foot Contour Referenced To Tidal Datum` on 19**, all
+  in `36073C`: the November 2016 Domain Tables reference's spelling of code
+  1020, which the 2019 and 2024 editions write `Referenced to`. The service folds
+  case in `=`, `IN` and grouping, so the union cannot select them, and
+  `report-observed` counts the reference's spelling as 24, these 19 included.
+- **`TBASE_TYP` holds `SANDY BEACH-SMALL DUNE` on 13**, all in `23023C` and all
+  also missing `SOURCE_CIT`: `D_Shr_Typ`'s shoreline type `Sandy Beach-Small
+  Dune`, upper-cased. Under the legacy bar (35).
+
+`DFIRM_ID`, `VERSION_ID`, `TBASELN_ID`, `R_ST_DESC`, `R_END_DESC`, `WTR_NM` and
+`V_DATUM` are missing or outside their vocabulary on none. The model has no
+rules. The union joins with `OR` each required field's missing clause (`F IS
+NULL OR (F = '' AND F NOT LIKE ' ')`) for `DFIRM_ID`, `VERSION_ID`,
+`TBASELN_ID`, `R_ST_DESC`, `R_END_DESC`, `WTR_NM` and `SOURCE_CIT`; the outside
+clause (`F IS NULL OR NOT (F IN (<the values>) AND F NOT LIKE ' ')`, the legacy
+types among `TBASE_TYP`'s values) for `TBASE_TYP` and `V_DATUM`; and `SHAPE IS
+NULL`. Per clause: `SOURCE_CIT` 140, `TBASE_TYP` 13, the others 0; the 13 are
+among the 140.
+
+**The threshold admits three types** (`legacy.json`, bar 35.354 rows), each in
+one or two DFIRMs:
+
+- `Zero Foot Contour` (926, `36103C`): the words the three `Zero Foot Contour
+  ...` types begin with, without the source that tells them apart. No edition
+  of the Domain Tables reference lists it (2016, 2019, 2024).
+- `NON-ERODIBLE BLUFF` (347; `23015C` 222, `23023C` 125): `D_Shr_Typ`'s shoreline
+  type `Non-Erodible Bluff` (code 1030), upper-cased, in the transect baseline
+  type. A value of another domain, not a spelling of this one.
+- `ZERO FOOT C` (54, `24009C`): a `Zero Foot Contour ...` type cut to 11
+  characters and upper-cased; the cut leaves no word saying which of the three.
+
+`CST_MDL_ID` is null on 12,559 rows, `''` on 3,254 and a lone space on 476; it
+is optional (`A`). `R_ST_DESC` is `NP` on 22,056 and `WTR_NM` on 16,560.
+`TBASELN_ID`, `CST_MDL_ID` and `SOURCE_CIT` are 32, 32 and 21 long on the
+service and 25, 25 and 11 in the reference; the models take the service's. The
+coastal transects (`S_Cst_Tsct_Ln`) join a baseline by `TBASELN_ID`, and
+`CST_MDL_ID` joins `L_Cst_Model`, which is not a service layer; the models do
+not check either. The section calls the table a "spatial file" ("The
+S_Tsct_Basln spatial file contains information about"), which
+`reference_intro` reads as it reads "table" and "layer".

@@ -555,3 +555,41 @@ feature. Seven fields, no rule, Polygon and MultiPolygon.
 - The union's clauses summed exactly to the union (12,855): no row breaks
   two fields, apart from the 686 whose two flags are both a lone space.
   Every lone-space flag is in one DFIRM, `27127C`.
+
+## The fifteenth layer
+
+`S_Tsct_Basln` (layer 18, 2026-10-12), the first of the coastal cluster: the
+coastal transects join it by `TBASELN_ID`, so the fields they share get settled
+on this ten-field, 35,354-row layer first. A LineString, no rule, and a
+`V_DATUM` that is the contour's datum rather than any field's.
+
+- `reference_intro` raised again, for a new reason. The section has the
+  sentence, but calls the table a "spatial file", not a table or a layer. The
+  pattern takes that noun now; `SUMMARY_ONLY` would have thrown away an
+  introduction the section has.
+- The threshold selected three types, and two of them are not spellings of a
+  transect baseline type at all. `NON-ERODIBLE BLUFF` is a shoreline type from
+  `D_Shr_Typ`, written into the wrong field in two Maine DFIRMs, and `ZERO FOOT
+  C` is a type cut to 11 characters, too short to say which of three it was.
+  The rule admits by count, so both validate with a warning. The brief asked to
+  keep such values rejected, which the selection test forbids: `legacy.json`
+  has a field to admit a value below the bar and none to hold one above it. The orchestrator's answer was to admit by
+  threshold and flag them for Seth, as `SHOWN_FIRM` `1` was.
+- The case-folded snapshot hid a historical spelling this time, not a typo.
+  The 19 rows the model alone rejects hold `Referenced To Tidal Datum`, the
+  2016 reference's exact text, which the 2019 edition changed to `to`. The
+  snapshot shows the group as the 2024 spelling, 24 rows, of which 5 are.
+- A clean fixture case picked up a legacy value. The first filter allowed the
+  legacy types in `TBASE_TYP`, so `not_populated_name` drew a `ZERO FOOT C` row
+  that warned; the clean filter now takes the reference's values only. The
+  shoreline type under the bar makes no case: all 13 rows also lack
+  `SOURCE_CIT`.
+- The live control's first full run died in the 154k-157k id range. The
+  service answered 500 for windows whose halves it then returned. Bisecting by
+  hand found no bad row: every single id came back. Load, not one oversized
+  shape, as the water areas had. Halving each failed window got through, at
+  about two minutes of curl retries per failure.
+- The union (140) is the 140 missing `SOURCE_CIT`. The 13 shoreline types are
+  among them, and the 19 wrong-case rows are the whole difference, so the
+  layer's rejections (0.45%) are two DFIRMs' missing citations and one DFIRM's
+  old spelling.
