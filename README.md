@@ -15,7 +15,7 @@ Database Technical Reference* and the *Domain Tables Technical Reference*.
 
 ## Status
 
-Fifteen models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
+Sixteen models: **`FloodHazardZone`** (`S_Fld_Haz_Ar`, service layer 28),
 **`BaseFloodElevation`** (`S_BFE`, layer 16), the lines that carry a base flood
 elevation across a stream, **`CrossSection`** (`S_XS`, layer 14), the
 modelled cross sections with their water-surface and streambed elevations,
@@ -46,7 +46,10 @@ layer 32), the surface water shown on the FIRM as areas, which share `WTR_NM`,
 `SHOWN_FIRM` and `SHOWN_INDX` with the water lines, and
 **`TransectBaseline`** (`S_Tsct_Basln`, layer 18), the lines a coastal
 study's transects start from, typically the 0.0-foot contour, which the
-coastal transects name by `TBASELN_ID`. The snapshot holds every layer's service
+coastal transects name by `TBASELN_ID`, and **`CoastalTransect`**
+(`S_Cst_Tsct_Ln`, layer 15), the transects themselves with their stillwater,
+wave and runup values, whose units follow `ELEV_UNIT`, `LEN_UNIT` and
+`TIME_UNIT`. The snapshot holds every layer's service
 metadata and both references whole, so the next tables need no new fetch.
 
 - `spec/` -- the pinned snapshot, refreshed by `scripts/snapshot-spec`. See
@@ -107,6 +110,9 @@ metadata and both references whole, so the next tables need no new fetch.
 - `tests/fixtures/transect_baselines.json` -- sixteen real transect baselines,
   eleven that validate, three that validate with a legacy-value warning, and
   two that do not, one of them for a type in the wrong case.
+- `tests/fixtures/coastal_transects.json` -- thirty real coastal transects,
+  eighteen that validate, one that validates with a legacy-value warning, and
+  eleven that do not, four of them for a value in the wrong case.
 
 ## Why generate rather than hand-write
 
@@ -208,7 +214,10 @@ area features are polygons", and Table 4 does not hold `S_Wtr_Ar` to a single
 part; 326 of its 779,833 are multipart. A transect baseline is a
 LineString: "The spatial elements representing the transect baselines are
 lines", and Table 4 holds `S_Tsct_Basln` to "Must Be Single Part"; all 35,354
-rows the live control read were LineStrings.
+rows the live control read were LineStrings. A coastal transect is a
+LineString: "The spatial elements representing coastal transects are lines", and
+Table 4 holds `S_Cst_Tsct_Ln` to "Must Be Single Part"; all 22,367 rows the live
+control read were LineStrings.
 `nfhl.codegen.GEOMETRIES` records each, and generation stops if the service's
 geometry type disagrees.
 

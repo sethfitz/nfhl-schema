@@ -593,3 +593,54 @@ on this ten-field, 35,354-row layer first. A LineString, no rule, and a
   among them, and the 19 wrong-case rows are the whole difference, so the
   layer's rejections (0.45%) are two DFIRMs' missing citations and one DFIRM's
   old spelling.
+
+## The sixteenth layer
+
+`S_Cst_Tsct_Ln` (layer 15, 2026-10-13), the second of the coastal cluster: 41
+reference fields, 22,367 rows, a LineString, no rule, and units and a datum that
+follow other fields. The model rejects 39.76% of the layer, the most of any so
+far, and 4,178 of those rows are invisible to the service's own SQL.
+
+- The first generation failed on a domain name. The field table joins
+  `VZONE_EXT` to `D_VZONE`; the Domain Tables section is `D_VZone`. Nothing had
+  joined a name that differed only in case, so `domain` raised `KeyError`.
+  `SpecReader.domain_name` matches without case.
+- `D_Time_Units` listed four of seven values. Its second page draws a rule
+  inside `Type`, pdfplumber cut the header into `T` and `ype of Time Unit`, the
+  three rows of that page fit no table, and the extraction kept them as
+  `irregular` under a header of their own. `domain` took the first table of a
+  section and never saw the second. The guard on irregular rows of modelled
+  tables fired the moment `TIME_UNIT` was modelled, which is the guard working:
+  an unmodelled domain with the same defect would have stayed wrong. `SECONDS`
+  is 7,788 of the field's rows, so a legacy entry would have admitted the
+  reference's own most common value with a warning.
+- The live data and the vendored `D_Event` disagree in the way `D_Zone_Subtype`
+  does, and under the same note ("the FIRM DB template will not have dashes").
+  The repair for `D_Zone_Subtype` is scoped to `-PCT-`; `D_Event` needed none
+  of that care, since every dash in it joins words.
+- Admitting a value by one layer's count admits it for every layer on the
+  domain. `ASVD02` (374) and `GUVD03` (62) pass the bar here, and the zones,
+  BFEs and cross sections that had them rejected now validate them with a
+  warning: three fixture cases moved from `expect` to `warns`, and one count in
+  `spec/README.md` and `test_rule_counts` moved from 16,571 to 16,572, the one
+  zone that holds `ASVD02` without a static BFE and now reaches the rule. The
+  full suite caught all four; no test of this layer would have.
+- A legacy warning is raised after validation, so a row the model rejects never
+  warns. A fixture case that expects a rejection says nothing about the legacy
+  values on the same row, and the three `NA` columns, `OPEN COAST` and the
+  `NP` values sit on rows the model rejects or on rows with two legacy fields.
+  Only one real row holds a single legacy value (`EVENT_TYP` `NP`); the other
+  eleven are tested by changing one field of a real valid row.
+- Case variants are thousands of rows here: 4,762 rows across 106 DFIRMs, 89 of
+  them rejected for nothing else. Pinning by `OBJECTID` does not fit in a
+  `where`, so the clean cases exclude the 106 DFIRMs and the cases that need
+  one are pinned. The service accepts no `COLLATE`, `ASCII` or `BINARY_CHECKSUM`
+  in a `where`.
+- The control's model-only rows (4,178) equal the case-variant rows computed
+  from the exact forms (`modelonly15.py`); the per-value sum is 4,240 because 62
+  rows hold two. The union (4,715) is contained in the model's rejections.
+- `LEN_UNIT` and `TIME_UNIT` "are populated when" any of three or four fields
+  is. `RequiredWhen` follows one field. 1,950 and 3,657 rows break them. The
+  rules are not modelled; adding them is a new condition (any of several fields
+  populated), a pair of combination counts for five fields in `snapshot-spec`,
+  and census changes, which this slice did not take on.

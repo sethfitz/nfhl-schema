@@ -254,8 +254,10 @@ clause given:
 - **The populated-only-if rules** (`relationships.json`):
   `V_DATUM` set without a static BFE, 16,933
   (`(V_DATUM IS NOT NULL AND V_DATUM <> '') AND (STATIC_BFE = -9999 OR STATIC_BFE IS NULL)`),
-  of which 16,571 hold a `D_V_Datum` value and reach the rule, the rest failing
-  the vocabulary first; `LEN_UNIT` set with neither BFE nor depth, 1,807
+  of which 16,572 hold a `D_V_Datum` value and reach the rule (one of them an
+  `ASVD02` or `GUVD03`, which the coastal transects' counts admit to the
+  domain: `V_DATUM IN ('ASVD02', 'GUVD03') AND (STATIC_BFE = -9999 OR
+  STATIC_BFE IS NULL)` returns it), the rest failing the vocabulary first; `LEN_UNIT` set with neither BFE nor depth, 1,807
   (the same, with `(DEPTH = -9999 OR DEPTH IS NULL)` added), 1,468 of them a
   `D_Length_Units` value; a velocity without a `VEL_UNIT`, 8,638
   (`(VELOCITY <> -9999 AND VELOCITY IS NOT NULL) AND (VEL_UNIT IS NULL OR VEL_UNIT = '')`),
@@ -1100,3 +1102,109 @@ coastal transects (`S_Cst_Tsct_Ln`) join a baseline by `TBASELN_ID`, and
 not check either. The section calls the table a "spatial file" ("The
 S_Tsct_Basln spatial file contains information about"), which
 `reference_intro` reads as it reads "table" and "layer".
+
+## What the coastal transects hold that the reference does not allow
+
+Layer 15 has 22,367 rows (`service/observed/15.json`, 2026-10-13). The union of
+every clause selects 4,715 (21.08%); the model rejects 8,893 (39.76%). The
+difference, 4,178 rows, is the wrong-case values below. Every row was read:
+paged in 23 windows of about 1,000 cut from the sorted `OBJECTID`s (ids run to
+155,023), with geometry, and each row validated; the union's ids in the same
+window were compared with the rows the model rejects. The union selects no row
+the model accepts. Every shape is a LineString: none is null, empty or
+multipart. The output is `~/.local/state/nfhl-controls/layer-15/control15.json`,
+beside `control15.py`.
+
+The union joins with `OR`: for each required text field the missing clause
+(`F IS NULL OR (F = '' AND F NOT LIKE ' ')`); for each required number `F IS NULL
+OR F = -9999`; for each required vocabulary field the outside clause (`F IS NULL
+OR NOT (F IN (<the values>) AND F NOT LIKE ' ')`, the legacy values among them);
+for each optional vocabulary field `F LIKE ' ' OR (F <> '' AND F NOT IN (<the
+values>))`; and `SHAPE IS NULL`. Per clause, with the rows the service counts:
+
+- Missing required text: `LOC_DESC` 2,071, `TBASELN_ID` 338 (270 `''`, 68 null),
+  `SOURCE_CIT` 6, `WTR_NM` 4; `DFIRM_ID`, `VERSION_ID`, `TRAN_LN_ID` and
+  `TRAN_NO` none.
+- Required numbers: `XCOORD` and `YCOORD` 898 each, the same rows (722 null, 176
+  `-9999`); `RUP` 742 and `SWEL` 20, all `-9999`. `-8888`, section 7.3's number
+  for a field not populated, is a value: 14,648 `RUP` and 10,793 `SWEL`.
+- Required vocabulary: `V_DATUM` 410 (all null), `EVENT_TYP` 117 (`''`);
+  `CSTLN_TYP`, `ELEV_UNIT` and the five flags none.
+- Lone spaces in optional vocabulary fields, which the vocabulary rejects:
+  `FTCHLNUNIT` 1,158, `TIME_UNIT` 649, `LEN_UNIT` 488, `BEACH_SET` 472, `EROS_METH`
+  442, `SHORE_TYP` 597, `METHOD` 244 and `VZONE_EXT` 211. `''` does not match
+  `LIKE ' '`, so these are lone spaces only.
+
+**The model alone rejects 4,178 rows, each holding a value that differs from a
+reference value only in case.** The service folds case in `=`, `IN` and grouping,
+so the union cannot select them and `report-observed` counts them under the
+reference's spelling. The model-only rows by field and value, from the control
+(a row that also breaks a union clause is in the union and not listed):
+
+- `BEACH_SET` `Sandy Beach Backed By Low Sand Berm or High Sand Dune Formation`
+  3,207 and `... Backed By Shore Protection Structures` 695, where the reference
+  has `by`;
+- `TIME_UNIT` `Seconds` 93; `METHOD` `Cut from topo` 66; `EVENT_TYP`
+  `1 PERCENT CHANCE` 69; `SHORE_TYP` `Non-erodible Bluff` 45 and `Non-erodible
+  bluff` 11; `CSTLN_TYP` `OPEN COAST` 27; `VZONE_EXT` `RUNUP` 20 and `WAVE
+  OVERTOPPING SPLASH ZONE` 7.
+
+The sum, 4,240, exceeds 4,178 by 62 rows that hold two such values. Reading every
+row counts the exact forms (`~/.local/state/nfhl-controls/layer-15/rows15.py`):
+`BEACH_SET` `Backed By Low Sand ...` 3,458 in 90 DFIRMs and `Backed By Shore
+Protection ...` 747 in 56; `METHOD` `Cut From Topo` 235 (4 DFIRMs), `Cut from
+topo` 66 (`26033C`), `Combo Of Topo And Survey` 25 (`44005C`); `TIME_UNIT`
+`Seconds` 171 (`44005C`, `51099C`, `37095C`, `36073C`) and `Days` 25 (`34033C`);
+`SHORE_TYP` as above (`26033C`, `26103C`, `27137C`); `CSTLN_TYP` `OPEN COAST` 28
+(`26099C`); `EROS_METH` `OTHER` 5 (`36055C`); `VZONE_EXT` `BREAKING WAVE HT` 1
+(`26099C`). The `By` capital in `BEACH_SET` may be an earlier edition's text, as
+`Referenced To Tidal Datum` was for the baselines; only the 2024 edition is
+vendored here, so that is unchecked. None of these is a legacy value: the
+snapshot folds each under the reference's spelling, so none reaches the
+threshold, and a maintainer's `decision` would admit one.
+
+**The threshold admits twelve values** (`legacy.json`, bar 22.367 rows), in the
+fields below. `NP` is section 7.3's value for a field intentionally not
+populated, which none of `D_Method`, `D_Event`, `D_VZone` or `D_Time_Units` lists:
+`METHOD` 249 (7 DFIRMs), `EVENT_TYP` 8,873 (132 DFIRMs), `VZONE_EXT` 232 (6),
+`TIME_UNIT` 308 (4). The rest:
+
+- `V_DATUM` `ASVD02` 374 (`600001`, American Samoa) and `GUVD03` 62 (`660001`,
+  Guam; the domain lists `GUVD04`). The same two values are under the bar in the
+  zones, BFEs and cross sections, and the domain is shared, so they now validate
+  with a warning there as well: the zones' rule on `V_DATUM` without a static
+  BFE reaches one more row (16,572, not 16,571).
+- `NA` 28 in each of `FTCHLNUNIT`, `LEN_UNIT` and `TIME_UNIT`, the same 28 rows in
+  `26099C`, which also hold `OPEN COAST`.
+- `VZONE_EXT` `WHAFIS` 111 (a wave model of `D_Wave_Mdl`, 5 DFIRMs),
+  `30 FOOT SPLASH ZONE BEHIND S` 66 (cut at the field's 28 characters, 3 DFIRMs)
+  and `RUNUP EXTENT` 41 (2 DFIRMs).
+
+**`D_Event`'s dashes are repaired.** The reference prints `1-Percent-Chance` under
+the note that the database template has no dashes; the service holds `1 Percent
+Chance` on 13,376 rows and the dashed form on none (`repairs.json`, with the
+quote). `EVENT_TYP` is `NP` on 8,873 and `''` on 117.
+
+**Two defects in the reference's extraction.** `D_Time_Units` runs over two pages
+and the second page's header is cut mid-word by a stray rule, so its rows
+(`SECONDS`, `WEEKS`, `YEARS`) were set aside as irregular and the domain listed
+four units; `SECONDS` is 7,788 of this layer's `TIME_UNIT` values.
+`nfhl.extract` rejoins such a header. The field table joins `VZONE_EXT` to
+`D_VZONE` and the section is `D_VZone`.
+
+**Two rules the model does not state.** `LEN_UNIT` "is populated when the
+SETUP_DEPTH, CON_HT, SIG_HT or MEAN_HT field is populated", and `TIME_UNIT` when
+`SIG_PD`, `CON_PD` or `MEAN_PD` is. A relationship names one field it follows;
+these name three or four, and `RequiredWhen` has no such form. 1,950 rows
+populate a height with `LEN_UNIT` null or `''`, and 3,657 populate a period the
+same way (`(SETUP_DPTH <> -9999 OR CON_HT <> -9999 OR SIG_HT <> -9999 OR MEAN_HT
+<> -9999) AND (LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' '))`,
+and the periods' equivalent). The units' `UnitIn` annotation, the datum
+annotation on `SWEL` and `RUP` and `ELEV_UNIT` as the unit of those two are
+modelled. `DATUM_CONV` has no unit field, and "such as MLLW and MSL" names the
+gage datum, not a field.
+
+`TBASELN_ID` joins `S_Tsct_Basln` and `CST_MDL_ID` joins `L_Cst_Model`, which is
+not a service layer; the models check neither. `TRAN_LN_ID`, `TBASELN_ID`,
+`CST_MDL_ID` and `SOURCE_CIT` are 32, 32, 32 and 21 long on the service and 25,
+25, 25 and 11 in the reference; the models take the service's.
