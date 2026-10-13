@@ -54,7 +54,9 @@ service layer; `L_Pan_Revis` and the other lookup tables are not.
    table, class name, module) and an entry point in `pyproject.toml`. A
    table whose section never says what it "contains information about"
    (`S_Profil_Basln`, `S_Gen_Struct`) also goes in `SUMMARY_ONLY` in
-   `nfhl.spec_source`, or generation stops at `reference_intro`.
+   `nfhl.spec_source`, or generation stops at `reference_intro`. A section
+   that says it but names the table another way ("The S_Tsct_Basln spatial
+   file contains") needs the pattern widened instead.
 2. Add the table to `nfhl.codegen.GEOMETRIES`, saying what its features are in
    the words of the table's introduction. Generation stops if the entry is
    missing or names a different Esri type than the service publishes. A table
@@ -84,7 +86,9 @@ service layer; `L_Pan_Revis` and the other lookup tables are not.
    rejects: find them by reading every row, and pin their `OBJECTID`s out of
    the fixture filters. `SHAPE.STArea() = 0` matches slivers the service
    rounds to no area, which validate, as well as empty polygons; pin the
-   empty ones by `OBJECTID` too.
+   empty ones by `OBJECTID` too. Hold a vocabulary field's clean filter to
+   the reference's values, not the legacy ones: a legacy value makes a clean
+   case warn, and the legacy cases free the field through `warns`.
 7. Run `./scripts/generate-docs`. Add the layer's fixtures to
    `tests/conftest.py`, its class to `tests/test_discovery.py`, its page to
    `tests/test_docs.py`, and its own `tests/test_<module>.py`. Test a legacy
@@ -104,7 +108,9 @@ service layer; `L_Pan_Revis` and the other lookup tables are not.
    model-only rows by field and value, and expect their sum to equal the
    difference. Cut the control's windows from the sorted ids, about 1,000
    rows each: ids can be sparse (layer 24 has 285,947 rows and ids to
-   2,350,391).
+   2,350,391). Cache each window and halve one the service errors on, down
+   to a single row read generalised (`maxAllowableOffset`): it errors under
+   load on windows whose every half it returns, not only on long shapes.
 
 Eight reference tables do not yet join their two field listings, so
 `SpecReader.reference_table` raises on them; `spec/README.md` names them and
