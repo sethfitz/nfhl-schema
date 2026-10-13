@@ -65,8 +65,8 @@ service layer; `L_Pan_Revis` and the other lookup tables are not.
 3. Add the table's units, datums and rules to `spec/relationships.json`. A
    table that states none goes in `NO_RELATIONSHIPS` in
    `tests/test_spec_source.py` instead. A field "populated when" any of
-   several others is has no form in `relationships.json` (`RequiredWhen` follows
-   one field); count the rows that break it and record it in `spec/README.md`.
+   several others is takes `when_any_populated` in place of `when`; see the
+   Coastal Transects units.
 4. Run `./scripts/generate-models`. It reads the service metadata that
    `spec/` already holds for every layer, but not observations, so it runs
    before them; `snapshot-spec` needs the model to know which fields the rules
