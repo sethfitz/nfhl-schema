@@ -7553,7 +7553,8 @@
     {
       "section": "D_Time_Units",
       "pages": [
-        69
+        69,
+        70
       ],
       "header": [
         "Coded Value",
@@ -7580,58 +7581,24 @@
           "1030",
           "MONTHS",
           "FIRM"
-        ]
-      ],
-      "irregular": [],
-      "fragments": []
-    },
-    {
-      "section": "D_Time_Units",
-      "pages": [
-        70
-      ],
-      "header": [
-        "Coded Value",
-        "T",
-        "ype of Time Unit",
-        "Applies to Database Schema"
-      ],
-      "rows": [],
-      "irregular": [
+        ],
         [
           "1040",
-          null,
-          null,
           "SECONDS",
-          null,
-          null,
-          "FIRM",
-          null,
-          null
+          "FIRM"
         ],
         [
           "1050",
-          null,
-          null,
           "WEEKS",
-          null,
-          null,
-          "FIRM",
-          null,
-          null
+          "FIRM"
         ],
         [
           "1060",
-          null,
-          null,
           "YEARS",
-          null,
-          null,
-          "FIRM",
-          null,
-          null
+          "FIRM"
         ]
       ],
+      "irregular": [],
       "fragments": []
     },
     {

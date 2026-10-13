@@ -266,8 +266,8 @@
   "files": [
     {
       "path": "reference/domain-tables-technical-reference.json",
-      "sha256": "30906f493945d73acda3430e845160c48e8e16f5e9ebfbebc43e13ac56d067c2",
-      "bytes": 160541
+      "sha256": "1648157092448000fd4102f6ebcc4a3ccbad8b5bebb81a6db1c97d7239acf243",
+      "bytes": 159985
     },
     {
       "path": "reference/domain-tables-technical-reference.pdf",

@@ -92,6 +92,22 @@ def split_header(raw: list[list[Cell]]) -> tuple[list[str], list[list[Cell]]]:
     return [h for h in merged if h], raw[len(header_rows) :]
 
 
+def rejoin_split_header(header: list[str], earlier: list[list[str]]) -> list[str]:
+    """A continuation's header as its table's earlier one spells it.
+
+    A rule drawn inside a word cuts a header cell in two (`D_Time_Units`' second
+    page reads `T` and `ype of Time Unit`), and rows with a cell fewer than that
+    header fit no table. Joining two adjacent cells that gives an earlier
+    header of the section means the cut is a stray rule, not a column.
+    """
+    for known in earlier:
+        for i in range(len(header) - 1):
+            joined = [*header[:i], header[i] + header[i + 1], *header[i + 2 :]]
+            if joined == known:
+                return known
+    return header
+
+
 def compact(row: list[Cell]) -> list[str]:
     """A data row without the `None` padding pdfplumber adds for merged cells."""
     return [clean(c) for c in row if c is not None]
@@ -132,6 +148,7 @@ def extract(pdf_path: Path, heading: re.Pattern[str]) -> list[Table]:
                     # not parsed, and it does not break the continuation.
                     ours[-1].fragments.append(raw)
                     continue
+                header = rejoin_split_header(header, [t.header for t in ours])
                 same = [t for t in ours if t.header == header]
                 table = same[-1] if same and not fresh else Table(section, header)
                 if not (same and table is same[-1]):

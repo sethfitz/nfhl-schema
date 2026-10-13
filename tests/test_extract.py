@@ -14,7 +14,7 @@ from pathlib import Path
 
 import pytest
 
-from nfhl.extract import DOMAIN_HEADING, FIRM_HEADING, extract
+from nfhl.extract import DOMAIN_HEADING, FIRM_HEADING, extract, rejoin_split_header
 from nfhl.spec_source import (
     DOMAIN_TABLES,
     FIRM_DATABASE,
@@ -119,3 +119,29 @@ def test_every_field_description_appears_in_the_pdftotext_rendering(
             words = squash(field.description).split()
             assert " ".join(words[:8]) in text, field.name
             assert " ".join(words[-8:]) in text, field.name
+
+
+def test_a_header_cut_mid_word_by_a_stray_rule_is_the_earlier_one() -> None:
+    # D_Time_Units' second page draws a rule inside `Type`, so pdfplumber reads
+    # `T` and `ype of Time Unit` as two columns and the rows of that page fit
+    # neither; they were set aside as irregular and the domain lacked SECONDS.
+    earlier = ["Coded Value", "Type of Time Unit", "Applies to Database Schema"]
+    cut = ["Coded Value", "T", "ype of Time Unit", "Applies to Database Schema"]
+    assert rejoin_split_header(cut, [earlier]) == earlier
+    assert rejoin_split_header(earlier, [earlier]) == earlier
+    other = ["Coded Value", "Name", "Applies to Database Schema"]
+    assert rejoin_split_header(cut, [other]) == cut
+
+
+def test_a_domain_split_over_two_pages_has_the_rows_of_both() -> None:
+    reader = SpecReader()
+    values = {v.value for v in reader.domain("D_Time_Units").values}
+    assert values == {
+        "DAYS",
+        "HOURS",
+        "MINUTES",
+        "MONTHS",
+        "SECONDS",
+        "WEEKS",
+        "YEARS",
+    }
