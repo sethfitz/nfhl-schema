@@ -1192,17 +1192,21 @@ four units; `SECONDS` is 7,788 of this layer's `TIME_UNIT` values.
 `nfhl.extract` rejoins such a header. The field table joins `VZONE_EXT` to
 `D_VZONE` and the section is `D_VZone`.
 
-**Two rules the model does not state.** `LEN_UNIT` "is populated when the
-SETUP_DEPTH, CON_HT, SIG_HT or MEAN_HT field is populated", and `TIME_UNIT` when
-`SIG_PD`, `CON_PD` or `MEAN_PD` is. A relationship names one field it follows;
-these name three or four, and `RequiredWhen` has no such form. 1,950 rows
-populate a height with `LEN_UNIT` null or `''`, and 3,657 populate a period the
-same way (`(SETUP_DPTH <> -9999 OR CON_HT <> -9999 OR SIG_HT <> -9999 OR MEAN_HT
-<> -9999) AND (LEN_UNIT IS NULL OR (LEN_UNIT = '' AND LEN_UNIT NOT LIKE ' '))`,
-and the periods' equivalent). The units' `UnitIn` annotation, the datum
-annotation on `SWEL` and `RUP` and `ELEV_UNIT` as the unit of those two are
-modelled. `DATUM_CONV` has no unit field, and "such as MLLW and MSL" names the
-gage datum, not a field.
+**Two rules on the units.** `LEN_UNIT` "is populated when the SETUP_DEPTH,
+CON_HT, SIG_HT or MEAN_HT field is populated", and `TIME_UNIT` when `SIG_PD`,
+`CON_PD` or `MEAN_PD` is. Both are modelled as `require_if` over `AnyOf` of
+`Populated` conditions (`when_any_populated` in `relationships.json`). The
+reference writes `SETUP_DEPTH`; the table and the service name the field
+`SETUP_DPTH`, which the rule reads. A measure of `-8888`, the number section 7.3
+substitutes for a value not populated, counts as populated: the reference does
+not exempt it, and 1,950 and 3,657 rows hold a measure and no unit when it does.
+A unit of `NP` satisfies the rule. The model rejects 779 rows for `LEN_UNIT` and
+1,826 for `TIME_UNIT` that it did not reject before; the rest of each rule's
+rows are already rejected for another field, and a model rule does not run on a
+row with a rejected field. The units' `UnitIn` annotation, the datum annotation
+on `SWEL` and `RUP` and `ELEV_UNIT` as the unit of those two are modelled.
+`DATUM_CONV` has no unit field, and "such as MLLW and MSL" names the gage datum,
+not a field.
 
 `TBASELN_ID` joins `S_Tsct_Basln` and `CST_MDL_ID` joins `L_Cst_Model`, which is
 not a service layer; the models check neither. `TRAN_LN_ID`, `TBASELN_ID`,

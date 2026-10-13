@@ -640,7 +640,12 @@ far, and 4,178 of those rows are invisible to the service's own SQL.
   from the exact forms (`modelonly15.py`); the per-value sum is 4,240 because 62
   rows hold two. The union (4,715) is contained in the model's rejections.
 - `LEN_UNIT` and `TIME_UNIT` "are populated when" any of three or four fields
-  is. `RequiredWhen` follows one field. 1,950 and 3,657 rows break them. The
-  rules are not modelled; adding them is a new condition (any of several fields
-  populated), a pair of combination counts for five fields in `snapshot-spec`,
-  and census changes, which this slice did not take on.
+  is. `RequiredWhen` followed one field; it now takes `when_any_populated`, a
+  list, and `nfhl.constraints.AnyOf` renders it. Its `any_of` already meant the
+  values of `when`, so the new name says what is listed. The SQL clauses count
+  1,950 and 3,657 rows, and `judge` finds exactly those rows broken. The model
+  rejects 779 and 1,826 rows it accepted before (8,893 to 11,498 of 22,367):
+  the other 1,171 and 1,831 hold a rejected field too, and a model rule never
+  runs on a row with a rejected field. The reference writes `SETUP_DEPTH`; the
+  field is `SETUP_DPTH`. Every real "clean" fixture case had to be re-filtered:
+  `not_populated_datum` held a `-8888` period and no `TIME_UNIT`.

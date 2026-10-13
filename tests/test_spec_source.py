@@ -19,6 +19,7 @@ from nfhl.spec_source import (
     TEXT_NULLS,
     Layer,
     LegacyValue,
+    RequiredWhen,
     SpecReader,
     ZoneSubtypes,
     split_cell,
@@ -400,6 +401,28 @@ def test_the_underscore_repair_is_what_lets_the_ae_row_read(
     )
     with pytest.raises(ValueError, match="NON_ACCREDITED"):
         unrepaired.subtype_crosswalk()
+
+
+def test_a_unit_rule_follows_every_field_its_description_names(
+    reader: SpecReader,
+) -> None:
+    table = reader.reference_table("S_Cst_Tsct_Ln")
+    rules = {r.field: r for r in reader.relationships("S_Cst_Tsct_Ln").required_when}
+    assert {f: r.when_any_populated for f, r in rules.items()} == {
+        "LEN_UNIT": ("SETUP_DPTH", "CON_HT", "SIG_HT", "MEAN_HT"),
+        "TIME_UNIT": ("SIG_PD", "CON_PD", "MEAN_PD"),
+    }
+    for rule in rules.values():
+        assert rule.when is None
+        for name in rule.when_any_populated:
+            table.field(name)
+
+
+def test_a_required_when_names_a_field_or_a_list_of_them() -> None:
+    with pytest.raises(AssertionError):
+        RequiredWhen("A", "quote")
+    with pytest.raises(AssertionError):
+        RequiredWhen("A", "quote", "B", when_any_populated=("C",))
 
 
 def test_a_cell_splits_on_the_longest_term_and_drops_footnote_markers() -> None:

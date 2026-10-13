@@ -21,7 +21,7 @@ from overture.schema.system.optionality import Omitable
 from pydantic import ConfigDict, Field, model_validator
 
 from nfhl.annotations import DatumIn, UnitIn
-from nfhl.constraints import drop_null_encodings
+from nfhl.constraints import AnyOf, Populated, drop_null_encodings, require_if
 from nfhl.legacy import warn_on_legacy_values
 from nfhl.models.enums import (
     LEGACY_MEMBERS,
@@ -40,6 +40,21 @@ from nfhl.models.enums import (
 )
 
 
+# “This field is populated when the SETUP_DEPTH, CON_HT, SIG_HT or MEAN_HT field is
+# populated.”
+@require_if(
+    ["len_unit"],
+    AnyOf(
+        Populated("setup_dpth"),
+        Populated("con_ht"),
+        Populated("sig_ht"),
+        Populated("mean_ht"),
+    ),
+)
+# “This field is populated when the SIG_PD, CON_PD or MEAN_PD field is populated.”
+@require_if(
+    ["time_unit"], AnyOf(Populated("sig_pd"), Populated("con_pd"), Populated("mean_pd"))
+)
 class CoastalTransect(Feature):
     """The S_Cst_Tsct_Ln table contains information about the Coastal Transect Lines
     within the Flood Risk Project area, if applicable. The spatial elements

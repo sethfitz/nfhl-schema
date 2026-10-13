@@ -65,3 +65,8 @@ not define them, so they are optional and validated only by type.
 | `GlobalID` | `string` (optional) | Published by the NFHL map service as housekeeping for its own copy of the data; the FIRM Database reference does not define it.<br/><br/>*Maximum length: 38* |
 | `OBJECTID` | [`int64`](../system/numeric.md) (optional) | Published by the NFHL map service as housekeeping for its own copy of the data; the FIRM Database reference does not define it. |
 | `SHAPE.STLength()` | [`float64`](../system/numeric.md) (optional) | Published by the NFHL map service as housekeeping for its own copy of the data; the FIRM Database reference does not define it. |
+
+## Constraints
+
+- `time_unit` is required when sig_pd is populated or con_pd is populated or mean_pd is populated
+- `len_unit` is required when setup_dpth is populated or con_ht is populated or sig_ht is populated or mean_ht is populated

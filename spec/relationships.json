@@ -320,6 +320,18 @@
           "datum_field": "V_DATUM",
           "quote": "The vertical datum indicates the reference surface from which the flood elevations are measured."
         }
+      ],
+      "required_when": [
+        {
+          "field": "LEN_UNIT",
+          "when_any_populated": ["SETUP_DPTH", "CON_HT", "SIG_HT", "MEAN_HT"],
+          "quote": "This field is populated when the SETUP_DEPTH, CON_HT, SIG_HT or MEAN_HT field is populated."
+        },
+        {
+          "field": "TIME_UNIT",
+          "when_any_populated": ["SIG_PD", "CON_PD", "MEAN_PD"],
+          "quote": "This field is populated when the SIG_PD, CON_PD or MEAN_PD field is populated."
+        }
       ]
     }
   }

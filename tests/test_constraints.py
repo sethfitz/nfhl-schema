@@ -11,9 +11,19 @@ from overture.schema.system.model_constraint import forbid_if
 from overture.schema.system.optionality import Omitable
 from pydantic import BaseModel
 
-from nfhl.constraints import Absent, AllOf, NoneOf, OneOf, require_any_true
+from nfhl.constraints import (
+    Absent,
+    AllOf,
+    AnyOf,
+    NoneOf,
+    OneOf,
+    Populated,
+    require_any_true,
+)
 from nfhl.constraints import forbid_if as named_forbid_if
-from nfhl.models import FloodHazardZone
+from nfhl.models import CoastalTransect, FloodHazardZone
+
+from .helpers import fixture_feature
 
 AR_ZONE = {
     "FLD_ZONE": "AR",
@@ -99,6 +109,39 @@ def test_only_v_datum_breaks_the_schema_when_len_unit_has_a_depth(
     assert not check(schema, feature)
     del feature["properties"]["V_DATUM"]
     assert check(schema, feature)
+
+
+def test_any_of_is_true_when_one_condition_is() -> None:
+    class Pair(BaseModel):
+        a: Omitable[int]
+        b: Omitable[int]
+
+    either = AnyOf(Populated("a"), Populated("b"))
+    assert either.eval(Pair.model_construct(a=1))
+    assert either.eval(Pair.model_construct(b=1))
+    assert not either.eval(Pair.model_construct())
+    assert str(either) == "a is populated or b is populated"
+
+
+HEIGHTS = ("SETUP_DPTH", "CON_HT", "SIG_HT", "MEAN_HT")
+
+
+@pytest.mark.parametrize("measure", HEIGHTS)
+def test_the_schema_requires_a_unit_when_any_wave_height_is_populated(
+    coastal_cases: list[dict[str, Any]], measure: str
+) -> None:
+    schema = CoastalTransect.model_json_schema()
+    study = fixture_feature(coastal_cases, "full_study")
+    feature = json.loads(
+        CoastalTransect.model_validate_json(json.dumps(study)).model_dump_json()
+    )
+    for name in HEIGHTS:
+        feature["properties"].pop(name, None)
+    assert check(schema, feature)  # no height, so no unit is owed
+    feature["properties"][measure] = 1.0
+    assert check(schema, feature)
+    del feature["properties"]["LEN_UNIT"]
+    assert not check(schema, feature)
 
 
 def test_uniquely_named_decorators_keep_both_rules() -> None:

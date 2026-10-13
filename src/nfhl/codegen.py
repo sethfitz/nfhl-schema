@@ -99,6 +99,7 @@ SERVICE_ONLY_DESCRIPTION = (
 CONSTRAINT_NAMES = (
     "Absent",
     "AllOf",
+    "AnyOf",
     "NoneOf",
     "OneOf",
     "Populated",
@@ -516,7 +517,14 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
     for allowed in relations.allowed:
         decorators.extend(render_allowed(allowed, table, reader))
     for needed in relations.required_when:
-        if needed.any_of:
+        if needed.when_any_populated:
+            populated = [
+                f"Populated({literal(f.lower())})" for f in needed.when_any_populated
+            ]
+            condition = f"AnyOf({', '.join(populated)})"
+            decorators.extend(quote_comment(needed.quote))
+        elif needed.any_of:
+            assert needed.when is not None
             domain = reader.domain(require_domain(table, needed.when))
             condition = (
                 f"OneOf({literal(needed.when.lower())}, "
@@ -524,6 +532,7 @@ def render_model(layer: Layer, reader: SpecReader) -> str:
             )
             decorators.extend(quote_comment(needed.quote))
         else:
+            assert needed.when is not None
             condition = f"Populated({literal(needed.when.lower())})"
         decorators.append(
             f"@require_if([{literal(needed.field.lower())}], {condition})"

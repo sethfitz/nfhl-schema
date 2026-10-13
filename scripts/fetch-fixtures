@@ -1356,7 +1356,22 @@ CASE_VARIANT_DFIRMS = [
 # unless the case is about that. A required number is -9999 when missing; a
 # vocabulary field that is only applicable is missing as NULL or `''`, and a lone
 # space is a value the vocabulary rejects.
+COASTAL_LENGTH_RULE = "@require_if(len_unit)"
+COASTAL_TIME_RULE = "@require_if(time_unit)"
+COASTAL_HEIGHTS = ("SETUP_DPTH", "CON_HT", "SIG_HT", "MEAN_HT")
+COASTAL_PERIODS = ("SIG_PD", "CON_PD", "MEAN_PD")
+
+
+def unit_rule_clean(unit: str, measures: tuple[str, ...]) -> str:
+    """No measure is populated, or `unit` is: a lone space is a value the
+    vocabulary rejects, so `<> ''` is the strict side."""
+    populated = " OR ".join(f"({f} IS NOT NULL AND {f} <> -9999)" for f in measures)
+    return f"(NOT ({populated}) OR ({unit} IS NOT NULL AND {unit} <> ''))"
+
+
 COASTAL_FIELDS = {
+    COASTAL_LENGTH_RULE: unit_rule_clean("LEN_UNIT", COASTAL_HEIGHTS),
+    COASTAL_TIME_RULE: unit_rule_clean("TIME_UNIT", COASTAL_PERIODS),
     **{
         f: f"NOT {missing(f)}"
         for f in (
@@ -1448,6 +1463,10 @@ COASTAL_CASES: list[Case] = [
     # one field; most rows break several.
     ("no_location_description", "OBJECTID = 21877", "LOC_DESC", None),
     ("no_runup_elevation", "RUP = -9999", "RUP", None),
+    # A measure populated with its unit missing, pinned: the rows sit in DFIRMs
+    # the clean cases leave out, and these two break no other rule.
+    ("heights_without_a_unit", "OBJECTID = 145299", COASTAL_LENGTH_RULE, None),
+    ("periods_without_a_unit", "OBJECTID = 22670", COASTAL_TIME_RULE, None),
     ("no_baseline_id", missing("TBASELN_ID"), "TBASELN_ID", None),
     ("no_flood_event", missing("EVENT_TYP"), "EVENT_TYP", None),
     ("no_source_citation", "OBJECTID = 139086", "SOURCE_CIT", None),

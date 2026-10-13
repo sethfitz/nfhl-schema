@@ -223,12 +223,22 @@ class Allowed:
 @dataclass(frozen=True, slots=True)
 class RequiredWhen:
     """`field` must be populated whenever `when` is, or, when `any_of` lists
-    values, whenever `when` holds one of them."""
+    values, whenever `when` holds one of them, or, when `when_any_populated`
+    lists fields instead of `when`, whenever any of those is populated."""
 
     field: str
-    when: str
     quote: str
+    when: str | None = None
     any_of: tuple[str, ...] = ()
+    when_any_populated: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        assert (self.when is None) != (not self.when_any_populated), (
+            f"{self.field}: required_when names one of `when` and `when_any_populated`"
+        )
+        assert not (self.any_of and self.when_any_populated), (
+            f"{self.field}: `any_of` is the values of `when`"
+        )
 
 
 @dataclass(frozen=True, slots=True)
@@ -763,7 +773,11 @@ class SpecReader:
             ),
             required_when=tuple(
                 RequiredWhen(
-                    r["field"], r["when"], r["quote"], tuple(r.get("any_of", []))
+                    r["field"],
+                    r["quote"],
+                    r.get("when"),
+                    tuple(r.get("any_of", [])),
+                    tuple(r.get("when_any_populated", [])),
                 )
                 for r in raw.get("required_when", [])
             ),

@@ -114,6 +114,32 @@ class AllOf(Condition):
         return {"allOf": [c.json_schema(model_class) for c in self.conditions]}
 
 
+@dataclass(frozen=True, slots=True)
+class AnyOf(Condition):
+    """True when at least one of `conditions` is."""
+
+    conditions: tuple[Condition, ...]
+
+    def __init__(self, *conditions: Condition) -> None:
+        object.__setattr__(self, "conditions", conditions)
+
+    def __str__(self) -> str:
+        return " or ".join(str(c) for c in self.conditions)
+
+    @override
+    def validate_class(self, model_class: type[BaseModel]) -> None:
+        for condition in self.conditions:
+            condition.validate_class(model_class)
+
+    @override
+    def eval(self, model_instance: BaseModel) -> bool:
+        return any(c.eval(model_instance) for c in self.conditions)
+
+    @override
+    def json_schema(self, model_class: type[BaseModel]) -> JsonDict:
+        return {"anyOf": [c.json_schema(model_class) for c in self.conditions]}
+
+
 def spoken(values: tuple[Any, ...], conjunction: str) -> str:
     """`A`, `A or B`, `A, B or C`: values as the reference docs read them."""
     shown = [str(getattr(v, "value", v)) for v in values]

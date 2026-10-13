@@ -15,6 +15,10 @@ from nfhl.spec_source import Layer, SpecReader
 
 from .helpers import fixture_feature, legacy_warnings_by, rejected_by, validate_as
 
+LENGTH_RULE = "@require_if(len_unit)"
+TIME_RULE = "@require_if(time_unit)"
+HEIGHTS = ["SETUP_DPTH", "CON_HT", "SIG_HT", "MEAN_HT"]
+PERIODS = ["SIG_PD", "CON_PD", "MEAN_PD"]
 REQUIRED = [
     "DFIRM_ID",
     "VERSION_ID",
@@ -100,6 +104,7 @@ def test_the_fixture_has_every_kind_of_case(
     assert any(c["expect"] is None and not c["warns"] for c in coastal_cases)
     assert any(c["warns"] for c in coastal_cases)
     assert any(c["expect"] is not None for c in coastal_cases)
+    assert {LENGTH_RULE, TIME_RULE} <= {c["expect"] for c in coastal_cases}
 
 
 def test_each_real_transect_is_judged_as_recorded(
@@ -113,13 +118,16 @@ def test_each_real_transect_is_judged_as_recorded(
             assert warned(case["feature"]) == legacy, case["name"]
 
 
-def test_the_model_has_no_rules_to_judge(
+def test_the_model_has_the_two_unit_rules(
     coastal_cases: list[dict[str, Any]],
 ) -> None:
-    assert ModelConstraint.get_model_constraints(CoastalTransect) == ()
+    rules = {c.name for c in ModelConstraint.get_model_constraints(CoastalTransect)}
+    assert rules == {LENGTH_RULE, TIME_RULE}
     for case in coastal_cases:
         verdict = judge(CoastalTransect, case["feature"]["properties"])
-        assert verdict.broken == set(), case["name"]
+        assert verdict.broken <= {LENGTH_RULE, TIME_RULE}, case["name"]
+        if case["expect"] in {LENGTH_RULE, TIME_RULE}:
+            assert verdict.broken == {case["expect"]}, case["name"]
 
 
 def test_a_valid_transect_reads_back_typed(study: dict[str, Any]) -> None:
@@ -161,6 +169,8 @@ def test_a_required_field_is_required(study: dict[str, Any], field: str) -> None
 
 @pytest.mark.parametrize("field", OPTIONAL)
 def test_an_optional_field_is_optional(study: dict[str, Any], field: str) -> None:
+    # A unit is required once a measure is populated, so none is for this test.
+    study["properties"].update(dict.fromkeys([*HEIGHTS, *PERIODS]))
     for value in (None, ""):
         study["properties"][field] = value
         assert rejected(study) == set(), repr(value)
@@ -279,3 +289,29 @@ def test_a_multipart_transect_is_rejected(study: dict[str, Any]) -> None:
 def test_a_transect_with_no_geometry_is_rejected(study: dict[str, Any]) -> None:
     study["geometry"] = None
     assert rejected(study) == {"geometry"}
+
+
+@pytest.mark.parametrize(
+    ("measures", "unit", "rule"),
+    [(HEIGHTS, "LEN_UNIT", LENGTH_RULE), (PERIODS, "TIME_UNIT", TIME_RULE)],
+    ids=["heights", "periods"],
+)
+def test_a_unit_is_required_when_any_of_its_measures_is_populated(
+    study: dict[str, Any], measures: list[str], unit: str, rule: str
+) -> None:
+    # The control: with every measure populated and the unit present, no rule fires.
+    assert rejected(study) == set()
+    for kept in measures:
+        for field in measures:
+            study["properties"][field] = None
+        study["properties"][kept] = 1.0
+        for value in (None, ""):
+            study["properties"][unit] = value
+            assert rejected(study) == {rule}, (kept, repr(value))
+        study["properties"][unit] = "Feet" if unit == "LEN_UNIT" else "SECONDS"
+        assert rejected(study) == set(), kept
+    for field in measures:
+        study["properties"][field] = None
+    for value in (None, ""):
+        study["properties"][unit] = value
+        assert rejected(study) == set(), repr(value)
